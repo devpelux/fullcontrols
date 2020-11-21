@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <Authors>Salvatore Peluso</Authors>
+    <Description>Demo project of FullControls library.</Description>
+    <Copyright>Copyright 2020 Salvatore Peluso</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/firespacexyz/fullcontrols</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/firespacexyz/fullcontrols</RepositoryUrl>
+    <PackageTags>Controls, Custom, Full, TextBox, PasswordBox, ComboBox, Button, ToggleButton</PackageTags>
+    <PackageReleaseNotes>First release.</PackageReleaseNotes>
+    <ApplicationIcon>Icons\FullControls.ico</ApplicationIcon>
+    <StartupObject>FullControlsDemo.App</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FullControls\FullControls.csproj" />
+  </ItemGroup>
+
+</Project>

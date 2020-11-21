@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FullControls", "FullControls\FullControls.csproj", "{D52BAB8C-A34A-4F27-A30C-D2950C52D728}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullControlsDemo", "FullControlsDemo\FullControlsDemo.csproj", "{98AA94C7-8FAE-4286-92CE-2990E159BAF6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D52BAB8C-A34A-4F27-A30C-D2950C52D728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D52BAB8C-A34A-4F27-A30C-D2950C52D728}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D52BAB8C-A34A-4F27-A30C-D2950C52D728}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D52BAB8C-A34A-4F27-A30C-D2950C52D728}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98AA94C7-8FAE-4286-92CE-2990E159BAF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98AA94C7-8FAE-4286-92CE-2990E159BAF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98AA94C7-8FAE-4286-92CE-2990E159BAF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98AA94C7-8FAE-4286-92CE-2990E159BAF6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2080C88-7627-48CE-9C93-D897125712DB}
+	EndGlobalSection
+EndGlobal

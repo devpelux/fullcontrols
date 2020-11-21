@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Authors>Salvatore Peluso</Authors>
+    <Description>Set of controls that update standard controls to be fully customizable.
+
+Controls included:
++ FullButton
++ FullComboBox
++ FullComboBoxItem
++ FullPasswordBox
++ FullTextBox
++ FullToggleButton
+
+A full description of the controls can be found on the github repository.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>Controls, Custom, Full, TextBox, PasswordBox, ComboBox, Button, ToggleButton</PackageTags>
+    <PackageReleaseNotes>First release.</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/firespacexyz/fullcontrols</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/firespacexyz/fullcontrols</RepositoryUrl>
+    <Copyright>Salvatore Peluso</Copyright>
+    <RepositoryType>git</RepositoryType>
+    <PackageIcon>FullControls.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Icons\ic_label.png" />
+    <None Remove="Icons\ic_lock.png" />
+    <None Include="Icons\FullControls.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\ic_label.png" />
+    <Resource Include="Icons\ic_lock.png" />
+  </ItemGroup>
+
+</Project>

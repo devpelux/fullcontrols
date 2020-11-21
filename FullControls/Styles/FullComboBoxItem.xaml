@@ -1,0 +1,109 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FullControls">
+
+    <Style TargetType="{x:Type local:FullComboBoxItem}" BasedOn="{StaticResource {x:Type ComboBoxItem}}">
+        <Style.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="/FullControls;component/Resources/DefaultBrushes.xaml"/>
+                    <ResourceDictionary Source="/FullControls;component/Resources/Icons.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Style.Resources>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Background" Value="{DynamicResource Gray1}"/>
+        <Setter Property="BackgroundOnMouseOver" Value="{DynamicResource Gray4}"/>
+        <Setter Property="BackgroundOnSelected" Value="{DynamicResource Blue1}"/>
+        <Setter Property="BackgroundOnMouseOverOnSelected" Value="{DynamicResource Blue2}"/>
+        <Setter Property="BackgroundOnFocused" Value="{DynamicResource Gray4}"/>
+        <Setter Property="BackgroundOnFocusedOnSelected" Value="{DynamicResource Blue1}"/>
+        <Setter Property="BackgroundOnDisabled" Value="{DynamicResource Gray1}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray7}"/>
+        <Setter Property="BorderBrushOnMouseOver" Value="{DynamicResource Gray7}"/>
+        <Setter Property="BorderBrushOnSelected" Value="{DynamicResource Blue5}"/>
+        <Setter Property="BorderBrushOnMouseOverOnSelected" Value="{DynamicResource Blue5}"/>
+        <Setter Property="BorderBrushOnFocused" Value="{DynamicResource Gray7}"/>
+        <Setter Property="BorderBrushOnFocusedOnSelected" Value="{DynamicResource Gray7}"/>
+        <Setter Property="BorderBrushOnDisabled" Value="{DynamicResource Gray5}"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="ForegroundOnMouseOver" Value="Black"/>
+        <Setter Property="ForegroundOnSelected" Value="Black"/>
+        <Setter Property="ForegroundOnMouseOverOnSelected" Value="Black"/>
+        <Setter Property="ForegroundOnFocused" Value="Black"/>
+        <Setter Property="ForegroundOnFocusedOnSelected" Value="Black"/>
+        <Setter Property="ForegroundOnDisabled" Value="{DynamicResource Gray12}"/>
+        <Setter Property="ActualForegroundBack" Value="{Binding Foreground, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="ContentMargin" Value="0"/>
+        <Setter Property="AnimationTime" Value="0:0:0.2"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:FullComboBoxItem}">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding BackgroundBack}"
+                            BorderBrush="{TemplateBinding BorderBrushBack}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            TextBlock.Foreground="{TemplateBinding Foreground}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Margin="{TemplateBinding ContentMargin}"
+                                          Content="{TemplateBinding Content}"
+                                          Focusable="False"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="PART_Border" Property="TextBlock.Foreground" Value="{Binding ForegroundOnSelected, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="ActualForegroundBack" Value="{Binding ForegroundOnSelected, RelativeSource={RelativeSource Self}}"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="True"/>
+                                <Condition Property="IsSelected" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Border" Property="TextBlock.Foreground" Value="{Binding ForegroundOnFocused, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="ActualForegroundBack" Value="{Binding ForegroundOnFocused, RelativeSource={RelativeSource Self}}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="True"/>
+                                <Condition Property="IsSelected" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Border" Property="TextBlock.Foreground" Value="{Binding ForegroundOnFocusedOnSelected, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="ActualForegroundBack" Value="{Binding ForegroundOnFocusedOnSelected, RelativeSource={RelativeSource Self}}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsSelected" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Border" Property="TextBlock.Foreground" Value="{Binding ForegroundOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="ActualForegroundBack" Value="{Binding ForegroundOnMouseOver, RelativeSource={RelativeSource Self}}"/>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="IsSelected" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Border" Property="TextBlock.Foreground" Value="{Binding ForegroundOnMouseOverOnSelected, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="ActualForegroundBack" Value="{Binding ForegroundOnMouseOverOnSelected, RelativeSource={RelativeSource Self}}"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="PART_Border" Property="TextBlock.Foreground" Value="{Binding ForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="ActualForegroundBack" Value="{Binding ForegroundOnDisabled, RelativeSource={RelativeSource Self}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
