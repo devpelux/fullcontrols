@@ -11,6 +11,9 @@ Set of controls that update standard controls to be fully customizable.
 + FullTextBox  
 + FullToggleButton  
 
+**Complete description and documentation here:**  
+Repository wiki: [https://github.com/devpelux/fullcontrols/wiki](https://github.com/devpelux/fullcontrols/wiki)
+
 ### Get this package from NuGet  
 <table align="left">
   <tr>
@@ -21,14 +24,18 @@ Set of controls that update standard controls to be fully customizable.
     </td>
     <td align="center">
       <a href="https://www.nuget.org/packages/FullControls">
-        <b>FullControls 1.0.1</b>
+        <b>FullControls 1.0.2</b>
       </a>
     </td>
   </tr>
 </table>
-<br><br><br><br>
+
+<br><br><br>
+### Dependencies
+> .NET 5
 
 
+<br><br>
 ### License
 Copyright (C) 2020  devpelux (Salvatore Peluso)  
 Licensed under MIT license.   
