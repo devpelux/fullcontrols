@@ -7,8 +7,7 @@
         mc:Ignorable="d"
         Title="FullControls" Height="400" Width="420">
     <Grid>
-        <fc:FullComboBox x:Name="combobox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,42,0,0"
-                         IsEditable="False" SelectedIndex="3">
+        <fc:FullComboBox x:Name="combobox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,42,0,0" SelectedIndex="3">
             <fc:FullComboBoxItem Content="Item1"/>
             <fc:FullComboBoxItem Content="Item2"/>
             <fc:FullComboBoxItem Content="Item3"/>
@@ -18,7 +17,7 @@
         <fc:FullToggleButton x:Name="togglebutton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,113,0,0"
                              Content="FullToggleButton" IsDeactivableByClick="False"/>
         <fc:FullButton x:Name="button" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="87,207,0,0"
-                       Content="FullButton" Click="button_Click"/>
+                       Content="FullButton" Click="Button_Click"/>
         <fc:FullTextBox x:Name="textbox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="132,279,0,0"
                         Hint="FullTextBox" EnableCopyButton="True" ShowIcon="True" Width="180"/>
         <fc:FullPasswordBox x:Name="passwordbox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="184,147,0,0"

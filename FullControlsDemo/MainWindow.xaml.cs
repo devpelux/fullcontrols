@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using FullControls;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace FullControlsDemo
 {
@@ -9,7 +11,7 @@ namespace FullControlsDemo
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             togglebutton.IsChecked = false;
         }

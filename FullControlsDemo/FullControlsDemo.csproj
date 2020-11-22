@@ -9,9 +9,9 @@
     <Description>Demo project of FullControls library.</Description>
     <Copyright>Copyright 2020 Salvatore Peluso</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/firespacexyz/fullcontrols</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/firespacexyz/fullcontrols</RepositoryUrl>
+    <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <PackageTags>Controls, Custom, Full, TextBox, PasswordBox, ComboBox, Button, ToggleButton</PackageTags>
     <PackageReleaseNotes>First release.</PackageReleaseNotes>
     <ApplicationIcon>Icons\FullControls.ico</ApplicationIcon>
