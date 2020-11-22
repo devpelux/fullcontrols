@@ -433,14 +433,17 @@ namespace FullControls
                 new PropertyChangedCallback((d, e) => ((FullComboBoxItem)d).OnSelectedChanged((bool)e.NewValue))));
         }
 
+        /// <summary>
+        /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="FrameworkElement.ApplyTemplate"/>.
+        /// </summary>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             IsEnabledChanged += (s, e) => OnEnabledChanged((bool)e.NewValue);
             SetValue(BackgroundBackProperty, Background);
             SetValue(BorderBrushBackProperty, BorderBrush);
-            ReloadBackground();
             loaded = true;
+            ReloadBackground();
         }
 
         /// <summary>
@@ -461,24 +464,40 @@ namespace FullControls
             ReloadBackground();
         }
 
+        /// <summary>
+        /// Invoked whenever an unhandled <see cref="UIElement.GotFocus"/> event reaches this element in its route.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnGotFocus(RoutedEventArgs e)
         {
             base.OnGotFocus(e);
             ReloadBackground();
         }
 
+        /// <summary>
+        /// Raises <see cref="UIElement.LostFocus"/> routed event by using the event data that is provided.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnLostFocus(RoutedEventArgs e)
         {
             base.OnLostFocus(e);
             ReloadBackground();
         }
 
+        /// <summary>
+        /// Called when the mouse enter the control.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnMouseEnter(MouseEventArgs e)
         {
             base.OnMouseEnter(e);
             ReloadBackground();
         }
 
+        /// <summary>
+        /// Called when the mouse leave the control.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnMouseLeave(MouseEventArgs e)
         {
             base.OnMouseLeave(e);
@@ -491,7 +510,7 @@ namespace FullControls
         /// <param name="selectedState">Actual state of <see cref="ListBoxItem.IsSelected"/>.</param>
         protected virtual void OnSelectedChanged(bool selectedState)
         {
-            if (loaded) ReloadBackground();
+            ReloadBackground();
         }
 
         /// <summary>
@@ -499,6 +518,7 @@ namespace FullControls
         /// </summary>
         private void ReloadBackground()
         {
+            if (!loaded) return;
             if (!IsEnabled) //Disabled state
             {
                 SetValue(BackgroundBackProperty, BackgroundOnDisabled);

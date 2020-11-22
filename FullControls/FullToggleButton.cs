@@ -13,6 +13,8 @@ namespace FullControls
     /// </summary>
     public class FullToggleButton : ToggleButton
     {
+        private bool loaded = false;
+
         /// <summary>
         /// Background color when the mouse is over the control.
         /// </summary>
@@ -357,15 +359,22 @@ namespace FullControls
                 new PropertyChangedCallback((d, e) => ((FullToggleButton)d).OnCheckedChanged((bool?)e.NewValue))));
         }
 
+        /// <summary>
+        /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="FrameworkElement.ApplyTemplate"/>.
+        /// </summary>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             IsEnabledChanged += (s, e) => OnEnabledChanged((bool)e.NewValue);
             SetValue(BackgroundBackProperty, Background);
             SetValue(BorderBrushBackProperty, BorderBrush);
+            loaded = true;
             ReloadBackground();
         }
 
+        /// <summary>
+        /// Called by the <see cref="ToggleButton.OnClick"/> method to implement toggle behavior.
+        /// </summary>
         protected override void OnToggle()
         {
             if (IsDeactivableByClick || IsChecked != true) base.OnToggle();
@@ -399,12 +408,20 @@ namespace FullControls
             ReloadBackground();
         }
 
+        /// <summary>
+        /// Called when the mouse enter the control.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnMouseEnter(MouseEventArgs e)
         {
             base.OnMouseEnter(e);
             ReloadBackground();
         }
 
+        /// <summary>
+        /// Called when the mouse leave the control.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnMouseLeave(MouseEventArgs e)
         {
             base.OnMouseLeave(e);
@@ -416,6 +433,7 @@ namespace FullControls
         /// </summary>
         private void ReloadBackground()
         {
+            if (!loaded) return;
             if (!IsEnabled) //Disabled state
             {
                 SetValue(BackgroundBackProperty, BackgroundOnDisabled);

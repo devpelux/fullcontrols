@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Authors>Salvatore Peluso</Authors>
     <Description>Set of controls that update standard controls to be fully customizable.
 
@@ -17,14 +18,14 @@ Controls included:
 A full description of the controls can be found on the github repository.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>Controls, Custom, Full, TextBox, PasswordBox, ComboBox, Button, ToggleButton</PackageTags>
-    <PackageReleaseNotes>Added missing intellisense documentation, little ottimizations and corrections.</PackageReleaseNotes>
+    <PackageReleaseNotes>Corrected null reference error of FullToggleButton, general corrections.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <Copyright>Copyright 2020 Salvatore Peluso</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>FullControls.png</PackageIcon>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <Version>1.0.1</Version>
+    <AssemblyVersion>1.0.2.0</AssemblyVersion>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

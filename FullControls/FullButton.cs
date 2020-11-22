@@ -13,6 +13,8 @@ namespace FullControls
     /// </summary>
     public class FullButton : Button
     {
+        private bool loaded = false;
+
         /// <summary>
         /// Background color when the mouse is over the control.
         /// </summary>
@@ -295,12 +297,16 @@ namespace FullControls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FullButton), new FrameworkPropertyMetadata(typeof(FullButton)));
         }
 
+        /// <summary>
+        /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="FrameworkElement.ApplyTemplate"/>.
+        /// </summary>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             IsEnabledChanged += (s, e) => OnEnabledChanged((bool)e.NewValue);
             SetValue(BackgroundBackProperty, Background);
             SetValue(BorderBrushBackProperty, BorderBrush);
+            loaded = true;
             ReloadBackground();
         }
 
@@ -322,18 +328,30 @@ namespace FullControls
             ReloadBackground();
         }
 
+        /// <summary>
+        /// Called when <see cref="ButtonBase.IsPressed"/> property changes.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnIsPressedChanged(DependencyPropertyChangedEventArgs e)
         {
             base.OnIsPressedChanged(e);
             ReloadBackground();
         }
 
+        /// <summary>
+        /// Called when the mouse enter the control.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnMouseEnter(MouseEventArgs e)
         {
             base.OnMouseEnter(e);
             ReloadBackground();
         }
 
+        /// <summary>
+        /// Called when the mouse leave the control.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnMouseLeave(MouseEventArgs e)
         {
             base.OnMouseLeave(e);
@@ -345,6 +363,7 @@ namespace FullControls
         /// </summary>
         private void ReloadBackground()
         {
+            if (!loaded) return;
             if (!IsEnabled) //Disabled state
             {
                 SetValue(BackgroundBackProperty, BackgroundOnDisabled);

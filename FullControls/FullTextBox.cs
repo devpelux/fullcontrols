@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using FullControls.Extra;
@@ -12,6 +13,8 @@ namespace FullControls
     /// </summary>
     public class FullTextBox : TextBox
     {
+        private bool loaded = false;
+
         /// <summary>
         /// Background color when the control is selected.
         /// </summary>
@@ -678,10 +681,13 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Copy the value of the <see cref="Text"/> property on the Clipboard.
+        /// Copy the value of the <see cref="TextBox.Text"/> property on the Clipboard.
         /// </summary>
         public void CopyAll() => Clipboard.SetText(Text);
 
+        /// <summary>
+        /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="FrameworkElement.ApplyTemplate"/>.
+        /// </summary>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -690,6 +696,7 @@ namespace FullControls
             IsEnabledChanged += (s, e) => OnEnabledChanged((bool)e.NewValue);
             SetValue(BackgroundBackProperty, Background);
             SetValue(BorderBrushBackProperty, BorderBrush);
+            loaded = true;
             ReloadBackground();
         }
 
@@ -712,12 +719,20 @@ namespace FullControls
             ReloadBackground();
         }
 
+        /// <summary>
+        /// Called when the text is changed.
+        /// </summary>
+        /// <param name="e">The arguments that are associated with the <see cref="TextBoxBase.TextChanged"/> event.</param>
         protected override void OnTextChanged(TextChangedEventArgs e)
         {
             base.OnTextChanged(e);
             UpdateHintState();
         }
 
+        /// <summary>
+        /// Invoked whenever an unhandled <see cref="UIElement.GotFocus"/> event reaches this element in its route.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnGotFocus(RoutedEventArgs e)
         {
             base.OnGotFocus(e);
@@ -725,6 +740,10 @@ namespace FullControls
             ReloadBackground();
         }
 
+        /// <summary>
+        /// Raises <see cref="UIElement.LostFocus"/> routed event by using the event data that is provided.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnLostFocus(RoutedEventArgs e)
         {
             base.OnLostFocus(e);
@@ -732,12 +751,20 @@ namespace FullControls
             ReloadBackground();
         }
 
+        /// <summary>
+        /// Called when the mouse enter the control.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnMouseEnter(MouseEventArgs e)
         {
             base.OnMouseEnter(e);
             ReloadBackground();
         }
 
+        /// <summary>
+        /// Called when the mouse leave the control.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnMouseLeave(MouseEventArgs e)
         {
             base.OnMouseLeave(e);
@@ -772,6 +799,7 @@ namespace FullControls
         /// </summary>
         private void ReloadBackground()
         {
+            if (!loaded) return;
             if (!IsEnabled) //Disabled state
             {
                 SetValue(BackgroundBackProperty, BackgroundOnDisabled);

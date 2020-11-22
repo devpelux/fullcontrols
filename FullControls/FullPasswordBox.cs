@@ -16,6 +16,7 @@ namespace FullControls
         private PasswordBox passwordBox = null;
         private TextBlock peek = null;
         private string _tempPassword = null;
+        private bool loaded = false;
 
         /// <summary>
         /// Background color when the control is selected.
@@ -1055,6 +1056,9 @@ namespace FullControls
         /// </summary>
         public void SelectAll() => passwordBox?.SelectAll();
 
+        /// <summary>
+        /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="FrameworkElement.ApplyTemplate"/>.
+        /// </summary>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -1072,8 +1076,9 @@ namespace FullControls
             IsEnabledChanged += (s, e) => OnEnabledChanged();
             SetValue(BackgroundBackProperty, Background);
             SetValue(BorderBrushBackProperty, BorderBrush);
-            ReloadBackground();
             OnInitialized();
+            loaded = true;
+            ReloadBackground();
         }
 
         /// <summary>
@@ -1157,6 +1162,10 @@ namespace FullControls
             ReloadBackground();
         }
 
+        /// <summary>
+        /// Called when the mouse enter the control.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnMouseEnter(MouseEventArgs e)
         {
             base.OnMouseEnter(e);
@@ -1167,6 +1176,10 @@ namespace FullControls
             }
         }
 
+        /// <summary>
+        /// Called when the mouse leave the control.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnMouseLeave(MouseEventArgs e)
         {
             base.OnMouseLeave(e);
@@ -1204,6 +1217,10 @@ namespace FullControls
             _ = VisualStateManager.GoToState(this, "Unpeeked", true);
         }
 
+        /// <summary>
+        /// Invoked whenever an unhandled <see cref="UIElement.GotFocus"/> event reaches this element in its route.
+        /// </summary>
+        /// <param name="e">Event data.</param>
         protected override void OnGotFocus(RoutedEventArgs e)
         {
             base.OnGotFocus(e);
@@ -1240,6 +1257,7 @@ namespace FullControls
         /// </summary>
         private void ReloadBackground()
         {
+            if (!loaded) return;
             if (!IsEnabled) //Disabled state
             {
                 SetValue(BackgroundBackProperty, BackgroundOnDisabled);

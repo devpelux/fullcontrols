@@ -487,6 +487,9 @@ namespace FullControls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FullComboBox), new FrameworkPropertyMetadata(typeof(FullComboBox)));
         }
 
+        /// <summary>
+        /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="FrameworkElement.ApplyTemplate"/>.
+        /// </summary>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
