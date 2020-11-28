@@ -1,10 +1,9 @@
 ﻿using FullControls;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace FullControlsDemo
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : FullWindow
     {
         public MainWindow()
         {

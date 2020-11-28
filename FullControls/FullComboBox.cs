@@ -493,8 +493,8 @@ namespace FullControls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            ((FullToggleButton)Template.FindName("PART_ToggleButton", this)).BackgroundChanged +=
-                (o, e) => OnActualBackgroundChanged(new BackgroundChangedEventArgs(e.ActualBackground));
+            ((FullToggleButton)Template.FindName("PART_ToggleButton", this)).BackgroundChanged += (o, e)
+                => OnActualBackgroundChanged(new BackgroundChangedEventArgs(e.ActualBackground));
             OnActualBackgroundChanged(new BackgroundChangedEventArgs(IsEnabled ? IsDropDownOpen ? BackgroundOnChecked : Background : BackgroundOnDisabled));
         }
 

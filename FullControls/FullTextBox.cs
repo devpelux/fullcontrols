@@ -54,7 +54,9 @@ namespace FullControls
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ActualBackgroundProperty =
-            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(FullTextBox),
+                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => ((FullTextBox)d).OnActualBackgroundChanged(new BackgroundChangedEventArgs((Brush)e.NewValue)))));
 
         #region BackgroundBack
 
@@ -72,11 +74,8 @@ namespace FullControls
         /// </summary>
         internal static readonly DependencyProperty BackgroundBackProperty =
             DependencyProperty.Register(nameof(BackgroundBack), typeof(Brush), typeof(FullTextBox),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) =>
-                {
-                    d.SetValue(ActualBackgroundProperty, e.NewValue);
-                    ((FullTextBox)d).OnActualBackgroundChanged(new BackgroundChangedEventArgs((Brush)e.NewValue));
-                })));
+                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualBackgroundProperty, e.NewValue))));
 
         #endregion
 
@@ -605,19 +604,19 @@ namespace FullControls
         #region Icon
 
         /// <summary>
-        /// Specifies if to display or not the icon.
+        /// Icon that is displayed to the left of the text box.
         /// </summary>
-        public bool ShowIcon
+        public ImageSource Icon
         {
-            get => (bool)GetValue(ShowIconProperty);
-            set => SetValue(ShowIconProperty, value);
+            get => (ImageSource)GetValue(IconProperty);
+            set => SetValue(IconProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ShowIcon"/> dependency property.
+        /// Identifies the <see cref="Icon"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ShowIconProperty =
-            DependencyProperty.Register(nameof(ShowIcon), typeof(bool), typeof(FullTextBox));
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(FullTextBox));
 
         /// <summary>
         /// Max size of the icon.
@@ -633,21 +632,6 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty MaxIconSizeProperty =
             DependencyProperty.Register(nameof(MaxIconSize), typeof(double), typeof(FullTextBox));
-
-        /// <summary>
-        /// Icon that is displayed to the left of the text box.
-        /// </summary>
-        public ImageSource Icon
-        {
-            get => (ImageSource)GetValue(IconProperty);
-            set => SetValue(IconProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="Icon"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(FullTextBox));
 
         #endregion
 
@@ -678,6 +662,8 @@ namespace FullControls
         static FullTextBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FullTextBox), new FrameworkPropertyMetadata(typeof(FullTextBox)));
+            IsEnabledProperty.OverrideMetadata(typeof(FullTextBox), new FrameworkPropertyMetadata(
+                new PropertyChangedCallback((d, e) => ((FullTextBox)d).OnEnabledChanged((bool)e.NewValue))));
         }
 
         /// <summary>
@@ -693,7 +679,6 @@ namespace FullControls
             base.OnApplyTemplate();
             ((Button)Template.FindName("PART_CopyButton", this)).Click += (s, e) => CopyAll();
             UpdateHintState();
-            IsEnabledChanged += (s, e) => OnEnabledChanged((bool)e.NewValue);
             SetValue(BackgroundBackProperty, Background);
             SetValue(BorderBrushBackProperty, BorderBrush);
             loaded = true;

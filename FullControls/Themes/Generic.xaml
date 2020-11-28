@@ -6,5 +6,6 @@
         <ResourceDictionary Source="/FullControls;component/Styles/FullPasswordBox.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/FullTextBox.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/FullToggleButton.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/FullWindow.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

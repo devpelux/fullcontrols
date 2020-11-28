@@ -113,7 +113,9 @@ namespace FullControls
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ActualBackgroundProperty =
-            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(FullComboBoxItem),
+                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => ((FullComboBoxItem)d).OnActualBackgroundChanged(new BackgroundChangedEventArgs((Brush)e.NewValue)))));
 
         #region BackgroundBack
 
@@ -131,11 +133,8 @@ namespace FullControls
         /// </summary>
         internal static readonly DependencyProperty BackgroundBackProperty =
             DependencyProperty.Register(nameof(BackgroundBack), typeof(Brush), typeof(FullComboBoxItem),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) =>
-                {
-                    d.SetValue(ActualBackgroundProperty, e.NewValue);
-                    ((FullComboBoxItem)d).OnActualBackgroundChanged(new BackgroundChangedEventArgs((Brush)e.NewValue));
-                })));
+                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualBackgroundProperty, e.NewValue))));
 
         #endregion
 
@@ -349,26 +348,24 @@ namespace FullControls
         public static readonly DependencyProperty ActualForegroundProperty =
             DependencyProperty.Register(nameof(ActualForeground), typeof(Brush), typeof(FullComboBoxItem));
 
-        #region ActualForegroundBack
+        #region ForegroundBack
 
         /// <summary>
         /// Actual Foreground color of the control.
         /// </summary>
-        internal Brush ActualForegroundBack
+        internal Brush ForegroundBack
         {
-            get => (Brush)GetValue(ActualForegroundBackProperty);
-            set => SetValue(ActualForegroundBackProperty, value);
+            get => (Brush)GetValue(ForegroundBackProperty);
+            set => SetValue(ForegroundBackProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ActualForegroundBack"/> dependency property.
+        /// Identifies the <see cref="ForegroundBack"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ActualForegroundBackProperty =
-            DependencyProperty.Register(nameof(ActualForegroundBack), typeof(Brush), typeof(FullComboBoxItem),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) =>
-                {
-                    d.SetValue(ActualForegroundProperty, e.NewValue);
-                })));
+        internal static readonly DependencyProperty ForegroundBackProperty =
+            DependencyProperty.Register(nameof(ForegroundBack), typeof(Brush), typeof(FullComboBoxItem),
+                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualForegroundProperty, e.NewValue))));
 
         #endregion
 
@@ -429,6 +426,8 @@ namespace FullControls
         static FullComboBoxItem()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FullComboBoxItem), new FrameworkPropertyMetadata(typeof(FullComboBoxItem)));
+            IsEnabledProperty.OverrideMetadata(typeof(FullComboBoxItem), new FrameworkPropertyMetadata(
+                new PropertyChangedCallback((d, e) => ((FullComboBoxItem)d).OnEnabledChanged((bool)e.NewValue))));
             IsSelectedProperty.OverrideMetadata(typeof(FullComboBoxItem), new FrameworkPropertyMetadata(false,
                 new PropertyChangedCallback((d, e) => ((FullComboBoxItem)d).OnSelectedChanged((bool)e.NewValue))));
         }
@@ -439,9 +438,9 @@ namespace FullControls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            IsEnabledChanged += (s, e) => OnEnabledChanged((bool)e.NewValue);
             SetValue(BackgroundBackProperty, Background);
             SetValue(BorderBrushBackProperty, BorderBrush);
+            SetValue(ForegroundBackProperty, Foreground);
             loaded = true;
             ReloadBackground();
         }
@@ -523,6 +522,7 @@ namespace FullControls
             {
                 SetValue(BackgroundBackProperty, BackgroundOnDisabled);
                 SetValue(BorderBrushBackProperty, BorderBrushOnDisabled);
+                SetValue(ForegroundBackProperty, ForegroundOnDisabled);
             }
             else if (IsMouseOver) //MouseOver state
             {
@@ -530,11 +530,13 @@ namespace FullControls
                 {
                     Utility.AnimateBrush(this, BackgroundBackProperty, BackgroundOnMouseOverOnSelected, AnimationTime);
                     Utility.AnimateBrush(this, BorderBrushBackProperty, BorderBrushOnMouseOverOnSelected, AnimationTime);
+                    SetValue(ForegroundBackProperty, ForegroundOnMouseOverOnSelected);
                 }
                 else
                 {
                     Utility.AnimateBrush(this, BackgroundBackProperty, BackgroundOnMouseOver, AnimationTime);
                     Utility.AnimateBrush(this, BorderBrushBackProperty, BorderBrushOnMouseOver, AnimationTime);
+                    SetValue(ForegroundBackProperty, ForegroundOnMouseOver);
                 }
             }
             else if (IsFocused) //Focused state
@@ -543,22 +545,26 @@ namespace FullControls
                 {
                     Utility.AnimateBrush(this, BackgroundBackProperty, BackgroundOnFocusedOnSelected, AnimationTime);
                     Utility.AnimateBrush(this, BorderBrushBackProperty, BorderBrushOnFocusedOnSelected, AnimationTime);
+                    SetValue(ForegroundBackProperty, ForegroundOnFocusedOnSelected);
                 }
                 else
                 {
                     Utility.AnimateBrush(this, BackgroundBackProperty, BackgroundOnFocused, AnimationTime);
                     Utility.AnimateBrush(this, BorderBrushBackProperty, BorderBrushOnFocused, AnimationTime);
+                    SetValue(ForegroundBackProperty, ForegroundOnFocused);
                 }
             }
             else if (IsSelected) //Selected state
             {
                 Utility.AnimateBrush(this, BackgroundBackProperty, BackgroundOnSelected, AnimationTime);
                 Utility.AnimateBrush(this, BorderBrushBackProperty, BorderBrushOnSelected, AnimationTime);
+                SetValue(ForegroundBackProperty, ForegroundOnSelected);
             }
             else //Normal state
             {
                 SetValue(BackgroundBackProperty, Background);
                 SetValue(BorderBrushBackProperty, BorderBrush);
+                SetValue(ForegroundBackProperty, Foreground);
             }
         }
     }

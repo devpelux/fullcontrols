@@ -69,7 +69,9 @@ namespace FullControls
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ActualBackgroundProperty =
-            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(FullButton));
+            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(FullButton),
+                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => ((FullButton)d).OnActualBackgroundChanged(new BackgroundChangedEventArgs((Brush)e.NewValue)))));
 
         #region BackgroundBack
 
@@ -87,11 +89,8 @@ namespace FullControls
         /// </summary>
         internal static readonly DependencyProperty BackgroundBackProperty =
             DependencyProperty.Register(nameof(BackgroundBack), typeof(Brush), typeof(FullButton),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) =>
-                {
-                    d.SetValue(ActualBackgroundProperty, e.NewValue);
-                    ((FullButton)d).OnActualBackgroundChanged(new BackgroundChangedEventArgs((Brush)e.NewValue));
-                })));
+                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualBackgroundProperty, e.NewValue))));
 
         #endregion
 
@@ -215,26 +214,24 @@ namespace FullControls
         public static readonly DependencyProperty ActualForegroundProperty =
             DependencyProperty.Register(nameof(ActualForeground), typeof(Brush), typeof(FullButton));
 
-        #region ActualForegroundBack
+        #region ForegroundBack
 
         /// <summary>
         /// Actual Foreground color of the control.
         /// </summary>
-        internal Brush ActualForegroundBack
+        internal Brush ForegroundBack
         {
-            get => (Brush)GetValue(ActualForegroundBackProperty);
-            set => SetValue(ActualForegroundBackProperty, value);
+            get => (Brush)GetValue(ForegroundBackProperty);
+            set => SetValue(ForegroundBackProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ActualForegroundBack"/> dependency property.
+        /// Identifies the <see cref="ForegroundBack"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ActualForegroundBackProperty =
-            DependencyProperty.Register(nameof(ActualForegroundBack), typeof(Brush), typeof(FullButton),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) =>
-                {
-                    d.SetValue(ActualForegroundProperty, e.NewValue);
-                })));
+        internal static readonly DependencyProperty ForegroundBackProperty =
+            DependencyProperty.Register(nameof(ForegroundBack), typeof(Brush), typeof(FullButton),
+                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualForegroundProperty, e.NewValue))));
 
         #endregion
 
@@ -295,6 +292,8 @@ namespace FullControls
         static FullButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FullButton), new FrameworkPropertyMetadata(typeof(FullButton)));
+            IsEnabledProperty.OverrideMetadata(typeof(FullButton), new FrameworkPropertyMetadata(
+                new PropertyChangedCallback((d, e) => ((FullButton)d).OnEnabledChanged((bool)e.NewValue))));
         }
 
         /// <summary>
@@ -303,9 +302,9 @@ namespace FullControls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            IsEnabledChanged += (s, e) => OnEnabledChanged((bool)e.NewValue);
             SetValue(BackgroundBackProperty, Background);
             SetValue(BorderBrushBackProperty, BorderBrush);
+            SetValue(ForegroundBackProperty, Foreground);
             loaded = true;
             ReloadBackground();
         }
@@ -368,21 +367,25 @@ namespace FullControls
             {
                 SetValue(BackgroundBackProperty, BackgroundOnDisabled);
                 SetValue(BorderBrushBackProperty, BorderBrushOnDisabled);
+                SetValue(ForegroundBackProperty, ForegroundOnDisabled);
             }
             else if (IsPressed) //Pressed state
             {
                 SetValue(BackgroundBackProperty, BackgroundOnPressed);
                 SetValue(BorderBrushBackProperty, BorderBrushOnPressed);
+                SetValue(ForegroundBackProperty, ForegroundOnPressed);
             }
             else if (IsMouseOver) //MouseOver state
             {
                 Utility.AnimateBrush(this, BackgroundBackProperty, BackgroundOnMouseOver, AnimationTime);
                 Utility.AnimateBrush(this, BorderBrushBackProperty, BorderBrushOnMouseOver, AnimationTime);
+                SetValue(ForegroundBackProperty, ForegroundOnMouseOver);
             }
             else //Normal state
             {
                 SetValue(BackgroundBackProperty, Background);
                 SetValue(BorderBrushBackProperty, BorderBrush);
+                SetValue(ForegroundBackProperty, Foreground);
             }
         }
     }

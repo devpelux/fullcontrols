@@ -12,14 +12,34 @@
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
-    <PackageTags>Controls, Custom, Full, TextBox, PasswordBox, ComboBox, Button, ToggleButton</PackageTags>
-    <PackageReleaseNotes>First release.</PackageReleaseNotes>
+    <PackageTags>Controls, Custom, Full, TextBox, PasswordBox, ComboBox, Button, ToggleButton, Window</PackageTags>
+    <PackageReleaseNotes>Added FullWindow.</PackageReleaseNotes>
     <ApplicationIcon>Icons\FullControls.ico</ApplicationIcon>
     <StartupObject>FullControlsDemo.App</StartupObject>
+    <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Icons\FullControls.ico" />
+    <None Remove="Icons\ic_label.png" />
+    <None Remove="Icons\ic_lock.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FullControls\FullControls.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\FullControls.ico" />
+    <Resource Include="Icons\ic_label.png" />
+    <Resource Include="Icons\ic_lock.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Resources\Icons.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
   </ItemGroup>
 
 </Project>

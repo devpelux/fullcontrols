@@ -57,7 +57,9 @@ namespace FullControls
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ActualBackgroundProperty =
-            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(FullPasswordBox));
+            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(FullPasswordBox),
+                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => ((FullPasswordBox)d).OnActualBackgroundChanged(new BackgroundChangedEventArgs((Brush)e.NewValue)))));
 
         #region BackgroundBack
 
@@ -75,11 +77,8 @@ namespace FullControls
         /// </summary>
         internal static readonly DependencyProperty BackgroundBackProperty =
             DependencyProperty.Register(nameof(BackgroundBack), typeof(Brush), typeof(FullPasswordBox),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) =>
-                {
-                    d.SetValue(ActualBackgroundProperty, e.NewValue);
-                    ((FullPasswordBox)d).OnActualBackgroundChanged(new BackgroundChangedEventArgs((Brush)e.NewValue));
-                })));
+                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualBackgroundProperty, e.NewValue))));
 
         #endregion
 
@@ -882,19 +881,19 @@ namespace FullControls
         #region Icon
 
         /// <summary>
-        /// Specifies if to display or not the icon.
+        /// Icon that is displayed to the left of the text box.
         /// </summary>
-        public bool ShowIcon
+        public ImageSource Icon
         {
-            get => (bool)GetValue(ShowIconProperty);
-            set => SetValue(ShowIconProperty, value);
+            get => (ImageSource)GetValue(IconProperty);
+            set => SetValue(IconProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ShowIcon"/> dependency property.
+        /// Identifies the <see cref="Icon"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ShowIconProperty =
-            DependencyProperty.Register(nameof(ShowIcon), typeof(bool), typeof(FullPasswordBox));
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(FullPasswordBox));
 
         /// <summary>
         /// Max size of the icon.
@@ -910,21 +909,6 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty MaxIconSizeProperty =
             DependencyProperty.Register(nameof(MaxIconSize), typeof(double), typeof(FullPasswordBox));
-
-        /// <summary>
-        /// Icon that is displayed to the left of the text box.
-        /// </summary>
-        public ImageSource Icon
-        {
-            get => (ImageSource)GetValue(IconProperty);
-            set => SetValue(IconProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="Icon"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(FullPasswordBox));
 
         #endregion
 
@@ -1034,6 +1018,8 @@ namespace FullControls
         static FullPasswordBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FullPasswordBox), new FrameworkPropertyMetadata(typeof(FullPasswordBox)));
+            IsEnabledProperty.OverrideMetadata(typeof(FullPasswordBox), new FrameworkPropertyMetadata(
+                new PropertyChangedCallback((d, e) => ((FullPasswordBox)d).OnEnabledChanged())));
         }
 
         /// <summary>
@@ -1073,7 +1059,6 @@ namespace FullControls
             passwordBox.GotFocus += PasswordBox_GotFocus;
             passwordBox.LostFocus += PasswordBox_LostFocus;
             UpdateHintState();
-            IsEnabledChanged += (s, e) => OnEnabledChanged();
             SetValue(BackgroundBackProperty, Background);
             SetValue(BorderBrushBackProperty, BorderBrush);
             OnInitialized();
