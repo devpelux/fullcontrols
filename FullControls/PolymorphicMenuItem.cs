@@ -187,6 +187,21 @@ namespace FullControls
         public static readonly DependencyProperty PopupAnimationProperty =
             DependencyProperty.Register(nameof(PopupAnimation), typeof(PopupAnimation), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Enables the shadow of the popup.
+        /// </summary>
+        public bool EnablePopupShadow
+        {
+            get => (bool)GetValue(EnablePopupShadowProperty);
+            set => SetValue(EnablePopupShadowProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnablePopupShadow"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnablePopupShadowProperty =
+            DependencyProperty.Register(nameof(EnablePopupShadow), typeof(bool), typeof(PolymorphicMenuItem));
+
         public double MaxDropDownHeight
         {
             get => (double)GetValue(MaxDropDownHeightProperty);

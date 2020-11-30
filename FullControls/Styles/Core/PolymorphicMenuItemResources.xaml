@@ -92,11 +92,19 @@
                        PopupAnimation="{TemplateBinding PopupAnimation}"
                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                     <Border x:Name="SubmenuBorder"
+                            Margin="0,0,5,5"
                             Background="{TemplateBinding PopupBackground}"
                             BorderBrush="{TemplateBinding PopupBorderBrush}"
                             BorderThickness="{TemplateBinding PopupBorderThickness}"
                             MaxHeight="{TemplateBinding MaxDropDownHeight}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Border.Effect>
+                            <DropShadowEffect x:Name="PART_Shadow"
+                                              BlurRadius="4"
+                                              Color="Black"
+                                              Opacity="0.4"
+                                              ShadowDepth="3"/>
+                        </Border.Effect>
                         <local:GlassScrollViewer Style="{TemplateBinding ScrollViewerStyle}">
                             <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle"
                                             Grid.IsSharedSizeScope="True"
@@ -110,6 +118,10 @@
         <ControlTemplate.Triggers>
             <Trigger Property="IsSuspendingPopupAnimation" Value="True">
                 <Setter TargetName="Popup" Property="PopupAnimation" Value="None" />
+            </Trigger>
+            <Trigger Property="EnablePopupShadow" Value="False">
+                <Setter TargetName="SubmenuBorder" Property="Effect" Value="{x:Null}"/>
+                <Setter TargetName="SubmenuBorder" Property="Margin" Value="0"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -266,11 +278,19 @@
                        HorizontalOffset="-4"
                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                     <Border x:Name="SubmenuBorder"
+                            Margin="0,0,5,5"
                             Background="{TemplateBinding PopupBackground}"
                             BorderBrush="{TemplateBinding PopupBorderBrush}"
                             BorderThickness="{TemplateBinding PopupBorderThickness}"
                             MaxHeight="{TemplateBinding MaxDropDownHeight}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Border.Effect>
+                            <DropShadowEffect x:Name="PART_Shadow"
+                                              BlurRadius="4"
+                                              Color="Black"
+                                              Opacity="0.4"
+                                              ShadowDepth="3"/>
+                        </Border.Effect>
                         <local:GlassScrollViewer Style="{TemplateBinding ScrollViewerStyle}">
                             <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle"
                                             Grid.IsSharedSizeScope="True"
@@ -284,6 +304,10 @@
         <ControlTemplate.Triggers>
             <Trigger Property="Icon" Value="{x:Null}">
                 <Setter TargetName="Icon" Property="Visibility" Value="Collapsed"/>
+            </Trigger>
+            <Trigger Property="EnablePopupShadow" Value="False">
+                <Setter TargetName="SubmenuBorder" Property="Effect" Value="{x:Null}"/>
+                <Setter TargetName="SubmenuBorder" Property="Margin" Value="0"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

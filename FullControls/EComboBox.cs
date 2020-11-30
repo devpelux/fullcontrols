@@ -516,6 +516,21 @@ namespace FullControls
             DependencyProperty.Register(nameof(PopupAnimation), typeof(PopupAnimation), typeof(EComboBox));
 
         /// <summary>
+        /// Enables the shadow of the popup.
+        /// </summary>
+        public bool EnablePopupShadow
+        {
+            get => (bool)GetValue(EnablePopupShadowProperty);
+            set => SetValue(EnablePopupShadowProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnablePopupShadow"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnablePopupShadowProperty =
+            DependencyProperty.Register(nameof(EnablePopupShadow), typeof(bool), typeof(EComboBox));
+
+        /// <summary>
         /// Style of the scroll viewer used if there are too many items.
         /// </summary>
         public Style ScrollViewerStyle

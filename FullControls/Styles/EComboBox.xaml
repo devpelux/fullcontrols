@@ -51,6 +51,7 @@
         <Setter Property="PopupBorderBrush" Value="{DynamicResource Gray7}"/>
         <Setter Property="PopupBorderThickness" Value="1"/>
         <Setter Property="PopupAnimation" Value="Slide"/>
+        <Setter Property="EnablePopupShadow" Value="True"/>
         <Setter Property="MaxDropDownHeight" Value="152"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
@@ -143,12 +144,20 @@
                                AllowsTransparency="True"
                                Focusable="False">
                             <Border x:Name="PART_PopupBorder"
+                                    Margin="0,0,5,5"
                                     Background="{TemplateBinding PopupBackground}"
                                     BorderBrush="{TemplateBinding PopupBorderBrush}"
                                     BorderThickness="{TemplateBinding PopupBorderThickness}"
                                     MinWidth="{TemplateBinding ActualWidth}"
                                     MaxHeight="{TemplateBinding MaxDropDownHeight}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                <Border.Effect>
+                                    <DropShadowEffect x:Name="PART_Shadow"
+                                                      BlurRadius="5"
+                                                      Color="Black"
+                                                      Opacity="0.4"
+                                                      ShadowDepth="2.5"/>
+                                </Border.Effect>
                                 <local:GlassScrollViewer x:Name="PART_PopupScrollViewer"
                                                          Style="{TemplateBinding ScrollViewerStyle}"
                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
@@ -169,6 +178,10 @@
                         <Trigger Property="IsEditable" Value="True">
                             <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="PART_ContentSite" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                        <Trigger Property="EnablePopupShadow" Value="False">
+                            <Setter TargetName="PART_PopupBorder" Property="Effect" Value="{x:Null}"/>
+                            <Setter TargetName="PART_PopupBorder" Property="Margin" Value="0"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

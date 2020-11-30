@@ -19,18 +19,19 @@
         <Setter Property="BackgroundOnHighlight" Value="{DynamicResource Gray4}"/>
         <Setter Property="BackgroundOnOpen" Value="{DynamicResource Gray6}"/>
         <Setter Property="BackgroundOnDisabled" Value="{DynamicResource Gray1}"/>
-        <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="BorderBrushOnHighlight" Value="Black"/>
-        <Setter Property="BorderBrushOnOpen" Value="Black"/>
-        <Setter Property="BorderBrushOnDisabled" Value="Black"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray7}"/>
+        <Setter Property="BorderBrushOnHighlight" Value="{DynamicResource Gray7}"/>
+        <Setter Property="BorderBrushOnOpen" Value="{DynamicResource Gray7}"/>
+        <Setter Property="BorderBrushOnDisabled" Value="{DynamicResource Gray5}"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="ForegroundOnHighlight" Value="Black"/>
         <Setter Property="ForegroundOnOpen" Value="Black"/>
         <Setter Property="ForegroundOnDisabled" Value="{DynamicResource Gray12}"/>
         <Setter Property="PopupBackground" Value="{DynamicResource Gray1}"/>
-        <Setter Property="PopupBorderBrush" Value="Black"/>
+        <Setter Property="PopupBorderBrush" Value="{DynamicResource Gray7}"/>
         <Setter Property="PopupBorderThickness" Value="1"/>
         <Setter Property="PopupAnimation" Value="Fade"/>
+        <Setter Property="EnablePopupShadow" Value="True"/>
         <Setter Property="CheckColor" Value="Black"/>
         <Setter Property="CheckMark" Value="&#xE73E;"/>
         <Setter Property="CheckSize" Value="18"/>

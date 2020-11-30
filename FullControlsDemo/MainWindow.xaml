@@ -12,10 +12,13 @@
                Width="420">
     <fc:EWindow.ToolbarMenu>
         <ContextMenu>
-            <fc:PolymorphicMenuItem Header="Item1" Width="100"/>
+            <fc:PolymorphicMenuItem Header="Item1" Width="100" EnablePopupShadow="False"/>
             <fc:PolymorphicMenuItem ItemType="Separator"/>
             <fc:PolymorphicMenuItem Header="Item2"/>
-            <fc:PolymorphicMenuItem Header="Item3"/>
+            <fc:PolymorphicMenuItem Header="Item3" EnablePopupShadow="True">
+                <fc:PolymorphicMenuItem Header="Item3"/>
+                <fc:PolymorphicMenuItem Header="Item3"/>
+            </fc:PolymorphicMenuItem>
         </ContextMenu>
     </fc:EWindow.ToolbarMenu>
     <Grid>
