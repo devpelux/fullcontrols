@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -10,7 +11,7 @@ namespace FullControls
     /// <summary>
     /// Represents a selection control with a drop-down list that can be shown or hidden by clicking the arrow on the control.
     /// </summary>
-    public class FullComboBox : ComboBox
+    public class EComboBox : ComboBox
     {
         /// <summary>
         /// Background color when the mouse is over the control.
@@ -25,7 +26,7 @@ namespace FullControls
         /// Identifies the <see cref="BackgroundOnMouseOver"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundOnMouseOverProperty =
-            DependencyProperty.Register(nameof(BackgroundOnMouseOver), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(BackgroundOnMouseOver), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// Background color when the control is checked and the mouse is over the control.
@@ -40,7 +41,7 @@ namespace FullControls
         /// Identifies the <see cref="BackgroundOnMouseOverOnChecked"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundOnMouseOverOnCheckedProperty =
-            DependencyProperty.Register(nameof(BackgroundOnMouseOverOnChecked), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(BackgroundOnMouseOverOnChecked), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// Background color when the control is checked.
@@ -55,7 +56,7 @@ namespace FullControls
         /// Identifies the <see cref="BackgroundOnChecked"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundOnCheckedProperty =
-            DependencyProperty.Register(nameof(BackgroundOnChecked), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(BackgroundOnChecked), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// Background color when the control is disabled.
@@ -70,7 +71,7 @@ namespace FullControls
         /// Identifies the <see cref="BackgroundOnDisabled"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundOnDisabledProperty =
-            DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// Actual Background color of the control.
@@ -81,7 +82,7 @@ namespace FullControls
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ActualBackgroundProperty =
-            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// BorderBrush color when the mouse is over the control.
@@ -96,7 +97,7 @@ namespace FullControls
         /// Identifies the <see cref="BorderBrushOnMouseOver"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnMouseOverProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnMouseOver), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(BorderBrushOnMouseOver), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// BorderBrush color when the control is checked and the mouse is over the control.
@@ -111,7 +112,7 @@ namespace FullControls
         /// Identifies the <see cref="BorderBrushOnMouseOverOnChecked"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnMouseOverOnCheckedProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnMouseOverOnChecked), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(BorderBrushOnMouseOverOnChecked), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// BorderBrush color when the control is checked.
@@ -126,7 +127,7 @@ namespace FullControls
         /// Identifies the <see cref="BorderBrushOnChecked"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnCheckedProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnChecked), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(BorderBrushOnChecked), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// BorderBrush color when the control is disabled.
@@ -141,7 +142,7 @@ namespace FullControls
         /// Identifies the <see cref="BorderBrushOnDisabled"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnDisabledProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// ForeColor of the control.
@@ -156,7 +157,7 @@ namespace FullControls
         /// Identifies the <see cref="ForeColor"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForeColorProperty =
-            DependencyProperty.Register(nameof(ForeColor), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(ForeColor), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// ForeColor when the mouse is over the control.
@@ -171,7 +172,7 @@ namespace FullControls
         /// Identifies the <see cref="ForeColorOnMouseOver"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForeColorOnMouseOverProperty =
-            DependencyProperty.Register(nameof(ForeColorOnMouseOver), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(ForeColorOnMouseOver), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// ForeColor when the control is checked and the mouse is over the control.
@@ -186,7 +187,7 @@ namespace FullControls
         /// Identifies the <see cref="ForeColorOnMouseOverOnChecked"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForeColorOnMouseOverOnCheckedProperty =
-            DependencyProperty.Register(nameof(ForeColorOnMouseOverOnChecked), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(ForeColorOnMouseOverOnChecked), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// ForeColor when the control is checked.
@@ -201,7 +202,7 @@ namespace FullControls
         /// Identifies the <see cref="ForeColorOnChecked"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForeColorOnCheckedProperty =
-            DependencyProperty.Register(nameof(ForeColorOnChecked), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(ForeColorOnChecked), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// ForeColor when the control is disabled.
@@ -216,7 +217,18 @@ namespace FullControls
         /// Identifies the <see cref="ForeColorOnDisabled"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForeColorOnDisabledProperty =
-            DependencyProperty.Register(nameof(ForeColorOnDisabled), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(ForeColorOnDisabled), typeof(Brush), typeof(EComboBox));
+
+        /// <summary>
+        /// Actual ForeColor of the control.
+        /// </summary>
+        public Brush ActualForeColor => (Brush)GetValue(ActualForeColorProperty);
+
+        /// <summary>
+        /// Identifies the <see cref="ActualForeColor"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ActualForeColorProperty =
+            DependencyProperty.Register(nameof(ActualForeColor), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// CornerRadius of the control.
@@ -231,7 +243,52 @@ namespace FullControls
         /// Identifies the <see cref="CornerRadius"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(EComboBox));
+
+        /// <summary>
+        /// Arrow displayed on the button part.
+        /// </summary>
+        public object Arrow
+        {
+            get => GetValue(ArrowProperty);
+            set => SetValue(ArrowProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="Arrow"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ArrowProperty =
+            DependencyProperty.Register(nameof(Arrow), typeof(object), typeof(EComboBox));
+
+        /// <summary>
+        /// Size of the arrow.
+        /// </summary>
+        public double ArrowSize
+        {
+            get => (double)GetValue(ArrowSizeProperty);
+            set => SetValue(ArrowSizeProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ArrowSize"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ArrowSizeProperty =
+            DependencyProperty.Register(nameof(ArrowSize), typeof(double), typeof(EComboBox));
+
+        /// <summary>
+        /// Font of the arrow (if used a character).
+        /// </summary>
+        public FontFamily ArrowFont
+        {
+            get => (FontFamily)GetValue(ArrowFontProperty);
+            set => SetValue(ArrowFontProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ArrowFont"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ArrowFontProperty =
+            DependencyProperty.Register(nameof(ArrowFont), typeof(FontFamily), typeof(EComboBox));
 
         /// <summary>
         /// Margin of the control content.
@@ -246,7 +303,7 @@ namespace FullControls
         /// Identifies the <see cref="ContentMargin"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ContentMarginProperty =
-            DependencyProperty.Register(nameof(ContentMargin), typeof(Thickness), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(ContentMargin), typeof(Thickness), typeof(EComboBox));
 
         /// <summary>
         /// Margin of the control toggle button content.
@@ -261,7 +318,7 @@ namespace FullControls
         /// Identifies the <see cref="ToggleContentMargin"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ToggleContentMarginProperty =
-            DependencyProperty.Register(nameof(ToggleContentMargin), typeof(Thickness), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(ToggleContentMargin), typeof(Thickness), typeof(EComboBox));
 
         /// <summary>
         /// Vertical alignment of the control toggle button content.
@@ -276,7 +333,7 @@ namespace FullControls
         /// Identifies the <see cref="ToggleVerticalContentAlignment"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ToggleVerticalContentAlignmentProperty =
-            DependencyProperty.Register(nameof(ToggleVerticalContentAlignment), typeof(VerticalAlignment), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(ToggleVerticalContentAlignment), typeof(VerticalAlignment), typeof(EComboBox));
 
         /// <summary>
         /// Horizontal alignment of the control toggle button content.
@@ -291,7 +348,7 @@ namespace FullControls
         /// Identifies the <see cref="ToggleHorizontalContentAlignment"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ToggleHorizontalContentAlignmentProperty =
-            DependencyProperty.Register(nameof(ToggleHorizontalContentAlignment), typeof(HorizontalAlignment), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(ToggleHorizontalContentAlignment), typeof(HorizontalAlignment), typeof(EComboBox));
 
         /// <summary>
         /// Text alignment of the control text element.
@@ -306,7 +363,7 @@ namespace FullControls
         /// Identifies the <see cref="TextAlignment"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty TextAlignmentProperty =
-            DependencyProperty.Register(nameof(TextAlignment), typeof(TextAlignment), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(TextAlignment), typeof(TextAlignment), typeof(EComboBox));
         
         /// <summary>
         /// Specifies if adapt automatically the foreground to the actual background of the control.
@@ -321,7 +378,7 @@ namespace FullControls
         /// Identifies the <see cref="AdaptForegroundAutomatically"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AdaptForegroundAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptForegroundAutomatically), typeof(bool), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(AdaptForegroundAutomatically), typeof(bool), typeof(EComboBox));
 
         /// <summary>
         /// Specifies if adapt automatically the caret brush to the actual background of the control.
@@ -336,7 +393,7 @@ namespace FullControls
         /// Identifies the <see cref="AdaptCaretBrushAutomatically"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AdaptCaretBrushAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptCaretBrushAutomatically), typeof(bool), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(AdaptCaretBrushAutomatically), typeof(bool), typeof(EComboBox));
 
         /// <summary>
         /// Brush of the caret of the textbox.
@@ -351,7 +408,7 @@ namespace FullControls
         /// Identifies the <see cref="CaretBrush"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CaretBrushProperty =
-            DependencyProperty.Register(nameof(CaretBrush), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(CaretBrush), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// Brush of the highlighted part of the textbox text.
@@ -366,7 +423,7 @@ namespace FullControls
         /// Identifies the <see cref="SelectionBrush"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty SelectionBrushProperty =
-            DependencyProperty.Register(nameof(SelectionBrush), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(SelectionBrush), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// Brush of the selected text.
@@ -381,7 +438,7 @@ namespace FullControls
         /// Identifies the <see cref="SelectionTextBrush"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty SelectionTextBrushProperty =
-            DependencyProperty.Register(nameof(SelectionTextBrush), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(SelectionTextBrush), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// Opacity of the highlighted part of the textbox text.
@@ -396,7 +453,7 @@ namespace FullControls
         /// Identifies the <see cref="SelectionOpacity"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty SelectionOpacityProperty =
-            DependencyProperty.Register(nameof(SelectionOpacity), typeof(double), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(SelectionOpacity), typeof(double), typeof(EComboBox));
 
         /// <summary>
         /// Border thickness of the popup.
@@ -411,7 +468,7 @@ namespace FullControls
         /// Identifies the <see cref="PopupBorderThickness"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty PopupBorderThicknessProperty =
-            DependencyProperty.Register(nameof(PopupBorderThickness), typeof(Thickness), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(PopupBorderThickness), typeof(Thickness), typeof(EComboBox));
 
         /// <summary>
         /// BorderBrush of the popup.
@@ -426,7 +483,7 @@ namespace FullControls
         /// Identifies the <see cref="PopupBorderBrush"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty PopupBorderBrushProperty =
-            DependencyProperty.Register(nameof(PopupBorderBrush), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(PopupBorderBrush), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// Background of the popup.
@@ -441,7 +498,7 @@ namespace FullControls
         /// Identifies the <see cref="PopupBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty PopupBackgroundProperty =
-            DependencyProperty.Register(nameof(PopupBackground), typeof(Brush), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(PopupBackground), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
         /// Animation type of the popup.
@@ -456,7 +513,22 @@ namespace FullControls
         /// Identifies the <see cref="PopupAnimation"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty PopupAnimationProperty =
-            DependencyProperty.Register(nameof(PopupAnimation), typeof(PopupAnimation), typeof(FullComboBox));
+            DependencyProperty.Register(nameof(PopupAnimation), typeof(PopupAnimation), typeof(EComboBox));
+
+        /// <summary>
+        /// Style of the scroll viewer used if there are too many items.
+        /// </summary>
+        public Style ScrollViewerStyle
+        {
+            get => (Style)GetValue(ScrollViewerStyleProperty);
+            set => SetValue(ScrollViewerStyleProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ScrollViewerStyle"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ScrollViewerStyleProperty =
+            DependencyProperty.Register(nameof(ScrollViewerStyle), typeof(Style), typeof(EComboBox));
 
         /// <summary>
         /// Duration of the control animation when it changes state.
@@ -471,20 +543,15 @@ namespace FullControls
         /// Identifies the <see cref="AnimationTime"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AnimationTimeProperty =
-            DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(FullComboBox));
-
-        /// <summary>
-        /// Raised when the background is changed.
-        /// </summary>
-        public event EventHandler<BackgroundChangedEventArgs> BackgroundChanged;
+            DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EComboBox));
 
 
         /// <summary>
-        /// Creates a new <see cref="FullComboBox"/>.
+        /// Creates a new <see cref="EComboBox"/>.
         /// </summary>
-        static FullComboBox()
+        static EComboBox()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(FullComboBox), new FrameworkPropertyMetadata(typeof(FullComboBox)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(EComboBox), new FrameworkPropertyMetadata(typeof(EComboBox)));
         }
 
         /// <summary>
@@ -493,20 +560,23 @@ namespace FullControls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            ((FullToggleButton)Template.FindName("PART_ToggleButton", this)).BackgroundChanged += (o, e)
-                => OnActualBackgroundChanged(new BackgroundChangedEventArgs(e.ActualBackground));
-            OnActualBackgroundChanged(new BackgroundChangedEventArgs(IsEnabled ? IsDropDownOpen ? BackgroundOnChecked : Background : BackgroundOnDisabled));
+            EToggleButton toggleButton = (EToggleButton)Template.FindName("PART_ToggleButton", this);
+            DependencyPropertyDescriptor.FromProperty(EToggleButton.ActualForegroundProperty, typeof(EToggleButton))
+                ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualForeColorProperty, toggleButton.ActualForeground));
+            DependencyPropertyDescriptor.FromProperty(EToggleButton.ActualBackgroundProperty, typeof(EToggleButton))
+                ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualBackgroundProperty, toggleButton.ActualBackground));
+            SetValue(ActualForeColorProperty, IsEnabled ? IsDropDownOpen ? ForeColorOnChecked : ForeColor : ForeColorOnDisabled);
+            SetValue(ActualBackgroundProperty, IsEnabled ? IsDropDownOpen ? BackgroundOnChecked : Background : BackgroundOnDisabled);
         }
 
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
-        /// <param name="e">Data of the <see cref="BackgroundChanged"/> event.</param>
-        protected virtual void OnActualBackgroundChanged(BackgroundChangedEventArgs e)
+        /// <param name="actualBackground">Actual background color.</param>
+        protected virtual void OnActualBackgroundChanged(Brush actualBackground)
         {
-            SetValue(ActualBackgroundProperty, e.ActualBackground);
-            AdaptForeColors(e.ActualBackground);
-            BackgroundChanged?.Invoke(this, e);
+            SetValue(ActualBackgroundProperty, actualBackground);
+            AdaptForeColors(actualBackground);
         }
 
         /// <summary>

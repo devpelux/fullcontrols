@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
+using FullControls.Core;
 using FullControls.Extra;
 
 namespace FullControls
@@ -11,7 +12,7 @@ namespace FullControls
     /// <summary>
     /// Represents a control that can be used to display or edit unformatted text.
     /// </summary>
-    public class FullTextBox : TextBox
+    public class ETextBox : TextBox
     {
         private bool loaded = false;
 
@@ -28,7 +29,7 @@ namespace FullControls
         /// Identifies the <see cref="BackgroundOnSelected"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundOnSelectedProperty =
-            DependencyProperty.Register(nameof(BackgroundOnSelected), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(BackgroundOnSelected), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// Background color when the control is disabled.
@@ -43,7 +44,7 @@ namespace FullControls
         /// Identifies the <see cref="BackgroundOnDisabled"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundOnDisabledProperty =
-            DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// Actual Background color of the control.
@@ -54,30 +55,8 @@ namespace FullControls
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ActualBackgroundProperty =
-            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(FullTextBox),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
-                    => ((FullTextBox)d).OnActualBackgroundChanged(new BackgroundChangedEventArgs((Brush)e.NewValue)))));
-
-        #region BackgroundBack
-
-        /// <summary>
-        /// Actual Background color of the control.
-        /// </summary>
-        internal Brush BackgroundBack
-        {
-            get => (Brush)GetValue(BackgroundBackProperty);
-            set => SetValue(BackgroundBackProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="BackgroundBack"/> dependency property.
-        /// </summary>
-        internal static readonly DependencyProperty BackgroundBackProperty =
-            DependencyProperty.Register(nameof(BackgroundBack), typeof(Brush), typeof(FullTextBox),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
-                    => d.SetValue(ActualBackgroundProperty, e.NewValue))));
-
-        #endregion
+            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(ETextBox),
+                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((ETextBox)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
         /// BorderBrush color when the control is selected.
@@ -92,7 +71,7 @@ namespace FullControls
         /// Identifies the <see cref="BorderBrushOnSelected"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnSelectedProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnSelected), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(BorderBrushOnSelected), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// BorderBrush color when the control is disabled.
@@ -107,26 +86,22 @@ namespace FullControls
         /// Identifies the <see cref="BorderBrushOnDisabled"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnDisabledProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(FullTextBox));
-
-        #region BorderBrushBack
+            DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// Actual BorderBrush color of the control.
         /// </summary>
-        internal Brush BorderBrushBack
+        public Brush ActualBorderBrush
         {
-            get => (Brush)GetValue(BorderBrushBackProperty);
-            set => SetValue(BorderBrushBackProperty, value);
+            get => (Brush)GetValue(ActualBorderBrushProperty);
+            set => SetValue(ActualBorderBrushProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="BorderBrushBack"/> dependency property.
+        /// Identifies the <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty BorderBrushBackProperty =
-            DependencyProperty.Register(nameof(BorderBrushBack), typeof(Brush), typeof(FullTextBox));
-
-        #endregion
+        public static readonly DependencyProperty ActualBorderBrushProperty =
+            DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// Specifies if adapt automatically the foreground to the actual background of the control.
@@ -141,7 +116,7 @@ namespace FullControls
         /// Identifies the <see cref="AdaptForegroundAutomatically"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AdaptForegroundAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptForegroundAutomatically), typeof(bool), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(AdaptForegroundAutomatically), typeof(bool), typeof(ETextBox));
 
         /// <summary>
         /// Specifies if adapt automatically the caret brush to the actual background of the control.
@@ -156,7 +131,7 @@ namespace FullControls
         /// Identifies the <see cref="AdaptCaretBrushAutomatically"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AdaptCaretBrushAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptCaretBrushAutomatically), typeof(bool), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(AdaptCaretBrushAutomatically), typeof(bool), typeof(ETextBox));
 
         #region Hint
 
@@ -173,7 +148,7 @@ namespace FullControls
         /// Identifies the <see cref="ShowHint"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ShowHintProperty =
-            DependencyProperty.Register(nameof(ShowHint), typeof(bool), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(ShowHint), typeof(bool), typeof(ETextBox));
 
         /// <summary>
         /// Foreground of the hint.
@@ -188,7 +163,7 @@ namespace FullControls
         /// Identifies the <see cref="HintForeground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty HintForegroundProperty =
-            DependencyProperty.Register(nameof(HintForeground), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(HintForeground), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// Opacity of the hint.
@@ -203,7 +178,7 @@ namespace FullControls
         /// Identifies the <see cref="HintOpacity"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty HintOpacityProperty =
-            DependencyProperty.Register(nameof(HintOpacity), typeof(double), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(HintOpacity), typeof(double), typeof(ETextBox));
 
         /// <summary>
         /// Specifies if adapt automatically the hint foreground to the actual background of the control.
@@ -218,7 +193,7 @@ namespace FullControls
         /// Identifies the <see cref="AdaptHintForegroundAutomatically"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AdaptHintForegroundAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptHintForegroundAutomatically), typeof(bool), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(AdaptHintForegroundAutomatically), typeof(bool), typeof(ETextBox));
 
         /// <summary>
         /// Suggestion that will displayed if there is no text inside the textbox.
@@ -233,7 +208,7 @@ namespace FullControls
         /// Identifies the <see cref="Hint"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty HintProperty =
-            DependencyProperty.Register(nameof(Hint), typeof(string), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(Hint), typeof(string), typeof(ETextBox));
 
         #endregion
 
@@ -252,7 +227,7 @@ namespace FullControls
         /// Identifies the <see cref="EnableCopyButton"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableCopyButtonProperty =
-            DependencyProperty.Register(nameof(EnableCopyButton), typeof(bool), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(EnableCopyButton), typeof(bool), typeof(ETextBox));
 
         /// <summary>
         /// Size of the copy button.
@@ -267,7 +242,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonSize"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonSizeProperty =
-            DependencyProperty.Register(nameof(CopyButtonSize), typeof(double), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonSize), typeof(double), typeof(ETextBox));
 
         /// <summary>
         /// FontFamily of the copy button.
@@ -282,7 +257,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonFontFamily"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonFontFamilyProperty =
-            DependencyProperty.Register(nameof(CopyButtonFontFamily), typeof(FontFamily), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonFontFamily), typeof(FontFamily), typeof(ETextBox));
 
         /// <summary>
         /// Font size of the copy button.
@@ -297,7 +272,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonFontSize"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonFontSizeProperty =
-            DependencyProperty.Register(nameof(CopyButtonFontSize), typeof(double), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonFontSize), typeof(double), typeof(ETextBox));
 
         /// <summary>
         /// FontStretch of the copy button.
@@ -312,7 +287,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonFontStretch"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonFontStretchProperty =
-            DependencyProperty.Register(nameof(CopyButtonFontStretch), typeof(FontStretch), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonFontStretch), typeof(FontStretch), typeof(ETextBox));
 
         /// <summary>
         /// FontStyle of the copy button.
@@ -327,7 +302,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonFontStyle"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonFontStyleProperty =
-            DependencyProperty.Register(nameof(CopyButtonFontStyle), typeof(FontStyle), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonFontStyle), typeof(FontStyle), typeof(ETextBox));
 
         /// <summary>
         /// FontWeight of the copy button.
@@ -342,7 +317,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonFontWeight"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonFontWeightProperty =
-            DependencyProperty.Register(nameof(CopyButtonFontWeight), typeof(FontWeight), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonFontWeight), typeof(FontWeight), typeof(ETextBox));
 
         /// <summary>
         /// Margin of the copy button.
@@ -357,7 +332,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonMargin"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonMarginProperty =
-            DependencyProperty.Register(nameof(CopyButtonMargin), typeof(Thickness), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonMargin), typeof(Thickness), typeof(ETextBox));
 
         /// <summary>
         /// Content of the copy button.
@@ -372,7 +347,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonContent"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonContentProperty =
-            DependencyProperty.Register(nameof(CopyButtonContent), typeof(object), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonContent), typeof(object), typeof(ETextBox));
 
         /// <summary>
         /// Background of the copy button.
@@ -387,7 +362,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonBackgroundProperty =
-            DependencyProperty.Register(nameof(CopyButtonBackground), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonBackground), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// Background of the copy button when the mouse is over it.
@@ -402,7 +377,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonBackgroundOnMouseOver"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonBackgroundOnMouseOverProperty =
-            DependencyProperty.Register(nameof(CopyButtonBackgroundOnMouseOver), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonBackgroundOnMouseOver), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// Background of the copy button when is pressed.
@@ -417,7 +392,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonBackgroundOnPressed"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonBackgroundOnPressedProperty =
-            DependencyProperty.Register(nameof(CopyButtonBackgroundOnPressed), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonBackgroundOnPressed), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// Background of the copy button when is disabled.
@@ -432,7 +407,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonBackgroundOnDisabled"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonBackgroundOnDisabledProperty =
-            DependencyProperty.Register(nameof(CopyButtonBackgroundOnDisabled), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonBackgroundOnDisabled), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// BorderBrush of the copy button.
@@ -447,7 +422,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonBorderBrush"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonBorderBrushProperty =
-            DependencyProperty.Register(nameof(CopyButtonBorderBrush), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonBorderBrush), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// BorderBrush of the copy button when the mouse is over it.
@@ -462,7 +437,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonBorderBrushOnMouseOver"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonBorderBrushOnMouseOverProperty =
-            DependencyProperty.Register(nameof(CopyButtonBorderBrushOnMouseOver), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonBorderBrushOnMouseOver), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// BorderBrush of the copy button when is pressed.
@@ -477,7 +452,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonBorderBrushOnPressed"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonBorderBrushOnPressedProperty =
-            DependencyProperty.Register(nameof(CopyButtonBorderBrushOnPressed), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonBorderBrushOnPressed), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// BorderBrush of the copy button when is disabled.
@@ -492,7 +467,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonBorderBrushOnDisabled"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonBorderBrushOnDisabledProperty =
-            DependencyProperty.Register(nameof(CopyButtonBorderBrushOnDisabled), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonBorderBrushOnDisabled), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// Foreground of the copy button.
@@ -507,7 +482,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonForeground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonForegroundProperty =
-            DependencyProperty.Register(nameof(CopyButtonForeground), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonForeground), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// Foreground of the copy button when the mouse is over it.
@@ -522,7 +497,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonForegroundOnMouseOver"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonForegroundOnMouseOverProperty =
-            DependencyProperty.Register(nameof(CopyButtonForegroundOnMouseOver), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonForegroundOnMouseOver), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// Foreground of the copy button when is pressed.
@@ -537,7 +512,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonForegroundOnPressed"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonForegroundOnPressedProperty =
-            DependencyProperty.Register(nameof(CopyButtonForegroundOnPressed), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonForegroundOnPressed), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// Foreground of the copy button when is disabled.
@@ -552,7 +527,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonForegroundOnDisabled"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonForegroundOnDisabledProperty =
-            DependencyProperty.Register(nameof(CopyButtonForegroundOnDisabled), typeof(Brush), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonForegroundOnDisabled), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
         /// CornerRadius of the copy button.
@@ -567,7 +542,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonCornerRadius"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonCornerRadiusProperty =
-            DependencyProperty.Register(nameof(CopyButtonCornerRadius), typeof(CornerRadius), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonCornerRadius), typeof(CornerRadius), typeof(ETextBox));
 
         /// <summary>
         /// Border thickness of the copy button.
@@ -582,7 +557,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonBorderThickness"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonBorderThicknessProperty =
-            DependencyProperty.Register(nameof(CopyButtonBorderThickness), typeof(Thickness), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonBorderThickness), typeof(Thickness), typeof(ETextBox));
 
         /// <summary>
         /// Duration of the copy button animation when it changes state.
@@ -597,7 +572,7 @@ namespace FullControls
         /// Identifies the <see cref="CopyButtonAnimationTime"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CopyButtonAnimationTimeProperty =
-            DependencyProperty.Register(nameof(CopyButtonAnimationTime), typeof(TimeSpan), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(CopyButtonAnimationTime), typeof(TimeSpan), typeof(ETextBox));
 
         #endregion
 
@@ -616,7 +591,7 @@ namespace FullControls
         /// Identifies the <see cref="Icon"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(ETextBox));
 
         /// <summary>
         /// Max size of the icon.
@@ -631,7 +606,7 @@ namespace FullControls
         /// Identifies the <see cref="MaxIconSize"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty MaxIconSizeProperty =
-            DependencyProperty.Register(nameof(MaxIconSize), typeof(double), typeof(FullTextBox));
+            DependencyProperty.Register(nameof(MaxIconSize), typeof(double), typeof(ETextBox));
 
         #endregion
 
@@ -648,22 +623,17 @@ namespace FullControls
         /// Identifies the <see cref="AnimationTime"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AnimationTimeProperty =
-            DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(FullTextBox));
-
-        /// <summary>
-        /// Raised when the background is changed.
-        /// </summary>
-        public event EventHandler<BackgroundChangedEventArgs> BackgroundChanged;
+            DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(ETextBox));
 
 
         /// <summary>
-        /// Creates a new <see cref="FullTextBox"/>.
+        /// Creates a new <see cref="ETextBox"/>.
         /// </summary>
-        static FullTextBox()
+        static ETextBox()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(FullTextBox), new FrameworkPropertyMetadata(typeof(FullTextBox)));
-            IsEnabledProperty.OverrideMetadata(typeof(FullTextBox), new FrameworkPropertyMetadata(
-                new PropertyChangedCallback((d, e) => ((FullTextBox)d).OnEnabledChanged((bool)e.NewValue))));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ETextBox), new FrameworkPropertyMetadata(typeof(ETextBox)));
+            IsEnabledProperty.OverrideMetadata(typeof(ETextBox), new FrameworkPropertyMetadata(
+                new PropertyChangedCallback((d, e) => ((ETextBox)d).OnEnabledChanged((bool)e.NewValue))));
         }
 
         /// <summary>
@@ -679,8 +649,8 @@ namespace FullControls
             base.OnApplyTemplate();
             ((Button)Template.FindName("PART_CopyButton", this)).Click += (s, e) => CopyAll();
             UpdateHintState();
-            SetValue(BackgroundBackProperty, Background);
-            SetValue(BorderBrushBackProperty, BorderBrush);
+            Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
+            Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
             loaded = true;
             ReloadBackground();
         }
@@ -688,11 +658,10 @@ namespace FullControls
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
-        /// <param name="e">Data of the <see cref="BackgroundChanged"/> event.</param>
-        protected virtual void OnActualBackgroundChanged(BackgroundChangedEventArgs e)
+        /// <param name="actualBackground">Actual background color.</param>
+        protected virtual void OnActualBackgroundChanged(Brush actualBackground)
         {
-            AdaptForeColors(e.ActualBackground);
-            BackgroundChanged?.Invoke(this, e);
+            AdaptForeColors(actualBackground);
         }
 
         /// <summary>
@@ -787,23 +756,23 @@ namespace FullControls
             if (!loaded) return;
             if (!IsEnabled) //Disabled state
             {
-                SetValue(BackgroundBackProperty, BackgroundOnDisabled);
-                SetValue(BorderBrushBackProperty, BorderBrushOnDisabled);
+                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnDisabled, TimeSpan.Zero);
+                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnDisabled, TimeSpan.Zero);
             }
             else if (IsFocused) //Selected state
             {
-                Utility.AnimateBrush(this, BackgroundBackProperty, BackgroundOnSelected, AnimationTime);
-                Utility.AnimateBrush(this, BorderBrushBackProperty, BorderBrushOnSelected, AnimationTime);
+                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnSelected, AnimationTime);
+                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnSelected, AnimationTime);
             }
             else if (IsMouseOver) //Selected state
             {
-                Utility.AnimateBrush(this, BackgroundBackProperty, BackgroundOnSelected, AnimationTime);
-                Utility.AnimateBrush(this, BorderBrushBackProperty, BorderBrushOnSelected, AnimationTime);
+                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnSelected, AnimationTime);
+                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnSelected, AnimationTime);
             }
             else //Normal state
             {
-                SetValue(BackgroundBackProperty, Background);
-                SetValue(BorderBrushBackProperty, BorderBrush);
+                Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
+                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
             }
         }
     }

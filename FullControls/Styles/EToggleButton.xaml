@@ -2,46 +2,50 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls">
 
-    <Style TargetType="{x:Type local:FullButton}" BasedOn="{StaticResource {x:Type Button}}">
+    <Style TargetType="{x:Type local:EToggleButton}" BasedOn="{StaticResource {x:Type ToggleButton}}">
         <Style.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="/FullControls;component/Resources/DefaultBrushes.xaml"/>
+                    <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml"/>
                     <ResourceDictionary Source="/FullControls;component/Resources/GenericResources.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
-        <Setter Property="Width" Value="90"/>
-        <Setter Property="Height" Value="35"/>
         <Setter Property="Background" Value="{DynamicResource Gray3}"/>
         <Setter Property="BackgroundOnMouseOver" Value="{DynamicResource Gray4}"/>
-        <Setter Property="BackgroundOnPressed" Value="{DynamicResource Gray5}"/>
+        <Setter Property="BackgroundOnChecked" Value="{DynamicResource Blue1}"/>
+        <Setter Property="BackgroundOnMouseOverOnChecked" Value="{DynamicResource Blue2}"/>
         <Setter Property="BackgroundOnDisabled" Value="{DynamicResource Gray3}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Gray7}"/>
         <Setter Property="BorderBrushOnMouseOver" Value="{DynamicResource Gray7}"/>
-        <Setter Property="BorderBrushOnPressed" Value="{DynamicResource Gray7}"/>
+        <Setter Property="BorderBrushOnChecked" Value="{DynamicResource Blue5}"/>
+        <Setter Property="BorderBrushOnMouseOverOnChecked" Value="{DynamicResource Blue5}"/>
         <Setter Property="BorderBrushOnDisabled" Value="{DynamicResource Gray5}"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="ForegroundOnMouseOver" Value="Black"/>
-        <Setter Property="ForegroundOnPressed" Value="Black"/>
+        <Setter Property="ForegroundOnChecked" Value="Black"/>
+        <Setter Property="ForegroundOnMouseOverOnChecked" Value="Black"/>
         <Setter Property="ForegroundOnDisabled" Value="{DynamicResource Gray10}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="CornerRadius" Value="0"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="ContentMargin" Value="2"/>
+        <Setter Property="IsChecked" Value="False"/>
+        <Setter Property="IsDeactivableByClick" Value="True"/>
+        <Setter Property="ClickMode" Value="Press"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
 
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:FullButton}">
+                <ControlTemplate TargetType="{x:Type local:EToggleButton}">
                     <Border x:Name="PART_Border"
-                            Background="{TemplateBinding BackgroundBack}"
-                            BorderBrush="{TemplateBinding BorderBrushBack}"
+                            Background="{TemplateBinding ActualBackground}"
+                            BorderBrush="{TemplateBinding ActualBorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{TemplateBinding CornerRadius}"
-                            TextBlock.Foreground="{TemplateBinding ForegroundBack}"
+                            TextBlock.Foreground="{TemplateBinding ActualForeground}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <ContentPresenter x:Name="PART_ContentPresenter"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -49,10 +53,12 @@
                                           Margin="{TemplateBinding ContentMargin}"
                                           RecognizesAccessKey="True"
                                           Content="{TemplateBinding Content}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                           Focusable="False"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+    
 </ResourceDictionary>

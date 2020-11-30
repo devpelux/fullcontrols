@@ -5,14 +5,14 @@ namespace FullControls.Extra
     /// <summary>
     /// Extensions.
     /// </summary>
-    internal static class Extensions
+    public static class Extensions
     {
         /// <summary>
         /// Inverts the color by subtracting every value R, G, B from 255.
         /// </summary>
         /// <param name="color">Colore.</param>
         /// <returns>Inverted color.</returns>
-        internal static Color Invert(this Color color)
+        public static Color Invert(this Color color)
             => Color.FromRgb((byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
     }
 }

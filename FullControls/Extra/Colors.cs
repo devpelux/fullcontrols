@@ -1,11 +1,11 @@
 ﻿using System.Windows.Media;
 
-namespace FullControls
+namespace FullControls.Extra
 {
     /// <summary>
     /// Contains a set of colors.
     /// </summary>
-    public static class FCColors
+    public static class Colors
     {
         /// <summary>Color value : #fff2f2f2.</summary>
         public static Color Gray1 => Color.FromRgb(242, 242, 242);

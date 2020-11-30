@@ -2,17 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls">
 
-    <Style TargetType="{x:Type local:FullTextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+    <Style TargetType="{x:Type local:ETextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
         <Style.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="/FullControls;component/Resources/DefaultBrushes.xaml"/>
+                    <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml"/>
                     <ResourceDictionary Source="/FullControls;component/Resources/GenericResources.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
-        <Setter Property="Width" Value="150"/>
-        <Setter Property="Height" Value="30"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="BackgroundOnSelected" Value="White"/>
         <Setter Property="BackgroundOnDisabled" Value="{DynamicResource Gray1}"/>
@@ -60,12 +58,14 @@
         <Setter Property="MaxIconSize" Value="25"/>
         <Setter Property="TextAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
 
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:FullTextBox}">
+                <ControlTemplate TargetType="{x:Type local:ETextBox}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -98,14 +98,14 @@
                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         <Border x:Name="PART_Border"
                                 Grid.Column="1"
-                                Background="{TemplateBinding BackgroundBack}"
-                                BorderBrush="{TemplateBinding BorderBrushBack}"
+                                Background="{TemplateBinding ActualBackground}"
+                                BorderBrush="{TemplateBinding ActualBorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                             <Grid x:Name="PART_TextBoxGrid">
                                 <ScrollViewer x:Name="PART_ContentHost"
-                                              HorizontalScrollBarVisibility="Hidden"
-                                              VerticalScrollBarVisibility="Hidden"
+                                              HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}"
+                                              VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
                                               Focusable="False"/>
                                 <TextBlock x:Name="PART_Hint"
                                            Margin="{TemplateBinding Padding}"
@@ -120,7 +120,7 @@
                                            Focusable="False"/>
                             </Grid>
                         </Border>
-                        <local:FullButton x:Name="PART_CopyButton"
+                        <local:EButton x:Name="PART_CopyButton"
                                           Grid.Column="2"
                                           Height="{TemplateBinding Height}"
                                           Width="{TemplateBinding CopyButtonSize}"
@@ -147,9 +147,9 @@
                                           AnimationTime="{TemplateBinding CopyButtonAnimationTime}"
                                           Content="{TemplateBinding CopyButtonContent}"
                                           IsEnabled="{TemplateBinding IsEnabled}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                           Visibility="Collapsed"
-                                          Focusable="False"
-                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                          Focusable="False"/>
                     </Grid>
 
                     <ControlTemplate.Triggers>
@@ -164,4 +164,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
 </ResourceDictionary>

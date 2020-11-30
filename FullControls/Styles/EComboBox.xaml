@@ -2,11 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls">
 
-    <Style TargetType="{x:Type local:FullComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+    <Style TargetType="{x:Type local:EComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
         <Style.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="/FullControls;component/Resources/DefaultBrushes.xaml"/>
+                    <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml"/>
                     <ResourceDictionary Source="/FullControls;component/Resources/GenericResources.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
@@ -44,7 +44,9 @@
         <Setter Property="ToggleHorizontalContentAlignment" Value="Right"/>
         <Setter Property="ContentMargin" Value="3,3,23,3"/>
         <Setter Property="ToggleContentMargin" Value="0,0,10,0"/>
-        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Arrow" Value="&#xEDDC;"/>
+        <Setter Property="ArrowSize" Value="9"/>
+        <Setter Property="ArrowFont" Value="Segoe MDL2 Assets"/>
         <Setter Property="PopupBackground" Value="{DynamicResource Gray1}"/>
         <Setter Property="PopupBorderBrush" Value="{DynamicResource Gray7}"/>
         <Setter Property="PopupBorderThickness" Value="1"/>
@@ -55,47 +57,50 @@
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="ScrollViewerStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type ScrollViewer}">
+                    <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
 
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:FullComboBox}">
+                <ControlTemplate TargetType="{x:Type local:EComboBox}">
                     <Grid>
-                        <local:FullToggleButton x:Name="PART_ToggleButton"
-                                                Width="Auto"
-                                                Height="Auto"
-                                                Background="{TemplateBinding Background}"
-                                                BackgroundOnMouseOver="{TemplateBinding BackgroundOnMouseOver}"
-                                                BackgroundOnMouseOverOnChecked="{TemplateBinding BackgroundOnMouseOverOnChecked}"
-                                                BackgroundOnChecked="{TemplateBinding BackgroundOnChecked}"
-                                                BackgroundOnDisabled="{TemplateBinding BackgroundOnDisabled}"
-                                                BorderBrush="{TemplateBinding BorderBrush}"
-                                                BorderBrushOnMouseOver="{TemplateBinding BorderBrushOnMouseOver}"
-                                                BorderBrushOnMouseOverOnChecked="{TemplateBinding BorderBrushOnMouseOverOnChecked}"
-                                                BorderBrushOnChecked="{TemplateBinding BorderBrushOnChecked}"
-                                                BorderBrushOnDisabled="{TemplateBinding BorderBrushOnDisabled}"
-                                                BorderThickness="{TemplateBinding BorderThickness}"
-                                                Foreground="{TemplateBinding ForeColor}"
-                                                ForegroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
-                                                ForegroundOnMouseOverOnChecked="{TemplateBinding ForeColorOnMouseOverOnChecked}"
-                                                ForegroundOnChecked="{TemplateBinding ForeColorOnChecked}"
-                                                ForegroundOnDisabled="{TemplateBinding ForeColorOnDisabled}"
-                                                CornerRadius="{TemplateBinding CornerRadius}"
-                                                HorizontalContentAlignment="{TemplateBinding ToggleHorizontalContentAlignment}"
-                                                VerticalContentAlignment="{TemplateBinding ToggleVerticalContentAlignment}"
-                                                ContentMargin="{TemplateBinding ToggleContentMargin}"
-                                                AnimationTime="{TemplateBinding AnimationTime}"
-                                                IsEnabled="{TemplateBinding IsEnabled}"
-                                                IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                                ClickMode="Press"
-                                                Focusable="False">
-                            <local:FullToggleButton.Content>
-                                <Grid>
-                                    <Path x:Name="PART_Arrow"
-                                          Data="M 0 0 L 4 4 L 8 0 Z"
-                                          Fill="{Binding ElementName=PART_ToggleButton, Path=ActualForeground}"/>
-                                </Grid>
-                            </local:FullToggleButton.Content>
-                        </local:FullToggleButton>
+                        <local:EToggleButton x:Name="PART_ToggleButton"
+                                             Width="Auto"
+                                             Height="Auto"
+                                             Content="{TemplateBinding Arrow}"
+                                             Background="{TemplateBinding Background}"
+                                             BackgroundOnMouseOver="{TemplateBinding BackgroundOnMouseOver}"
+                                             BackgroundOnMouseOverOnChecked="{TemplateBinding BackgroundOnMouseOverOnChecked}"
+                                             BackgroundOnChecked="{TemplateBinding BackgroundOnChecked}"
+                                             BackgroundOnDisabled="{TemplateBinding BackgroundOnDisabled}"
+                                             BorderBrush="{TemplateBinding BorderBrush}"
+                                             BorderBrushOnMouseOver="{TemplateBinding BorderBrushOnMouseOver}"
+                                             BorderBrushOnMouseOverOnChecked="{TemplateBinding BorderBrushOnMouseOverOnChecked}"
+                                             BorderBrushOnChecked="{TemplateBinding BorderBrushOnChecked}"
+                                             BorderBrushOnDisabled="{TemplateBinding BorderBrushOnDisabled}"
+                                             BorderThickness="{TemplateBinding BorderThickness}"
+                                             FontFamily="{TemplateBinding ArrowFont}"
+                                             FontSize="{TemplateBinding ArrowSize}"
+                                             Foreground="{TemplateBinding ForeColor}"
+                                             ForegroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
+                                             ForegroundOnMouseOverOnChecked="{TemplateBinding ForeColorOnMouseOverOnChecked}"
+                                             ForegroundOnChecked="{TemplateBinding ForeColorOnChecked}"
+                                             ForegroundOnDisabled="{TemplateBinding ForeColorOnDisabled}"
+                                             CornerRadius="{TemplateBinding CornerRadius}"
+                                             HorizontalContentAlignment="{TemplateBinding ToggleHorizontalContentAlignment}"
+                                             VerticalContentAlignment="{TemplateBinding ToggleVerticalContentAlignment}"
+                                             ContentMargin="{TemplateBinding ToggleContentMargin}"
+                                             AnimationTime="{TemplateBinding AnimationTime}"
+                                             IsEnabled="{TemplateBinding IsEnabled}"
+                                             IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                             ClickMode="Press"
+                                             Focusable="False"/>
                         <ContentPresenter x:Name="PART_ContentSite"
                                           Margin="{TemplateBinding ContentMargin}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -104,6 +109,7 @@
                                           ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                                           ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
                                           IsEnabled="{TemplateBinding IsEnabled}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                           Visibility="Visible"
                                           IsHitTestVisible="False"
                                           Focusable="False"/>
@@ -144,12 +150,11 @@
                                     MaxHeight="{TemplateBinding MaxDropDownHeight}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                                 <ScrollViewer x:Name="PART_PopupScrollViewer"
-                                              Margin="{TemplateBinding Padding}"
-                                              VerticalScrollBarVisibility="Auto"
+                                              Style="{TemplateBinding ScrollViewerStyle}"
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                                    <StackPanel x:Name="PART_PopupPanel"
-                                                IsItemsHost="True"
-                                                KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                    <ItemsPresenter x:Name="PART_PopupItemsPresenter"
+                                                    KeyboardNavigation.DirectionalNavigation="Contained"
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                 </ScrollViewer>
                             </Border>
                         </Popup>
@@ -170,4 +175,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
 </ResourceDictionary>

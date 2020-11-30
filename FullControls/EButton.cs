@@ -4,14 +4,14 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
-using FullControls.Extra;
+using FullControls.Core;
 
 namespace FullControls
 {
     /// <summary>
     /// Represents a Windows button control, which reacts to the <see cref="ButtonBase.Click"/> event.
     /// </summary>
-    public class FullButton : Button
+    public class EButton : Button
     {
         private bool loaded = false;
 
@@ -28,7 +28,7 @@ namespace FullControls
         /// Identifies the <see cref="BackgroundOnMouseOver"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundOnMouseOverProperty =
-            DependencyProperty.Register(nameof(BackgroundOnMouseOver), typeof(Brush), typeof(FullButton));
+            DependencyProperty.Register(nameof(BackgroundOnMouseOver), typeof(Brush), typeof(EButton));
 
         /// <summary>
         /// Background color when the control is pressed.
@@ -43,7 +43,7 @@ namespace FullControls
         /// Identifies the <see cref="BackgroundOnPressed"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundOnPressedProperty =
-            DependencyProperty.Register(nameof(BackgroundOnPressed), typeof(Brush), typeof(FullButton));
+            DependencyProperty.Register(nameof(BackgroundOnPressed), typeof(Brush), typeof(EButton));
 
         /// <summary>
         /// Background color when the control is disabled.
@@ -58,7 +58,7 @@ namespace FullControls
         /// Identifies the <see cref="BackgroundOnDisabled"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundOnDisabledProperty =
-            DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(FullButton));
+            DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(EButton));
 
         /// <summary>
         /// Actual Background color of the control.
@@ -69,30 +69,8 @@ namespace FullControls
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ActualBackgroundProperty =
-            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(FullButton),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
-                    => ((FullButton)d).OnActualBackgroundChanged(new BackgroundChangedEventArgs((Brush)e.NewValue)))));
-
-        #region BackgroundBack
-
-        /// <summary>
-        /// Actual Background color of the control.
-        /// </summary>
-        internal Brush BackgroundBack
-        {
-            get => (Brush)GetValue(BackgroundBackProperty);
-            set => SetValue(BackgroundBackProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="BackgroundBack"/> dependency property.
-        /// </summary>
-        internal static readonly DependencyProperty BackgroundBackProperty =
-            DependencyProperty.Register(nameof(BackgroundBack), typeof(Brush), typeof(FullButton),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
-                    => d.SetValue(ActualBackgroundProperty, e.NewValue))));
-
-        #endregion
+            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(EButton),
+                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((EButton)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
         /// BorderBrush color when the mouse is over the control.
@@ -107,7 +85,7 @@ namespace FullControls
         /// Identifies the <see cref="BorderBrushOnMouseOver"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnMouseOverProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnMouseOver), typeof(Brush), typeof(FullButton));
+            DependencyProperty.Register(nameof(BorderBrushOnMouseOver), typeof(Brush), typeof(EButton));
 
         /// <summary>
         /// BorderBrush color when the control is pressed.
@@ -122,7 +100,7 @@ namespace FullControls
         /// Identifies the <see cref="BorderBrushOnPressed"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnPressedProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnPressed), typeof(Brush), typeof(FullButton));
+            DependencyProperty.Register(nameof(BorderBrushOnPressed), typeof(Brush), typeof(EButton));
 
         /// <summary>
         /// BorderBrush color when the control is disabled.
@@ -137,26 +115,18 @@ namespace FullControls
         /// Identifies the <see cref="BorderBrushOnDisabled"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnDisabledProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(FullButton));
-
-        #region BorderBrushBack
+            DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(EButton));
 
         /// <summary>
         /// Actual BorderBrush color of the control.
         /// </summary>
-        internal Brush BorderBrushBack
-        {
-            get => (Brush)GetValue(BorderBrushBackProperty);
-            set => SetValue(BorderBrushBackProperty, value);
-        }
+        public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
         /// <summary>
-        /// Identifies the <see cref="BorderBrushBack"/> dependency property.
+        /// Identifies the <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty BorderBrushBackProperty =
-            DependencyProperty.Register(nameof(BorderBrushBack), typeof(Brush), typeof(FullButton));
-
-        #endregion
+        public static readonly DependencyProperty ActualBorderBrushProperty =
+            DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(EButton));
 
         /// <summary>
         /// Foreground color when the mouse is over the control.
@@ -171,7 +141,7 @@ namespace FullControls
         /// Identifies the <see cref="ForegroundOnMouseOver"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForegroundOnMouseOverProperty =
-            DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(FullButton));
+            DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(EButton));
 
         /// <summary>
         /// Foreground color when the control is pressed.
@@ -186,7 +156,7 @@ namespace FullControls
         /// Identifies the <see cref="ForegroundOnPressed"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForegroundOnPressedProperty =
-            DependencyProperty.Register(nameof(ForegroundOnPressed), typeof(Brush), typeof(FullButton));
+            DependencyProperty.Register(nameof(ForegroundOnPressed), typeof(Brush), typeof(EButton));
 
         /// <summary>
         /// Foreground color when the control is disabled.
@@ -201,7 +171,7 @@ namespace FullControls
         /// Identifies the <see cref="ForegroundOnDisabled"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForegroundOnDisabledProperty =
-            DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(FullButton));
+            DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(EButton));
 
         /// <summary>
         /// Actual Foreground color of the control.
@@ -212,28 +182,7 @@ namespace FullControls
         /// Identifies the <see cref="ActualForeground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ActualForegroundProperty =
-            DependencyProperty.Register(nameof(ActualForeground), typeof(Brush), typeof(FullButton));
-
-        #region ForegroundBack
-
-        /// <summary>
-        /// Actual Foreground color of the control.
-        /// </summary>
-        internal Brush ForegroundBack
-        {
-            get => (Brush)GetValue(ForegroundBackProperty);
-            set => SetValue(ForegroundBackProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="ForegroundBack"/> dependency property.
-        /// </summary>
-        internal static readonly DependencyProperty ForegroundBackProperty =
-            DependencyProperty.Register(nameof(ForegroundBack), typeof(Brush), typeof(FullButton),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
-                    => d.SetValue(ActualForegroundProperty, e.NewValue))));
-
-        #endregion
+            DependencyProperty.Register(nameof(ActualForeground), typeof(Brush), typeof(EButton));
 
         /// <summary>
         /// CornerRadius of the control.
@@ -248,7 +197,7 @@ namespace FullControls
         /// Identifies the <see cref="CornerRadius"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(FullButton));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(EButton));
 
         /// <summary>
         /// Margin of the control content.
@@ -263,7 +212,7 @@ namespace FullControls
         /// Identifies the <see cref="ContentMargin"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ContentMarginProperty =
-            DependencyProperty.Register(nameof(ContentMargin), typeof(Thickness), typeof(FullButton));
+            DependencyProperty.Register(nameof(ContentMargin), typeof(Thickness), typeof(EButton));
 
         /// <summary>
         /// Duration of the control animation when it changes state.
@@ -278,22 +227,17 @@ namespace FullControls
         /// Identifies the <see cref="AnimationTime"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AnimationTimeProperty =
-            DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(FullButton));
-
-        /// <summary>
-        /// Raised when the background is changed.
-        /// </summary>
-        public event EventHandler<BackgroundChangedEventArgs> BackgroundChanged;
+            DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EButton));
 
 
         /// <summary>
-        /// Creates a new <see cref="FullButton"/>.
+        /// Creates a new <see cref="EButton"/>.
         /// </summary>
-        static FullButton()
+        static EButton()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(FullButton), new FrameworkPropertyMetadata(typeof(FullButton)));
-            IsEnabledProperty.OverrideMetadata(typeof(FullButton), new FrameworkPropertyMetadata(
-                new PropertyChangedCallback((d, e) => ((FullButton)d).OnEnabledChanged((bool)e.NewValue))));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(EButton), new FrameworkPropertyMetadata(typeof(EButton)));
+            IsEnabledProperty.OverrideMetadata(typeof(EButton), new FrameworkPropertyMetadata(
+                new PropertyChangedCallback((d, e) => ((EButton)d).OnEnabledChanged((bool)e.NewValue))));
         }
 
         /// <summary>
@@ -302,9 +246,9 @@ namespace FullControls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            SetValue(BackgroundBackProperty, Background);
-            SetValue(BorderBrushBackProperty, BorderBrush);
-            SetValue(ForegroundBackProperty, Foreground);
+            Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
+            Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
+            Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
             loaded = true;
             ReloadBackground();
         }
@@ -312,11 +256,8 @@ namespace FullControls
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
-        /// <param name="e">Data of the <see cref="BackgroundChanged"/> event.</param>
-        protected virtual void OnActualBackgroundChanged(BackgroundChangedEventArgs e)
-        {
-            BackgroundChanged?.Invoke(this, e);
-        }
+        /// <param name="actualBackground">Actual background color.</param>
+        protected virtual void OnActualBackgroundChanged(Brush actualBackground) { }
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
@@ -365,27 +306,27 @@ namespace FullControls
             if (!loaded) return;
             if (!IsEnabled) //Disabled state
             {
-                SetValue(BackgroundBackProperty, BackgroundOnDisabled);
-                SetValue(BorderBrushBackProperty, BorderBrushOnDisabled);
-                SetValue(ForegroundBackProperty, ForegroundOnDisabled);
+                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnDisabled, TimeSpan.Zero);
+                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnDisabled, TimeSpan.Zero);
+                Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnDisabled, TimeSpan.Zero);
             }
             else if (IsPressed) //Pressed state
             {
-                SetValue(BackgroundBackProperty, BackgroundOnPressed);
-                SetValue(BorderBrushBackProperty, BorderBrushOnPressed);
-                SetValue(ForegroundBackProperty, ForegroundOnPressed);
+                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnPressed, TimeSpan.Zero);
+                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnPressed, TimeSpan.Zero);
+                Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnPressed, TimeSpan.Zero);
             }
             else if (IsMouseOver) //MouseOver state
             {
-                Utility.AnimateBrush(this, BackgroundBackProperty, BackgroundOnMouseOver, AnimationTime);
-                Utility.AnimateBrush(this, BorderBrushBackProperty, BorderBrushOnMouseOver, AnimationTime);
-                SetValue(ForegroundBackProperty, ForegroundOnMouseOver);
+                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnMouseOver, AnimationTime);
+                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnMouseOver, AnimationTime);
+                Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnMouseOver, TimeSpan.Zero);
             }
             else //Normal state
             {
-                SetValue(BackgroundBackProperty, Background);
-                SetValue(BorderBrushBackProperty, BorderBrush);
-                SetValue(ForegroundBackProperty, Foreground);
+                Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
+                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
+                Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
             }
         }
     }

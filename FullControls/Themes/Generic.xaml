@@ -1,11 +1,11 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/FullControls;component/Styles/FullButton.xaml"/>
-        <ResourceDictionary Source="/FullControls;component/Styles/FullComboBox.xaml"/>
-        <ResourceDictionary Source="/FullControls;component/Styles/FullComboBoxItem.xaml"/>
-        <ResourceDictionary Source="/FullControls;component/Styles/FullPasswordBox.xaml"/>
-        <ResourceDictionary Source="/FullControls;component/Styles/FullTextBox.xaml"/>
-        <ResourceDictionary Source="/FullControls;component/Styles/FullToggleButton.xaml"/>
-        <ResourceDictionary Source="/FullControls;component/Styles/FullWindow.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/EButton.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/EComboBox.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/EComboBoxItem.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/EPasswordBox.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/ETextBox.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/EToggleButton.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/EWindow.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

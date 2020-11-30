@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Shell;
 using System.Windows.Media;
 using System.Windows.Interop;
+using FullControls.Core;
 using FullControls.Extra;
 
 namespace FullControls
@@ -13,7 +14,7 @@ namespace FullControls
     /// <summary>
     /// Provides the ability to create, configure, show, and manage the lifetime of windows and dialog boxes.
     /// </summary>
-    public class FullWindow : Window
+    public class EWindow : Window
     {
         private WindowState beforeState;
         private WindowChrome windowChrome, maxWindowChrome;
@@ -32,8 +33,8 @@ namespace FullControls
         /// Identifies the <see cref="ResizeThickness"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ResizeThicknessProperty =
-            DependencyProperty.Register(nameof(ResizeThickness), typeof(Thickness), typeof(FullWindow),
-                new PropertyMetadata(new Thickness(), new PropertyChangedCallback((d, e) => ((FullWindow)d).OnResizeThicknessChanged((Thickness)e.NewValue))));
+            DependencyProperty.Register(nameof(ResizeThickness), typeof(Thickness), typeof(EWindow),
+                new PropertyMetadata(new Thickness(), new PropertyChangedCallback((d, e) => ((EWindow)d).OnResizeThicknessChanged((Thickness)e.NewValue))));
 
         #region BorderMargin
 
@@ -46,7 +47,7 @@ namespace FullControls
         /// Identifies the <see cref="BorderMargin"/> dependency property.
         /// </summary>
         internal static readonly DependencyProperty BorderMarginProperty =
-            DependencyProperty.Register(nameof(BorderMargin), typeof(Thickness), typeof(FullWindow), new PropertyMetadata(new Thickness()));
+            DependencyProperty.Register(nameof(BorderMargin), typeof(Thickness), typeof(EWindow), new PropertyMetadata(new Thickness()));
 
         #endregion
 
@@ -63,7 +64,7 @@ namespace FullControls
         /// Identifies the <see cref="ShadowRadius"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ShadowRadiusProperty =
-            DependencyProperty.Register(nameof(ShadowRadius), typeof(double), typeof(FullWindow),
+            DependencyProperty.Register(nameof(ShadowRadius), typeof(double), typeof(EWindow),
                 new PropertyMetadata(0d, new PropertyChangedCallback((d, e) => d.SetValue(BorderMarginProperty, new Thickness((double)e.NewValue)))));
 
         /// <summary>
@@ -79,7 +80,7 @@ namespace FullControls
         /// Identifies the <see cref="ShadowOpacity"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ShadowOpacityProperty =
-            DependencyProperty.Register(nameof(ShadowOpacity), typeof(double), typeof(FullWindow));
+            DependencyProperty.Register(nameof(ShadowOpacity), typeof(double), typeof(EWindow));
 
         /// <summary>
         /// Depth of the shadow behind the window.
@@ -94,7 +95,7 @@ namespace FullControls
         /// Identifies the <see cref="ShadowDepth"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ShadowDepthProperty =
-            DependencyProperty.Register(nameof(ShadowDepth), typeof(double), typeof(FullWindow));
+            DependencyProperty.Register(nameof(ShadowDepth), typeof(double), typeof(EWindow));
 
         /// <summary>
         /// Color of the shadow behind the window.
@@ -109,7 +110,7 @@ namespace FullControls
         /// Identifies the <see cref="ShadowColor"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register(nameof(ShadowColor), typeof(Color), typeof(FullWindow));
+            DependencyProperty.Register(nameof(ShadowColor), typeof(Color), typeof(EWindow));
 
         /// <summary>
         /// CornerRadius of the control.
@@ -124,7 +125,7 @@ namespace FullControls
         /// Identifies the <see cref="CornerRadius"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(FullWindow));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(EWindow));
 
         /// <summary>
         /// Enables the minimize button.
@@ -139,7 +140,7 @@ namespace FullControls
         /// Identifies the <see cref="EnableMinimizeButton"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableMinimizeButtonProperty =
-            DependencyProperty.Register(nameof(EnableMinimizeButton), typeof(bool), typeof(FullWindow));
+            DependencyProperty.Register(nameof(EnableMinimizeButton), typeof(bool), typeof(EWindow));
 
         /// <summary>
         /// Enables the maximize/restore button.
@@ -154,7 +155,7 @@ namespace FullControls
         /// Identifies the <see cref="EnableMaximizeRestoreButton"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableMaximizeRestoreButtonProperty =
-            DependencyProperty.Register(nameof(EnableMaximizeRestoreButton), typeof(bool), typeof(FullWindow));
+            DependencyProperty.Register(nameof(EnableMaximizeRestoreButton), typeof(bool), typeof(EWindow));
 
         /// <summary>
         /// Enables the close button.
@@ -169,7 +170,7 @@ namespace FullControls
         /// Identifies the <see cref="EnableCloseButton"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableCloseButtonProperty =
-            DependencyProperty.Register(nameof(EnableCloseButton), typeof(bool), typeof(FullWindow));
+            DependencyProperty.Register(nameof(EnableCloseButton), typeof(bool), typeof(EWindow));
 
         /// <summary>
         /// <para>Merge the toolbar with the content.</para>
@@ -187,7 +188,7 @@ namespace FullControls
         /// Identifies the <see cref="MergeToolbarAndContent"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty MergeToolbarAndContentProperty =
-            DependencyProperty.Register(nameof(MergeToolbarAndContent), typeof(bool), typeof(FullWindow));
+            DependencyProperty.Register(nameof(MergeToolbarAndContent), typeof(bool), typeof(EWindow));
 
         /// <summary>
         /// Enable the toolbar to handles inputs.
@@ -202,7 +203,7 @@ namespace FullControls
         /// Identifies the <see cref="EnableToolbarHitZone"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableToolbarHitZoneProperty =
-            DependencyProperty.Register(nameof(EnableToolbarHitZone), typeof(bool), typeof(FullWindow));
+            DependencyProperty.Register(nameof(EnableToolbarHitZone), typeof(bool), typeof(EWindow));
 
         /// <summary>
         /// Margin of the toolbar hit zone.
@@ -217,7 +218,7 @@ namespace FullControls
         /// Identifies the <see cref="ToolbarHitZoneMargin"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ToolbarHitZoneMarginProperty =
-            DependencyProperty.Register(nameof(ToolbarHitZoneMargin), typeof(Thickness), typeof(FullWindow));
+            DependencyProperty.Register(nameof(ToolbarHitZoneMargin), typeof(Thickness), typeof(EWindow));
 
         /// <summary>
         /// Background of the toolbar part that handles inputs.
@@ -232,7 +233,7 @@ namespace FullControls
         /// Identifies the <see cref="ToolbarHitZoneBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ToolbarHitZoneBackgroundProperty =
-            DependencyProperty.Register(nameof(ToolbarHitZoneBackground), typeof(Brush), typeof(FullWindow));
+            DependencyProperty.Register(nameof(ToolbarHitZoneBackground), typeof(Brush), typeof(EWindow));
 
         /// <summary>
         /// <para>Background color of the toolbar.</para>
@@ -248,7 +249,7 @@ namespace FullControls
         /// Identifies the <see cref="ToolbarBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ToolbarBackgroundProperty =
-            DependencyProperty.Register(nameof(ToolbarBackground), typeof(Brush), typeof(FullWindow));
+            DependencyProperty.Register(nameof(ToolbarBackground), typeof(Brush), typeof(EWindow));
 
         /// <summary>
         /// Background color of the buttons.
@@ -263,7 +264,7 @@ namespace FullControls
         /// Identifies the <see cref="ForeColor"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForeColorProperty =
-            DependencyProperty.Register(nameof(ForeColor), typeof(Brush), typeof(FullWindow));
+            DependencyProperty.Register(nameof(ForeColor), typeof(Brush), typeof(EWindow));
 
         /// <summary>
         /// Background color of the buttons when the mouse is over them.
@@ -278,7 +279,7 @@ namespace FullControls
         /// Identifies the <see cref="ForeColorOnMouseOver"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForeColorOnMouseOverProperty =
-            DependencyProperty.Register(nameof(ForeColorOnMouseOver), typeof(Brush), typeof(FullWindow));
+            DependencyProperty.Register(nameof(ForeColorOnMouseOver), typeof(Brush), typeof(EWindow));
 
         /// <summary>
         /// Background color of the buttons when they are pressed.
@@ -293,7 +294,7 @@ namespace FullControls
         /// Identifies the <see cref="ForeColorOnPressed"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForeColorOnPressedProperty =
-            DependencyProperty.Register(nameof(ForeColorOnPressed), typeof(Brush), typeof(FullWindow));
+            DependencyProperty.Register(nameof(ForeColorOnPressed), typeof(Brush), typeof(EWindow));
 
         /// <summary>
         /// Foreground color of the buttons when the mouse is over them.
@@ -308,7 +309,7 @@ namespace FullControls
         /// Identifies the <see cref="ForegroundOnMouseOver"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForegroundOnMouseOverProperty =
-            DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(FullWindow));
+            DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(EWindow));
 
         /// <summary>
         /// Foreground color of the buttons when they are pressed.
@@ -323,7 +324,7 @@ namespace FullControls
         /// Identifies the <see cref="ForegroundOnPressed"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForegroundOnPressedProperty =
-            DependencyProperty.Register(nameof(ForegroundOnPressed), typeof(Brush), typeof(FullWindow));
+            DependencyProperty.Register(nameof(ForegroundOnPressed), typeof(Brush), typeof(EWindow));
 
         /// <summary>
         /// The menu that is shown at right click on toolbar.
@@ -338,7 +339,7 @@ namespace FullControls
         /// Identifies the <see cref="ToolbarMenu"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ToolbarMenuProperty =
-            DependencyProperty.Register(nameof(ToolbarMenu), typeof(ContextMenu), typeof(FullWindow));
+            DependencyProperty.Register(nameof(ToolbarMenu), typeof(ContextMenu), typeof(EWindow));
 
         /// <summary>
         /// Duration of the state change animations.
@@ -353,15 +354,15 @@ namespace FullControls
         /// Identifies the <see cref="AnimationTime"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AnimationTimeProperty =
-            DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(FullWindow));
+            DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EWindow));
 
 
         /// <summary>
-        /// Creates a new <see cref="FullWindow"/>.
+        /// Creates a new <see cref="EWindow"/>.
         /// </summary>
-        static FullWindow()
+        static EWindow()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(FullWindow), new FrameworkPropertyMetadata(typeof(FullWindow)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(EWindow), new FrameworkPropertyMetadata(typeof(EWindow)));
         }
 
         /// <summary>
@@ -552,8 +553,8 @@ namespace FullControls
         /// </summary>
         private IntPtr HandleMessages(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-            if (msg == WindowCore.WM_GETMINMAXINFO) WindowCore.WmGetMinMaxInfo(hwnd, lParam);
-            else if (msg == WindowCore.WM_SYSCOMMAND && ((int)wParam & 0xFFF0) == WindowCore.SC_MINIMIZE)
+            if (msg == EWindowCore.WM_GETMINMAXINFO) EWindowCore.WmGetMinMaxInfo(hwnd, lParam);
+            else if (msg == EWindowCore.WM_SYSCOMMAND && ((int)wParam & 0xFFF0) == EWindowCore.SC_MINIMIZE)
             {
                 handled = true;
                 Minimize();

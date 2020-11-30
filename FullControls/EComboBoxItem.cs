@@ -3,14 +3,14 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using FullControls.Extra;
+using FullControls.Core;
 
 namespace FullControls
 {
     /// <summary>
     /// Implements a selectable item inside a <see cref="ComboBox"/>.
     /// </summary>
-    public class FullComboBoxItem : ComboBoxItem
+    public class EComboBoxItem : ComboBoxItem
     {
         private bool loaded = false;
 
@@ -27,7 +27,7 @@ namespace FullControls
         /// Identifies the <see cref="BackgroundOnMouseOver"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundOnMouseOverProperty =
-            DependencyProperty.Register(nameof(BackgroundOnMouseOver), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(BackgroundOnMouseOver), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// Background color when the control is selected and the mouse is over the control.
@@ -42,7 +42,7 @@ namespace FullControls
         /// Identifies the <see cref="BackgroundOnMouseOverOnSelected"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundOnMouseOverOnSelectedProperty =
-            DependencyProperty.Register(nameof(BackgroundOnMouseOverOnSelected), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(BackgroundOnMouseOverOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// Background color when the control is selected.
@@ -57,7 +57,7 @@ namespace FullControls
         /// Identifies the <see cref="BackgroundOnSelected"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundOnSelectedProperty =
-            DependencyProperty.Register(nameof(BackgroundOnSelected), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(BackgroundOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// Background color when the control is focused.
@@ -72,7 +72,7 @@ namespace FullControls
         /// Identifies the <see cref="BackgroundOnFocused"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundOnFocusedProperty =
-            DependencyProperty.Register(nameof(BackgroundOnFocused), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(BackgroundOnFocused), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// Background color when the control is focused and selected.
@@ -87,7 +87,7 @@ namespace FullControls
         /// Identifies the <see cref="BackgroundOnFocusedOnSelected"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundOnFocusedOnSelectedProperty =
-            DependencyProperty.Register(nameof(BackgroundOnFocusedOnSelected), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(BackgroundOnFocusedOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// Background color when the control is disabled.
@@ -102,7 +102,7 @@ namespace FullControls
         /// Identifies the <see cref="BackgroundOnDisabled"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BackgroundOnDisabledProperty =
-            DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// Actual Background color of the control.
@@ -113,30 +113,8 @@ namespace FullControls
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ActualBackgroundProperty =
-            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(FullComboBoxItem),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
-                    => ((FullComboBoxItem)d).OnActualBackgroundChanged(new BackgroundChangedEventArgs((Brush)e.NewValue)))));
-
-        #region BackgroundBack
-
-        /// <summary>
-        /// Actual Background color of the control.
-        /// </summary>
-        internal Brush BackgroundBack
-        {
-            get => (Brush)GetValue(BackgroundBackProperty);
-            set => SetValue(BackgroundBackProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="BackgroundBack"/> dependency property.
-        /// </summary>
-        internal static readonly DependencyProperty BackgroundBackProperty =
-            DependencyProperty.Register(nameof(BackgroundBack), typeof(Brush), typeof(FullComboBoxItem),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
-                    => d.SetValue(ActualBackgroundProperty, e.NewValue))));
-
-        #endregion
+            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(EComboBoxItem),
+                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((EComboBoxItem)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
         /// BorderBrush color when the mouse is over the control.
@@ -151,7 +129,7 @@ namespace FullControls
         /// Identifies the <see cref="BorderBrushOnMouseOver"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnMouseOverProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnMouseOver), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(BorderBrushOnMouseOver), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// BorderBrush color when the control is selected and the mouse is over the control.
@@ -166,7 +144,7 @@ namespace FullControls
         /// Identifies the <see cref="BorderBrushOnMouseOverOnSelected"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnMouseOverOnSelectedProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnMouseOverOnSelected), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(BorderBrushOnMouseOverOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// BorderBrush color when the control is selected.
@@ -181,7 +159,7 @@ namespace FullControls
         /// Identifies the <see cref="BorderBrushOnSelected"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnSelectedProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnSelected), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(BorderBrushOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// BorderBrush color when the control is focused.
@@ -196,7 +174,7 @@ namespace FullControls
         /// Identifies the <see cref="BorderBrushOnFocused"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnFocusedProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnFocused), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(BorderBrushOnFocused), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// BorderBrush color when the control is focused and selected.
@@ -211,7 +189,7 @@ namespace FullControls
         /// Identifies the <see cref="BorderBrushOnFocusedOnSelected"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnFocusedOnSelectedProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnFocusedOnSelected), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(BorderBrushOnFocusedOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// BorderBrush color when the control is disabled.
@@ -226,26 +204,18 @@ namespace FullControls
         /// Identifies the <see cref="BorderBrushOnDisabled"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnDisabledProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(FullComboBoxItem));
-
-        #region BorderBrushBack
+            DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// Actual BorderBrush color of the control.
         /// </summary>
-        internal Brush BorderBrushBack
-        {
-            get => (Brush)GetValue(BorderBrushBackProperty);
-            set => SetValue(BorderBrushBackProperty, value);
-        }
+        public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
         /// <summary>
-        /// Identifies the <see cref="BorderBrushBack"/> dependency property.
+        /// Identifies the <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty BorderBrushBackProperty =
-            DependencyProperty.Register(nameof(BorderBrushBack), typeof(Brush), typeof(FullComboBoxItem));
-
-        #endregion
+        public static readonly DependencyProperty ActualBorderBrushProperty =
+            DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// Foreground color when the mouse is over the control.
@@ -260,7 +230,7 @@ namespace FullControls
         /// Identifies the <see cref="ForegroundOnMouseOver"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForegroundOnMouseOverProperty =
-            DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// Foreground color when the control is selected and the mouse is over the control.
@@ -275,7 +245,7 @@ namespace FullControls
         /// Identifies the <see cref="ForegroundOnMouseOverOnSelected"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForegroundOnMouseOverOnSelectedProperty =
-            DependencyProperty.Register(nameof(ForegroundOnMouseOverOnSelected), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(ForegroundOnMouseOverOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// Foreground color when the control is selected.
@@ -290,7 +260,7 @@ namespace FullControls
         /// Identifies the <see cref="ForegroundOnSelected"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForegroundOnSelectedProperty =
-            DependencyProperty.Register(nameof(ForegroundOnSelected), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(ForegroundOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// Foreground color when the control is focused.
@@ -305,7 +275,7 @@ namespace FullControls
         /// Identifies the <see cref="ForegroundOnFocused"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForegroundOnFocusedProperty =
-            DependencyProperty.Register(nameof(ForegroundOnFocused), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(ForegroundOnFocused), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// Foreground color when the control is focused and selected.
@@ -320,7 +290,7 @@ namespace FullControls
         /// Identifies the <see cref="ForegroundOnFocusedOnSelected"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForegroundOnFocusedOnSelectedProperty =
-            DependencyProperty.Register(nameof(ForegroundOnFocusedOnSelected), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(ForegroundOnFocusedOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// Foreground color when the control is disabled.
@@ -335,7 +305,7 @@ namespace FullControls
         /// Identifies the <see cref="ForegroundOnDisabled"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForegroundOnDisabledProperty =
-            DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// Actual Foreground color of the control.
@@ -346,28 +316,7 @@ namespace FullControls
         /// Identifies the <see cref="ActualForeground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ActualForegroundProperty =
-            DependencyProperty.Register(nameof(ActualForeground), typeof(Brush), typeof(FullComboBoxItem));
-
-        #region ForegroundBack
-
-        /// <summary>
-        /// Actual Foreground color of the control.
-        /// </summary>
-        internal Brush ForegroundBack
-        {
-            get => (Brush)GetValue(ForegroundBackProperty);
-            set => SetValue(ForegroundBackProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="ForegroundBack"/> dependency property.
-        /// </summary>
-        internal static readonly DependencyProperty ForegroundBackProperty =
-            DependencyProperty.Register(nameof(ForegroundBack), typeof(Brush), typeof(FullComboBoxItem),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
-                    => d.SetValue(ActualForegroundProperty, e.NewValue))));
-
-        #endregion
+            DependencyProperty.Register(nameof(ActualForeground), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
         /// CornerRadius of the control.
@@ -382,7 +331,7 @@ namespace FullControls
         /// Identifies the <see cref="CornerRadius"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(EComboBoxItem));
 
         /// <summary>
         /// Margin of the control content.
@@ -397,7 +346,7 @@ namespace FullControls
         /// Identifies the <see cref="ContentMargin"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ContentMarginProperty =
-            DependencyProperty.Register(nameof(ContentMargin), typeof(Thickness), typeof(FullComboBoxItem));
+            DependencyProperty.Register(nameof(ContentMargin), typeof(Thickness), typeof(EComboBoxItem));
 
         /// <summary>
         /// Duration of the control animation when it changes state.
@@ -412,24 +361,19 @@ namespace FullControls
         /// Identifies the <see cref="AnimationTime"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AnimationTimeProperty =
-            DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(FullComboBoxItem));
-
-        /// <summary>
-        /// Raised when the background is changed.
-        /// </summary>
-        public event EventHandler<BackgroundChangedEventArgs> BackgroundChanged;
+            DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EComboBoxItem));
 
 
         /// <summary>
-        /// Creates a new <see cref="FullComboBoxItem"/>.
+        /// Creates a new <see cref="EComboBoxItem"/>.
         /// </summary>
-        static FullComboBoxItem()
+        static EComboBoxItem()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(FullComboBoxItem), new FrameworkPropertyMetadata(typeof(FullComboBoxItem)));
-            IsEnabledProperty.OverrideMetadata(typeof(FullComboBoxItem), new FrameworkPropertyMetadata(
-                new PropertyChangedCallback((d, e) => ((FullComboBoxItem)d).OnEnabledChanged((bool)e.NewValue))));
-            IsSelectedProperty.OverrideMetadata(typeof(FullComboBoxItem), new FrameworkPropertyMetadata(false,
-                new PropertyChangedCallback((d, e) => ((FullComboBoxItem)d).OnSelectedChanged((bool)e.NewValue))));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(EComboBoxItem), new FrameworkPropertyMetadata(typeof(EComboBoxItem)));
+            IsEnabledProperty.OverrideMetadata(typeof(EComboBoxItem), new FrameworkPropertyMetadata(
+                new PropertyChangedCallback((d, e) => ((EComboBoxItem)d).OnEnabledChanged((bool)e.NewValue))));
+            IsSelectedProperty.OverrideMetadata(typeof(EComboBoxItem), new FrameworkPropertyMetadata(false,
+                new PropertyChangedCallback((d, e) => ((EComboBoxItem)d).OnSelectedChanged((bool)e.NewValue))));
         }
 
         /// <summary>
@@ -438,9 +382,9 @@ namespace FullControls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            SetValue(BackgroundBackProperty, Background);
-            SetValue(BorderBrushBackProperty, BorderBrush);
-            SetValue(ForegroundBackProperty, Foreground);
+            Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
+            Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
+            Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
             loaded = true;
             ReloadBackground();
         }
@@ -448,11 +392,8 @@ namespace FullControls
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
-        /// <param name="e">Data of the <see cref="BackgroundChanged"/> event.</param>
-        protected virtual void OnActualBackgroundChanged(BackgroundChangedEventArgs e)
-        {
-            BackgroundChanged?.Invoke(this, e);
-        }
+        /// <param name="actualBackground">Actual background color.</param>
+        protected virtual void OnActualBackgroundChanged(Brush actualBackground) { }
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
@@ -520,51 +461,51 @@ namespace FullControls
             if (!loaded) return;
             if (!IsEnabled) //Disabled state
             {
-                SetValue(BackgroundBackProperty, BackgroundOnDisabled);
-                SetValue(BorderBrushBackProperty, BorderBrushOnDisabled);
-                SetValue(ForegroundBackProperty, ForegroundOnDisabled);
+                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnDisabled, TimeSpan.Zero);
+                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnDisabled, TimeSpan.Zero);
+                Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnDisabled, TimeSpan.Zero);
             }
             else if (IsMouseOver) //MouseOver state
             {
                 if (IsSelected)
                 {
-                    Utility.AnimateBrush(this, BackgroundBackProperty, BackgroundOnMouseOverOnSelected, AnimationTime);
-                    Utility.AnimateBrush(this, BorderBrushBackProperty, BorderBrushOnMouseOverOnSelected, AnimationTime);
-                    SetValue(ForegroundBackProperty, ForegroundOnMouseOverOnSelected);
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnMouseOverOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnMouseOverOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnMouseOverOnSelected, TimeSpan.Zero);
                 }
                 else
                 {
-                    Utility.AnimateBrush(this, BackgroundBackProperty, BackgroundOnMouseOver, AnimationTime);
-                    Utility.AnimateBrush(this, BorderBrushBackProperty, BorderBrushOnMouseOver, AnimationTime);
-                    SetValue(ForegroundBackProperty, ForegroundOnMouseOver);
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnMouseOver, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnMouseOver, AnimationTime);
+                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnMouseOver, TimeSpan.Zero);
                 }
             }
             else if (IsFocused) //Focused state
             {
                 if (IsSelected)
                 {
-                    Utility.AnimateBrush(this, BackgroundBackProperty, BackgroundOnFocusedOnSelected, AnimationTime);
-                    Utility.AnimateBrush(this, BorderBrushBackProperty, BorderBrushOnFocusedOnSelected, AnimationTime);
-                    SetValue(ForegroundBackProperty, ForegroundOnFocusedOnSelected);
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnFocusedOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnFocusedOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnFocusedOnSelected, TimeSpan.Zero);
                 }
                 else
                 {
-                    Utility.AnimateBrush(this, BackgroundBackProperty, BackgroundOnFocused, AnimationTime);
-                    Utility.AnimateBrush(this, BorderBrushBackProperty, BorderBrushOnFocused, AnimationTime);
-                    SetValue(ForegroundBackProperty, ForegroundOnFocused);
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnFocused, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnFocused, AnimationTime);
+                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnFocused, TimeSpan.Zero);
                 }
             }
             else if (IsSelected) //Selected state
             {
-                Utility.AnimateBrush(this, BackgroundBackProperty, BackgroundOnSelected, AnimationTime);
-                Utility.AnimateBrush(this, BorderBrushBackProperty, BorderBrushOnSelected, AnimationTime);
-                SetValue(ForegroundBackProperty, ForegroundOnSelected);
+                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnSelected, AnimationTime);
+                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnSelected, AnimationTime);
+                Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnSelected, TimeSpan.Zero);
             }
             else //Normal state
             {
-                SetValue(BackgroundBackProperty, Background);
-                SetValue(BorderBrushBackProperty, BorderBrush);
-                SetValue(ForegroundBackProperty, Foreground);
+                Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
+                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
+                Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
             }
         }
     }

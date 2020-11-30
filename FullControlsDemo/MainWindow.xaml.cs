@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace FullControlsDemo
 {
-    public partial class MainWindow : FullWindow
+    public partial class MainWindow : EWindow
     {
         public MainWindow()
         {

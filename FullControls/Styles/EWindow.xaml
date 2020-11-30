@@ -2,11 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls">
 
-    <Style TargetType="{x:Type local:FullWindow}" BasedOn="{StaticResource {x:Type Window}}">
+    <Style TargetType="{x:Type local:EWindow}" BasedOn="{StaticResource {x:Type Window}}">
         <Style.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="/FullControls;component/Resources/DefaultBrushes.xaml"/>
+                    <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml"/>
                     <ResourceDictionary Source="/FullControls;component/Resources/GenericResources.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
@@ -42,7 +42,7 @@
 
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:FullWindow}">
+                <ControlTemplate TargetType="{x:Type local:EWindow}">
                     <Grid x:Name="PART_Window">
                         <Border x:Name="PART_Border"
                                 Margin="{TemplateBinding BorderMargin}"
@@ -129,64 +129,68 @@
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        <local:FullButton x:Name="PART_MinimizeButton"
-                                                       Grid.Column="0"
-                                                       Width="32"
-                                                       Height="32"
-                                                       BorderThickness="0"
-                                                       Background="{TemplateBinding ForeColor}"
-                                                       BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
-                                                       BackgroundOnPressed="{TemplateBinding ForeColorOnPressed}"
-                                                       Foreground="{TemplateBinding Foreground}"
-                                                       ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
-                                                       ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
-                                                       Content="&#xE949;"
-                                                       FontFamily="Segoe MDL2 Assets"
-                                                       FontSize="10"/>
-                                        <local:FullButton x:Name="PART_MaximizeButton"
-                                                       Grid.Column="1"
-                                                       Width="32"
-                                                       Height="32"
-                                                       BorderThickness="0"
-                                                       Background="{TemplateBinding ForeColor}"
-                                                       BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
-                                                       BackgroundOnPressed="{TemplateBinding ForeColorOnPressed}"
-                                                       Foreground="{TemplateBinding Foreground}"
-                                                       ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
-                                                       ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
-                                                       Content="&#xE739;"
-                                                       FontFamily="Segoe MDL2 Assets"
-                                                       FontSize="10"
-                                                       Visibility="Visible"/>
-                                        <local:FullButton x:Name="PART_RestoreButton"
-                                                       Grid.Column="1"
-                                                       Width="32"
-                                                       Height="32"
-                                                       BorderThickness="0"
-                                                       Background="{TemplateBinding ForeColor}"
-                                                       BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
-                                                       BackgroundOnPressed="{TemplateBinding ForeColorOnPressed}"
-                                                       Foreground="{TemplateBinding Foreground}"
-                                                       ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
-                                                       ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
-                                                       Content="&#xE923;"
-                                                       FontFamily="Segoe MDL2 Assets"
-                                                       FontSize="10"
-                                                       Visibility="Collapsed"/>
-                                        <local:FullButton x:Name="PART_CloseButton"
-                                                       Grid.Column="2"
-                                                       Width="32"
-                                                       Height="32"
-                                                       BorderThickness="0"
-                                                       Background="{TemplateBinding ForeColor}"
-                                                       BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
-                                                       BackgroundOnPressed="Red"
-                                                       Foreground="{TemplateBinding Foreground}"
-                                                       ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
-                                                       ForegroundOnPressed="White"
-                                                       Content="&#xE106;"
-                                                       FontFamily="Segoe MDL2 Assets"
-                                                       FontSize="10"/>
+                                        <local:EButton x:Name="PART_MinimizeButton"
+                                                          Grid.Column="0"
+                                                          Width="32"
+                                                          Height="32"
+                                                          BorderThickness="0"
+                                                          Background="{TemplateBinding ForeColor}"
+                                                          BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
+                                                          BackgroundOnPressed="{TemplateBinding ForeColorOnPressed}"
+                                                          Foreground="{TemplateBinding Foreground}"
+                                                          ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
+                                                          ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
+                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                          Content="&#xE949;"
+                                                          FontFamily="Segoe MDL2 Assets"
+                                                          FontSize="10"/>
+                                        <local:EButton x:Name="PART_MaximizeButton"
+                                                          Grid.Column="1"
+                                                          Width="32"
+                                                          Height="32"
+                                                          BorderThickness="0"
+                                                          Background="{TemplateBinding ForeColor}"
+                                                          BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
+                                                          BackgroundOnPressed="{TemplateBinding ForeColorOnPressed}"
+                                                          Foreground="{TemplateBinding Foreground}"
+                                                          ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
+                                                          ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
+                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                          Content="&#xE739;"
+                                                          FontFamily="Segoe MDL2 Assets"
+                                                          FontSize="10"
+                                                          Visibility="Visible"/>
+                                        <local:EButton x:Name="PART_RestoreButton"
+                                                          Grid.Column="1"
+                                                          Width="32"
+                                                          Height="32"
+                                                          BorderThickness="0"
+                                                          Background="{TemplateBinding ForeColor}"
+                                                          BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
+                                                          BackgroundOnPressed="{TemplateBinding ForeColorOnPressed}"
+                                                          Foreground="{TemplateBinding Foreground}"
+                                                          ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
+                                                          ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
+                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                          Content="&#xE923;"
+                                                          FontFamily="Segoe MDL2 Assets"
+                                                          FontSize="10"
+                                                          Visibility="Collapsed"/>
+                                        <local:EButton x:Name="PART_CloseButton"
+                                                          Grid.Column="2"
+                                                          Width="32"
+                                                          Height="32"
+                                                          BorderThickness="0"
+                                                          Background="{TemplateBinding ForeColor}"
+                                                          BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
+                                                          BackgroundOnPressed="Red"
+                                                          Foreground="{TemplateBinding Foreground}"
+                                                          ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
+                                                          ForegroundOnPressed="White"
+                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                          Content="&#xE106;"
+                                                          FontFamily="Segoe MDL2 Assets"
+                                                          FontSize="10"/>
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -235,4 +239,5 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
 </ResourceDictionary>

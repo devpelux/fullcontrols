@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace FullControls.Extra
+namespace FullControls.Core
 {
     /// <summary>
-    /// Methods used by <see cref="FullWindow"/>.
+    /// Methods used by <see cref="EWindow"/>.
     /// </summary>
-    internal static class WindowCore
+    internal static class EWindowCore
     {
         internal const int WM_SYSCOMMAND = 0x0112; // 0x0112 - 'Window' command message.
         internal const int SC_MINIMIZE = 0xF020; // 0xF020 - Command to minimize the window.
