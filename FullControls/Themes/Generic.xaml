@@ -4,8 +4,12 @@
         <ResourceDictionary Source="/FullControls;component/Styles/EComboBox.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/EComboBoxItem.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/EPasswordBox.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/ERepeatButton.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/ETextBox.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/EToggleButton.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/EWindow.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/GlassScrollBar.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/GlassScrollViewer.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/PolymorphicMenuItem.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

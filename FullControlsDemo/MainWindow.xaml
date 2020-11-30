@@ -10,6 +10,14 @@
                ResizeMode="CanMinimize"
                Height="420"
                Width="420">
+    <fc:EWindow.ToolbarMenu>
+        <ContextMenu>
+            <fc:PolymorphicMenuItem Header="Item1" Width="100"/>
+            <fc:PolymorphicMenuItem ItemType="Separator"/>
+            <fc:PolymorphicMenuItem Header="Item2"/>
+            <fc:PolymorphicMenuItem Header="Item3"/>
+        </ContextMenu>
+    </fc:EWindow.ToolbarMenu>
     <Grid>
         <fc:EComboBox x:Name="combobox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,42,0,0" SelectedIndex="2">
             <fc:EComboBoxItem Content="Item1"/>
@@ -28,5 +36,7 @@
                         Hint="TextBox" EnableCopyButton="True" Icon="/Icons/ic_label.png" Height="30" Width="180"/>
         <fc:EPasswordBox x:Name="passwordbox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="184,147,0,0"
                             Hint="PasswordBox" EnableCopyButton="True" EnablePeekButton="True" Icon="/Icons/ic_lock.png" Height="30" Width="190"/>
+        <fc:ERepeatButton x:Name="repeatbutton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="195,216,0,0"
+                             Content="RepeatButton" Height="35" Width="100" Click="RepeatButton_Click"/>
     </Grid>
 </fc:EWindow>

@@ -12,8 +12,8 @@
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
-    <PackageTags>Controls, Custom, Full, TextBox, PasswordBox, ComboBox, Button, ToggleButton, Window</PackageTags>
-    <PackageReleaseNotes>Added FullWindow.</PackageReleaseNotes>
+	<PackageTags>Controls, Custom, Full, TextBox, PasswordBox, ComboBox, Button, ToggleButton, RepeatButton, ScrollViewer, ScrollBar, MenuItem, Window</PackageTags>
+	<PackageReleaseNotes>Added EWindow, ERepeatButton, GlassScrollBar, GlassScrollViewer, PolymorphicMenuItem, renamed controls.</PackageReleaseNotes>
     <ApplicationIcon>Icons\FullControls.ico</ApplicationIcon>
     <StartupObject>FullControlsDemo.App</StartupObject>
     <Version>1.1.0</Version>

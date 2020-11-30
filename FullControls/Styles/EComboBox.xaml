@@ -59,8 +59,8 @@
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="ScrollViewerStyle">
             <Setter.Value>
-                <Style TargetType="{x:Type ScrollViewer}">
-                    <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+                <Style TargetType="{x:Type local:GlassScrollViewer}">
+                    <Setter Property="ScrollBarsThickness" Value="5"/>
                 </Style>
             </Setter.Value>
         </Setter>
@@ -149,13 +149,13 @@
                                     MinWidth="{TemplateBinding ActualWidth}"
                                     MaxHeight="{TemplateBinding MaxDropDownHeight}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                                <ScrollViewer x:Name="PART_PopupScrollViewer"
-                                              Style="{TemplateBinding ScrollViewerStyle}"
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                <local:GlassScrollViewer x:Name="PART_PopupScrollViewer"
+                                                         Style="{TemplateBinding ScrollViewerStyle}"
+                                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                                     <ItemsPresenter x:Name="PART_PopupItemsPresenter"
                                                     KeyboardNavigation.DirectionalNavigation="Contained"
                                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                </ScrollViewer>
+                                </local:GlassScrollViewer>
                             </Border>
                         </Popup>
                     </Grid>

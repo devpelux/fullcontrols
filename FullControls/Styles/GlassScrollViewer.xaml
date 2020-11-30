@@ -1,0 +1,126 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FullControls">
+
+    <Style TargetType="{x:Type local:GlassScrollViewer}" BasedOn="{StaticResource {x:Type ScrollViewer}}">
+        <Style.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml"/>
+                    <ResourceDictionary Source="/FullControls;component/Resources/GenericResources.xaml"/>
+                    <ResourceDictionary Source="/FullControls;component/Styles/Core/GlassScrollBarResources.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Style.Resources>
+        <Setter Property="CanContentScroll" Value="True"/>
+        <Setter Property="PlaceScrollBarsInside" Value="False"/>
+        <Setter Property="VerticalScrollBarMargin" Value="1,0,1,0"/>
+        <Setter Property="HorizontalScrollBarMargin" Value="0,1,0,1"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollBarsThickness" Value="10"/>
+        <Setter Property="ScrollBarsCornerRadius" Value="1"/>
+        <Setter Property="ScrollBarsOpacityNormal" Value="0.6"/>
+        <Setter Property="ScrollBarsOpacityOnMouseOver" Value="0.8"/>
+        <Setter Property="ScrollBarsOpacityOnMouseDown" Value="0.7"/>
+        <Setter Property="ScrollBarsColor" Value="{DynamicResource Gray10}"/>
+        <Setter Property="EnableButtons" Value="False"/>
+        <Setter Property="ButtonsSize" Value="10"/>
+        <Setter Property="ButtonsFont" Value="Segoe MDL2 Assets"/>
+        <Setter Property="ButtonsContentSize" Value="10"/>
+        <Setter Property="UpButtonContent" Value="&#xEDDB;"/>
+        <Setter Property="DownButtonContent" Value="&#xEDDC;"/>
+        <Setter Property="LeftButtonContent" Value="&#xEDD9;"/>
+        <Setter Property="RightButtonContent" Value="&#xEDDA;"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:GlassScrollViewer}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Border x:Name="PART_Border"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.RowSpan="1"
+                                Grid.ColumnSpan="1"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                            <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"/>
+                        </Border>
+                        <local:GlassScrollBar x:Name="PART_VerticalScrollBar"
+                                              Grid.Row="0"
+                                              Grid.Column="1"
+                                              Margin="{TemplateBinding VerticalScrollBarMargin}"
+                                              Minimum="0"
+                                              Maximum="{TemplateBinding ScrollableHeight}"
+                                              Value="{TemplateBinding VerticalOffset}"
+                                              ViewportSize="{TemplateBinding ViewportHeight}"
+                                              Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                                              Background="Transparent"
+                                              CornerRadius="{TemplateBinding ScrollBarsCornerRadius}"
+                                              OpacityNormal="{TemplateBinding ScrollBarsOpacityNormal}"
+                                              OpacityOnMouseOver="{TemplateBinding ScrollBarsOpacityOnMouseOver}"
+                                              OpacityOnMouseDown="{TemplateBinding ScrollBarsOpacityOnMouseDown}"
+                                              Thickness="{TemplateBinding ScrollBarsThickness}"
+                                              ButtonsSize="{TemplateBinding ButtonsSize}"
+                                              ButtonsFont="{TemplateBinding ButtonsFont}"
+                                              ButtonsContentSize="{TemplateBinding ButtonsContentSize}"
+                                              EnableButtons="{TemplateBinding EnableButtons}"
+                                              ThumbBackground="{TemplateBinding ScrollBarsColor}"
+                                              IncreaseButtonForeground="{TemplateBinding ScrollBarsColor}"
+                                              DecreaseButtonForeground="{TemplateBinding ScrollBarsColor}"
+                                              DecreaseButtonContent="{TemplateBinding UpButtonContent}"
+                                              IncreaseButtonContent="{TemplateBinding DownButtonContent}"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              Orientation="Vertical"/>
+                        <local:GlassScrollBar x:Name="PART_HorizontalScrollBar"
+                                              Grid.Row="1"
+                                              Grid.Column="0"
+                                              Margin="{TemplateBinding HorizontalScrollBarMargin}"
+                                              Minimum="0"
+                                              Maximum="{TemplateBinding ScrollableWidth}"
+                                              Value="{TemplateBinding HorizontalOffset}"
+                                              ViewportSize="{TemplateBinding ViewportWidth}"
+                                              Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+                                              Background="Transparent"
+                                              CornerRadius="{TemplateBinding ScrollBarsCornerRadius}"
+                                              OpacityNormal="{TemplateBinding ScrollBarsOpacityNormal}"
+                                              OpacityOnMouseOver="{TemplateBinding ScrollBarsOpacityOnMouseOver}"
+                                              OpacityOnMouseDown="{TemplateBinding ScrollBarsOpacityOnMouseDown}"
+                                              Thickness="{TemplateBinding ScrollBarsThickness}"
+                                              ButtonsSize="{TemplateBinding ButtonsSize}"
+                                              ButtonsFont="{TemplateBinding ButtonsFont}"
+                                              ButtonsContentSize="{TemplateBinding ButtonsContentSize}"
+                                              EnableButtons="{TemplateBinding EnableButtons}"
+                                              ThumbBackground="{TemplateBinding ScrollBarsColor}"
+                                              IncreaseButtonForeground="{TemplateBinding ScrollBarsColor}"
+                                              DecreaseButtonForeground="{TemplateBinding ScrollBarsColor}"
+                                              DecreaseButtonContent="{TemplateBinding LeftButtonContent}"
+                                              IncreaseButtonContent="{TemplateBinding RightButtonContent}"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              Orientation="Horizontal"/>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="PlaceScrollBarsInside" Value="True">
+                            <Setter TargetName="PART_Border" Property="Grid.RowSpan" Value="2"/>
+                            <Setter TargetName="PART_Border" Property="Grid.ColumnSpan" Value="2"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

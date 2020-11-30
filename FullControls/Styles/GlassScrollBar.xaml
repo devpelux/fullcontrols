@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FullControls">
+
+    <Style TargetType="{x:Type local:GlassScrollBar}" BasedOn="{StaticResource {x:Type ScrollBar}}">
+        <Style.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml"/>
+                    <ResourceDictionary Source="/FullControls;component/Resources/GenericResources.xaml"/>
+                    <ResourceDictionary Source="/FullControls;component/Styles/Core/GlassScrollBarResources.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Style.Resources>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Vertical">
+                <Setter Property="MinWidth" Value="0"/>
+                <Setter Property="Height" Value="Auto"/>
+                <Setter Property="Width" Value="{Binding Thickness, RelativeSource={RelativeSource Self}}"/>
+                <Setter Property="Template" Value="{DynamicResource VerticalGlassScrollbar}"/>
+            </Trigger>
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="MinHeight" Value="0"/>
+                <Setter Property="Height" Value="{Binding Thickness, RelativeSource={RelativeSource Self}}"/>
+                <Setter Property="Width" Value="Auto"/>
+                <Setter Property="Template" Value="{DynamicResource HorizontalGlassScrollbar}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
