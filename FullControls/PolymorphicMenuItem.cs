@@ -173,6 +173,21 @@ namespace FullControls
             DependencyProperty.Register(nameof(PopupBackground), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
+        /// Padding of the popup.
+        /// </summary>
+        public Thickness PopupPadding
+        {
+            get => (Thickness)GetValue(PopupPaddingProperty);
+            set => SetValue(PopupPaddingProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupPadding"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PopupPaddingProperty =
+            DependencyProperty.Register(nameof(PopupPadding), typeof(Thickness), typeof(PolymorphicMenuItem));
+
+        /// <summary>
         /// Animation type of the popup.
         /// </summary>
         public PopupAnimation PopupAnimation

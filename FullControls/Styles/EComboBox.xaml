@@ -50,6 +50,7 @@
         <Setter Property="PopupBackground" Value="{DynamicResource Gray1}"/>
         <Setter Property="PopupBorderBrush" Value="{DynamicResource Gray7}"/>
         <Setter Property="PopupBorderThickness" Value="1"/>
+        <Setter Property="PopupPadding" Value="1"/>
         <Setter Property="PopupAnimation" Value="Slide"/>
         <Setter Property="EnablePopupShadow" Value="True"/>
         <Setter Property="MaxDropDownHeight" Value="152"/>
@@ -145,6 +146,7 @@
                                Focusable="False">
                             <Border x:Name="PART_PopupBorder"
                                     Margin="0,0,5,5"
+                                    Padding="{TemplateBinding PopupPadding}"
                                     Background="{TemplateBinding PopupBackground}"
                                     BorderBrush="{TemplateBinding PopupBorderBrush}"
                                     BorderThickness="{TemplateBinding PopupBorderThickness}"

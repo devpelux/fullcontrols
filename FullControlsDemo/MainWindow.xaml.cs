@@ -23,5 +23,10 @@ namespace FullControlsDemo
         {
             textbox.Text = $"{c++}";
         }
+
+        private void PasswordboxClear_Click(object sender, RoutedEventArgs e)
+        {
+            passwordbox.Clear();
+        }
     }
 }

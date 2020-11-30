@@ -30,6 +30,7 @@
         <Setter Property="PopupBackground" Value="{DynamicResource Gray1}"/>
         <Setter Property="PopupBorderBrush" Value="{DynamicResource Gray7}"/>
         <Setter Property="PopupBorderThickness" Value="1"/>
+        <Setter Property="PopupPadding" Value="3,2,3,2"/>
         <Setter Property="PopupAnimation" Value="Fade"/>
         <Setter Property="EnablePopupShadow" Value="True"/>
         <Setter Property="CheckColor" Value="Black"/>
