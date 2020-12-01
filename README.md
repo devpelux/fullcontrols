@@ -4,12 +4,17 @@
 Set of controls that update standard controls to be fully customizable.  
 
 ### Controls included:  
-+ FullButton  
-+ FullComboBox  
-+ FullComboBoxItem  
-+ FullPasswordBox  
-+ FullTextBox  
-+ FullToggleButton  
++ EButton  
++ EComboBox  
++ EComboBoxItem  
++ EPasswordBox  
++ ETextBox  
++ EToggleButton  
++ ERepeatButton  
++ EWindow  
++ GlassScrollBar  
++ GlassScrollViewer  
++ PolymorphicMenuItem  
 
 **Complete description and documentation here:**  
 Repository wiki: [https://github.com/devpelux/fullcontrols/wiki](https://github.com/devpelux/fullcontrols/wiki)
@@ -24,7 +29,7 @@ Repository wiki: [https://github.com/devpelux/fullcontrols/wiki](https://github.
     </td>
     <td align="center">
       <a href="https://www.nuget.org/packages/FullControls">
-        <b>FullControls 1.0.2</b>
+        <b>FullControls 1.1.0</b>
       </a>
     </td>
   </tr>
