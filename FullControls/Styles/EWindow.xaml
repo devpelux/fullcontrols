@@ -44,11 +44,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:EWindow}">
                     <Grid x:Name="PART_Window">
-                        <Border x:Name="PART_Border"
+                        <Border x:Name="PART_ShadowBorder"
+                                BorderThickness="1"
                                 Margin="{TemplateBinding BorderMargin}"
                                 Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                             <Border.Effect>
@@ -58,6 +57,14 @@
                                                   Opacity="{Binding ShadowOpacity, RelativeSource={RelativeSource TemplatedParent}}"
                                                   ShadowDepth="{Binding ShadowDepth, RelativeSource={RelativeSource TemplatedParent}}"/>
                             </Border.Effect>
+                        </Border>
+                        <Border x:Name="PART_Border"
+                                Margin="{TemplateBinding BorderMargin}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                             <Grid x:Name="PART_WindowParts">
                                 <Grid.Clip>
                                     <MultiBinding Converter="{StaticResource ClipConverter}">
@@ -130,67 +137,67 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <local:EButton x:Name="PART_MinimizeButton"
-                                                          Grid.Column="0"
-                                                          Width="32"
-                                                          Height="32"
-                                                          BorderThickness="0"
-                                                          Background="{TemplateBinding ForeColor}"
-                                                          BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
-                                                          BackgroundOnPressed="{TemplateBinding ForeColorOnPressed}"
-                                                          Foreground="{TemplateBinding Foreground}"
-                                                          ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
-                                                          ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
-                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                          Content="&#xE949;"
-                                                          FontFamily="Segoe MDL2 Assets"
-                                                          FontSize="10"/>
+                                                       Grid.Column="0"
+                                                       Width="32"
+                                                       Height="32"
+                                                       BorderThickness="0"
+                                                       Background="{TemplateBinding ForeColor}"
+                                                       BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
+                                                       BackgroundOnPressed="{TemplateBinding ForeColorOnPressed}"
+                                                       Foreground="{TemplateBinding Foreground}"
+                                                       ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
+                                                       ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
+                                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                       Content="&#xE949;"
+                                                       FontFamily="Segoe MDL2 Assets"
+                                                       FontSize="10"/>
                                         <local:EButton x:Name="PART_MaximizeButton"
-                                                          Grid.Column="1"
-                                                          Width="32"
-                                                          Height="32"
-                                                          BorderThickness="0"
-                                                          Background="{TemplateBinding ForeColor}"
-                                                          BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
-                                                          BackgroundOnPressed="{TemplateBinding ForeColorOnPressed}"
-                                                          Foreground="{TemplateBinding Foreground}"
-                                                          ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
-                                                          ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
-                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                          Content="&#xE739;"
-                                                          FontFamily="Segoe MDL2 Assets"
-                                                          FontSize="10"
-                                                          Visibility="Visible"/>
+                                                       Grid.Column="1"
+                                                       Width="32"
+                                                       Height="32"
+                                                       BorderThickness="0"
+                                                       Background="{TemplateBinding ForeColor}"
+                                                       BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
+                                                       BackgroundOnPressed="{TemplateBinding ForeColorOnPressed}"
+                                                       Foreground="{TemplateBinding Foreground}"
+                                                       ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
+                                                       ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
+                                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                       Content="&#xE739;"
+                                                       FontFamily="Segoe MDL2 Assets"
+                                                       FontSize="10"
+                                                       Visibility="Visible"/>
                                         <local:EButton x:Name="PART_RestoreButton"
-                                                          Grid.Column="1"
-                                                          Width="32"
-                                                          Height="32"
-                                                          BorderThickness="0"
-                                                          Background="{TemplateBinding ForeColor}"
-                                                          BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
-                                                          BackgroundOnPressed="{TemplateBinding ForeColorOnPressed}"
-                                                          Foreground="{TemplateBinding Foreground}"
-                                                          ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
-                                                          ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
-                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                          Content="&#xE923;"
-                                                          FontFamily="Segoe MDL2 Assets"
-                                                          FontSize="10"
-                                                          Visibility="Collapsed"/>
+                                                       Grid.Column="1"
+                                                       Width="32"
+                                                       Height="32"
+                                                       BorderThickness="0"
+                                                       Background="{TemplateBinding ForeColor}"
+                                                       BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
+                                                       BackgroundOnPressed="{TemplateBinding ForeColorOnPressed}"
+                                                       Foreground="{TemplateBinding Foreground}"
+                                                       ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
+                                                       ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
+                                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                       Content="&#xE923;"
+                                                       FontFamily="Segoe MDL2 Assets"
+                                                       FontSize="10"
+                                                       Visibility="Collapsed"/>
                                         <local:EButton x:Name="PART_CloseButton"
-                                                          Grid.Column="2"
-                                                          Width="32"
-                                                          Height="32"
-                                                          BorderThickness="0"
-                                                          Background="{TemplateBinding ForeColor}"
-                                                          BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
-                                                          BackgroundOnPressed="Red"
-                                                          Foreground="{TemplateBinding Foreground}"
-                                                          ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
-                                                          ForegroundOnPressed="White"
-                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                          Content="&#xE106;"
-                                                          FontFamily="Segoe MDL2 Assets"
-                                                          FontSize="10"/>
+                                                       Grid.Column="2"
+                                                       Width="32"
+                                                       Height="32"
+                                                       BorderThickness="0"
+                                                       Background="{TemplateBinding ForeColor}"
+                                                       BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
+                                                       BackgroundOnPressed="Red"
+                                                       Foreground="{TemplateBinding Foreground}"
+                                                       ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
+                                                       ForegroundOnPressed="White"
+                                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                       Content="&#xE106;"
+                                                       FontFamily="Segoe MDL2 Assets"
+                                                       FontSize="10"/>
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -199,7 +206,7 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="WindowState" Value="Maximized">
-                            <Setter TargetName="PART_Border" Property="Effect" Value="{x:Null}"/>
+                            <Setter TargetName="PART_ShadowBorder" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_Border" Property="Margin" Value="0"/>
                             <Setter TargetName="PART_Border" Property="CornerRadius" Value="0"/>
                             <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed"/>

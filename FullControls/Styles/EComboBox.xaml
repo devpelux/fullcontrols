@@ -144,30 +144,38 @@
                                Placement="Bottom"
                                AllowsTransparency="True"
                                Focusable="False">
-                            <Border x:Name="PART_PopupBorder"
-                                    Margin="0,0,5,5"
-                                    Padding="{TemplateBinding PopupPadding}"
-                                    Background="{TemplateBinding PopupBackground}"
-                                    BorderBrush="{TemplateBinding PopupBorderBrush}"
-                                    BorderThickness="{TemplateBinding PopupBorderThickness}"
-                                    MinWidth="{TemplateBinding ActualWidth}"
-                                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                                <Border.Effect>
-                                    <DropShadowEffect x:Name="PART_Shadow"
-                                                      BlurRadius="5"
-                                                      Color="Black"
-                                                      Opacity="0.4"
-                                                      ShadowDepth="2.5"/>
-                                </Border.Effect>
-                                <local:GlassScrollViewer x:Name="PART_PopupScrollViewer"
-                                                         Style="{TemplateBinding ScrollViewerStyle}"
-                                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                                    <ItemsPresenter x:Name="PART_PopupItemsPresenter"
-                                                    KeyboardNavigation.DirectionalNavigation="Contained"
-                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                </local:GlassScrollViewer>
-                            </Border>
+                            <Grid>
+                                <Border x:Name="PART_ShadowBorder"
+                                        Margin="1,1,5,5"
+                                        BorderThickness="1"
+                                        Background="{TemplateBinding PopupBackground}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                    <Border.Effect>
+                                        <DropShadowEffect x:Name="PART_Shadow"
+                                                          BlurRadius="5"
+                                                          Color="Black"
+                                                          Opacity="0.5"
+                                                          ShadowDepth="2.5"/>
+                                    </Border.Effect>
+                                </Border>
+                                <Border x:Name="PART_PopupBorder"
+                                        Margin="0,0,5,5"
+                                        Padding="{TemplateBinding PopupPadding}"
+                                        Background="{TemplateBinding PopupBackground}"
+                                        BorderBrush="{TemplateBinding PopupBorderBrush}"
+                                        BorderThickness="{TemplateBinding PopupBorderThickness}"
+                                        MinWidth="{TemplateBinding ActualWidth}"
+                                        MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                    <local:GlassScrollViewer x:Name="PART_PopupScrollViewer"
+                                                             Style="{TemplateBinding ScrollViewerStyle}"
+                                                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                        <ItemsPresenter x:Name="PART_PopupItemsPresenter"
+                                                        KeyboardNavigation.DirectionalNavigation="Contained"
+                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    </local:GlassScrollViewer>
+                                </Border>
+                            </Grid>
                         </Popup>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -182,7 +190,7 @@
                             <Setter TargetName="PART_ContentSite" Property="Visibility" Value="Hidden"/>
                         </Trigger>
                         <Trigger Property="EnablePopupShadow" Value="False">
-                            <Setter TargetName="PART_PopupBorder" Property="Effect" Value="{x:Null}"/>
+                            <Setter TargetName="PART_ShadowBorder" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_PopupBorder" Property="Margin" Value="0"/>
                         </Trigger>
                     </ControlTemplate.Triggers>

@@ -8,39 +8,60 @@ using System.Windows.Media;
 
 namespace FullControls
 {
+    /// <summary>
+    /// Represents a selectable item inside a <see cref="Menu"/>.
+    /// </summary>
     public class PolymorphicMenuItem : MenuItem
     {
         private bool loaded = false;
 
+        /// <summary>
+        /// Background color when the item is highlighted.
+        /// </summary>
         public Brush BackgroundOnHighlight
         {
             get => (Brush)GetValue(BackgroundOnHighlightProperty);
             set => SetValue(BackgroundOnHighlightProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="BackgroundOnHighlight"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty BackgroundOnHighlightProperty =
             DependencyProperty.Register(nameof(BackgroundOnHighlight), typeof(Brush), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Background color when the item has subitems and the popup is open.
+        /// </summary>
         public Brush BackgroundOnOpen
         {
             get => (Brush)GetValue(BackgroundOnOpenProperty);
             set => SetValue(BackgroundOnOpenProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="BackgroundOnOpen"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty BackgroundOnOpenProperty =
             DependencyProperty.Register(nameof(BackgroundOnOpen), typeof(Brush), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Background color when the item is disabled.
+        /// </summary>
         public Brush BackgroundOnDisabled
         {
             get => (Brush)GetValue(BackgroundOnDisabledProperty);
             set => SetValue(BackgroundOnDisabledProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="BackgroundOnDisabled"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty BackgroundOnDisabledProperty =
             DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
-        /// Actual Background color of the control.
+        /// Actual Background color of the item.
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
@@ -51,35 +72,53 @@ namespace FullControls
             DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(PolymorphicMenuItem),
                 new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((PolymorphicMenuItem)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
+        /// <summary>
+        /// BorderBrush color when the item is highlighted.
+        /// </summary>
         public Brush BorderBrushOnHighlight
         {
             get => (Brush)GetValue(BorderBrushOnHighlightProperty);
             set => SetValue(BorderBrushOnHighlightProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="BorderBrushOnHighlight"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty BorderBrushOnHighlightProperty =
             DependencyProperty.Register(nameof(BorderBrushOnHighlight), typeof(Brush), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// BorderBrush color when the item has subitems and the popup is open.
+        /// </summary>
         public Brush BorderBrushOnOpen
         {
             get => (Brush)GetValue(BorderBrushOnOpenProperty);
             set => SetValue(BorderBrushOnOpenProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="BorderBrushOnOpen"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty BorderBrushOnOpenProperty =
             DependencyProperty.Register(nameof(BorderBrushOnOpen), typeof(Brush), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// BorderBrush color when the item is disabled.
+        /// </summary>
         public Brush BorderBrushOnDisabled
         {
             get => (Brush)GetValue(BorderBrushOnDisabledProperty);
             set => SetValue(BorderBrushOnDisabledProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="BorderBrushOnDisabled"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty BorderBrushOnDisabledProperty =
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
-        /// Actual BorderBrush color of the control.
+        /// Actual BorderBrush color of the item.
         /// </summary>
         public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
@@ -89,35 +128,53 @@ namespace FullControls
         public static readonly DependencyProperty ActualBorderBrushProperty =
             DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Foreground color when the item is highlighted.
+        /// </summary>
         public Brush ForegroundOnHighlight
         {
             get => (Brush)GetValue(ForegroundOnHighlightProperty);
             set => SetValue(ForegroundOnHighlightProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="ForegroundOnHighlight"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty ForegroundOnHighlightProperty =
             DependencyProperty.Register(nameof(ForegroundOnHighlight), typeof(Brush), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Foreground color when the item has subitems and the popup is open.
+        /// </summary>
         public Brush ForegroundOnOpen
         {
             get => (Brush)GetValue(ForegroundOnOpenProperty);
             set => SetValue(ForegroundOnOpenProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="ForegroundOnOpen"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty ForegroundOnOpenProperty =
             DependencyProperty.Register(nameof(ForegroundOnOpen), typeof(Brush), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Foreground color when the item is disabled.
+        /// </summary>
         public Brush ForegroundOnDisabled
         {
             get => (Brush)GetValue(ForegroundOnDisabledProperty);
             set => SetValue(ForegroundOnDisabledProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="ForegroundOnDisabled"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty ForegroundOnDisabledProperty =
             DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
-        /// Actual Foreground color of the control.
+        /// Actual Foreground color of the item.
         /// </summary>
         public Brush ActualForeground => (Brush)GetValue(ActualForegroundProperty);
 
@@ -217,57 +274,93 @@ namespace FullControls
         public static readonly DependencyProperty EnablePopupShadowProperty =
             DependencyProperty.Register(nameof(EnablePopupShadow), typeof(bool), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Max height of the popup (if the height is higher, a <see cref="ScrollViewer"/> is used).
+        /// </summary>
         public double MaxDropDownHeight
         {
             get => (double)GetValue(MaxDropDownHeightProperty);
             set => SetValue(MaxDropDownHeightProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="MaxDropDownHeight"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty MaxDropDownHeightProperty =
             DependencyProperty.Register(nameof(MaxDropDownHeight), typeof(double), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Color of the check icon.
+        /// </summary>
         public Brush CheckColor
         {
             get => (Brush)GetValue(CheckColorProperty);
             set => SetValue(CheckColorProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="CheckColor"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty CheckColorProperty =
             DependencyProperty.Register(nameof(CheckColor), typeof(Brush), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Content of the icon displayed if <see cref="MenuItem.IsCheckable"/> is true and <see cref="MenuItem.IsChecked"/> is true.
+        /// </summary>
         public object CheckMark
         {
             get => GetValue(CheckMarkProperty);
             set => SetValue(CheckMarkProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="CheckMark"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty CheckMarkProperty =
             DependencyProperty.Register(nameof(CheckMark), typeof(object), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Size of the check icon.
+        /// </summary>
         public double CheckSize
         {
             get => (double)GetValue(CheckSizeProperty);
             set => SetValue(CheckSizeProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="CheckSize"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty CheckSizeProperty =
             DependencyProperty.Register(nameof(CheckSize), typeof(double), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Content of the arrow displayed if the item has subitems.
+        /// </summary>
         public object Arrow
         {
             get => GetValue(ArrowProperty);
             set => SetValue(ArrowProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="Arrow"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty ArrowProperty =
             DependencyProperty.Register(nameof(Arrow), typeof(object), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Size of the arrow.
+        /// </summary>
         public double ArrowSize
         {
             get => (double)GetValue(ArrowSizeProperty);
             set => SetValue(ArrowSizeProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="ArrowSize"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty ArrowSizeProperty =
             DependencyProperty.Register(nameof(ArrowSize), typeof(double), typeof(PolymorphicMenuItem));
 
@@ -286,44 +379,68 @@ namespace FullControls
         public static readonly DependencyProperty ArrowFontProperty =
             DependencyProperty.Register(nameof(ArrowFont), typeof(FontFamily), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Margin of the icon.
+        /// </summary>
         public Thickness IconMargin
         {
             get => (Thickness)GetValue(IconMarginProperty);
             set => SetValue(IconMarginProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="IconMargin"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty IconMarginProperty =
             DependencyProperty.Register(nameof(IconMargin), typeof(Thickness), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Margin of the shortcut hint.
+        /// </summary>
         public Thickness InputGestureMargin
         {
             get => (Thickness)GetValue(InputGestureMarginProperty);
             set => SetValue(InputGestureMarginProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="InputGestureMargin"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty InputGestureMarginProperty =
             DependencyProperty.Register(nameof(InputGestureMargin), typeof(Thickness), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Enables automatic adjustement of margins between all items in the same popup.
+        /// </summary>
         public bool AutoMargin
         {
             get => (bool)GetValue(AutoMarginProperty);
             set => SetValue(AutoMarginProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="AutoMargin"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty AutoMarginProperty =
             DependencyProperty.Register(nameof(AutoMargin), typeof(bool), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Style of the <see cref="ScrollViewer"/>.
+        /// </summary>
         public Style ScrollViewerStyle
         {
             get => (Style)GetValue(ScrollViewerStyleProperty);
             set => SetValue(ScrollViewerStyleProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="ScrollViewerStyle"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty ScrollViewerStyleProperty =
             DependencyProperty.Register(nameof(ScrollViewerStyle), typeof(Style), typeof(PolymorphicMenuItem));
 
         /// <summary>
-        /// Duration of the control animation when it changes state.
+        /// Duration of the item animation when it changes state.
         /// </summary>
         public TimeSpan AnimationTime
         {
@@ -337,16 +454,25 @@ namespace FullControls
         public static readonly DependencyProperty AnimationTimeProperty =
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(PolymorphicMenuItem));
 
+        /// <summary>
+        /// Type of the item.
+        /// </summary>
         public ItemType ItemType
         {
             get => (ItemType)GetValue(ItemTypeProperty);
             set => SetValue(ItemTypeProperty, value);
         }
 
+        /// <summary>
+        /// Identifies the <see cref="ItemType"/> dependency property.
+        /// </summary>
         public static readonly DependencyProperty ItemTypeProperty =
             DependencyProperty.Register(nameof(ItemType), typeof(ItemType), typeof(PolymorphicMenuItem));
 
 
+        /// <summary>
+        /// Creates a new <see cref="PolymorphicMenuItem"/>.
+        /// </summary>
         static PolymorphicMenuItem()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(PolymorphicMenuItem), new FrameworkPropertyMetadata(typeof(PolymorphicMenuItem)));
@@ -356,6 +482,9 @@ namespace FullControls
                 new PropertyChangedCallback((d, e) => ((PolymorphicMenuItem)d).OnSubmenuOpenChanged((bool)e.NewValue))));
         }
 
+        /// <summary>
+        /// Creates a new <see cref="PolymorphicMenuItem"/>.
+        /// </summary>
         public PolymorphicMenuItem()
         {
             DependencyPropertyDescriptor.FromProperty(IsHighlightedProperty, typeof(PolymorphicMenuItem))
