@@ -29,13 +29,15 @@
         <Setter Property="ToolbarHitZoneMargin" Value="0"/>
         <Setter Property="MergeToolbarAndContent" Value="False"/>
         <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="ToolbarHitZoneBackground" Value="Transparent"/>
         <Setter Property="ToolbarBackground" Value="White"/>
-        <Setter Property="ForeColor" Value="White"/>
-        <Setter Property="ForeColorOnMouseOver" Value="{DynamicResource Gray4}"/>
-        <Setter Property="ForeColorOnPressed" Value="{DynamicResource Gray5}"/>
-        <Setter Property="ForegroundOnMouseOver" Value="Black"/>
-        <Setter Property="ForegroundOnPressed" Value="White"/>
+        <Setter Property="CaptionButtonsBackground" Value="White"/>
+        <Setter Property="CaptionButtonsBackgroundOnMouseOver" Value="{DynamicResource Gray4}"/>
+        <Setter Property="CaptionButtonsBackgroundOnPressed" Value="{DynamicResource Gray5}"/>
+        <Setter Property="CaptionButtonsForeground" Value="Black"/>
+        <Setter Property="CaptionButtonsForegroundOnMouseOver" Value="Black"/>
+        <Setter Property="CaptionButtonsForegroundOnPressed" Value="White"/>
         <Setter Property="ToolbarMenu" Value="{x:Null}"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="SnapsToDevicePixels" Value="true"/>
@@ -141,12 +143,12 @@
                                                        Width="32"
                                                        Height="32"
                                                        BorderThickness="0"
-                                                       Background="{TemplateBinding ForeColor}"
-                                                       BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
-                                                       BackgroundOnPressed="{TemplateBinding ForeColorOnPressed}"
-                                                       Foreground="{TemplateBinding Foreground}"
-                                                       ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
-                                                       ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
+                                                       Background="{TemplateBinding CaptionButtonsBackground}"
+                                                       BackgroundOnMouseOver="{TemplateBinding CaptionButtonsBackgroundOnMouseOver}"
+                                                       BackgroundOnPressed="{TemplateBinding CaptionButtonsBackgroundOnPressed}"
+                                                       Foreground="{TemplateBinding CaptionButtonsForeground}"
+                                                       ForegroundOnMouseOver="{TemplateBinding CaptionButtonsForegroundOnMouseOver}"
+                                                       ForegroundOnPressed="{TemplateBinding CaptionButtonsForegroundOnPressed}"
                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                                        Content="&#xE949;"
                                                        FontFamily="Segoe MDL2 Assets"
@@ -156,12 +158,12 @@
                                                        Width="32"
                                                        Height="32"
                                                        BorderThickness="0"
-                                                       Background="{TemplateBinding ForeColor}"
-                                                       BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
-                                                       BackgroundOnPressed="{TemplateBinding ForeColorOnPressed}"
-                                                       Foreground="{TemplateBinding Foreground}"
-                                                       ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
-                                                       ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
+                                                       Background="{TemplateBinding CaptionButtonsBackground}"
+                                                       BackgroundOnMouseOver="{TemplateBinding CaptionButtonsBackgroundOnMouseOver}"
+                                                       BackgroundOnPressed="{TemplateBinding CaptionButtonsBackgroundOnPressed}"
+                                                       Foreground="{TemplateBinding CaptionButtonsForeground}"
+                                                       ForegroundOnMouseOver="{TemplateBinding CaptionButtonsForegroundOnMouseOver}"
+                                                       ForegroundOnPressed="{TemplateBinding CaptionButtonsForegroundOnPressed}"
                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                                        Content="&#xE739;"
                                                        FontFamily="Segoe MDL2 Assets"
@@ -172,12 +174,12 @@
                                                        Width="32"
                                                        Height="32"
                                                        BorderThickness="0"
-                                                       Background="{TemplateBinding ForeColor}"
-                                                       BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
-                                                       BackgroundOnPressed="{TemplateBinding ForeColorOnPressed}"
-                                                       Foreground="{TemplateBinding Foreground}"
-                                                       ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
-                                                       ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
+                                                       Background="{TemplateBinding CaptionButtonsBackground}"
+                                                       BackgroundOnMouseOver="{TemplateBinding CaptionButtonsBackgroundOnMouseOver}"
+                                                       BackgroundOnPressed="{TemplateBinding CaptionButtonsBackgroundOnPressed}"
+                                                       Foreground="{TemplateBinding CaptionButtonsForeground}"
+                                                       ForegroundOnMouseOver="{TemplateBinding CaptionButtonsForegroundOnMouseOver}"
+                                                       ForegroundOnPressed="{TemplateBinding CaptionButtonsForegroundOnPressed}"
                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                                        Content="&#xE923;"
                                                        FontFamily="Segoe MDL2 Assets"
@@ -188,11 +190,11 @@
                                                        Width="32"
                                                        Height="32"
                                                        BorderThickness="0"
-                                                       Background="{TemplateBinding ForeColor}"
-                                                       BackgroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
+                                                       Background="{TemplateBinding CaptionButtonsBackground}"
+                                                       BackgroundOnMouseOver="{TemplateBinding CaptionButtonsBackgroundOnMouseOver}"
                                                        BackgroundOnPressed="Red"
-                                                       Foreground="{TemplateBinding Foreground}"
-                                                       ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
+                                                       Foreground="{TemplateBinding CaptionButtonsForeground}"
+                                                       ForegroundOnMouseOver="{TemplateBinding CaptionButtonsForegroundOnMouseOver}"
                                                        ForegroundOnPressed="White"
                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                                        Content="&#xE106;"

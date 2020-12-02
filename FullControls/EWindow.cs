@@ -176,7 +176,7 @@ namespace FullControls
         /// <para>Merge the toolbar with the content.</para>
         /// <para>The toolbar becomes transparent and is displayed above the content.</para>
         /// <para>Suggestion 1: Use <see cref="ToolbarHitZoneMargin"/> to resize the clickable part if you want insert a menu in the toolbar.</para>
-        /// <para>Suggestion 2: Customize the colors of the buttons.</para>
+        /// <para>Suggestion 2: Customize the colors of the caption buttons.</para>
         /// </summary>
         public bool MergeToolbarAndContent
         {
@@ -252,79 +252,94 @@ namespace FullControls
             DependencyProperty.Register(nameof(ToolbarBackground), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Background color of the buttons.
+        /// Background color of the caption buttons.
         /// </summary>
-        public Brush ForeColor
+        public Brush CaptionButtonsBackground
         {
-            get => (Brush)GetValue(ForeColorProperty);
-            set => SetValue(ForeColorProperty, value);
+            get => (Brush)GetValue(CaptionButtonsBackgroundProperty);
+            set => SetValue(CaptionButtonsBackgroundProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ForeColor"/> dependency property.
+        /// Identifies the <see cref="CaptionButtonsBackground"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ForeColorProperty =
-            DependencyProperty.Register(nameof(ForeColor), typeof(Brush), typeof(EWindow));
+        public static readonly DependencyProperty CaptionButtonsBackgroundProperty =
+            DependencyProperty.Register(nameof(CaptionButtonsBackground), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Background color of the buttons when the mouse is over them.
+        /// Background color of the caption buttons when the mouse is over them.
         /// </summary>
-        public Brush ForeColorOnMouseOver
+        public Brush CaptionButtonsBackgroundOnMouseOver
         {
-            get => (Brush)GetValue(ForeColorOnMouseOverProperty);
-            set => SetValue(ForeColorOnMouseOverProperty, value);
+            get => (Brush)GetValue(CaptionButtonsBackgroundOnMouseOverProperty);
+            set => SetValue(CaptionButtonsBackgroundOnMouseOverProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ForeColorOnMouseOver"/> dependency property.
+        /// Identifies the <see cref="CaptionButtonsBackgroundOnMouseOver"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ForeColorOnMouseOverProperty =
-            DependencyProperty.Register(nameof(ForeColorOnMouseOver), typeof(Brush), typeof(EWindow));
+        public static readonly DependencyProperty CaptionButtonsBackgroundOnMouseOverProperty =
+            DependencyProperty.Register(nameof(CaptionButtonsBackgroundOnMouseOver), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Background color of the buttons when they are pressed.
+        /// Background color of the caption buttons when they are pressed.
         /// </summary>
-        public Brush ForeColorOnPressed
+        public Brush CaptionButtonsBackgroundOnPressed
         {
-            get => (Brush)GetValue(ForeColorOnPressedProperty);
-            set => SetValue(ForeColorOnPressedProperty, value);
+            get => (Brush)GetValue(CaptionButtonsBackgroundOnPressedProperty);
+            set => SetValue(CaptionButtonsBackgroundOnPressedProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ForeColorOnPressed"/> dependency property.
+        /// Identifies the <see cref="CaptionButtonsBackgroundOnPressed"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ForeColorOnPressedProperty =
-            DependencyProperty.Register(nameof(ForeColorOnPressed), typeof(Brush), typeof(EWindow));
+        public static readonly DependencyProperty CaptionButtonsBackgroundOnPressedProperty =
+            DependencyProperty.Register(nameof(CaptionButtonsBackgroundOnPressed), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Foreground color of the buttons when the mouse is over them.
+        /// Foreground color of the caption buttons.
         /// </summary>
-        public Brush ForegroundOnMouseOver
+        public Brush CaptionButtonsForeground
         {
-            get => (Brush)GetValue(ForegroundOnMouseOverProperty);
-            set => SetValue(ForegroundOnMouseOverProperty, value);
+            get => (Brush)GetValue(CaptionButtonsForegroundProperty);
+            set => SetValue(CaptionButtonsForegroundProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ForegroundOnMouseOver"/> dependency property.
+        /// Identifies the <see cref="CaptionButtonsForeground"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ForegroundOnMouseOverProperty =
-            DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(EWindow));
+        public static readonly DependencyProperty CaptionButtonsForegroundProperty =
+            DependencyProperty.Register(nameof(CaptionButtonsForeground), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Foreground color of the buttons when they are pressed.
+        /// Foreground color of the caption buttons when the mouse is over them.
         /// </summary>
-        public Brush ForegroundOnPressed
+        public Brush CaptionButtonsForegroundOnMouseOver
         {
-            get => (Brush)GetValue(ForegroundOnPressedProperty);
-            set => SetValue(ForegroundOnPressedProperty, value);
+            get => (Brush)GetValue(CaptionButtonsForegroundOnMouseOverProperty);
+            set => SetValue(CaptionButtonsForegroundOnMouseOverProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ForegroundOnPressed"/> dependency property.
+        /// Identifies the <see cref="CaptionButtonsForegroundOnMouseOver"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ForegroundOnPressedProperty =
-            DependencyProperty.Register(nameof(ForegroundOnPressed), typeof(Brush), typeof(EWindow));
+        public static readonly DependencyProperty CaptionButtonsForegroundOnMouseOverProperty =
+            DependencyProperty.Register(nameof(CaptionButtonsForegroundOnMouseOver), typeof(Brush), typeof(EWindow));
+
+        /// <summary>
+        /// Foreground color of the caption buttons when they are pressed.
+        /// </summary>
+        public Brush CaptionButtonsForegroundOnPressed
+        {
+            get => (Brush)GetValue(CaptionButtonsForegroundOnPressedProperty);
+            set => SetValue(CaptionButtonsForegroundOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CaptionButtonsForegroundOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CaptionButtonsForegroundOnPressedProperty =
+            DependencyProperty.Register(nameof(CaptionButtonsForegroundOnPressed), typeof(Brush), typeof(EWindow));
 
         /// <summary>
         /// The menu that is shown at right click on toolbar.
