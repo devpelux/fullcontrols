@@ -356,6 +356,21 @@ namespace FullControls
         public static readonly DependencyProperty AnimationTimeProperty =
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EWindow));
 
+        /// <summary>
+        /// Fix the height of the window to be the same as in designer of Visual Studio.
+        /// </summary>
+        public bool FixVSDesigner
+        {
+            get => (bool)GetValue(FixVSDesignerProperty);
+            set => SetValue(FixVSDesignerProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="FixVSDesigner"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty FixVSDesignerProperty =
+            DependencyProperty.Register(nameof(FixVSDesigner), typeof(bool), typeof(EWindow), new PropertyMetadata(false));
+
 
         /// <summary>
         /// Creates a new <see cref="EWindow"/>.
@@ -383,6 +398,7 @@ namespace FullControls
             ((Grid)Template.FindName("PART_ToolbarHitZone", this)).MouseLeftButtonDown += PART_ToolbarHitZone_MouseLeftButtonDown;
             ((Grid)Template.FindName("PART_ToolbarHitZone", this)).MouseRightButtonDown += PART_ToolbarHitZone_MouseRightButtonDown;
             ((Grid)Template.FindName("PART_Icon", this)).MouseDown += PART_Icon_MouseDown;
+            if (FixVSDesigner && !MergeToolbarAndContent) Height += 32;
         }
 
         /// <summary>
