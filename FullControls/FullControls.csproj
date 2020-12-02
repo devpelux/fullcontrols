@@ -23,20 +23,16 @@ Controls included:
 A full description of the controls can be found on the github repository.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>Controls, Custom, Full, TextBox, PasswordBox, ComboBox, Button, ToggleButton, RepeatButton, ScrollViewer, ScrollBar, MenuItem, Window</PackageTags>
-    <PackageReleaseNotes>Added EWindow, ERepeatButton, GlassScrollBar, GlassScrollViewer, PolymorphicMenuItem.
-Renamed controls to better naming.
-Added a DropShadowEffect to the ComboBox.
-Now is possible to change the ComboBox arrow.
-Changed ScrollViewer of the ComboBox to GlassScrollViewer, and added possibility to change its style by a ScrollViewerStyle property.
-Corrected the PasswordBox to use custom context menus.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added IDialog and DialogWindow, to display windows as dialogs and return an object as result.
+Added a fix for the height of the window to be the same as in designer of Visual Studio.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <Copyright>Copyright 2020 Salvatore Peluso</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>FullControls.png</PackageIcon>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <Version>1.1.0</Version>
-    <FileVersion>1.1.0.0</FileVersion>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <Version>1.2.0</Version>
+    <FileVersion>1.2.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
