@@ -41,6 +41,7 @@
         <Setter Property="ToolbarMenu" Value="{x:Null}"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="FixVSDesigner" Value="True"/>
 
         <Setter Property="Template">
             <Setter.Value>

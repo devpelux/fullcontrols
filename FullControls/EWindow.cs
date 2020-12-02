@@ -21,6 +21,11 @@ namespace FullControls
         private bool canMove = true;
 
         /// <summary>
+        /// Height of the toolbar.
+        /// </summary>
+        public const double TOOLBAR_HEIGHT = 32;
+
+        /// <summary>
         /// Thickness of the resize border.
         /// </summary>
         public Thickness ResizeThickness
@@ -372,7 +377,8 @@ namespace FullControls
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EWindow));
 
         /// <summary>
-        /// Fix the height of the window to be the same as in designer of Visual Studio.
+        /// <para>Fix the height and the width of the window to be the same as in designer of Visual Studio.</para>
+        /// <para>(Has effect only on initialization)</para>
         /// </summary>
         public bool FixVSDesigner
         {
@@ -413,7 +419,13 @@ namespace FullControls
             ((Grid)Template.FindName("PART_ToolbarHitZone", this)).MouseLeftButtonDown += PART_ToolbarHitZone_MouseLeftButtonDown;
             ((Grid)Template.FindName("PART_ToolbarHitZone", this)).MouseRightButtonDown += PART_ToolbarHitZone_MouseRightButtonDown;
             ((Grid)Template.FindName("PART_Icon", this)).MouseDown += PART_Icon_MouseDown;
-            if (FixVSDesigner && !MergeToolbarAndContent) Height += 32;
+            if (FixVSDesigner)
+            {
+                Height += VSDesignerHeightOffset();
+                Width += VSDesignerWidthOffset();
+                MinHeight += VSDesignerHeightOffset();
+                MinWidth += VSDesignerWidthOffset();
+            }
         }
 
         /// <summary>
@@ -715,5 +727,17 @@ namespace FullControls
         }
 
         #endregion
+
+        /// <summary>
+        /// Offset of height between Visual Stuio designer and reality.
+        /// </summary>
+        /// <returns>Offset of height.</returns>
+        private double VSDesignerHeightOffset() => BorderMargin.Top + BorderMargin.Bottom + (!MergeToolbarAndContent ? TOOLBAR_HEIGHT : 0);
+
+        /// <summary>
+        /// Offset of width between Visual Stuio designer and reality.
+        /// </summary>
+        /// <returns>Offset of width.</returns>
+        private double VSDesignerWidthOffset() => BorderMargin.Left + BorderMargin.Right;
     }
 }

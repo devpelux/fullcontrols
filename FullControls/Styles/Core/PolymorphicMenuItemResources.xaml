@@ -1,73 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls">
-
-    <!-- Separator -->
-    <ControlTemplate x:Key="MenuItemSeparatorTemplateKey" TargetType="{x:Type local:PolymorphicMenuItem}">
-        <Grid x:Name="Grid" Margin="{TemplateBinding Margin}" Grid.IsSharedSizeScope="False">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto">
-                    <ColumnDefinition.Style>
-                        <Style>
-                            <Setter Property="ColumnDefinition.SharedSizeGroup" Value="MenuItemColumnGroupIcon"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding AutoMargin, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
-                                    <Setter Property="ColumnDefinition.SharedSizeGroup" Value="{x:Null}"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </ColumnDefinition.Style>
-                </ColumnDefinition>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Border x:Name="Border"
-                    Grid.Column="1"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    Background="{TemplateBinding Background}"
-                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-        </Grid>
-    </ControlTemplate>
-
-    <!-- Title -->
-    <ControlTemplate x:Key="MenuItemTitleTemplateKey" TargetType="{x:Type local:PolymorphicMenuItem}">
-        <Border x:Name="Border"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                BorderBrush="{TemplateBinding BorderBrush}"
-                Background="{TemplateBinding Background}"
-                Margin="{TemplateBinding Margin}"
-                Padding="{TemplateBinding Padding}"
-                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto">
-                        <ColumnDefinition.Style>
-                            <Style>
-                                <Setter Property="ColumnDefinition.SharedSizeGroup" Value="MenuItemColumnGroupIcon"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding AutoMargin, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
-                                        <Setter Property="ColumnDefinition.SharedSizeGroup" Value="{x:Null}"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ColumnDefinition.Style>
-                    </ColumnDefinition>
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <ContentPresenter x:Name="HeaderHost"
-                                  Grid.Column="1"
-                                  VerticalAlignment="Center"
-                                  ContentSource="Header"
-                                  TextBlock.Foreground="{TemplateBinding ActualForeground}"/>
-            </Grid>
-        </Border>
-    </ControlTemplate>
-
-    <!-- Space -->
-    <ControlTemplate x:Key="MenuItemSpaceTemplateKey" TargetType="{x:Type local:PolymorphicMenuItem}">
-        <Grid/>
-    </ControlTemplate>
-
+    
     <!-- TopLevel Header -->
     <ControlTemplate x:Key="MenuItemTopLevelHeaderTemplateKey" TargetType="{x:Type local:PolymorphicMenuItem}">
         <Border x:Name="Border"
@@ -153,81 +87,6 @@
                                   TextBlock.Foreground="{TemplateBinding ActualForeground}"/>
             </Grid>
         </Border>
-    </ControlTemplate>
-
-    <!-- Submenu Item -->
-    <ControlTemplate x:Key="MenuItemSubmenuItemTemplateKey" TargetType="{x:Type local:PolymorphicMenuItem}">
-        <Border x:Name="Border" 
-                Background="{TemplateBinding ActualBackground}"
-                BorderBrush="{TemplateBinding ActualBorderBrush}"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                Margin="{TemplateBinding Margin}"
-                Padding="{TemplateBinding Padding}"
-                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemColumnGroupIcon" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemColumnGroupShortcut" />
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemColumnGroupArrow" />
-                </Grid.ColumnDefinitions>
-
-                <Grid x:Name="PART_Icon"
-                      Grid.Column="0"
-                      Margin="{TemplateBinding IconMargin}"
-                      Visibility="Visible">
-                    <ContentPresenter x:Name="Icon"
-                                      VerticalAlignment="Center"
-                                      ContentSource="Icon"
-                                      Visibility="Visible"/>
-                    <Grid x:Name="Check"
-                            Visibility="Hidden">
-                        <ContentPresenter x:Name="CheckMark"
-                                          VerticalAlignment="Center"
-                                          Width="{TemplateBinding CheckSize}"
-                                          Height="{TemplateBinding CheckSize}"
-                                          Visibility="Hidden"
-                                          TextBlock.Foreground="{TemplateBinding CheckColor}"
-                                          TextBlock.FontSize="{TemplateBinding CheckSize}"
-                                          TextBlock.FontFamily="{TemplateBinding ArrowFont}"
-                                          ContentSource="CheckMark"/>
-                    </Grid>
-                </Grid>
-
-                <ContentPresenter x:Name="HeaderHost"
-                                  Grid.Column="1"
-                                  VerticalAlignment="Center"
-                                  ContentSource="Header"
-                                  RecognizesAccessKey="True"
-                                  TextBlock.Foreground="{TemplateBinding ActualForeground}"/>
-
-                <TextBlock x:Name="InputGestureText"
-                           Grid.Column="2"
-                           VerticalAlignment="Center"
-                           Text="{TemplateBinding InputGestureText}"
-                           Margin="{TemplateBinding InputGestureMargin}"
-                           DockPanel.Dock="Right"/>
-            </Grid>
-        </Border>
-        <ControlTemplate.Triggers>
-            <Trigger Property="Icon" Value="{x:Null}">
-                <Setter TargetName="Icon" Property="Visibility" Value="Hidden"/>
-            </Trigger>
-            <Trigger Property="IsCheckable" Value="True">
-                <Setter TargetName="Icon" Property="Visibility" Value="Hidden"/>
-                <Setter TargetName="Check" Property="Visibility" Value="Visible"/>
-            </Trigger>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="Icon" Value="{x:Null}"/>
-                    <Condition Property="IsCheckable" Value="False"/>
-                </MultiTrigger.Conditions>
-                <Setter TargetName="PART_Icon" Property="Visibility" Value="Collapsed"/>
-            </MultiTrigger>
-            <Trigger Property="IsChecked" Value="True">
-                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
-            </Trigger>
-        </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <!-- Submenu Header -->
@@ -328,6 +187,147 @@
                 <Setter TargetName="SubmenuBorder" Property="Margin" Value="0"/>
             </Trigger>
         </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!-- Submenu Item -->
+    <ControlTemplate x:Key="MenuItemSubmenuItemTemplateKey" TargetType="{x:Type local:PolymorphicMenuItem}">
+        <Border x:Name="Border" 
+                Background="{TemplateBinding ActualBackground}"
+                BorderBrush="{TemplateBinding ActualBorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Margin="{TemplateBinding Margin}"
+                Padding="{TemplateBinding Padding}"
+                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemColumnGroupIcon" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemColumnGroupShortcut" />
+                    <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemColumnGroupArrow" />
+                </Grid.ColumnDefinitions>
+
+                <Grid x:Name="PART_Icon"
+                      Grid.Column="0"
+                      Margin="{TemplateBinding IconMargin}"
+                      Visibility="Visible">
+                    <ContentPresenter x:Name="Icon"
+                                      VerticalAlignment="Center"
+                                      ContentSource="Icon"
+                                      Visibility="Visible"/>
+                    <Grid x:Name="Check"
+                            Visibility="Hidden">
+                        <ContentPresenter x:Name="CheckMark"
+                                          VerticalAlignment="Center"
+                                          Width="{TemplateBinding CheckSize}"
+                                          Height="{TemplateBinding CheckSize}"
+                                          Visibility="Hidden"
+                                          TextBlock.Foreground="{TemplateBinding CheckColor}"
+                                          TextBlock.FontSize="{TemplateBinding CheckSize}"
+                                          TextBlock.FontFamily="{TemplateBinding ArrowFont}"
+                                          ContentSource="CheckMark"/>
+                    </Grid>
+                </Grid>
+
+                <ContentPresenter x:Name="HeaderHost"
+                                  Grid.Column="1"
+                                  VerticalAlignment="Center"
+                                  ContentSource="Header"
+                                  RecognizesAccessKey="True"
+                                  TextBlock.Foreground="{TemplateBinding ActualForeground}"/>
+
+                <TextBlock x:Name="InputGestureText"
+                           Grid.Column="2"
+                           VerticalAlignment="Center"
+                           Text="{TemplateBinding InputGestureText}"
+                           Margin="{TemplateBinding InputGestureMargin}"
+                           DockPanel.Dock="Right"/>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="Icon" Value="{x:Null}">
+                <Setter TargetName="Icon" Property="Visibility" Value="Hidden"/>
+            </Trigger>
+            <Trigger Property="IsCheckable" Value="True">
+                <Setter TargetName="Icon" Property="Visibility" Value="Hidden"/>
+                <Setter TargetName="Check" Property="Visibility" Value="Visible"/>
+            </Trigger>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Icon" Value="{x:Null}"/>
+                    <Condition Property="IsCheckable" Value="False"/>
+                </MultiTrigger.Conditions>
+                <Setter TargetName="PART_Icon" Property="Visibility" Value="Collapsed"/>
+            </MultiTrigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!-- Separator -->
+    <ControlTemplate x:Key="MenuItemSeparatorTemplateKey" TargetType="{x:Type local:PolymorphicMenuItem}">
+        <Grid x:Name="Grid" Margin="{TemplateBinding Margin}" Grid.IsSharedSizeScope="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto">
+                    <ColumnDefinition.Style>
+                        <Style>
+                            <Setter Property="ColumnDefinition.SharedSizeGroup" Value="MenuItemColumnGroupIcon"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding AutoMargin, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
+                                    <Setter Property="ColumnDefinition.SharedSizeGroup" Value="{x:Null}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ColumnDefinition.Style>
+                </ColumnDefinition>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border x:Name="Border"
+                    Grid.Column="1"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    Background="{TemplateBinding Background}"
+                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <!-- Title -->
+    <ControlTemplate x:Key="MenuItemTitleTemplateKey" TargetType="{x:Type local:PolymorphicMenuItem}">
+        <Border x:Name="Border"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                Background="{TemplateBinding Background}"
+                Margin="{TemplateBinding Margin}"
+                Padding="{TemplateBinding Padding}"
+                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto">
+                        <ColumnDefinition.Style>
+                            <Style>
+                                <Setter Property="ColumnDefinition.SharedSizeGroup" Value="MenuItemColumnGroupIcon"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding AutoMargin, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
+                                        <Setter Property="ColumnDefinition.SharedSizeGroup" Value="{x:Null}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ColumnDefinition.Style>
+                    </ColumnDefinition>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ContentPresenter x:Name="HeaderHost"
+                                  Grid.Column="1"
+                                  VerticalAlignment="Center"
+                                  ContentSource="Header"
+                                  TextBlock.Foreground="{TemplateBinding ActualForeground}"/>
+            </Grid>
+        </Border>
+    </ControlTemplate>
+
+    <!-- Space -->
+    <ControlTemplate x:Key="MenuItemSpaceTemplateKey" TargetType="{x:Type local:PolymorphicMenuItem}">
+        <Grid/>
     </ControlTemplate>
 
 </ResourceDictionary>

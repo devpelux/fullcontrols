@@ -5,11 +5,14 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:fc="clr-namespace:FullControls;assembly=FullControls"
             mc:Ignorable="d"
+            WindowStyle="None"
+            BorderThickness="1"
+            BorderBrush="Gray"
             Title="FullControls"
             Icon="/Icons/FullControls.ico"
             ResizeMode="CanResize"
-            Height="410"
-            Width="420">
+            Height="355"
+            Width="410">
     <Grid>
         <fc:EComboBox x:Name="combobox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,36,0,0" SelectedIndex="0" Width="190">
             <fc:EComboBoxItem Content="Item1"/>
