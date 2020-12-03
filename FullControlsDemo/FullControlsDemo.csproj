@@ -16,8 +16,8 @@
 	<PackageReleaseNotes>Updated for the new release of FullControls.</PackageReleaseNotes>
     <ApplicationIcon>Icons\FullControls.ico</ApplicationIcon>
     <StartupObject>FullControlsDemo.App</StartupObject>
-    <Version>1.1.1</Version>
-    <AssemblyVersion>1.1.1.0</AssemblyVersion>
+    <Version>1.1.2</Version>
+    <AssemblyVersion>1.1.2.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

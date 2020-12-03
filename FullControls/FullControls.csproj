@@ -23,17 +23,15 @@ Controls included:
 A full description of the controls can be found on the github repository.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>Controls, Custom, Full, TextBox, PasswordBox, ComboBox, Button, ToggleButton, RepeatButton, ScrollViewer, ScrollBar, MenuItem, Window</PackageTags>
-    <PackageReleaseNotes>Added IDialog and DialogWindow, to display windows as dialogs and return an object as result.
-Added a fix for the height of the window to be the same as in designer of Visual Studio.
-Renamed caption buttons properties to better understading.</PackageReleaseNotes>
+    <PackageReleaseNotes>Fixed bug of EWindow that prevented the window to show, close or minimize if AnimationTime was set to Zero.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <Copyright>Copyright 2020 Salvatore Peluso</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>FullControls.png</PackageIcon>
-    <Version>1.1.1</Version>
-	<AssemblyVersion>1.1.1.0</AssemblyVersion>
-    <FileVersion>1.1.1.0</FileVersion>
+    <Version>1.1.2</Version>
+	<AssemblyVersion>1.1.2.0</AssemblyVersion>
+    <FileVersion>1.1.2.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

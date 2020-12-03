@@ -612,9 +612,13 @@ namespace FullControls
         /// </summary>
         private void MinimizeAnimation()
         {
-            DoubleAnimation doubleAnimation = new DoubleAnimation(1, 0, new Duration(AnimationTime));
-            doubleAnimation.Completed += MinimizeAnimation_Completed;
-            BeginAnimation(OpacityProperty, doubleAnimation);
+            if (AnimationTime > TimeSpan.Zero)
+            {
+                DoubleAnimation doubleAnimation = new DoubleAnimation(1, 0, new Duration(AnimationTime));
+                doubleAnimation.Completed += MinimizeAnimation_Completed;
+                BeginAnimation(OpacityProperty, doubleAnimation);
+            }
+            else WindowState = WindowState.Minimized;
         }
 
         /// <summary>
@@ -632,8 +636,11 @@ namespace FullControls
         /// </summary>
         private void AntiMinimizeAnimation()
         {
-            DoubleAnimation doubleAnimation = new DoubleAnimation(0, 1, new Duration(AnimationTime));
-            BeginAnimation(OpacityProperty, doubleAnimation);
+            if (AnimationTime > TimeSpan.Zero)
+            {
+                DoubleAnimation doubleAnimation = new DoubleAnimation(0, 1, new Duration(AnimationTime));
+                BeginAnimation(OpacityProperty, doubleAnimation);
+            } 
         }
 
         /// <summary>
@@ -641,8 +648,11 @@ namespace FullControls
         /// </summary>
         private void EnterAnimation()
         {
-            DoubleAnimation doubleAnimation = new DoubleAnimation(0, 1, new Duration(AnimationTime));
-            BeginAnimation(OpacityProperty, doubleAnimation);
+            if (AnimationTime > TimeSpan.Zero)
+            {
+                DoubleAnimation doubleAnimation = new DoubleAnimation(0, 1, new Duration(AnimationTime));
+                BeginAnimation(OpacityProperty, doubleAnimation);
+            }
             beforeState = WindowState.Normal;
         }
 
@@ -651,9 +661,13 @@ namespace FullControls
         /// </summary>
         private void ExitAnimation()
         {
-            DoubleAnimation doubleAnimation = new DoubleAnimation(1, 0, new Duration(AnimationTime));
-            doubleAnimation.Completed += ExitAnimation_Completed;
-            BeginAnimation(OpacityProperty, doubleAnimation);
+            if (AnimationTime > TimeSpan.Zero)
+            {
+                DoubleAnimation doubleAnimation = new DoubleAnimation(1, 0, new Duration(AnimationTime));
+                doubleAnimation.Completed += ExitAnimation_Completed;
+                BeginAnimation(OpacityProperty, doubleAnimation);
+            }
+            else base.Close();
         }
 
         /// <summary>
