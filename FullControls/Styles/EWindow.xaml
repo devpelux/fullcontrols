@@ -22,9 +22,9 @@
         <Setter Property="CornerRadius" Value="10"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Blue7}"/>
-        <Setter Property="EnableMinimizeButton" Value="True"/>
+        <Setter Property="EnableMinimize" Value="True"/>
+        <Setter Property="EnableDoubleClickMaximizeRestore" Value="True"/>
         <Setter Property="EnableMaximizeRestoreButton" Value="True"/>
-        <Setter Property="EnableCloseButton" Value="True"/>
         <Setter Property="EnableToolbarHitZone" Value="True"/>
         <Setter Property="ToolbarHitZoneMargin" Value="0"/>
         <Setter Property="MergeToolbarAndContent" Value="False"/>
@@ -208,6 +208,11 @@
                     </Grid>
 
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsDocked" Value="True">
+                            <Setter TargetName="PART_ShadowBorder" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_Border" Property="Margin" Value="0"/>
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="0"/>
+                        </Trigger>
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="PART_ShadowBorder" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_Border" Property="Margin" Value="0"/>
@@ -224,15 +229,12 @@
                             <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_RestoreButton" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
-                        <Trigger Property="EnableMinimizeButton" Value="False">
+                        <Trigger Property="EnableMinimize" Value="False">
                             <Setter TargetName="PART_MinimizeButton" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
                         <Trigger Property="EnableMaximizeRestoreButton" Value="False">
                             <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_RestoreButton" Property="Visibility" Value="Collapsed"/>
-                        </Trigger>
-                        <Trigger Property="EnableCloseButton" Value="False">
-                            <Setter TargetName="PART_CloseButton" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
                         <Trigger Property="EnableToolbarHitZone" Value="False">
                             <Setter TargetName="PART_ToolbarHitZone" Property="Visibility" Value="Collapsed"/>

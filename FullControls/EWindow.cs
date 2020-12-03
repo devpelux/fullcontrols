@@ -133,22 +133,40 @@ namespace FullControls
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(EWindow));
 
         /// <summary>
-        /// Enables the minimize button.
+        /// Enables the minimize action and button.
+        /// (It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.NoResize"/>)
         /// </summary>
-        public bool EnableMinimizeButton
+        public bool EnableMinimize
         {
-            get => (bool)GetValue(EnableMinimizeButtonProperty);
-            set => SetValue(EnableMinimizeButtonProperty, value);
+            get => (bool)GetValue(EnableMinimizeProperty);
+            set => SetValue(EnableMinimizeProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="EnableMinimizeButton"/> dependency property.
+        /// Identifies the <see cref="EnableMinimize"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty EnableMinimizeButtonProperty =
-            DependencyProperty.Register(nameof(EnableMinimizeButton), typeof(bool), typeof(EWindow));
+        public static readonly DependencyProperty EnableMinimizeProperty =
+            DependencyProperty.Register(nameof(EnableMinimize), typeof(bool), typeof(EWindow));
+
+        /// <summary>
+        /// Enables the maximize and restore action by double click on toolbar.
+        /// (It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.CanMinimize"/> or <see cref="ResizeMode.NoResize"/>)
+        /// </summary>
+        public bool EnableDoubleClickMaximizeRestore
+        {
+            get => (bool)GetValue(EnableDoubleClickMaximizeRestoreProperty);
+            set => SetValue(EnableDoubleClickMaximizeRestoreProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnableDoubleClickMaximizeRestore"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnableDoubleClickMaximizeRestoreProperty =
+            DependencyProperty.Register(nameof(EnableDoubleClickMaximizeRestore), typeof(bool), typeof(EWindow));
 
         /// <summary>
         /// Enables the maximize/restore button.
+        /// (It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.CanMinimize"/> or <see cref="ResizeMode.NoResize"/>)
         /// </summary>
         public bool EnableMaximizeRestoreButton
         {
@@ -161,21 +179,6 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty EnableMaximizeRestoreButtonProperty =
             DependencyProperty.Register(nameof(EnableMaximizeRestoreButton), typeof(bool), typeof(EWindow));
-
-        /// <summary>
-        /// Enables the close button.
-        /// </summary>
-        public bool EnableCloseButton
-        {
-            get => (bool)GetValue(EnableCloseButtonProperty);
-            set => SetValue(EnableCloseButtonProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="EnableCloseButton"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty EnableCloseButtonProperty =
-            DependencyProperty.Register(nameof(EnableCloseButton), typeof(bool), typeof(EWindow));
 
         /// <summary>
         /// <para>Merge the toolbar with the content.</para>
@@ -362,6 +365,17 @@ namespace FullControls
             DependencyProperty.Register(nameof(ToolbarMenu), typeof(ContextMenu), typeof(EWindow));
 
         /// <summary>
+        /// Indicates if the window is docked.
+        /// </summary>
+        public bool IsDocked => (bool)GetValue(IsDockedProperty);
+
+        /// <summary>
+        /// Identifies the <see cref="IsDocked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IsDockedProperty =
+            DependencyProperty.Register(nameof(IsDocked), typeof(bool), typeof(EWindow));
+
+        /// <summary>
         /// Duration of the state change animations.
         /// </summary>
         public TimeSpan AnimationTime
@@ -419,6 +433,7 @@ namespace FullControls
             ((Grid)Template.FindName("PART_ToolbarHitZone", this)).MouseLeftButtonDown += PART_ToolbarHitZone_MouseLeftButtonDown;
             ((Grid)Template.FindName("PART_ToolbarHitZone", this)).MouseRightButtonDown += PART_ToolbarHitZone_MouseRightButtonDown;
             ((Grid)Template.FindName("PART_Icon", this)).MouseDown += PART_Icon_MouseDown;
+            beforeState = WindowState;
             if (FixVSDesigner)
             {
                 Height += VSDesignerHeightOffset();
@@ -482,7 +497,8 @@ namespace FullControls
         /// <param name="e">Event data.</param>
         private void FullWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            EnterAnimation();
+            if (WindowState != WindowState.Minimized) EnterAnimation();
+            beforeState = WindowState;
         }
 
         /// <summary>
@@ -552,7 +568,8 @@ namespace FullControls
         /// <param name="e">Event data.</param>
         private void PART_ToolbarHitZone_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ClickCount >= 2 && (ResizeMode == ResizeMode.CanResize || ResizeMode == ResizeMode.CanResizeWithGrip))
+            if (e.ClickCount >= 2 && EnableDoubleClickMaximizeRestore &&
+                (ResizeMode == ResizeMode.CanResize || ResizeMode == ResizeMode.CanResizeWithGrip))
             {
                 if (WindowState == WindowState.Maximized) Restore();
                 else Maximize();
@@ -592,6 +609,16 @@ namespace FullControls
         }
 
         /// <summary>
+        /// Raises the <see cref="FrameworkElement.SizeChanged"/> event, using the specified information as part of the eventual event data.
+        /// </summary>
+        /// <param name="sizeInfo">Event data.</param>
+        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        {
+            base.OnRenderSizeChanged(sizeInfo);
+            SetValue(IsDockedProperty, WindowState == WindowState.Normal && Width != RestoreBounds.Width && Height != RestoreBounds.Height);
+        }
+
+        /// <summary>
         /// Handles the window messages
         /// </summary>
         private IntPtr HandleMessages(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
@@ -600,7 +627,7 @@ namespace FullControls
             else if (msg == EWindowCore.WM_SYSCOMMAND && ((int)wParam & 0xFFF0) == EWindowCore.SC_MINIMIZE)
             {
                 handled = true;
-                Minimize();
+                if (EnableMinimize) Minimize();
             }
             return IntPtr.Zero;
         }
@@ -653,7 +680,6 @@ namespace FullControls
                 DoubleAnimation doubleAnimation = new DoubleAnimation(0, 1, new Duration(AnimationTime));
                 BeginAnimation(OpacityProperty, doubleAnimation);
             }
-            beforeState = WindowState.Normal;
         }
 
         /// <summary>
