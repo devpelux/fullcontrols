@@ -335,6 +335,21 @@ namespace FullControls
             DependencyProperty.Register(nameof(CheckSize), typeof(double), typeof(PolymorphicMenuItem));
 
         /// <summary>
+        /// Font of the check icon.
+        /// </summary>
+        public FontFamily CheckFont
+        {
+            get => (FontFamily)GetValue(CheckFontProperty);
+            set => SetValue(CheckFontProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CheckFont"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CheckFontProperty =
+            DependencyProperty.Register(nameof(CheckFont), typeof(FontFamily), typeof(PolymorphicMenuItem));
+
+        /// <summary>
         /// Content of the arrow displayed if the item has subitems.
         /// </summary>
         public object Arrow

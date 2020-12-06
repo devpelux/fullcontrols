@@ -36,6 +36,7 @@
         <Setter Property="CheckColor" Value="Black"/>
         <Setter Property="CheckMark" Value="&#xE73E;"/>
         <Setter Property="CheckSize" Value="18"/>
+        <Setter Property="CheckFont" Value="Segoe MDL2 Assets"/>
         <Setter Property="Arrow" Value="&#xE76C;"/>
         <Setter Property="ArrowSize" Value="12"/>
         <Setter Property="ArrowFont" Value="Segoe MDL2 Assets"/>

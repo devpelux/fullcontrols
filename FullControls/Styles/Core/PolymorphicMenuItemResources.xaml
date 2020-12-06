@@ -223,7 +223,7 @@
                                           Visibility="Hidden"
                                           TextBlock.Foreground="{TemplateBinding CheckColor}"
                                           TextBlock.FontSize="{TemplateBinding CheckSize}"
-                                          TextBlock.FontFamily="{TemplateBinding ArrowFont}"
+                                          TextBlock.FontFamily="{TemplateBinding CheckFont}"
                                           ContentSource="CheckMark"/>
                     </Grid>
                 </Grid>
