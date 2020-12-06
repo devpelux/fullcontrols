@@ -507,7 +507,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(EnableCopyButton), typeof(bool), typeof(EPasswordBox));
 
         /// <summary>
-        /// Size of the copy button.
+        /// Width of the copy button.
         /// </summary>
         public double CopyButtonSize
         {
@@ -853,10 +853,25 @@ namespace FullControls
 
         #endregion
 
-        #region Icon
+        #region Label
 
         /// <summary>
-        /// Icon that is displayed to the left of the text box.
+        /// Label that is displayed to the left or top of the TextBox.
+        /// </summary>
+        public object Label
+        {
+            get => GetValue(LabelProperty);
+            set => SetValue(LabelProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="Label"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelProperty =
+            DependencyProperty.Register(nameof(Label), typeof(object), typeof(EPasswordBox));
+
+        /// <summary>
+        /// Icon that is displayed to the left or top of the TextBox.
         /// </summary>
         public ImageSource Icon
         {
@@ -871,19 +886,154 @@ namespace FullControls
             DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(EPasswordBox));
 
         /// <summary>
-        /// Max size of the icon.
+        /// Label type.
         /// </summary>
-        public double MaxIconSize
+        public LabelType LabelType
         {
-            get => (double)GetValue(MaxIconSizeProperty);
-            set => SetValue(MaxIconSizeProperty, value);
+            get => (LabelType)GetValue(LabelTypeProperty);
+            set => SetValue(LabelTypeProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="MaxIconSize"/> dependency property.
+        /// Identifies the <see cref="LabelType"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty MaxIconSizeProperty =
-            DependencyProperty.Register(nameof(MaxIconSize), typeof(double), typeof(EPasswordBox));
+        public static readonly DependencyProperty LabelTypeProperty =
+            DependencyProperty.Register(nameof(LabelType), typeof(LabelType), typeof(EPasswordBox));
+
+        /// <summary>
+        /// Orientation order between Label and TextBox.
+        /// </summary>
+        public Orientation Order
+        {
+            get => (Orientation)GetValue(OrderProperty);
+            set => SetValue(OrderProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="Order"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty OrderProperty =
+            DependencyProperty.Register(nameof(Order), typeof(Orientation), typeof(EPasswordBox));
+
+        /// <summary>
+        /// Max Width of the label.
+        /// </summary>
+        public double LabelMaxSize
+        {
+            get => (double)GetValue(LabelMaxSizeProperty);
+            set => SetValue(LabelMaxSizeProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelMaxSize"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelMaxSizeProperty =
+            DependencyProperty.Register(nameof(LabelMaxSize), typeof(double), typeof(EPasswordBox));
+
+        /// <summary>
+        /// Margin of the label.
+        /// </summary>
+        public Thickness LabelMargin
+        {
+            get => (Thickness)GetValue(LabelMarginProperty);
+            set => SetValue(LabelMarginProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelMargin"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelMarginProperty =
+            DependencyProperty.Register(nameof(LabelMargin), typeof(Thickness), typeof(EPasswordBox));
+
+        /// <summary>
+        /// Foreground of the label.
+        /// </summary>
+        public Brush LabelForeground
+        {
+            get => (Brush)GetValue(LabelForegroundProperty);
+            set => SetValue(LabelForegroundProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelForeground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelForegroundProperty =
+            DependencyProperty.Register(nameof(LabelForeground), typeof(Brush), typeof(EPasswordBox));
+
+        /// <summary>
+        /// FontSize of the label.
+        /// </summary>
+        public double LabelFontSize
+        {
+            get => (double)GetValue(LabelFontSizeProperty);
+            set => SetValue(LabelFontSizeProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelFontSize"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelFontSizeProperty =
+            DependencyProperty.Register(nameof(LabelFontSize), typeof(double), typeof(EPasswordBox));
+
+        /// <summary>
+        /// FontFamily of the label.
+        /// </summary>
+        public FontFamily LabelFontFamily
+        {
+            get => (FontFamily)GetValue(LabelFontFamilyProperty);
+            set => SetValue(LabelFontFamilyProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelFontFamily"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelFontFamilyProperty =
+            DependencyProperty.Register(nameof(LabelFontFamily), typeof(FontFamily), typeof(EPasswordBox));
+
+        /// <summary>
+        /// FontStretch of the label.
+        /// </summary>
+        public FontStretch LabelFontStretch
+        {
+            get => (FontStretch)GetValue(LabelFontStretchProperty);
+            set => SetValue(LabelFontStretchProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelFontStretch"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelFontStretchProperty =
+            DependencyProperty.Register(nameof(LabelFontStretch), typeof(FontStretch), typeof(EPasswordBox));
+
+        /// <summary>
+        /// FontStyle of the label.
+        /// </summary>
+        public FontStyle LabelFontStyle
+        {
+            get => (FontStyle)GetValue(LabelFontStyleProperty);
+            set => SetValue(LabelFontStyleProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelFontStyle"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelFontStyleProperty =
+            DependencyProperty.Register(nameof(LabelFontStyle), typeof(FontStyle), typeof(EPasswordBox));
+
+        /// <summary>
+        /// FontWeight of the label.
+        /// </summary>
+        public FontWeight LabelFontWeight
+        {
+            get => (FontWeight)GetValue(LabelFontWeightProperty);
+            set => SetValue(LabelFontWeightProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelFontWeight"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelFontWeightProperty =
+            DependencyProperty.Register(nameof(LabelFontWeight), typeof(FontWeight), typeof(EPasswordBox));
 
         #endregion
 

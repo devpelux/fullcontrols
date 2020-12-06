@@ -59,9 +59,14 @@
         <Setter Property="Label" Value="{x:Null}"/>
         <Setter Property="Icon" Value="{x:Null}"/>
         <Setter Property="LabelType" Value="Icon"/>
-        <Setter Property="MaxLabelSize" Value="Infinity"/>
+        <Setter Property="LabelMaxSize" Value="Infinity"/>
+        <Setter Property="LabelMargin" Value="0,0,5,0"/>
         <Setter Property="LabelForeground" Value="{DynamicResource Gray10}"/>
         <Setter Property="LabelFontSize" Value="12"/>
+        <Setter Property="LabelFontFamily" Value="Segoe UI"/>
+        <Setter Property="LabelFontStretch" Value="Normal"/>
+        <Setter Property="LabelFontStyle" Value="Normal"/>
+        <Setter Property="LabelFontWeight" Value="Normal"/>
         <Setter Property="TextAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
@@ -73,15 +78,15 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ETextBox}">
                     <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
 
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="HintStates">
@@ -97,12 +102,12 @@
                         </VisualStateManager.VisualStateGroups>
 
                         <Grid x:Name="PART_Label"
-                              Grid.Column="0"
                               Grid.Row="1"
+                              Grid.Column="0"
                               VerticalAlignment="Center"
                               HorizontalAlignment="Left"
-                              Margin="0,0,5,0"
-                              MaxWidth="{TemplateBinding MaxLabelSize}"
+                              Margin="{TemplateBinding LabelMargin}"
+                              MaxWidth="{TemplateBinding LabelMaxSize}"
                               Visibility="Visible">
                             <ContentPresenter x:Name="PART_LabelContent"
                                               ContentSource="Label"
@@ -110,6 +115,10 @@
                                               Focusable="False"
                                               TextBlock.Foreground="{TemplateBinding LabelForeground}"
                                               TextBlock.FontSize="{TemplateBinding LabelFontSize}"
+                                              TextBlock.FontFamily="{TemplateBinding LabelFontFamily}"
+                                              TextBlock.FontStretch="{TemplateBinding LabelFontStretch}"
+                                              TextBlock.FontStyle="{TemplateBinding LabelFontStyle}"
+                                              TextBlock.FontWeight="{TemplateBinding LabelFontWeight}"
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             <Image x:Name="PART_LabelIcon"
                                    Source="{TemplateBinding Icon}"
@@ -120,8 +129,8 @@
                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Grid>
                         <Border x:Name="PART_Border"
-                                Grid.Column="1"
                                 Grid.Row="1"
+                                Grid.Column="1"
                                 Background="{TemplateBinding ActualBackground}"
                                 BorderBrush="{TemplateBinding ActualBorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
@@ -145,8 +154,8 @@
                             </Grid>
                         </Border>
                         <local:EButton x:Name="PART_CopyButton"
-                                       Grid.Column="2"
                                        Grid.Row="1"
+                                       Grid.Column="2"
                                        Width="{TemplateBinding CopyButtonSize}"
                                        Margin="{TemplateBinding CopyButtonMargin}"
                                        Background="{TemplateBinding CopyButtonBackground}"
@@ -188,14 +197,14 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="PART_Label" Property="Visibility" Value="Collapsed"/>
                         </MultiTrigger>
-                        <Trigger Property="EnableCopyButton" Value="True">
-                            <Setter TargetName="PART_CopyButton" Property="Visibility" Value="Visible"/>
-                        </Trigger>
                         <Trigger Property="Order" Value="Vertical">
+                            <Setter TargetName="PART_Label" Property="Grid.Row" Value="0"/>
                             <Setter TargetName="PART_Label" Property="Grid.Column" Value="1"/>
                             <Setter TargetName="PART_Label" Property="Grid.ColumnSpan" Value="2"/>
-                            <Setter TargetName="PART_Label" Property="Grid.Row" Value="0"/>
-                            <Setter TargetName="PART_Label" Property="Margin" Value="0,0,0,2"/>
+                            <Setter Property="LabelMargin" Value="0,0,0,2"/>
+                        </Trigger>
+                        <Trigger Property="EnableCopyButton" Value="True">
+                            <Setter TargetName="PART_CopyButton" Property="Visibility" Value="Visible"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

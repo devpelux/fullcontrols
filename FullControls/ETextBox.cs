@@ -230,7 +230,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(EnableCopyButton), typeof(bool), typeof(ETextBox));
 
         /// <summary>
-        /// Size of the copy button.
+        /// Width of the copy button.
         /// </summary>
         public double CopyButtonSize
         {
@@ -639,19 +639,34 @@ namespace FullControls
             DependencyProperty.Register(nameof(Order), typeof(Orientation), typeof(ETextBox));
 
         /// <summary>
-        /// Max size of the icon.
+        /// Max Width of the label.
         /// </summary>
-        public double MaxLabelSize
+        public double LabelMaxSize
         {
-            get => (double)GetValue(MaxLabelSizeProperty);
-            set => SetValue(MaxLabelSizeProperty, value);
+            get => (double)GetValue(LabelMaxSizeProperty);
+            set => SetValue(LabelMaxSizeProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="MaxLabelSize"/> dependency property.
+        /// Identifies the <see cref="LabelMaxSize"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty MaxLabelSizeProperty =
-            DependencyProperty.Register(nameof(MaxLabelSize), typeof(double), typeof(ETextBox));
+        public static readonly DependencyProperty LabelMaxSizeProperty =
+            DependencyProperty.Register(nameof(LabelMaxSize), typeof(double), typeof(ETextBox));
+
+        /// <summary>
+        /// Margin of the label.
+        /// </summary>
+        public Thickness LabelMargin
+        {
+            get => (Thickness)GetValue(LabelMarginProperty);
+            set => SetValue(LabelMarginProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelMargin"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelMarginProperty =
+            DependencyProperty.Register(nameof(LabelMargin), typeof(Thickness), typeof(ETextBox));
 
         /// <summary>
         /// Foreground of the label.
@@ -682,6 +697,66 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty LabelFontSizeProperty =
             DependencyProperty.Register(nameof(LabelFontSize), typeof(double), typeof(ETextBox));
+
+        /// <summary>
+        /// FontFamily of the label.
+        /// </summary>
+        public FontFamily LabelFontFamily
+        {
+            get => (FontFamily)GetValue(LabelFontFamilyProperty);
+            set => SetValue(LabelFontFamilyProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelFontFamily"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelFontFamilyProperty =
+            DependencyProperty.Register(nameof(LabelFontFamily), typeof(FontFamily), typeof(ETextBox));
+
+        /// <summary>
+        /// FontStretch of the label.
+        /// </summary>
+        public FontStretch LabelFontStretch
+        {
+            get => (FontStretch)GetValue(LabelFontStretchProperty);
+            set => SetValue(LabelFontStretchProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelFontStretch"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelFontStretchProperty =
+            DependencyProperty.Register(nameof(LabelFontStretch), typeof(FontStretch), typeof(ETextBox));
+
+        /// <summary>
+        /// FontStyle of the label.
+        /// </summary>
+        public FontStyle LabelFontStyle
+        {
+            get => (FontStyle)GetValue(LabelFontStyleProperty);
+            set => SetValue(LabelFontStyleProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelFontStyle"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelFontStyleProperty =
+            DependencyProperty.Register(nameof(LabelFontStyle), typeof(FontStyle), typeof(ETextBox));
+
+        /// <summary>
+        /// FontWeight of the label.
+        /// </summary>
+        public FontWeight LabelFontWeight
+        {
+            get => (FontWeight)GetValue(LabelFontWeightProperty);
+            set => SetValue(LabelFontWeightProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelFontWeight"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelFontWeightProperty =
+            DependencyProperty.Register(nameof(LabelFontWeight), typeof(FontWeight), typeof(ETextBox));
 
         #endregion
 
