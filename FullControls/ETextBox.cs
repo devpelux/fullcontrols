@@ -576,10 +576,25 @@ namespace FullControls
 
         #endregion
 
-        #region Icon
+        #region Label
 
         /// <summary>
-        /// Icon that is displayed to the left of the text box.
+        /// Label that is displayed to the left or top of the TextBox.
+        /// </summary>
+        public object Label
+        {
+            get => GetValue(LabelProperty);
+            set => SetValue(LabelProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="Label"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelProperty =
+            DependencyProperty.Register(nameof(Label), typeof(object), typeof(ETextBox));
+
+        /// <summary>
+        /// Icon that is displayed to the left or top of the TextBox.
         /// </summary>
         public ImageSource Icon
         {
@@ -594,19 +609,79 @@ namespace FullControls
             DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(ETextBox));
 
         /// <summary>
-        /// Max size of the icon.
+        /// Label type.
         /// </summary>
-        public double MaxIconSize
+        public LabelType LabelType
         {
-            get => (double)GetValue(MaxIconSizeProperty);
-            set => SetValue(MaxIconSizeProperty, value);
+            get => (LabelType)GetValue(LabelTypeProperty);
+            set => SetValue(LabelTypeProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="MaxIconSize"/> dependency property.
+        /// Identifies the <see cref="LabelType"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty MaxIconSizeProperty =
-            DependencyProperty.Register(nameof(MaxIconSize), typeof(double), typeof(ETextBox));
+        public static readonly DependencyProperty LabelTypeProperty =
+            DependencyProperty.Register(nameof(LabelType), typeof(LabelType), typeof(ETextBox));
+
+        /// <summary>
+        /// Orientation order between Label and TextBox.
+        /// </summary>
+        public Orientation Order
+        {
+            get => (Orientation)GetValue(OrderProperty);
+            set => SetValue(OrderProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="Order"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty OrderProperty =
+            DependencyProperty.Register(nameof(Order), typeof(Orientation), typeof(ETextBox));
+
+        /// <summary>
+        /// Max size of the icon.
+        /// </summary>
+        public double MaxLabelSize
+        {
+            get => (double)GetValue(MaxLabelSizeProperty);
+            set => SetValue(MaxLabelSizeProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="MaxLabelSize"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty MaxLabelSizeProperty =
+            DependencyProperty.Register(nameof(MaxLabelSize), typeof(double), typeof(ETextBox));
+
+        /// <summary>
+        /// Foreground of the label.
+        /// </summary>
+        public Brush LabelForeground
+        {
+            get => (Brush)GetValue(LabelForegroundProperty);
+            set => SetValue(LabelForegroundProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelForeground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelForegroundProperty =
+            DependencyProperty.Register(nameof(LabelForeground), typeof(Brush), typeof(ETextBox));
+
+        /// <summary>
+        /// FontSize of the label.
+        /// </summary>
+        public double LabelFontSize
+        {
+            get => (double)GetValue(LabelFontSizeProperty);
+            set => SetValue(LabelFontSizeProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelFontSize"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelFontSizeProperty =
+            DependencyProperty.Register(nameof(LabelFontSize), typeof(double), typeof(ETextBox));
 
         #endregion
 

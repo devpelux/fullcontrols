@@ -29,9 +29,7 @@ A full description of the controls can be found on the github repository.</Descr
     <Copyright>Copyright 2020 Salvatore Peluso</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>FullControls.png</PackageIcon>
-    <Version>1.1.2</Version>
-	<AssemblyVersion>1.1.2.0</AssemblyVersion>
-    <FileVersion>1.1.2.0</FileVersion>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -55,7 +55,13 @@
         <Setter Property="CopyButtonCornerRadius" Value="0"/>
         <Setter Property="CopyButtonAnimationTime" Value="0:0:0.2"/>
         <Setter Property="CopyButtonContent" Value="&#xE8C8;"/>
-        <Setter Property="MaxIconSize" Value="25"/>
+        <Setter Property="Order" Value="Horizontal"/>
+        <Setter Property="Label" Value="{x:Null}"/>
+        <Setter Property="Icon" Value="{x:Null}"/>
+        <Setter Property="LabelType" Value="Icon"/>
+        <Setter Property="MaxLabelSize" Value="Infinity"/>
+        <Setter Property="LabelForeground" Value="{DynamicResource Gray10}"/>
+        <Setter Property="LabelFontSize" Value="12"/>
         <Setter Property="TextAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
@@ -72,6 +78,10 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="HintStates">
@@ -86,18 +96,32 @@
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
 
-                        <Image x:Name="PART_Icon"
-                               Grid.Column="0"
-                               MaxWidth="{TemplateBinding MaxIconSize}"
-                               Margin="0,0,5,0"
-                               Source="{TemplateBinding Icon}"
-                               Stretch="Uniform"
-                               RenderOptions.BitmapScalingMode="Fant"
-                               Visibility="Visible"
-                               Focusable="False"
-                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        <Grid x:Name="PART_Label"
+                              Grid.Column="0"
+                              Grid.Row="1"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Left"
+                              Margin="0,0,5,0"
+                              MaxWidth="{TemplateBinding MaxLabelSize}"
+                              Visibility="Visible">
+                            <ContentPresenter x:Name="PART_LabelContent"
+                                              ContentSource="Label"
+                                              Visibility="Collapsed"
+                                              Focusable="False"
+                                              TextBlock.Foreground="{TemplateBinding LabelForeground}"
+                                              TextBlock.FontSize="{TemplateBinding LabelFontSize}"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            <Image x:Name="PART_LabelIcon"
+                                   Source="{TemplateBinding Icon}"
+                                   Stretch="Uniform"
+                                   RenderOptions.BitmapScalingMode="Fant"
+                                   Visibility="Visible"
+                                   Focusable="False"
+                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Grid>
                         <Border x:Name="PART_Border"
                                 Grid.Column="1"
+                                Grid.Row="1"
                                 Background="{TemplateBinding ActualBackground}"
                                 BorderBrush="{TemplateBinding ActualBorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
@@ -121,43 +145,57 @@
                             </Grid>
                         </Border>
                         <local:EButton x:Name="PART_CopyButton"
-                                          Grid.Column="2"
-                                          Height="{TemplateBinding Height}"
-                                          Width="{TemplateBinding CopyButtonSize}"
-                                          Margin="{TemplateBinding CopyButtonMargin}"
-                                          Background="{TemplateBinding CopyButtonBackground}"
-                                          BackgroundOnMouseOver="{TemplateBinding CopyButtonBackgroundOnMouseOver}"
-                                          BackgroundOnPressed="{TemplateBinding CopyButtonBackgroundOnPressed}"
-                                          BackgroundOnDisabled="{TemplateBinding CopyButtonBackgroundOnDisabled}"
-                                          BorderBrush="{TemplateBinding CopyButtonBorderBrush}"
-                                          BorderBrushOnMouseOver="{TemplateBinding CopyButtonBorderBrushOnMouseOver}"
-                                          BorderBrushOnPressed="{TemplateBinding CopyButtonBorderBrushOnPressed}"
-                                          BorderBrushOnDisabled="{TemplateBinding CopyButtonBorderBrushOnDisabled}"
-                                          Foreground="{TemplateBinding CopyButtonForeground}"
-                                          ForegroundOnMouseOver="{TemplateBinding CopyButtonForegroundOnMouseOver}"
-                                          ForegroundOnPressed="{TemplateBinding CopyButtonForegroundOnPressed}"
-                                          ForegroundOnDisabled="{TemplateBinding CopyButtonForegroundOnDisabled}"
-                                          BorderThickness="{TemplateBinding CopyButtonBorderThickness}"
-                                          FontFamily="{TemplateBinding CopyButtonFontFamily}"
-                                          FontSize="{TemplateBinding CopyButtonFontSize}"
-                                          FontStretch="{TemplateBinding CopyButtonFontStretch}"
-                                          FontStyle="{TemplateBinding CopyButtonFontStyle}"
-                                          FontWeight="{TemplateBinding CopyButtonFontWeight}"
-                                          CornerRadius="{TemplateBinding CopyButtonCornerRadius}"
-                                          AnimationTime="{TemplateBinding CopyButtonAnimationTime}"
-                                          Content="{TemplateBinding CopyButtonContent}"
-                                          IsEnabled="{TemplateBinding IsEnabled}"
-                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                          Visibility="Collapsed"
-                                          Focusable="False"/>
+                                       Grid.Column="2"
+                                       Grid.Row="1"
+                                       Width="{TemplateBinding CopyButtonSize}"
+                                       Margin="{TemplateBinding CopyButtonMargin}"
+                                       Background="{TemplateBinding CopyButtonBackground}"
+                                       BackgroundOnMouseOver="{TemplateBinding CopyButtonBackgroundOnMouseOver}"
+                                       BackgroundOnPressed="{TemplateBinding CopyButtonBackgroundOnPressed}"
+                                       BackgroundOnDisabled="{TemplateBinding CopyButtonBackgroundOnDisabled}"
+                                       BorderBrush="{TemplateBinding CopyButtonBorderBrush}"
+                                       BorderBrushOnMouseOver="{TemplateBinding CopyButtonBorderBrushOnMouseOver}"
+                                       BorderBrushOnPressed="{TemplateBinding CopyButtonBorderBrushOnPressed}"
+                                       BorderBrushOnDisabled="{TemplateBinding CopyButtonBorderBrushOnDisabled}"
+                                       Foreground="{TemplateBinding CopyButtonForeground}"
+                                       ForegroundOnMouseOver="{TemplateBinding CopyButtonForegroundOnMouseOver}"
+                                       ForegroundOnPressed="{TemplateBinding CopyButtonForegroundOnPressed}"
+                                       ForegroundOnDisabled="{TemplateBinding CopyButtonForegroundOnDisabled}"
+                                       BorderThickness="{TemplateBinding CopyButtonBorderThickness}"
+                                       FontFamily="{TemplateBinding CopyButtonFontFamily}"
+                                       FontSize="{TemplateBinding CopyButtonFontSize}"
+                                       FontStretch="{TemplateBinding CopyButtonFontStretch}"
+                                       FontStyle="{TemplateBinding CopyButtonFontStyle}"
+                                       FontWeight="{TemplateBinding CopyButtonFontWeight}"
+                                       CornerRadius="{TemplateBinding CopyButtonCornerRadius}"
+                                       AnimationTime="{TemplateBinding CopyButtonAnimationTime}"
+                                       Content="{TemplateBinding CopyButtonContent}"
+                                       IsEnabled="{TemplateBinding IsEnabled}"
+                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                       Visibility="Collapsed"
+                                       Focusable="False"/>
                     </Grid>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="Icon" Value="{x:Null}">
-                            <Setter TargetName="PART_Icon" Property="Visibility" Value="Collapsed"/>
+                        <Trigger Property="LabelType" Value="Content">
+                            <Setter TargetName="PART_LabelIcon" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_LabelContent" Property="Visibility" Value="Visible"/>
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Label" Value="{x:Null}"/>
+                                <Condition Property="Icon" Value="{x:Null}"/>
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_Label" Property="Visibility" Value="Collapsed"/>
+                        </MultiTrigger>
                         <Trigger Property="EnableCopyButton" Value="True">
                             <Setter TargetName="PART_CopyButton" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="Order" Value="Vertical">
+                            <Setter TargetName="PART_Label" Property="Grid.Column" Value="1"/>
+                            <Setter TargetName="PART_Label" Property="Grid.ColumnSpan" Value="2"/>
+                            <Setter TargetName="PART_Label" Property="Grid.Row" Value="0"/>
+                            <Setter TargetName="PART_Label" Property="Margin" Value="0,0,0,2"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

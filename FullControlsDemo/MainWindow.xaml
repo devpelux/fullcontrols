@@ -10,11 +10,11 @@
             BorderBrush="Gray"
             Title="FullControls"
             Icon="/Icons/FullControls.ico"
-            ResizeMode="CanResize"
+            ResizeMode="CanMinimize"
             Height="355"
-            Width="410">
+            Width="406">
     <Grid>
-        <fc:EComboBox x:Name="combobox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,36,0,0" SelectedIndex="0" Width="190">
+        <fc:EComboBox x:Name="combobox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0" SelectedIndex="0" Width="190">
             <fc:EComboBoxItem Content="Item1"/>
             <fc:EComboBoxItem Content="Item2"/>
             <fc:EComboBoxItem Content="Item3"/>
@@ -29,10 +29,10 @@
                     Content="Button" Click="Button_Click" Height="34" Width="100"/>
         <fc:ERepeatButton x:Name="repeatbutton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,220,0,0"
                           Content="RepeatButton" Height="34" Width="100" Click="RepeatButton_Click"/>
-        <fc:ETextBox x:Name="textbox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,135,0,0"
-                     Hint="TextBox" EnableCopyButton="True" Icon="/Icons/ic_label.png" Height="30" Width="190"/>
-        <fc:EPasswordBox x:Name="passwordbox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,91,0,0"
-                         Hint="PasswordBox" EnableCopyButton="True" EnablePeekButton="True" Icon="/Icons/ic_lock.png" Height="30" Width="190">
+        <fc:ETextBox x:Name="textbox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,141,0,0"
+                     Hint="TextBox" EnableCopyButton="True" Label="Label" LabelType="Content" Height="55" Width="190" Order="Vertical"/>
+        <fc:EPasswordBox x:Name="passwordbox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,95,0,0"
+                         Hint="PasswordBox" EnableCopyButton="True" EnablePeekButton="True" Icon="/Icons/ic_lock.png" Height="29" Width="190">
             <fc:EPasswordBox.ContextMenu>
                 <ContextMenu>
                     <fc:PolymorphicMenuItem x:Name="PasswordboxClear" Header="Clear" Click="PasswordboxClear_Click"/>
