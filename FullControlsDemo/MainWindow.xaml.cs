@@ -15,7 +15,7 @@ namespace FullControlsDemo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            togglebutton.IsChecked = false;
+            togglebutton.IsChecked = togglebutton.IsChecked != true;
             textbox.Text = $"{c = 0}";
         }
 

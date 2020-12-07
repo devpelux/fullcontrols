@@ -21,8 +21,6 @@
 
   <ItemGroup>
     <None Remove="Icons\FullControls.ico" />
-    <None Remove="Icons\ic_label.png" />
-    <None Remove="Icons\ic_lock.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,8 +29,6 @@
 
   <ItemGroup>
     <Resource Include="Icons\FullControls.ico" />
-    <Resource Include="Icons\ic_label.png" />
-    <Resource Include="Icons\ic_lock.png" />
   </ItemGroup>
 
 </Project>

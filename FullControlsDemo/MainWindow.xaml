@@ -12,9 +12,9 @@
             Icon="/Icons/FullControls.ico"
             ResizeMode="CanMinimize"
             Height="355"
-            Width="406">
+            Width="528">
     <Grid>
-        <fc:EComboBox x:Name="combobox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0" SelectedIndex="0" Width="190">
+        <fc:EComboBox x:Name="combobox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="105,39,0,0" SelectedIndex="0" Width="190">
             <fc:EComboBoxItem Content="Item1"/>
             <fc:EComboBoxItem Content="Item2"/>
             <fc:EComboBoxItem Content="Item3"/>
@@ -23,15 +23,21 @@
             <fc:EComboBoxItem Content="Item6"/>
             <fc:EComboBoxItem Content="Item7"/>
         </fc:EComboBox>
+        <fc:Switcher x:Name="switcher1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="391,100,0,0"
+                     Content="Switcher" Height="35" Width="100" GroupName="Switchers"/>
+        <fc:Switcher x:Name="switcher2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="391,150,0,0"
+                     Content="Switcher" Height="35" Width="100" GroupName="Switchers"/>
+        <fc:Switcher x:Name="switcher3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="391,200,0,0"
+                     Content="Switcher" Height="35" Width="100" GroupName="Switchers"/>
         <fc:EToggleButton x:Name="togglebutton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,280,0,0"
-                          Content="ToggleButton" IsDeactivableByClick="False" Height="35" Width="100"/>
+                          Content="ToggleButton" ClickToggleType="Activate" Height="35" Width="100"/>
         <fc:EButton x:Name="button" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="260,220,0,0"
                     Content="Button" Click="Button_Click" Height="34" Width="100"/>
         <fc:ERepeatButton x:Name="repeatbutton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,220,0,0"
                           Content="RepeatButton" Height="34" Width="100" Click="RepeatButton_Click"/>
-        <fc:ETextBox x:Name="textbox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,141,0,0"
+        <fc:ETextBox x:Name="textbox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="105,140,0,0"
                      Hint="TextBox" EnableCopyButton="True" Label="ETextBox" LabelType="Content" Order="Vertical" Height="55" Width="190"/>
-        <fc:EPasswordBox x:Name="passwordbox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,81,0,0"
+        <fc:EPasswordBox x:Name="passwordbox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="105,80,0,0"
                          Hint="PasswordBox" EnableCopyButton="True" EnablePeekButton="True" Label="EPasswordBox" LabelType="Content"
                          Order="Vertical" Height="55" Width="190">
             <fc:EPasswordBox.ContextMenu>

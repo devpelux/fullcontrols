@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls">
 
-    <Style TargetType="{x:Type local:EToggleButton}" BasedOn="{StaticResource {x:Type ToggleButton}}">
+    <Style TargetType="{x:Type local:Switcher}" BasedOn="{StaticResource {x:Type RadioButton}}">
         <Style.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
@@ -32,14 +32,13 @@
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="ContentMargin" Value="2"/>
         <Setter Property="IsChecked" Value="False"/>
-        <Setter Property="ClickToggleType" Value="Complete"/>
         <Setter Property="ClickMode" Value="Press"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
 
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:EToggleButton}">
+                <ControlTemplate TargetType="{x:Type local:Switcher}">
                     <Border x:Name="PART_Border"
                             Background="{TemplateBinding ActualBackground}"
                             BorderBrush="{TemplateBinding ActualBorderBrush}"
