@@ -1,9 +1,11 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/FullControls;component/Styles/EButton.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/ECheckBox.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/EComboBox.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/EComboBoxItem.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/EPasswordBox.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/ERadioButton.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/ERepeatButton.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/ETextBox.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/EToggleButton.xaml"/>

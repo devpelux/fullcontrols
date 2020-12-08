@@ -11,17 +11,44 @@ namespace FullControls.Core
     internal static class Utility
     {
         /// <summary>
-        /// Animate a brush from a dependency object with a specified time.
+        /// Animate a double of an UIElement with a specified time.
         /// </summary>
-        /// <param name="dependencyObject">Dependency object that contains the brush.</param>
-        /// <param name="brushProperty">Brush dependency property to animate.</param>
-        /// <param name="to">New value of the brush.</param>
+        /// <param name="uiElement">UIElement that contains the double.</param>
+        /// <param name="doubleProperty">Double property to animate.</param>
+        /// <param name="to">New value of the double.</param>
         /// <param name="animationTime">Animation time.</param>
-        internal static void AnimateBrush(DependencyObject dependencyObject, DependencyProperty brushProperty, Brush to, TimeSpan animationTime)
+        internal static void AnimateDouble(UIElement uiElement, DependencyProperty doubleProperty, double to, TimeSpan animationTime)
         {
             if (animationTime > TimeSpan.Zero)
             {
-                Brush from = GetUnfreezedBrush(dependencyObject, brushProperty);
+                double from = (double)uiElement.GetValue(doubleProperty);
+                DoubleAnimation animation = new DoubleAnimation
+                {
+                    From = from,
+                    To = to,
+                    Duration = new Duration(animationTime)
+                };
+                uiElement.BeginAnimation(doubleProperty, animation);
+            }
+            else
+            {
+                uiElement.SetValue(doubleProperty, to);
+            }
+        }
+
+        /// <summary>
+        /// Animate a brush of an UIElement with a specified time.
+        /// </summary>
+        /// <param name="uiElement">UIElement that contains the brush.</param>
+        /// <param name="brushProperty">Brush property to animate.</param>
+        /// <param name="to">New value of the brush.</param>
+        /// <param name="animationTime">Animation time.</param>
+        internal static void AnimateBrush(UIElement uiElement, DependencyProperty brushProperty, Brush to, TimeSpan animationTime)
+        {
+            if (animationTime > TimeSpan.Zero)
+            {
+                uiElement.SetValue(brushProperty, ((Brush)uiElement.GetValue(brushProperty)).CloneCurrentValue()); //Unfreeze the brush
+                Brush from = (Brush)uiElement.GetValue(brushProperty);
 
                 if (from is SolidColorBrush sbFrom && to is SolidColorBrush sbTo)
                 {
@@ -35,25 +62,13 @@ namespace FullControls.Core
                 }
                 else
                 {
-                    dependencyObject.SetValue(brushProperty, to);
+                    uiElement.SetValue(brushProperty, to);
                 }
             }
             else
             {
-                dependencyObject.SetValue(brushProperty, to);
+                uiElement.SetValue(brushProperty, to);
             }
-        }
-
-        /// <summary>
-        /// Unfreeze the brush obtained from a dependency property of a dependency object and returns the brush.
-        /// </summary>
-        /// <param name="dependencyObject">Dependency object that contains the brush.</param>
-        /// <param name="brushProperty">Brush dependency property.</param>
-        /// <returns>Unfreezed copy of the brush.</returns>
-        private static Brush GetUnfreezedBrush(DependencyObject dependencyObject, DependencyProperty brushProperty)
-        {
-            dependencyObject.SetValue(brushProperty, ((Brush)dependencyObject.GetValue(brushProperty)).CloneCurrentValue());
-            return (Brush)dependencyObject.GetValue(brushProperty);
         }
     }
 }
