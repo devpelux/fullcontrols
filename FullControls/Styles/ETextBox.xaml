@@ -71,6 +71,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
         <Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="TextType" Value="Text"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
 

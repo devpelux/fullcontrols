@@ -761,6 +761,58 @@ namespace FullControls
         #endregion
 
         /// <summary>
+        /// Specifies the text type accepted by the textbox.
+        /// </summary>
+        public TextType TextType
+        {
+            get => (TextType)GetValue(TextTypeProperty);
+            set => SetValue(TextTypeProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="TextType"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty TextTypeProperty =
+            DependencyProperty.Register(nameof(TextType), typeof(TextType), typeof(ETextBox),
+                new PropertyMetadata(TextType.Text, new PropertyChangedCallback((d, e) => ((ETextBox)d).OnTextTypeChanged((TextType)e.NewValue))));
+
+        /// <summary>
+        /// Check if <see cref="TextBox.Text"/> is a <see cref="double"/> value.
+        /// </summary>
+        public bool IsDouble => Text?.IsDouble() == true || Text == "";
+
+        /// <summary>
+        /// Check if <see cref="TextBox.Text"/> is an <see cref="int"/> value.
+        /// </summary>
+        public bool IsInt => Text?.IsInt() == true || Text == "";
+
+        /// <summary>
+        /// Check if <see cref="TextBox.Text"/> contains only numeric chars.
+        /// </summary>
+        public bool IsNumeric => Text?.IsNumeric() == true;
+
+        /// <summary>
+        /// Returns <see cref="TextBox.Text"/> as <see cref="double"/>.
+        /// </summary>
+        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="FormatException"/>
+        /// <exception cref="OverflowException"/>
+        public double TextDouble => Text is not null and not "" and not "+" and not "-" ? double.Parse(Text) : 0d;
+
+        /// <summary>
+        /// Returns <see cref="TextBox.Text"/> as <see cref="int"/>.
+        /// </summary>
+        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="FormatException"/>
+        /// <exception cref="OverflowException"/>
+        public int TextInt => (int)TextDouble;
+
+        /// <summary>
+        /// Length of <see cref="TextBox.Text"/>.
+        /// </summary>
+        public int TextLength => Text != null ? Text.Length : 0;
+
+        /// <summary>
         /// Duration of the control animation when it changes state.
         /// </summary>
         public TimeSpan AnimationTime
@@ -784,6 +836,8 @@ namespace FullControls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ETextBox), new FrameworkPropertyMetadata(typeof(ETextBox)));
             IsEnabledProperty.OverrideMetadata(typeof(ETextBox), new FrameworkPropertyMetadata(
                 new PropertyChangedCallback((d, e) => ((ETextBox)d).OnEnabledChanged((bool)e.NewValue))));
+            TextProperty.OverrideMetadata(typeof(ETextBox), new FrameworkPropertyMetadata(null,
+                new CoerceValueCallback((d, o) => ((ETextBox)d).CoerceText((string)o))));
         }
 
         /// <summary>
@@ -876,11 +930,50 @@ namespace FullControls
         }
 
         /// <summary>
+        /// Correct the <see cref="TextBox.Text"/> string if should be numeric.
+        /// </summary>
+        /// <param name="str">String to correct.</param>
+        /// <returns>Corrected string.</returns>
+        private string CoerceText(string str) => str is "" or null ? str
+            : (TextType switch
+            {
+                TextType.DoubleOnly => str is "+" or "-" ? str : str.IsDouble() ? str.NormalizeForDouble() : Text,
+                TextType.IntOnly => str is "+" or "-" ? str : str.IsInt() ? str : Text,
+                TextType.NumericOnly => str.IsNumeric() ? str : Text,
+                TextType.Text => str,
+                _ => str,
+            });
+
+        /// <summary>
+        /// Called when <see cref="TextType"/> is changed.
+        /// </summary>
+        /// <param name="textType">Actual <see cref="TextType"/> value.</param>
+        private void OnTextTypeChanged(TextType textType)
+        {
+            switch (textType)
+            {
+                case TextType.DoubleOnly:
+                    if (!IsDouble) Clear();
+                    break;
+                case TextType.IntOnly:
+                    if (!IsInt) Clear();
+                    break;
+                case TextType.NumericOnly:
+                    if (!IsNumeric) Clear();
+                    break;
+                case TextType.Text:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
         /// Update the visualstate to "Hinted" or "Unhinted" if is necessary to display or hide the hint.
         /// </summary>
         private void UpdateHintState()
         {
-            _ = VisualStateManager.GoToState(this, Text.Length == 0 && !IsFocused && ShowHint ? "Hinted" : "Unhinted", true);
+            _ = VisualStateManager.GoToState(this, TextLength == 0 && !IsFocused && ShowHint ? "Hinted" : "Unhinted", true);
         }
 
         /// <summary>

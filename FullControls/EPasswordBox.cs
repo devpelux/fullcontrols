@@ -1053,7 +1053,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EPasswordBox));
 
         /// <summary>
-        /// Masking character for the password.
+        /// Masking character for <see cref="Password"/>.
         /// </summary>
         public char PasswordChar
         {
@@ -1068,7 +1068,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(PasswordChar), typeof(char), typeof(EPasswordBox));
 
         /// <summary>
-        /// Max length of the password.
+        /// Max length of <see cref="Password"/>.
         /// </summary>
         public int MaxLength
         {
@@ -1098,7 +1098,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(IsInactiveSelectionHighlightEnabled), typeof(bool), typeof(EPasswordBox));
 
         /// <summary>
-        /// Value of the password as <see cref="SecureString"/>.
+        /// Value of <see cref="Password"/> as <see cref="SecureString"/>.
         /// </summary>
         public SecureString SecurePassword => GetSecurePassword();
 
@@ -1112,9 +1112,9 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Length of the password.
+        /// Length of <see cref="Password"/>.
         /// </summary>
-        public int PasswordLength => Password.Length;
+        public int PasswordLength => Password != null ? Password.Length : 0;
 
         /// <summary>
         /// Indicates if the passwordbox has focus and selected text.
