@@ -5,16 +5,19 @@ Set of controls that update standard controls to be fully customizable.
 
 ### Controls included:  
 + EButton  
++ ECheckBox  
 + EComboBox  
 + EComboBoxItem  
 + EPasswordBox  
++ ERadioButton  
++ ERepeatButton  
 + ETextBox  
 + EToggleButton  
-+ ERepeatButton  
 + EWindow  
 + GlassScrollBar  
 + GlassScrollViewer  
 + PolymorphicMenuItem  
++ Switcher  
 
 **Complete description and documentation here:**  
 Repository wiki: [https://github.com/devpelux/fullcontrols/wiki](https://github.com/devpelux/fullcontrols/wiki)

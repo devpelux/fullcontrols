@@ -367,6 +367,21 @@ namespace FullControls
         public static readonly DependencyProperty CheckFontProperty =
             DependencyProperty.Register(nameof(CheckFont), typeof(FontFamily), typeof(ERadioButton));
 
+        /// <summary>
+        /// FontWeight of the check icon.
+        /// </summary>
+        public FontWeight CheckWeight
+        {
+            get => (FontWeight)GetValue(CheckWeightProperty);
+            set => SetValue(CheckWeightProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CheckWeight"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CheckWeightProperty =
+            DependencyProperty.Register(nameof(CheckWeight), typeof(FontWeight), typeof(ERadioButton));
+
         #endregion
 
         /// <summary>
@@ -565,14 +580,14 @@ namespace FullControls
                     Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnMouseOverOnChecked, AnimationTime);
                     Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnMouseOverOnChecked, AnimationTime);
                     Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnMouseOverOnChecked, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualForeColorProperty, ForeColorOnMouseOverOnChecked, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualForeColorProperty, ForeColorOnMouseOverOnChecked, AnimationTime);
                 }
                 else
                 {
                     Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnMouseOver, AnimationTime);
                     Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnMouseOver, AnimationTime);
                     Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnMouseOver, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualForeColorProperty, ForeColorOnMouseOver, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualForeColorProperty, ForeColorOnMouseOver, AnimationTime);
                 }
             }
             else if (IsChecked == true) //Checked state
@@ -580,7 +595,7 @@ namespace FullControls
                 Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnChecked, AnimationTime);
                 Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnChecked, AnimationTime);
                 Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnChecked, TimeSpan.Zero);
-                Utility.AnimateBrush(this, ActualForeColorProperty, ForeColorOnChecked, TimeSpan.Zero);
+                Utility.AnimateBrush(this, ActualForeColorProperty, ForeColorOnChecked, AnimationTime);
             }
             else //Normal state
             {

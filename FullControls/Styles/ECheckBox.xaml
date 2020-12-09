@@ -11,35 +11,36 @@
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
-        <Setter Property="Background" Value="{DynamicResource Gray2}"/>
-        <Setter Property="BackgroundOnMouseOver" Value="{DynamicResource Gray2}"/>
-        <Setter Property="BackgroundOnChecked" Value="{DynamicResource Gray2}"/>
-        <Setter Property="BackgroundOnMouseOverOnChecked" Value="{DynamicResource Gray2}"/>
+        <Setter Property="Background" Value="{DynamicResource Gray1}"/>
+        <Setter Property="BackgroundOnMouseOver" Value="{DynamicResource Gray3}"/>
+        <Setter Property="BackgroundOnChecked" Value="{DynamicResource Gray1}"/>
+        <Setter Property="BackgroundOnMouseOverOnChecked" Value="{DynamicResource Gray3}"/>
         <Setter Property="BackgroundOnDisabled" Value="{DynamicResource Gray3}"/>
-        <Setter Property="BorderBrush" Value="Black"/>
-        <Setter Property="BorderBrushOnMouseOver" Value="Black"/>
-        <Setter Property="BorderBrushOnChecked" Value="Black"/>
-        <Setter Property="BorderBrushOnMouseOverOnChecked" Value="Black"/>
-        <Setter Property="BorderBrushOnDisabled" Value="{DynamicResource Gray10}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray15}"/>
+        <Setter Property="BorderBrushOnMouseOver" Value="{DynamicResource Gray15}"/>
+        <Setter Property="BorderBrushOnChecked" Value="{DynamicResource Gray15}"/>
+        <Setter Property="BorderBrushOnMouseOverOnChecked" Value="{DynamicResource Gray15}"/>
+        <Setter Property="BorderBrushOnDisabled" Value="{DynamicResource Gray11}"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="ForegroundOnMouseOver" Value="Black"/>
         <Setter Property="ForegroundOnChecked" Value="Black"/>
         <Setter Property="ForegroundOnMouseOverOnChecked" Value="Black"/>
-        <Setter Property="ForegroundOnDisabled" Value="{DynamicResource Gray10}"/>
-        <Setter Property="ForeColor" Value="Black"/>
-        <Setter Property="ForeColorOnMouseOver" Value="Black"/>
-        <Setter Property="ForeColorOnChecked" Value="Black"/>
-        <Setter Property="ForeColorOnMouseOverOnChecked" Value="Black"/>
-        <Setter Property="ForeColorOnDisabled" Value="{DynamicResource Gray10}"/>
+        <Setter Property="ForegroundOnDisabled" Value="{DynamicResource Gray12}"/>
+        <Setter Property="ForeColor" Value="{DynamicResource Gray15}"/>
+        <Setter Property="ForeColorOnMouseOver" Value="{DynamicResource Gray15}"/>
+        <Setter Property="ForeColorOnChecked" Value="{DynamicResource Gray15}"/>
+        <Setter Property="ForeColorOnMouseOverOnChecked" Value="{DynamicResource Gray15}"/>
+        <Setter Property="ForeColorOnDisabled" Value="{DynamicResource Gray11}"/>
         <Setter Property="CheckMark" Value="{x:Null}"/>
-        <Setter Property="CheckSize" Value="18"/>
+        <Setter Property="CheckSize" Value="14"/>
         <Setter Property="CheckFont" Value="Segoe MDL2 Assets"/>
+        <Setter Property="CheckWeight" Value="Bold"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="CornerRadius" Value="0"/>
         <Setter Property="InsideCornerRadius" Value="0"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="InsideMargin" Value="2"/>
+        <Setter Property="InsideMargin" Value="1"/>
         <Setter Property="ContentMargin" Value="4,0,0,0"/>
         <Setter Property="IsChecked" Value="False"/>
         <Setter Property="ClickMode" Value="Press"/>
@@ -85,6 +86,7 @@
                                                   TextBlock.Foreground="{TemplateBinding ActualForeColor}"
                                                   TextBlock.FontSize="{TemplateBinding CheckSize}"
                                                   TextBlock.FontFamily="{TemplateBinding CheckFont}"
+                                                  TextBlock.FontWeight="{TemplateBinding CheckWeight}"
                                                   RecognizesAccessKey="True"
                                                   ContentSource="CheckMark"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
@@ -107,6 +109,7 @@
                         <Trigger Property="CheckMark" Value="{x:Null}">
                             <Setter TargetName="PART_CheckBackground" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="PART_CheckMark" Property="Visibility" Value="Collapsed"/>
+                            <Setter Property="InsideMargin" Value="2"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
                             <Setter TargetName="PART_CheckMark" Property="Visibility" Value="Collapsed"/>
