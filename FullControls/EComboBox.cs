@@ -11,8 +11,14 @@ namespace FullControls
     /// <summary>
     /// Represents a selection control with a drop-down list that can be shown or hidden by clicking the arrow on the control.
     /// </summary>
+    [TemplatePart(Name = PartToggleButton, Type = typeof(EToggleButton))]
     public class EComboBox : ComboBox
     {
+        /// <summary>
+        /// ToggleButton template part.
+        /// </summary>
+        protected const string PartToggleButton = "PART_ToggleButton";
+
         /// <summary>
         /// Background color when the mouse is over the control.
         /// </summary>
@@ -590,13 +596,21 @@ namespace FullControls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            EToggleButton toggleButton = (EToggleButton)Template.FindName("PART_ToggleButton", this);
-            DependencyPropertyDescriptor.FromProperty(EToggleButton.ActualForegroundProperty, typeof(EToggleButton))
-                ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualForeColorProperty, toggleButton.ActualForeground));
-            DependencyPropertyDescriptor.FromProperty(EToggleButton.ActualBackgroundProperty, typeof(EToggleButton))
-                ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualBackgroundProperty, toggleButton.ActualBackground));
-            SetValue(ActualForeColorProperty, IsEnabled ? IsDropDownOpen ? ForeColorOnChecked : ForeColor : ForeColorOnDisabled);
-            SetValue(ActualBackgroundProperty, IsEnabled ? IsDropDownOpen ? BackgroundOnChecked : Background : BackgroundOnDisabled);
+            EToggleButton toggleButton = (EToggleButton)Template.FindName(PartToggleButton, this);
+            if (toggleButton != null)
+            {
+                DependencyPropertyDescriptor.FromProperty(EToggleButton.ActualForegroundProperty, typeof(EToggleButton))
+                    ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualForeColorProperty, toggleButton.ActualForeground));
+                DependencyPropertyDescriptor.FromProperty(EToggleButton.ActualBackgroundProperty, typeof(EToggleButton))
+                    ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualBackgroundProperty, toggleButton.ActualBackground));
+                SetValue(ActualForeColorProperty, IsEnabled ? IsDropDownOpen ? ForeColorOnChecked : ForeColor : ForeColorOnDisabled);
+                SetValue(ActualBackgroundProperty, IsEnabled ? IsDropDownOpen ? BackgroundOnChecked : Background : BackgroundOnDisabled);
+            }
+            else
+            {
+                SetValue(ActualForeColorProperty, IsEnabled ? ForeColor : ForeColorOnDisabled);
+                SetValue(ActualBackgroundProperty, IsEnabled ? Background : BackgroundOnDisabled);
+            }
         }
 
         /// <summary>

@@ -12,9 +12,15 @@ namespace FullControls
     /// <summary>
     /// Represents a control that can be used to display or edit unformatted text.
     /// </summary>
+    [TemplatePart(Name = PartCopyButton, Type = typeof(UIElement))]
     public class ETextBox : TextBox
     {
         private bool loaded = false;
+
+        /// <summary>
+        /// CopyButton template part.
+        /// </summary>
+        protected const string PartCopyButton = "PART_CopyButton";
 
         /// <summary>
         /// Background color when the control is selected.
@@ -851,7 +857,8 @@ namespace FullControls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            ((Button)Template.FindName("PART_CopyButton", this)).Click += (s, e) => CopyAll();
+            UIElement copyButton = (UIElement)Template.FindName(PartCopyButton, this);
+            if (copyButton != null) copyButton.PreviewMouseLeftButtonDown += (s, e) => CopyAll();
             UpdateHintState();
             Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
             Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);

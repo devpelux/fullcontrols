@@ -8,17 +8,54 @@ using System.Windows.Media;
 using System.Windows.Interop;
 using FullControls.Core;
 using FullControls.Extra;
+using System.Windows.Controls.Primitives;
 
 namespace FullControls
 {
     /// <summary>
     /// Provides the ability to create, configure, show, and manage the lifetime of windows and dialog boxes.
     /// </summary>
+    [TemplatePart(Name = PartMinimizeButton, Type = typeof(ButtonBase))]
+    [TemplatePart(Name = PartMaximizeButton, Type = typeof(ButtonBase))]
+    [TemplatePart(Name = PartRestoreButton, Type = typeof(ButtonBase))]
+    [TemplatePart(Name = PartCloseButton, Type = typeof(ButtonBase))]
+    [TemplatePart(Name = PartToolbarHitZone, Type = typeof(UIElement))]
+    [TemplatePart(Name = PartIcon, Type = typeof(UIElement))]
     public class EWindow : Window
     {
         private WindowState beforeState;
         private WindowChrome windowChrome, maxWindowChrome;
         private bool canMove = true;
+
+        /// <summary>
+        /// MinimizeButton template part.
+        /// </summary>
+        protected const string PartMinimizeButton = "PART_MinimizeButton";
+
+        /// <summary>
+        /// MaximizeButton template part.
+        /// </summary>
+        protected const string PartMaximizeButton = "PART_MaximizeButton";
+
+        /// <summary>
+        /// RestoreButton template part.
+        /// </summary>
+        protected const string PartRestoreButton = "PART_RestoreButton";
+
+        /// <summary>
+        /// CloseButton template part.
+        /// </summary>
+        protected const string PartCloseButton = "PART_CloseButton";
+
+        /// <summary>
+        /// ToolbarHitZone template part.
+        /// </summary>
+        protected const string PartToolbarHitZone = "PART_ToolbarHitZone";
+
+        /// <summary>
+        /// Icon template part.
+        /// </summary>
+        protected const string PartIcon = "PART_Icon";
 
         /// <summary>
         /// Height of the toolbar.
@@ -424,15 +461,24 @@ namespace FullControls
             LoadWindowChromes();
             ((HwndSource)PresentationSource.FromVisual(this)).AddHook(new HwndSourceHook(HandleMessages));
             Loaded += FullWindow_Loaded;
-            ((Button)Template.FindName("PART_MinimizeButton", this)).Click += PART_MinimizeButton_Click;
-            ((Button)Template.FindName("PART_MaximizeButton", this)).Click += PART_MaximizeButton_Click;
-            ((Button)Template.FindName("PART_RestoreButton", this)).Click += PART_RestoreButton_Click;
-            ((Button)Template.FindName("PART_CloseButton", this)).Click += PART_CloseButton_Click;
-            ((Grid)Template.FindName("PART_ToolbarHitZone", this)).MouseMove += PART_ToolbarHitZone_MouseMove;
-            ((Grid)Template.FindName("PART_ToolbarHitZone", this)).TouchMove += PART_ToolbarHitZone_TouchMove;
-            ((Grid)Template.FindName("PART_ToolbarHitZone", this)).MouseLeftButtonDown += PART_ToolbarHitZone_MouseLeftButtonDown;
-            ((Grid)Template.FindName("PART_ToolbarHitZone", this)).MouseRightButtonDown += PART_ToolbarHitZone_MouseRightButtonDown;
-            ((Grid)Template.FindName("PART_Icon", this)).MouseDown += PART_Icon_MouseDown;
+            ButtonBase minimizeButton = (ButtonBase)Template.FindName(PartMinimizeButton, this);
+            if (minimizeButton != null) minimizeButton.Click += PART_MinimizeButton_Click;
+            ButtonBase maximizeButton = (ButtonBase)Template.FindName(PartMaximizeButton, this);
+            if (maximizeButton != null) maximizeButton.Click += PART_MaximizeButton_Click;
+            ButtonBase restoreButton = (ButtonBase)Template.FindName(PartRestoreButton, this);
+            if (restoreButton != null) restoreButton.Click += PART_RestoreButton_Click;
+            ButtonBase closeButton = (ButtonBase)Template.FindName(PartCloseButton, this);
+            if (closeButton != null) closeButton.Click += PART_CloseButton_Click;
+            UIElement toolbarHitZone = (UIElement)Template.FindName(PartToolbarHitZone, this);
+            if (toolbarHitZone != null)
+            {
+                toolbarHitZone.MouseMove += PART_ToolbarHitZone_MouseMove;
+                toolbarHitZone.TouchMove += PART_ToolbarHitZone_TouchMove;
+                toolbarHitZone.MouseLeftButtonDown += PART_ToolbarHitZone_MouseLeftButtonDown;
+                toolbarHitZone.MouseRightButtonDown += PART_ToolbarHitZone_MouseRightButtonDown;
+            }
+            UIElement icon = (UIElement)Template.FindName(PartIcon, this);
+            if (icon != null) icon.MouseDown += PART_Icon_MouseDown;
             beforeState = WindowState;
             if (FixVSDesigner)
             {

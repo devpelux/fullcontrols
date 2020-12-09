@@ -12,12 +12,29 @@ namespace FullControls
     /// <summary>
     /// Represents a control designed for entering and handling passwords.
     /// </summary>
+    [TemplatePart(Name = PartPasswordBox, Type = typeof(PasswordBox))]
+    [TemplatePart(Name = PartPeekButton, Type = typeof(UIElement))]
+    [TemplatePart(Name = PartCopyButton, Type = typeof(UIElement))]
     public sealed class EPasswordBox : Control
     {
-        private PasswordBox passwordBox = null;
-        private TextBlock peek = null;
-        private string _tempPassword = null;
         private bool loaded = false;
+        private PasswordBox passwordBox = null;
+        private string _tempPassword = null;
+
+        /// <summary>
+        /// PasswordBox template part.
+        /// </summary>
+        private const string PartPasswordBox = "PART_PasswordBox";
+
+        /// <summary>
+        /// PeekButton template part.
+        /// </summary>
+        private const string PartPeekButton = "PART_PeekButton";
+
+        /// <summary>
+        /// CopyButton template part.
+        /// </summary>
+        private const string PartCopyButton = "PART_CopyButton";
 
         /// <summary>
         /// Background color when the control is selected.
@@ -290,7 +307,18 @@ namespace FullControls
 
         #endregion
 
-        #region PeekButton
+        #region Peek
+
+        /// <summary>
+        /// Displays the password when the peek button is clicked.
+        /// </summary>
+        public string Peek => (string)GetValue(PeekProperty);
+
+        /// <summary>
+        /// Identifies the <see cref="Peek"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PeekProperty =
+            DependencyProperty.Register(nameof(Peek), typeof(string), typeof(EPasswordBox));
 
         /// <summary>
         /// Specifies if to display or not a button that show the password while is pressed.
@@ -1168,20 +1196,26 @@ namespace FullControls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            passwordBox = (PasswordBox)Template.FindName("PART_PasswordBox", this);
-            peek = (TextBlock)Template.FindName("PART_Peek", this);
-            Grid peekButton = (Grid)Template.FindName("PART_PeekButton", this);
-            peekButton.MouseLeftButtonDown += PeekButton_MouseLeftButtonDown;
-            peekButton.MouseLeftButtonUp += PeekButton_MouseLeftButtonUp;
-            peekButton.MouseLeave += PeekButton_MouseLeave;
-            ((Button)Template.FindName("PART_CopyButton", this)).Click += (s, e) => CopyAll();
-            passwordBox.PasswordChanged += PasswordBox_PasswordChanged;
-            passwordBox.GotFocus += PasswordBox_GotFocus;
-            passwordBox.LostFocus += PasswordBox_LostFocus;
+            passwordBox = (PasswordBox)Template.FindName(PartPasswordBox, this);
+            if (passwordBox != null)
+            {
+                passwordBox.PasswordChanged += PasswordBox_PasswordChanged;
+                passwordBox.GotFocus += PasswordBox_GotFocus;
+                passwordBox.LostFocus += PasswordBox_LostFocus;
+            }
+            UIElement peekButton = (UIElement)Template.FindName(PartPeekButton, this);
+            if (peekButton != null)
+            {
+                peekButton.PreviewMouseLeftButtonDown += PeekButton_MouseLeftButtonDown;
+                peekButton.PreviewMouseLeftButtonUp += PeekButton_MouseLeftButtonUp;
+                peekButton.MouseLeave += PeekButton_MouseLeave;
+            }
+            UIElement copyButton = (UIElement)Template.FindName(PartCopyButton, this);
+            if (copyButton != null) copyButton.PreviewMouseLeftButtonDown += (s, e) => CopyAll();
+            OnInitialized();
             UpdateHintState();
             Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
             Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
-            OnInitialized();
             loaded = true;
             ReloadBackground();
         }
@@ -1299,7 +1333,7 @@ namespace FullControls
         /// </summary>
         private void PeekButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            peek.Text = Password;
+            SetValue(PeekProperty, Password);
             _ = VisualStateManager.GoToState(this, "Peeked", true);
         }
 
@@ -1308,7 +1342,7 @@ namespace FullControls
         /// </summary>
         private void PeekButton_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            peek.Text = "";
+            SetValue(PeekProperty, "");
             _ = VisualStateManager.GoToState(this, "Unpeeked", true);
         }
 
@@ -1317,7 +1351,7 @@ namespace FullControls
         /// </summary>
         private void PeekButton_MouseLeave(object sender, MouseEventArgs e)
         {
-            peek.Text = "";
+            SetValue(PeekProperty, "");
             _ = VisualStateManager.GoToState(this, "Unpeeked", true);
         }
 
