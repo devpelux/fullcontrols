@@ -84,9 +84,9 @@ namespace FullControls
         /// <summary>
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ActualBackgroundProperty =
+        internal static readonly DependencyProperty ActualBackgroundProperty =
             DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(Switcher),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((Switcher)d).OnActualBackgroundChanged((Brush)e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((Switcher)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
         /// BorderBrush color when the mouse is over the control.
@@ -151,16 +151,12 @@ namespace FullControls
         /// <summary>
         /// Actual BorderBrush color of the control.
         /// </summary>
-        public Brush ActualBorderBrush
-        {
-            get => (Brush)GetValue(ActualBorderBrushProperty);
-            set => SetValue(ActualBorderBrushProperty, value);
-        }
+        public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
         /// <summary>
         /// Identifies the <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ActualBorderBrushProperty =
+        internal static readonly DependencyProperty ActualBorderBrushProperty =
             DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(Switcher));
 
         /// <summary>
@@ -231,7 +227,7 @@ namespace FullControls
         /// <summary>
         /// Identifies the <see cref="ActualForeground"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ActualForegroundProperty =
+        internal static readonly DependencyProperty ActualForegroundProperty =
             DependencyProperty.Register(nameof(ActualForeground), typeof(Brush), typeof(Switcher));
 
         /// <summary>

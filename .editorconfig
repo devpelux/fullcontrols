@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# CA1305: Specificare IFormatProvider
+dotnet_diagnostic.CA1305.severity = none
+
+# IDE0011: Aggiungi parentesi graffe
+csharp_prefer_braces = when_multiline:silent

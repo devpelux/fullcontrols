@@ -68,9 +68,9 @@ namespace FullControls
         /// <summary>
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ActualBackgroundProperty =
+        internal static readonly DependencyProperty ActualBackgroundProperty =
             DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(PolymorphicMenuItem),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((PolymorphicMenuItem)d).OnActualBackgroundChanged((Brush)e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((PolymorphicMenuItem)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
         /// BorderBrush color when the item is highlighted.
@@ -125,7 +125,7 @@ namespace FullControls
         /// <summary>
         /// Identifies the <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ActualBorderBrushProperty =
+        internal static readonly DependencyProperty ActualBorderBrushProperty =
             DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
@@ -181,8 +181,10 @@ namespace FullControls
         /// <summary>
         /// Identifies the <see cref="ActualForeground"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ActualForegroundProperty =
+        internal static readonly DependencyProperty ActualForegroundProperty =
             DependencyProperty.Register(nameof(ActualForeground), typeof(Brush), typeof(PolymorphicMenuItem));
+
+        #region Popup
 
         /// <summary>
         /// Border thickness of the popup.
@@ -289,6 +291,10 @@ namespace FullControls
         public static readonly DependencyProperty MaxDropDownHeightProperty =
             DependencyProperty.Register(nameof(MaxDropDownHeight), typeof(double), typeof(PolymorphicMenuItem));
 
+        #endregion
+
+        #region CheckMark
+
         /// <summary>
         /// Color of the check icon.
         /// </summary>
@@ -349,6 +355,10 @@ namespace FullControls
         public static readonly DependencyProperty CheckFontProperty =
             DependencyProperty.Register(nameof(CheckFont), typeof(FontFamily), typeof(PolymorphicMenuItem));
 
+        #endregion
+
+        #region Arrow
+
         /// <summary>
         /// Content of the arrow displayed if the item has subitems.
         /// </summary>
@@ -393,6 +403,8 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty ArrowFontProperty =
             DependencyProperty.Register(nameof(ArrowFont), typeof(FontFamily), typeof(PolymorphicMenuItem));
+
+        #endregion
 
         /// <summary>
         /// Margin of the icon.

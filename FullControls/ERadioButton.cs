@@ -84,9 +84,9 @@ namespace FullControls
         /// <summary>
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ActualBackgroundProperty =
+        internal static readonly DependencyProperty ActualBackgroundProperty =
             DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(ERadioButton),
-                new PropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((ERadioButton)d).OnActualBackgroundChanged((Brush)e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((ERadioButton)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
         /// BorderBrush color when the mouse is over the control.
@@ -151,16 +151,12 @@ namespace FullControls
         /// <summary>
         /// Actual BorderBrush color of the control.
         /// </summary>
-        public Brush ActualBorderBrush
-        {
-            get => (Brush)GetValue(ActualBorderBrushProperty);
-            set => SetValue(ActualBorderBrushProperty, value);
-        }
+        public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
         /// <summary>
         /// Identifies the <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ActualBorderBrushProperty =
+        internal static readonly DependencyProperty ActualBorderBrushProperty =
             DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
@@ -231,7 +227,7 @@ namespace FullControls
         /// <summary>
         /// Identifies the <see cref="ActualForeground"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ActualForegroundProperty =
+        internal static readonly DependencyProperty ActualForegroundProperty =
             DependencyProperty.Register(nameof(ActualForeground), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
@@ -317,7 +313,7 @@ namespace FullControls
         /// <summary>
         /// Identifies the <see cref="ActualForeColor"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ActualForeColorProperty =
+        internal static readonly DependencyProperty ActualForeColorProperty =
             DependencyProperty.Register(nameof(ActualForeColor), typeof(Brush), typeof(ERadioButton));
 
         #region CheckMark
@@ -382,6 +378,17 @@ namespace FullControls
         public static readonly DependencyProperty CheckWeightProperty =
             DependencyProperty.Register(nameof(CheckWeight), typeof(FontWeight), typeof(ERadioButton));
 
+        /// <summary>
+        /// Scale of Check Background.
+        /// </summary>
+        public double CheckScale => (double)GetValue(CheckScaleProperty);
+
+        /// <summary>
+        /// Identifies the <see cref="CheckScale"/> dependency property.
+        /// </summary>
+        internal static readonly DependencyProperty CheckScaleProperty =
+            DependencyProperty.Register(nameof(CheckScale), typeof(double), typeof(ERadioButton));
+
         #endregion
 
         /// <summary>
@@ -443,17 +450,6 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty InsideMarginProperty =
             DependencyProperty.Register(nameof(InsideMargin), typeof(Thickness), typeof(ERadioButton));
-
-        /// <summary>
-        /// Scale of Check Background.
-        /// </summary>
-        public double CheckScale => (double)GetValue(CheckScaleProperty);
-
-        /// <summary>
-        /// Identifies the <see cref="CheckScale"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CheckScaleProperty =
-            DependencyProperty.Register(nameof(CheckScale), typeof(double), typeof(ERadioButton));
 
         /// <summary>
         /// Duration of the control animation when it changes state.

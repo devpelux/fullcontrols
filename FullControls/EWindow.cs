@@ -76,7 +76,7 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty ResizeThicknessProperty =
             DependencyProperty.Register(nameof(ResizeThickness), typeof(Thickness), typeof(EWindow),
-                new PropertyMetadata(new Thickness(), new PropertyChangedCallback((d, e) => ((EWindow)d).OnResizeThicknessChanged((Thickness)e.NewValue))));
+                new FrameworkPropertyMetadata(new Thickness(), new PropertyChangedCallback((d, e) => ((EWindow)d).OnResizeThicknessChanged((Thickness)e.NewValue))));
 
         #region BorderMargin
 
@@ -89,7 +89,7 @@ namespace FullControls
         /// Identifies the <see cref="BorderMargin"/> dependency property.
         /// </summary>
         internal static readonly DependencyProperty BorderMarginProperty =
-            DependencyProperty.Register(nameof(BorderMargin), typeof(Thickness), typeof(EWindow), new PropertyMetadata(new Thickness()));
+            DependencyProperty.Register(nameof(BorderMargin), typeof(Thickness), typeof(EWindow), new FrameworkPropertyMetadata(new Thickness()));
 
         #endregion
 
@@ -107,7 +107,7 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty ShadowRadiusProperty =
             DependencyProperty.Register(nameof(ShadowRadius), typeof(double), typeof(EWindow),
-                new PropertyMetadata(0d, new PropertyChangedCallback((d, e) => d.SetValue(BorderMarginProperty, new Thickness((double)e.NewValue)))));
+                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => d.SetValue(BorderMarginProperty, new Thickness((double)e.NewValue)))));
 
         /// <summary>
         /// Opacity of the shadow behind the window.
@@ -409,7 +409,7 @@ namespace FullControls
         /// <summary>
         /// Identifies the <see cref="IsDocked"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty IsDockedProperty =
+        internal static readonly DependencyProperty IsDockedProperty =
             DependencyProperty.Register(nameof(IsDocked), typeof(bool), typeof(EWindow));
 
         /// <summary>

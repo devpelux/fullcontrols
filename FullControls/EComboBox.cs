@@ -87,7 +87,7 @@ namespace FullControls
         /// <summary>
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ActualBackgroundProperty =
+        internal static readonly DependencyProperty ActualBackgroundProperty =
             DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace FullControls
         /// <summary>
         /// Identifies the <see cref="ActualForeColor"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ActualForeColorProperty =
+        internal static readonly DependencyProperty ActualForeColorProperty =
             DependencyProperty.Register(nameof(ActualForeColor), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
@@ -250,6 +250,8 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(EComboBox));
+
+        #region Arrow
 
         /// <summary>
         /// Arrow displayed on the button part.
@@ -295,6 +297,8 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty ArrowFontProperty =
             DependencyProperty.Register(nameof(ArrowFont), typeof(FontFamily), typeof(EComboBox));
+
+        #endregion
 
         /// <summary>
         /// Margin of the control content.
@@ -461,6 +465,8 @@ namespace FullControls
         public static readonly DependencyProperty SelectionOpacityProperty =
             DependencyProperty.Register(nameof(SelectionOpacity), typeof(double), typeof(EComboBox));
 
+        #region Popup
+
         /// <summary>
         /// Border thickness of the popup.
         /// </summary>
@@ -550,6 +556,8 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty EnablePopupShadowProperty =
             DependencyProperty.Register(nameof(EnablePopupShadow), typeof(bool), typeof(EComboBox));
+
+        #endregion
 
         /// <summary>
         /// Style of the scroll viewer used if there are too many items.

@@ -33,6 +33,7 @@ A full description of the controls can be found on the github repository.</Descr
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
     <None Include="Icons\FullControls.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
