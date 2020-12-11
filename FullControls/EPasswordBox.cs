@@ -1061,6 +1061,85 @@ namespace FullControls
 
         #endregion
 
+        #region ExternalBorder
+
+        /// <summary>
+        /// Background color of the external border.
+        /// </summary>
+        public Brush ExternalBackground
+        {
+            get => (Brush)GetValue(ExternalBackgroundProperty);
+            set => SetValue(ExternalBackgroundProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ExternalBackground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ExternalBackgroundProperty =
+            DependencyProperty.Register(nameof(ExternalBackground), typeof(Brush), typeof(EPasswordBox));
+
+        /// <summary>
+        /// BorderBrush color of the external border.
+        /// </summary>
+        public Brush ExternalBorderBrush
+        {
+            get => (Brush)GetValue(ExternalBorderBrushProperty);
+            set => SetValue(ExternalBorderBrushProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ExternalBorderBrush"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ExternalBorderBrushProperty =
+            DependencyProperty.Register(nameof(ExternalBorderBrush), typeof(Brush), typeof(EPasswordBox));
+
+        /// <summary>
+        /// BorderThickness of the external border.
+        /// </summary>
+        public Thickness ExternalBorderThickness
+        {
+            get => (Thickness)GetValue(ExternalBorderThicknessProperty);
+            set => SetValue(ExternalBorderThicknessProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ExternalBorderThickness"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ExternalBorderThicknessProperty =
+            DependencyProperty.Register(nameof(ExternalBorderThickness), typeof(Thickness), typeof(EPasswordBox));
+
+        /// <summary>
+        /// Padding of the external border.
+        /// </summary>
+        public Thickness ExternalPadding
+        {
+            get => (Thickness)GetValue(ExternalPaddingProperty);
+            set => SetValue(ExternalPaddingProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ExternalPadding"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ExternalPaddingProperty =
+            DependencyProperty.Register(nameof(ExternalPadding), typeof(Thickness), typeof(EPasswordBox));
+
+        /// <summary>
+        /// CornerRadius of the external border.
+        /// </summary>
+        public CornerRadius ExternalCornerRadius
+        {
+            get => (CornerRadius)GetValue(ExternalCornerRadiusProperty);
+            set => SetValue(ExternalCornerRadiusProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ExternalCornerRadius"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ExternalCornerRadiusProperty =
+            DependencyProperty.Register(nameof(ExternalCornerRadius), typeof(CornerRadius), typeof(EPasswordBox));
+
+        #endregion
+
         /// <summary>
         /// Width of the PasswordBox.
         /// </summary>

@@ -40,7 +40,7 @@
         <Setter Property="InsideCornerRadius" Value="{Binding ActualHeight, RelativeSource={RelativeSource Self}}"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="InsideMargin" Value="1"/>
+        <Setter Property="InsideMargin" Value="2"/>
         <Setter Property="ContentMargin" Value="4,0,0,0"/>
         <Setter Property="IsChecked" Value="False"/>
         <Setter Property="ClickMode" Value="Press"/>
@@ -56,14 +56,14 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                            <Border x:Name="PART_Border"
-                                Grid.Column="0"
-                                Width="{TemplateBinding ActualHeight}"
-                                Background="{TemplateBinding ActualBackground}"
-                                BorderBrush="{TemplateBinding ActualBorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="{TemplateBinding CornerRadius}"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Border x:Name="PART_Border"
+                            Grid.Column="0"
+                            Width="{TemplateBinding ActualHeight}"
+                            Background="{TemplateBinding ActualBackground}"
+                            BorderBrush="{TemplateBinding ActualBorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                             <Grid x:Name="PART_Check"
                                   Margin="{TemplateBinding InsideMargin}"
                                   Visibility="Visible">
@@ -109,7 +109,6 @@
                         <Trigger Property="CheckMark" Value="{x:Null}">
                             <Setter TargetName="PART_CheckBackground" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="PART_CheckMark" Property="Visibility" Value="Collapsed"/>
-                            <Setter Property="InsideMargin" Value="2"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
                             <Setter TargetName="PART_CheckMark" Property="Visibility" Value="Collapsed"/>

@@ -23,7 +23,18 @@ Controls included:
 A full description of the controls can be found on the github repository.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>Controls, Custom, Full, TextBox, PasswordBox, ComboBox, Button, ToggleButton, RepeatButton, ScrollViewer, ScrollBar, MenuItem, Window</PackageTags>
-    <PackageReleaseNotes>Fixed bug of EWindow that prevented the window to show, close or minimize if AnimationTime was set to Zero.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added Switcher, ECheckBox and ERadioButton.
+Added feature to choose activation/deactivation behaviour to EToggleButton.
+Added support for int-only, double-only and numeric-only values to ETextBox.
+Added label to EPasswordBox and ETextBox with an option to display label on top or left.
+Added external border to EPasswordBox and ETextBox.
+Added support for SharedSizeScope and fixed text view size to EPasswordBox and ETextBox.
+Added IsDocked to detect if EWindow is docked.
+Added EnableDoubleClickMaximizeRestore to choose if to activate maximizing/restoring EWindow by doubleclick on toolbar.
+Changed EnableMinimizeButton to EnableMinimize to completely disable minimizing EWindow and removed EnableCloseButton.
+Fixed null reference error of ETextBox and EPasswordBox if Text, or Password, are set to null.
+Fixed bug when EWindow is docked.
+General corrections and optimizations.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <Copyright>Copyright 2020 Salvatore Peluso</Copyright>

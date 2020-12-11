@@ -63,7 +63,6 @@
                     <Condition Property="Role" Value="TopLevelHeader"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Template" Value="{DynamicResource MenuItemTopLevelHeaderTemplateKey}"/>
-                <Setter Property="Margin" Value="1"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
@@ -71,7 +70,6 @@
                     <Condition Property="Role" Value="TopLevelItem"/>
                 </MultiTrigger.Conditions>
                 <Setter Property="Template" Value="{DynamicResource MenuItemTopLevelItemTemplateKey}"/>
-                <Setter Property="Margin" Value="1"/>
             </MultiTrigger>
             <MultiTrigger>
                 <MultiTrigger.Conditions>
