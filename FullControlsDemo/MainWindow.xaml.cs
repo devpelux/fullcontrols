@@ -16,12 +16,12 @@ namespace FullControlsDemo
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             togglebutton.IsChecked = togglebutton.IsChecked != true;
-            textbox.Text = $"{c = 0}";
+            textbox.TextInt = c = 0;
         }
 
         private void RepeatButton_Click(object sender, RoutedEventArgs e)
         {
-            textbox.Text = $"{c++}";
+            textbox.TextInt = c++;
         }
 
         private void PasswordboxClear_Click(object sender, RoutedEventArgs e)

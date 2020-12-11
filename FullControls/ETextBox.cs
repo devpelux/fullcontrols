@@ -653,7 +653,7 @@ namespace FullControls
         /// Identifies the <see cref="LabelMaxSize"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty LabelMaxSizeProperty =
-            DependencyProperty.Register(nameof(LabelMaxSize), typeof(double), typeof(ETextBox));
+            DependencyProperty.Register(nameof(LabelMaxSize), typeof(double), typeof(ETextBox), new FrameworkPropertyMetadata(double.PositiveInfinity));
 
         /// <summary>
         /// Margin of the label.
@@ -763,6 +763,36 @@ namespace FullControls
         #endregion
 
         /// <summary>
+        /// Width of the TextBox.
+        /// </summary>
+        public double TextViewSize
+        {
+            get => (double)GetValue(TextViewSizeProperty);
+            set => SetValue(TextViewSizeProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="TextViewSize"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty TextViewSizeProperty =
+            DependencyProperty.Register(nameof(TextViewSize), typeof(double), typeof(ETextBox));
+
+        /// <summary>
+        /// Enables automatic adjustement of margins between all items in the same group.
+        /// </summary>
+        public bool AutoMargin
+        {
+            get => (bool)GetValue(AutoMarginProperty);
+            set => SetValue(AutoMarginProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="AutoMargin"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty AutoMarginProperty =
+            DependencyProperty.Register(nameof(AutoMargin), typeof(bool), typeof(ETextBox));
+
+        /// <summary>
         /// Specifies the text type accepted by the textbox.
         /// </summary>
         public TextType TextType
@@ -794,20 +824,28 @@ namespace FullControls
         public bool IsNumeric => Text?.IsNumeric() == true;
 
         /// <summary>
-        /// Returns <see cref="TextBox.Text"/> as <see cref="double"/>.
+        /// Handles the <see cref="TextBox.Text"/> as <see cref="double"/>.
         /// </summary>
         /// <exception cref="ArgumentNullException"/>
         /// <exception cref="FormatException"/>
         /// <exception cref="OverflowException"/>
-        public double TextDouble => Text is not null and not "" and not "+" and not "-" ? double.Parse(Text) : 0d;
+        public double TextDouble
+        {
+            get => Text is not null and not "" and not "+" and not "-" ? double.Parse(Text) : 0d;
+            set => Text = value.ToString();
+        }
 
         /// <summary>
-        /// Returns <see cref="TextBox.Text"/> as <see cref="int"/>.
+        /// Handles the <see cref="TextBox.Text"/> as <see cref="int"/>.
         /// </summary>
         /// <exception cref="ArgumentNullException"/>
         /// <exception cref="FormatException"/>
         /// <exception cref="OverflowException"/>
-        public int TextInt => (int)TextDouble;
+        public int TextInt
+        {
+            get => (int)TextDouble;
+            set => TextDouble = value;
+        }
 
         /// <summary>
         /// Length of <see cref="TextBox.Text"/>.

@@ -952,7 +952,7 @@ namespace FullControls
         /// Identifies the <see cref="LabelMaxSize"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty LabelMaxSizeProperty =
-            DependencyProperty.Register(nameof(LabelMaxSize), typeof(double), typeof(EPasswordBox));
+            DependencyProperty.Register(nameof(LabelMaxSize), typeof(double), typeof(EPasswordBox), new FrameworkPropertyMetadata(double.PositiveInfinity));
 
         /// <summary>
         /// Margin of the label.
@@ -1060,6 +1060,36 @@ namespace FullControls
             DependencyProperty.Register(nameof(LabelFontWeight), typeof(FontWeight), typeof(EPasswordBox));
 
         #endregion
+
+        /// <summary>
+        /// Width of the PasswordBox.
+        /// </summary>
+        public double TextViewSize
+        {
+            get => (double)GetValue(TextViewSizeProperty);
+            set => SetValue(TextViewSizeProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="TextViewSize"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty TextViewSizeProperty =
+            DependencyProperty.Register(nameof(TextViewSize), typeof(double), typeof(EPasswordBox));
+
+        /// <summary>
+        /// Enables automatic adjustement of margins between all items in the same group.
+        /// </summary>
+        public bool AutoMargin
+        {
+            get => (bool)GetValue(AutoMarginProperty);
+            set => SetValue(AutoMarginProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="AutoMargin"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty AutoMarginProperty =
+            DependencyProperty.Register(nameof(AutoMargin), typeof(bool), typeof(EPasswordBox));
 
         /// <summary>
         /// Duration of the control animation when it changes state.

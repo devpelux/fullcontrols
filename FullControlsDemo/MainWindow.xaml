@@ -36,10 +36,9 @@
         <fc:ERepeatButton x:Name="repeatbutton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,220,0,0"
                           Content="RepeatButton" Height="34" Width="100" Click="RepeatButton_Click"/>
         <fc:ETextBox x:Name="textbox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="105,140,0,0" TextType="DoubleOnly"
-                     Hint="TextBox" EnableCopyButton="True" Label="ETextBox" LabelType="Content" Order="Vertical" Height="55" Width="190"/>
+                     Hint="TextBox" EnableCopyButton="True" Label="ETextBox" Height="55" Width="190"/>
         <fc:EPasswordBox x:Name="passwordbox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="105,80,0,0"
-                         Hint="PasswordBox" EnableCopyButton="True" EnablePeekButton="True" Label="EPasswordBox" LabelType="Content"
-                         Order="Vertical" Height="55" Width="190">
+                         Hint="PasswordBox" EnableCopyButton="True" EnablePeekButton="True" Label="EPasswordBox" Height="55" Width="190">
             <fc:EPasswordBox.ContextMenu>
                 <ContextMenu>
                     <fc:PolymorphicMenuItem x:Name="PasswordboxClear" Header="Clear" Click="PasswordboxClear_Click"/>
