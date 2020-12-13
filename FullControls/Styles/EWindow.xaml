@@ -19,9 +19,9 @@
         <Setter Property="ShadowOpacity" Value="0.8"/>
         <Setter Property="ShadowDepth" Value="0.5"/>
         <Setter Property="ShadowColor" Value="Black"/>
-        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="CornerRadius" Value="0"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Blue7}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Gray10}"/>
         <Setter Property="EnableMinimize" Value="True"/>
         <Setter Property="EnableDoubleClickMaximizeRestore" Value="True"/>
         <Setter Property="EnableMaximizeRestoreButton" Value="True"/>

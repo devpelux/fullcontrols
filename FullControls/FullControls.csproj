@@ -5,24 +5,28 @@
     <UseWPF>true</UseWPF>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Authors>Salvatore Peluso</Authors>
-    <Description>Set of controls that update standard controls to be fully customizable.
+    <Description>Set of controls that update standard controls to be fully customizable.  
 
 Controls included:
-+ EButton
-+ EComboBox
-+ EComboBoxItem
-+ EPasswordBox
-+ ETextBox
-+ EToggleButton
-+ ERepeatButton
-+ EWindow
-+ GlassScrollBar
-+ GlassScrollViewer
-+ PolymorphicMenuItem
++ EButton  
++ ECheckBox  
++ EComboBox  
++ EComboBoxItem  
++ EPasswordBox  
++ ERadioButton  
++ ERepeatButton  
++ ETextBox  
++ EToggleButton  
++ EWindow  
++ GlassScrollBar  
++ GlassScrollViewer  
++ PolymorphicMenuItem  
++ Switcher  
 
-A full description of the controls can be found on the github repository.</Description>
+Complete description and documentation here: https://github.com/devpelux/fullcontrols/wiki  
+</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>Controls, Custom, Full, TextBox, PasswordBox, ComboBox, Button, ToggleButton, RepeatButton, ScrollViewer, ScrollBar, MenuItem, Window</PackageTags>
+    <PackageTags>Controls, Custom, Full, Button, CheckBox, ComboBox, ComboBoxItem, PasswordBox, RadioButton, RepeatButton, TextBox, ToggleButton, Window, ScrollBar, ScrollViewer, GlassScrollBar, GlassScrollViewer, MenuItem, PolymorphicMenuItem, Switcher</PackageTags>
     <PackageReleaseNotes>Added Switcher, ECheckBox and ERadioButton.
 Added feature to choose activation/deactivation behaviour to EToggleButton.
 Added support for int-only, double-only and numeric-only values to ETextBox.
