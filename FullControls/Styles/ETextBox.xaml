@@ -30,7 +30,7 @@
         <Setter Property="HintForeground" Value="Black"/>
         <Setter Property="HintOpacity" Value="0.6"/>
         <Setter Property="AdaptHintForegroundAutomatically" Value="True"/>
-        <Setter Property="Hint" Value="Hint"/>
+        <Setter Property="Hint" Value="{x:Null}"/>
         <Setter Property="EnableCopyButton" Value="False"/>
         <Setter Property="CopyButtonBackground" Value="{DynamicResource Gray3}"/>
         <Setter Property="CopyButtonBackgroundOnMouseOver" Value="{DynamicResource Gray4}"/>
@@ -56,7 +56,7 @@
         <Setter Property="CopyButtonAnimationTime" Value="0:0:0.2"/>
         <Setter Property="CopyButtonContent" Value="&#xE8C8;"/>
         <Setter Property="Order" Value="Vertical"/>
-        <Setter Property="Label" Value="Label"/>
+        <Setter Property="Label" Value="{x:Null}"/>
         <Setter Property="Icon" Value="{x:Null}"/>
         <Setter Property="LabelType" Value="Content"/>
         <Setter Property="LabelMaxSize" Value="25"/>
