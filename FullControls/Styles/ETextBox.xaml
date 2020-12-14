@@ -89,7 +89,6 @@
                             Background="{TemplateBinding ExternalBackground}"
                             BorderBrush="{TemplateBinding ExternalBorderBrush}"
                             BorderThickness="{TemplateBinding ExternalBorderThickness}"
-                            Padding="{TemplateBinding ExternalPadding}"
                             CornerRadius="{TemplateBinding ExternalCornerRadius}">
 
                         <VisualStateManager.VisualStateGroups>
@@ -104,8 +103,8 @@
                                 </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        
-                        <Grid>
+
+                        <Grid Margin="{TemplateBinding ExternalPadding}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>

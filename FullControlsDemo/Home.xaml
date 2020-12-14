@@ -4,25 +4,62 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:fc="clr-namespace:FullControls;assembly=FullControls"
+            xmlns:p="clr-namespace:FullControlsDemo.Properties"
             mc:Ignorable="d"
             WindowStyle="None"
             MergeToolbarAndContent="True"
-            CornerRadius="10"
-            BorderThickness="1"
-            BorderBrush="Gray"
-            CaptionButtonsBackground="WhiteSmoke"
+            CornerRadius="{DynamicResource WindowCornerRadius}"
+            BorderThickness="{DynamicResource WindowBorderThickness}"
+            Background="{DynamicResource WindowBackground}"
+            BorderBrush="{DynamicResource WindowBorderBrush}"
+            CaptionButtonsBackground="{DynamicResource WindowBackground2}"
             Title="FullControls"
             Icon="/Icons/FullControls.ico"
             ResizeMode="CanMinimize"
             Height="550"
             Width="750">
     <Grid>
+        
         <!--#region Background part-->
 
         <Grid x:Name="background" Visibility="Collapsed">
-            <Ellipse Fill="WhiteSmoke" Margin="164,-312,-707,143"/>
-            <Ellipse Fill="WhiteSmoke" Margin="-347,499,349,-84"/>
+            <Ellipse Fill="{DynamicResource WindowBackground2}" Margin="164,-312,-707,143"/>
+            <Ellipse Fill="{DynamicResource WindowBackground2}" Margin="-347,499,349,-84"/>
         </Grid>
+
+        <!--#endregion-->
+
+        <!--#region Graphic part-->
+
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,338,0,0" TextWrapping="Wrap"
+                   Height="40" Width="91" Text="RadioButtons and CheckBoxes"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="311,313,0,0" TextWrapping="Wrap"
+                   Height="20" Width="44" Text="Buttons"/>
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="436,323,0,0" Height="166" Width="140"
+                BorderThickness="1" BorderBrush="DarkGray"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="481,298,0,0" TextWrapping="Wrap"
+                   Height="20" Width="50" Text="Switchers"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="58,148,0,0" TextWrapping="Wrap"
+                   Height="20" Width="140" Text="TextBox and PasswordBox"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="54,52,0,0" TextWrapping="Wrap"
+                   Height="20" Width="76" Text="ComboBox"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="330,172,0,0" TextWrapping="Wrap"
+                   Height="20" Width="76" Text="TextBox types"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,512,0,0" TextWrapping="Wrap"
+                   Height="29" Width="234" Text="FullControls demo project" FontSize="20"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="244,521,0,0" TextWrapping="Wrap"
+                   Height="20" Width="76" Text="by devpelux" Foreground="Gray"/>
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="709,521,0,0" TextWrapping="Wrap"
+                   Height="20" Width="29" Text="{x:Static p:Resources.VersionCode}" Foreground="Gray"/>
+        <Line Margin="406,184,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+              X1="0" Y1="0" X2="115" Y2="65" StrokeThickness="1" Stroke="DarkGray"
+              Height="65" Width="115" SnapsToDevicePixels="True"/>
+        <Line Margin="406,115,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+              X1="0" Y1="65" X2="115" Y2="0" StrokeThickness="1" Stroke="DarkGray"
+              Height="65" Width="115" SnapsToDevicePixels="True"/>
+        <Line Margin="406,182,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+              X1="0" Y1="0" X2="115" Y2="0" StrokeThickness="1" Stroke="DarkGray"
+              Height="1" Width="115" SnapsToDevicePixels="True"/>
 
         <!--#endregion-->
 
@@ -70,39 +107,5 @@
         <fc:ECheckBox x:Name="checkbox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="156"
                       Height="20" Margin="44,446,0,0" Content="ToggleType Complete" IsChecked="False"
                       Checked="Checkbox_Checked" Unchecked="Checkbox_Unchecked"/>
-
-        <!--#region Graphic part-->
-
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,338,0,0" TextWrapping="Wrap"
-                   Height="40" Width="91" Text="RadioButtons and CheckBoxes"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="311,313,0,0" TextWrapping="Wrap"
-                   Height="20" Width="44" Text="Buttons"/>
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="436,323,0,0" Height="166" Width="140"
-                BorderThickness="1" BorderBrush="DarkGray"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="481,298,0,0" TextWrapping="Wrap"
-                   Height="20" Width="50" Text="Switchers"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="58,148,0,0" TextWrapping="Wrap"
-                   Height="20" Width="140" Text="TextBox and PasswordBox"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="54,52,0,0" TextWrapping="Wrap"
-                   Height="20" Width="76" Text="ComboBox"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="330,172,0,0" TextWrapping="Wrap"
-                   Height="20" Width="76" Text="TextBox types"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,512,0,0" TextWrapping="Wrap"
-                   Height="29" Width="234" Text="FullControls demo project" FontSize="20"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="244,521,0,0" TextWrapping="Wrap"
-                   Height="20" Width="76" Text="by devpelux" Foreground="Gray"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="709,521,0,0" TextWrapping="Wrap"
-                   Height="20" Width="29" Text="1.2.0" Foreground="Gray"/>
-        <Line Margin="406,184,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
-              X1="0" Y1="0" X2="115" Y2="65" StrokeThickness="1" Stroke="DarkGray"
-              Height="65" Width="115" SnapsToDevicePixels="True"/>
-        <Line Margin="406,115,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
-              X1="0" Y1="65" X2="115" Y2="0" StrokeThickness="1" Stroke="DarkGray"
-              Height="65" Width="115" SnapsToDevicePixels="True"/>
-        <Line Margin="406,182,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
-              X1="0" Y1="0" X2="115" Y2="0" StrokeThickness="1" Stroke="DarkGray"
-              Height="1" Width="115" SnapsToDevicePixels="True"/>
-
-        <!--#endregion-->
     </Grid>
 </fc:EWindow>

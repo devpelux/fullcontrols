@@ -37,7 +37,7 @@
         <Setter Property="CornerRadius" Value="0"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="ContentMargin" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
 
@@ -54,7 +54,7 @@
                         <ContentPresenter x:Name="PART_ContentPresenter"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          Margin="{TemplateBinding ContentMargin}"
+                                          Margin="{TemplateBinding Padding}"
                                           Content="{TemplateBinding Content}"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                           Focusable="False"/>

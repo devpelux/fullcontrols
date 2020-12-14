@@ -9,9 +9,8 @@
                 BorderBrush="{TemplateBinding ActualBorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Margin="{TemplateBinding Margin}"
-                Padding="{TemplateBinding Padding}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
                 <ContentPresenter x:Name="HeaderHost"
                                   VerticalAlignment="Center"
                                   HorizontalAlignment="Center"
@@ -41,13 +40,13 @@
                         </Border>
                         <Border x:Name="SubmenuBorder"
                                 Margin="0,0,6,6"
-                                Padding="{TemplateBinding PopupPadding}"
                                 Background="{TemplateBinding PopupBackground}"
                                 BorderBrush="{TemplateBinding PopupBorderBrush}"
                                 BorderThickness="{TemplateBinding PopupBorderThickness}"
                                 MaxHeight="{TemplateBinding MaxDropDownHeight}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                            <local:GlassScrollViewer Style="{TemplateBinding ScrollViewerStyle}">
+                            <local:GlassScrollViewer Style="{TemplateBinding ScrollViewerStyle}"
+                                                     Margin="{TemplateBinding PopupPadding}">
                                 <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle"
                                                 Grid.IsSharedSizeScope="True"
                                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
@@ -76,9 +75,8 @@
                 BorderBrush="{TemplateBinding ActualBorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Margin="{TemplateBinding Margin}"
-                Padding="{TemplateBinding Padding}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
                 <ContentPresenter x:Name="HeaderHost"
                                   VerticalAlignment="Center"
                                   HorizontalAlignment="Center"
@@ -96,9 +94,8 @@
                 BorderBrush="{TemplateBinding ActualBorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Margin="{TemplateBinding Margin}"
-                Padding="{TemplateBinding Padding}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemColumnGroupIcon" />
                     <ColumnDefinition Width="*" />
@@ -161,13 +158,13 @@
                         </Border>
                         <Border x:Name="SubmenuBorder"
                                 Margin="0,0,6,6"
-                                Padding="{TemplateBinding PopupPadding}"
                                 Background="{TemplateBinding PopupBackground}"
                                 BorderBrush="{TemplateBinding PopupBorderBrush}"
                                 BorderThickness="{TemplateBinding PopupBorderThickness}"
                                 MaxHeight="{TemplateBinding MaxDropDownHeight}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                            <local:GlassScrollViewer Style="{TemplateBinding ScrollViewerStyle}">
+                            <local:GlassScrollViewer Style="{TemplateBinding ScrollViewerStyle}"
+                                                     Margin="{TemplateBinding PopupPadding}">
                                 <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle"
                                                 Grid.IsSharedSizeScope="True"
                                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
@@ -196,9 +193,8 @@
                 BorderBrush="{TemplateBinding ActualBorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 Margin="{TemplateBinding Margin}"
-                Padding="{TemplateBinding Padding}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" SharedSizeGroup="MenuItemColumnGroupIcon" />
                     <ColumnDefinition Width="*" />
@@ -266,7 +262,8 @@
 
     <!-- Separator -->
     <ControlTemplate x:Key="MenuItemSeparatorTemplateKey" TargetType="{x:Type local:PolymorphicMenuItem}">
-        <Grid x:Name="Grid" Margin="{TemplateBinding Margin}" Grid.IsSharedSizeScope="False">
+        <Grid x:Name="Grid"
+              Margin="{TemplateBinding Margin}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto">
                     <ColumnDefinition.Style>
@@ -298,9 +295,8 @@
                 BorderBrush="{TemplateBinding BorderBrush}"
                 Background="{TemplateBinding Background}"
                 Margin="{TemplateBinding Margin}"
-                Padding="{TemplateBinding Padding}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-            <Grid>
+            <Grid Margin="{TemplateBinding Padding}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto">
                         <ColumnDefinition.Style>

@@ -30,7 +30,7 @@
         <Setter Property="CornerRadius" Value="0"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="ContentMargin" Value="2"/>
+        <Setter Property="Padding" Value="2"/>
         <Setter Property="IsChecked" Value="False"/>
         <Setter Property="ClickToggleType" Value="Complete"/>
         <Setter Property="ClickMode" Value="Press"/>
@@ -50,7 +50,7 @@
                         <ContentPresenter x:Name="PART_ContentPresenter"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          Margin="{TemplateBinding ContentMargin}"
+                                          Margin="{TemplateBinding Padding}"
                                           RecognizesAccessKey="True"
                                           Content="{TemplateBinding Content}"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"

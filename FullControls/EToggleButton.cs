@@ -245,21 +245,6 @@ namespace FullControls
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(EToggleButton));
 
         /// <summary>
-        /// Margin of the control content.
-        /// </summary>
-        public Thickness ContentMargin
-        {
-            get => (Thickness)GetValue(ContentMarginProperty);
-            set => SetValue(ContentMarginProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="ContentMargin"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ContentMarginProperty =
-            DependencyProperty.Register(nameof(ContentMargin), typeof(Thickness), typeof(EToggleButton));
-
-        /// <summary>
         /// Set if the button is activable-only by click, or deactivable-only by click, or both.
         /// </summary>
         public ToggleType ClickToggleType

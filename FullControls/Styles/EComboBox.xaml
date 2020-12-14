@@ -42,8 +42,8 @@
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="ToggleVerticalContentAlignment" Value="Center"/>
         <Setter Property="ToggleHorizontalContentAlignment" Value="Right"/>
-        <Setter Property="ContentMargin" Value="3,3,23,3"/>
-        <Setter Property="ToggleContentMargin" Value="0,0,10,0"/>
+        <Setter Property="Padding" Value="6,3,23,3"/>
+        <Setter Property="TogglePadding" Value="0,0,10,0"/>
         <Setter Property="Arrow" Value="&#xEDDC;"/>
         <Setter Property="ArrowSize" Value="9"/>
         <Setter Property="ArrowFont" Value="Segoe MDL2 Assets"/>
@@ -96,7 +96,7 @@
                                              CornerRadius="{TemplateBinding CornerRadius}"
                                              HorizontalContentAlignment="{TemplateBinding ToggleHorizontalContentAlignment}"
                                              VerticalContentAlignment="{TemplateBinding ToggleVerticalContentAlignment}"
-                                             ContentMargin="{TemplateBinding ToggleContentMargin}"
+                                             Padding="{TemplateBinding TogglePadding}"
                                              AnimationTime="{TemplateBinding AnimationTime}"
                                              IsEnabled="{TemplateBinding IsEnabled}"
                                              IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
@@ -104,7 +104,7 @@
                                              ClickMode="Press"
                                              Focusable="False"/>
                         <ContentPresenter x:Name="PART_ContentSite"
-                                          Margin="{TemplateBinding ContentMargin}"
+                                          Margin="{TemplateBinding Padding}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           Content="{TemplateBinding SelectionBoxItem}"
@@ -121,7 +121,7 @@
                                  Foreground="{TemplateBinding Foreground}"
                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                  TextAlignment="{TemplateBinding TextAlignment}"
-                                 Margin="{TemplateBinding ContentMargin}"
+                                 Margin="{TemplateBinding Padding}"
                                  CaretBrush="{TemplateBinding CaretBrush}"
                                  SelectionBrush="{TemplateBinding SelectionBrush}"
                                  SelectionTextBrush="{TemplateBinding SelectionTextBrush}"
@@ -160,7 +160,6 @@
                                 </Border>
                                 <Border x:Name="PART_PopupBorder"
                                         Margin="0,0,5,5"
-                                        Padding="{TemplateBinding PopupPadding}"
                                         Background="{TemplateBinding PopupBackground}"
                                         BorderBrush="{TemplateBinding PopupBorderBrush}"
                                         BorderThickness="{TemplateBinding PopupBorderThickness}"
@@ -169,6 +168,7 @@
                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                                     <local:GlassScrollViewer x:Name="PART_PopupScrollViewer"
                                                              Style="{TemplateBinding ScrollViewerStyle}"
+                                                             Margin="{TemplateBinding PopupPadding}"
                                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                                         <ItemsPresenter x:Name="PART_PopupItemsPresenter"
                                                         KeyboardNavigation.DirectionalNavigation="Contained"

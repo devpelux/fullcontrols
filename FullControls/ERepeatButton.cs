@@ -199,21 +199,6 @@ namespace FullControls
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ERepeatButton));
 
         /// <summary>
-        /// Margin of the control content.
-        /// </summary>
-        public Thickness ContentMargin
-        {
-            get => (Thickness)GetValue(ContentMarginProperty);
-            set => SetValue(ContentMarginProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="ContentMargin"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ContentMarginProperty =
-            DependencyProperty.Register(nameof(ContentMargin), typeof(Thickness), typeof(ERepeatButton));
-
-        /// <summary>
         /// Duration of the control animation when it changes state.
         /// </summary>
         public TimeSpan AnimationTime

@@ -301,34 +301,19 @@ namespace FullControls
         #endregion
 
         /// <summary>
-        /// Margin of the control content.
+        /// Padding of the control toggle button.
         /// </summary>
-        public Thickness ContentMargin
+        public Thickness TogglePadding
         {
-            get => (Thickness)GetValue(ContentMarginProperty);
-            set => SetValue(ContentMarginProperty, value);
+            get => (Thickness)GetValue(TogglePaddingProperty);
+            set => SetValue(TogglePaddingProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ContentMargin"/> dependency property.
+        /// Identifies the <see cref="TogglePadding"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ContentMarginProperty =
-            DependencyProperty.Register(nameof(ContentMargin), typeof(Thickness), typeof(EComboBox));
-
-        /// <summary>
-        /// Margin of the control toggle button content.
-        /// </summary>
-        public Thickness ToggleContentMargin
-        {
-            get => (Thickness)GetValue(ToggleContentMarginProperty);
-            set => SetValue(ToggleContentMarginProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="ToggleContentMargin"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ToggleContentMarginProperty =
-            DependencyProperty.Register(nameof(ToggleContentMargin), typeof(Thickness), typeof(EComboBox));
+        public static readonly DependencyProperty TogglePaddingProperty =
+            DependencyProperty.Register(nameof(TogglePadding), typeof(Thickness), typeof(EComboBox));
 
         /// <summary>
         /// Vertical alignment of the control toggle button content.

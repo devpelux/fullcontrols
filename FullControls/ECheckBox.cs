@@ -421,21 +421,6 @@ namespace FullControls
             DependencyProperty.Register(nameof(InsideCornerRadius), typeof(CornerRadius), typeof(ECheckBox));
 
         /// <summary>
-        /// Margin of the control content.
-        /// </summary>
-        public Thickness ContentMargin
-        {
-            get => (Thickness)GetValue(ContentMarginProperty);
-            set => SetValue(ContentMarginProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="ContentMargin"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ContentMarginProperty =
-            DependencyProperty.Register(nameof(ContentMargin), typeof(Thickness), typeof(ECheckBox));
-
-        /// <summary>
         /// Margin of the <see cref="CheckMark"/>.
         /// </summary>
         public Thickness InsideMargin

@@ -41,7 +41,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="InsideMargin" Value="2"/>
-        <Setter Property="ContentMargin" Value="4,0,0,0"/>
+        <Setter Property="Padding" Value="4,0,0,0"/>
         <Setter Property="IsChecked" Value="False"/>
         <Setter Property="ClickMode" Value="Press"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
@@ -96,7 +96,7 @@
                         </Border>
                         <ContentPresenter x:Name="PART_ContentPresenter"
                                           Grid.Column="1"
-                                          Margin="{TemplateBinding ContentMargin}"
+                                          Margin="{TemplateBinding Padding}"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                           TextBlock.Foreground="{TemplateBinding ActualForeground}"

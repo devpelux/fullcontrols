@@ -54,9 +54,9 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 Background="{TemplateBinding Background}"
-                                Padding="{TemplateBinding Padding}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                            <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"/>
+                            <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
+                                                    Margin="{TemplateBinding Padding}"/>
                         </Border>
                         <local:GlassScrollBar x:Name="PART_VerticalScrollBar"
                                               Grid.Row="0"
