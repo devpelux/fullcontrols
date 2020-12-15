@@ -15,7 +15,7 @@ namespace FullControls
         private bool loaded = false;
 
         /// <summary>
-        /// Background color when the mouse is over the control.
+        /// Background brush when the mouse is over the control.
         /// </summary>
         public Brush BackgroundOnMouseOver
         {
@@ -30,7 +30,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnMouseOver), typeof(Brush), typeof(ERepeatButton));
 
         /// <summary>
-        /// Background color when the control is pressed.
+        /// Background brush when the control is pressed.
         /// </summary>
         public Brush BackgroundOnPressed
         {
@@ -45,7 +45,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnPressed), typeof(Brush), typeof(ERepeatButton));
 
         /// <summary>
-        /// Background color when the control is disabled.
+        /// Background brush when the control is disabled.
         /// </summary>
         public Brush BackgroundOnDisabled
         {
@@ -60,7 +60,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(ERepeatButton));
 
         /// <summary>
-        /// Actual Background color of the control.
+        /// Actual Background brush of the control.
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
@@ -72,7 +72,7 @@ namespace FullControls
                 new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((ERepeatButton)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
-        /// BorderBrush color when the mouse is over the control.
+        /// BorderBrush when the mouse is over the control.
         /// </summary>
         public Brush BorderBrushOnMouseOver
         {
@@ -87,7 +87,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnMouseOver), typeof(Brush), typeof(ERepeatButton));
 
         /// <summary>
-        /// BorderBrush color when the control is pressed.
+        /// BorderBrush when the control is pressed.
         /// </summary>
         public Brush BorderBrushOnPressed
         {
@@ -102,7 +102,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnPressed), typeof(Brush), typeof(ERepeatButton));
 
         /// <summary>
-        /// BorderBrush color when the control is disabled.
+        /// BorderBrush when the control is disabled.
         /// </summary>
         public Brush BorderBrushOnDisabled
         {
@@ -117,7 +117,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(ERepeatButton));
 
         /// <summary>
-        /// Actual BorderBrush color of the control.
+        /// Actual BorderBrush of the control.
         /// </summary>
         public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
@@ -128,7 +128,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(ERepeatButton));
 
         /// <summary>
-        /// Foreground color when the mouse is over the control.
+        /// Foreground brush when the mouse is over the control.
         /// </summary>
         public Brush ForegroundOnMouseOver
         {
@@ -143,7 +143,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(ERepeatButton));
 
         /// <summary>
-        /// Foreground color when the control is pressed.
+        /// Foreground brush when the control is pressed.
         /// </summary>
         public Brush ForegroundOnPressed
         {
@@ -158,7 +158,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnPressed), typeof(Brush), typeof(ERepeatButton));
 
         /// <summary>
-        /// Foreground color when the control is disabled.
+        /// Foreground brush when the control is disabled.
         /// </summary>
         public Brush ForegroundOnDisabled
         {
@@ -173,7 +173,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(ERepeatButton));
 
         /// <summary>
-        /// Actual Foreground color of the control.
+        /// Actual Foreground brush of the control.
         /// </summary>
         public Brush ActualForeground => (Brush)GetValue(ActualForegroundProperty);
 
@@ -240,7 +240,7 @@ namespace FullControls
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
-        /// <param name="actualBackground">Actual background color.</param>
+        /// <param name="actualBackground">Actual background brush.</param>
         protected virtual void OnActualBackgroundChanged(Brush actualBackground) { }
 
         /// <summary>

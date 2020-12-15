@@ -217,7 +217,7 @@
                                           Width="{TemplateBinding CheckSize}"
                                           Height="{TemplateBinding CheckSize}"
                                           Visibility="Hidden"
-                                          TextBlock.Foreground="{TemplateBinding CheckColor}"
+                                          TextBlock.Foreground="{TemplateBinding CheckBrush}"
                                           TextBlock.FontSize="{TemplateBinding CheckSize}"
                                           TextBlock.FontFamily="{TemplateBinding CheckFont}"
                                           ContentSource="CheckMark"/>

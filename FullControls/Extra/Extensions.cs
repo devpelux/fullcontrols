@@ -5,7 +5,7 @@ using System.Windows.Media;
 namespace FullControls.Extra
 {
     /// <summary>
-    /// Extensions.
+    /// Contains a set of extensions.
     /// </summary>
     public static class Extensions
     {

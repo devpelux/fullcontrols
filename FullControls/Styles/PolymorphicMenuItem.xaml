@@ -33,7 +33,7 @@
         <Setter Property="PopupPadding" Value="3,2,3,2"/>
         <Setter Property="PopupAnimation" Value="Fade"/>
         <Setter Property="EnablePopupShadow" Value="True"/>
-        <Setter Property="CheckColor" Value="Black"/>
+        <Setter Property="CheckBrush" Value="Black"/>
         <Setter Property="CheckMark" Value="&#xE73E;"/>
         <Setter Property="CheckSize" Value="18"/>
         <Setter Property="CheckFont" Value="Segoe MDL2 Assets"/>

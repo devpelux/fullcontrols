@@ -4,7 +4,7 @@ using System.Windows;
 namespace FullControls.Extra
 {
     /// <summary>
-    /// Some tools.
+    /// Contains a set of static functions.
     /// </summary>
     public static class Tools
     {

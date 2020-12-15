@@ -15,7 +15,7 @@ namespace FullControls
         private bool loaded = false;
 
         /// <summary>
-        /// Background color when the mouse is over the control.
+        /// Background brush when the mouse is over the control.
         /// </summary>
         public Brush BackgroundOnMouseOver
         {
@@ -30,7 +30,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnMouseOver), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// Background color when the control is selected and the mouse is over the control.
+        /// Background brush when the control is selected and the mouse is over the control.
         /// </summary>
         public Brush BackgroundOnMouseOverOnSelected
         {
@@ -45,7 +45,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnMouseOverOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// Background color when the control is selected.
+        /// Background brush when the control is selected.
         /// </summary>
         public Brush BackgroundOnSelected
         {
@@ -60,7 +60,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// Background color when the control is focused.
+        /// Background brush when the control is focused.
         /// </summary>
         public Brush BackgroundOnFocused
         {
@@ -75,7 +75,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnFocused), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// Background color when the control is focused and selected.
+        /// Background brush when the control is focused and selected.
         /// </summary>
         public Brush BackgroundOnFocusedOnSelected
         {
@@ -90,7 +90,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnFocusedOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// Background color when the control is disabled.
+        /// Background brush when the control is disabled.
         /// </summary>
         public Brush BackgroundOnDisabled
         {
@@ -105,7 +105,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// Actual Background color of the control.
+        /// Actual Background brush of the control.
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
@@ -117,7 +117,7 @@ namespace FullControls
                 new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((EComboBoxItem)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
-        /// BorderBrush color when the mouse is over the control.
+        /// BorderBrush when the mouse is over the control.
         /// </summary>
         public Brush BorderBrushOnMouseOver
         {
@@ -132,7 +132,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnMouseOver), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// BorderBrush color when the control is selected and the mouse is over the control.
+        /// BorderBrush when the control is selected and the mouse is over the control.
         /// </summary>
         public Brush BorderBrushOnMouseOverOnSelected
         {
@@ -147,7 +147,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnMouseOverOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// BorderBrush color when the control is selected.
+        /// BorderBrush when the control is selected.
         /// </summary>
         public Brush BorderBrushOnSelected
         {
@@ -162,7 +162,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// BorderBrush color when the control is focused.
+        /// BorderBrush when the control is focused.
         /// </summary>
         public Brush BorderBrushOnFocused
         {
@@ -177,7 +177,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnFocused), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// BorderBrush color when the control is focused and selected.
+        /// BorderBrush when the control is focused and selected.
         /// </summary>
         public Brush BorderBrushOnFocusedOnSelected
         {
@@ -192,7 +192,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnFocusedOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// BorderBrush color when the control is disabled.
+        /// BorderBrush when the control is disabled.
         /// </summary>
         public Brush BorderBrushOnDisabled
         {
@@ -207,7 +207,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// Actual BorderBrush color of the control.
+        /// Actual BorderBrush of the control.
         /// </summary>
         public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
@@ -218,7 +218,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// Foreground color when the mouse is over the control.
+        /// Foreground brush when the mouse is over the control.
         /// </summary>
         public Brush ForegroundOnMouseOver
         {
@@ -233,7 +233,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// Foreground color when the control is selected and the mouse is over the control.
+        /// Foreground brush when the control is selected and the mouse is over the control.
         /// </summary>
         public Brush ForegroundOnMouseOverOnSelected
         {
@@ -248,7 +248,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnMouseOverOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// Foreground color when the control is selected.
+        /// Foreground brush when the control is selected.
         /// </summary>
         public Brush ForegroundOnSelected
         {
@@ -263,7 +263,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// Foreground color when the control is focused.
+        /// Foreground brush when the control is focused.
         /// </summary>
         public Brush ForegroundOnFocused
         {
@@ -278,7 +278,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnFocused), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// Foreground color when the control is focused and selected.
+        /// Foreground brush when the control is focused and selected.
         /// </summary>
         public Brush ForegroundOnFocusedOnSelected
         {
@@ -293,7 +293,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnFocusedOnSelected), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// Foreground color when the control is disabled.
+        /// Foreground brush when the control is disabled.
         /// </summary>
         public Brush ForegroundOnDisabled
         {
@@ -308,7 +308,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(EComboBoxItem));
 
         /// <summary>
-        /// Actual Foreground color of the control.
+        /// Actual Foreground brush of the control.
         /// </summary>
         public Brush ActualForeground => (Brush)GetValue(ActualForegroundProperty);
 
@@ -377,7 +377,7 @@ namespace FullControls
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
-        /// <param name="actualBackground">Actual background color.</param>
+        /// <param name="actualBackground">Actual background brush.</param>
         protected virtual void OnActualBackgroundChanged(Brush actualBackground) { }
 
         /// <summary>

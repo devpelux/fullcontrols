@@ -130,7 +130,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ScrollBarsOpacityOnMouseDown), typeof(double), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Color of the scrollbars.
+        /// Brush of the scrollbars.
         /// </summary>
         public Brush ScrollBarsColor
         {

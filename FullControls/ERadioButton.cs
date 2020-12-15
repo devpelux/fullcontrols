@@ -17,7 +17,7 @@ namespace FullControls
         private bool loaded = false;
 
         /// <summary>
-        /// Background color when the mouse is over the control.
+        /// Background brush when the mouse is over the control.
         /// </summary>
         public Brush BackgroundOnMouseOver
         {
@@ -32,7 +32,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnMouseOver), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// Background color when the control is checked and the mouse is over the control.
+        /// Background brush when the control is checked and the mouse is over the control.
         /// </summary>
         public Brush BackgroundOnMouseOverOnChecked
         {
@@ -47,7 +47,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnMouseOverOnChecked), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// Background color when the control is checked.
+        /// Background brush when the control is checked.
         /// </summary>
         public Brush BackgroundOnChecked
         {
@@ -62,7 +62,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnChecked), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// Background color when the control is disabled.
+        /// Background brush when the control is disabled.
         /// </summary>
         public Brush BackgroundOnDisabled
         {
@@ -77,7 +77,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// Actual Background color of the control.
+        /// Actual Background brush of the control.
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
@@ -89,7 +89,7 @@ namespace FullControls
                 new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((ERadioButton)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
-        /// BorderBrush color when the mouse is over the control.
+        /// BorderBrush when the mouse is over the control.
         /// </summary>
         public Brush BorderBrushOnMouseOver
         {
@@ -104,7 +104,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnMouseOver), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// BorderBrush color when the control is checked and the mouse is over the control.
+        /// BorderBrush when the control is checked and the mouse is over the control.
         /// </summary>
         public Brush BorderBrushOnMouseOverOnChecked
         {
@@ -119,7 +119,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnMouseOverOnChecked), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// BorderBrush color when the control is checked.
+        /// BorderBrush when the control is checked.
         /// </summary>
         public Brush BorderBrushOnChecked
         {
@@ -134,7 +134,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnChecked), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// BorderBrush color when the control is disabled.
+        /// BorderBrush when the control is disabled.
         /// </summary>
         public Brush BorderBrushOnDisabled
         {
@@ -149,7 +149,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// Actual BorderBrush color of the control.
+        /// Actual BorderBrush of the control.
         /// </summary>
         public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
@@ -160,7 +160,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// Foreground color when the mouse is over the control.
+        /// Foreground brush when the mouse is over the control.
         /// </summary>
         public Brush ForegroundOnMouseOver
         {
@@ -175,7 +175,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// Foreground color when the control is checked and the mouse is over the control.
+        /// Foreground brush when the control is checked and the mouse is over the control.
         /// </summary>
         public Brush ForegroundOnMouseOverOnChecked
         {
@@ -190,7 +190,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnMouseOverOnChecked), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// Foreground color when the control is checked.
+        /// Foreground brush when the control is checked.
         /// </summary>
         public Brush ForegroundOnChecked
         {
@@ -205,7 +205,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnChecked), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// Foreground color when the control is disabled.
+        /// Foreground brush when the control is disabled.
         /// </summary>
         public Brush ForegroundOnDisabled
         {
@@ -220,7 +220,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// Actual Foreground color of the control.
+        /// Actual Foreground brush of the control.
         /// </summary>
         public Brush ActualForeground => (Brush)GetValue(ActualForegroundProperty);
 
@@ -231,7 +231,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ActualForeground), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// ForeColor of the control.
+        /// ForeColor brush of the control.
         /// </summary>
         public Brush ForeColor
         {
@@ -246,7 +246,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForeColor), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// ForeColor when the mouse is over the control.
+        /// ForeColor brush when the mouse is over the control.
         /// </summary>
         public Brush ForeColorOnMouseOver
         {
@@ -261,7 +261,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForeColorOnMouseOver), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// ForeColor when the control is checked and the mouse is over the control.
+        /// ForeColor brush when the control is checked and the mouse is over the control.
         /// </summary>
         public Brush ForeColorOnMouseOverOnChecked
         {
@@ -276,7 +276,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForeColorOnMouseOverOnChecked), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// ForeColor when the control is checked.
+        /// ForeColor brush when the control is checked.
         /// </summary>
         public Brush ForeColorOnChecked
         {
@@ -291,7 +291,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForeColorOnChecked), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// ForeColor when the control is disabled.
+        /// ForeColor brush when the control is disabled.
         /// </summary>
         public Brush ForeColorOnDisabled
         {
@@ -306,7 +306,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForeColorOnDisabled), typeof(Brush), typeof(ERadioButton));
 
         /// <summary>
-        /// Actual ForeColor of the control.
+        /// Actual ForeColor brush of the control.
         /// </summary>
         public Brush ActualForeColor => (Brush)GetValue(ActualForeColorProperty);
 
@@ -498,7 +498,7 @@ namespace FullControls
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
-        /// <param name="actualBackground">Actual background color.</param>
+        /// <param name="actualBackground">Actual background brush.</param>
         protected virtual void OnActualBackgroundChanged(Brush actualBackground) { }
 
         /// <summary>

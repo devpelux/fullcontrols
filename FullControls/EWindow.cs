@@ -221,7 +221,7 @@ namespace FullControls
         /// <para>Merge the toolbar with the content.</para>
         /// <para>The toolbar becomes transparent and is displayed above the content.</para>
         /// <para>Suggestion 1: Use <see cref="ToolbarHitZoneMargin"/> to resize the clickable part if you want insert a menu in the toolbar.</para>
-        /// <para>Suggestion 2: Customize the colors of the caption buttons.</para>
+        /// <para>Suggestion 2: Customize the brushes of the caption buttons.</para>
         /// </summary>
         public bool MergeToolbarAndContent
         {
@@ -281,7 +281,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ToolbarHitZoneBackground), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// <para>Background color of the toolbar.</para>
+        /// <para>Background brush of the toolbar.</para>
         /// <para>Note: If <see cref="MergeToolbarAndContent"/> is true this property has no effect.</para>
         /// </summary>
         public Brush ToolbarBackground
@@ -297,7 +297,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ToolbarBackground), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Background color of the caption buttons.
+        /// Background brush of the caption buttons.
         /// </summary>
         public Brush CaptionButtonsBackground
         {
@@ -312,7 +312,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(CaptionButtonsBackground), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Background color of the caption buttons when the mouse is over them.
+        /// Background brush of the caption buttons when the mouse is over them.
         /// </summary>
         public Brush CaptionButtonsBackgroundOnMouseOver
         {
@@ -327,7 +327,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(CaptionButtonsBackgroundOnMouseOver), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Background color of the caption buttons when they are pressed.
+        /// Background brush of the caption buttons when they are pressed.
         /// </summary>
         public Brush CaptionButtonsBackgroundOnPressed
         {
@@ -342,7 +342,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(CaptionButtonsBackgroundOnPressed), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Foreground color of the caption buttons.
+        /// Foreground brush of the caption buttons.
         /// </summary>
         public Brush CaptionButtonsForeground
         {
@@ -357,7 +357,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(CaptionButtonsForeground), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Foreground color of the caption buttons when the mouse is over them.
+        /// Foreground brush of the caption buttons when the mouse is over them.
         /// </summary>
         public Brush CaptionButtonsForegroundOnMouseOver
         {
@@ -372,7 +372,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(CaptionButtonsForegroundOnMouseOver), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Foreground color of the caption buttons when they are pressed.
+        /// Foreground brush of the caption buttons when they are pressed.
         /// </summary>
         public Brush CaptionButtonsForegroundOnPressed
         {

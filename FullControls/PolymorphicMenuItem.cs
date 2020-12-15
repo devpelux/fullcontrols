@@ -16,7 +16,7 @@ namespace FullControls
         private bool loaded = false;
 
         /// <summary>
-        /// Background color when the item is highlighted.
+        /// Background brush when the item is highlighted.
         /// </summary>
         public Brush BackgroundOnHighlight
         {
@@ -31,7 +31,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnHighlight), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
-        /// Background color when the item has subitems and the popup is open.
+        /// Background brush when the item has subitems and the popup is open.
         /// </summary>
         public Brush BackgroundOnOpen
         {
@@ -46,7 +46,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnOpen), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
-        /// Background color when the item is disabled.
+        /// Background brush when the item is disabled.
         /// </summary>
         public Brush BackgroundOnDisabled
         {
@@ -61,7 +61,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
-        /// Actual Background color of the item.
+        /// Actual Background brush of the item.
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
@@ -73,7 +73,7 @@ namespace FullControls
                 new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((PolymorphicMenuItem)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
-        /// BorderBrush color when the item is highlighted.
+        /// BorderBrush when the item is highlighted.
         /// </summary>
         public Brush BorderBrushOnHighlight
         {
@@ -88,7 +88,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnHighlight), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
-        /// BorderBrush color when the item has subitems and the popup is open.
+        /// BorderBrush when the item has subitems and the popup is open.
         /// </summary>
         public Brush BorderBrushOnOpen
         {
@@ -103,7 +103,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnOpen), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
-        /// BorderBrush color when the item is disabled.
+        /// BorderBrush when the item is disabled.
         /// </summary>
         public Brush BorderBrushOnDisabled
         {
@@ -118,7 +118,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
-        /// Actual BorderBrush color of the item.
+        /// Actual BorderBrush of the item.
         /// </summary>
         public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
@@ -129,7 +129,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
-        /// Foreground color when the item is highlighted.
+        /// Foreground brush when the item is highlighted.
         /// </summary>
         public Brush ForegroundOnHighlight
         {
@@ -144,7 +144,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnHighlight), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
-        /// Foreground color when the item has subitems and the popup is open.
+        /// Foreground brush when the item has subitems and the popup is open.
         /// </summary>
         public Brush ForegroundOnOpen
         {
@@ -159,7 +159,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnOpen), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
-        /// Foreground color when the item is disabled.
+        /// Foreground brush when the item is disabled.
         /// </summary>
         public Brush ForegroundOnDisabled
         {
@@ -174,7 +174,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
-        /// Actual Foreground color of the item.
+        /// Actual Foreground brush of the item.
         /// </summary>
         public Brush ActualForeground => (Brush)GetValue(ActualForegroundProperty);
 
@@ -296,19 +296,19 @@ namespace FullControls
         #region CheckMark
 
         /// <summary>
-        /// Color of the check icon.
+        /// Brush of the check icon.
         /// </summary>
-        public Brush CheckColor
+        public Brush CheckBrush
         {
-            get => (Brush)GetValue(CheckColorProperty);
-            set => SetValue(CheckColorProperty, value);
+            get => (Brush)GetValue(CheckBrushProperty);
+            set => SetValue(CheckBrushProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="CheckColor"/> dependency property.
+        /// Identifies the <see cref="CheckBrush"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty CheckColorProperty =
-            DependencyProperty.Register(nameof(CheckColor), typeof(Brush), typeof(PolymorphicMenuItem));
+        public static readonly DependencyProperty CheckBrushProperty =
+            DependencyProperty.Register(nameof(CheckBrush), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
         /// Content of the icon displayed if <see cref="MenuItem.IsCheckable"/> is true and <see cref="MenuItem.IsChecked"/> is true.
@@ -534,7 +534,7 @@ namespace FullControls
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
-        /// <param name="actualBackground">Actual background color.</param>
+        /// <param name="actualBackground">Actual background brush.</param>
         protected virtual void OnActualBackgroundChanged(Brush actualBackground) { }
 
         /// <summary>

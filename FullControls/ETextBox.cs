@@ -23,7 +23,7 @@ namespace FullControls
         protected const string PartCopyButton = "PART_CopyButton";
 
         /// <summary>
-        /// Background color when the control is selected.
+        /// Background brush when the control is selected.
         /// </summary>
         public Brush BackgroundOnSelected
         {
@@ -38,7 +38,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnSelected), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// Background color when the control is disabled.
+        /// Background brush when the control is disabled.
         /// </summary>
         public Brush BackgroundOnDisabled
         {
@@ -53,7 +53,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// Actual Background color of the control.
+        /// Actual Background brush of the control.
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
@@ -65,7 +65,7 @@ namespace FullControls
                 new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((ETextBox)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
-        /// BorderBrush color when the control is selected.
+        /// BorderBrush when the control is selected.
         /// </summary>
         public Brush BorderBrushOnSelected
         {
@@ -80,7 +80,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnSelected), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// BorderBrush color when the control is disabled.
+        /// BorderBrush when the control is disabled.
         /// </summary>
         public Brush BorderBrushOnDisabled
         {
@@ -95,7 +95,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// Actual BorderBrush color of the control.
+        /// Actual BorderBrush of the control.
         /// </summary>
         public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
@@ -765,7 +765,7 @@ namespace FullControls
         #region ExternalBorder
 
         /// <summary>
-        /// Background color of the external border.
+        /// Background brush of the external border.
         /// </summary>
         public Brush ExternalBackground
         {
@@ -780,7 +780,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ExternalBackground), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// BorderBrush color of the external border.
+        /// BorderBrush of the external border.
         /// </summary>
         public Brush ExternalBorderBrush
         {
@@ -982,7 +982,7 @@ namespace FullControls
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
-        /// <param name="actualBackground">Actual background color.</param>
+        /// <param name="actualBackground">Actual background brush.</param>
         protected virtual void OnActualBackgroundChanged(Brush actualBackground)
         {
             AdaptForeColors(actualBackground);
@@ -1097,7 +1097,7 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Adapt some colors to the actual background of the control.
+        /// Adapt some brushes to the actual background of the control.
         /// </summary>
         /// <param name="backgroundBrush">Actual background of the control.</param>
         private void AdaptForeColors(Brush backgroundBrush)
