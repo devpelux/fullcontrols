@@ -17,9 +17,10 @@
             Icon="/Icons/FullControls.ico"
             ResizeMode="CanMinimize"
             Height="550"
-            Width="750">
+            Width="750"
+            CloseAction="EWindow_CloseAction">
     <Grid>
-        
+
         <!--#region Background part-->
 
         <Grid x:Name="background" Visibility="Collapsed">
@@ -45,6 +46,8 @@
                    Height="20" Width="76" Text="ComboBox"/>
         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="330,172,0,0" TextWrapping="Wrap"
                    Height="20" Width="76" Text="TextBox types"/>
+        <TextBlock x:Name="disablethis" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="284,479,0,0" TextWrapping="Wrap"
+                   Height="20" Width="100" Text="^ Disable this!! ^" Foreground="DodgerBlue" FontWeight="Bold" Opacity="0"/>
         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,512,0,0" TextWrapping="Wrap"
                    Height="29" Width="234" Text="FullControls demo project" FontSize="20"/>
         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="244,521,0,0" TextWrapping="Wrap"

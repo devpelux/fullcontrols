@@ -26,14 +26,15 @@ Controls included:
 Complete description and documentation here: https://github.com/devpelux/fullcontrols/wiki</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>Controls, Custom, Full, Button, CheckBox, ComboBox, ComboBoxItem, PasswordBox, RadioButton, RepeatButton, TextBox, ToggleButton, Window, ScrollBar, ScrollViewer, GlassScrollBar, GlassScrollViewer, MenuItem, PolymorphicMenuItem, Switcher</PackageTags>
-    <PackageReleaseNotes>Optimized documentation.
-Changed CheckColor to CheckBrush in PolymorphicMenuItem.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added four events to EWindow raised immediately before the four commands Close, Minimize, Maximize, Restore.
+Changed CheckColor to CheckBrush in PolymorphicMenuItem.
+Optimized documentation.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <Copyright>Copyright 2020 Salvatore Peluso</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>FullControls.png</PackageIcon>
-    <Version>1.2.1</Version>
+    <Version>1.2.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
