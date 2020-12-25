@@ -5,3 +5,9 @@ dotnet_diagnostic.CA1305.severity = none
 
 # IDE0011: Aggiungi parentesi graffe
 csharp_prefer_braces = when_multiline:silent
+
+# IDE0021: Usa il corpo del blocco per i costruttori
+csharp_style_expression_bodied_constructors = when_on_single_line:suggestion
+
+# CA1707: Gli identificatori non devono contenere caratteri di sottolineatura
+dotnet_diagnostic.CA1707.severity = none

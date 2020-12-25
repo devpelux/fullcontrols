@@ -927,7 +927,7 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Length of <see cref="TextBox.Text"/>.
+        /// Length of the text (Text.Length).
         /// </summary>
         public int TextLength => Text != null ? Text.Length : 0;
 

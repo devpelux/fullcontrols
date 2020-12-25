@@ -28,6 +28,26 @@ namespace FullControls
         private bool canMove = true;
 
         /// <summary>
+        /// Close action.
+        /// </summary>
+        public const string ACTION_CLOSE = "ACTION_CLOSE";
+
+        /// <summary>
+        /// Minimize action.
+        /// </summary>
+        public const string ACTION_MINIMIZE = "ACTION_MINIMIZE";
+
+        /// <summary>
+        /// Maximize action.
+        /// </summary>
+        public const string ACTION_MAXIMIZE = "ACTION_MAXIMIZE";
+
+        /// <summary>
+        /// Restore action.
+        /// </summary>
+        public const string ACTION_RESTORE = "ACTION_RESTORE";
+
+        /// <summary>
         /// MinimizeButton template part.
         /// </summary>
         protected const string PartMinimizeButton = "PART_MinimizeButton";
@@ -443,6 +463,26 @@ namespace FullControls
         public static readonly DependencyProperty FixVSDesignerProperty =
             DependencyProperty.Register(nameof(FixVSDesigner), typeof(bool), typeof(EWindow), new PropertyMetadata(false));
 
+        /// <summary>
+        /// Raised immediately before <see cref="Close"/> is executed.
+        /// </summary>
+        public event EventHandler<ActionEventArgs> CloseAction;
+
+        /// <summary>
+        /// Raised immediately before <see cref="Minimize"/> is executed.
+        /// </summary>
+        public event EventHandler<ActionEventArgs> MinimizeAction;
+
+        /// <summary>
+        /// Raised immediately before <see cref="Maximize"/> is executed.
+        /// </summary>
+        public event EventHandler<ActionEventArgs> MaximizeAction;
+
+        /// <summary>
+        /// Raised immediately before <see cref="Restore"/> is executed.
+        /// </summary>
+        public event EventHandler<ActionEventArgs> RestoreAction;
+
 
         /// <summary>
         /// Creates a new <see cref="EWindow"/>.
@@ -547,45 +587,39 @@ namespace FullControls
             beforeState = WindowState;
         }
 
-        /// <summary>
-        /// Called when minimize button is clicked.
-        /// </summary>
-        /// <param name="sender">Object that triggered the event.</param>
-        /// <param name="e">Event data.</param>
-        private void PART_MinimizeButton_Click(object sender, RoutedEventArgs e)
-        {
-            Minimize();
-        }
-
-        /// <summary>
-        /// Called when maximize button is clicked.
-        /// </summary>
-        /// <param name="sender">Object that triggered the event.</param>
-        /// <param name="e">Event data.</param>
-        private void PART_MaximizeButton_Click(object sender, RoutedEventArgs e)
-        {
-            Maximize();
-        }
-
-        /// <summary>
-        /// Called when restore button is clicked.
-        /// </summary>
-        /// <param name="sender">Object that triggered the event.</param>
-        /// <param name="e">Event data.</param>
-        private void PART_RestoreButton_Click(object sender, RoutedEventArgs e)
-        {
-            Restore();
-        }
+        #region CaptionButtonsClicks
 
         /// <summary>
         /// Called when close button is clicked.
         /// </summary>
         /// <param name="sender">Object that triggered the event.</param>
         /// <param name="e">Event data.</param>
-        private void PART_CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
+        private void PART_CloseButton_Click(object sender, RoutedEventArgs e) => Close();
+
+        /// <summary>
+        /// Called when minimize button is clicked.
+        /// </summary>
+        /// <param name="sender">Object that triggered the event.</param>
+        /// <param name="e">Event data.</param>
+        private void PART_MinimizeButton_Click(object sender, RoutedEventArgs e) => Minimize();
+
+        /// <summary>
+        /// Called when maximize button is clicked.
+        /// </summary>
+        /// <param name="sender">Object that triggered the event.</param>
+        /// <param name="e">Event data.</param>
+        private void PART_MaximizeButton_Click(object sender, RoutedEventArgs e) => Maximize();
+
+        /// <summary>
+        /// Called when restore button is clicked.
+        /// </summary>
+        /// <param name="sender">Object that triggered the event.</param>
+        /// <param name="e">Event data.</param>
+        private void PART_RestoreButton_Click(object sender, RoutedEventArgs e) => Restore();
+
+        #endregion
+
+        #region ToolbarEvents
 
         /// <summary>
         /// Called when the icon is clicked.
@@ -641,6 +675,8 @@ namespace FullControls
         {
             DragMove(e.GetTouchPoint(this).Position);
         }
+
+        #endregion
 
         /// <summary>
         /// Called when the window changed state.
@@ -761,7 +797,12 @@ namespace FullControls
         /// </summary>
         public new void Close()
         {
-            ExitAnimation();
+            ActionEventArgs e = new ActionEventArgs("ACTION_CLOSE");
+             CloseAction?.Invoke(this, e);
+            if (!e.Cancel)
+            {
+                ExitAnimation();
+            }
         }
 
         /// <summary>
@@ -769,7 +810,12 @@ namespace FullControls
         /// </summary>
         public void Minimize()
         {
-            MinimizeAnimation();
+            ActionEventArgs e = new ActionEventArgs("ACTION_MINIMIZE");
+            MinimizeAction?.Invoke(this, e);
+            if (!e.Cancel)
+            {
+                MinimizeAnimation();
+            }
         }
 
         /// <summary>
@@ -777,8 +823,13 @@ namespace FullControls
         /// </summary>
         public void Maximize()
         {
-            canMove = false;
-            WindowState = WindowState.Maximized;
+            ActionEventArgs e = new ActionEventArgs("ACTION_MAXIMIZE");
+            MaximizeAction?.Invoke(this, e);
+            if (!e.Cancel)
+            {
+                canMove = false;
+                WindowState = WindowState.Maximized;
+            }
         }
 
         /// <summary>
@@ -786,7 +837,12 @@ namespace FullControls
         /// </summary>
         public void Restore()
         {
-            WindowState = WindowState.Normal;
+            ActionEventArgs e = new ActionEventArgs("ACTION_RESTORE");
+            RestoreAction?.Invoke(this, e);
+            if (!e.Cancel)
+            {
+                WindowState = WindowState.Normal;
+            }
         }
 
         /// <summary>
@@ -814,6 +870,8 @@ namespace FullControls
 
         #endregion
 
+        #region VSDesignerFix
+
         /// <summary>
         /// Offset of height between Visual Stuio designer and reality.
         /// </summary>
@@ -825,5 +883,7 @@ namespace FullControls
         /// </summary>
         /// <returns>Offset of width.</returns>
         private double VSDesignerWidthOffset() => BorderMargin.Left + BorderMargin.Right;
+
+        #endregion
     }
 }

@@ -1245,9 +1245,9 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Length of <see cref="Password"/>.
+        /// Length of the password (SecurePassword.Length).
         /// </summary>
-        public int PasswordLength => Password != null ? Password.Length : 0;
+        public int PasswordLength => SecurePassword != null ? SecurePassword.Length : 0;
 
         /// <summary>
         /// Indicates if the passwordbox has focus and selected text.
