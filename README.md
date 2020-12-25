@@ -32,7 +32,7 @@ Repository wiki: [https://github.com/devpelux/fullcontrols/wiki](https://github.
     </td>
     <td align="center">
       <a href="https://www.nuget.org/packages/FullControls">
-        <b>FullControls 1.2.1</b>
+        <b>FullControls 1.2.2</b>
       </a>
     </td>
   </tr>
