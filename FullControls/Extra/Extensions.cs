@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Windows;
 using System.Windows.Media;
 
 namespace FullControls.Extra
@@ -105,5 +106,14 @@ namespace FullControls.Extra
         /// <returns>Inverted color.</returns>
         public static Color Invert(this Color color)
             => Color.FromRgb((byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
+
+        /// <summary>
+        /// Check if the specified <see cref="DependencyProperty"/> is null.
+        /// </summary>
+        /// <param name="dependencyObject"><see cref="DependencyObject"/> that contains the property.</param>
+        /// <param name="dependencyProperty"><see cref="DependencyProperty"/> to check if is null.</param>
+        /// <returns>True if is null, false otherwise.</returns>
+        public static bool IsNull(this DependencyObject dependencyObject, DependencyProperty dependencyProperty)
+            => dependencyObject.GetValue(dependencyProperty) == null;
     }
 }

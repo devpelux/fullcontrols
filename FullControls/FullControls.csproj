@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Authors>Salvatore Peluso</Authors>
     <Description>Set of fully customizable standard controls, plus new special controls and extra functionality.  
 
@@ -26,15 +26,14 @@ Controls included:
 Complete description and documentation here: https://github.com/devpelux/fullcontrols/wiki</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>Controls, Custom, Full, Button, CheckBox, ComboBox, ComboBoxItem, PasswordBox, RadioButton, RepeatButton, TextBox, ToggleButton, Window, ScrollBar, ScrollViewer, GlassScrollBar, GlassScrollViewer, MenuItem, PolymorphicMenuItem, Switcher</PackageTags>
-    <PackageReleaseNotes>Added four events to EWindow raised immediately before the four commands Close, Minimize, Maximize, Restore.
-Changed CheckColor to CheckBrush in PolymorphicMenuItem.
-Optimized documentation.</PackageReleaseNotes>
+    <PackageReleaseNotes>Fixed NullReferenceException when setting a color brush to null.
+Added mapped xaml namespaces for FullControls and FullControls.Extra.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <Copyright>Copyright 2020 Salvatore Peluso</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>FullControls.png</PackageIcon>
-    <Version>1.2.2</Version>
+    <Version>1.2.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
