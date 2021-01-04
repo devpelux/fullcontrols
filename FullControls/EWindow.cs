@@ -493,6 +493,14 @@ namespace FullControls
         }
 
         /// <summary>
+        /// Creates a new <see cref="EWindow"/>.
+        /// </summary>
+        public EWindow()
+        {
+            Loaded += (o, e) => OnLoaded(e);
+        }
+
+        /// <summary>
         /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="FrameworkElement.ApplyTemplate"/>.
         /// </summary>
         public override void OnApplyTemplate()
@@ -500,7 +508,6 @@ namespace FullControls
             base.OnApplyTemplate();
             LoadWindowChromes();
             ((HwndSource)PresentationSource.FromVisual(this)).AddHook(new HwndSourceHook(HandleMessages));
-            Loaded += FullWindow_Loaded;
             ButtonBase minimizeButton = (ButtonBase)Template.FindName(PartMinimizeButton, this);
             if (minimizeButton != null) minimizeButton.Click += PART_MinimizeButton_Click;
             ButtonBase maximizeButton = (ButtonBase)Template.FindName(PartMaximizeButton, this);
@@ -519,14 +526,8 @@ namespace FullControls
             }
             UIElement icon = (UIElement)Template.FindName(PartIcon, this);
             if (icon != null) icon.MouseDown += PART_Icon_MouseDown;
+            Opacity = 0; //Initial state
             beforeState = WindowState;
-            if (FixVSDesigner)
-            {
-                Height += VSDesignerHeightOffset();
-                Width += VSDesignerWidthOffset();
-                MinHeight += VSDesignerHeightOffset();
-                MinWidth += VSDesignerWidthOffset();
-            }
         }
 
         /// <summary>
@@ -574,17 +575,6 @@ namespace FullControls
                 ResizeBorderThickness = newValue
             };
             ApplyWindowChrome();
-        }
-
-        /// <summary>
-        /// Called when the window is loaded.
-        /// </summary>
-        /// <param name="sender">Object that triggered the event.</param>
-        /// <param name="e">Event data.</param>
-        private void FullWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (WindowState != WindowState.Minimized) EnterAnimation();
-            beforeState = WindowState;
         }
 
         #region CaptionButtonsClicks
@@ -679,6 +669,23 @@ namespace FullControls
         #endregion
 
         /// <summary>
+        /// Raises the <see cref="FrameworkElement.Loaded"/> event.
+        /// </summary>
+        /// <param name="e">Event data.</param>
+        protected virtual void OnLoaded(RoutedEventArgs e)
+        {
+            if (FixVSDesigner)
+            {
+                Height += VSDesignerHeightOffset();
+                Width += VSDesignerWidthOffset();
+                MinHeight += VSDesignerHeightOffset();
+                MinWidth += VSDesignerWidthOffset();
+            }
+            if (WindowState != WindowState.Minimized) EnterAnimation();
+            beforeState = WindowState;
+        }
+
+        /// <summary>
         /// Called when the window changed state.
         /// </summary>
         /// <param name="e">Event data.</param>
@@ -727,7 +734,11 @@ namespace FullControls
                 doubleAnimation.Completed += MinimizeAnimation_Completed;
                 BeginAnimation(OpacityProperty, doubleAnimation);
             }
-            else WindowState = WindowState.Minimized;
+            else
+            {
+                Opacity = 0;
+                WindowState = WindowState.Minimized;
+            }
         }
 
         /// <summary>
@@ -749,7 +760,11 @@ namespace FullControls
             {
                 DoubleAnimation doubleAnimation = new DoubleAnimation(0, 1, new Duration(AnimationTime));
                 BeginAnimation(OpacityProperty, doubleAnimation);
-            } 
+            }
+            else
+            {
+                Opacity = 1;
+            }
         }
 
         /// <summary>
@@ -761,6 +776,10 @@ namespace FullControls
             {
                 DoubleAnimation doubleAnimation = new DoubleAnimation(0, 1, new Duration(AnimationTime));
                 BeginAnimation(OpacityProperty, doubleAnimation);
+            }
+            else
+            {
+                Opacity = 1;
             }
         }
 
@@ -775,7 +794,11 @@ namespace FullControls
                 doubleAnimation.Completed += ExitAnimation_Completed;
                 BeginAnimation(OpacityProperty, doubleAnimation);
             }
-            else base.Close();
+            else
+            {
+                Opacity = 0;
+                base.Close();
+            }
         }
 
         /// <summary>
@@ -798,7 +821,7 @@ namespace FullControls
         public new void Close()
         {
             ActionEventArgs e = new ActionEventArgs("ACTION_CLOSE");
-             CloseAction?.Invoke(this, e);
+            CloseAction?.Invoke(this, e);
             if (!e.Cancel)
             {
                 ExitAnimation();

@@ -26,14 +26,14 @@ Controls included:
 Complete description and documentation here: https://github.com/devpelux/fullcontrols/wiki</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>Controls, Custom, Full, Button, CheckBox, ComboBox, ComboBoxItem, PasswordBox, RadioButton, RepeatButton, TextBox, ToggleButton, Window, ScrollBar, ScrollViewer, GlassScrollBar, GlassScrollViewer, MenuItem, PolymorphicMenuItem, Switcher</PackageTags>
-    <PackageReleaseNotes>Fixed NullReferenceException when setting a color brush to null.
-Added mapped xaml namespaces for FullControls and FullControls.Extra.</PackageReleaseNotes>
+    <PackageReleaseNotes>Fixed "Loaded" event in EWindow that firing after the "Loaded" event of windows inheriting from EWindow.
+Optimized EWindow state transitions.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <Copyright>Copyright 2020 Salvatore Peluso</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>FullControls.png</PackageIcon>
-    <Version>1.2.3</Version>
+    <Version>1.2.4</Version>
   </PropertyGroup>
 
   <ItemGroup>
