@@ -14,5 +14,7 @@
         <ResourceDictionary Source="/FullControls;component/Styles/GlassScrollViewer.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/PolymorphicMenuItem.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/Switcher.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/Accordion.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/SimpleAccordionItem.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

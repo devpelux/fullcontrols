@@ -5,35 +5,19 @@
     <UseWPF>true</UseWPF>
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Authors>Salvatore Peluso</Authors>
-    <Description>Set of fully customizable standard controls, plus new special controls and extra functionality.  
+    <Description>This package includes a reworked, fully customizable, version of the most commonly used standard controls, plus some new special controls and extra functionality.
 
-Controls included:
-+ EButton  
-+ ECheckBox  
-+ EComboBox  
-+ EComboBoxItem  
-+ EPasswordBox  
-+ ERadioButton  
-+ ERepeatButton  
-+ ETextBox  
-+ EToggleButton  
-+ EWindow  
-+ GlassScrollBar  
-+ GlassScrollViewer  
-+ PolymorphicMenuItem  
-+ Switcher  
-
-Complete description and documentation here: https://github.com/devpelux/fullcontrols/wiki</Description>
+For the complete description see the readme here: https://github.com/devpelux/fullcontrols
+For examples and complete documentation see here: https://github.com/devpelux/fullcontrols/wiki</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>Controls, Custom, Full, Button, CheckBox, ComboBox, ComboBoxItem, PasswordBox, RadioButton, RepeatButton, TextBox, ToggleButton, Window, ScrollBar, ScrollViewer, GlassScrollBar, GlassScrollViewer, MenuItem, PolymorphicMenuItem, Switcher</PackageTags>
-    <PackageReleaseNotes>Fixed "Loaded" event in EWindow that firing after the "Loaded" event of windows inheriting from EWindow.
-Optimized EWindow state transitions.</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
-    <Copyright>Copyright 2020 Salvatore Peluso</Copyright>
+    <Copyright>Copyright (c) 2020-2021 devpelux (Salvatore Peluso)</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>FullControls.png</PackageIcon>
-    <Version>1.2.4</Version>
+    <Version>1.3.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

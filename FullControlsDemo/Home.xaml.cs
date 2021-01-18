@@ -59,5 +59,10 @@ namespace FullControlsDemo
                 disablethis.BeginAnimation(OpacityProperty, disableThis);
             }
         }
+
+        private void AccordionView_Click(object sender, RoutedEventArgs e)
+        {
+            new AccordionW().Show();
+        }
     }
 }

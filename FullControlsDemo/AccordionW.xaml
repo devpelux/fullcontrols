@@ -1,0 +1,29 @@
+﻿<fc:EWindow x:Class="FullControlsDemo.AccordionW"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:fc="http://devpelux.github.io/fullcontrols" 
+            WindowStyle="None"
+            MergeToolbarAndContent="True"
+            CornerRadius="{DynamicResource WindowCornerRadius}"
+            BorderThickness="{DynamicResource WindowBorderThickness}"
+            Background="{DynamicResource WindowBackground}"
+            BorderBrush="{DynamicResource WindowBorderBrush}"
+            CaptionButtonsBackground="{DynamicResource WindowBackground2}"
+            Title="Accordion View"
+            Icon="/Icons/FullControls.ico"
+            ResizeMode="CanMinimize"
+            Height="413"
+            Width="564">
+    <Grid>
+        <fc:EButton Content="EButton" HorizontalAlignment="Left" Margin="434,80,0,0" VerticalAlignment="Top" Height="38" Width="72" Click="EButton_Click"/>
+        <fc:EButton Content="EButton2" HorizontalAlignment="Left" Margin="434,133,0,0" VerticalAlignment="Top" Height="38" Width="72" Click="EButton2_Click"/>
+        <fc:Accordion x:Name="Acc" HorizontalAlignment="Left" Margin="58,43,0,0" VerticalAlignment="Top" Height="327" Width="342">
+            <fc:SimpleAccordionItem Header="Header1" Height="49"/>
+            <fc:SimpleAccordionItem Header="Header2"/>
+            <fc:SimpleAccordionItem Header="Header3"/>
+            <fc:SimpleAccordionItem Header="Header4"/>
+            <fc:SimpleAccordionItem Header="Header5"/>
+            <fc:SimpleAccordionItem Header="Header6"/>
+        </fc:Accordion>
+    </Grid>
+</fc:EWindow>

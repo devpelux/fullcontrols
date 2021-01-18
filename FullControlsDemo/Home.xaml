@@ -110,5 +110,7 @@
         <fc:ECheckBox x:Name="checkbox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="156"
                       Height="20" Margin="44,446,0,0" Content="ToggleType Complete" IsChecked="False"
                       Checked="Checkbox_Checked" Unchecked="Checkbox_Unchecked"/>
+        <fc:EButton x:Name="accordionView" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="602,388,0,0"
+                    Content="Accordion View" Click="AccordionView_Click" Height="35" Width="100"/>
     </Grid>
 </fc:EWindow>
