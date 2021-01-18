@@ -39,7 +39,7 @@ namespace FullControls
         /// Gets the number of elements actually contained inside the <see cref="Accordion"/>.
         /// </summary>
         public int ItemCount => Items.Count;
-        
+
         /// <summary>
         /// Gets a value indicating if the <see cref="Accordion"/> has items.
         /// </summary>
