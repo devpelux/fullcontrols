@@ -6,16 +6,37 @@
         
         <Setter Property="AnimationTime" Value="0:0:0.4"/>
         <Setter Property="ExpandingAnimationTime" Value="0:0:0.4"/>
-        
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
+        <Setter Property="ForegroundOnExpanded" Value="Red"/>
+        <Setter Property="ForegroundOnMouseOver" Value="Blue"/>
+        <Setter Property="ForegroundOnMouseOverOnExpanded" Value="Yellow"/>
+        <Setter Property="HeaderHeight" Value="20"/>
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:SimpleAccordionItem}">
                     <Grid>
-                        <TextBlock x:Name="PART_Header"
-                                   HorizontalAlignment="Left"
-                                   Margin="10,10,0,0"
-                                   Foreground="Black"
-                                   Text="{TemplateBinding Header}"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid x:Name="PART_Header"
+                              Grid.Row="0"
+                              Height="{TemplateBinding HeaderHeight}"
+                              Background="WhiteSmoke">
+                            <TextBlock HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Foreground="{TemplateBinding ActualForeground}"
+                                       Text="{TemplateBinding Header}"/>
+                        </Grid>
+                        <local:CollapsableGrid x:Name="PART_Content"
+                                               Grid.Row="1"
+                                               Background="Gray"
+                                               ExpandingAnimationTime="{TemplateBinding ExpandingAnimationTime}"
+                                               IsExpanded="{TemplateBinding IsExpanded}">
+                            <ContentPresenter x:Name="PART_ContentHost" ContentSource="Content"/>
+                        </local:CollapsableGrid>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

@@ -11,12 +11,18 @@ namespace FullControls
     /// Represents a control that contains a stacked list of items.
     /// Each item can be "expanded" or "collapsed" to reveal the content associated with that item.
     /// </summary>
+    [TemplatePart(Name = PartContentHost, Type = typeof(Panel))]
     [DefaultEvent(nameof(ItemExpandedChanged))]
     [ContentProperty(nameof(Items))]
     [DefaultProperty(nameof(Items))]
     public class Accordion : Control
     {
         private readonly ItemsControl itemsControl;
+
+        /// <summary>
+        /// ContentHost template part.
+        /// </summary>
+        protected const string PartContentHost = "PART_ContentHost";
 
         /// <summary>
         /// Collection of <see cref="AccordionItem"/> to display inside the <see cref="Accordion"/>.
@@ -48,7 +54,7 @@ namespace FullControls
         /// <summary>
         /// Occurs when in an item <see cref="AccordionItem.IsExpanded"/> is changed.
         /// </summary>
-        public event EventHandler<ItemExpandedEventArgs> ItemExpandedChanged;
+        public event EventHandler<ItemExpandedChangedEventArgs> ItemExpandedChanged;
 
 
         /// <summary>
@@ -76,7 +82,7 @@ namespace FullControls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            ((Grid)Template.FindName("PART_ContentHost", this))?.Children.Add(itemsControl);
+            ((Panel)Template.FindName(PartContentHost, this))?.Children.Add(itemsControl);
         }
 
         /// <summary>
@@ -84,7 +90,7 @@ namespace FullControls
         /// </summary>
         /// <param name="sender">Object that raised the event.</param>
         /// <param name="e">Event data.</param>
-        protected virtual void OnItemExpandedChanged(object sender, ItemExpandedEventArgs e) => ItemExpandedChanged?.Invoke(this, e);
+        protected virtual void OnItemExpandedChanged(object sender, ItemExpandedChangedEventArgs e) => ItemExpandedChanged?.Invoke(this, e);
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.

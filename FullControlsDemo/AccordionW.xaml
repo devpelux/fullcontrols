@@ -8,22 +8,34 @@
             BorderThickness="{DynamicResource WindowBorderThickness}"
             Background="{DynamicResource WindowBackground}"
             BorderBrush="{DynamicResource WindowBorderBrush}"
-            CaptionButtonsBackground="{DynamicResource WindowBackground2}"
+            CaptionButtonsBackground="{DynamicResource WindowBackground}"
             Title="Accordion View"
             Icon="/Icons/FullControls.ico"
             ResizeMode="CanMinimize"
             Height="413"
-            Width="564">
+            Width="645">
     <Grid>
-        <fc:EButton Content="EButton" HorizontalAlignment="Left" Margin="434,80,0,0" VerticalAlignment="Top" Height="38" Width="72" Click="EButton_Click"/>
-        <fc:EButton Content="EButton2" HorizontalAlignment="Left" Margin="434,133,0,0" VerticalAlignment="Top" Height="38" Width="72" Click="EButton2_Click"/>
+        <fc:EButton Content="EButton" HorizontalAlignment="Left" Margin="434,23,0,0" VerticalAlignment="Top" Height="38" Width="72" Click="EButton_Click"/>
+        <fc:EButton Content="EButton2" HorizontalAlignment="Left" Margin="434,76,0,0" VerticalAlignment="Top" Height="38" Width="72" Click="EButton2_Click"/>
         <fc:Accordion x:Name="Acc" HorizontalAlignment="Left" Margin="58,43,0,0" VerticalAlignment="Top" Height="327" Width="342">
-            <fc:SimpleAccordionItem Header="Header1" Height="49"/>
-            <fc:SimpleAccordionItem Header="Header2"/>
-            <fc:SimpleAccordionItem Header="Header3"/>
+            <fc:SimpleAccordionItem Header="Header1">
+                <Grid Height="60"/>
+            </fc:SimpleAccordionItem>
+            <fc:SimpleAccordionItem Header="Header2" IsExpanded="False">
+                <Grid Height="60"/>
+            </fc:SimpleAccordionItem>
+            <fc:SimpleAccordionItem Header="Header3" ExpandingAnimationTime="0:0:2">
+                <Grid Height="60"/>
+            </fc:SimpleAccordionItem>
             <fc:SimpleAccordionItem Header="Header4"/>
             <fc:SimpleAccordionItem Header="Header5"/>
             <fc:SimpleAccordionItem Header="Header6"/>
         </fc:Accordion>
+
+        <fc:CollapsableGrid x:Name="cg" Background="Red" ExpandingAnimationTime="0:0:2" Margin="413,222,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <fc:EButton Content="EButton" HorizontalAlignment="Center" Margin="0,32,0,0" VerticalAlignment="Top"/>
+            <fc:EButton Content="Test" Width="50" Height="40" Margin="110,77,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="EButton_Click_1"/>
+        </fc:CollapsableGrid>
+
     </Grid>
 </fc:EWindow>

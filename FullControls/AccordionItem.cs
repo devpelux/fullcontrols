@@ -50,7 +50,7 @@ namespace FullControls
         /// <summary>
         /// Occurs when <see cref="IsExpanded"/> is changed.
         /// </summary>
-        public event EventHandler<ItemExpandedEventArgs> ExpandedChanged;
+        public event EventHandler<ItemExpandedChangedEventArgs> ExpandedChanged;
 
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace FullControls
         /// </summary>
         /// <param name="newValue">Actual state of <see cref="IsExpanded"/>.</param>
         protected virtual void OnExpandedChanged(bool newValue)
-            => ExpandedChanged?.Invoke(this, new ItemExpandedEventArgs(Index, newValue));
+            => ExpandedChanged?.Invoke(this, new ItemExpandedChangedEventArgs(Index, newValue));
 
         /// <summary>
         /// Returns the string representation of a <see cref="AccordionItem"/> object.

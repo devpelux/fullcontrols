@@ -1,7 +1,9 @@
 ﻿using FullControls.Core;
 using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 
 namespace FullControls
@@ -9,9 +11,26 @@ namespace FullControls
     /// <summary>
     /// Simple <see cref="AccordionItem"/> with header and content.
     /// </summary>
+    [TemplatePart(Name = PartHeader, Type = typeof(UIElement))]
+    [TemplatePart(Name = PartContent, Type = typeof(CollapsableGrid))]
+    [DefaultEvent(nameof(ExpandedChanged))]
+    [ContentProperty(nameof(Content))]
+    [DefaultProperty(nameof(Content))]
     public class SimpleAccordionItem : AccordionItem
     {
         private bool loaded = false;
+        private UIElement header;
+        private CollapsableGrid content;
+
+        /// <summary>
+        /// Header template part.
+        /// </summary>
+        protected const string PartHeader = "PART_Header";
+
+        /// <summary>
+        /// Content template part.
+        /// </summary>
+        protected const string PartContent = "PART_Content";
 
         /// <summary>
         /// Foreground brush when the mouse is over the control.
@@ -114,6 +133,47 @@ namespace FullControls
         public static readonly DependencyProperty ExpandingAnimationTimeProperty =
             DependencyProperty.Register(nameof(ExpandingAnimationTime), typeof(TimeSpan), typeof(SimpleAccordionItem));
 
+        /// <summary>
+        /// Height of the header.
+        /// </summary>
+        public double HeaderHeight
+        {
+            get => (double)GetValue(HeaderHeightProperty);
+            set => SetValue(HeaderHeightProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="HeaderHeight"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty HeaderHeightProperty =
+            DependencyProperty.Register(nameof(HeaderHeight), typeof(double), typeof(SimpleAccordionItem));
+
+        /// <summary>
+        /// Content of the expanding part.
+        /// </summary>
+        public object Content
+        {
+            get => GetValue(ContentProperty);
+            set => SetValue(ContentProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="Content"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ContentProperty =
+            DependencyProperty.Register(nameof(Content), typeof(object), typeof(SimpleAccordionItem));
+
+        /// <summary>
+        /// Specifies if expanding or collapsing anination is currently executing.
+        /// </summary>
+        public bool IsAnimating => content != null && content.IsAnimating;
+
+        /// <summary>
+        /// Gets a value indicating whether the mouse pointer is located over the header element
+        /// (including his child elements in the visual tree).
+        /// </summary>
+        public bool IsMouseOverHeader => header != null && header.IsMouseOver;
+
 
         /// <summary>
         /// Creates a new <see cref="SimpleAccordionItem"/>.
@@ -121,6 +181,8 @@ namespace FullControls
         static SimpleAccordionItem()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SimpleAccordionItem), new FrameworkPropertyMetadata(typeof(SimpleAccordionItem)));
+            IsExpandedProperty.OverrideMetadata(typeof(SimpleAccordionItem), new PropertyMetadata(true, null,
+                new CoerceValueCallback((d, o) => ((SimpleAccordionItem)d).IsAnimating ? d.GetValue(IsExpandedProperty) : o)));
         }
 
         /// <summary>
@@ -129,6 +191,11 @@ namespace FullControls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+            content = (CollapsableGrid)Template.FindName(PartContent, this);
+            header = (UIElement)Template.FindName(PartHeader, this);
+            header.MouseLeftButtonDown += (o, e) => OnHeaderMouseLeftButtonDown(e);
+            header.MouseEnter += (o, e) => OnHeaderMouseEnter(e);
+            header.MouseLeave += (o, e) => OnHeaderMouseLeave(e);
             Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
             loaded = true;
             ReloadBrushes();
@@ -155,22 +222,29 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Called when the mouse enter the control.
+        /// Called when the mouse left button is pressed when the mouse is over the header control.
         /// </summary>
         /// <param name="e">Event data.</param>
-        protected override void OnMouseEnter(MouseEventArgs e)
+        protected virtual void OnHeaderMouseLeftButtonDown(MouseButtonEventArgs e)
         {
-            base.OnMouseEnter(e);
+            IsExpanded ^= true;
+        }
+
+        /// <summary>
+        /// Called when the mouse enter the header control.
+        /// </summary>
+        /// <param name="e">Event data.</param>
+        protected virtual void OnHeaderMouseEnter(MouseEventArgs e)
+        {
             ReloadBrushes();
         }
 
         /// <summary>
-        /// Called when the mouse leave the control.
+        /// Called when the mouse leave the header control.
         /// </summary>
         /// <param name="e">Event data.</param>
-        protected override void OnMouseLeave(MouseEventArgs e)
+        protected virtual void OnHeaderMouseLeave(MouseEventArgs e)
         {
-            base.OnMouseLeave(e);
             ReloadBrushes();
         }
 
@@ -184,7 +258,7 @@ namespace FullControls
             {
                 Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnDisabled, TimeSpan.Zero);
             }
-            else if (IsMouseOver) //MouseOver state
+            else if (IsMouseOverHeader) //MouseOver state
             {
                 if (IsExpanded == true)
                 {

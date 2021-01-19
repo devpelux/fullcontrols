@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using FullControls;
 
 namespace FullControlsDemo
@@ -56,6 +57,12 @@ namespace FullControlsDemo
             Acc.Items.Move(1, 3);
 
             Acc.Items.Clear();
+        }
+
+        private void EButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            //if (!cg.IsExpanded) cg.ExpandingAnimationTime = TimeSpan.Zero;
+            cg.IsExpanded ^= true;
         }
     }
 }

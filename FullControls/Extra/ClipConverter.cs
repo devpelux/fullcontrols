@@ -8,29 +8,59 @@ namespace FullControls.Extra
 {
     /// <summary>
     /// <para>Used to clip elements that are out of a control.</para>
-    /// <para>Supports only CornerRadius and Thickness that are equals for every side.</para>
+    /// <para>You can specify CornerRadius and BorderThicknes if the control has these properties.</para>
+    /// <remarks>Are supported only uniform CornerRadius and BorderThickness.</remarks>
     /// </summary>
     public class ClipConverter : IMultiValueConverter
     {
         /// <summary>
-        /// <para>Returns a clip with defined parameters.</para>
-        /// <para>Requested 4 params (in values): width (double), height (double), border thickness (Thickness), corner radius (CornerRadius).</para>
+        /// <para>Calculates and returns a clip with the specified parameters.</para>
         /// </summary>
-        /// <param name="values">Requested 4 params: width (double), height (double), border thickness (Thickness), corner radius (CornerRadius).</param>
-        /// <param name="targetType"></param>
-        /// <param name="parameter"></param>
-        /// <param name="culture"></param>
+        /// <param name="values">
+        /// <para><b>Mandatory arguments:</b> Width (<paramref name="values"/>[0]), Height (<paramref name="values"/>[1]).</para>
+        /// <para><b>Optional arguments:</b> CornerRadius (<paramref name="values"/>[2]), BorderThickness (<paramref name="values"/>[3]).</para>
+        /// <remarks>Are supported only uniform CornerRadius and BorderThickness.</remarks>
+        /// </param>
+        /// <param name="targetType">Unused.</param>
+        /// <param name="parameter">Unused.</param>
+        /// <param name="culture">Unused.</param>
         /// <returns>RectangleGeometry clip.</returns>
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values.Length == 4 && values[0] is double width && values[1] is double height && values[2] is Thickness thickness && values[3] is CornerRadius radius)
+            if (values.Length == 2)
             {
-                if (width < double.Epsilon || height < double.Epsilon) return Geometry.Empty;
-                RectangleGeometry clip = new RectangleGeometry(new Rect(0, 0, width, height), radius.TopLeft - (thickness.Left / 2), radius.TopLeft - (thickness.Left / 2));
-                clip.Freeze();
-                return clip;
+                if (values[0] is double width && values[1] is double height)
+                {
+                    if (width < double.Epsilon || height < double.Epsilon) return Geometry.Empty;
+                    RectangleGeometry clip = new RectangleGeometry(new Rect(0, 0, width, height));
+                    clip.Freeze();
+                    return clip;
+                }
+                else throw new ArgumentException("Invalid arguments! Must be: double, double, [CornerRadius], [Thickness].");
             }
-            return DependencyProperty.UnsetValue;
+            else if (values.Length == 3)
+            {
+                if (values[0] is double width && values[1] is double height && values[2] is CornerRadius radius)
+                {
+                    if (width < double.Epsilon || height < double.Epsilon) return Geometry.Empty;
+                    RectangleGeometry clip = new RectangleGeometry(new Rect(0, 0, width, height), radius.TopLeft, radius.TopLeft);
+                    clip.Freeze();
+                    return clip;
+                }
+                else throw new ArgumentException("Invalid arguments! Must be: double, double, [CornerRadius], [Thickness].");
+            }
+            else if (values.Length == 4)
+            {
+                if (values[0] is double width && values[1] is double height && values[2] is CornerRadius radius && values[3] is Thickness thickness)
+                {
+                    if (width < double.Epsilon || height < double.Epsilon) return Geometry.Empty;
+                    RectangleGeometry clip = new RectangleGeometry(new Rect(0, 0, width, height), radius.TopLeft - (thickness.Left / 2), radius.TopLeft - (thickness.Left / 2));
+                    clip.Freeze();
+                    return clip;
+                }
+                else throw new ArgumentException("Invalid arguments! Must be: double, double, [CornerRadius], [Thickness].");
+            }
+            else throw new ArgumentException("Invalid arguments! Must be: double, double, [CornerRadius], [Thickness].");
         }
 
         /// <summary>

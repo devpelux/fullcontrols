@@ -75,9 +75,9 @@
                                                  RelativeSource="{RelativeSource Self}"/>
                                         <Binding Path="ActualHeight"
                                                  RelativeSource="{RelativeSource Self}"/>
-                                        <Binding Path="BorderThickness"
-                                                 RelativeSource="{RelativeSource FindAncestor, AncestorType=Border}"/>
                                         <Binding Path="CornerRadius"
+                                                 RelativeSource="{RelativeSource FindAncestor, AncestorType=Border}"/>
+                                        <Binding Path="BorderThickness"
                                                  RelativeSource="{RelativeSource FindAncestor, AncestorType=Border}"/>
                                     </MultiBinding>
                                 </Grid.Clip>
