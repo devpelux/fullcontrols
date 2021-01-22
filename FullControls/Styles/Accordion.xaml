@@ -6,12 +6,11 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Accordion}">
-                    <Border Background="{TemplateBinding Background}"
+                    <Border x:Name="PART_ContentHost"
+                            Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid x:Name="PART_ContentHost"
-                              Margin="{TemplateBinding Padding}"/>
-                    </Border>
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

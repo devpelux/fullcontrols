@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls">
 
-    <Style TargetType="{x:Type local:SimpleAccordionItem}">
+    <Style TargetType="{x:Type local:ItemsControlAccordionItem}">
         
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="ForegroundOnExpanded" Value="Black"/>
@@ -20,9 +20,17 @@
         <Setter Property="AnimationTime" Value="0:0:0.4"/>
         <Setter Property="ExpandingAnimationTime" Value="0:0:0.4"/>
 
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:SimpleAccordionItem}">
+                <ControlTemplate TargetType="{x:Type local:ItemsControlAccordionItem}">
                     <Grid Background="{TemplateBinding Background}">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -45,12 +53,7 @@
                         <local:Collapsable x:Name="PART_Collapsable"
                                            Grid.Row="1"
                                            ExpandingAnimationTime="{TemplateBinding ExpandingAnimationTime}"
-                                           IsExpanded="{TemplateBinding IsExpanded}">
-                            <ContentPresenter Margin="{TemplateBinding Padding}"
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              ContentSource="Content"/>
-                        </local:Collapsable>
+                                           IsExpanded="{TemplateBinding IsExpanded}"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

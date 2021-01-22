@@ -11,7 +11,7 @@ namespace FullControls
     /// Represents a control that contains a stacked list of items.
     /// Each item can be "expanded" or "collapsed" to reveal the content associated with that item.
     /// </summary>
-    [TemplatePart(Name = PartContentHost, Type = typeof(Panel))]
+    [TemplatePart(Name = PartContentHost, Type = typeof(Decorator))]
     [DefaultEvent(nameof(ItemExpandedChanged))]
     [ContentProperty(nameof(Items))]
     [DefaultProperty(nameof(Items))]
@@ -76,13 +76,12 @@ namespace FullControls
             Items = new();
         }
 
-        /// <summary>
-        /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="FrameworkElement.ApplyTemplate"/>.
-        /// </summary>
+        /// <inheritdoc/>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            ((Panel)Template.FindName(PartContentHost, this))?.Children.Add(itemsControl);
+            Decorator contentHost = (Decorator)Template.FindName(PartContentHost, this);
+            if (contentHost != null) contentHost.Child = itemsControl;
         }
 
         /// <summary>
@@ -155,22 +154,40 @@ namespace FullControls
             SetExpandedChangedHandler(0, Items.Count - 1);
         }
 
-        #region ExpandedChangedHandler
+        #region ExpandedChangedHandler setters
 
+        /// <summary>
+        /// Set the ExpandedChanged handler to an item.
+        /// </summary>
+        /// <param name="index">Item index.</param>
         private void SetExpandedChangedHandler(int index)
         {
             ((AccordionItem)itemsControl.Items[index]).ExpandedChanged -= OnItemExpandedChanged;
             ((AccordionItem)itemsControl.Items[index]).ExpandedChanged += OnItemExpandedChanged;
         }
 
+        /// <summary>
+        /// Remove the ExpandedChanged handler to some items.
+        /// </summary>
+        /// <param name="startIndex">First item index.</param>
+        /// <param name="endIndex">Last item index.</param>
         private void SetExpandedChangedHandler(int startIndex, int endIndex)
         {
             for (int i = startIndex; i <= endIndex; i++) SetExpandedChangedHandler(i);
         }
 
+        /// <summary>
+        /// Remove the ExpandedChanged handler to an item.
+        /// </summary>
+        /// <param name="index">Item index.</param>
         private void RemoveExpandedChangedHandler(int index)
             => ((AccordionItem)itemsControl.Items[index]).ExpandedChanged -= OnItemExpandedChanged;
 
+        /// <summary>
+        /// Remove the ExpandedChanged handler to some items.
+        /// </summary>
+        /// <param name="startIndex">First item index.</param>
+        /// <param name="endIndex">Last item index.</param>
         private void RemoveExpandedChangedHandler(int startIndex, int endIndex)
         {
             for (int i = startIndex; i <= endIndex; i++) RemoveExpandedChangedHandler(i);

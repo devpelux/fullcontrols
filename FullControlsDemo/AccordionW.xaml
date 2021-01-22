@@ -15,27 +15,43 @@
             Height="413"
             Width="645">
     <Grid>
-        <fc:EButton Content="EButton" HorizontalAlignment="Left" Margin="434,23,0,0" VerticalAlignment="Top" Height="38" Width="72" Click="EButton_Click"/>
-        <fc:EButton Content="EButton2" HorizontalAlignment="Left" Margin="434,76,0,0" VerticalAlignment="Top" Height="38" Width="72" Click="EButton2_Click"/>
+        <!--<fc:EButton Content="EButton" HorizontalAlignment="Left" Margin="434,23,0,0" VerticalAlignment="Top" Height="38" Width="72"/>
+        <fc:EButton Content="EButton2" HorizontalAlignment="Left" Margin="434,76,0,0" VerticalAlignment="Top" Height="38" Width="72"/>
         <fc:Accordion x:Name="Acc" HorizontalAlignment="Left" Margin="58,43,0,0" VerticalAlignment="Top" Height="327" Width="342">
-            <fc:SimpleAccordionItem Header="Header1">
-                <Grid Height="60"/>
-            </fc:SimpleAccordionItem>
+            <fc:ItemsControlAccordionItem x:Name="i1" Header="Header1">
+                <TextBlock>gg</TextBlock>
+                <TextBlock>gg</TextBlock>
+                <TextBlock>gg</TextBlock>
+            </fc:ItemsControlAccordionItem>
             <fc:SimpleAccordionItem Header="Header2" IsExpanded="False">
-                <Grid Height="60"/>
+                <Grid Height="60" Background="Green"/>
             </fc:SimpleAccordionItem>
             <fc:SimpleAccordionItem Header="Header3" ExpandingAnimationTime="0:0:2">
-                <Grid Height="60"/>
+                <ItemsControl>
+                    <TextBlock>gg</TextBlock>
+                    <TextBlock>gg</TextBlock>
+                    <TextBlock>gg</TextBlock>
+                </ItemsControl>
             </fc:SimpleAccordionItem>
-            <fc:SimpleAccordionItem Header="Header4"/>
+            <fc:SimpleAccordionItem>
+                <fc:SimpleAccordionItem.Header>
+                    Header4
+                </fc:SimpleAccordionItem.Header>
+                <Grid Height="60" Background="Green"/>
+            </fc:SimpleAccordionItem>
             <fc:SimpleAccordionItem Header="Header5"/>
             <fc:SimpleAccordionItem Header="Header6"/>
-        </fc:Accordion>
+        </fc:Accordion>-->
 
-        <fc:CollapsableGrid x:Name="cg" Background="Red" ExpandingAnimationTime="0:0:2" Margin="413,222,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <fc:EButton Content="EButton" HorizontalAlignment="Center" Margin="0,32,0,0" VerticalAlignment="Top"/>
-            <fc:EButton Content="Test" Width="50" Height="40" Margin="110,77,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="EButton_Click_1"/>
-        </fc:CollapsableGrid>
+        <Grid x:Name="ccg" Margin="130,48,232,142">
+            <fc:Collapsable x:Name="ca" Margin="123,106,90,40" ExpandingAnimationTime="0:0:2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50">
+                <Grid x:Name="gg" Background="Red">
+                    <Button x:Name="bb" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Margin="48,55,0,0"/>
+                </Grid>
+            </fc:Collapsable>
+        </Grid>
 
+        <fc:EButton x:Name="TButt" Content="Test" Width="50" Height="40" Margin="533,166,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="TButt_Click"/>
+        <fc:EButton x:Name="TButt_Copy" Content="Test2" Width="50" Height="40" Margin="468,259,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="TButt_Click2"/>
     </Grid>
 </fc:EWindow>

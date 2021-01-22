@@ -28,4 +28,11 @@ For examples and complete documentation see here: https://github.com/devpelux/fu
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Styles\ItemsControlAccordionItem.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

@@ -6,16 +6,17 @@ using System.Windows.Media.Animation;
 namespace FullControls
 {
     /// <summary>
-    /// Defines a <see cref="Grid"/> that can be expanded or collapsed.
+    /// A control that could be expanded or collapsed.
     /// </summary>
-    public class CollapsableGrid : Grid
+    public class Collapsable : Decorator
     {
         private bool loaded = false;
-        private Size collapsedSize;
-        private Size expandedSize;
+        private bool heightWasNaN = false;
+        private bool calculatingSize = false;
+        private Size availableSize;
 
         /// <summary>
-        /// Specifies if the <see cref="Grid"/> is expanded (true) or collapsed (false).
+        /// Specifies if the control is expanded (true) or collapsed (false).
         /// </summary>
         /// <remarks>If <see cref="IsAnimating"/> is true the value is reverted to the previous value.</remarks>
         public bool IsExpanded
@@ -28,9 +29,9 @@ namespace FullControls
         /// Identifies the <see cref="IsExpanded"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty IsExpandedProperty =
-            DependencyProperty.Register(nameof(IsExpanded), typeof(bool), typeof(CollapsableGrid),
-                new PropertyMetadata(true, new PropertyChangedCallback((d, e) => ((CollapsableGrid)d).OnExpandedChanged((bool)e.NewValue)),
-                    new CoerceValueCallback((d, o) => ((CollapsableGrid)d).IsAnimating ? d.GetValue(IsExpandedProperty) : o)));
+            DependencyProperty.Register(nameof(IsExpanded), typeof(bool), typeof(Collapsable),
+                new PropertyMetadata(true, new PropertyChangedCallback((d, e) => ((Collapsable)d).OnExpandedChanged((bool)e.NewValue)),
+                    new CoerceValueCallback((d, o) => ((Collapsable)d).IsAnimating ? d.GetValue(IsExpandedProperty) : o)));
 
         /// <summary>
         /// Duration of the control animation when <see cref="IsExpanded"/> is changed.
@@ -45,7 +46,7 @@ namespace FullControls
         /// Identifies the <see cref="ExpandingAnimationTime"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ExpandingAnimationTimeProperty =
-            DependencyProperty.Register(nameof(ExpandingAnimationTime), typeof(TimeSpan), typeof(CollapsableGrid), new PropertyMetadata(TimeSpan.Zero));
+            DependencyProperty.Register(nameof(ExpandingAnimationTime), typeof(TimeSpan), typeof(Collapsable), new PropertyMetadata(TimeSpan.Zero));
 
         /// <summary>
         /// Specifies if expanding or collapsing anination is currently executing.
@@ -59,18 +60,11 @@ namespace FullControls
 
 
         /// <summary>
-        /// Creates a new <see cref="CollapsableGrid"/>.
+        /// Creates a new <see cref="Collapsable"/>.
         /// </summary>
-        public CollapsableGrid()
+        public Collapsable()
         {
-            Loaded += CollapsableGrid_Loaded;
-        }
-
-        /// <inheritdoc/>
-        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
-        {
-            base.OnRenderSizeChanged(sizeInfo);
-            if (!IsAnimating && (!loaded || IsExpanded)) expandedSize = sizeInfo.NewSize;
+            Loaded += Collapsable_Loaded;
         }
 
         /// <summary>
@@ -87,44 +81,75 @@ namespace FullControls
             }
         }
 
+        /// <inheritdoc/>
+        protected override Size MeasureOverride(Size constraint)
+        {
+            if (!calculatingSize && !IsAnimating)
+            {
+                availableSize = new Size(Math.Max(availableSize.Width, constraint.Width), Math.Max(availableSize.Height, constraint.Height));
+            }
+            return base.MeasureOverride(constraint);
+        }
+
         /// <summary>
-        /// Expands the <see cref="Grid"/>.
+        /// Called when the control is loaded.
+        /// </summary>
+        private void Collapsable_Loaded(object sender, RoutedEventArgs e)
+        {
+            loaded = true;
+            if (!IsExpanded) Collapse(false);
+        }
+
+        /// <summary>
+        /// Starts the control expanding process.
         /// </summary>
         private void Expand(bool animate = true)
         {
             IsAnimating = true;
 
+            Size expandedSize = CalculateExpandedSize();
+
             if (animate && ExpandingAnimationTime > TimeSpan.Zero)
             {
                 DoubleAnimation expand = new DoubleAnimation
                 {
-                    From = collapsedSize.Height,
+                    From = 0,
                     To = expandedSize.Height,
                     Duration = new Duration(ExpandingAnimationTime)
                 };
-                expand.Completed += (s, e) => IsAnimating = false;
+                expand.Completed += (s, e) =>
+                {
+                    IsAnimating = false;
+                    if (heightWasNaN) SetCurrentValue(HeightProperty, double.NaN);
+                    heightWasNaN = false;
+                };
                 BeginAnimation(HeightProperty, expand);
             }
             else
             {
-                SetCurrentValue(HeightProperty, expandedSize.Height);
+                SetCurrentValue(HeightProperty, heightWasNaN ? double.NaN : expandedSize.Height);
                 IsAnimating = false;
+                heightWasNaN = false;
             }
         }
 
         /// <summary>
-        /// Collapses the <see cref="Grid"/>.
+        /// Starts the control collapsing process.
         /// </summary>
         private void Collapse(bool animate = true)
         {
             IsAnimating = true;
+
+            heightWasNaN = double.IsNaN(Height);
+
+            Size expandedSize = CalculateExpandedSize();
 
             if (animate && ExpandingAnimationTime > TimeSpan.Zero)
             {
                 DoubleAnimation expand = new DoubleAnimation
                 {
                     From = expandedSize.Height,
-                    To = collapsedSize.Height,
+                    To = 0,
                     Duration = new Duration(ExpandingAnimationTime)
                 };
                 expand.Completed += (s, e) => IsAnimating = false;
@@ -132,19 +157,21 @@ namespace FullControls
             }
             else
             {
-                SetCurrentValue(HeightProperty, collapsedSize.Height);
+                SetCurrentValue(HeightProperty, 0);
                 IsAnimating = false;
             }
         }
 
         /// <summary>
-        /// Called when the control is loaded.
+        /// Calculates size of the control on expanded state that must be smaller or equal to <see cref="availableSize"/>.
         /// </summary>
-        private void CollapsableGrid_Loaded(object sender, RoutedEventArgs e)
+        /// <returns>Size of the control on expanded state.</returns>
+        private Size CalculateExpandedSize()
         {
-            loaded = true;
-            if (IsExpanded) Expand(false);
-            else Collapse(false);
+            calculatingSize = true;
+            Size requestedSize = MeasureOverride(new Size(double.PositiveInfinity, double.PositiveInfinity));
+            calculatingSize = false;
+            return new Size(Math.Min(availableSize.Width, requestedSize.Width), Math.Min(availableSize.Height, requestedSize.Height));
         }
     }
 }
