@@ -16,6 +16,8 @@
         <Setter Property="FontWeightOnDisabled" Value="Normal"/>
         <Setter Property="HorizontalHeaderAlignment" Value="Left"/>
         <Setter Property="VerticalHeaderAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="HeaderHeight" Value="20"/>
         <Setter Property="AnimationTime" Value="0:0:0.4"/>
         <Setter Property="ExpandingAnimationTime" Value="0:0:0.4"/>

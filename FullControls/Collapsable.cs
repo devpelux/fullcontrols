@@ -113,7 +113,7 @@ namespace FullControls
             {
                 DoubleAnimation expand = new DoubleAnimation
                 {
-                    From = 0,
+                    From = 0d,
                     To = expandedSize.Height,
                     Duration = new Duration(ExpandingAnimationTime)
                 };
@@ -149,7 +149,7 @@ namespace FullControls
                 DoubleAnimation expand = new DoubleAnimation
                 {
                     From = expandedSize.Height,
-                    To = 0,
+                    To = 0d,
                     Duration = new Duration(ExpandingAnimationTime)
                 };
                 expand.Completed += (s, e) => IsAnimating = false;
@@ -157,7 +157,7 @@ namespace FullControls
             }
             else
             {
-                SetCurrentValue(HeightProperty, 0);
+                SetCurrentValue(HeightProperty, 0d);
                 IsAnimating = false;
             }
         }
