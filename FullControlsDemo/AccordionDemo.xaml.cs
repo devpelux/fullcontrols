@@ -5,26 +5,14 @@ using FullControls;
 namespace FullControlsDemo
 {
     /// <summary>
-    /// Logica di interazione per AccordionW.xaml
+    /// Logica di interazione per AccordionDemo.xaml
     /// </summary>
-    public partial class AccordionW : EWindow
+    public partial class AccordionDemo : EWindow
     {
-        public AccordionW()
+        public AccordionDemo()
         {
             InitializeComponent();
         }
-
-        //private void TButt_Click(object sender, RoutedEventArgs e)
-        //{
-        //    //cg.IsExpanded = !cg.IsExpanded;
-        //    ca.IsExpanded ^= true;
-        //}
-
-        //private void TButt_Click2(object sender, RoutedEventArgs e)
-        //{
-        //    //cg.IsExpanded = !cg.IsExpanded;
-        //    bb.Margin = new Thickness(bb.Margin.Left, bb.Margin.Top + 10,0,0);
-        //}
 
         private void EButton_Click(object sender, RoutedEventArgs e)
         {

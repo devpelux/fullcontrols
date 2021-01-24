@@ -6,14 +6,13 @@ using System.Windows.Media.Animation;
 namespace FullControls
 {
     /// <summary>
-    /// A control that could be expanded or collapsed.
+    /// Defines a control that can be expanded or collapsed.
     /// </summary>
     public class Collapsable : Decorator
     {
         private bool loaded = false;
-        private bool heightWasNaN = false;
-        private bool calculatingSize = false;
-        private Size availableSize;
+        private bool isAnimating = false;
+        private Size preCollapsingSize;
 
         /// <summary>
         /// Specifies if the control is expanded (true) or collapsed (false).
@@ -51,12 +50,30 @@ namespace FullControls
         /// <summary>
         /// Specifies if expanding or collapsing anination is currently executing.
         /// </summary>
-        public bool IsAnimating { get; private set; }
+        public bool IsAnimating
+        {
+            get => isAnimating;
+            private set
+            {
+                isAnimating = value;
+                RaiseAnimationEvent(value);
+            }
+        }
 
         /// <summary>
         /// Occurs when <see cref="IsExpanded"/> is changed.
         /// </summary>
         public event EventHandler<ExpandedChangedEventArgs> ExpandedChanged;
+
+        /// <summary>
+        /// Occurs when the collapsing or expanding animation is started.
+        /// </summary>
+        public event EventHandler AnimationStarted;
+
+        /// <summary>
+        /// Occurs when the collapsing or expanding animation ended.
+        /// </summary>
+        public event EventHandler AnimationEnded;
 
 
         /// <summary>
@@ -81,23 +98,13 @@ namespace FullControls
             }
         }
 
-        /// <inheritdoc/>
-        protected override Size MeasureOverride(Size constraint)
-        {
-            if (!calculatingSize && !IsAnimating)
-            {
-                availableSize = new Size(Math.Max(availableSize.Width, constraint.Width), Math.Max(availableSize.Height, constraint.Height));
-            }
-            return base.MeasureOverride(constraint);
-        }
-
         /// <summary>
         /// Called when the control is loaded.
         /// </summary>
         private void Collapsable_Loaded(object sender, RoutedEventArgs e)
         {
-            loaded = true;
             if (!IsExpanded) Collapse(false);
+            loaded = true;
         }
 
         /// <summary>
@@ -107,10 +114,10 @@ namespace FullControls
         {
             IsAnimating = true;
 
-            Size expandedSize = CalculateExpandedSize();
-
             if (animate && ExpandingAnimationTime > TimeSpan.Zero)
             {
+                Size expandedSize = CalculateExpandedSize(false);
+
                 DoubleAnimation expand = new DoubleAnimation
                 {
                     From = 0d,
@@ -119,17 +126,17 @@ namespace FullControls
                 };
                 expand.Completed += (s, e) =>
                 {
+                    SetCurrentValue(HeightProperty, preCollapsingSize.Height);
                     IsAnimating = false;
-                    if (heightWasNaN) SetCurrentValue(HeightProperty, double.NaN);
-                    heightWasNaN = false;
+                    preCollapsingSize = Size.Empty;
                 };
                 BeginAnimation(HeightProperty, expand);
             }
             else
             {
-                SetCurrentValue(HeightProperty, heightWasNaN ? double.NaN : expandedSize.Height);
+                SetCurrentValue(HeightProperty, preCollapsingSize.Height);
                 IsAnimating = false;
-                heightWasNaN = false;
+                preCollapsingSize = Size.Empty;
             }
         }
 
@@ -140,20 +147,20 @@ namespace FullControls
         {
             IsAnimating = true;
 
-            heightWasNaN = double.IsNaN(Height);
-
-            Size expandedSize = CalculateExpandedSize();
+            preCollapsingSize = new Size(Width, Height);
 
             if (animate && ExpandingAnimationTime > TimeSpan.Zero)
             {
-                DoubleAnimation expand = new DoubleAnimation
+                Size expandedSize = CalculateExpandedSize(true);
+
+                DoubleAnimation collapse = new DoubleAnimation
                 {
                     From = expandedSize.Height,
                     To = 0d,
                     Duration = new Duration(ExpandingAnimationTime)
                 };
-                expand.Completed += (s, e) => IsAnimating = false;
-                BeginAnimation(HeightProperty, expand);
+                collapse.Completed += (s, e) => IsAnimating = false;
+                BeginAnimation(HeightProperty, collapse);
             }
             else
             {
@@ -163,15 +170,52 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Calculates size of the control on expanded state that must be smaller or equal to <see cref="availableSize"/>.
+        /// Calculates the size of the control on expanded state.
         /// </summary>
+        /// <remarks>
+        /// <para>If the control is expanded will return <see cref="UIElement.RenderSize"/>.</para>
+        /// <para>If the control is collapsed will calculate the expanded size in this way:</para>
+        /// <para>-> If <see cref="FrameworkElement.Width"/> or <see cref="FrameworkElement.Height"/> were <see cref="double.NaN"/> before collapsing,
+        /// will rearrange the layout, then return <see cref="UIElement.RenderSize"/>.</para>
+        /// <para>-> If <see cref="FrameworkElement.Width"/> and <see cref="FrameworkElement.Height"/> were both fixed before collapsing,
+        /// will return <see cref="preCollapsingSize"/>
+        /// (fixed to respect <see cref="FrameworkElement.MaxWidth"/> and <see cref="FrameworkElement.MaxHeight"/>).</para>
+        /// </remarks>
         /// <returns>Size of the control on expanded state.</returns>
-        private Size CalculateExpandedSize()
+        private Size CalculateExpandedSize(bool isExpanded)
         {
-            calculatingSize = true;
-            Size requestedSize = MeasureOverride(new Size(double.PositiveInfinity, double.PositiveInfinity));
-            calculatingSize = false;
-            return new Size(Math.Min(availableSize.Width, requestedSize.Width), Math.Min(availableSize.Height, requestedSize.Height));
+            if (isExpanded)
+            {
+                return RenderSize;
+            }
+            else
+            {
+                if (double.IsNaN(preCollapsingSize.Width) || double.IsNaN(preCollapsingSize.Height))
+                {
+                    SetCurrentValue(WidthProperty, preCollapsingSize.Width);
+                    SetCurrentValue(HeightProperty, preCollapsingSize.Height);
+                    InvalidateArrange();
+                    UpdateLayout();
+                    return RenderSize;
+                }
+                else
+                {
+                    return new Size(Math.Min(preCollapsingSize.Width, MaxWidth), Math.Min(preCollapsingSize.Height, MaxHeight));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Raise the animation event based on <see cref="IsAnimating"/> current value.
+        /// </summary>
+        /// <param name="isAnimating"><see cref="IsAnimating"/> current value.</param>
+        private void RaiseAnimationEvent(bool isAnimating)
+        {
+            if (loaded)
+            {
+                if (isAnimating) AnimationStarted?.Invoke(this, new EventArgs());
+                else AnimationEnded?.Invoke(this, new EventArgs());
+            }
         }
     }
 }

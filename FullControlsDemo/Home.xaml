@@ -66,6 +66,19 @@
 
         <!--#endregion-->
 
+        <!--
+        -[Window]
+        -Accordion + AccordionItems X
+        -Collapsable
+        -DialogWindow
+        -Button + ToggleButton + Switcher + RepeatButton
+        -Checkbox + Radiobutton
+        -GlassScrollViewer + GlassScrollbar
+        -PolymorphicMenuItem
+        -ComboBox + ComboBoxItem
+        -PasswordBox + TextBox
+        -->
+
         <fc:EComboBox x:Name="combobox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,77,0,0" SelectedIndex="0" Width="190">
             <fc:EComboBoxItem Content="Item1"/>
             <fc:EComboBoxItem Content="Item2"/>
@@ -112,5 +125,7 @@
                       Checked="Checkbox_Checked" Unchecked="Checkbox_Unchecked"/>
         <fc:EButton x:Name="accordionView" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="602,388,0,0"
                     Content="Accordion View" Click="AccordionView_Click" Height="35" Width="100"/>
+        <fc:EButton x:Name="test" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="602,439,0,0"
+            Content="Test" Click="Test_Click" Height="35" Width="100"/>
     </Grid>
 </fc:EWindow>

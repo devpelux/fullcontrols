@@ -1,4 +1,4 @@
-﻿<fc:EWindow x:Class="FullControlsDemo.AccordionW"
+﻿<fc:EWindow x:Class="FullControlsDemo.AccordionDemo"
             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:fc="http://devpelux.github.io/fullcontrols" 
@@ -30,30 +30,18 @@
                 <fc:SimpleAccordionItem Header="Header2" IsExpanded="False">
                     <Grid Height="60" Background="Red"/>
                 </fc:SimpleAccordionItem>
-                <fc:ItemsControlAccordionItem Header="Header3" ExpandingAnimationTime="0:0:1">
+                <fc:ItemsControlAccordionItem Header="Header3" ExpandingAnimationTime="0:0:1" Padding="5">
                     <TextBlock>gg</TextBlock>
                     <TextBlock>gg</TextBlock>
                     <TextBlock>gg</TextBlock>
                 </fc:ItemsControlAccordionItem>
-                <fc:SimpleAccordionItem Header="Header4" Background="Green">
+                <fc:SimpleAccordionItem Header="Header4" Background="Green" Padding="5">
                     <Grid Height="60" Background="Red"/>
                 </fc:SimpleAccordionItem>
                 <fc:SimpleAccordionItem Header="Header5">
                     <Grid Height="60" Background="Red"/>
                 </fc:SimpleAccordionItem>
-                <fc:SimpleAccordionItem Header="Header6"/>
             </fc:Accordion>
         </fc:GlassScrollViewer>
-
-        <!--<Grid x:Name="ccg" Margin="130,48,232,142">
-            <fc:Collapsable x:Name="ca" Margin="123,106,90,40" ExpandingAnimationTime="0:0:2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="50" Height="50">
-                <Grid x:Name="gg" Background="Red">
-                    <Button x:Name="bb" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Margin="48,55,0,0"/>
-                </Grid>
-            </fc:Collapsable>
-        </Grid>
-
-        <fc:EButton x:Name="TButt" Content="Test" Width="50" Height="40" Margin="533,166,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="TButt_Click"/>
-        <fc:EButton x:Name="TButt_Copy" Content="Test2" Width="50" Height="40" Margin="468,259,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="TButt_Click2"/>-->
     </Grid>
 </fc:EWindow>

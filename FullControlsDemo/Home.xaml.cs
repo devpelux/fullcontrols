@@ -62,7 +62,12 @@ namespace FullControlsDemo
 
         private void AccordionView_Click(object sender, RoutedEventArgs e)
         {
-            new AccordionW().Show();
+            new AccordionDemo().Show();
+        }
+
+        private void Test_Click(object sender, RoutedEventArgs e)
+        {
+            new CollapsableDemo().Show();
         }
     }
 }
