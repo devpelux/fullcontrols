@@ -1,7 +1,7 @@
 ﻿<fc:EWindow x:Class="FullControlsDemo.CollapsableDemo"
             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-            xmlns:fc="http://devpelux.github.io/fullcontrols" 
+            xmlns:fc="http://devpelux.github.io/fullcontrols"
             WindowStyle="None"
             MergeToolbarAndContent="True"
             CornerRadius="{DynamicResource WindowCornerRadius}"
@@ -12,16 +12,20 @@
             Title="Accordion View"
             Icon="/Icons/FullControls.ico"
             ResizeMode="CanMinimize"
-            Height="300"
-            Width="400">
+            Height="302"
+            Width="402">
     <Grid>
-        <Grid x:Name="scr" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,20,0,0" Background="Blue" Width="200" Height="200">
-            <fc:Collapsable x:Name="collapsable" Margin="40,40,40,40" Height="200" Width="120" MaxHeight="120" ExpandingAnimationTime="0:0:2"
-                        AnimationStarted="Collapsable_AnimationStarted" AnimationEnded="Collapsable_AnimationEnded">
-                <Grid x:Name="grid" Background="Red" Width="140" Height="140"/>
-            </fc:Collapsable>
-        </Grid>
-        <fc:EToggleButton x:Name="toggle" Content="Expand" Margin="121,252,223,19" Checked="Toggle_Checked" Unchecked="Toggle_Unchecked" IsChecked="True"/>
-        <fc:EButton x:Name="btn" Content="Grid" Margin="253,252,91,19" Click="Btn_Click" />
+        <fc:Collapsable x:Name="collapsable" Margin="60,60,60,60" ExpandingAnimationTime="0:0:2" WidthAnimation="True" HeightAnimation="True"
+                        AnimationStarted="Collapsable_AnimationStarted" AnimationEnded="Collapsable_AnimationEnded"
+                        IsExpandedChanged="Collapsable_IsExpandedChanged">
+            <Grid Background="WhiteSmoke" Width="280" Height="180" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Rectangle Fill="Red" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,47,0,0" Height="60" Width="60"/>
+                <Rectangle Fill="Green" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="172,33,0,0" Height="50" Width="50"/>
+                <Rectangle Fill="Blue" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="158,122,0,0" Height="40" Width="40"/>
+            </Grid>
+        </fc:Collapsable>
+        <fc:EToggleButton x:Name="toggle" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,15"
+                          Width="70" Height="30" Content="Collapse" IsChecked="True"
+                          Checked="Toggle_Checked" Unchecked="Toggle_Unchecked"/>
     </Grid>
 </fc:EWindow>

@@ -11,7 +11,7 @@ namespace FullControls
     /// </summary>
     [TemplatePart(Name = PartHeader, Type = typeof(UIElement))]
     [TemplatePart(Name = PartCollapsable, Type = typeof(Collapsable))]
-    [DefaultEvent(nameof(ExpandedChanged))]
+    [DefaultEvent(nameof(IsExpandedChanged))]
     public abstract class AccordionItem : Control
     {
         private UIElement header;
@@ -108,7 +108,7 @@ namespace FullControls
         /// <summary>
         /// Occurs when <see cref="IsExpanded"/> is changed.
         /// </summary>
-        public event EventHandler<ItemExpandedChangedEventArgs> ExpandedChanged;
+        public event EventHandler<ItemExpandedChangedEventArgs> IsExpandedChanged;
 
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace FullControls
         /// </summary>
         /// <param name="newValue">Actual state of <see cref="IsExpanded"/>.</param>
         protected virtual void OnExpandedChanged(bool newValue)
-            => ExpandedChanged?.Invoke(this, new ItemExpandedChangedEventArgs(Index, newValue));
+            => IsExpandedChanged?.Invoke(this, new ItemExpandedChangedEventArgs(Index, newValue));
 
         /// <summary>
         /// Called when the mouse left button is pressed when the mouse is over the header control.

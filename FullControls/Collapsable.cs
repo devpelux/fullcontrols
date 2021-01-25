@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
@@ -33,6 +34,36 @@ namespace FullControls
                     new CoerceValueCallback((d, o) => ((Collapsable)d).IsAnimating ? d.GetValue(IsExpandedProperty) : o)));
 
         /// <summary>
+        /// Specifies if to enable the <see cref="FrameworkElement.Height"/> animation.
+        /// </summary>
+        public bool HeightAnimation
+        {
+            get => (bool)GetValue(HeightAnimationProperty);
+            set => SetValue(HeightAnimationProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="HeightAnimation"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty HeightAnimationProperty =
+            DependencyProperty.Register(nameof(HeightAnimation), typeof(bool), typeof(Collapsable), new PropertyMetadata(true));
+
+        /// <summary>
+        /// Specifies if to enable the <see cref="FrameworkElement.Width"/> animation.
+        /// </summary>
+        public bool WidthAnimation
+        {
+            get => (bool)GetValue(WidthAnimationProperty);
+            set => SetValue(WidthAnimationProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="WidthAnimation"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty WidthAnimationProperty =
+            DependencyProperty.Register(nameof(WidthAnimation), typeof(bool), typeof(Collapsable), new PropertyMetadata(false));
+
+        /// <summary>
         /// Duration of the control animation when <see cref="IsExpanded"/> is changed.
         /// </summary>
         public TimeSpan ExpandingAnimationTime
@@ -50,20 +81,57 @@ namespace FullControls
         /// <summary>
         /// Specifies if expanding or collapsing anination is currently executing.
         /// </summary>
+        [Bindable(true)]
         public bool IsAnimating
         {
             get => isAnimating;
             private set
             {
-                isAnimating = value;
-                RaiseAnimationEvent(value);
+                if (value != isAnimating)
+                {
+                    isAnimating = value;
+                    RaiseAnimationEvent(value);
+                }
+            }
+        }
+
+        #region IsHeightAnimating / IsWidthAnimating
+
+        private bool isHeightAnimating = false;
+        private bool isWidthAnimating = false;
+
+        /// <summary>
+        /// Specifies if height anination is currently executing.
+        /// </summary>
+        private bool IsHeightAnimating
+        {
+            get => isHeightAnimating;
+            set
+            {
+                isHeightAnimating = value;
+                IsAnimating = IsHeightAnimating || IsWidthAnimating;
             }
         }
 
         /// <summary>
+        /// Specifies if width anination is currently executing.
+        /// </summary>
+        private bool IsWidthAnimating
+        {
+            get => isWidthAnimating;
+            set
+            {
+                isWidthAnimating = value;
+                IsAnimating = IsHeightAnimating || IsWidthAnimating;
+            }
+        }
+
+        #endregion
+
+        /// <summary>
         /// Occurs when <see cref="IsExpanded"/> is changed.
         /// </summary>
-        public event EventHandler<ExpandedChangedEventArgs> ExpandedChanged;
+        public event EventHandler<ExpandedChangedEventArgs> IsExpandedChanged;
 
         /// <summary>
         /// Occurs when the collapsing or expanding animation is started.
@@ -94,7 +162,7 @@ namespace FullControls
             {
                 if (IsExpanded) Expand();
                 else Collapse();
-                ExpandedChanged?.Invoke(this, new ExpandedChangedEventArgs(newValue));
+                IsExpandedChanged?.Invoke(this, new ExpandedChangedEventArgs(newValue));
             }
         }
 
@@ -110,62 +178,89 @@ namespace FullControls
         /// <summary>
         /// Starts the control expanding process.
         /// </summary>
+        /// <param name="animate">Specifies if to animate the process.</param>
         private void Expand(bool animate = true)
         {
-            IsAnimating = true;
+            Size expandedSize = CalculateExpandedSize(false);
 
-            if (animate && ExpandingAnimationTime > TimeSpan.Zero)
-            {
-                Size expandedSize = CalculateExpandedSize(false);
-
-                DoubleAnimation expand = new DoubleAnimation
-                {
-                    From = Math.Max(0, MinHeight),
-                    To = expandedSize.Height,
-                    Duration = new Duration(ExpandingAnimationTime)
-                };
-                expand.Completed += (s, e) =>
-                {
-                    SetCurrentValue(HeightProperty, preCollapsingSize.Height);
-                    IsAnimating = false;
-                    preCollapsingSize = Size.Empty;
-                };
-                BeginAnimation(HeightProperty, expand);
-            }
-            else
-            {
-                SetCurrentValue(HeightProperty, preCollapsingSize.Height);
-                IsAnimating = false;
-                preCollapsingSize = Size.Empty;
-            }
+            if (HeightAnimation) AnimateHeight(animate ? ExpandingAnimationTime : TimeSpan.Zero, MinHeight, expandedSize.Height, preCollapsingSize.Height);
+            if (WidthAnimation) AnimateWidth(animate ? ExpandingAnimationTime : TimeSpan.Zero, MinWidth, expandedSize.Width, preCollapsingSize.Width);
         }
 
         /// <summary>
         /// Starts the control collapsing process.
         /// </summary>
+        /// <param name="animate">Specifies if to animate the process.</param>
         private void Collapse(bool animate = true)
         {
-            IsAnimating = true;
-
             preCollapsingSize = new Size(Width, Height);
+            Size expandedSize = CalculateExpandedSize(true);
 
-            if (animate && ExpandingAnimationTime > TimeSpan.Zero)
+            if (HeightAnimation) AnimateHeight(animate ? ExpandingAnimationTime : TimeSpan.Zero, expandedSize.Height, MinHeight, MinHeight);
+            if (WidthAnimation) AnimateWidth(animate ? ExpandingAnimationTime : TimeSpan.Zero, expandedSize.Width, MinWidth, MinWidth);
+        }
+
+        /// <summary>
+        /// Animates <see cref="FrameworkElement.Height"/> from a value to another.
+        /// </summary>
+        /// <param name="duration">Animation duration.</param>
+        /// <param name="from">The value of the animation start.</param>
+        /// <param name="to">The value of the animation end.</param>
+        /// <param name="final">The final value that height must have.</param>
+        private void AnimateHeight(TimeSpan duration, double from, double to, double final)
+        {
+            IsHeightAnimating = true;
+            if (duration > TimeSpan.Zero)
             {
-                Size expandedSize = CalculateExpandedSize(true);
-
-                DoubleAnimation collapse = new DoubleAnimation
+                DoubleAnimation animation = new DoubleAnimation
                 {
-                    From = expandedSize.Height,
-                    To = Math.Max(0, MinHeight),
-                    Duration = new Duration(ExpandingAnimationTime)
+                    From = from,
+                    To = to,
+                    Duration = new Duration(duration)
                 };
-                collapse.Completed += (s, e) => IsAnimating = false;
-                BeginAnimation(HeightProperty, collapse);
+                animation.Completed += (o, e) =>
+                {
+                    SetCurrentValue(HeightProperty, final);
+                    IsHeightAnimating = false;
+                };
+                BeginAnimation(HeightProperty, animation);
             }
             else
             {
-                SetCurrentValue(HeightProperty, Math.Max(0, MinHeight));
-                IsAnimating = false;
+                SetCurrentValue(HeightProperty, final);
+                IsHeightAnimating = false;
+            }
+        }
+
+        /// <summary>
+        /// Animates <see cref="FrameworkElement.Width"/> from a value to another.
+        /// </summary>
+        /// <param name="duration">Animation duration.</param>
+        /// <param name="from">The value of the animation start.</param>
+        /// <param name="to">The value of the animation end.</param>
+        /// <param name="final">The final value that width must have.</param>
+        private void AnimateWidth(TimeSpan duration, double from, double to, double final)
+        {
+            IsWidthAnimating = true;
+            if (duration > TimeSpan.Zero)
+            {
+                DoubleAnimation animation = new DoubleAnimation
+                {
+                    From = from,
+                    To = to,
+                    Duration = new Duration(duration)
+                };
+                animation.Completed += (o, e) =>
+                {
+                    SetCurrentValue(WidthProperty, final);
+                    IsWidthAnimating = false;
+                };
+                BeginAnimation(WidthProperty, animation);
+            }
+            else
+            {
+                SetCurrentValue(WidthProperty, final);
+                IsWidthAnimating = false;
             }
         }
 

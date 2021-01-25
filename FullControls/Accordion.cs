@@ -12,7 +12,7 @@ namespace FullControls
     /// Each item can be "expanded" or "collapsed" to reveal the content associated with that item.
     /// </summary>
     [TemplatePart(Name = PartContentHost, Type = typeof(Decorator))]
-    [DefaultEvent(nameof(ItemExpandedChanged))]
+    [DefaultEvent(nameof(ItemIsExpandedChanged))]
     [ContentProperty(nameof(Items))]
     [DefaultProperty(nameof(Items))]
     public class Accordion : Control
@@ -54,7 +54,7 @@ namespace FullControls
         /// <summary>
         /// Occurs when in an item <see cref="AccordionItem.IsExpanded"/> is changed.
         /// </summary>
-        public event EventHandler<ItemExpandedChangedEventArgs> ItemExpandedChanged;
+        public event EventHandler<ItemExpandedChangedEventArgs> ItemIsExpandedChanged;
 
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace FullControls
         /// </summary>
         /// <param name="sender">Object that raised the event.</param>
         /// <param name="e">Event data.</param>
-        protected virtual void OnItemExpandedChanged(object sender, ItemExpandedChangedEventArgs e) => ItemExpandedChanged?.Invoke(this, e);
+        protected virtual void OnItemExpandedChanged(object sender, ItemExpandedChangedEventArgs e) => ItemIsExpandedChanged?.Invoke(this, e);
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
@@ -162,8 +162,8 @@ namespace FullControls
         /// <param name="index">Item index.</param>
         private void SetExpandedChangedHandler(int index)
         {
-            ((AccordionItem)itemsControl.Items[index]).ExpandedChanged -= OnItemExpandedChanged;
-            ((AccordionItem)itemsControl.Items[index]).ExpandedChanged += OnItemExpandedChanged;
+            ((AccordionItem)itemsControl.Items[index]).IsExpandedChanged -= OnItemExpandedChanged;
+            ((AccordionItem)itemsControl.Items[index]).IsExpandedChanged += OnItemExpandedChanged;
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace FullControls
         /// </summary>
         /// <param name="index">Item index.</param>
         private void RemoveExpandedChangedHandler(int index)
-            => ((AccordionItem)itemsControl.Items[index]).ExpandedChanged -= OnItemExpandedChanged;
+            => ((AccordionItem)itemsControl.Items[index]).IsExpandedChanged -= OnItemExpandedChanged;
 
         /// <summary>
         /// Remove the ExpandedChanged handler to some items.

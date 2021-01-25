@@ -34,10 +34,9 @@ namespace FullControlsDemo
             toggle.ClickToggleType = ToggleType.Complete;
         }
 
-        private void Btn_Click(object sender, RoutedEventArgs e)
+        private void Collapsable_IsExpandedChanged(object sender, ExpandedChangedEventArgs e)
         {
-            scr.Height += 10;
-            scr.Width += 10;
+            toggle.Content = e.IsExpanded ? "Collapse" : "Expand";
         }
     }
 }
