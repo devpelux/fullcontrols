@@ -17,21 +17,21 @@ namespace FullControls.Extra
         /// Check if the <see cref="string"/> is a <see cref="double"/>.
         /// </summary>
         /// <param name="str">The <see cref="string"/> to check.</param>
-        /// <returns>True is the <see cref="string"/> is a <see cref="double"/>, False otherwise.</returns>
+        /// <returns><see langword="true"/> is the <see cref="string"/> is a <see cref="double"/>, <see langword="false"/> otherwise.</returns>
         public static bool IsDouble(this string str) => double.TryParse(str, out _);
 
         /// <summary>
         /// Check if the <see cref="string"/> is an <see cref="int"/>.
         /// </summary>
         /// <param name="str">The <see cref="string"/> to check.</param>
-        /// <returns>True is the <see cref="string"/> is an <see cref="int"/>, False otherwise.</returns>
+        /// <returns><see langword="true"/> is the <see cref="string"/> is an <see cref="int"/>, <see langword="false"/> otherwise.</returns>
         public static bool IsInt(this string str) => int.TryParse(str, out _);
 
         /// <summary>
         /// Check if the <see cref="string"/> contains only numeric chars.
         /// </summary>
         /// <param name="str">The <see cref="string"/> to check.</param>
-        /// <returns>True is the <see cref="string"/> contains only numeric chars, False otherwise.</returns>
+        /// <returns><see langword="true"/> is the <see cref="string"/> contains only numeric chars, <see langword="false"/> otherwise.</returns>
         public static bool IsNumeric(this string str) => str.All(char.IsDigit);
 
         /// <summary>
@@ -108,11 +108,11 @@ namespace FullControls.Extra
             => Color.FromRgb((byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
 
         /// <summary>
-        /// Check if the specified <see cref="DependencyProperty"/> is null.
+        /// Check if the specified <see cref="DependencyProperty"/> is <see langword="null"/>.
         /// </summary>
         /// <param name="dependencyObject"><see cref="DependencyObject"/> that contains the property.</param>
-        /// <param name="dependencyProperty"><see cref="DependencyProperty"/> to check if is null.</param>
-        /// <returns>True if is null, false otherwise.</returns>
+        /// <param name="dependencyProperty"><see cref="DependencyProperty"/> to check if is <see langword="null"/>.</param>
+        /// <returns><see langword="true"/> if is <see langword="null"/>, <see langword="false"/> otherwise.</returns>
         public static bool IsNull(this DependencyObject dependencyObject, DependencyProperty dependencyProperty)
             => dependencyObject.GetValue(dependencyProperty) == null;
     }

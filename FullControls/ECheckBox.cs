@@ -318,7 +318,7 @@ namespace FullControls
         #region CheckMark
 
         /// <summary>
-        /// Content of the icon displayed if <see cref="ToggleButton.IsChecked"/> is true.
+        /// Content of the icon displayed if <see cref="ToggleButton.IsChecked"/> is <see langword="true"/>.
         /// </summary>
         public object CheckMark
         {
@@ -478,9 +478,7 @@ namespace FullControls
                 new PropertyChangedCallback((d, e) => ((ECheckBox)d).OnCheckedChanged((bool?)e.NewValue))));
         }
 
-        /// <summary>
-        /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="FrameworkElement.ApplyTemplate"/>.
-        /// </summary>
+        /// <inheritdoc/>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -490,7 +488,7 @@ namespace FullControls
             Utility.AnimateBrush(this, ActualForeColorProperty, ForeColor, TimeSpan.Zero);
             Utility.AnimateDouble(this, CheckScaleProperty, 0, TimeSpan.Zero);
             loaded = true;
-            ReloadBackground();
+            ReloadBrushes();
             ReloadCheckScale();
         }
 
@@ -506,44 +504,37 @@ namespace FullControls
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
         protected virtual void OnEnabledChanged(bool enabledState)
         {
-            ReloadBackground();
+            ReloadBrushes();
         }
 
         /// <summary>
         /// Called when the <see cref="ToggleButton.IsChecked"/> is changed.
         /// </summary>
         /// <param name="checkedState">Actual state of <see cref="ToggleButton.IsChecked"/>.</param>
-
         protected virtual void OnCheckedChanged(bool? checkedState)
         {
-            ReloadBackground();
+            ReloadBrushes();
             ReloadCheckScale();
         }
 
-        /// <summary>
-        /// Called when the mouse enter the control.
-        /// </summary>
-        /// <param name="e">Event data.</param>
+        /// <inheritdoc/>
         protected override void OnMouseEnter(MouseEventArgs e)
         {
             base.OnMouseEnter(e);
-            ReloadBackground();
+            ReloadBrushes();
         }
 
-        /// <summary>
-        /// Called when the mouse leave the control.
-        /// </summary>
-        /// <param name="e">Event data.</param>
+        /// <inheritdoc/>
         protected override void OnMouseLeave(MouseEventArgs e)
         {
             base.OnMouseLeave(e);
-            ReloadBackground();
+            ReloadBrushes();
         }
 
         /// <summary>
-        /// Apply the correct background to the control, based on its state.
+        /// Apply the correct brushes to the control, based on its state.
         /// </summary>
-        private void ReloadBackground()
+        private void ReloadBrushes()
         {
             if (!loaded) return;
             if (!IsEnabled) //Disabled state

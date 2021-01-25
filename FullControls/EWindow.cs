@@ -1,14 +1,14 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media.Animation;
-using System.Windows.Controls;
-using System.Windows.Shell;
-using System.Windows.Media;
-using System.Windows.Interop;
-using FullControls.Core;
+﻿using FullControls.Core;
 using FullControls.Extra;
+using System;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
+using System.Windows.Interop;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shell;
 
 namespace FullControls
 {
@@ -302,7 +302,7 @@ namespace FullControls
 
         /// <summary>
         /// <para>Background brush of the toolbar.</para>
-        /// <para>Note: If <see cref="MergeToolbarAndContent"/> is true this property has no effect.</para>
+        /// <para>Note: If <see cref="MergeToolbarAndContent"/> is <see langword="true"/> this property has no effect.</para>
         /// </summary>
         public Brush ToolbarBackground
         {
@@ -448,9 +448,9 @@ namespace FullControls
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EWindow));
 
         /// <summary>
-        /// <para>Fix the height and the width of the window to be the same as in designer of Visual Studio.</para>
-        /// <para>(Has effect only on initialization)</para>
+        /// Fix the height and the width of the window to be the same as in designer of Visual Studio.
         /// </summary>
+        /// <remarks>(Has effect only on initialization)</remarks>
         public bool FixVSDesigner
         {
             get => (bool)GetValue(FixVSDesignerProperty);
@@ -500,9 +500,7 @@ namespace FullControls
             Loaded += (o, e) => OnLoaded(e);
         }
 
-        /// <summary>
-        /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="FrameworkElement.ApplyTemplate"/>.
-        /// </summary>
+        /// <inheritdoc/>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -685,10 +683,7 @@ namespace FullControls
             beforeState = WindowState;
         }
 
-        /// <summary>
-        /// Called when the window changed state.
-        /// </summary>
-        /// <param name="e">Event data.</param>
+        /// <inheritdoc/>
         protected override void OnStateChanged(EventArgs e)
         {
             base.OnStateChanged(e);
@@ -697,10 +692,7 @@ namespace FullControls
             beforeState = WindowState;
         }
 
-        /// <summary>
-        /// Raises the <see cref="FrameworkElement.SizeChanged"/> event, using the specified information as part of the eventual event data.
-        /// </summary>
-        /// <param name="sizeInfo">Event data.</param>
+        /// <inheritdoc/>
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
         {
             base.OnRenderSizeChanged(sizeInfo);

@@ -12,11 +12,11 @@ namespace FullControls.Core
     internal static class Utility
     {
         /// <summary>
-        /// Animate a double of an UIElement with a specified time.
+        /// Animate a <see cref="double"/> of an <see cref="UIElement"/> with a specified time.
         /// </summary>
-        /// <param name="uiElement">UIElement that contains the double.</param>
-        /// <param name="doubleProperty">Double property to animate.</param>
-        /// <param name="to">New value of the double.</param>
+        /// <param name="uiElement"><see cref="UIElement"/> that contains the <see cref="double"/>.</param>
+        /// <param name="doubleProperty"><see cref="double"/> property to animate.</param>
+        /// <param name="to">New value of the <see cref="double"/>.</param>
         /// <param name="animationTime">Animation time.</param>
         internal static void AnimateDouble(UIElement uiElement, DependencyProperty doubleProperty, double to, TimeSpan animationTime)
         {
@@ -38,14 +38,14 @@ namespace FullControls.Core
         }
 
         /// <summary>
-        /// Animate a brush of an UIElement with a specified time.
+        /// Animate a <see cref="Brush"/> of an <see cref="UIElement"/> with a specified time.
         /// </summary>
         /// <remarks>
-        /// Note: If the initial brush (from) or the final brush (to) are null, no animation will be executed.
+        /// Note: If the initial <see cref="Brush"/> (from) or the final <see cref="Brush"/> (to) are <see langword="null"/>, no animation will be executed.
         /// </remarks>
-        /// <param name="uiElement">UIElement that contains the brush.</param>
-        /// <param name="brushProperty">Brush property to animate.</param>
-        /// <param name="to">New value of the brush.</param>
+        /// <param name="uiElement"><see cref="UIElement"/> that contains the <see cref="Brush"/>.</param>
+        /// <param name="brushProperty"><see cref="Brush"/> property to animate.</param>
+        /// <param name="to">New value of the <see cref="Brush"/>.</param>
         /// <param name="animationTime">Animation time.</param>
         internal static void AnimateBrush(UIElement uiElement, DependencyProperty brushProperty, Brush to, TimeSpan animationTime)
         {
@@ -53,7 +53,7 @@ namespace FullControls.Core
             {
                 uiElement.SetValue(brushProperty, ((Brush)uiElement.GetValue(brushProperty)).CloneCurrentValue()); //Unfreeze the brush
                 Brush from = (Brush)uiElement.GetValue(brushProperty);
-                
+
                 if (from is SolidColorBrush sbFrom && to is SolidColorBrush sbTo)
                 {
                     ColorAnimation animation = new ColorAnimation

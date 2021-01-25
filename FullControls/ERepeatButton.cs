@@ -1,9 +1,9 @@
-﻿using System;
+﻿using FullControls.Core;
+using System;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
-using FullControls.Core;
 
 namespace FullControls
 {
@@ -224,9 +224,7 @@ namespace FullControls
                 new PropertyChangedCallback((d, e) => ((ERepeatButton)d).OnEnabledChanged((bool)e.NewValue))));
         }
 
-        /// <summary>
-        /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="FrameworkElement.ApplyTemplate"/>.
-        /// </summary>
+        /// <inheritdoc/>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -234,7 +232,7 @@ namespace FullControls
             Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
             Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
             loaded = true;
-            ReloadBackground();
+            ReloadBrushes();
         }
 
         /// <summary>
@@ -249,43 +247,34 @@ namespace FullControls
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
         protected virtual void OnEnabledChanged(bool enabledState)
         {
-            ReloadBackground();
+            ReloadBrushes();
         }
 
-        /// <summary>
-        /// Called when <see cref="ButtonBase.IsPressed"/> property changes.
-        /// </summary>
-        /// <param name="e">Event data.</param>
+        /// <inheritdoc/>
         protected override void OnIsPressedChanged(DependencyPropertyChangedEventArgs e)
         {
             base.OnIsPressedChanged(e);
-            ReloadBackground();
+            ReloadBrushes();
         }
 
-        /// <summary>
-        /// Called when the mouse enter the control.
-        /// </summary>
-        /// <param name="e">Event data.</param>
+        /// <inheritdoc/>
         protected override void OnMouseEnter(MouseEventArgs e)
         {
             base.OnMouseEnter(e);
-            ReloadBackground();
+            ReloadBrushes();
         }
 
-        /// <summary>
-        /// Called when the mouse leave the control.
-        /// </summary>
-        /// <param name="e">Event data.</param>
+        /// <inheritdoc/>
         protected override void OnMouseLeave(MouseEventArgs e)
         {
             base.OnMouseLeave(e);
-            ReloadBackground();
+            ReloadBrushes();
         }
 
         /// <summary>
-        /// Apply the correct background to the control, based on its state.
+        /// Apply the correct brushes to the control, based on its state.
         /// </summary>
-        private void ReloadBackground()
+        private void ReloadBrushes()
         {
             if (!loaded) return;
             if (!IsEnabled) //Disabled state

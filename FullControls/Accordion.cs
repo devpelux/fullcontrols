@@ -9,7 +9,7 @@ namespace FullControls
 {
     /// <summary>
     /// Represents a control that contains a stacked list of items.
-    /// Each item can be "expanded" or "collapsed" to reveal the content associated with that item.
+    /// Each item can be <b>expanded</b> or <b>collapsed</b> to reveal the content associated with that item.
     /// </summary>
     [TemplatePart(Name = PartContentHost, Type = typeof(Decorator))]
     [DefaultEvent(nameof(ItemIsExpandedChanged))]

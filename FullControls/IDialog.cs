@@ -6,9 +6,9 @@
     public interface IDialog
     {
         /// <summary>
-        /// Get the result object.
+        /// Get the result <see cref="object"/>.
         /// </summary>
-        /// <returns>Result object.</returns>
+        /// <returns>Result <see cref="object"/>.</returns>
         object GetResult();
     }
 }

@@ -311,7 +311,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(CheckBrush), typeof(Brush), typeof(PolymorphicMenuItem));
 
         /// <summary>
-        /// Content of the icon displayed if <see cref="MenuItem.IsCheckable"/> is true and <see cref="MenuItem.IsChecked"/> is true.
+        /// Content of the icon displayed if <see cref="MenuItem.IsCheckable"/> is <see langword="true"/> and <see cref="MenuItem.IsChecked"/> is <see langword="true"/>.
         /// </summary>
         public object CheckMark
         {
@@ -518,9 +518,7 @@ namespace FullControls
                 ?.AddValueChanged(this, (s, e) => OnHighlightChanged(IsHighlighted));
         }
 
-        /// <summary>
-        /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="FrameworkElement.ApplyTemplate"/>.
-        /// </summary>
+        /// <inheritdoc/>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -528,7 +526,7 @@ namespace FullControls
             Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
             Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
             loaded = true;
-            ReloadBackground();
+            ReloadBrushes();
         }
 
         /// <summary>
@@ -543,7 +541,7 @@ namespace FullControls
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
         protected virtual void OnEnabledChanged(bool enabledState)
         {
-            ReloadBackground();
+            ReloadBrushes();
         }
 
         /// <summary>
@@ -552,7 +550,7 @@ namespace FullControls
         /// <param name="isSubmenuOpen">Actual state of <see cref="MenuItem.IsSubmenuOpen"/>.</param>
         protected virtual void OnSubmenuOpenChanged(bool isSubmenuOpen)
         {
-            ReloadBackground();
+            ReloadBrushes();
         }
 
         /// <summary>
@@ -561,13 +559,13 @@ namespace FullControls
         /// <param name="isHighlighted">Actual state of <see cref="MenuItem.IsHighlighted"/>.</param>
         protected virtual void OnHighlightChanged(bool isHighlighted)
         {
-            ReloadBackground();
+            ReloadBrushes();
         }
 
         /// <summary>
-        /// Apply the correct background to the control, based on its state.
+        /// Apply the correct brushes to the control, based on its state.
         /// </summary>
-        private void ReloadBackground()
+        private void ReloadBrushes()
         {
             if (!loaded) return;
             if (!IsEnabled) //Disabled state

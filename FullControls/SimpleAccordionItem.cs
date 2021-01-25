@@ -33,7 +33,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// Foreground brush when <see cref="AccordionItem.IsExpanded"/> is true.
+        /// Foreground brush when <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
         /// </summary>
         public Brush ForegroundOnExpanded
         {
@@ -48,7 +48,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnExpanded), typeof(Brush), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// Foreground brush when the mouse is over the control and <see cref="AccordionItem.IsExpanded"/> is true.
+        /// Foreground brush when the mouse is over the control and <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
         /// </summary>
         public Brush ForegroundOnMouseOverOnExpanded
         {
@@ -104,7 +104,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(FontWeightOnMouseOver), typeof(FontWeight), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// FontWeight brush when <see cref="AccordionItem.IsExpanded"/> is true.
+        /// FontWeight brush when <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
         /// </summary>
         public FontWeight FontWeightOnExpanded
         {
@@ -119,7 +119,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(FontWeightOnExpanded), typeof(FontWeight), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// FontWeight brush when the mouse is over the control and <see cref="AccordionItem.IsExpanded"/> is true.
+        /// FontWeight brush when the mouse is over the control and <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
         /// </summary>
         public FontWeight FontWeightOnMouseOverOnExpanded
         {

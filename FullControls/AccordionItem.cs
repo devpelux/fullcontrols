@@ -58,8 +58,9 @@ namespace FullControls
             DependencyProperty.Register(nameof(HeaderHeight), typeof(double), typeof(AccordionItem));
 
         /// <summary>
-        /// Specify if the item is expanded (true) or collapsed (false).
+        /// Specify if the item is expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).
         /// </summary>
+        /// <remarks>If <see cref="IsAnimating"/> is <see langword="true"/> the value is reverted to the previous value.</remarks>
         public bool IsExpanded
         {
             get => (bool)GetValue(IsExpandedProperty);
@@ -97,6 +98,7 @@ namespace FullControls
         /// <summary>
         /// Specifies if expanding or collapsing anination is currently executing.
         /// </summary>
+        [Bindable(true)]
         public bool IsAnimating => collapsable != null && collapsable.IsAnimating;
 
         /// <summary>

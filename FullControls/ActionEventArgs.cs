@@ -29,7 +29,7 @@ namespace FullControls
         /// indicating the name of the action and whether the event should be canceled.
         /// </summary>
         /// <param name="actionName">Name of the action.</param>
-        /// <param name="cancel">True to cancel the event, otherwise, false.</param>
+        /// <param name="cancel"><see langword="true"/> to cancel the event, otherwise, <see langword="false"/>.</param>
         public ActionEventArgs(string actionName, bool cancel) : base(cancel) => ActionName = actionName;
     }
 }

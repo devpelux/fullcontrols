@@ -14,14 +14,14 @@
         /// <summary>
         /// Initializes a new instance of <see cref="ItemExpandedChangedEventArgs"/>.
         /// </summary>
-        /// <param name="isExpanded">Specifies if the object was expanded (true) or collapsed (false).</param>
+        /// <param name="isExpanded">Specifies if the object was expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).</param>
         public ItemExpandedChangedEventArgs(bool isExpanded) : this(-1, isExpanded) { }
 
         /// <summary>
         /// Initializes a new instance of <see cref="ItemExpandedChangedEventArgs"/>.
         /// </summary>
         /// <param name="index">The index of the object that was expanded or collapsed.</param>
-        /// <param name="isExpanded">Specifies if the object was expanded (true) or collapsed (false).</param>
+        /// <param name="isExpanded">Specifies if the object was expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).</param>
         public ItemExpandedChangedEventArgs(int index, bool isExpanded) : base(isExpanded)
         {
             Index = index;

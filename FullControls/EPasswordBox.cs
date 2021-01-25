@@ -1,11 +1,11 @@
-﻿using System;
+﻿using FullControls.Core;
+using FullControls.Extra;
+using System;
 using System.Security;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using FullControls.Core;
-using FullControls.Extra;
 
 namespace FullControls
 {
@@ -561,7 +561,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(CopyButtonFontFamily), typeof(FontFamily), typeof(EPasswordBox));
 
         /// <summary>
-        /// Font size of the copy button.
+        /// FontSize of the copy button.
         /// </summary>
         public double CopyButtonFontSize
         {
@@ -846,7 +846,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(CopyButtonCornerRadius), typeof(CornerRadius), typeof(EPasswordBox));
 
         /// <summary>
-        /// Border thickness of the copy button.
+        /// BorderThickness of the copy button.
         /// </summary>
         public Thickness CopyButtonBorderThickness
         {
@@ -1295,9 +1295,7 @@ namespace FullControls
         /// </summary>
         public void SelectAll() => passwordBox?.SelectAll();
 
-        /// <summary>
-        /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="FrameworkElement.ApplyTemplate"/>.
-        /// </summary>
+        /// <inheritdoc/>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -1322,7 +1320,7 @@ namespace FullControls
             Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
             Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
             loaded = true;
-            ReloadBackground();
+            ReloadBrushes();
         }
 
         /// <summary>
@@ -1373,7 +1371,7 @@ namespace FullControls
         /// </summary>
         private void OnEnabledChanged()
         {
-            ReloadBackground();
+            ReloadBrushes();
         }
 
         /// <summary>
@@ -1392,7 +1390,7 @@ namespace FullControls
         {
             UpdateHintState();
             _ = VisualStateManager.GoToState(this, "Focused", true);
-            ReloadBackground();
+            ReloadBrushes();
         }
 
         /// <summary>
@@ -1402,34 +1400,28 @@ namespace FullControls
         {
             UpdateHintState();
             _ = VisualStateManager.GoToState(this, IsMouseOver ? "MouseOver" : "Normal", true);
-            ReloadBackground();
+            ReloadBrushes();
         }
 
-        /// <summary>
-        /// Called when the mouse enter the control.
-        /// </summary>
-        /// <param name="e">Event data.</param>
+        /// <inheritdoc/>
         protected override void OnMouseEnter(MouseEventArgs e)
         {
             base.OnMouseEnter(e);
             if (!IsFocused)
             {
                 _ = VisualStateManager.GoToState(this, "MouseOver", true);
-                ReloadBackground();
+                ReloadBrushes();
             }
         }
 
-        /// <summary>
-        /// Called when the mouse leave the control.
-        /// </summary>
-        /// <param name="e">Event data.</param>
+        /// <inheritdoc/>
         protected override void OnMouseLeave(MouseEventArgs e)
         {
             base.OnMouseLeave(e);
             if (!IsFocused)
             {
                 _ = VisualStateManager.GoToState(this, "Normal", true);
-                ReloadBackground();
+                ReloadBrushes();
             }
         }
 
@@ -1460,10 +1452,7 @@ namespace FullControls
             _ = VisualStateManager.GoToState(this, "Unpeeked", true);
         }
 
-        /// <summary>
-        /// Invoked whenever an unhandled <see cref="UIElement.GotFocus"/> event reaches this element in its route.
-        /// </summary>
-        /// <param name="e">Event data.</param>
+        /// <inheritdoc/>
         protected override void OnGotFocus(RoutedEventArgs e)
         {
             base.OnGotFocus(e);
@@ -1471,7 +1460,7 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Update the visualstate to "Hinted" or "Unhinted" if is necessary to display or hide the hint.
+        /// Update the visualstate to <see langword="Hinted"/> or <see langword="Unhinted"/> if is necessary to display or hide the hint.
         /// </summary>
         private void UpdateHintState()
         {
@@ -1496,9 +1485,9 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Apply the correct background to the control, based on its state.
+        /// Apply the correct brushes to the control, based on its state.
         /// </summary>
-        private void ReloadBackground()
+        private void ReloadBrushes()
         {
             if (!loaded) return;
             if (!IsEnabled) //Disabled state

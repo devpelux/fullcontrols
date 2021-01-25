@@ -1,10 +1,10 @@
-﻿using System;
+﻿using FullControls.Extra;
+using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
-using FullControls.Extra;
 
 namespace FullControls
 {
@@ -359,7 +359,7 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty TextAlignmentProperty =
             DependencyProperty.Register(nameof(TextAlignment), typeof(TextAlignment), typeof(EComboBox));
-        
+
         /// <summary>
         /// Specifies if adapt automatically the foreground to the actual background of the control.
         /// </summary>
@@ -583,9 +583,7 @@ namespace FullControls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(EComboBox), new FrameworkPropertyMetadata(typeof(EComboBox)));
         }
 
-        /// <summary>
-        /// When overridden in a derived class, is invoked whenever application code or internal processes call <see cref="FrameworkElement.ApplyTemplate"/>.
-        /// </summary>
+        /// <inheritdoc/>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();

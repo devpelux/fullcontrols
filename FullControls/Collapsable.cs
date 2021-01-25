@@ -7,7 +7,7 @@ using System.Windows.Media.Animation;
 namespace FullControls
 {
     /// <summary>
-    /// Defines a control that can be expanded or collapsed.
+    /// Adds collapsing and expanding functionality to another element.
     /// </summary>
     public class Collapsable : Decorator
     {
@@ -16,9 +16,9 @@ namespace FullControls
         private Size preCollapsingSize;
 
         /// <summary>
-        /// Specifies if the control is expanded (true) or collapsed (false).
+        /// Specifies if the <see cref="Collapsable"/> is expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).
         /// </summary>
-        /// <remarks>If <see cref="IsAnimating"/> is true the value is reverted to the previous value.</remarks>
+        /// <remarks>If <see cref="IsAnimating"/> is <see langword="true"/> the value is reverted to the previous value.</remarks>
         public bool IsExpanded
         {
             get => (bool)GetValue(IsExpandedProperty);
@@ -64,7 +64,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(WidthAnimation), typeof(bool), typeof(Collapsable), new PropertyMetadata(false));
 
         /// <summary>
-        /// Duration of the control animation when <see cref="IsExpanded"/> is changed.
+        /// Duration of the expanding and collapsing animations.
         /// </summary>
         public TimeSpan ExpandingAnimationTime
         {
@@ -167,7 +167,7 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Called when the control is loaded.
+        /// Called when <see cref="Collapsable"/> is loaded.
         /// </summary>
         private void Collapsable_Loaded(object sender, RoutedEventArgs e)
         {
@@ -176,7 +176,7 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Starts the control expanding process.
+        /// Starts the expanding process.
         /// </summary>
         /// <param name="animate">Specifies if to animate the process.</param>
         private void Expand(bool animate = true)
@@ -188,7 +188,7 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Starts the control collapsing process.
+        /// Starts the collapsing process.
         /// </summary>
         /// <param name="animate">Specifies if to animate the process.</param>
         private void Collapse(bool animate = true)
@@ -265,18 +265,18 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Calculates the size of the control on expanded state.
+        /// Calculates the size of <see cref="Collapsable"/> on expanded state.
         /// </summary>
         /// <remarks>
-        /// <para>If the control is expanded will return <see cref="UIElement.RenderSize"/>.</para>
-        /// <para>If the control is collapsed will calculate the expanded size in this way:</para>
+        /// <para>If <see cref="Collapsable"/> is expanded will return <see cref="UIElement.RenderSize"/>.</para>
+        /// <para>If <see cref="Collapsable"/> is collapsed will calculate the expanded size in this way:</para>
         /// <para>-> If <see cref="FrameworkElement.Width"/> or <see cref="FrameworkElement.Height"/> were <see cref="double.NaN"/> before collapsing,
         /// will rearrange the layout, then return <see cref="UIElement.RenderSize"/>.</para>
         /// <para>-> If <see cref="FrameworkElement.Width"/> and <see cref="FrameworkElement.Height"/> were both fixed before collapsing,
         /// will return <see cref="preCollapsingSize"/>
         /// (fixed to respect <see cref="FrameworkElement.MaxWidth"/> and <see cref="FrameworkElement.MaxHeight"/>).</para>
         /// </remarks>
-        /// <returns>Size of the control on expanded state.</returns>
+        /// <returns>Size of <see cref="Collapsable"/> on expanded state.</returns>
         private Size CalculateExpandedSize(bool isExpanded)
         {
             if (isExpanded)
