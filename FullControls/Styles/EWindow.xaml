@@ -27,15 +27,37 @@
         <Setter Property="ToolbarHitZoneMargin" Value="0"/>
         <Setter Property="ToolbarHitZoneBackground" Value="Transparent"/>
         <Setter Property="ToolbarBackground" Value="White"/>
-        <Setter Property="CaptionButtonsBackground" Value="White"/>
-        <Setter Property="CaptionButtonsBackgroundOnMouseOver" Value="{DynamicResource Gray4}"/>
-        <Setter Property="CaptionButtonsBackgroundOnPressed" Value="{DynamicResource Gray5}"/>
-        <Setter Property="CaptionButtonsForeground" Value="Black"/>
-        <Setter Property="CaptionButtonsForegroundOnMouseOver" Value="Black"/>
-        <Setter Property="CaptionButtonsForegroundOnPressed" Value="White"/>
         <Setter Property="ToolbarMenu" Value="{x:Null}"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="SnapsToDevicePixels" Value="true"/>
+        
+        <!--#region CaptionButtons properties-->
+        
+        <Setter Property="CaptionButtonsBackground" Value="White"/>
+        <Setter Property="CaptionButtonsBackgroundOnMouseOver" Value="{DynamicResource Gray4}"/>
+        <Setter Property="CaptionButtonsBackgroundOnPressed" Value="{DynamicResource Gray5}"/>
+        <Setter Property="CaptionButtonsBorderBrush" Value="White"/>
+        <Setter Property="CaptionButtonsBorderBrushOnMouseOver" Value="{DynamicResource Gray4}"/>
+        <Setter Property="CaptionButtonsBorderBrushOnPressed" Value="{DynamicResource Gray5}"/>
+        <Setter Property="CaptionButtonsForeground" Value="Black"/>
+        <Setter Property="CaptionButtonsForegroundOnMouseOver" Value="Black"/>
+        <Setter Property="CaptionButtonsForegroundOnPressed" Value="White"/>
+        
+        <!--#endregion-->
+        
+        <!--#region CloseButton properties-->
+        
+        <Setter Property="CloseButtonBackground" Value="White"/>
+        <Setter Property="CloseButtonBackgroundOnMouseOver" Value="{DynamicResource Gray4}"/>
+        <Setter Property="CloseButtonBackgroundOnPressed" Value="Red"/>
+        <Setter Property="CloseButtonBorderBrush" Value="WhiteSmoke"/>
+        <Setter Property="CloseButtonBorderBrushOnMouseOver" Value="WhiteSmoke"/>
+        <Setter Property="CloseButtonBorderBrushOnPressed" Value="OrangeRed"/>
+        <Setter Property="CloseButtonForeground" Value="Black"/>
+        <Setter Property="CloseButtonForegroundOnMouseOver" Value="Black"/>
+        <Setter Property="CloseButtonForegroundOnPressed" Value="White"/>
+        
+        <!--#endregion-->
 
         <Setter Property="Template">
             <Setter.Value>
@@ -84,6 +106,7 @@
                                 <Grid x:Name="PART_Toolbar"
                                       VerticalAlignment="Top"
                                       Height="32"
+                                      Margin="{TemplateBinding ToolbarMargin}"
                                       Background="{TemplateBinding ToolbarBackground}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
@@ -136,66 +159,94 @@
                                         </Grid.ColumnDefinitions>
                                         <local:EButton x:Name="PART_MinimizeButton"
                                                        Grid.Column="0"
-                                                       Width="32"
-                                                       Height="32"
-                                                       BorderThickness="0"
+                                                       VerticalAlignment="Top"
+                                                       HorizontalAlignment="Right"
+                                                       Margin="{TemplateBinding CaptionButtonsMargin}"
+                                                       Width="{TemplateBinding CaptionButtonsHeight}"
+                                                       Height="{TemplateBinding CaptionButtonsWidth}"
+                                                       CornerRadius="{TemplateBinding CaptionButtonsCornerRadius}"
+                                                       BorderThickness="{TemplateBinding CaptionButtonsBorderThickness}"
                                                        Background="{TemplateBinding CaptionButtonsBackground}"
                                                        BackgroundOnMouseOver="{TemplateBinding CaptionButtonsBackgroundOnMouseOver}"
                                                        BackgroundOnPressed="{TemplateBinding CaptionButtonsBackgroundOnPressed}"
+                                                       BorderBrush="{TemplateBinding CaptionButtonsBorderBrush}"
+                                                       BorderBrushOnMouseOver="{TemplateBinding CaptionButtonsBorderBrushOnMouseOver}"
+                                                       BorderBrushOnPressed="{TemplateBinding CaptionButtonsBorderBrushOnPressed}"
                                                        Foreground="{TemplateBinding CaptionButtonsForeground}"
                                                        ForegroundOnMouseOver="{TemplateBinding CaptionButtonsForegroundOnMouseOver}"
                                                        ForegroundOnPressed="{TemplateBinding CaptionButtonsForegroundOnPressed}"
+                                                       FontSize="{TemplateBinding CaptionButtonsFontSize}"
                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                       Content="&#xE949;"
                                                        FontFamily="Segoe MDL2 Assets"
-                                                       FontSize="10"/>
+                                                       Content="&#xE949;"/>
                                         <local:EButton x:Name="PART_MaximizeButton"
                                                        Grid.Column="1"
-                                                       Width="32"
-                                                       Height="32"
-                                                       BorderThickness="0"
+                                                       VerticalAlignment="Top"
+                                                       HorizontalAlignment="Right"
+                                                       Margin="{TemplateBinding CaptionButtonsMargin}"
+                                                       Width="{TemplateBinding CaptionButtonsHeight}"
+                                                       Height="{TemplateBinding CaptionButtonsWidth}"
+                                                       CornerRadius="{TemplateBinding CaptionButtonsCornerRadius}"
+                                                       BorderThickness="{TemplateBinding CaptionButtonsBorderThickness}"
                                                        Background="{TemplateBinding CaptionButtonsBackground}"
                                                        BackgroundOnMouseOver="{TemplateBinding CaptionButtonsBackgroundOnMouseOver}"
                                                        BackgroundOnPressed="{TemplateBinding CaptionButtonsBackgroundOnPressed}"
+                                                       BorderBrush="{TemplateBinding CaptionButtonsBorderBrush}"
+                                                       BorderBrushOnMouseOver="{TemplateBinding CaptionButtonsBorderBrushOnMouseOver}"
+                                                       BorderBrushOnPressed="{TemplateBinding CaptionButtonsBorderBrushOnPressed}"
                                                        Foreground="{TemplateBinding CaptionButtonsForeground}"
                                                        ForegroundOnMouseOver="{TemplateBinding CaptionButtonsForegroundOnMouseOver}"
                                                        ForegroundOnPressed="{TemplateBinding CaptionButtonsForegroundOnPressed}"
+                                                       FontSize="{TemplateBinding CaptionButtonsFontSize}"
                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                       Content="&#xE739;"
                                                        FontFamily="Segoe MDL2 Assets"
-                                                       FontSize="10"
+                                                       Content="&#xE739;"
                                                        Visibility="Visible"/>
                                         <local:EButton x:Name="PART_RestoreButton"
                                                        Grid.Column="2"
-                                                       Width="32"
-                                                       Height="32"
-                                                       BorderThickness="0"
+                                                       VerticalAlignment="Top"
+                                                       HorizontalAlignment="Right"
+                                                       Margin="{TemplateBinding CaptionButtonsMargin}"
+                                                       Width="{TemplateBinding CaptionButtonsHeight}"
+                                                       Height="{TemplateBinding CaptionButtonsWidth}"
+                                                       CornerRadius="{TemplateBinding CaptionButtonsCornerRadius}"
+                                                       BorderThickness="{TemplateBinding CaptionButtonsBorderThickness}"
                                                        Background="{TemplateBinding CaptionButtonsBackground}"
                                                        BackgroundOnMouseOver="{TemplateBinding CaptionButtonsBackgroundOnMouseOver}"
                                                        BackgroundOnPressed="{TemplateBinding CaptionButtonsBackgroundOnPressed}"
+                                                       BorderBrush="{TemplateBinding CaptionButtonsBorderBrush}"
+                                                       BorderBrushOnMouseOver="{TemplateBinding CaptionButtonsBorderBrushOnMouseOver}"
+                                                       BorderBrushOnPressed="{TemplateBinding CaptionButtonsBorderBrushOnPressed}"
                                                        Foreground="{TemplateBinding CaptionButtonsForeground}"
                                                        ForegroundOnMouseOver="{TemplateBinding CaptionButtonsForegroundOnMouseOver}"
                                                        ForegroundOnPressed="{TemplateBinding CaptionButtonsForegroundOnPressed}"
+                                                       FontSize="{TemplateBinding CaptionButtonsFontSize}"
                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                       Content="&#xE923;"
                                                        FontFamily="Segoe MDL2 Assets"
-                                                       FontSize="10"
+                                                       Content="&#xE923;"
                                                        Visibility="Collapsed"/>
                                         <local:EButton x:Name="PART_CloseButton"
                                                        Grid.Column="3"
-                                                       Width="32"
-                                                       Height="32"
-                                                       BorderThickness="0"
-                                                       Background="{TemplateBinding CaptionButtonsBackground}"
-                                                       BackgroundOnMouseOver="{TemplateBinding CaptionButtonsBackgroundOnMouseOver}"
-                                                       BackgroundOnPressed="Red"
-                                                       Foreground="{TemplateBinding CaptionButtonsForeground}"
-                                                       ForegroundOnMouseOver="{TemplateBinding CaptionButtonsForegroundOnMouseOver}"
-                                                       ForegroundOnPressed="White"
+                                                       VerticalAlignment="Top"
+                                                       HorizontalAlignment="Right"
+                                                       Margin="{TemplateBinding CloseButtonMargin}"
+                                                       Width="{TemplateBinding CloseButtonHeight}"
+                                                       Height="{TemplateBinding CloseButtonWidth}"
+                                                       CornerRadius="{TemplateBinding CaptionButtonsCornerRadius}"
+                                                       BorderThickness="{TemplateBinding CaptionButtonsBorderThickness}"
+                                                       Background="{TemplateBinding CloseButtonBackground}"
+                                                       BackgroundOnMouseOver="{TemplateBinding CloseButtonBackgroundOnMouseOver}"
+                                                       BackgroundOnPressed="{TemplateBinding CloseButtonBackgroundOnPressed}"
+                                                       BorderBrush="{TemplateBinding CloseButtonBorderBrush}"
+                                                       BorderBrushOnMouseOver="{TemplateBinding CloseButtonBorderBrushOnMouseOver}"
+                                                       BorderBrushOnPressed="{TemplateBinding CloseButtonBorderBrushOnPressed}"
+                                                       Foreground="{TemplateBinding CloseButtonForeground}"
+                                                       ForegroundOnMouseOver="{TemplateBinding CloseButtonForegroundOnMouseOver}"
+                                                       ForegroundOnPressed="{TemplateBinding CloseButtonForegroundOnPressed}"
+                                                       FontSize="{TemplateBinding CloseButtonFontSize}"
                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                       Content="&#xE106;"
                                                        FontFamily="Segoe MDL2 Assets"
-                                                       FontSize="10"/>
+                                                       Content="&#xE106;"/>
                                     </Grid>
                                 </Grid>
                             </Grid>

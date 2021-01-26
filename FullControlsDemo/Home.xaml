@@ -13,6 +13,7 @@
             Background="{DynamicResource WindowBackground}"
             BorderBrush="{DynamicResource WindowBorderBrush}"
             CaptionButtonsBackground="{DynamicResource WindowBackground2}"
+            CloseButtonBackground="{DynamicResource WindowBackground2}"
             Title="FullControls"
             Icon="/Icons/FullControls.ico"
             ResizeMode="CanMinimize"

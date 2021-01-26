@@ -170,37 +170,7 @@ namespace FullControls
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(EWindow));
 
-        /// <summary>
-        /// Enables the minimize action using the taskbar.
-        /// </summary>
-        /// <remarks>(It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.NoResize"/>)</remarks>
-        public bool EnableMinimizeByTaskbar
-        {
-            get => (bool)GetValue(EnableMinimizeByTaskbarProperty);
-            set => SetValue(EnableMinimizeByTaskbarProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="EnableMinimizeByTaskbar"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty EnableMinimizeByTaskbarProperty =
-            DependencyProperty.Register(nameof(EnableMinimizeByTaskbar), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
-
-        /// <summary>
-        /// Enables the maximize and restore action by double click on toolbar.
-        /// </summary>
-        /// <remarks>(It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.CanMinimize"/> or <see cref="ResizeMode.NoResize"/>)</remarks>
-        public bool EnableDoubleClickMaximizeRestore
-        {
-            get => (bool)GetValue(EnableDoubleClickMaximizeRestoreProperty);
-            set => SetValue(EnableDoubleClickMaximizeRestoreProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="EnableDoubleClickMaximizeRestore"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty EnableDoubleClickMaximizeRestoreProperty =
-            DependencyProperty.Register(nameof(EnableDoubleClickMaximizeRestore), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
+        #region CaptionButtons general properties
 
         /// <summary>
         /// Enables the minimize action and button.
@@ -250,83 +220,79 @@ namespace FullControls
             DependencyProperty.Register(nameof(EnableCloseButton), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
 
         /// <summary>
-        /// <para>Merge the toolbar with the content.</para>
-        /// <para>The toolbar becomes transparent and is displayed above the content.</para>
-        /// <para>Suggestion 1: Use <see cref="ToolbarHitZoneMargin"/> to resize the clickable part if you want insert a menu in the toolbar.</para>
-        /// <para>Suggestion 2: Customize the brushes of the caption buttons.</para>
+        /// Width of the caption buttons.
         /// </summary>
-        public bool MergeToolbarAndContent
+        public double CaptionButtonsWidth
         {
-            get => (bool)GetValue(MergeToolbarAndContentProperty);
-            set => SetValue(MergeToolbarAndContentProperty, value);
+            get => (double)GetValue(CaptionButtonsWidthProperty);
+            set => SetValue(CaptionButtonsWidthProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="MergeToolbarAndContent"/> dependency property.
+        /// Identifies the <see cref="CaptionButtonsWidth"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty MergeToolbarAndContentProperty =
-            DependencyProperty.Register(nameof(MergeToolbarAndContent), typeof(bool), typeof(EWindow), new PropertyMetadata(false));
+        public static readonly DependencyProperty CaptionButtonsWidthProperty =
+            DependencyProperty.Register(nameof(CaptionButtonsWidth), typeof(double), typeof(EWindow), new PropertyMetadata(32d));
 
         /// <summary>
-        /// Enable the toolbar to handles inputs.
+        /// Height of the caption buttons.
         /// </summary>
-        public bool EnableToolbarHitZone
+        public double CaptionButtonsHeight
         {
-            get => (bool)GetValue(EnableToolbarHitZoneProperty);
-            set => SetValue(EnableToolbarHitZoneProperty, value);
+            get => (double)GetValue(CaptionButtonsHeightProperty);
+            set => SetValue(CaptionButtonsHeightProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="EnableToolbarHitZone"/> dependency property.
+        /// Identifies the <see cref="CaptionButtonsHeight"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty EnableToolbarHitZoneProperty =
-            DependencyProperty.Register(nameof(EnableToolbarHitZone), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
+        public static readonly DependencyProperty CaptionButtonsHeightProperty =
+            DependencyProperty.Register(nameof(CaptionButtonsHeight), typeof(double), typeof(EWindow), new PropertyMetadata(32d));
 
         /// <summary>
-        /// Margin of the toolbar hit zone.
+        /// Margin of the caption buttons.
         /// </summary>
-        public Thickness ToolbarHitZoneMargin
+        public Thickness CaptionButtonsMargin
         {
-            get => (Thickness)GetValue(ToolbarHitZoneMarginProperty);
-            set => SetValue(ToolbarHitZoneMarginProperty, value);
+            get => (Thickness)GetValue(CaptionButtonsMarginProperty);
+            set => SetValue(CaptionButtonsMarginProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ToolbarHitZoneMargin"/> dependency property.
+        /// Identifies the <see cref="CaptionButtonsMargin"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ToolbarHitZoneMarginProperty =
-            DependencyProperty.Register(nameof(ToolbarHitZoneMargin), typeof(Thickness), typeof(EWindow));
+        public static readonly DependencyProperty CaptionButtonsMarginProperty =
+            DependencyProperty.Register(nameof(CaptionButtonsMargin), typeof(Thickness), typeof(EWindow));
 
         /// <summary>
-        /// Background of the toolbar part that handles inputs.
+        /// CornerRadius of the caption buttons.
         /// </summary>
-        public Brush ToolbarHitZoneBackground
+        public CornerRadius CaptionButtonsCornerRadius
         {
-            get => (Brush)GetValue(ToolbarHitZoneBackgroundProperty);
-            set => SetValue(ToolbarHitZoneBackgroundProperty, value);
+            get => (CornerRadius)GetValue(CaptionButtonsCornerRadiusProperty);
+            set => SetValue(CaptionButtonsCornerRadiusProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ToolbarHitZoneBackground"/> dependency property.
+        /// Identifies the <see cref="CaptionButtonsCornerRadius"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ToolbarHitZoneBackgroundProperty =
-            DependencyProperty.Register(nameof(ToolbarHitZoneBackground), typeof(Brush), typeof(EWindow));
+        public static readonly DependencyProperty CaptionButtonsCornerRadiusProperty =
+            DependencyProperty.Register(nameof(CaptionButtonsCornerRadius), typeof(CornerRadius), typeof(EWindow));
 
         /// <summary>
-        /// <para>Background brush of the toolbar.</para>
-        /// <para>Note: If <see cref="MergeToolbarAndContent"/> is <see langword="true"/> this property has no effect.</para>
+        /// Border thickness of the caption buttons.
         /// </summary>
-        public Brush ToolbarBackground
+        public Thickness CaptionButtonsBorderThickness
         {
-            get => (Brush)GetValue(ToolbarBackgroundProperty);
-            set => SetValue(ToolbarBackgroundProperty, value);
+            get => (Thickness)GetValue(CaptionButtonsBorderThicknessProperty);
+            set => SetValue(CaptionButtonsBorderThicknessProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ToolbarBackground"/> dependency property.
+        /// Identifies the <see cref="CaptionButtonsBorderThickness"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ToolbarBackgroundProperty =
-            DependencyProperty.Register(nameof(ToolbarBackground), typeof(Brush), typeof(EWindow));
+        public static readonly DependencyProperty CaptionButtonsBorderThicknessProperty =
+            DependencyProperty.Register(nameof(CaptionButtonsBorderThickness), typeof(Thickness), typeof(EWindow));
 
         /// <summary>
         /// Background brush of the caption buttons.
@@ -374,6 +340,51 @@ namespace FullControls
             DependencyProperty.Register(nameof(CaptionButtonsBackgroundOnPressed), typeof(Brush), typeof(EWindow));
 
         /// <summary>
+        /// BorderBrush brush of the caption buttons.
+        /// </summary>
+        public Brush CaptionButtonsBorderBrush
+        {
+            get => (Brush)GetValue(CaptionButtonsBorderBrushProperty);
+            set => SetValue(CaptionButtonsBorderBrushProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CaptionButtonsBorderBrush"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CaptionButtonsBorderBrushProperty =
+            DependencyProperty.Register(nameof(CaptionButtonsBorderBrush), typeof(Brush), typeof(EWindow));
+
+        /// <summary>
+        /// BorderBrush brush of the caption buttons when the mouse is over them.
+        /// </summary>
+        public Brush CaptionButtonsBorderBrushOnMouseOver
+        {
+            get => (Brush)GetValue(CaptionButtonsBorderBrushOnMouseOverProperty);
+            set => SetValue(CaptionButtonsBorderBrushOnMouseOverProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CaptionButtonsBorderBrushOnMouseOver"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CaptionButtonsBorderBrushOnMouseOverProperty =
+            DependencyProperty.Register(nameof(CaptionButtonsBorderBrushOnMouseOver), typeof(Brush), typeof(EWindow));
+
+        /// <summary>
+        /// BorderBrush brush of the caption buttons when they are pressed.
+        /// </summary>
+        public Brush CaptionButtonsBorderBrushOnPressed
+        {
+            get => (Brush)GetValue(CaptionButtonsBorderBrushOnPressedProperty);
+            set => SetValue(CaptionButtonsBorderBrushOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CaptionButtonsBorderBrushOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CaptionButtonsBorderBrushOnPressedProperty =
+            DependencyProperty.Register(nameof(CaptionButtonsBorderBrushOnPressed), typeof(Brush), typeof(EWindow));
+
+        /// <summary>
         /// Foreground brush of the caption buttons.
         /// </summary>
         public Brush CaptionButtonsForeground
@@ -419,6 +430,350 @@ namespace FullControls
             DependencyProperty.Register(nameof(CaptionButtonsForegroundOnPressed), typeof(Brush), typeof(EWindow));
 
         /// <summary>
+        /// FontSize of the caption buttons.
+        /// </summary>
+        public double CaptionButtonsFontSize
+        {
+            get => (double)GetValue(CaptionButtonsFontSizeProperty);
+            set => SetValue(CaptionButtonsFontSizeProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CaptionButtonsFontSize"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CaptionButtonsFontSizeProperty =
+            DependencyProperty.Register(nameof(CaptionButtonsFontSize), typeof(double), typeof(EWindow), new PropertyMetadata(10d));
+
+        #endregion
+
+        #region CloseButton properties
+
+        /// <summary>
+        /// Width of the close button.
+        /// </summary>
+        public double CloseButtonWidth
+        {
+            get => (double)GetValue(CloseButtonWidthProperty);
+            set => SetValue(CloseButtonWidthProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CloseButtonWidth"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonWidthProperty =
+            DependencyProperty.Register(nameof(CloseButtonWidth), typeof(double), typeof(EWindow), new PropertyMetadata(32d));
+
+        /// <summary>
+        /// Height of the close button.
+        /// </summary>
+        public double CloseButtonHeight
+        {
+            get => (double)GetValue(CloseButtonHeightProperty);
+            set => SetValue(CloseButtonHeightProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CloseButtonHeight"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonHeightProperty =
+            DependencyProperty.Register(nameof(CloseButtonHeight), typeof(double), typeof(EWindow), new PropertyMetadata(32d));
+
+        /// <summary>
+        /// Margin of the close button.
+        /// </summary>
+        public Thickness CloseButtonMargin
+        {
+            get => (Thickness)GetValue(CloseButtonMarginProperty);
+            set => SetValue(CloseButtonMarginProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CloseButtonMargin"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonMarginProperty =
+            DependencyProperty.Register(nameof(CloseButtonMargin), typeof(Thickness), typeof(EWindow));
+
+        /// <summary>
+        /// Background brush of the close button.
+        /// </summary>
+        public Brush CloseButtonBackground
+        {
+            get => (Brush)GetValue(CloseButtonBackgroundProperty);
+            set => SetValue(CloseButtonBackgroundProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CloseButtonBackground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonBackgroundProperty =
+            DependencyProperty.Register(nameof(CloseButtonBackground), typeof(Brush), typeof(EWindow));
+
+        /// <summary>
+        /// Background brush of the close button when the mouse is over them.
+        /// </summary>
+        public Brush CloseButtonBackgroundOnMouseOver
+        {
+            get => (Brush)GetValue(CloseButtonBackgroundOnMouseOverProperty);
+            set => SetValue(CloseButtonBackgroundOnMouseOverProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CloseButtonBackgroundOnMouseOver"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonBackgroundOnMouseOverProperty =
+            DependencyProperty.Register(nameof(CloseButtonBackgroundOnMouseOver), typeof(Brush), typeof(EWindow));
+
+        /// <summary>
+        /// Background brush of the close button when they are pressed.
+        /// </summary>
+        public Brush CloseButtonBackgroundOnPressed
+        {
+            get => (Brush)GetValue(CloseButtonBackgroundOnPressedProperty);
+            set => SetValue(CloseButtonBackgroundOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CloseButtonBackgroundOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonBackgroundOnPressedProperty =
+            DependencyProperty.Register(nameof(CloseButtonBackgroundOnPressed), typeof(Brush), typeof(EWindow));
+
+        /// <summary>
+        /// BorderBrush brush of the close button.
+        /// </summary>
+        public Brush CloseButtonBorderBrush
+        {
+            get => (Brush)GetValue(CloseButtonBorderBrushProperty);
+            set => SetValue(CloseButtonBorderBrushProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CloseButtonBorderBrush"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonBorderBrushProperty =
+            DependencyProperty.Register(nameof(CloseButtonBorderBrush), typeof(Brush), typeof(EWindow));
+
+        /// <summary>
+        /// BorderBrush brush of the close button when the mouse is over them.
+        /// </summary>
+        public Brush CloseButtonBorderBrushOnMouseOver
+        {
+            get => (Brush)GetValue(CloseButtonBorderBrushOnMouseOverProperty);
+            set => SetValue(CloseButtonBorderBrushOnMouseOverProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CloseButtonBorderBrushOnMouseOver"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonBorderBrushOnMouseOverProperty =
+            DependencyProperty.Register(nameof(CloseButtonBorderBrushOnMouseOver), typeof(Brush), typeof(EWindow));
+
+        /// <summary>
+        /// BorderBrush brush of the close button when they are pressed.
+        /// </summary>
+        public Brush CloseButtonBorderBrushOnPressed
+        {
+            get => (Brush)GetValue(CloseButtonBorderBrushOnPressedProperty);
+            set => SetValue(CloseButtonBorderBrushOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CloseButtonBorderBrushOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonBorderBrushOnPressedProperty =
+            DependencyProperty.Register(nameof(CloseButtonBorderBrushOnPressed), typeof(Brush), typeof(EWindow));
+
+        /// <summary>
+        /// Foreground brush of the close button.
+        /// </summary>
+        public Brush CloseButtonForeground
+        {
+            get => (Brush)GetValue(CloseButtonForegroundProperty);
+            set => SetValue(CloseButtonForegroundProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CloseButtonForeground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonForegroundProperty =
+            DependencyProperty.Register(nameof(CloseButtonForeground), typeof(Brush), typeof(EWindow));
+
+        /// <summary>
+        /// Foreground brush of the close button when the mouse is over them.
+        /// </summary>
+        public Brush CloseButtonForegroundOnMouseOver
+        {
+            get => (Brush)GetValue(CloseButtonForegroundOnMouseOverProperty);
+            set => SetValue(CloseButtonForegroundOnMouseOverProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CloseButtonForegroundOnMouseOver"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonForegroundOnMouseOverProperty =
+            DependencyProperty.Register(nameof(CloseButtonForegroundOnMouseOver), typeof(Brush), typeof(EWindow));
+
+        /// <summary>
+        /// Foreground brush of the close button when they are pressed.
+        /// </summary>
+        public Brush CloseButtonForegroundOnPressed
+        {
+            get => (Brush)GetValue(CloseButtonForegroundOnPressedProperty);
+            set => SetValue(CloseButtonForegroundOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CloseButtonForegroundOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonForegroundOnPressedProperty =
+            DependencyProperty.Register(nameof(CloseButtonForegroundOnPressed), typeof(Brush), typeof(EWindow));
+
+        /// <summary>
+        /// FontSize of the close button.
+        /// </summary>
+        public double CloseButtonFontSize
+        {
+            get => (double)GetValue(CloseButtonFontSizeProperty);
+            set => SetValue(CloseButtonFontSizeProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CloseButtonFontSize"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonFontSizeProperty =
+            DependencyProperty.Register(nameof(CloseButtonFontSize), typeof(double), typeof(EWindow), new PropertyMetadata(10d));
+
+        #endregion
+
+        /// <summary>
+        /// Enables the minimize action using the taskbar.
+        /// </summary>
+        /// <remarks>(It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.NoResize"/>)</remarks>
+        public bool EnableMinimizeByTaskbar
+        {
+            get => (bool)GetValue(EnableMinimizeByTaskbarProperty);
+            set => SetValue(EnableMinimizeByTaskbarProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnableMinimizeByTaskbar"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnableMinimizeByTaskbarProperty =
+            DependencyProperty.Register(nameof(EnableMinimizeByTaskbar), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
+
+        /// <summary>
+        /// Enables the maximize and restore action by double click on toolbar.
+        /// </summary>
+        /// <remarks>(It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.CanMinimize"/> or <see cref="ResizeMode.NoResize"/>)</remarks>
+        public bool EnableDoubleClickMaximizeRestore
+        {
+            get => (bool)GetValue(EnableDoubleClickMaximizeRestoreProperty);
+            set => SetValue(EnableDoubleClickMaximizeRestoreProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnableDoubleClickMaximizeRestore"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnableDoubleClickMaximizeRestoreProperty =
+            DependencyProperty.Register(nameof(EnableDoubleClickMaximizeRestore), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
+
+        #region Toolbar properties
+
+        /// <summary>
+        /// <para>Merge the toolbar with the content.</para>
+        /// <para>The toolbar becomes transparent and is displayed above the content.</para>
+        /// <para>Suggestion 1: Use <see cref="ToolbarHitZoneMargin"/> to resize the clickable part if you want insert a menu in the toolbar.</para>
+        /// <para>Suggestion 2: Customize the brushes of the caption buttons.</para>
+        /// </summary>
+        public bool MergeToolbarAndContent
+        {
+            get => (bool)GetValue(MergeToolbarAndContentProperty);
+            set => SetValue(MergeToolbarAndContentProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="MergeToolbarAndContent"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty MergeToolbarAndContentProperty =
+            DependencyProperty.Register(nameof(MergeToolbarAndContent), typeof(bool), typeof(EWindow), new PropertyMetadata(false));
+
+        /// <summary>
+        /// <para>Background brush of the toolbar.</para>
+        /// <para>Note: If <see cref="MergeToolbarAndContent"/> is <see langword="true"/> this property has no effect.</para>
+        /// </summary>
+        public Brush ToolbarBackground
+        {
+            get => (Brush)GetValue(ToolbarBackgroundProperty);
+            set => SetValue(ToolbarBackgroundProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ToolbarBackground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ToolbarBackgroundProperty =
+            DependencyProperty.Register(nameof(ToolbarBackground), typeof(Brush), typeof(EWindow));
+
+        /// <summary>
+        /// Margin of the toolbar.
+        /// </summary>
+        public Thickness ToolbarMargin
+        {
+            get => (Thickness)GetValue(ToolbarMarginProperty);
+            set => SetValue(ToolbarMarginProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ToolbarMargin"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ToolbarMarginProperty =
+            DependencyProperty.Register(nameof(ToolbarMargin), typeof(Thickness), typeof(EWindow));
+
+        /// <summary>
+        /// Enable the toolbar to handles inputs.
+        /// </summary>
+        public bool EnableToolbarHitZone
+        {
+            get => (bool)GetValue(EnableToolbarHitZoneProperty);
+            set => SetValue(EnableToolbarHitZoneProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnableToolbarHitZone"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnableToolbarHitZoneProperty =
+            DependencyProperty.Register(nameof(EnableToolbarHitZone), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
+
+        /// <summary>
+        /// Background of the toolbar part that handles inputs.
+        /// </summary>
+        public Brush ToolbarHitZoneBackground
+        {
+            get => (Brush)GetValue(ToolbarHitZoneBackgroundProperty);
+            set => SetValue(ToolbarHitZoneBackgroundProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ToolbarHitZoneBackground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ToolbarHitZoneBackgroundProperty =
+            DependencyProperty.Register(nameof(ToolbarHitZoneBackground), typeof(Brush), typeof(EWindow));
+
+        /// <summary>
+        /// Margin of the toolbar hit zone.
+        /// </summary>
+        public Thickness ToolbarHitZoneMargin
+        {
+            get => (Thickness)GetValue(ToolbarHitZoneMarginProperty);
+            set => SetValue(ToolbarHitZoneMarginProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ToolbarHitZoneMargin"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ToolbarHitZoneMarginProperty =
+            DependencyProperty.Register(nameof(ToolbarHitZoneMargin), typeof(Thickness), typeof(EWindow));
+
+        /// <summary>
         /// The menu that is shown at right click on toolbar.
         /// </summary>
         public ContextMenu ToolbarMenu
@@ -432,6 +787,23 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty ToolbarMenuProperty =
             DependencyProperty.Register(nameof(ToolbarMenu), typeof(ContextMenu), typeof(EWindow));
+
+        #endregion
+
+        /// <summary>
+        /// Specifies if to start the window hided.
+        /// </summary>
+        public bool StartHided
+        {
+            get => (bool)GetValue(StartHidedProperty);
+            set => SetValue(StartHidedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="StartHided"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty StartHidedProperty =
+            DependencyProperty.Register(nameof(StartHided), typeof(bool), typeof(EWindow), new PropertyMetadata(false));
 
         /// <summary>
         /// Indicates if the window is docked.
@@ -458,21 +830,6 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty AnimationTimeProperty =
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EWindow));
-
-        /// <summary>
-        /// Specifies if to start the window hided.
-        /// </summary>
-        public bool StartHided
-        {
-            get => (bool)GetValue(StartHidedProperty);
-            set => SetValue(StartHidedProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="StartHided"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty StartHidedProperty =
-            DependencyProperty.Register(nameof(StartHided), typeof(bool), typeof(EWindow), new PropertyMetadata(false));
 
         /// <summary>
         /// Fix the height and the width of the window to be the same as in designer of Visual Studio.
