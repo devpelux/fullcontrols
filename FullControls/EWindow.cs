@@ -460,6 +460,21 @@ namespace FullControls
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EWindow));
 
         /// <summary>
+        /// Specifies if to start the window hided.
+        /// </summary>
+        public bool StartHided
+        {
+            get => (bool)GetValue(StartHidedProperty);
+            set => SetValue(StartHidedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="StartHided"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty StartHidedProperty =
+            DependencyProperty.Register(nameof(StartHided), typeof(bool), typeof(EWindow), new PropertyMetadata(false));
+
+        /// <summary>
         /// Fix the height and the width of the window to be the same as in designer of Visual Studio.
         /// </summary>
         /// <remarks>(Has effect only on initialization)</remarks>
@@ -478,22 +493,32 @@ namespace FullControls
         /// <summary>
         /// Raised immediately before <see cref="Close"/> is executed.
         /// </summary>
-        public event EventHandler<CancelEventArgs> CloseAction;
+        public event EventHandler<CancelEventArgs> BeforeClosing;
 
         /// <summary>
         /// Raised immediately before <see cref="Minimize"/> is executed.
         /// </summary>
-        public event EventHandler<CancelEventArgs> MinimizeAction;
+        public event EventHandler<CancelEventArgs> BeforeMinimizing;
 
         /// <summary>
-        /// Raised immediately before <see cref="Maximize"/> is executed.
+        /// Raised after the window is minimized.
         /// </summary>
-        public event EventHandler<CancelEventArgs> MaximizeAction;
+        public event EventHandler<EventArgs> Minimized;
 
         /// <summary>
-        /// Raised immediately before <see cref="Restore"/> is executed.
+        /// Raised after the window is maximized.
         /// </summary>
-        public event EventHandler<CancelEventArgs> RestoreAction;
+        public event EventHandler<EventArgs> Maximized;
+
+        /// <summary>
+        /// Raised after the window is restored from minimized.
+        /// </summary>
+        public event EventHandler<EventArgs> RestoredFromMinimize;
+
+        /// <summary>
+        /// Raised after the window is restored after maximized.
+        /// </summary>
+        public event EventHandler<EventArgs> RestoredFromMaximize;
 
 
         /// <summary>
@@ -693,6 +718,18 @@ namespace FullControls
             }
             if (WindowState != WindowState.Minimized) EnterAnimation();
             beforeState = WindowState;
+            if (StartHided)
+            {
+                Hide();
+            }
+            RaiseStateChangedEvents(WindowState, beforeState);
+        }
+
+        /// <inheritdoc/>
+        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        {
+            base.OnRenderSizeChanged(sizeInfo);
+            SetValue(IsDockedProperty, WindowState == WindowState.Normal && Width != RestoreBounds.Width && Height != RestoreBounds.Height);
         }
 
         /// <inheritdoc/>
@@ -701,14 +738,21 @@ namespace FullControls
             base.OnStateChanged(e);
             if (beforeState == WindowState.Minimized) AntiMinimizeAnimation();
             ApplyWindowChrome();
+            RaiseStateChangedEvents(WindowState, beforeState);
             beforeState = WindowState;
         }
 
-        /// <inheritdoc/>
-        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        /// <summary>
+        /// Raise the events related to <see cref="Window.WindowState"/> changing.
+        /// </summary>
+        /// <param name="newState"></param>
+        /// <param name="oldState"></param>
+        private void RaiseStateChangedEvents(WindowState newState, WindowState oldState)
         {
-            base.OnRenderSizeChanged(sizeInfo);
-            SetValue(IsDockedProperty, WindowState == WindowState.Normal && Width != RestoreBounds.Width && Height != RestoreBounds.Height);
+            if (newState == WindowState.Maximized) Maximized?.Invoke(this, new EventArgs());
+            else if (oldState == WindowState.Maximized && newState == WindowState.Normal) RestoredFromMaximize?.Invoke(this, new EventArgs());
+            else if (oldState == WindowState.Minimized && newState == WindowState.Normal) RestoredFromMinimize?.Invoke(this, new EventArgs());
+            else if (newState == WindowState.Minimized) Minimized?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -825,7 +869,7 @@ namespace FullControls
         public new void Close()
         {
             CancelEventArgs e = new CancelEventArgs();
-            CloseAction?.Invoke(this, e);
+            BeforeClosing?.Invoke(this, e);
             if (!e.Cancel)
             {
                 ExitAnimation();
@@ -838,7 +882,7 @@ namespace FullControls
         public void Minimize()
         {
             CancelEventArgs e = new CancelEventArgs();
-            MinimizeAction?.Invoke(this, e);
+            BeforeMinimizing?.Invoke(this, e);
             if (!e.Cancel)
             {
                 MinimizeAnimation();
@@ -850,13 +894,8 @@ namespace FullControls
         /// </summary>
         public void Maximize()
         {
-            CancelEventArgs e = new CancelEventArgs();
-            MaximizeAction?.Invoke(this, e);
-            if (!e.Cancel)
-            {
-                canMove = false;
-                WindowState = WindowState.Maximized;
-            }
+            canMove = false;
+            WindowState = WindowState.Maximized;
         }
 
         /// <summary>
@@ -864,12 +903,7 @@ namespace FullControls
         /// </summary>
         public void Restore()
         {
-            CancelEventArgs e = new CancelEventArgs();
-            RestoreAction?.Invoke(this, e);
-            if (!e.Cancel)
-            {
-                WindowState = WindowState.Normal;
-            }
+            WindowState = WindowState.Normal;
         }
 
         /// <summary>

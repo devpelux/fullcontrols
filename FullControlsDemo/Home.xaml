@@ -18,7 +18,7 @@
             ResizeMode="CanMinimize"
             Height="550"
             Width="750"
-            CloseAction="EWindow_CloseAction">
+            BeforeClosing="EWindow_BeforeClosing">
     <Grid>
 
         <!--#region Background part-->

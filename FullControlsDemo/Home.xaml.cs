@@ -52,7 +52,7 @@ namespace FullControlsDemo
             togglebutton.ClickToggleType = ToggleType.Activate;
         }
 
-        private void EWindow_CloseAction(object sender, CancelEventArgs e)
+        private void EWindow_BeforeClosing(object sender, CancelEventArgs e)
         {
             if (togglebutton.IsChecked == true)
             {
