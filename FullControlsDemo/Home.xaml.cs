@@ -1,5 +1,6 @@
 ﻿using FullControls;
 using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Media.Animation;
 
@@ -51,7 +52,7 @@ namespace FullControlsDemo
             togglebutton.ClickToggleType = ToggleType.Activate;
         }
 
-        private void EWindow_CloseAction(object sender, ActionEventArgs e)
+        private void EWindow_CloseAction(object sender, CancelEventArgs e)
         {
             if (togglebutton.IsChecked == true)
             {

@@ -1,6 +1,7 @@
 ﻿using FullControls.Core;
 using FullControls.Extra;
 using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -26,26 +27,6 @@ namespace FullControls
         private WindowState beforeState;
         private WindowChrome windowChrome, maxWindowChrome;
         private bool canMove = true;
-
-        /// <summary>
-        /// Close action.
-        /// </summary>
-        public const string ACTION_CLOSE = "ACTION_CLOSE";
-
-        /// <summary>
-        /// Minimize action.
-        /// </summary>
-        public const string ACTION_MINIMIZE = "ACTION_MINIMIZE";
-
-        /// <summary>
-        /// Maximize action.
-        /// </summary>
-        public const string ACTION_MAXIMIZE = "ACTION_MAXIMIZE";
-
-        /// <summary>
-        /// Restore action.
-        /// </summary>
-        public const string ACTION_RESTORE = "ACTION_RESTORE";
 
         /// <summary>
         /// MinimizeButton template part.
@@ -190,25 +171,25 @@ namespace FullControls
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(EWindow));
 
         /// <summary>
-        /// Enables the minimize action and button.
-        /// (It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.NoResize"/>)
+        /// Enables the minimize action using the taskbar.
         /// </summary>
-        public bool EnableMinimize
+        /// <remarks>(It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.NoResize"/>)</remarks>
+        public bool EnableMinimizeByTaskbar
         {
-            get => (bool)GetValue(EnableMinimizeProperty);
-            set => SetValue(EnableMinimizeProperty, value);
+            get => (bool)GetValue(EnableMinimizeByTaskbarProperty);
+            set => SetValue(EnableMinimizeByTaskbarProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="EnableMinimize"/> dependency property.
+        /// Identifies the <see cref="EnableMinimizeByTaskbar"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty EnableMinimizeProperty =
-            DependencyProperty.Register(nameof(EnableMinimize), typeof(bool), typeof(EWindow));
+        public static readonly DependencyProperty EnableMinimizeByTaskbarProperty =
+            DependencyProperty.Register(nameof(EnableMinimizeByTaskbar), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
 
         /// <summary>
         /// Enables the maximize and restore action by double click on toolbar.
-        /// (It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.CanMinimize"/> or <see cref="ResizeMode.NoResize"/>)
         /// </summary>
+        /// <remarks>(It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.CanMinimize"/> or <see cref="ResizeMode.NoResize"/>)</remarks>
         public bool EnableDoubleClickMaximizeRestore
         {
             get => (bool)GetValue(EnableDoubleClickMaximizeRestoreProperty);
@@ -219,12 +200,28 @@ namespace FullControls
         /// Identifies the <see cref="EnableDoubleClickMaximizeRestore"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableDoubleClickMaximizeRestoreProperty =
-            DependencyProperty.Register(nameof(EnableDoubleClickMaximizeRestore), typeof(bool), typeof(EWindow));
+            DependencyProperty.Register(nameof(EnableDoubleClickMaximizeRestore), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
+
+        /// <summary>
+        /// Enables the minimize action and button.
+        /// </summary>
+        /// <remarks>(It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.NoResize"/>)</remarks>
+        public bool EnableMinimizeButton
+        {
+            get => (bool)GetValue(EnableMinimizeButtonProperty);
+            set => SetValue(EnableMinimizeButtonProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnableMinimizeButton"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnableMinimizeButtonProperty =
+            DependencyProperty.Register(nameof(EnableMinimizeButton), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
 
         /// <summary>
         /// Enables the maximize/restore button.
-        /// (It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.CanMinimize"/> or <see cref="ResizeMode.NoResize"/>)
         /// </summary>
+        /// <remarks>(It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.CanMinimize"/> or <see cref="ResizeMode.NoResize"/>)</remarks>
         public bool EnableMaximizeRestoreButton
         {
             get => (bool)GetValue(EnableMaximizeRestoreButtonProperty);
@@ -235,7 +232,22 @@ namespace FullControls
         /// Identifies the <see cref="EnableMaximizeRestoreButton"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableMaximizeRestoreButtonProperty =
-            DependencyProperty.Register(nameof(EnableMaximizeRestoreButton), typeof(bool), typeof(EWindow));
+            DependencyProperty.Register(nameof(EnableMaximizeRestoreButton), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
+
+        /// <summary>
+        /// Enables the close button.
+        /// </summary>
+        public bool EnableCloseButton
+        {
+            get => (bool)GetValue(EnableCloseButtonProperty);
+            set => SetValue(EnableCloseButtonProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnableCloseButton"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnableCloseButtonProperty =
+            DependencyProperty.Register(nameof(EnableCloseButton), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
 
         /// <summary>
         /// <para>Merge the toolbar with the content.</para>
@@ -253,7 +265,7 @@ namespace FullControls
         /// Identifies the <see cref="MergeToolbarAndContent"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty MergeToolbarAndContentProperty =
-            DependencyProperty.Register(nameof(MergeToolbarAndContent), typeof(bool), typeof(EWindow));
+            DependencyProperty.Register(nameof(MergeToolbarAndContent), typeof(bool), typeof(EWindow), new PropertyMetadata(false));
 
         /// <summary>
         /// Enable the toolbar to handles inputs.
@@ -268,7 +280,7 @@ namespace FullControls
         /// Identifies the <see cref="EnableToolbarHitZone"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableToolbarHitZoneProperty =
-            DependencyProperty.Register(nameof(EnableToolbarHitZone), typeof(bool), typeof(EWindow));
+            DependencyProperty.Register(nameof(EnableToolbarHitZone), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
 
         /// <summary>
         /// Margin of the toolbar hit zone.
@@ -461,27 +473,27 @@ namespace FullControls
         /// Identifies the <see cref="FixVSDesigner"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty FixVSDesignerProperty =
-            DependencyProperty.Register(nameof(FixVSDesigner), typeof(bool), typeof(EWindow), new PropertyMetadata(false));
+            DependencyProperty.Register(nameof(FixVSDesigner), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
 
         /// <summary>
         /// Raised immediately before <see cref="Close"/> is executed.
         /// </summary>
-        public event EventHandler<ActionEventArgs> CloseAction;
+        public event EventHandler<CancelEventArgs> CloseAction;
 
         /// <summary>
         /// Raised immediately before <see cref="Minimize"/> is executed.
         /// </summary>
-        public event EventHandler<ActionEventArgs> MinimizeAction;
+        public event EventHandler<CancelEventArgs> MinimizeAction;
 
         /// <summary>
         /// Raised immediately before <see cref="Maximize"/> is executed.
         /// </summary>
-        public event EventHandler<ActionEventArgs> MaximizeAction;
+        public event EventHandler<CancelEventArgs> MaximizeAction;
 
         /// <summary>
         /// Raised immediately before <see cref="Restore"/> is executed.
         /// </summary>
-        public event EventHandler<ActionEventArgs> RestoreAction;
+        public event EventHandler<CancelEventArgs> RestoreAction;
 
 
         /// <summary>
@@ -700,7 +712,7 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Handles the window messages
+        /// Handles the window messages.
         /// </summary>
         private IntPtr HandleMessages(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
@@ -708,7 +720,7 @@ namespace FullControls
             else if (msg == EWindowCore.WM_SYSCOMMAND && ((int)wParam & 0xFFF0) == EWindowCore.SC_MINIMIZE)
             {
                 handled = true;
-                if (EnableMinimize) Minimize();
+                if (EnableMinimizeByTaskbar) Minimize();
             }
             return IntPtr.Zero;
         }
@@ -812,7 +824,7 @@ namespace FullControls
         /// </summary>
         public new void Close()
         {
-            ActionEventArgs e = new ActionEventArgs("ACTION_CLOSE");
+            CancelEventArgs e = new CancelEventArgs();
             CloseAction?.Invoke(this, e);
             if (!e.Cancel)
             {
@@ -825,7 +837,7 @@ namespace FullControls
         /// </summary>
         public void Minimize()
         {
-            ActionEventArgs e = new ActionEventArgs("ACTION_MINIMIZE");
+            CancelEventArgs e = new CancelEventArgs();
             MinimizeAction?.Invoke(this, e);
             if (!e.Cancel)
             {
@@ -838,7 +850,7 @@ namespace FullControls
         /// </summary>
         public void Maximize()
         {
-            ActionEventArgs e = new ActionEventArgs("ACTION_MAXIMIZE");
+            CancelEventArgs e = new CancelEventArgs();
             MaximizeAction?.Invoke(this, e);
             if (!e.Cancel)
             {
@@ -852,7 +864,7 @@ namespace FullControls
         /// </summary>
         public void Restore()
         {
-            ActionEventArgs e = new ActionEventArgs("ACTION_RESTORE");
+            CancelEventArgs e = new CancelEventArgs();
             RestoreAction?.Invoke(this, e);
             if (!e.Cancel)
             {

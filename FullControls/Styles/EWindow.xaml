@@ -22,14 +22,9 @@
         <Setter Property="CornerRadius" Value="0"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Gray10}"/>
-        <Setter Property="EnableMinimize" Value="True"/>
-        <Setter Property="EnableDoubleClickMaximizeRestore" Value="True"/>
-        <Setter Property="EnableMaximizeRestoreButton" Value="True"/>
-        <Setter Property="EnableToolbarHitZone" Value="True"/>
-        <Setter Property="ToolbarHitZoneMargin" Value="0"/>
-        <Setter Property="MergeToolbarAndContent" Value="False"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="ToolbarHitZoneMargin" Value="0"/>
         <Setter Property="ToolbarHitZoneBackground" Value="Transparent"/>
         <Setter Property="ToolbarBackground" Value="White"/>
         <Setter Property="CaptionButtonsBackground" Value="White"/>
@@ -41,7 +36,6 @@
         <Setter Property="ToolbarMenu" Value="{x:Null}"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="SnapsToDevicePixels" Value="true"/>
-        <Setter Property="FixVSDesigner" Value="True"/>
 
         <Setter Property="Template">
             <Setter.Value>
@@ -138,6 +132,7 @@
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         <local:EButton x:Name="PART_MinimizeButton"
                                                        Grid.Column="0"
@@ -171,7 +166,7 @@
                                                        FontSize="10"
                                                        Visibility="Visible"/>
                                         <local:EButton x:Name="PART_RestoreButton"
-                                                       Grid.Column="1"
+                                                       Grid.Column="2"
                                                        Width="32"
                                                        Height="32"
                                                        BorderThickness="0"
@@ -187,7 +182,7 @@
                                                        FontSize="10"
                                                        Visibility="Collapsed"/>
                                         <local:EButton x:Name="PART_CloseButton"
-                                                       Grid.Column="2"
+                                                       Grid.Column="3"
                                                        Width="32"
                                                        Height="32"
                                                        BorderThickness="0"
@@ -229,12 +224,15 @@
                             <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_RestoreButton" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
-                        <Trigger Property="EnableMinimize" Value="False">
+                        <Trigger Property="EnableMinimizeButton" Value="False">
                             <Setter TargetName="PART_MinimizeButton" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
                         <Trigger Property="EnableMaximizeRestoreButton" Value="False">
                             <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_RestoreButton" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="EnableCloseButton" Value="False">
+                            <Setter TargetName="PART_CloseButton" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
                         <Trigger Property="EnableToolbarHitZone" Value="False">
                             <Setter TargetName="PART_ToolbarHitZone" Property="Visibility" Value="Collapsed"/>
