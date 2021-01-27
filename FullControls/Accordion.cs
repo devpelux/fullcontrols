@@ -39,17 +39,17 @@ namespace FullControls
         public static readonly DependencyProperty ItemsProperty =
             DependencyProperty.Register(nameof(Items), typeof(AccordionItemCollection), typeof(Accordion),
                 new PropertyMetadata(null, new PropertyChangedCallback((d, e)
-                    => ((Accordion)d).OnItemsInstanceChanged((AccordionItemCollection)e.NewValue))));
+                    => ((Accordion)d).OnItemsInstanceChanged((AccordionItemCollection)e.NewValue, (AccordionItemCollection)e.OldValue))));
 
         /// <summary>
         /// Gets the number of elements actually contained inside the <see cref="Accordion"/>.
         /// </summary>
-        public int ItemCount => Items.Count;
+        public int ItemsCount => Items != null ? Items.Count : 0;
 
         /// <summary>
         /// Gets a value indicating if the <see cref="Accordion"/> has items.
         /// </summary>
-        public bool HasItems => ItemCount > 0;
+        public bool HasItems => ItemsCount > 0;
 
         /// <summary>
         /// Occurs when in an item <see cref="AccordionItem.IsExpanded"/> is changed.
@@ -85,35 +85,34 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Called when in an item <see cref="AccordionItem.IsExpanded"/> is changed.
-        /// </summary>
-        /// <param name="sender">Object that raised the event.</param>
-        /// <param name="e">Event data.</param>
-        protected virtual void OnItemExpandedChanged(object sender, ItemExpandedChangedEventArgs e) => ItemIsExpandedChanged?.Invoke(this, e);
-
-        /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
         protected virtual void OnEnabledChanged(bool enabledState) { }
 
         /// <summary>
+        /// Called when in an item <see cref="AccordionItem.IsExpanded"/> is changed.
+        /// </summary>
+        /// <param name="e">Event data.</param>
+        protected virtual void OnItemExpandedChanged(ItemExpandedChangedEventArgs e) => ItemIsExpandedChanged?.Invoke(this, e);
+
+        /// <summary>
         /// Called when the instance of the <see cref="Items"/> collection is changed.
         /// </summary>
-        /// <param name="items">The new <see cref="Items"/> collection.</param>
-        protected virtual void OnItemsInstanceChanged(AccordionItemCollection items)
+        /// <param name="newItems">The new <see cref="Items"/> collection.</param>
+        /// <param name="oldItems">The old <see cref="Items"/> collection.</param>
+        protected virtual void OnItemsInstanceChanged(AccordionItemCollection newItems, AccordionItemCollection oldItems)
         {
-            items.CollectionChanged -= OnItemsChanged;
-            items.CollectionChanged += OnItemsChanged;
+            if (oldItems != null) oldItems.CollectionChanged -= OnItemsChanged;
+            if (newItems != null) newItems.CollectionChanged += OnItemsChanged;
             ReloadItems();
         }
 
         /// <summary>
         /// Called when the <see cref="Items"/> collection is internally changed.
         /// </summary>
-        /// <param name="s">Object that raised the event.</param>
         /// <param name="e">Event data.</param>
-        protected virtual void OnItemsChanged(object s, NotifyCollectionChangedEventArgs e)
+        protected virtual void OnItemsChanged(NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
             {
@@ -148,10 +147,13 @@ namespace FullControls
         /// </summary>
         private void ReloadItems()
         {
-            RemoveExpandedChangedHandler(0, Items.Count - 1);
+            RemoveExpandedChangedHandler(0, itemsControl.Items.Count - 1);
             itemsControl.Items.Clear();
-            foreach (AccordionItem item in Items) itemsControl.Items.Add(item);
-            SetExpandedChangedHandler(0, Items.Count - 1);
+            if (Items != null)
+            {
+                foreach (AccordionItem item in Items) itemsControl.Items.Add(item);
+                SetExpandedChangedHandler(0, itemsControl.Items.Count - 1);
+            }
         }
 
         #region ExpandedChangedHandler setters
@@ -162,8 +164,11 @@ namespace FullControls
         /// <param name="index">Item index.</param>
         private void SetExpandedChangedHandler(int index)
         {
-            ((AccordionItem)itemsControl.Items[index]).IsExpandedChanged -= OnItemExpandedChanged;
-            ((AccordionItem)itemsControl.Items[index]).IsExpandedChanged += OnItemExpandedChanged;
+            if (itemsControl.Items[index] != null)
+            {
+                ((AccordionItem)itemsControl.Items[index]).IsExpandedChanged -= OnItemExpandedChanged;
+                ((AccordionItem)itemsControl.Items[index]).IsExpandedChanged += OnItemExpandedChanged;
+            }
         }
 
         /// <summary>
@@ -181,7 +186,12 @@ namespace FullControls
         /// </summary>
         /// <param name="index">Item index.</param>
         private void RemoveExpandedChangedHandler(int index)
-            => ((AccordionItem)itemsControl.Items[index]).IsExpandedChanged -= OnItemExpandedChanged;
+        {
+            if (itemsControl.Items[index] != null)
+            {
+                ((AccordionItem)itemsControl.Items[index]).IsExpandedChanged -= OnItemExpandedChanged;
+            }
+        }
 
         /// <summary>
         /// Remove the ExpandedChanged handler to some items.
@@ -192,6 +202,14 @@ namespace FullControls
         {
             for (int i = startIndex; i <= endIndex; i++) RemoveExpandedChangedHandler(i);
         }
+
+        #endregion
+
+        #region EventHandlers
+
+        private void OnItemsChanged(object s, NotifyCollectionChangedEventArgs e) => OnItemsChanged(e);
+
+        private void OnItemExpandedChanged(object s, ItemExpandedChangedEventArgs e) => OnItemExpandedChanged(e);
 
         #endregion
     }

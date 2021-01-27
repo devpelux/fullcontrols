@@ -58,6 +58,21 @@ namespace FullControls
             DependencyProperty.Register(nameof(HeaderHeight), typeof(double), typeof(AccordionItem));
 
         /// <summary>
+        /// Margin of the header.
+        /// </summary>
+        public Thickness HeaderMargin
+        {
+            get => (Thickness)GetValue(HeaderMarginProperty);
+            set => SetValue(HeaderMarginProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="HeaderMargin"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty HeaderMarginProperty =
+            DependencyProperty.Register(nameof(HeaderMargin), typeof(Thickness), typeof(AccordionItem));
+
+        /// <summary>
         /// Specify if the item is expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).
         /// </summary>
         /// <remarks>If <see cref="IsAnimating"/> is <see langword="true"/> the value is reverted to the previous value.</remarks>

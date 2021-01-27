@@ -10,44 +10,25 @@
             CaptionButtonsBackground="{DynamicResource WindowBackground}"
             Title="Accordion View"
             Icon="/Icons/FullControls.ico"
-            ResizeMode="CanResize"
-            Height="413"
-            Width="573">
+            ResizeMode="CanMinimize"
+            Height="380"
+            Width="400"
+            Loaded="EWindow_Loaded">
+    
+    <fc:EWindow.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="AccordionDemoItemTemplate">
+                <Grid Height="60">
+                    <TextBlock Text="{Binding Name}" Margin="5" FontSize="30" Foreground="DimGray" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding Details}" Margin="5" FontSize="10" Foreground="Gray" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                </Grid>
+            </DataTemplate>
+        </ResourceDictionary>
+    </fc:EWindow.Resources>
+    
     <Grid>
-        <fc:EButton Content="EButton" HorizontalAlignment="Right" Margin="0,43,65,0" VerticalAlignment="Top" Height="38" Width="72" Click="EButton_Click"/>
-        <fc:EButton Content="EButton2" HorizontalAlignment="Right" Margin="0,96,65,0" VerticalAlignment="Top" Height="38" Width="72" Click="EButton2_Click"/>
-        <fc:EButton Content="EButton3" HorizontalAlignment="Right" Margin="0,154,65,0" VerticalAlignment="Top" Height="38" Width="72" Click="EButton3_Click"/>
-
-        <fc:GlassScrollViewer Margin="58,43,193,48" PlaceScrollBarsInside="True">
-            <fc:Accordion x:Name="Acc" Background="WhiteSmoke">
-                <fc:ItemsControlAccordionItem x:Name="i1" Header="Header1">
-                    <fc:ItemsControlAccordionItem.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Height="40" Background="Yellow" FontWeight="Bold" Text="{Binding Text}"/>
-                        </DataTemplate>
-                    </fc:ItemsControlAccordionItem.ItemTemplate>
-                </fc:ItemsControlAccordionItem>
-                <fc:SimpleAccordionItem Header="Header2" IsExpanded="False">
-                    <Grid Height="60" Background="Red"/>
-                </fc:SimpleAccordionItem>
-                <fc:ItemsControlAccordionItem Header="Header3" ExpandingAnimationTime="0:0:1" Padding="5">
-                    <TextBlock>gg</TextBlock>
-                    <TextBlock>gg</TextBlock>
-                    <TextBlock>gg</TextBlock>
-                </fc:ItemsControlAccordionItem>
-                <fc:SimpleAccordionItem Header="Header4" Background="Green" Padding="5">
-                    <Grid Height="60" Background="Red"/>
-                </fc:SimpleAccordionItem>
-                <fc:SimpleAccordionItem Header="Header5">
-                    <Grid Height="60" Background="Red"/>
-                </fc:SimpleAccordionItem>
-                <fc:SimpleAccordionItem Header="Header6" IsExpanded="False">
-                    <Grid Height="60" Background="Red"/>
-                </fc:SimpleAccordionItem>
-                <fc:SimpleAccordionItem Header="Header7">
-                    <Grid Height="60" Background="Red"/>
-                </fc:SimpleAccordionItem>
-            </fc:Accordion>
+        <fc:GlassScrollViewer Margin="40" PlaceScrollBarsInside="True">
+            <fc:Accordion x:Name="accordion" Background="WhiteSmoke"/>
         </fc:GlassScrollViewer>
     </Grid>
 </fc:EWindow>

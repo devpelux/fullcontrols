@@ -857,26 +857,6 @@ namespace FullControls
         /// </summary>
         public event EventHandler<CancelEventArgs> BeforeMinimizing;
 
-        /// <summary>
-        /// Raised after the window is minimized.
-        /// </summary>
-        public event EventHandler<EventArgs> Minimized;
-
-        /// <summary>
-        /// Raised after the window is maximized.
-        /// </summary>
-        public event EventHandler<EventArgs> Maximized;
-
-        /// <summary>
-        /// Raised after the window is restored from minimized.
-        /// </summary>
-        public event EventHandler<EventArgs> RestoredFromMinimize;
-
-        /// <summary>
-        /// Raised after the window is restored after maximized.
-        /// </summary>
-        public event EventHandler<EventArgs> RestoredFromMaximize;
-
 
         /// <summary>
         /// Creates a new <see cref="EWindow"/>.
@@ -891,7 +871,8 @@ namespace FullControls
         /// </summary>
         public EWindow()
         {
-            Loaded += (o, e) => OnLoaded(e);
+            Loaded -= OnLoaded;
+            Loaded += OnLoaded;
         }
 
         /// <inheritdoc/>
@@ -1075,11 +1056,7 @@ namespace FullControls
             }
             if (WindowState != WindowState.Minimized) EnterAnimation();
             beforeState = WindowState;
-            if (StartHided)
-            {
-                Hide();
-            }
-            RaiseStateChangedEvents(WindowState, beforeState);
+            if (StartHided) Hide();
         }
 
         /// <inheritdoc/>
@@ -1095,21 +1072,7 @@ namespace FullControls
             base.OnStateChanged(e);
             if (beforeState == WindowState.Minimized) AntiMinimizeAnimation();
             ApplyWindowChrome();
-            RaiseStateChangedEvents(WindowState, beforeState);
             beforeState = WindowState;
-        }
-
-        /// <summary>
-        /// Raise the events related to <see cref="Window.WindowState"/> changing.
-        /// </summary>
-        /// <param name="newState"></param>
-        /// <param name="oldState"></param>
-        private void RaiseStateChangedEvents(WindowState newState, WindowState oldState)
-        {
-            if (newState == WindowState.Maximized) Maximized?.Invoke(this, new EventArgs());
-            else if (oldState == WindowState.Maximized && newState == WindowState.Normal) RestoredFromMaximize?.Invoke(this, new EventArgs());
-            else if (oldState == WindowState.Minimized && newState == WindowState.Normal) RestoredFromMinimize?.Invoke(this, new EventArgs());
-            else if (newState == WindowState.Minimized) Minimized?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -1301,6 +1264,12 @@ namespace FullControls
         /// </summary>
         /// <returns>Offset of width.</returns>
         private double VSDesignerWidthOffset() => BorderMargin.Left + BorderMargin.Right;
+
+        #endregion
+
+        #region EventHandlers
+
+        private void OnLoaded(object sender, RoutedEventArgs e) => OnLoaded(e);
 
         #endregion
     }

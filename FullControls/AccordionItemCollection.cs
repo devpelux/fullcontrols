@@ -48,7 +48,10 @@ namespace FullControls
         /// <param name="endIndex">The zero-based index of the end item of the reset process.</param>
         private void ResetIndexes(int startIndex, int endIndex)
         {
-            for (int i = startIndex; i <= endIndex; i++) this[i].Index = i;
+            for (int i = startIndex; i <= endIndex; i++)
+            {
+                if (this[i] != null) this[i].Index = i;
+            }
         }
     }
 }

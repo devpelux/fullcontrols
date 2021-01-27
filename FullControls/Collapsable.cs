@@ -149,6 +149,7 @@ namespace FullControls
         /// </summary>
         public Collapsable()
         {
+            Loaded -= Collapsable_Loaded;
             Loaded += Collapsable_Loaded;
         }
 

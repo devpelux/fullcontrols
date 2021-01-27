@@ -19,6 +19,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="HeaderHeight" Value="20"/>
+        <Setter Property="HeaderMargin" Value="2,0,2,0"/>
         <Setter Property="AnimationTime" Value="0:0:0.4"/>
         <Setter Property="ExpandingAnimationTime" Value="0:0:0.4"/>
 
@@ -44,6 +45,7 @@
                               Background="Transparent">
                             <TextBlock HorizontalAlignment="{TemplateBinding HorizontalHeaderAlignment}"
                                        VerticalAlignment="{TemplateBinding VerticalHeaderAlignment}"
+                                       Margin="{TemplateBinding HeaderMargin}"
                                        Foreground="{TemplateBinding ActualForeground}"
                                        FontFamily="{TemplateBinding FontFamily}"
                                        FontSize="{TemplateBinding FontSize}"
