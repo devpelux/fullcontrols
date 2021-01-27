@@ -1,4 +1,4 @@
-﻿<fc:EWindow x:Class="FullControlsDemo.ComboBoxDemo"
+﻿<fc:EWindow x:Class="FullControlsDemo.SwitcherDemo"
             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:fc="http://devpelux.github.io/fullcontrols" 
@@ -19,11 +19,11 @@
             CloseButtonForeground="White"
             CloseButtonForegroundOnMouseOver="White"
             CloseButtonForegroundOnPressed="White"
-            Title="ComboBox"
+            Title="Switcher"
             Icon="/Icons/FullControls.ico"
             ResizeMode="CanMinimize"
             WindowStartupLocation="CenterScreen"
-            Height="267"
+            Height="280"
             Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -31,26 +31,16 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Background="{DynamicResource WindowBackground}">
-            <fc:EComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" SelectedIndex="0" MinWidth="120">
-                <fc:EComboBoxItem Content="Item1"/>
-                <fc:EComboBoxItem Content="Item2"/>
-                <fc:EComboBoxItem Content="Item3"/>
-                <fc:EComboBoxItem Content="Item4"/>
-                <fc:EComboBoxItem Content="Item5"/>
-                <fc:EComboBoxItem Content="Item6"/>
-                <fc:EComboBoxItem Content="Item7"/>
-            </fc:EComboBox>
+            <fc:Switcher Content="Switcher 1" GroupName="G1" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:Switcher Content="Switcher 2" GroupName="G1" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Height="30" Width="90" IsChecked="True"/>
+            <fc:Switcher Content="Switcher 3" GroupName="G1" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:Switcher Content="Switcher 4" GroupName="G1" HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
         </Grid>
         <Grid Grid.Column="1" Background="{DynamicResource DarkWindowBackground}">
-            <fc:EComboBox Style="{DynamicResource EComboBoxDark}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" SelectedIndex="3" MinWidth="120">
-                <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item1"/>
-                <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item2"/>
-                <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item3"/>
-                <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item4"/>
-                <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item5"/>
-                <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item6"/>
-                <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item7"/>
-            </fc:EComboBox>
+            <fc:Switcher Style="{DynamicResource ESwitcherDark}" GroupName="G2" Content="Switcher 1" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:Switcher Style="{DynamicResource ESwitcherDark}" GroupName="G2" Content="Switcher 2" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:Switcher Style="{DynamicResource ESwitcherDark}" GroupName="G2" Content="Switcher 3" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Top" Height="30" Width="90" IsChecked="True"/>
+            <fc:Switcher Style="{DynamicResource ESwitcherDark}" GroupName="G2" Content="Switcher 4" HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
         </Grid>
     </Grid>
 </fc:EWindow>

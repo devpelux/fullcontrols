@@ -8,9 +8,10 @@
             Background="{DynamicResource WindowBackground}"
             BorderBrush="{DynamicResource WindowBorderBrush}"
             CaptionButtonsBackground="{DynamicResource WindowBackground}"
-            Title="Accordion View"
+            Title="Accordion"
             Icon="/Icons/FullControls.ico"
             ResizeMode="CanMinimize"
+            WindowStartupLocation="CenterScreen"
             Height="380"
             Width="400"
             Loaded="EWindow_Loaded">

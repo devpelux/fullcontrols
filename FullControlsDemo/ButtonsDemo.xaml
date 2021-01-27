@@ -8,13 +8,37 @@
             BorderThickness="{DynamicResource WindowBorderThickness}"
             Background="{DynamicResource WindowBackground}"
             BorderBrush="{DynamicResource WindowBorderBrush}"
-            CaptionButtonsBackground="{DynamicResource WindowBackground}"
-            Title="Accordion View"
+            CaptionButtonsBackground="{DynamicResource DarkWindowBackground}"
+            CaptionButtonsBackgroundOnMouseOver="#333333"
+            CaptionButtonsBackgroundOnPressed="#404040"
+            CaptionButtonsForeground="White"
+            CaptionButtonsForegroundOnMouseOver="White"
+            CaptionButtonsForegroundOnPressed="White"
+            CloseButtonBackground="{DynamicResource DarkWindowBackground}"
+            CloseButtonBackgroundOnMouseOver="#333333"
+            CloseButtonForeground="White"
+            CloseButtonForegroundOnMouseOver="White"
+            CloseButtonForegroundOnPressed="White"
+            Title="Buttons"
             Icon="/Icons/FullControls.ico"
-            ResizeMode="CanResize"
-            Height="300"
+            ResizeMode="CanMinimize"
+            WindowStartupLocation="CenterScreen"
+            Height="260"
             Width="400">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Background="{DynamicResource WindowBackground}">
+            <fc:EButton Content="Button" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:EToggleButton Content="ToggleButton" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:ERepeatButton Content="RepeatButton" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+        </Grid>
+        <Grid Grid.Column="1" Background="{DynamicResource DarkWindowBackground}">
+            <fc:EButton Style="{DynamicResource EButtonDark}" Content="Button" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:EToggleButton Style="{DynamicResource EToggleButtonDark}" Content="ToggleButton" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:ERepeatButton Style="{DynamicResource ERepeatButtonDark}" Content="RepeatButton" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+        </Grid>
     </Grid>
 </fc:EWindow>

@@ -1,74 +1,67 @@
 ﻿using FullControls;
-using System;
-using System.ComponentModel;
 using System.Windows;
-using System.Windows.Media.Animation;
 
 namespace FullControlsDemo
 {
     /// <summary>
-    /// Demo Home window.
+    /// Logica di interazione per Home.xaml
     /// </summary>
     public partial class Home : EWindow
     {
-        int c = 0;
-        readonly DoubleAnimation disableThis;
-
-
         public Home()
         {
             InitializeComponent();
             background.Visibility = Visibility.Visible;
-            disableThis = new DoubleAnimation(0, 1, new Duration(new TimeSpan(0, 0, 0, 0, 250)))
-            {
-                AutoReverse = true,
-                RepeatBehavior = new RepeatBehavior(2)
-            };
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (checkbox.IsChecked != true) togglebutton.IsChecked = false;
-            textbox_int.TextInt = c = 0;
-        }
-
-        private void RepeatButton_Click(object sender, RoutedEventArgs e)
-        {
-            textbox_int.TextInt = c += (radiobutton2.IsChecked == true) ? 2 : 1;
-        }
-
-        private void PasswordboxClear_Click(object sender, RoutedEventArgs e)
-        {
-            passwordbox.Clear();
-        }
-
-        private void Checkbox_Checked(object sender, RoutedEventArgs e)
-        {
-            togglebutton.ClickToggleType = ToggleType.Complete;
-        }
-
-        private void Checkbox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            togglebutton.ClickToggleType = ToggleType.Activate;
-        }
-
-        private void EWindow_BeforeClosing(object sender, CancelEventArgs e)
-        {
-            if (togglebutton.IsChecked == true)
-            {
-                e.Cancel = true;
-                disablethis.BeginAnimation(OpacityProperty, disableThis);
-            }
-        }
-
-        private void AccordionView_Click(object sender, RoutedEventArgs e)
+        private void AccordionDemo_Click(object sender, RoutedEventArgs e)
         {
             new AccordionDemo().Show();
         }
 
-        private void Test_Click(object sender, RoutedEventArgs e)
+        private void CollapsableDemo_Click(object sender, RoutedEventArgs e)
         {
             new CollapsableDemo().Show();
+        }
+
+        private void ButtonsDemo_Click(object sender, RoutedEventArgs e)
+        {
+            new ButtonsDemo().Show();
+        }
+
+        private void SwitcherDemo_Click(object sender, RoutedEventArgs e)
+        {
+            new SwitcherDemo().Show();
+        }
+
+        private void CheckboxesDemo_Click(object sender, RoutedEventArgs e)
+        {
+            new CheckBoxesDemo().Show();
+        }
+
+        private void ComboboxDemo_Click(object sender, RoutedEventArgs e)
+        {
+            new ComboBoxDemo().Show();
+        }
+
+        private void ScrollviewerDemo_Click(object sender, RoutedEventArgs e)
+        {
+            new GlassScrollViewerDemo().Show();
+        }
+
+        private void DialogwindowDemo_Click(object sender, RoutedEventArgs e)
+        {
+            new DialogWindowDemo().Show();
+        }
+
+        private void TextboxesDemo_Click(object sender, RoutedEventArgs e)
+        {
+            new TextBoxesDemo().Show();
+        }
+
+        private void MenuDemo_Click(object sender, RoutedEventArgs e)
+        {
+            new MenuDemo().Show();
         }
     }
 }

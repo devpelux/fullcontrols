@@ -3,11 +3,11 @@
 namespace FullControlsDemo
 {
     /// <summary>
-    /// Logica di interazione per ScrollViewerDemo.xaml
+    /// Logica di interazione per SwitcherDemo.xaml
     /// </summary>
-    public partial class ScrollViewerDemo : EWindow
+    public partial class SwitcherDemo : EWindow
     {
-        public ScrollViewerDemo()
+        public SwitcherDemo()
         {
             InitializeComponent();
         }

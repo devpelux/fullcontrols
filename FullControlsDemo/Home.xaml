@@ -17,116 +17,50 @@
             Title="FullControls"
             Icon="/Icons/FullControls.ico"
             ResizeMode="CanMinimize"
+            WindowStartupLocation="CenterScreen"
             Height="550"
-            Width="750"
-            BeforeClosing="EWindow_BeforeClosing">
+            Width="632">
     <Grid>
 
         <!--#region Background part-->
 
         <Grid x:Name="background" Visibility="Collapsed">
             <Ellipse Fill="{DynamicResource WindowBackground2}" Margin="164,-312,-707,143"/>
-            <Ellipse Fill="{DynamicResource WindowBackground2}" Margin="-347,499,349,-84"/>
+            <Ellipse Fill="{DynamicResource WindowBackground2}" Margin="-245,499,247,-84"/>
         </Grid>
 
         <!--#endregion-->
 
-        <!--#region Graphic part-->
-
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="44,338,0,0" TextWrapping="Wrap"
-                   Height="40" Width="91" Text="RadioButtons and CheckBoxes"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="311,313,0,0" TextWrapping="Wrap"
-                   Height="20" Width="44" Text="Buttons"/>
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="436,323,0,0" Height="166" Width="140"
-                BorderThickness="1" BorderBrush="DarkGray"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="481,298,0,0" TextWrapping="Wrap"
-                   Height="20" Width="50" Text="Switchers"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="58,148,0,0" TextWrapping="Wrap"
-                   Height="20" Width="140" Text="TextBox and PasswordBox"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="54,52,0,0" TextWrapping="Wrap"
-                   Height="20" Width="76" Text="ComboBox"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="330,172,0,0" TextWrapping="Wrap"
-                   Height="20" Width="76" Text="TextBox types"/>
-        <TextBlock x:Name="disablethis" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="284,479,0,0" TextWrapping="Wrap"
-                   Height="20" Width="100" Text="^ Disable this!! ^" Foreground="DodgerBlue" FontWeight="Bold" Opacity="0"/>
+        <!--#region Project details-->
+        
         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,512,0,0" TextWrapping="Wrap"
                    Height="29" Width="234" Text="FullControls demo project" FontSize="20"/>
         <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="244,521,0,0" TextWrapping="Wrap"
                    Height="20" Width="76" Text="by devpelux" Foreground="Gray"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="709,521,0,0" TextWrapping="Wrap"
+        <TextBlock HorizontalAlignment="RIght" VerticalAlignment="Bottom" Margin="0,0,10,10" TextWrapping="Wrap"
                    Height="20" Width="29" Text="{x:Static p:Resources.VersionCode}" Foreground="Gray"/>
-        <Line Margin="406,184,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
-              X1="0" Y1="0" X2="115" Y2="65" StrokeThickness="1" Stroke="DarkGray"
-              Height="65" Width="115" SnapsToDevicePixels="True"/>
-        <Line Margin="406,115,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
-              X1="0" Y1="65" X2="115" Y2="0" StrokeThickness="1" Stroke="DarkGray"
-              Height="65" Width="115" SnapsToDevicePixels="True"/>
-        <Line Margin="406,182,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
-              X1="0" Y1="0" X2="115" Y2="0" StrokeThickness="1" Stroke="DarkGray"
-              Height="1" Width="115" SnapsToDevicePixels="True"/>
 
         <!--#endregion-->
 
-        <!--
-        -[Window]
-        -Accordion + AccordionItems X
-        -Collapsable
-        -DialogWindow
-        -Button + ToggleButton + Switcher + RepeatButton
-        -Checkbox + Radiobutton
-        -GlassScrollViewer + GlassScrollbar
-        -PolymorphicMenuItem
-        -ComboBox + ComboBoxItem
-        -PasswordBox + TextBox
-        -->
-
-        <fc:EComboBox x:Name="combobox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,77,0,0" SelectedIndex="0" Width="190">
-            <fc:EComboBoxItem Content="Item1"/>
-            <fc:EComboBoxItem Content="Item2"/>
-            <fc:EComboBoxItem Content="Item3"/>
-            <fc:EComboBoxItem Content="Item4"/>
-            <fc:EComboBoxItem Content="Item5"/>
-            <fc:EComboBoxItem Content="Item6"/>
-            <fc:EComboBoxItem Content="Item7"/>
-        </fc:EComboBox>
-        <fc:Switcher x:Name="switcher1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="456,338,0,0"
-                     Content="Switcher" Height="35" Width="100" GroupName="Switchers"/>
-        <fc:Switcher x:Name="switcher2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="456,388,0,0"
-                     Content="Switcher" Height="35" Width="100" GroupName="Switchers"/>
-        <fc:Switcher x:Name="switcher3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="456,439,0,0"
-                     Content="Switcher" Height="35" Width="100" GroupName="Switchers"/>
-        <fc:EButton x:Name="button" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="283,338,0,0"
-                    Content="Button" Click="Button_Click" Height="35" Width="100"/>
-        <fc:ERepeatButton x:Name="repeatbutton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="283,388,0,0"
-                          Content="RepeatButton" Height="35" Width="100" Click="RepeatButton_Click"/>
-        <fc:EToggleButton x:Name="togglebutton" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="283,439,0,0"
-                          Content="ToggleButton" ClickToggleType="Activate" Height="35" Width="100"/>
-        <fc:ETextBox x:Name="textbox_int" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="526,74,0,0" TextType="IntOnly"
-                     Hint="TextBox" Text="0" EnableCopyButton="True" Label="ETextBox IntOnly" Height="56" Width="190"/>
-        <fc:ETextBox x:Name="textbox_double" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="526,144,0,0" TextType="DoubleOnly"
-                     Hint="TextBox" Text="0,1" EnableCopyButton="True" Label="ETextBox DoubleOnly" Height="56" Width="190"/>
-        <fc:ETextBox x:Name="textbox_numeric" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="526,216,0,0" TextType="NumericOnly"
-                     Hint="TextBox" Text="012710" EnableCopyButton="True" Label="ETextBox NumericOnly" Height="54" Width="190"/>
-        <fc:ETextBox x:Name="textbox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,168,0,0"
-                     Hint="TextBox" EnableCopyButton="True" Label="ETextBox" Height="55" Width="190"/>
-        <fc:EPasswordBox x:Name="passwordbox" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="35,228,0,0"
-                         Hint="PasswordBox" EnableCopyButton="True" EnablePeekButton="True" Label="EPasswordBox" Height="55" Width="190">
-            <fc:EPasswordBox.ContextMenu>
-                <ContextMenu>
-                    <fc:PolymorphicMenuItem x:Name="PasswordboxClear" Header="Clear" Click="PasswordboxClear_Click"/>
-                </ContextMenu>
-            </fc:EPasswordBox.ContextMenu>
-        </fc:EPasswordBox>
-        <fc:ERadioButton x:Name="radiobutton1" HorizontalAlignment="Left" VerticalAlignment="Top"
-                         Width="91" Height="20" Margin="44,383,0,0" Content="Velocity 1x" IsChecked="True" GroupName="RadioGroup"/>
-        <fc:ERadioButton x:Name="radiobutton2" HorizontalAlignment="Left" VerticalAlignment="Top"
-                         Width="91" Height="20" Margin="44,408,0,0" Content="Velocity 2x" IsChecked="False" GroupName="RadioGroup"/>
-        <fc:ECheckBox x:Name="checkbox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="156"
-                      Height="20" Margin="44,446,0,0" Content="ToggleType Complete" IsChecked="False"
-                      Checked="Checkbox_Checked" Unchecked="Checkbox_Unchecked"/>
-        <fc:EButton x:Name="accordionView" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="602,388,0,0"
-                    Content="Accordion View" Click="AccordionView_Click" Height="35" Width="100"/>
-        <fc:EButton x:Name="test" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="602,439,0,0"
-            Content="Test" Click="Test_Click" Height="35" Width="100"/>
+        <fc:EButton x:Name="accordionDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="444,284,0,0"
+                    Content="Accordion Demo" Click="AccordionDemo_Click" Height="70" Width="130"/>
+        <fc:EButton x:Name="buttonsDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="444,177,0,0"
+                    Content="Buttons Demo" Click="ButtonsDemo_Click" Height="70" Width="130"/>
+        <fc:EButton x:Name="collapsableDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="254,284,0,0"
+                    Content="Collapsable Demo" Click="CollapsableDemo_Click" Height="70" Width="130"/>
+        <fc:EButton x:Name="switcherDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="444,77,0,0"
+                    Content="Switcher Demo" Click="SwitcherDemo_Click" Height="70" Width="130"/>
+        <fc:EButton x:Name="checkboxesDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,390,0,0"
+                    Content="Checkboxes Demo" Click="CheckboxesDemo_Click" Height="70" Width="130"/>
+        <fc:EButton x:Name="comboboxDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,284,0,0"
+                    Content="Combobox Demo" Click="ComboboxDemo_Click" Height="70" Width="130"/>
+        <fc:EButton x:Name="scrollviewerDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,177,0,0"
+                    Content="Scrollviewer Demo" Click="ScrollviewerDemo_Click" Height="70" Width="130"/>
+        <fc:EButton x:Name="dialogwindowDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="254,177,0,0"
+                    Content="Dialogwindow Demo" Click="DialogwindowDemo_Click" Height="70" Width="130"/>
+        <fc:EButton x:Name="textboxesDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="254,77,0,0"
+                    Content="Textboxes Demo" Click="TextboxesDemo_Click" Height="70" Width="130"/>
+        <fc:EButton x:Name="menuDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,77,0,0"
+                    Content="Menu Demo" Click="MenuDemo_Click" Height="70" Width="130"/>
     </Grid>
 </fc:EWindow>

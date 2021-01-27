@@ -3,6 +3,8 @@
 
     <SolidColorBrush x:Key="WindowBackground" Color="White"/>
     <SolidColorBrush x:Key="WindowBackground2" Color="WhiteSmoke"/>
+    <SolidColorBrush x:Key="DarkWindowBackground" Color="Black"/>
+    <SolidColorBrush x:Key="DarkWindowBackground2" Color="#FF171717"/>
     <SolidColorBrush x:Key="WindowBorderBrush" Color="Gray"/>
 
     <CornerRadius x:Key="WindowCornerRadius" TopLeft="8" TopRight="8" BottomRight="8" BottomLeft="8"/>

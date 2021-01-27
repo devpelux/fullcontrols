@@ -1,0 +1,36 @@
+﻿<fc:EWindow x:Class="FullControlsDemo.GlassScrollViewerDemo"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:fc="http://devpelux.github.io/fullcontrols" 
+            WindowStyle="None"
+            MergeToolbarAndContent="True"
+            CornerRadius="{DynamicResource WindowCornerRadius}"
+            BorderThickness="{DynamicResource WindowBorderThickness}"
+            Background="{DynamicResource WindowBackground}"
+            BorderBrush="{DynamicResource WindowBorderBrush}"
+            CaptionButtonsBackground="{DynamicResource WindowBackground}"
+            Title="GlassScrollViewer"
+            Icon="/Icons/FullControls.ico"
+            ResizeMode="CanMinimize"
+            WindowStartupLocation="CenterScreen"
+            Height="300"
+            Width="400">
+    <Grid>
+
+        <!--#region Background part-->
+
+        <Grid x:Name="background" Visibility="Collapsed">
+            <Ellipse Fill="{DynamicResource WindowBackground2}" Margin="180,87,-238,-177"/>
+        </Grid>
+
+        <!--#endregion-->
+
+        <fc:GlassScrollViewer Margin="60,60,60,60" ScrollBarsColor="RoyalBlue" ScrollBarsCornerRadius="5" BorderBrush="LightGray" BorderThickness="1">
+            <Grid Background="Transparent" Width="280" Height="480" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Rectangle Fill="Red" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,47,0,0" Height="60" Width="60"/>
+                <Rectangle Fill="Green" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="172,233,0,0" Height="50" Width="50"/>
+                <Rectangle Fill="Blue" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="158,382,0,0" Height="40" Width="40"/>
+            </Grid>
+        </fc:GlassScrollViewer>
+    </Grid>
+</fc:EWindow>

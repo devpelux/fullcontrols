@@ -8,13 +8,79 @@
             BorderThickness="{DynamicResource WindowBorderThickness}"
             Background="{DynamicResource WindowBackground}"
             BorderBrush="{DynamicResource WindowBorderBrush}"
-            CaptionButtonsBackground="{DynamicResource WindowBackground}"
-            Title="Accordion View"
+            CaptionButtonsBackground="{DynamicResource DarkWindowBackground}"
+            CaptionButtonsBackgroundOnMouseOver="#333333"
+            CaptionButtonsBackgroundOnPressed="#404040"
+            CaptionButtonsForeground="White"
+            CaptionButtonsForegroundOnMouseOver="White"
+            CaptionButtonsForegroundOnPressed="White"
+            CloseButtonBackground="{DynamicResource DarkWindowBackground}"
+            CloseButtonBackgroundOnMouseOver="#333333"
+            CloseButtonForeground="White"
+            CloseButtonForegroundOnMouseOver="White"
+            CloseButtonForegroundOnPressed="White"
+            Title="TextBoxes"
             Icon="/Icons/FullControls.ico"
-            ResizeMode="CanResize"
-            Height="300"
+            ResizeMode="CanMinimize"
+            WindowStartupLocation="CenterScreen"
+            Height="460"
             Width="400">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Background="{DynamicResource WindowBackground}">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0">
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" Text="PasswordBox" FontSize="16"/>
+                <Border BorderBrush="LightGray" BorderThickness="1" Margin="0,25,0,0">
+                    <Grid Margin="10">
+                        <fc:EPasswordBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"
+                                         Hint="PasswordBox" EnableCopyButton="True" EnablePeekButton="True" Label="EPasswordBox" Height="55" Width="150"/>
+                    </Grid>
+                </Border>
+            </Grid>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,150,0,0">
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" Text="TextBox" FontSize="16"/>
+                <Border BorderBrush="LightGray" BorderThickness="1" Margin="0,25,0,0">
+                    <Grid Margin="10">
+                        <fc:ETextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" TextType="IntOnly"
+                                     Hint="TextBox" Text="0" EnableCopyButton="True" Label="ETextBox IntOnly" Height="56" Width="150"/>
+                        <fc:ETextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,60,0,0" TextType="DoubleOnly"
+                                     Hint="TextBox" Text="0,1" EnableCopyButton="True" Label="ETextBox DoubleOnly" Height="56" Width="150"/>
+                        <fc:ETextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,120,0,0" TextType="NumericOnly"
+                                     Hint="TextBox" Text="012710" EnableCopyButton="True" Label="ETextBox NumericOnly" Height="54" Width="150"/>
+                        <fc:ETextBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,180,0,0"
+                                     Hint="TextBox" EnableCopyButton="True" Label="ETextBox" Height="55" Width="150"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1" Background="{DynamicResource DarkWindowBackground}">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0">
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" Text="PasswordBox" FontSize="16" Foreground="White"/>
+                <Border BorderBrush="DimGray" BorderThickness="1" Margin="0,25,0,0">
+                    <Grid Margin="10">
+                        <fc:EPasswordBox Style="{DynamicResource EPasswordBoxDark}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"
+                                         Hint="PasswordBox" EnableCopyButton="True" EnablePeekButton="True" Label="EPasswordBox" Height="55" Width="150"/>
+                    </Grid>
+                </Border>
+            </Grid>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,150,0,0">
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" Text="TextBox" FontSize="16" Foreground="White"/>
+                <Border BorderBrush="DimGray" BorderThickness="1" Margin="0,25,0,0">
+                    <Grid Margin="10">
+                        <fc:ETextBox Style="{DynamicResource ETextBoxDark}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0"
+                                     TextType="IntOnly" Hint="TextBox" Text="0" EnableCopyButton="True" Label="ETextBox IntOnly" Height="56" Width="150"/>
+                        <fc:ETextBox Style="{DynamicResource ETextBoxDark}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,60,0,0"
+                                     TextType="DoubleOnly" Hint="TextBox" Text="0,1" EnableCopyButton="True" Label="ETextBox DoubleOnly" Height="56" Width="150"/>
+                        <fc:ETextBox Style="{DynamicResource ETextBoxDark}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,120,0,0"
+                                     TextType="NumericOnly" Hint="TextBox" Text="012710" EnableCopyButton="True" Label="ETextBox NumericOnly" Height="54" Width="150"/>
+                        <fc:ETextBox Style="{DynamicResource ETextBoxDark}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,180,0,0"
+                                     Hint="TextBox" EnableCopyButton="True" Label="ETextBox" Height="55" Width="150"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
     </Grid>
 </fc:EWindow>

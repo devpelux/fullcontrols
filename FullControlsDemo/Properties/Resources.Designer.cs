@@ -61,7 +61,7 @@ namespace FullControlsDemo.Properties {
         }
         
         /// <summary>
-        ///   Cerca una stringa localizzata simile a 1.2.1.
+        ///   Cerca una stringa localizzata simile a 1.3.0.
         /// </summary>
         public static string VersionCode {
             get {

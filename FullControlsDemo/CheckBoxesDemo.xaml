@@ -8,13 +8,51 @@
             BorderThickness="{DynamicResource WindowBorderThickness}"
             Background="{DynamicResource WindowBackground}"
             BorderBrush="{DynamicResource WindowBorderBrush}"
-            CaptionButtonsBackground="{DynamicResource WindowBackground}"
-            Title="Accordion View"
+            CaptionButtonsBackground="{DynamicResource DarkWindowBackground}"
+            CaptionButtonsBackgroundOnMouseOver="#333333"
+            CaptionButtonsBackgroundOnPressed="#404040"
+            CaptionButtonsForeground="White"
+            CaptionButtonsForegroundOnMouseOver="White"
+            CaptionButtonsForegroundOnPressed="White"
+            CloseButtonBackground="{DynamicResource DarkWindowBackground}"
+            CloseButtonBackgroundOnMouseOver="#333333"
+            CloseButtonForeground="White"
+            CloseButtonForegroundOnMouseOver="White"
+            CloseButtonForegroundOnPressed="White"
+            Title="CheckBoxes"
             Icon="/Icons/FullControls.ico"
-            ResizeMode="CanResize"
-            Height="300"
+            ResizeMode="CanMinimize"
+            WindowStartupLocation="CenterScreen"
+            Height="267"
             Width="400">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Background="{DynamicResource WindowBackground}">
+            <fc:ERadioButton HorizontalAlignment="Left" VerticalAlignment="Top"
+                         Height="20" Margin="30,40,0,0" Content="RadioButton 1" IsChecked="True" GroupName="G1"/>
+            <fc:ERadioButton HorizontalAlignment="Left" VerticalAlignment="Top"
+                         Height="20" Margin="30,70,0,0" Content="RadioButton 2" GroupName="G1"/>
+            <fc:ERadioButton HorizontalAlignment="Left" VerticalAlignment="Top"
+                         Height="20" Margin="30,100,0,0" Content="RadioButton 3" GroupName="G1"/>
+            <fc:ECheckBox HorizontalAlignment="Left" VerticalAlignment="Top"
+                      Height="20" Margin="30,170,0,0" Content="CheckBox 1" IsChecked="False"/>
+            <fc:ECheckBox HorizontalAlignment="Left" VerticalAlignment="Top"
+                      Height="20" Margin="30,200,0,0" Content="CheckBox 2" IsChecked="True"/>
+        </Grid>
+        <Grid Grid.Column="1" Background="{DynamicResource DarkWindowBackground}">
+            <fc:ERadioButton Style="{DynamicResource ERadioButtonDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
+                         Height="20" Margin="30,40,0,0" Content="RadioButton 1" GroupName="G2"/>
+            <fc:ERadioButton Style="{DynamicResource ERadioButtonDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
+                         Height="20" Margin="30,70,0,0" Content="RadioButton 2" IsChecked="True" GroupName="G2"/>
+            <fc:ERadioButton Style="{DynamicResource ERadioButtonDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
+                         Height="20" Margin="30,100,0,0" Content="RadioButton 3" GroupName="G2"/>
+            <fc:ECheckBox Style="{DynamicResource ECheckBoxDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
+                      Height="20" Margin="30,170,0,0" Content="CheckBox 1" IsChecked="False"/>
+            <fc:ECheckBox Style="{DynamicResource ECheckBoxDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
+                      Height="20" Margin="30,200,0,0" Content="CheckBox 2" IsChecked="True"/>
+        </Grid>
     </Grid>
 </fc:EWindow>

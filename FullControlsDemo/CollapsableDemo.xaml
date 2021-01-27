@@ -9,9 +9,10 @@
             Background="{DynamicResource WindowBackground}"
             BorderBrush="{DynamicResource WindowBorderBrush}"
             CaptionButtonsBackground="{DynamicResource WindowBackground}"
-            Title="Accordion View"
+            Title="Collapsable"
             Icon="/Icons/FullControls.ico"
             ResizeMode="CanMinimize"
+            WindowStartupLocation="CenterScreen"
             Height="302"
             Width="402">
     <Grid>
