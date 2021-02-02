@@ -79,39 +79,25 @@ namespace FullControls
             DependencyProperty.Register(nameof(ResizeThickness), typeof(Thickness), typeof(EWindow),
                 new FrameworkPropertyMetadata(new Thickness(), new PropertyChangedCallback((d, e) => ((EWindow)d).OnResizeThicknessChanged((Thickness)e.NewValue))));
 
-        #region BorderMargin
+        #region Shadow
 
         /// <summary>
-        /// Margin of the window used to display the shadow.
+        /// Color of the shadow.
         /// </summary>
-        internal Thickness BorderMargin => (Thickness)GetValue(BorderMarginProperty);
-
-        /// <summary>
-        /// Identifies the <see cref="BorderMargin"/> dependency property.
-        /// </summary>
-        internal static readonly DependencyProperty BorderMarginProperty =
-            DependencyProperty.Register(nameof(BorderMargin), typeof(Thickness), typeof(EWindow), new FrameworkPropertyMetadata(new Thickness()));
-
-        #endregion
-
-        /// <summary>
-        /// Radius of the shadow behind the window.
-        /// </summary>
-        public double ShadowRadius
+        public Color ShadowColor
         {
-            get => (double)GetValue(ShadowRadiusProperty);
-            set => SetValue(ShadowRadiusProperty, value);
+            get => (Color)GetValue(ShadowColorProperty);
+            set => SetValue(ShadowColorProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ShadowRadius"/> dependency property.
+        /// Identifies the <see cref="ShadowColor"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ShadowRadiusProperty =
-            DependencyProperty.Register(nameof(ShadowRadius), typeof(double), typeof(EWindow),
-                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => d.SetValue(BorderMarginProperty, new Thickness((double)e.NewValue)))));
+        public static readonly DependencyProperty ShadowColorProperty =
+            DependencyProperty.Register(nameof(ShadowColor), typeof(Color), typeof(EWindow));
 
         /// <summary>
-        /// Opacity of the shadow behind the window.
+        /// Opacity of the shadow.
         /// </summary>
         public double ShadowOpacity
         {
@@ -126,7 +112,23 @@ namespace FullControls
             DependencyProperty.Register(nameof(ShadowOpacity), typeof(double), typeof(EWindow));
 
         /// <summary>
-        /// Depth of the shadow behind the window.
+        /// Radius of the shadow.
+        /// </summary>
+        public double ShadowRadius
+        {
+            get => (double)GetValue(ShadowRadiusProperty);
+            set => SetValue(ShadowRadiusProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ShadowRadius"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ShadowRadiusProperty =
+            DependencyProperty.Register(nameof(ShadowRadius), typeof(double), typeof(EWindow),
+                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateMarginForShadow(d))));
+
+        /// <summary>
+        /// Depth of the shadow.
         /// </summary>
         public double ShadowDepth
         {
@@ -138,22 +140,44 @@ namespace FullControls
         /// Identifies the <see cref="ShadowDepth"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ShadowDepthProperty =
-            DependencyProperty.Register(nameof(ShadowDepth), typeof(double), typeof(EWindow));
+            DependencyProperty.Register(nameof(ShadowDepth), typeof(double), typeof(EWindow),
+                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateMarginForShadow(d))));
+
+        #region MarginForShadow
 
         /// <summary>
-        /// Color of the shadow behind the window.
+        /// Margin used to display the shadow.
         /// </summary>
-        public Color ShadowColor
+        public Thickness MarginForShadow => (Thickness)GetValue(MarginForShadowProperty);
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="MarginForShadow"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey MarginForShadowPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(MarginForShadow), typeof(Thickness), typeof(EWindow),
+                new FrameworkPropertyMetadata(new Thickness()));
+
+        /// <summary>
+        /// Identifies the <see cref="MarginForShadow"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty MarginForShadowProperty = MarginForShadowPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Calculates the margin used to display the shadow.
+        /// </summary>
+        private static void CalculateMarginForShadow(DependencyObject d)
         {
-            get => (Color)GetValue(ShadowColorProperty);
-            set => SetValue(ShadowColorProperty, value);
+            double margin = (double)d.GetValue(ShadowRadiusProperty) / 2;
+            double offset = (double)d.GetValue(ShadowDepthProperty);
+            d.SetValue(MarginForShadowPropertyKey, new Thickness(Math.Max(0, Math.Ceiling(margin - offset)),
+                                                                 Math.Max(0, Math.Ceiling(margin - offset)),
+                                                                 Math.Max(0, Math.Ceiling(margin + offset)),
+                                                                 Math.Max(0, Math.Ceiling(margin + offset))));
         }
 
-        /// <summary>
-        /// Identifies the <see cref="ShadowColor"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register(nameof(ShadowColor), typeof(Color), typeof(EWindow));
+        #endregion
+
+        #endregion
 
         /// <summary>
         /// CornerRadius of the control.
@@ -1257,13 +1281,13 @@ namespace FullControls
         /// Offset of height between Visual Stuio designer and reality.
         /// </summary>
         /// <returns>Offset of height.</returns>
-        private double VSDesignerHeightOffset() => BorderMargin.Top + BorderMargin.Bottom + (!MergeToolbarAndContent ? TOOLBAR_HEIGHT : 0);
+        private double VSDesignerHeightOffset() => MarginForShadow.Top + MarginForShadow.Bottom + (!MergeToolbarAndContent ? TOOLBAR_HEIGHT : 0);
 
         /// <summary>
         /// Offset of width between Visual Stuio designer and reality.
         /// </summary>
         /// <returns>Offset of width.</returns>
-        private double VSDesignerWidthOffset() => BorderMargin.Left + BorderMargin.Right;
+        private double VSDesignerWidthOffset() => MarginForShadow.Left + MarginForShadow.Right;
 
         #endregion
 

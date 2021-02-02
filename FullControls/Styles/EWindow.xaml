@@ -65,20 +65,20 @@
                     <Grid x:Name="PART_Window">
                         <Border x:Name="PART_ShadowBorder"
                                 BorderThickness="1"
-                                Margin="{TemplateBinding BorderMargin}"
+                                Margin="{TemplateBinding MarginForShadow}"
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                             <Border.Effect>
                                 <DropShadowEffect x:Name="PART_Shadow"
-                                                  BlurRadius="{Binding ShadowRadius, RelativeSource={RelativeSource TemplatedParent}}"
                                                   Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"
                                                   Opacity="{Binding ShadowOpacity, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  BlurRadius="{Binding ShadowRadius, RelativeSource={RelativeSource TemplatedParent}}"
                                                   ShadowDepth="{Binding ShadowDepth, RelativeSource={RelativeSource TemplatedParent}}"/>
                             </Border.Effect>
                         </Border>
                         <Border x:Name="PART_Border"
-                                Margin="{TemplateBinding BorderMargin}"
+                                Margin="{TemplateBinding MarginForShadow}"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"

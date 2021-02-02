@@ -59,9 +59,9 @@ namespace FullControlsDemo
             new TextBoxesDemo().Show();
         }
 
-        private void MenuDemo_Click(object sender, RoutedEventArgs e)
+        private void FlatMenuDemo_Click(object sender, RoutedEventArgs e)
         {
-            new MenuDemo().Show();
+            new FlatMenuDemo().Show();
         }
     }
 }

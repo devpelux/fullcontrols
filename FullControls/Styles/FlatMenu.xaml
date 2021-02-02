@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FullControls">
+    
+    <Style TargetType="{x:Type local:FlatMenu}" BasedOn="{StaticResource {x:Type Menu}}">
+        <Style.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml"/>
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Style.Resources>
+
+        <Setter Property="Background" Value="{DynamicResource Gray1}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Gray17}"/>
+        <Setter Property="ForegroundOnHighlight" Value="{DynamicResource Gray17}"/>
+        <Setter Property="ForegroundOnOpen" Value="{DynamicResource Gray17}"/>
+        <Setter Property="ForegroundOnDisabled" Value="{DynamicResource Gray9}"/>
+        <Setter Property="CheckBrush" Value="{DynamicResource Gray17}"/>
+        <Setter Property="CheckBrushOnHighlight" Value="{DynamicResource Gray17}"/>
+        <Setter Property="CheckBrushOnOpen" Value="{DynamicResource Gray17}"/>
+        <Setter Property="CheckBrushOnDisabled" Value="{DynamicResource Gray9}"/>
+        <Setter Property="PopupCornerRadius" Value="0"/>
+        <Setter Property="PopupPadding" Value="0"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        
+    </Style>
+    
+</ResourceDictionary>

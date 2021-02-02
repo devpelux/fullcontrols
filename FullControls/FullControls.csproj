@@ -16,10 +16,14 @@ Added Accordion control.
 Added AccordionItem control.
 Added SimpleAccordionItem control.
 Added ItemsControlAccordionItem control.
-Added MathV2 static class.
 Removed ActionEventArgs and all action events from EWindow.
 Added BeforeClosing and BeforeMinimizing cancelable events to EWindow.
-Added more properties to better customize EWindow caption buttons, toolbar, and behaviour.</PackageReleaseNotes>
+Added more properties to better customize EWindow caption buttons, toolbar, and behaviour.
+Added FlatContextMenu and FlatMenu.
+Removed PolymorphicMenuItem and replaced with FlatMenuItem, FlatMenuSeparator, FlatMenuSpace and FlatMenuTitle.
+Added radio-checking (mutually exclusive checking) feature to FlatMenuItem.
+Added more properties for customization of FlatMenuItem.
+General optimization and bugfix.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <Copyright>Copyright (c) 2020-2021 devpelux (Salvatore Peluso)</Copyright>
@@ -37,7 +41,7 @@ Added more properties to better customize EWindow caption buttons, toolbar, and 
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Styles\ItemsControlAccordionItem.xaml">
+    <Page Update="Styles\FlatMenu.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

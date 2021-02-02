@@ -1,0 +1,75 @@
+﻿<fc:EWindow x:Class="FullControlsDemo.FlatMenuDemo"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:fc="http://devpelux.github.io/fullcontrols" 
+            WindowStyle="None"
+            MergeToolbarAndContent="True"
+            CornerRadius="{DynamicResource WindowCornerRadius}"
+            BorderThickness="{DynamicResource WindowBorderThickness}"
+            Background="{DynamicResource WindowBackground}"
+            BorderBrush="{DynamicResource WindowBorderBrush}"
+            CaptionButtonsBackground="{DynamicResource WindowBackground}"
+            Title="Menu"
+            Icon="/Icons/FullControls.ico"
+            ResizeMode="CanMinimize"
+            WindowStartupLocation="CenterScreen"
+            Height="300"
+            Width="400">
+    <Grid>
+        <fc:FlatMenu VerticalAlignment="Top" Margin="0,32,0,0">
+            <fc:FlatMenuItem Header="Item1" Margin="10,0,0,0">
+                <fc:FlatMenuTitle Header="Title1"/>
+                <fc:FlatMenuItem Header="Item1 - Item1"/>
+                <fc:FlatMenuItem Header="Item1 - Item2" StaysOpenOnClick="True">
+                    <fc:FlatMenuTitle Header="RadioCheckers"/>
+                    <fc:FlatMenuItem Header="Checkable 1" IsCheckable="True" CheckType="Radio" GroupName="Group1"/>
+                    <fc:FlatMenuItem Header="Checkable 2" IsCheckable="True" CheckType="Radio" GroupName="Group1"/>
+                    <fc:FlatMenuSeparator Height="5"/>
+                    <fc:FlatMenuItem Header="Checkable 3" IsCheckable="True"/>
+                    <fc:FlatMenuItem Header="Checkable 4" IsCheckable="True"/>
+                    <fc:FlatMenuItem Header="Checkable 5" IsCheckable="True"/>
+                    <fc:FlatMenuItem Header="Checkable 6" IsCheckable="True"/>
+                </fc:FlatMenuItem>
+                <fc:FlatMenuSeparator Height="5"/>
+                <fc:FlatMenuTitle Header="Title2"/>
+                <fc:FlatMenuItem Header="Item1 - Item3"/>
+                <fc:FlatMenuItem Header="Item1 - Item4"/>
+            </fc:FlatMenuItem>
+            <fc:FlatMenuSeparator Orientation="Vertical" Width="11"/>
+            <fc:FlatMenuItem Header="Item2"/>
+            <fc:FlatMenuItem Header="Item3">
+                <fc:FlatMenuItem Header="Item3 - Item1"/>
+                <fc:FlatMenuItem Header="Item3 - Item2"/>
+                <fc:FlatMenuItem Header="Item3 - Item3"/>
+            </fc:FlatMenuItem>
+            <fc:FlatMenuItem Header="Item4"/>
+            <fc:FlatMenuItem Header="Item5"/>
+            <fc:FlatMenuItem Header="Item6"/>
+            <MenuItem Header="Item7">
+                <MenuItem Header="UU"/>
+                <MenuItem Header="UU"/>
+                <MenuItem Header="UU"/>
+                <MenuItem Header="UU"/>
+                <MenuItem Header="UU"/>
+            </MenuItem>
+        </fc:FlatMenu>
+        <Grid HorizontalAlignment="Left" Background="Green" Height="82" Margin="66,132,0,0" VerticalAlignment="Top" Width="98">
+            <Grid.ContextMenu>
+                <fc:FlatContextMenu>
+                    <fc:FlatMenuItem Header="Checkable 1" IsCheckable="True" CheckType="Radio" GroupName="Group1"/>
+                    <fc:FlatMenuItem Header="Checkable 2" IsCheckable="True" CheckType="Radio" GroupName="Group1"/>
+                    <fc:FlatMenuSeparator Height="5" AutoMargin="True"/>
+                    <fc:FlatMenuItem x:Name="itX" Header="Checkable 3" IsCheckable="True" IsEnabled="False" CheckType="Radio" GroupName="Group1" IsChecked="True"/>
+                    <fc:FlatMenuItem Header="Checkable 4" IsCheckable="True"/>
+                    <fc:FlatMenuItem Header="Checkable 5" PopupCornerRadius="4" PopupPadding="0,4,0,4">
+                        <fc:FlatMenuItem Header="SubUnCheckable 1"/>
+                        <fc:FlatMenuItem Header="SubUnCheckable 2"/>
+                    </fc:FlatMenuItem>
+                    <fc:FlatMenuItem Header="Checkable 6" IsCheckable="True"/>
+                    <fc:FlatMenuItem Header="UnCheckable 7" AutoMargin="False"/>
+                </fc:FlatContextMenu>
+            </Grid.ContextMenu>
+        </Grid>
+        <fc:EButton Content="EButton" HorizontalAlignment="Left" Margin="288,149,0,0" VerticalAlignment="Top" Click="EButton_Click"/>
+    </Grid>
+</fc:EWindow>

@@ -60,7 +60,7 @@
                     Content="Dialogwindow Demo" Click="DialogwindowDemo_Click" Height="70" Width="130"/>
         <fc:EButton x:Name="textboxesDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="254,77,0,0"
                     Content="Textboxes Demo" Click="TextboxesDemo_Click" Height="70" Width="130"/>
-        <fc:EButton x:Name="menuDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,77,0,0"
-                    Content="Menu Demo" Click="MenuDemo_Click" Height="70" Width="130"/>
+        <fc:EButton x:Name="flatMenuDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,77,0,0"
+                    Content="FlatMenu Demo" Click="FlatMenuDemo_Click" Height="70" Width="130"/>
     </Grid>
 </fc:EWindow>
