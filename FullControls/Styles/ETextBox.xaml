@@ -81,6 +81,15 @@
         <Setter Property="AutoMargin" Value="False"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="ContextMenu">
+            <Setter.Value>
+                <local:FlatContextMenu>
+                    <local:FlatMenuItem Command="ApplicationCommands.Cut"/>
+                    <local:FlatMenuItem Command="ApplicationCommands.Copy"/>
+                    <local:FlatMenuItem Command="ApplicationCommands.Paste"/>
+                </local:FlatContextMenu>
+            </Setter.Value>
+        </Setter>
 
         <Setter Property="Template">
             <Setter.Value>

@@ -30,7 +30,15 @@
         <Setter Property="ShadowDepth" Value="2"/>
         <Setter Property="ShadowColor" Value="Black"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-        
+        <Setter Property="ScrollViewerStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type local:GlassScrollViewer}">
+                    <Setter Property="ScrollBarsThickness" Value="5"/>
+                    <Setter Property="ScrollBarsCornerRadius" Value="2"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:FlatContextMenu}">
@@ -56,7 +64,8 @@
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 CornerRadius="{TemplateBinding PopupCornerRadius}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                            <local:GlassScrollViewer Margin="{TemplateBinding PopupPadding}">
+                            <local:GlassScrollViewer Style="{TemplateBinding ScrollViewerStyle}"
+                                                     Margin="{TemplateBinding PopupPadding}">
                                 <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle"
                                                 Grid.IsSharedSizeScope="True"
                                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
@@ -73,6 +82,53 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="MaxHeight" Value="Infinity">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type local:FlatContextMenu}">
+                            <Grid>
+                                <Border x:Name="ShadowBorder"
+                                        Margin="{TemplateBinding MarginForShadow}"
+                                        BorderThickness="1"
+                                        CornerRadius="{TemplateBinding PopupCornerRadius}"
+                                        Background="{TemplateBinding Background}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                    <Border.Effect>
+                                        <DropShadowEffect x:Name="PART_Shadow"
+                                                          Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"
+                                                          Opacity="{Binding ShadowOpacity, RelativeSource={RelativeSource TemplatedParent}}"
+                                                          BlurRadius="{Binding ShadowRadius, RelativeSource={RelativeSource TemplatedParent}}"
+                                                          ShadowDepth="{Binding ShadowDepth, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    </Border.Effect>
+                                </Border>
+                                <Border x:Name="Border"
+                                        Margin="{TemplateBinding MarginForShadow}"
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{TemplateBinding PopupCornerRadius}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                    <ItemsPresenter Margin="{TemplateBinding PopupPadding}"
+                                                    KeyboardNavigation.DirectionalNavigation="Cycle"
+                                                    Grid.IsSharedSizeScope="True"
+                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
+                            </Grid>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="HasDropShadow" Value="False">
+                                    <Setter TargetName="ShadowBorder" Property="Visibility" Value="Collapsed"/>
+                                    <Setter TargetName="Border" Property="Margin" Value="0"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+
     </Style>
     
 </ResourceDictionary>

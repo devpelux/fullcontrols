@@ -873,7 +873,8 @@ namespace FullControls
         /// Identifies the <see cref="GroupName"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty GroupNameProperty =
-            DependencyProperty.Register(nameof(GroupName), typeof(string), typeof(FlatMenuItem), new PropertyMetadata(""));
+            DependencyProperty.Register(nameof(GroupName), typeof(string), typeof(FlatMenuItem),
+                new PropertyMetadata("", new PropertyChangedCallback((d, e) => ((FlatMenuItem)d).OnGroupNameChanged((string)e.NewValue, (string)e.OldValue))));
 
         #endregion
 
@@ -1028,7 +1029,7 @@ namespace FullControls
             IsSubmenuOpenProperty.OverrideMetadata(typeof(FlatMenuItem),
                 new FrameworkPropertyMetadata(new PropertyChangedCallback((d, e) => ((FlatMenuItem)d).OnSubmenuOpenChanged((bool)e.NewValue))));
             IsCheckedProperty.OverrideMetadata(typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(null, (d, o) => ((FlatMenuItem)d).abortCheckChange ? d.GetValue(IsCheckedProperty) : o));
+                new FrameworkPropertyMetadata(null, new CoerceValueCallback((d, o) => ((FlatMenuItem)d).abortCheckChange ? d.GetValue(IsCheckedProperty) : o)));
         }
 
         /// <summary>
@@ -1066,22 +1067,36 @@ namespace FullControls
             abortCheckChange = false;
         }
 
+        /// <summary>
+        /// Called when the <see cref="GroupName"/> property is changed.
+        /// </summary>
+        /// <param name="newValue">New <see cref="GroupName"/> value.</param>
+        /// <param name="oldValue">Old <see cref="GroupName"/> value.</param>
+        protected virtual void OnGroupNameChanged(string newValue, string oldValue)
+        {
+            if (IsCheckable && CheckType == CheckType.Radio && IsChecked) UncheckOtherItems();
+        }
+
         /// <inheritdoc/>
         protected override void OnChecked(RoutedEventArgs e)
         {
             base.OnChecked(e);
+            if (IsCheckable && CheckType == CheckType.Radio && IsChecked) UncheckOtherItems();
+        }
 
-            if (IsCheckable && CheckType == CheckType.Radio)
+        /// <summary>
+        /// Unchecks other items in the same <see cref="GroupName"/>.
+        /// </summary>
+        private void UncheckOtherItems()
+        {
+            IEnumerable<FlatMenuItem> radioItems = GetCheckableRadioItems();
+            if (radioItems != null)
             {
-                IEnumerable<FlatMenuItem> radioItems = GetCheckableRadioItems();
-                if (radioItems != null)
+                foreach (FlatMenuItem item in radioItems)
                 {
-                    foreach (FlatMenuItem item in radioItems)
+                    if (item != this && item.GroupName == GroupName)
                     {
-                        if (item != this && item.GroupName == GroupName)
-                        {
-                            item.IsChecked = false;
-                        }
+                        item.IsChecked = false;
                     }
                 }
             }

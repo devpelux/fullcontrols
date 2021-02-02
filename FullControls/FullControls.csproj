@@ -22,7 +22,8 @@ Added more properties to better customize EWindow caption buttons, toolbar, and 
 Added FlatContextMenu and FlatMenu.
 Removed PolymorphicMenuItem and replaced with FlatMenuItem, FlatMenuSeparator, FlatMenuSpace and FlatMenuTitle.
 Added radio-checking (mutually exclusive checking) feature to FlatMenuItem.
-Added more properties for customization of FlatMenuItem.
+Added more properties for menu items customization.
+Edited EPasswordBox, ETextBox and GlassScrollBar for using the new menu styles.
 General optimization and bugfix.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>

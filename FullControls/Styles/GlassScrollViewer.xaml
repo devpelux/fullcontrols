@@ -19,7 +19,7 @@
         <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollBarsThickness" Value="10"/>
-        <Setter Property="ScrollBarsCornerRadius" Value="1"/>
+        <Setter Property="ScrollBarsCornerRadius" Value="5"/>
         <Setter Property="ScrollBarsOpacityNormal" Value="0.6"/>
         <Setter Property="ScrollBarsOpacityOnMouseOver" Value="0.8"/>
         <Setter Property="ScrollBarsOpacityOnMouseDown" Value="0.7"/>

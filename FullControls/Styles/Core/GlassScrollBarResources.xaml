@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls">
-    
+
     <Style x:Key="GlassThumb" TargetType="{x:Type Thumb}">
         <Setter Property="Template">
             <Setter.Value>
@@ -204,5 +204,61 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+    
+    <!--#region Context menu-->
+
+    <local:FlatContextMenu x:Key="VerticalGlassScrollBarContextMenu">
+        <local:FlatMenuItem Header="Scroll _Here" Command="ScrollBar.ScrollHereCommand"
+                            CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+        
+        <local:FlatMenuSeparator Height="5"/>
+        
+        <local:FlatMenuItem Header="_Top" Command="ScrollBar.ScrollToTopCommand"
+                            CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+        <local:FlatMenuItem Header="_Bottom" Command="ScrollBar.ScrollToBottomCommand"
+                            CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+        
+        <local:FlatMenuSeparator Height="5"/>
+        
+        <local:FlatMenuItem Header="Page _Up" Command="ScrollBar.PageUpCommand"
+                            CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+        <local:FlatMenuItem Header="Page _Down" Command="ScrollBar.PageDownCommand"
+                            CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+        
+        <local:FlatMenuSeparator Height="5"/>
+        
+        <local:FlatMenuItem Header="Scroll U_p" Command="ScrollBar.LineUpCommand"
+                            CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+        <local:FlatMenuItem Header="Scroll Dow_n" Command="ScrollBar.LineDownCommand"
+                            CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+    </local:FlatContextMenu>
+
+    <local:FlatContextMenu x:Key="HorizontalGlassScrollBarContextMenu">
+        <local:FlatMenuItem Header="Scroll _Here" Command="ScrollBar.ScrollHereCommand"
+                            CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+        
+        <local:FlatMenuSeparator Height="5"/>
+        
+        <local:FlatMenuItem Header="_LeftEnd" Command="ScrollBar.ScrollToLeftEndCommand"
+                            CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+        <local:FlatMenuItem Header="_RightEnd" Command="ScrollBar.ScrollToRightEndCommand"
+                            CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+        
+        <local:FlatMenuSeparator Height="5"/>
+        
+        <local:FlatMenuItem Header="Page _Left" Command="ScrollBar.PageLeftCommand"
+                            CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+        <local:FlatMenuItem Header="Page _Right" Command="ScrollBar.PageRightCommand"
+                            CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+        
+        <local:FlatMenuSeparator Height="5"/>
+        
+        <local:FlatMenuItem Header="Scroll Lef_t" Command="ScrollBar.LineLeftCommand"
+                            CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+        <local:FlatMenuItem Header="Scroll Righ_t" Command="ScrollBar.LineRightCommand"
+                            CommandTarget="{Binding Path=PlacementTarget, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}}"/>
+    </local:FlatContextMenu>
+    
+    <!--#endregion-->
 
 </ResourceDictionary>

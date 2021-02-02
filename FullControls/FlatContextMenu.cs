@@ -10,6 +10,21 @@ namespace FullControls
     /// </summary>
     public class FlatContextMenu : ContextMenu
     {
+        /// <summary>
+        /// Style of the <see cref="ScrollViewer"/>.
+        /// </summary>
+        public Style ScrollViewerStyle
+        {
+            get => (Style)GetValue(ScrollViewerStyleProperty);
+            set => SetValue(ScrollViewerStyleProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ScrollViewerStyle"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ScrollViewerStyleProperty =
+            DependencyProperty.Register(nameof(ScrollViewerStyle), typeof(Style), typeof(FlatContextMenu));
+
         #region Shadow
 
         /// <summary>

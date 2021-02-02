@@ -19,14 +19,17 @@
                 <Setter Property="MinWidth" Value="0"/>
                 <Setter Property="Height" Value="Auto"/>
                 <Setter Property="Width" Value="{Binding Thickness, RelativeSource={RelativeSource Self}}"/>
+                <Setter Property="ContextMenu" Value="{DynamicResource VerticalGlassScrollBarContextMenu}"/>
                 <Setter Property="Template" Value="{DynamicResource VerticalGlassScrollbar}"/>
             </Trigger>
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="MinHeight" Value="0"/>
                 <Setter Property="Height" Value="{Binding Thickness, RelativeSource={RelativeSource Self}}"/>
                 <Setter Property="Width" Value="Auto"/>
+                <Setter Property="ContextMenu" Value="{DynamicResource HorizontalGlassScrollBarContextMenu}"/>
                 <Setter Property="Template" Value="{DynamicResource HorizontalGlassScrollbar}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
+    
 </ResourceDictionary>
