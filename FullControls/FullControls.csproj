@@ -23,8 +23,9 @@ Added FlatContextMenu and FlatMenu.
 Removed PolymorphicMenuItem and replaced with FlatMenuItem, FlatMenuSeparator, FlatMenuSpace and FlatMenuTitle.
 Added radio-checking (mutually exclusive checking) feature to FlatMenuItem.
 Added more properties for menu items customization.
-Edited EPasswordBox, ETextBox and GlassScrollBar for using the new menu styles.
-General optimization and bugfix.</PackageReleaseNotes>
+Added HorizontalScrollBarContextMenu and VerticalScrollBarContextMenu properties to customize GlassScrollViewer context menus.
+Updated EPasswordBox and ETextBox for using the new context menu styles.
+General optimizations and bugfixes.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <Copyright>Copyright (c) 2020-2021 devpelux (Salvatore Peluso)</Copyright>

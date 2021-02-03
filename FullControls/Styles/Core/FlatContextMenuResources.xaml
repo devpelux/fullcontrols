@@ -1,0 +1,83 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FullControls">
+
+    <ControlTemplate x:Key="FlatContextMenuWithScrollViewer" TargetType="{x:Type local:FlatContextMenu}">
+        <Grid>
+            <Border x:Name="ShadowBorder"
+                    Margin="{TemplateBinding MarginForShadow}"
+                    BorderThickness="1"
+                    CornerRadius="{TemplateBinding PopupCornerRadius}"
+                    Background="{TemplateBinding Background}"
+                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                <Border.Effect>
+                    <DropShadowEffect x:Name="PART_Shadow"
+                                      Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"
+                                      Opacity="{Binding ShadowOpacity, RelativeSource={RelativeSource TemplatedParent}}"
+                                      BlurRadius="{Binding ShadowRadius, RelativeSource={RelativeSource TemplatedParent}}"
+                                      ShadowDepth="{Binding ShadowDepth, RelativeSource={RelativeSource TemplatedParent}}"/>
+                </Border.Effect>
+            </Border>
+            <Border x:Name="Border"
+                    Margin="{TemplateBinding MarginForShadow}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding PopupCornerRadius}"
+                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                <local:GlassScrollViewer Style="{TemplateBinding ScrollViewerStyle}"
+                                         Margin="{TemplateBinding PopupPadding}">
+                    <ItemsPresenter KeyboardNavigation.DirectionalNavigation="Cycle"
+                                    Grid.IsSharedSizeScope="True"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                </local:GlassScrollViewer>
+            </Border>
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="HasDropShadow" Value="False">
+                <Setter TargetName="ShadowBorder" Property="Visibility" Value="Collapsed"/>
+                <Setter TargetName="Border" Property="Margin" Value="0"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="FlatContextMenuWithoutScrollViewer" TargetType="{x:Type local:FlatContextMenu}">
+        <Grid>
+            <Border x:Name="ShadowBorder"
+                    Margin="{TemplateBinding MarginForShadow}"
+                    BorderThickness="1"
+                    CornerRadius="{TemplateBinding PopupCornerRadius}"
+                    Background="{TemplateBinding Background}"
+                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                <Border.Effect>
+                    <DropShadowEffect x:Name="PART_Shadow"
+                                      Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"
+                                      Opacity="{Binding ShadowOpacity, RelativeSource={RelativeSource TemplatedParent}}"
+                                      BlurRadius="{Binding ShadowRadius, RelativeSource={RelativeSource TemplatedParent}}"
+                                      ShadowDepth="{Binding ShadowDepth, RelativeSource={RelativeSource TemplatedParent}}"/>
+                </Border.Effect>
+            </Border>
+            <Border x:Name="Border"
+                    Margin="{TemplateBinding MarginForShadow}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding PopupCornerRadius}"
+                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                <ItemsPresenter Margin="{TemplateBinding PopupPadding}"
+                                KeyboardNavigation.DirectionalNavigation="Cycle"
+                                Grid.IsSharedSizeScope="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            </Border>
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="HasDropShadow" Value="False">
+                <Setter TargetName="ShadowBorder" Property="Visibility" Value="Collapsed"/>
+                <Setter TargetName="Border" Property="Margin" Value="0"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+</ResourceDictionary>

@@ -12,6 +12,7 @@
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
+        
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="ContextMenu" Value="{x:Null}"/>
 
