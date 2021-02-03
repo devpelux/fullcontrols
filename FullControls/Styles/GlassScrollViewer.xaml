@@ -82,6 +82,7 @@
                                               DecreaseButtonForeground="{TemplateBinding ScrollBarsColor}"
                                               DecreaseButtonContent="{TemplateBinding UpButtonContent}"
                                               IncreaseButtonContent="{TemplateBinding DownButtonContent}"
+                                              ContextMenu="{TemplateBinding VerticalScrollBarContextMenu}"
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                               Orientation="Vertical"/>
                         <local:GlassScrollBar x:Name="PART_HorizontalScrollBar"
@@ -108,6 +109,7 @@
                                               DecreaseButtonForeground="{TemplateBinding ScrollBarsColor}"
                                               DecreaseButtonContent="{TemplateBinding LeftButtonContent}"
                                               IncreaseButtonContent="{TemplateBinding RightButtonContent}"
+                                              ContextMenu="{TemplateBinding HorizontalScrollBarContextMenu}"
                                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                               Orientation="Horizontal"/>
                     </Grid>

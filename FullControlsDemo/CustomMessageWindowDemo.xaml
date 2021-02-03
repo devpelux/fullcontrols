@@ -15,7 +15,8 @@
             WindowStartupLocation="CenterOwner"
             Height="180"
             Width="300"
-            Closed="EWindow_Closed">
+            Closed="EWindow_Closed"
+            Loaded="EWindow_Loaded">
     <Grid>
         <TextBlock Text="Did you know that... ?" TextAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Height="30"/>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30">

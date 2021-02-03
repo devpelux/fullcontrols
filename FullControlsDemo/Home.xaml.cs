@@ -63,5 +63,10 @@ namespace FullControlsDemo
         {
             new FlatMenuDemo().Show();
         }
+
+        private void Info_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            new Info().ShowDialog();
+        }
     }
 }

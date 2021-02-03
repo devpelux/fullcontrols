@@ -32,13 +32,11 @@
         <!--#endregion-->
 
         <!--#region Project details-->
-        
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,512,0,0" TextWrapping="Wrap"
-                   Height="29" Width="234" Text="FullControls demo project" FontSize="20"/>
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="244,521,0,0" TextWrapping="Wrap"
-                   Height="20" Width="76" Text="by devpelux" Foreground="Gray"/>
-        <TextBlock HorizontalAlignment="RIght" VerticalAlignment="Bottom" Margin="0,0,10,10" TextWrapping="Wrap"
-                   Height="20" Width="29" Text="{x:Static p:Resources.VersionCode}" Foreground="Gray"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,7" Width="234" Text="FullControls demo project" FontSize="20" Height="29" VerticalAlignment="Bottom"/>
+        <TextBlock HorizontalAlignment="Left" Margin="244,0,0,7" Width="76" Text="by devpelux" Foreground="Gray" Height="20" VerticalAlignment="Bottom"/>
+        <TextBlock HorizontalAlignment="RIght" VerticalAlignment="Bottom" Margin="0,0,10,7" Cursor="Hand"
+                   Height="20" Width="29" Text="Info" Foreground="Gray" MouseLeftButtonDown="Info_MouseLeftButtonDown"/>
 
         <!--#endregion-->
 

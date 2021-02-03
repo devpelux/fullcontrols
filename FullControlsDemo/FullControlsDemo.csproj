@@ -20,6 +20,10 @@
 
   <ItemGroup>
     <None Remove="Icons\FullControls.ico" />
+    <None Remove="Icons\FullControlsMenuIcon.png" />
+    <None Remove="Icons\GitHub.png" />
+    <None Remove="Icons\Help.png" />
+    <None Remove="Icons\NuGet.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +32,10 @@
 
   <ItemGroup>
     <Resource Include="Icons\FullControls.ico" />
+    <Resource Include="Icons\FullControlsMenuIcon.png" />
+    <Resource Include="Icons\GitHub.png" />
+    <Resource Include="Icons\Help.png" />
+    <Resource Include="Icons\NuGet.png" />
   </ItemGroup>
 
   <ItemGroup>

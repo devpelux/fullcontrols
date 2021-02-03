@@ -3,17 +3,28 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:fc="http://devpelux.github.io/fullcontrols" 
             WindowStyle="None"
+            MergeToolbarAndContent="True"
             CornerRadius="{DynamicResource WindowCornerRadius}"
             BorderThickness="{DynamicResource WindowBorderThickness}"
             Background="{DynamicResource WindowBackground}"
             BorderBrush="{DynamicResource WindowBorderBrush}"
-            CaptionButtonsBackground="{DynamicResource WindowBackground}"
+            CaptionButtonsBackground="{DynamicResource DarkWindowBackground}"
+            CaptionButtonsBackgroundOnMouseOver="#333333"
+            CaptionButtonsBackgroundOnPressed="#404040"
+            CaptionButtonsForeground="White"
+            CaptionButtonsForegroundOnMouseOver="White"
+            CaptionButtonsForegroundOnPressed="White"
+            CloseButtonBackground="{DynamicResource DarkWindowBackground}"
+            CloseButtonBackgroundOnMouseOver="#333333"
+            CloseButtonForeground="White"
+            CloseButtonForegroundOnMouseOver="White"
+            CloseButtonForegroundOnPressed="White"
             Title="Accordion"
             Icon="/Icons/FullControls.ico"
             ResizeMode="CanMinimize"
             WindowStartupLocation="CenterScreen"
             Height="380"
-            Width="400"
+            Width="600"
             Loaded="EWindow_Loaded">
     
     <fc:EWindow.Resources>
@@ -24,12 +35,29 @@
                     <TextBlock Text="{Binding Details}" Margin="5" FontSize="10" Foreground="Gray" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
                 </Grid>
             </DataTemplate>
+            <DataTemplate x:Key="AccordionDemoItemTemplateDark">
+                <Grid Height="60">
+                    <TextBlock Text="{Binding Name}" Margin="5" FontSize="30" Foreground="WhiteSmoke" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding Details}" Margin="5" FontSize="10" Foreground="Gray" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                </Grid>
+            </DataTemplate>
         </ResourceDictionary>
     </fc:EWindow.Resources>
     
     <Grid>
-        <fc:GlassScrollViewer Margin="40" PlaceScrollBarsInside="True">
-            <fc:Accordion x:Name="accordion" Background="WhiteSmoke"/>
-        </fc:GlassScrollViewer>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Background="{DynamicResource WindowBackground}">
+            <fc:GlassScrollViewer Margin="40,60,40,40" PlaceScrollBarsInside="True">
+                <fc:Accordion x:Name="accordion" Background="WhiteSmoke"/>
+            </fc:GlassScrollViewer>
+        </Grid>
+        <Grid Grid.Column="1" Background="{DynamicResource DarkWindowBackground}">
+            <fc:GlassScrollViewer Margin="40,60,40,40" PlaceScrollBarsInside="True">
+                <fc:Accordion x:Name="accordionDark" Background="#FF171717"/>
+            </fc:GlassScrollViewer>
+        </Grid>
     </Grid>
 </fc:EWindow>

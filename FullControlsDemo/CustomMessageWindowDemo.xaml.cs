@@ -1,4 +1,5 @@
 ﻿using FullControls;
+using System.Media;
 using System.Windows;
 
 namespace FullControlsDemo
@@ -20,6 +21,11 @@ namespace FullControlsDemo
         public CustomMessageWindowDemo()
         {
             InitializeComponent();
+        }
+
+        private void EWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            SystemSounds.Exclamation.Play();
         }
 
         private void EWindow_Closed(object sender, System.EventArgs e)

@@ -37,10 +37,10 @@
             <fc:Switcher Content="Switcher 4" GroupName="G1" HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
         </Grid>
         <Grid Grid.Column="1" Background="{DynamicResource DarkWindowBackground}">
-            <fc:Switcher Style="{DynamicResource ESwitcherDark}" GroupName="G2" Content="Switcher 1" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
-            <fc:Switcher Style="{DynamicResource ESwitcherDark}" GroupName="G2" Content="Switcher 2" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
-            <fc:Switcher Style="{DynamicResource ESwitcherDark}" GroupName="G2" Content="Switcher 3" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Top" Height="30" Width="90" IsChecked="True"/>
-            <fc:Switcher Style="{DynamicResource ESwitcherDark}" GroupName="G2" Content="Switcher 4" HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:Switcher Style="{DynamicResource SwitcherDark}" GroupName="G2" Content="Switcher 1" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:Switcher Style="{DynamicResource SwitcherDark}" GroupName="G2" Content="Switcher 2" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:Switcher Style="{DynamicResource SwitcherDark}" GroupName="G2" Content="Switcher 3" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Top" Height="30" Width="90" IsChecked="True"/>
+            <fc:Switcher Style="{DynamicResource SwitcherDark}" GroupName="G2" Content="Switcher 4" HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
         </Grid>
     </Grid>
 </fc:EWindow>

@@ -264,6 +264,36 @@ namespace FullControls
         public static readonly DependencyProperty RightButtonContentProperty =
             DependencyProperty.Register(nameof(RightButtonContent), typeof(object), typeof(GlassScrollViewer));
 
+        /// <summary>
+        /// <see cref="ContextMenu"/> of the vertical scrollbar.
+        /// </summary>
+        public ContextMenu VerticalScrollBarContextMenu
+        {
+            get => (ContextMenu)GetValue(VerticalScrollBarContextMenuProperty);
+            set => SetValue(VerticalScrollBarContextMenuProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="VerticalScrollBarContextMenu"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty VerticalScrollBarContextMenuProperty =
+            DependencyProperty.Register(nameof(VerticalScrollBarContextMenu), typeof(ContextMenu), typeof(GlassScrollViewer));
+
+        /// <summary>
+        /// <see cref="ContextMenu"/> of the vertical scrollbar.
+        /// </summary>
+        public ContextMenu HorizontalScrollBarContextMenu
+        {
+            get => (ContextMenu)GetValue(HorizontalScrollBarContextMenuProperty);
+            set => SetValue(HorizontalScrollBarContextMenuProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="HorizontalScrollBarContextMenu"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty HorizontalScrollBarContextMenuProperty =
+            DependencyProperty.Register(nameof(HorizontalScrollBarContextMenu), typeof(ContextMenu), typeof(GlassScrollViewer));
+
 
         /// <summary>
         /// Creates a new <see cref="GlassScrollViewer"/>.

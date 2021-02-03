@@ -1,0 +1,56 @@
+﻿<fc:EWindow x:Class="FullControlsDemo.Info"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:fc="http://devpelux.github.io/fullcontrols"
+            xmlns:Properties="clr-namespace:FullControlsDemo.Properties"
+            WindowStyle="None"
+            CornerRadius="{DynamicResource WindowCornerRadius}"
+            BorderThickness="{DynamicResource WindowBorderThickness}"
+            Background="{DynamicResource WindowBackground}"
+            BorderBrush="{DynamicResource WindowBorderBrush}"
+            CaptionButtonsBackground="{DynamicResource WindowBackground}"
+            Title="Info"
+            Icon="/Icons/FullControls.ico"
+            ResizeMode="NoResize"
+            WindowStartupLocation="CenterScreen"
+            Height="190"
+            Width="200">
+    <Grid>
+        
+        <!--#region Background part-->
+
+        <Grid x:Name="background" Visibility="Collapsed">
+            <Ellipse Fill="{DynamicResource WindowBackground2}" Margin="52,66,-156,-132"/>
+        </Grid>
+
+        <!--#endregion-->
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" VerticalAlignment="Center">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Text="FullControlsDemo" FontSize="18"
+                           Foreground="DodgerBlue" FontWeight="Bold"/>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,25,0,0" Text="by devpelux" Foreground="Gray" FontSize="10"/>
+            </Grid>
+            <Border Grid.Row="1" BorderBrush="LightGray" BorderThickness="0,1,0,1">
+                <Grid>
+                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0" Text="FullControls version: " FontSize="12"/>
+                    <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,30,0" Text="{x:Static Properties:Resources.VersionCode}"
+                               FontSize="12" Foreground="DodgerBlue" MouseLeftButtonDown="R_MouseLeftButtonDown" Cursor="Hand"/>
+                </Grid>
+            </Border>
+            <Grid Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Image HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="0,0,0,0" ToolTip="Get from NuGet" Cursor="Hand"
+                       Source="/Icons/NuGet.png" RenderOptions.BitmapScalingMode="Fant" SnapsToDevicePixels="True" MouseLeftButtonDown="NG_MouseLeftButtonDown"/>
+                <Image HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="40,0,0,0" ToolTip="View on Github" Cursor="Hand"
+                       Source="/Icons/GitHub.png" RenderOptions.BitmapScalingMode="Fant" SnapsToDevicePixels="True" MouseLeftButtonDown="GH_MouseLeftButtonDown"/>
+                <Image HorizontalAlignment="Left" VerticalAlignment="Top" Width="24" Height="24" Margin="80,0,0,0" ToolTip="View full documentation" Cursor="Hand"
+                       Source="/Icons/Help.png" RenderOptions.BitmapScalingMode="Fant" SnapsToDevicePixels="True" MouseLeftButtonDown="DOC_MouseLeftButtonDown"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</fc:EWindow>

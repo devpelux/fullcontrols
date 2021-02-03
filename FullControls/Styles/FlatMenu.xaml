@@ -11,7 +11,7 @@
             </ResourceDictionary>
         </Style.Resources>
 
-        <Setter Property="Background" Value="{DynamicResource Gray1}"/>
+        <Setter Property="Background" Value="White"/>
         <Setter Property="Foreground" Value="{DynamicResource Gray17}"/>
         <Setter Property="ForegroundOnHighlight" Value="{DynamicResource Gray17}"/>
         <Setter Property="ForegroundOnOpen" Value="{DynamicResource Gray17}"/>
