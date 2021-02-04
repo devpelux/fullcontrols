@@ -19,7 +19,8 @@ namespace FullControls
         /// <para>(Must implement <see cref="IDialog"/>)</para>
         /// </param>
         public DialogWindow(Window window)
-            => this.window = window is IDialog ? window : throw new InvalidCastException($"{window} must implement {nameof(IDialog)}.");
+            => this.window = window != null ? window is IDialog ? window : throw new InvalidCastException($"{window} must implement {nameof(IDialog)}.")
+            : throw new ArgumentNullException(nameof(window));
 
         /// <summary>
         /// Displays the dialog and, in the end, return an <see cref="object"/> as result.
