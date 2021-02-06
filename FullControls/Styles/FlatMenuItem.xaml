@@ -14,7 +14,7 @@
         </Style.Resources>
 
         <Setter Property="Padding" Value="5,0,5,0"/>
-        <Setter Property="Height" Value="25"/>
+        <Setter Property="Height" Value="28"/>
         <Setter Property="Background" Value="{DynamicResource Gray1}"/>
         <Setter Property="BackgroundOnHighlight" Value="{DynamicResource Gray3}"/>
         <Setter Property="BackgroundOnOpen" Value="{DynamicResource Gray4}"/>
@@ -27,8 +27,6 @@
         <Setter Property="PopupBorderBrush" Value="{DynamicResource Gray5}"/>
         <Setter Property="PopupBorderThickness" Value="1"/>
         <Setter Property="PopupAnimation" Value="Fade"/>
-        <Setter Property="PopupVerticalOffset" Value="0"/>
-        <Setter Property="PopupHorizontalOffset" Value="0"/>
         <Setter Property="HasDropShadow" Value="True"/>
         <Setter Property="ShadowRadius" Value="8"/>
         <Setter Property="ShadowOpacity" Value="0.5"/>
@@ -47,6 +45,7 @@
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="MaxDropDownHeight" Value="Infinity"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
+        <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="ScrollViewerStyle">
             <Setter.Value>
@@ -62,21 +61,20 @@
                 <Setter Property="CheckMark" Value="&#xE915;"/>
             </Trigger>
             <Trigger Property="Role" Value="TopLevelHeader">
+                <Setter Property="Height" Value="25"/>
                 <Setter Property="Background" Value="White"/>
-                <Setter Property="PopupHorizontalOffset" Value="-6"/>
                 <Setter Property="Template" Value="{DynamicResource MenuItemTopLevelHeaderTemplateKey}"/>
             </Trigger>
             <Trigger Property="Role" Value="TopLevelItem">
+                <Setter Property="Height" Value="25"/>
                 <Setter Property="Background" Value="White"/>
                 <Setter Property="Template" Value="{DynamicResource MenuItemTopLevelItemTemplateKey}"/>
             </Trigger>
             <Trigger Property="Role" Value="SubmenuHeader">
-                <Setter Property="Height" Value="28"/>
                 <Setter Property="MinWidth" Value="140"/>
                 <Setter Property="Template" Value="{DynamicResource MenuItemSubmenuHeaderTemplateKey}"/>
             </Trigger>
             <Trigger Property="Role" Value="SubmenuItem">
-                <Setter Property="Height" Value="28"/>
                 <Setter Property="MinWidth" Value="140"/>
                 <Setter Property="Template" Value="{DynamicResource MenuItemSubmenuItemTemplateKey}"/>
             </Trigger>

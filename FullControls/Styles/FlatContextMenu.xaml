@@ -25,6 +25,8 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="PopupCornerRadius" Value="4"/>
         <Setter Property="PopupPadding" Value="0,4,0,4"/>
+        <Setter Property="PopupVerticalOffset" Value="-5"/>
+        <Setter Property="PopupHorizontalOffset" Value="0"/>
         <Setter Property="HasDropShadow" Value="True"/>
         <Setter Property="ShadowRadius" Value="8"/>
         <Setter Property="ShadowOpacity" Value="0.5"/>

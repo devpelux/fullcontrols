@@ -7,6 +7,7 @@
         <Border Background="{TemplateBinding ActualBackground}"
                 BorderBrush="{TemplateBinding ActualBorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
+                UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
             <Grid Margin="{TemplateBinding Padding}">
                 <ContentPresenter x:Name="HeaderHost"
@@ -22,8 +23,8 @@
                        AllowsTransparency="True"
                        Focusable="False"
                        PopupAnimation="{TemplateBinding PopupAnimation}"
-                       VerticalOffset="{TemplateBinding PopupVerticalOffset}"
-                       HorizontalOffset="{TemplateBinding PopupHorizontalOffset}"
+                       VerticalOffset="{TemplateBinding TopLevelPopupVerticalOffset}"
+                       HorizontalOffset="{TemplateBinding TopLevelPopupHorizontalOffset}"
                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                     <Grid>
                         <Border x:Name="ShadowBorder"
@@ -76,6 +77,7 @@
         <Border Background="{TemplateBinding ActualBackground}"
                 BorderBrush="{TemplateBinding ActualBorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
+                UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
             <Grid Margin="{TemplateBinding Padding}">
                 <ContentPresenter x:Name="HeaderHost"
@@ -93,6 +95,7 @@
         <Border Background="{TemplateBinding ActualBackground}"
                 BorderBrush="{TemplateBinding ActualBorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
+                UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
             <Grid Margin="{TemplateBinding Padding}">
                 <Grid.ColumnDefinitions>
@@ -229,6 +232,7 @@
         <Border Background="{TemplateBinding ActualBackground}"
                 BorderBrush="{TemplateBinding ActualBorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
+                UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
             <Grid Margin="{TemplateBinding Padding}">
                 <Grid.ColumnDefinitions>

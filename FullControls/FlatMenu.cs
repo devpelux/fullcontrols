@@ -44,6 +44,70 @@ namespace FullControls
                 new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
+        /// Vertical offset of the popup if its <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>..
+        /// </summary>
+        public double TopLevelPopupVerticalOffset
+        {
+            get => (double)GetValue(TopLevelPopupVerticalOffsetProperty);
+            set => SetValue(TopLevelPopupVerticalOffsetProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="TopLevelPopupVerticalOffset"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty TopLevelPopupVerticalOffsetProperty =
+            FlatMenuItem.TopLevelPopupVerticalOffsetProperty.AddOwner(typeof(FlatMenu),
+                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+
+        /// <summary>
+        /// Horizontal offset of the popup if its <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>.
+        /// </summary>
+        public double TopLevelPopupHorizontalOffset
+        {
+            get => (double)GetValue(TopLevelPopupHorizontalOffsetProperty);
+            set => SetValue(TopLevelPopupHorizontalOffsetProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="TopLevelPopupHorizontalOffset"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty TopLevelPopupHorizontalOffsetProperty =
+            FlatMenuItem.TopLevelPopupHorizontalOffsetProperty.AddOwner(typeof(FlatMenu),
+                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+
+        /// <summary>
+        /// Vertical offset of the popup.
+        /// </summary>
+        public double PopupVerticalOffset
+        {
+            get => (double)GetValue(PopupVerticalOffsetProperty);
+            set => SetValue(PopupVerticalOffsetProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupVerticalOffset"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PopupVerticalOffsetProperty =
+            FlatMenuItem.PopupVerticalOffsetProperty.AddOwner(typeof(FlatMenu),
+                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+
+        /// <summary>
+        /// Horizontal offset of the popup.
+        /// </summary>
+        public double PopupHorizontalOffset
+        {
+            get => (double)GetValue(PopupHorizontalOffsetProperty);
+            set => SetValue(PopupHorizontalOffsetProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupHorizontalOffset"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PopupHorizontalOffsetProperty =
+            FlatMenuItem.PopupHorizontalOffsetProperty.AddOwner(typeof(FlatMenu),
+                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+
+        /// <summary>
         /// Foreground brush of the items when are highlighted.
         /// </summary>
         public Brush ForegroundOnHighlight

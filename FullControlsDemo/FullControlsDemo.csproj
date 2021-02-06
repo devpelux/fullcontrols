@@ -13,26 +13,26 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
 	<PackageReleaseNotes>Updated for the new release of FullControls.</PackageReleaseNotes>
-    <ApplicationIcon>Icons\FullControls.ico</ApplicationIcon>
+    <ApplicationIcon>Icons\FullControlsSimple.ico</ApplicationIcon>
     <StartupObject>FullControlsDemo.App</StartupObject>
     <Version>1.3.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Icons\FullControls.ico" />
+	<ProjectReference Include="..\FullControls\FullControls.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Icons\FullControlsMenuIcon.png" />
+    <None Remove="Icons\FullControlsSimple.ico" />
     <None Remove="Icons\GitHub.png" />
     <None Remove="Icons\Help.png" />
     <None Remove="Icons\NuGet.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FullControls\FullControls.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Icons\FullControls.ico" />
     <Resource Include="Icons\FullControlsMenuIcon.png" />
+    <Resource Include="Icons\FullControlsSimple.ico" />
     <Resource Include="Icons\GitHub.png" />
     <Resource Include="Icons\Help.png" />
     <Resource Include="Icons\NuGet.png" />

@@ -22,6 +22,10 @@
         <Setter Property="CheckBrushOnDisabled" Value="{DynamicResource Gray9}"/>
         <Setter Property="PopupCornerRadius" Value="0"/>
         <Setter Property="PopupPadding" Value="0"/>
+        <Setter Property="TopLevelPopupVerticalOffset" Value="0"/>
+        <Setter Property="TopLevelPopupHorizontalOffset" Value="-6"/>
+        <Setter Property="PopupVerticalOffset" Value="0"/>
+        <Setter Property="PopupHorizontalOffset" Value="0"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         
     </Style>

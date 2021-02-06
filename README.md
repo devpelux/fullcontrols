@@ -1,5 +1,5 @@
 <p align="center">
- <img width="90px" src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/FullControls/Icons/FullControls.png" align="center" alt="GitHub Readme Stats" />
+ <img width="90px" src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/FullControlsSimple.svg" align="center" alt="FullControls" />
  <h2 align="center">FullControls</h2>
  <p align="center">Set of fully customizable standard controls, plus new special controls and extra functionality.</p>
 </p>

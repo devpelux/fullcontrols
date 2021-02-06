@@ -20,7 +20,7 @@
             CloseButtonForegroundOnMouseOver="White"
             CloseButtonForegroundOnPressed="White"
             Title="Menu"
-            Icon="/Icons/FullControls.ico"
+            Icon="/Icons/FullControlsSimple.ico"
             ResizeMode="CanMinimize"
             WindowStartupLocation="CenterScreen"
             Height="500"
@@ -38,7 +38,10 @@
                     <fc:FlatMenuItem Header="Close" InputGestureText="ESC" Click="Close_Click"/>
                     <fc:FlatMenuItem Header="Minimize" Click="Minimize_Click"/>
                     <fc:FlatMenuSeparator Height="5"/>
-                    <fc:FlatMenuItem Header="Duplicate" Click="Duplicate_Click"/>
+                    <fc:FlatMenuItem Header="Duplicate">
+                        <fc:FlatMenuItem Header="As dialog" Click="DuplicateAsDialog_Click"/>
+                        <fc:FlatMenuItem Header="As window" Click="DuplicateAsWindow_Click"/>
+                    </fc:FlatMenuItem>
                 </fc:FlatMenuItem>
                 <fc:FlatMenuItem Header="Reset" Click="ResetLight_Click" ToolTip="Reset all light menus"/>
                 <fc:FlatMenuSpace Width="20" Background="White"/>
@@ -112,7 +115,10 @@
                     <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="Close" InputGestureText="ESC" Click="Close_Click"/>
                     <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="Minimize" Click="Minimize_Click"/>
                     <fc:FlatMenuSeparator Style="{DynamicResource FlatMenuSeparatorDark}" Height="5"/>
-                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="Duplicate" Click="Duplicate_Click"/>
+                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="Duplicate">
+                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="As dialog" Click="DuplicateAsDialog_Click"/>
+                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="As window" Click="DuplicateAsWindow_Click"/>
+                    </fc:FlatMenuItem>
                 </fc:FlatMenuItem>
                 <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="Reset" Click="ResetDark_Click" ToolTip="Reset all dark menus"/>
                 <fc:FlatMenuSpace Style="{DynamicResource FlatMenuSpaceDark}" Width="20" Background="Black"/>

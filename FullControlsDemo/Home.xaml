@@ -15,7 +15,7 @@
             CaptionButtonsBackground="{DynamicResource WindowBackground2}"
             CloseButtonBackground="{DynamicResource WindowBackground2}"
             Title="FullControls"
-            Icon="/Icons/FullControls.ico"
+            Icon="/Icons/FullControlsSimple.ico"
             ResizeMode="CanMinimize"
             WindowStartupLocation="CenterScreen"
             Height="550"

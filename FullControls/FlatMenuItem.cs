@@ -355,6 +355,90 @@ namespace FullControls
         #endregion
 
         /// <summary>
+        /// Vertical offset of the popup if its <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>..
+        /// </summary>
+        public double TopLevelPopupVerticalOffset
+        {
+            get => (double)GetValue(TopLevelPopupVerticalOffsetProperty);
+            set => SetValue(TopLevelPopupVerticalOffsetProperty, value);
+        }
+
+        #region TopLevelPopupVerticalOffset attached property
+
+        /// <summary>
+        /// Gets the value of the <see cref="TopLevelPopupVerticalOffset"/> attached property from a given <see cref="ItemsControl"/>.
+        /// </summary>
+        /// <param name="element">The element from which to read the property value.</param>
+        /// <returns>The value of the <see cref="TopLevelPopupVerticalOffset"/> attached property.</returns>
+        public static double GetTopLevelPopupVerticalOffset(ItemsControl element)
+        {
+            if (element != null) return (double)element.GetValue(TopLevelPopupVerticalOffsetProperty);
+            else throw new ArgumentNullException(nameof(element));
+        }
+
+        /// <summary>
+        /// Sets the value of the <see cref="TopLevelPopupVerticalOffset"/> attached property to a given <see cref="ItemsControl"/>.
+        /// </summary>
+        /// <param name="element">The element on which to set the attached property.</param>
+        /// <param name="value">The property value to set.</param>
+        public static void SetTopLevelPopupVerticalOffset(ItemsControl element, double value)
+        {
+            if (element != null) element.SetValue(TopLevelPopupVerticalOffsetProperty, value);
+            else throw new ArgumentNullException(nameof(element));
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="TopLevelPopupVerticalOffset"/> attached dependency property.
+        /// </summary>
+        public static readonly DependencyProperty TopLevelPopupVerticalOffsetProperty =
+            DependencyProperty.RegisterAttached(nameof(TopLevelPopupVerticalOffset), typeof(double), typeof(FlatMenuItem),
+                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+
+        #endregion
+
+        /// <summary>
+        /// Horizontal offset of the popup if its <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>.
+        /// </summary>
+        public double TopLevelPopupHorizontalOffset
+        {
+            get => (double)GetValue(TopLevelPopupHorizontalOffsetProperty);
+            set => SetValue(TopLevelPopupHorizontalOffsetProperty, value);
+        }
+
+        #region TopLevelPopupHorizontalOffset attached property
+
+        /// <summary>
+        /// Gets the value of the <see cref="TopLevelPopupHorizontalOffset"/> attached property from a given <see cref="ItemsControl"/>.
+        /// </summary>
+        /// <param name="element">The element from which to read the property value.</param>
+        /// <returns>The value of the <see cref="TopLevelPopupHorizontalOffset"/> attached property.</returns>
+        public static double GetTopLevelPopupHorizontalOffset(ItemsControl element)
+        {
+            if (element != null) return (double)element.GetValue(TopLevelPopupHorizontalOffsetProperty);
+            else throw new ArgumentNullException(nameof(element));
+        }
+
+        /// <summary>
+        /// Sets the value of the <see cref="TopLevelPopupHorizontalOffset"/> attached property to a given <see cref="ItemsControl"/>.
+        /// </summary>
+        /// <param name="element">The element on which to set the attached property.</param>
+        /// <param name="value">The property value to set.</param>
+        public static void SetTopLevelPopupHorizontalOffset(ItemsControl element, double value)
+        {
+            if (element != null) element.SetValue(TopLevelPopupHorizontalOffsetProperty, value);
+            else throw new ArgumentNullException(nameof(element));
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="TopLevelPopupHorizontalOffset"/> attached dependency property.
+        /// </summary>
+        public static readonly DependencyProperty TopLevelPopupHorizontalOffsetProperty =
+            DependencyProperty.RegisterAttached(nameof(TopLevelPopupHorizontalOffset), typeof(double), typeof(FlatMenuItem),
+                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+
+        #endregion
+
+        /// <summary>
         /// Vertical offset of the popup.
         /// </summary>
         public double PopupVerticalOffset
@@ -363,11 +447,38 @@ namespace FullControls
             set => SetValue(PopupVerticalOffsetProperty, value);
         }
 
+        #region PopupVerticalOffset attached property
+
         /// <summary>
-        /// Identifies the <see cref="PopupVerticalOffset"/> dependency property.
+        /// Gets the value of the <see cref="PopupVerticalOffset"/> attached property from a given <see cref="ItemsControl"/>.
+        /// </summary>
+        /// <param name="element">The element from which to read the property value.</param>
+        /// <returns>The value of the <see cref="PopupVerticalOffset"/> attached property.</returns>
+        public static double GetPopupVerticalOffset(ItemsControl element)
+        {
+            if (element != null) return (double)element.GetValue(PopupVerticalOffsetProperty);
+            else throw new ArgumentNullException(nameof(element));
+        }
+
+        /// <summary>
+        /// Sets the value of the <see cref="PopupVerticalOffset"/> attached property to a given <see cref="ItemsControl"/>.
+        /// </summary>
+        /// <param name="element">The element on which to set the attached property.</param>
+        /// <param name="value">The property value to set.</param>
+        public static void SetPopupVerticalOffset(ItemsControl element, double value)
+        {
+            if (element != null) element.SetValue(PopupVerticalOffsetProperty, value);
+            else throw new ArgumentNullException(nameof(element));
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupVerticalOffset"/> attached dependency property.
         /// </summary>
         public static readonly DependencyProperty PopupVerticalOffsetProperty =
-            DependencyProperty.Register(nameof(PopupVerticalOffset), typeof(double), typeof(FlatMenuItem));
+            DependencyProperty.RegisterAttached(nameof(PopupVerticalOffset), typeof(double), typeof(FlatMenuItem),
+                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+
+        #endregion
 
         /// <summary>
         /// Horizontal offset of the popup.
@@ -378,11 +489,38 @@ namespace FullControls
             set => SetValue(PopupHorizontalOffsetProperty, value);
         }
 
+        #region PopupHorizontalOffset attached property
+
         /// <summary>
-        /// Identifies the <see cref="PopupHorizontalOffset"/> dependency property.
+        /// Gets the value of the <see cref="PopupHorizontalOffset"/> attached property from a given <see cref="ItemsControl"/>.
+        /// </summary>
+        /// <param name="element">The element from which to read the property value.</param>
+        /// <returns>The value of the <see cref="PopupHorizontalOffset"/> attached property.</returns>
+        public static double GetPopupHorizontalOffset(ItemsControl element)
+        {
+            if (element != null) return (double)element.GetValue(PopupHorizontalOffsetProperty);
+            else throw new ArgumentNullException(nameof(element));
+        }
+
+        /// <summary>
+        /// Sets the value of the <see cref="PopupHorizontalOffset"/> attached property to a given <see cref="ItemsControl"/>.
+        /// </summary>
+        /// <param name="element">The element on which to set the attached property.</param>
+        /// <param name="value">The property value to set.</param>
+        public static void SetPopupHorizontalOffset(ItemsControl element, double value)
+        {
+            if (element != null) element.SetValue(PopupHorizontalOffsetProperty, value);
+            else throw new ArgumentNullException(nameof(element));
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupHorizontalOffset"/> attached dependency property.
         /// </summary>
         public static readonly DependencyProperty PopupHorizontalOffsetProperty =
-            DependencyProperty.Register(nameof(PopupHorizontalOffset), typeof(double), typeof(FlatMenuItem));
+            DependencyProperty.RegisterAttached(nameof(PopupHorizontalOffset), typeof(double), typeof(FlatMenuItem),
+                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+
+        #endregion
 
         /// <summary>
         /// Border thickness of the popup.

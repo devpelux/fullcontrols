@@ -227,15 +227,15 @@
 
     <Style x:Key="FlatMenuItemDark" TargetType="{x:Type fc:FlatMenuItem}">
         <Setter Property="Background" Value="#FF2D2D30"/>
-        <Setter Property="BackgroundOnHighlight" Value="#FF575759"/>
-        <Setter Property="BackgroundOnOpen" Value="#FF5F5F62"/>
+        <Setter Property="BackgroundOnHighlight" Value="#FF404043"/>
+        <Setter Property="BackgroundOnOpen" Value="#FF48484B"/>
         <Setter Property="BackgroundOnDisabled" Value="#FF2D2D30"/>
-        <Setter Property="BorderBrush" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnHighlight" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnOpen" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnDisabled" Value="#FF575759"/>
+        <Setter Property="BorderBrush" Value="#FF404043"/>
+        <Setter Property="BorderBrushOnHighlight" Value="#FF404043"/>
+        <Setter Property="BorderBrushOnOpen" Value="#FF404043"/>
+        <Setter Property="BorderBrushOnDisabled" Value="#FF404043"/>
         <Setter Property="PopupBackground" Value="#FF2D2D30"/>
-        <Setter Property="PopupBorderBrush" Value="#FF575759"/>
+        <Setter Property="PopupBorderBrush" Value="#FF404043"/>
         <Setter Property="Foreground" Value="WhiteSmoke"/>
         <Setter Property="ForegroundOnHighlight" Value="WhiteSmoke"/>
         <Setter Property="ForegroundOnOpen" Value="WhiteSmoke"/>
@@ -272,7 +272,7 @@
 
     <Style x:Key="FlatContextMenuDark" TargetType="{x:Type fc:FlatContextMenu}">
         <Setter Property="Background" Value="#FF2D2D30"/>
-        <Setter Property="BorderBrush" Value="#FF575759"/>
+        <Setter Property="BorderBrush" Value="#FF404043"/>
         <Setter Property="Foreground" Value="WhiteSmoke"/>
         <Setter Property="ForegroundOnHighlight" Value="WhiteSmoke"/>
         <Setter Property="ForegroundOnOpen" Value="WhiteSmoke"/>

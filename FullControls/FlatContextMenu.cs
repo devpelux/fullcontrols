@@ -160,6 +160,38 @@ namespace FullControls
                 new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
+        /// Vertical offset of the popup.
+        /// </summary>
+        public double PopupVerticalOffset
+        {
+            get => (double)GetValue(PopupVerticalOffsetProperty);
+            set => SetValue(PopupVerticalOffsetProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupVerticalOffset"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PopupVerticalOffsetProperty =
+            FlatMenuItem.PopupVerticalOffsetProperty.AddOwner(typeof(FlatContextMenu),
+                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+
+        /// <summary>
+        /// Horizontal offset of the popup.
+        /// </summary>
+        public double PopupHorizontalOffset
+        {
+            get => (double)GetValue(PopupHorizontalOffsetProperty);
+            set => SetValue(PopupHorizontalOffsetProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupHorizontalOffset"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PopupHorizontalOffsetProperty =
+            FlatMenuItem.PopupHorizontalOffsetProperty.AddOwner(typeof(FlatContextMenu),
+                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+
+        /// <summary>
         /// Foreground brush of the items when are highlighted.
         /// </summary>
         public Brush ForegroundOnHighlight

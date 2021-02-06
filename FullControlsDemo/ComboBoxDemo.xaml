@@ -20,7 +20,7 @@
             CloseButtonForegroundOnMouseOver="White"
             CloseButtonForegroundOnPressed="White"
             Title="ComboBox"
-            Icon="/Icons/FullControls.ico"
+            Icon="/Icons/FullControlsSimple.ico"
             ResizeMode="CanMinimize"
             WindowStartupLocation="CenterScreen"
             Height="267"

@@ -10,7 +10,7 @@
             BorderBrush="{DynamicResource WindowBorderBrush}"
             CaptionButtonsBackground="{DynamicResource WindowBackground}"
             Title="Collapsable"
-            Icon="/Icons/FullControls.ico"
+            Icon="/Icons/FullControlsSimple.ico"
             ResizeMode="CanMinimize"
             WindowStartupLocation="CenterScreen"
             Height="302"

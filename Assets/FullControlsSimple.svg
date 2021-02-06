@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256" height="256" version="1.1" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>FullControlsSimple</title>
+ <defs>
+  <linearGradient id="linearGradient905" x1="55.391" x2="233.78" y1="29.75" y2="202.23" gradientTransform="translate(-16.586 12.008)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#a541ff" offset="0"/>
+   <stop stop-color="#3fbbfe" offset="1"/>
+  </linearGradient>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>FullControlsSimple</dc:title>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>devpelux</dc:title>
+     </cc:Agent>
+    </dc:creator>
+    <dc:description>FullControls simple icon.</dc:description>
+    <cc:license rdf:resource="http://creativecommons.org/licenses/by/4.0/"/>
+   </cc:Work>
+   <cc:License rdf:about="http://creativecommons.org/licenses/by/4.0/">
+    <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+    <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+    <cc:requires rdf:resource="http://creativecommons.org/ns#Notice"/>
+    <cc:requires rdf:resource="http://creativecommons.org/ns#Attribution"/>
+    <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+   </cc:License>
+  </rdf:RDF>
+ </metadata>
+ <g id="textfc" fill="url(#linearGradient905)" aria-label="fc">
+  <path d="m57.508 212.05v-102.7h-18.703v-15.641h18.703v-12.141q0-19.031 10.172-29.422t28.766-10.391q7 0 13.891 1.8594l-1.0938 16.406q-5.1406-0.98438-10.938-0.98438-9.8438 0-15.203 5.7969-5.3594 5.6875-5.3594 16.406v12.469h25.266v15.641h-25.266v102.7z"/>
+  <path d="m170.16 197.73q10.828 0 18.922-6.5625t8.9688-16.406h19.141q-0.54687 10.172-7 19.359-6.4531 9.1875-17.281 14.656-10.719 5.4688-22.75 5.4688-24.172 0-38.5-16.078-14.219-16.188-14.219-44.188v-3.3906q0-17.281 6.3438-30.734 6.3438-13.453 18.156-20.891 11.922-7.4375 28.109-7.4375 19.906 0 33.031 11.922 13.234 11.922 14.109 30.953h-19.141q-0.875-11.484-8.75-18.812-7.7656-7.4375-19.25-7.4375-15.422 0-23.953 11.156-8.4219 11.047-8.4219 32.047v3.8281q0 20.453 8.4219 31.5 8.4219 11.047 24.062 11.047z"/>
+ </g>
+</svg>

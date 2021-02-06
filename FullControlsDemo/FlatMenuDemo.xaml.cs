@@ -30,7 +30,12 @@ namespace FullControlsDemo
             Minimize();
         }
 
-        private void Duplicate_Click(object sender, RoutedEventArgs e)
+        private void DuplicateAsDialog_Click(object sender, RoutedEventArgs e)
+        {
+            new FlatMenuDemo().ShowDialog();
+        }
+
+        private void DuplicateAsWindow_Click(object sender, RoutedEventArgs e)
         {
             new FlatMenuDemo().Show();
         }
