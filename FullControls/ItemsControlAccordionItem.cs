@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 
@@ -18,7 +17,6 @@ namespace FullControls
     [DefaultProperty(nameof(Items))]
     public class ItemsControlAccordionItem : AccordionItem
     {
-        private bool loaded = false;
         private readonly ItemsControl itemsControl;
 
         /// <summary>
@@ -284,71 +282,35 @@ namespace FullControls
             if (collapsable != null) collapsable.Child = itemsControl;
             Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
             SetValue(ActualFontWeightProperty, FontWeight);
-            loaded = true;
-            ReloadBrushes();
         }
 
         /// <inheritdoc/>
-        protected override void OnEnabledChanged(bool enabledState)
+        protected override void OnVStateChanged(string vstate)
         {
-            base.OnEnabledChanged(enabledState);
-            ReloadBrushes();
-        }
-
-        /// <inheritdoc/>
-        protected override void OnExpandedChanged(bool newValue)
-        {
-            base.OnExpandedChanged(newValue);
-            ReloadBrushes();
-        }
-
-        /// <inheritdoc/>
-        protected override void OnHeaderMouseEnter(MouseEventArgs e)
-        {
-            base.OnHeaderMouseEnter(e);
-            ReloadBrushes();
-        }
-
-        /// <inheritdoc/>
-        protected override void OnHeaderMouseLeave(MouseEventArgs e)
-        {
-            base.OnHeaderMouseLeave(e);
-            ReloadBrushes();
-        }
-
-        /// <summary>
-        /// Apply the correct brushes to the control, based on its state.
-        /// </summary>
-        private void ReloadBrushes()
-        {
-            if (!loaded) return;
-            if (!IsEnabled) //Disabled state
+            switch (vstate)
             {
-                Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnDisabled, TimeSpan.Zero);
-                SetValue(ActualFontWeightProperty, FontWeightOnDisabled);
-            }
-            else if (IsMouseOverHeader) //MouseOver state
-            {
-                if (IsExpanded == true)
-                {
-                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnMouseOverOnExpanded, AnimationTime);
-                    SetValue(ActualFontWeightProperty, FontWeightOnMouseOverOnExpanded);
-                }
-                else
-                {
+                case "Normal":
+                    Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, AnimationTime);
+                    SetValue(ActualFontWeightProperty, FontWeight);
+                    break;
+                case "Expanded":
+                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnExpanded, AnimationTime);
+                    SetValue(ActualFontWeightProperty, FontWeightOnExpanded);
+                    break;
+                case "MouseOverHeader":
                     Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnMouseOver, AnimationTime);
                     SetValue(ActualFontWeightProperty, FontWeightOnMouseOver);
-                }
-            }
-            else if (IsExpanded == true) //Expanded state
-            {
-                Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnExpanded, AnimationTime);
-                SetValue(ActualFontWeightProperty, FontWeightOnExpanded);
-            }
-            else //Normal state
-            {
-                Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, AnimationTime);
-                SetValue(ActualFontWeightProperty, FontWeight);
+                    break;
+                case "MouseOverHeaderOnExpanded":
+                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnMouseOverOnExpanded, AnimationTime);
+                    SetValue(ActualFontWeightProperty, FontWeightOnMouseOverOnExpanded);
+                    break;
+                case "Disabled":
+                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnDisabled, TimeSpan.Zero);
+                    SetValue(ActualFontWeightProperty, FontWeightOnDisabled);
+                    break;
+                default:
+                    break;
             }
         }
 

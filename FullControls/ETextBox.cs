@@ -973,26 +973,20 @@ namespace FullControls
             Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
             Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
             loaded = true;
-            ReloadBrushes();
+            OnVStateChanged(VStateOverride());
         }
 
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
         /// <param name="actualBackground">Actual background brush.</param>
-        protected virtual void OnActualBackgroundChanged(Brush actualBackground)
-        {
-            AdaptForeColors(actualBackground);
-        }
+        protected virtual void OnActualBackgroundChanged(Brush actualBackground) => AdaptForeColors(actualBackground);
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
-        protected virtual void OnEnabledChanged(bool enabledState)
-        {
-            ReloadBrushes();
-        }
+        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(VStateOverride());
 
         /// <inheritdoc/>
         protected override void OnTextChanged(TextChangedEventArgs e)
@@ -1006,7 +1000,7 @@ namespace FullControls
         {
             base.OnGotFocus(e);
             UpdateHintState();
-            ReloadBrushes();
+            OnVStateChanged(VStateOverride());
         }
 
         /// <inheritdoc/>
@@ -1014,21 +1008,63 @@ namespace FullControls
         {
             base.OnLostFocus(e);
             UpdateHintState();
-            ReloadBrushes();
+            OnVStateChanged(VStateOverride());
         }
 
         /// <inheritdoc/>
         protected override void OnMouseEnter(MouseEventArgs e)
         {
             base.OnMouseEnter(e);
-            ReloadBrushes();
+            OnVStateChanged(VStateOverride());
         }
 
         /// <inheritdoc/>
         protected override void OnMouseLeave(MouseEventArgs e)
         {
             base.OnMouseLeave(e);
-            ReloadBrushes();
+            OnVStateChanged(VStateOverride());
+        }
+
+        /// <summary>
+        /// Called to calculate the <b>v-state</b> of the control.
+        /// </summary>
+        protected virtual string VStateOverride()
+        {
+            if (!loaded) return "Undefined";
+            if (!IsEnabled) return "Disabled";
+            else if (IsFocused) return "Focused";
+            else if (IsMouseOver) return "MouseOver";
+            else return "Normal";
+        }
+
+        /// <summary>
+        /// Called when the <b>v-state</b> of the control changed.
+        /// </summary>
+        /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
+        /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
+        protected virtual void OnVStateChanged(string vstate)
+        {
+            switch (vstate)
+            {
+                case "Normal":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
+                    break;
+                case "MouseOver":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnSelected, AnimationTime);
+                    break;
+                case "Focused":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnSelected, AnimationTime);
+                    break;
+                case "Disabled":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnDisabled, TimeSpan.Zero);
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>
@@ -1073,10 +1109,7 @@ namespace FullControls
         /// <summary>
         /// Update the visualstate to <see langword="Hinted"/> or <see langword="Unhinted"/> if is necessary to display or hide the hint.
         /// </summary>
-        private void UpdateHintState()
-        {
-            _ = VisualStateManager.GoToState(this, TextLength == 0 && !IsFocused && ShowHint ? "Hinted" : "Unhinted", true);
-        }
+        private void UpdateHintState() => _ = VisualStateManager.GoToState(this, TextLength == 0 && !IsFocused && ShowHint ? "Hinted" : "Unhinted", true);
 
         /// <summary>
         /// Adapt some brushes to the actual background of the control.
@@ -1090,34 +1123,6 @@ namespace FullControls
                 if (AdaptForegroundAutomatically) Foreground = inverseBrush;
                 if (AdaptHintForegroundAutomatically) HintForeground = inverseBrush;
                 if (AdaptCaretBrushAutomatically) CaretBrush = inverseBrush;
-            }
-        }
-
-        /// <summary>
-        /// Apply the correct brushes to the control, based on its state.
-        /// </summary>
-        private void ReloadBrushes()
-        {
-            if (!loaded) return;
-            if (!IsEnabled) //Disabled state
-            {
-                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnDisabled, TimeSpan.Zero);
-                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnDisabled, TimeSpan.Zero);
-            }
-            else if (IsFocused) //Selected state
-            {
-                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnSelected, AnimationTime);
-                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnSelected, AnimationTime);
-            }
-            else if (IsMouseOver) //Selected state
-            {
-                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnSelected, AnimationTime);
-                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnSelected, AnimationTime);
-            }
-            else //Normal state
-            {
-                Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
-                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
             }
         }
     }

@@ -17,9 +17,6 @@ namespace FullControls
         }
 
         /// <inheritdoc/>
-        protected override DependencyObject GetContainerForItemOverride()
-        {
-            return new FlatMenuSpace();
-        }
+        protected override DependencyObject GetContainerForItemOverride() => new FlatMenuSpace();
     }
 }

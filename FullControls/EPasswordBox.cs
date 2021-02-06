@@ -1320,7 +1320,7 @@ namespace FullControls
             Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
             Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
             loaded = true;
-            ReloadBrushes();
+            OnVStateChanged(VStateOverride());
         }
 
         /// <summary>
@@ -1361,18 +1361,107 @@ namespace FullControls
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
         /// <param name="actualBackground">Actual background brush.</param>
-        private void OnActualBackgroundChanged(Brush actualBackground)
-        {
-            AdaptForeColors(actualBackground);
-        }
+        private void OnActualBackgroundChanged(Brush actualBackground) => AdaptForeColors(actualBackground);
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
-        private void OnEnabledChanged()
+        private void OnEnabledChanged() => OnVStateChanged(VStateOverride());
+
+        /// <inheritdoc/>
+        protected override void OnGotFocus(RoutedEventArgs e)
         {
-            ReloadBrushes();
+            base.OnGotFocus(e);
+            passwordBox?.Focus();
         }
+
+        /// <inheritdoc/>
+        protected override void OnMouseEnter(MouseEventArgs e)
+        {
+            base.OnMouseEnter(e);
+            if (!IsFocused)
+            {
+                _ = VisualStateManager.GoToState(this, "MouseOver", true);
+                OnVStateChanged(VStateOverride());
+            }
+        }
+
+        /// <inheritdoc/>
+        protected override void OnMouseLeave(MouseEventArgs e)
+        {
+            base.OnMouseLeave(e);
+            if (!IsFocused)
+            {
+                _ = VisualStateManager.GoToState(this, "Normal", true);
+                OnVStateChanged(VStateOverride());
+            }
+        }
+
+        /// <summary>
+        /// Called to calculate the <b>v-state</b> of the control.
+        /// </summary>
+        private string VStateOverride()
+        {
+            if (!loaded) return "Undefined";
+            if (!IsEnabled) return "Disabled";
+            else if (IsFocused) return "Focused";
+            else if (IsMouseOver) return "MouseOver";
+            else return "Normal";
+        }
+
+        /// <summary>
+        /// Called when the <b>v-state</b> of the control changed.
+        /// </summary>
+        /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
+        /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
+        private void OnVStateChanged(string vstate)
+        {
+            switch (vstate)
+            {
+                case "Normal":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
+                    break;
+                case "MouseOver":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnSelected, AnimationTime);
+                    break;
+                case "Focused":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnSelected, AnimationTime);
+                    break;
+                case "Disabled":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnDisabled, TimeSpan.Zero);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Update the visualstate to <see langword="Hinted"/> or <see langword="Unhinted"/> if is necessary to display or hide the hint.
+        /// </summary>
+        private void UpdateHintState() => _ = VisualStateManager.GoToState(this, PasswordLength == 0 && !IsFocused && ShowHint ? "Hinted" : "Unhinted", true);
+
+        /// <summary>
+        /// Adapt some brushes to the actual background of the control.
+        /// </summary>
+        /// <param name="backgroundBrush">Actual background of the control.</param>
+        private void AdaptForeColors(Brush backgroundBrush)
+        {
+            if (backgroundBrush is SolidColorBrush brush)
+            {
+                SolidColorBrush inverseBrush = new SolidColorBrush(brush.Color.Invert());
+                if (AdaptForegroundAutomatically) Foreground = inverseBrush;
+                if (AdaptHintForegroundAutomatically) HintForeground = inverseBrush;
+                if (AdaptPeekForegroundAutomatically) PeekForeground = inverseBrush;
+                if (AdaptPeekButtonForegroundAutomatically) PeekButtonForeground = inverseBrush;
+                if (AdaptCaretBrushAutomatically) CaretBrush = inverseBrush;
+            }
+        }
+
+        #region Internal PasswordBox events
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
@@ -1390,7 +1479,7 @@ namespace FullControls
         {
             UpdateHintState();
             _ = VisualStateManager.GoToState(this, "Focused", true);
-            ReloadBrushes();
+            OnVStateChanged(VStateOverride());
         }
 
         /// <summary>
@@ -1400,30 +1489,12 @@ namespace FullControls
         {
             UpdateHintState();
             _ = VisualStateManager.GoToState(this, IsMouseOver ? "MouseOver" : "Normal", true);
-            ReloadBrushes();
+            OnVStateChanged(VStateOverride());
         }
 
-        /// <inheritdoc/>
-        protected override void OnMouseEnter(MouseEventArgs e)
-        {
-            base.OnMouseEnter(e);
-            if (!IsFocused)
-            {
-                _ = VisualStateManager.GoToState(this, "MouseOver", true);
-                ReloadBrushes();
-            }
-        }
+        #endregion
 
-        /// <inheritdoc/>
-        protected override void OnMouseLeave(MouseEventArgs e)
-        {
-            base.OnMouseLeave(e);
-            if (!IsFocused)
-            {
-                _ = VisualStateManager.GoToState(this, "Normal", true);
-                ReloadBrushes();
-            }
-        }
+        #region PeekButton events
 
         /// <summary>
         /// Called when the peek button is clicked down.
@@ -1452,64 +1523,6 @@ namespace FullControls
             _ = VisualStateManager.GoToState(this, "Unpeeked", true);
         }
 
-        /// <inheritdoc/>
-        protected override void OnGotFocus(RoutedEventArgs e)
-        {
-            base.OnGotFocus(e);
-            passwordBox?.Focus();
-        }
-
-        /// <summary>
-        /// Update the visualstate to <see langword="Hinted"/> or <see langword="Unhinted"/> if is necessary to display or hide the hint.
-        /// </summary>
-        private void UpdateHintState()
-        {
-            _ = VisualStateManager.GoToState(this, PasswordLength == 0 && !IsFocused && ShowHint ? "Hinted" : "Unhinted", true);
-        }
-
-        /// <summary>
-        /// Adapt some brushes to the actual background of the control.
-        /// </summary>
-        /// <param name="backgroundBrush">Actual background of the control.</param>
-        private void AdaptForeColors(Brush backgroundBrush)
-        {
-            if (backgroundBrush is SolidColorBrush brush)
-            {
-                SolidColorBrush inverseBrush = new SolidColorBrush(brush.Color.Invert());
-                if (AdaptForegroundAutomatically) Foreground = inverseBrush;
-                if (AdaptHintForegroundAutomatically) HintForeground = inverseBrush;
-                if (AdaptPeekForegroundAutomatically) PeekForeground = inverseBrush;
-                if (AdaptPeekButtonForegroundAutomatically) PeekButtonForeground = inverseBrush;
-                if (AdaptCaretBrushAutomatically) CaretBrush = inverseBrush;
-            }
-        }
-
-        /// <summary>
-        /// Apply the correct brushes to the control, based on its state.
-        /// </summary>
-        private void ReloadBrushes()
-        {
-            if (!loaded) return;
-            if (!IsEnabled) //Disabled state
-            {
-                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnDisabled, TimeSpan.Zero);
-                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnDisabled, TimeSpan.Zero);
-            }
-            else if (IsFocused) //Selected state
-            {
-                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnSelected, AnimationTime);
-                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnSelected, AnimationTime);
-            }
-            else if (IsMouseOver) //Selected state
-            {
-                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnSelected, AnimationTime);
-                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnSelected, AnimationTime);
-            }
-            else //Normal state
-            {
-                Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
-                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
-            }
-        }
+        #endregion
     }
 }

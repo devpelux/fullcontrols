@@ -1188,14 +1188,11 @@ namespace FullControls
             Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
             Utility.AnimateBrush(this, ActualCheckBrushProperty, CheckBrush, TimeSpan.Zero);
             loaded = true;
-            ReloadBrushes();
+            OnVStateChanged(VStateOverride());
         }
 
         /// <inheritdoc/>
-        protected override DependencyObject GetContainerForItemOverride()
-        {
-            return new FlatMenuItem();
-        }
+        protected override DependencyObject GetContainerForItemOverride() => new FlatMenuItem();
 
         /// <inheritdoc/>
         protected override void OnClick()
@@ -1265,62 +1262,67 @@ namespace FullControls
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
-        protected virtual void OnEnabledChanged(bool enabledState)
-        {
-            ReloadBrushes();
-        }
+        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(VStateOverride());
 
         /// <summary>
         /// Called when the <see cref="MenuItem.IsSubmenuOpen"/> is changed.
         /// </summary>
         /// <param name="isSubmenuOpen">Actual state of <see cref="MenuItem.IsSubmenuOpen"/>.</param>
-        protected virtual void OnSubmenuOpenChanged(bool isSubmenuOpen)
-        {
-            ReloadBrushes();
-        }
+        protected virtual void OnSubmenuOpenChanged(bool isSubmenuOpen) => OnVStateChanged(VStateOverride());
 
         /// <summary>
         /// Called when the <see cref="MenuItem.IsHighlighted"/> is changed.
         /// </summary>
         /// <param name="isHighlighted">Actual state of <see cref="MenuItem.IsHighlighted"/>.</param>
-        protected virtual void OnHighlightChanged(bool isHighlighted)
+        protected virtual void OnHighlightChanged(bool isHighlighted) => OnVStateChanged(VStateOverride());
+
+        /// <summary>
+        /// Called to calculate the <b>v-state</b> of the control.
+        /// </summary>
+        protected virtual string VStateOverride()
         {
-            ReloadBrushes();
+            if (!loaded) return "Undefined";
+            if (!IsEnabled) return "Disabled";
+            else if (IsSubmenuOpen) return "SubmenuOpen";
+            else if (IsHighlighted) return "Highlighted";
+            else return "Normal";
         }
 
         /// <summary>
-        /// Apply the correct brushes to the control, based on its state.
+        /// Called when the <b>v-state</b> of the control changed.
         /// </summary>
-        private void ReloadBrushes()
+        /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
+        /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
+        protected virtual void OnVStateChanged(string vstate)
         {
-            if (!loaded) return;
-            if (!IsEnabled) //Disabled state
+            switch (vstate)
             {
-                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnDisabled, TimeSpan.Zero);
-                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnDisabled, TimeSpan.Zero);
-                Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnDisabled, TimeSpan.Zero);
-                Utility.AnimateBrush(this, ActualCheckBrushProperty, CheckBrushOnDisabled, TimeSpan.Zero);
-            }
-            else if (IsSubmenuOpen) //MouseOver state
-            {
-                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnOpen, AnimationTime);
-                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnOpen, AnimationTime);
-                Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnOpen, AnimationTime);
-                Utility.AnimateBrush(this, ActualCheckBrushProperty, CheckBrushOnOpen, AnimationTime);
-            }
-            else if (IsHighlighted) //Highlighted state
-            {
-                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnHighlight, AnimationTime);
-                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnHighlight, AnimationTime);
-                Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnHighlight, AnimationTime);
-                Utility.AnimateBrush(this, ActualCheckBrushProperty, CheckBrushOnHighlight, AnimationTime);
-            }
-            else //Normal state
-            {
-                Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
-                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
-                Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
-                Utility.AnimateBrush(this, ActualCheckBrushProperty, CheckBrush, TimeSpan.Zero);
+                case "Normal":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualCheckBrushProperty, CheckBrush, TimeSpan.Zero);
+                    break;
+                case "Highlighted":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnHighlight, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnHighlight, AnimationTime);
+                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnHighlight, AnimationTime);
+                    Utility.AnimateBrush(this, ActualCheckBrushProperty, CheckBrushOnHighlight, AnimationTime);
+                    break;
+                case "SubmenuOpen":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnOpen, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnOpen, AnimationTime);
+                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnOpen, AnimationTime);
+                    Utility.AnimateBrush(this, ActualCheckBrushProperty, CheckBrushOnOpen, AnimationTime);
+                    break;
+                case "Disabled":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualCheckBrushProperty, CheckBrushOnDisabled, TimeSpan.Zero);
+                    break;
+                default:
+                    break;
             }
         }
     }

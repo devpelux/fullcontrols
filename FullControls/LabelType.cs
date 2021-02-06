@@ -1,7 +1,7 @@
 ﻿namespace FullControls
 {
     /// <summary>
-    /// Type of label.
+    /// Label type.
     /// </summary>
     public enum LabelType
     {

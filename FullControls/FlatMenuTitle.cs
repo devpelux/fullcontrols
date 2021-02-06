@@ -48,9 +48,6 @@ namespace FullControls
         }
 
         /// <inheritdoc/>
-        protected override DependencyObject GetContainerForItemOverride()
-        {
-            return new FlatMenuTitle();
-        }
+        protected override DependencyObject GetContainerForItemOverride() => new FlatMenuTitle();
     }
 }

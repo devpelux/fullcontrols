@@ -95,9 +95,6 @@ namespace FullControls
         }
 
         /// <inheritdoc/>
-        protected override DependencyObject GetContainerForItemOverride()
-        {
-            return new FlatMenuSeparator();
-        }
+        protected override DependencyObject GetContainerForItemOverride() => new FlatMenuSeparator();
     }
 }

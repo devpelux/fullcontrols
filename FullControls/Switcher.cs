@@ -281,7 +281,7 @@ namespace FullControls
             Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
             Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
             loaded = true;
-            ReloadBrushes();
+            OnVStateChanged(VStateOverride());
         }
 
         /// <summary>
@@ -294,72 +294,80 @@ namespace FullControls
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
-        protected virtual void OnEnabledChanged(bool enabledState)
-        {
-            ReloadBrushes();
-        }
+        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(VStateOverride());
 
         /// <summary>
         /// Called when the <see cref="ToggleButton.IsChecked"/> is changed.
         /// </summary>
         /// <param name="checkedState">Actual state of <see cref="ToggleButton.IsChecked"/>.</param>
-        protected virtual void OnCheckedChanged(bool? checkedState)
-        {
-            ReloadBrushes();
-        }
+        protected virtual void OnCheckedChanged(bool? checkedState) => OnVStateChanged(VStateOverride());
 
         /// <inheritdoc/>
         protected override void OnMouseEnter(MouseEventArgs e)
         {
             base.OnMouseEnter(e);
-            ReloadBrushes();
+            OnVStateChanged(VStateOverride());
         }
 
         /// <inheritdoc/>
         protected override void OnMouseLeave(MouseEventArgs e)
         {
             base.OnMouseLeave(e);
-            ReloadBrushes();
+            OnVStateChanged(VStateOverride());
         }
 
         /// <summary>
-        /// Apply the correct brushes to the control, based on its state.
+        /// Called to calculate the <b>v-state</b> of the control.
         /// </summary>
-        private void ReloadBrushes()
+        protected virtual string VStateOverride()
         {
-            if (!loaded) return;
-            if (!IsEnabled) //Disabled state
+            if (!loaded) return "Undefined";
+            if (!IsEnabled) return "Disabled";
+            else if (IsMouseOver)
             {
-                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnDisabled, TimeSpan.Zero);
-                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnDisabled, TimeSpan.Zero);
-                Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnDisabled, TimeSpan.Zero);
+                if (IsChecked == true) return "MouseOverOnChecked";
+                else return "MouseOver";
             }
-            else if (IsMouseOver) //MouseOver state
+            else if (IsChecked == true) return "Checked";
+            else return "Normal";
+        }
+
+        /// <summary>
+        /// Called when the <b>v-state</b> of the control changed.
+        /// </summary>
+        /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
+        /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
+        protected virtual void OnVStateChanged(string vstate)
+        {
+            switch (vstate)
             {
-                if (IsChecked == true)
-                {
-                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnMouseOverOnChecked, AnimationTime);
-                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnMouseOverOnChecked, AnimationTime);
-                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnMouseOverOnChecked, TimeSpan.Zero);
-                }
-                else
-                {
+                case "Normal":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
+                    break;
+                case "Checked":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnChecked, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnChecked, AnimationTime);
+                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnChecked, TimeSpan.Zero);
+                    break;
+                case "MouseOver":
                     Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnMouseOver, AnimationTime);
                     Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnMouseOver, AnimationTime);
                     Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnMouseOver, TimeSpan.Zero);
-                }
-            }
-            else if (IsChecked == true) //Checked state
-            {
-                Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnChecked, AnimationTime);
-                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnChecked, AnimationTime);
-                Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnChecked, TimeSpan.Zero);
-            }
-            else //Normal state
-            {
-                Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
-                Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
-                Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
+                    break;
+                case "MouseOverOnChecked":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnMouseOverOnChecked, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnMouseOverOnChecked, AnimationTime);
+                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnMouseOverOnChecked, TimeSpan.Zero);
+                    break;
+                case "Disabled":
+                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnDisabled, TimeSpan.Zero);
+                    break;
+                default:
+                    break;
             }
         }
     }

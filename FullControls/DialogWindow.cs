@@ -12,7 +12,7 @@ namespace FullControls
 
 
         /// <summary>
-        /// Creates a new <see cref="DialogWindow"/>.
+        /// Initializes a new instance of <see cref="DialogWindow"/>.
         /// </summary>
         /// <param name="window">
         /// <para>The <see cref="Window"/> to be shown as dialog.</para>

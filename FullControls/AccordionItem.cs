@@ -14,6 +14,7 @@ namespace FullControls
     [DefaultEvent(nameof(IsExpandedChanged))]
     public abstract class AccordionItem : Control
     {
+        private bool loaded = false;
         private UIElement header;
         private Collapsable collapsable;
 
@@ -150,20 +151,25 @@ namespace FullControls
                 header.MouseEnter += (o, e) => OnHeaderMouseEnter(e);
                 header.MouseLeave += (o, e) => OnHeaderMouseLeave(e);
             }
+            loaded = true;
+            OnVStateChanged(VStateOverride());
         }
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
-        protected virtual void OnEnabledChanged(bool enabledState) { }
+        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(VStateOverride());
 
         /// <summary>
         /// Called when <see cref="IsExpanded"/> is changed.
         /// </summary>
         /// <param name="newValue">Actual state of <see cref="IsExpanded"/>.</param>
         protected virtual void OnExpandedChanged(bool newValue)
-            => IsExpandedChanged?.Invoke(this, new ItemExpandedChangedEventArgs(Index, newValue));
+        {
+            IsExpandedChanged?.Invoke(this, new ItemExpandedChangedEventArgs(Index, newValue));
+            OnVStateChanged(VStateOverride());
+        }
 
         /// <summary>
         /// Called when the mouse left button is pressed when the mouse is over the header control.
@@ -175,13 +181,36 @@ namespace FullControls
         /// Called when the mouse enter the header control.
         /// </summary>
         /// <param name="e">Event data.</param>
-        protected virtual void OnHeaderMouseEnter(MouseEventArgs e) { }
+        protected virtual void OnHeaderMouseEnter(MouseEventArgs e) => OnVStateChanged(VStateOverride());
 
         /// <summary>
         /// Called when the mouse leave the header control.
         /// </summary>
         /// <param name="e">Event data.</param>
-        protected virtual void OnHeaderMouseLeave(MouseEventArgs e) { }
+        protected virtual void OnHeaderMouseLeave(MouseEventArgs e) => OnVStateChanged(VStateOverride());
+
+        /// <summary>
+        /// Called to calculate the <b>v-state</b> of the control.
+        /// </summary>
+        protected virtual string VStateOverride()
+        {
+            if (!loaded) return "Undefined";
+            if (!IsEnabled) return "Disabled";
+            else if (IsMouseOverHeader)
+            {
+                if (IsExpanded == true) return "MouseOverHeaderOnExpanded";
+                else return "MouseOverHeader";
+            }
+            else if (IsExpanded == true) return "Expanded";
+            else return "Normal";
+        }
+
+        /// <summary>
+        /// Called when the <b>v-state</b> of the control changed.
+        /// </summary>
+        /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
+        /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
+        protected virtual void OnVStateChanged(string vstate) { }
 
         /// <summary>
         /// Returns the string representation of a <see cref="AccordionItem"/> object.

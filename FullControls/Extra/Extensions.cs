@@ -108,7 +108,7 @@ namespace FullControls.Extra
             => Color.FromRgb((byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
 
         /// <summary>
-        /// Check if the specified <see cref="DependencyProperty"/> is <see langword="null"/>.
+        /// Check if the <see cref="DependencyProperty"/> is <see langword="null"/>.
         /// </summary>
         /// <param name="dependencyObject"><see cref="DependencyObject"/> that contains the property.</param>
         /// <param name="dependencyProperty"><see cref="DependencyProperty"/> to check if is <see langword="null"/>.</param>
