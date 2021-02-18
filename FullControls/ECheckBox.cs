@@ -16,7 +16,7 @@ namespace FullControls
         private bool loaded = false;
 
         /// <summary>
-        /// Background brush when the mouse is over the control.
+        /// Gets or sets the background brush when the mouse is over the control.
         /// </summary>
         public Brush BackgroundOnMouseOver
         {
@@ -31,7 +31,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnMouseOver), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// Background brush when the control is checked and the mouse is over the control.
+        /// Gets or sets the background brush when the control is checked and the mouse is over the control.
         /// </summary>
         public Brush BackgroundOnMouseOverOnChecked
         {
@@ -46,7 +46,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnMouseOverOnChecked), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// Background brush when the control is checked.
+        /// Gets or sets the background brush when the control is checked.
         /// </summary>
         public Brush BackgroundOnChecked
         {
@@ -61,7 +61,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnChecked), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// Background brush when the control is disabled.
+        /// Gets or sets the background brush when the control is disabled.
         /// </summary>
         public Brush BackgroundOnDisabled
         {
@@ -76,7 +76,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// Actual Background brush of the control.
+        /// Gets the actual background brush of the control.
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
@@ -88,7 +88,7 @@ namespace FullControls
                 new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((ECheckBox)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
-        /// BorderBrush brush when the mouse is over the control.
+        /// Gets or sets the border brush when the mouse is over the control.
         /// </summary>
         public Brush BorderBrushOnMouseOver
         {
@@ -103,7 +103,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnMouseOver), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// BorderBrush when the control is checked and the mouse is over the control.
+        /// Gets or sets the border brush when the control is checked and the mouse is over the control.
         /// </summary>
         public Brush BorderBrushOnMouseOverOnChecked
         {
@@ -118,7 +118,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnMouseOverOnChecked), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// BorderBrush when the control is checked.
+        /// Gets or sets the border brush when the control is checked.
         /// </summary>
         public Brush BorderBrushOnChecked
         {
@@ -133,7 +133,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnChecked), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// BorderBrush when the control is disabled.
+        /// Gets or sets the border brush when the control is disabled.
         /// </summary>
         public Brush BorderBrushOnDisabled
         {
@@ -148,7 +148,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// Actual BorderBrush of the control.
+        /// Gets the actual border brush of the control.
         /// </summary>
         public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
@@ -159,7 +159,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// Foreground brush when the mouse is over the control.
+        /// Gets or sets the foreground brush when the mouse is over the control.
         /// </summary>
         public Brush ForegroundOnMouseOver
         {
@@ -174,7 +174,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// Foreground brush when the control is checked and the mouse is over the control.
+        /// Gets or sets the foreground brush when the control is checked and the mouse is over the control.
         /// </summary>
         public Brush ForegroundOnMouseOverOnChecked
         {
@@ -189,7 +189,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnMouseOverOnChecked), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// Foreground brush when the control is checked.
+        /// Gets or sets the foreground brush when the control is checked.
         /// </summary>
         public Brush ForegroundOnChecked
         {
@@ -204,7 +204,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnChecked), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// Foreground brush when the control is disabled.
+        /// Gets or sets the foreground brush when the control is disabled.
         /// </summary>
         public Brush ForegroundOnDisabled
         {
@@ -219,7 +219,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// Actual Foreground brush of the control.
+        /// Gets the actual foreground brush of the control.
         /// </summary>
         public Brush ActualForeground => (Brush)GetValue(ActualForegroundProperty);
 
@@ -230,7 +230,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ActualForeground), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// ForeColor brush of the control.
+        /// Gets or sets the forecolor brush. (The color of the check mark)
         /// </summary>
         public Brush ForeColor
         {
@@ -245,7 +245,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForeColor), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// ForeColor brush when the mouse is over the control.
+        /// Gets or sets the forecolor brush when the mouse is over the control.
         /// </summary>
         public Brush ForeColorOnMouseOver
         {
@@ -260,7 +260,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForeColorOnMouseOver), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// ForeColor brush when the control is checked and the mouse is over the control.
+        /// Gets or sets the forecolor brush when the control is checked and the mouse is over the control.
         /// </summary>
         public Brush ForeColorOnMouseOverOnChecked
         {
@@ -275,7 +275,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForeColorOnMouseOverOnChecked), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// ForeColor brush when the control is checked.
+        /// Gets or sets the forecolor brush when the control is checked.
         /// </summary>
         public Brush ForeColorOnChecked
         {
@@ -290,7 +290,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForeColorOnChecked), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// ForeColor brush when the control is disabled.
+        /// Gets or sets the forecolor brush when the control is disabled.
         /// </summary>
         public Brush ForeColorOnDisabled
         {
@@ -305,7 +305,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForeColorOnDisabled), typeof(Brush), typeof(ECheckBox));
 
         /// <summary>
-        /// Actual ForeColor brush of the control.
+        /// Gets the actual forecolor brush of the control.
         /// </summary>
         public Brush ActualForeColor => (Brush)GetValue(ActualForeColorProperty);
 
@@ -318,7 +318,7 @@ namespace FullControls
         #region CheckMark
 
         /// <summary>
-        /// Content of the icon displayed if <see cref="ToggleButton.IsChecked"/> is <see langword="true"/>.
+        /// Gets or sets the content of the icon displayed if <see cref="ToggleButton.IsChecked"/> is <see langword="true"/>.
         /// </summary>
         public object CheckMark
         {
@@ -333,7 +333,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(CheckMark), typeof(object), typeof(ECheckBox));
 
         /// <summary>
-        /// Size of the check icon.
+        /// Gets or sets the size of the check icon.
         /// </summary>
         public double CheckSize
         {
@@ -348,7 +348,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(CheckSize), typeof(double), typeof(ECheckBox));
 
         /// <summary>
-        /// Font of the check icon.
+        /// Gets or sets the font of the check icon.
         /// </summary>
         public FontFamily CheckFont
         {
@@ -363,7 +363,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(CheckFont), typeof(FontFamily), typeof(ECheckBox));
 
         /// <summary>
-        /// FontWeight of the check icon.
+        /// Gets or sets the fontweight of the check icon.
         /// </summary>
         public FontWeight CheckWeight
         {
@@ -378,7 +378,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(CheckWeight), typeof(FontWeight), typeof(ECheckBox));
 
         /// <summary>
-        /// Scale of Check Background.
+        /// Gets the scale of the check mark.
         /// </summary>
         public double CheckScale => (double)GetValue(CheckScaleProperty);
 
@@ -391,7 +391,7 @@ namespace FullControls
         #endregion
 
         /// <summary>
-        /// CornerRadius of the control.
+        /// Gets or sets the corner radius of the control.
         /// </summary>
         public CornerRadius CornerRadius
         {
@@ -406,7 +406,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ECheckBox));
 
         /// <summary>
-        /// CornerRadius of inside part of the control.
+        /// Gets or sets the corner radius of the inside part of the control.
         /// </summary>
         public CornerRadius InsideCornerRadius
         {
@@ -421,7 +421,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(InsideCornerRadius), typeof(CornerRadius), typeof(ECheckBox));
 
         /// <summary>
-        /// Margin of the <see cref="CheckMark"/>.
+        /// Gets or sets the margin of the <see cref="CheckMark"/>.
         /// </summary>
         public Thickness InsideMargin
         {
@@ -436,7 +436,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(InsideMargin), typeof(Thickness), typeof(ECheckBox));
 
         /// <summary>
-        /// Duration of the control animation when it changes state.
+        /// Gets or sets the duration of the control animation when it changes state.
         /// </summary>
         public TimeSpan AnimationTime
         {
@@ -451,7 +451,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(ECheckBox));
 
         /// <summary>
-        /// Duration of the check size animation when the control changes state.
+        /// Gets or sets the duration of the check size animation when the control changes state.
         /// </summary>
         public TimeSpan CheckAnimationTime
         {
@@ -492,19 +492,19 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Called when the <see cref="ActualBackground"/> is changed.
+        /// Called when <see cref="ActualBackground"/> is changed.
         /// </summary>
         /// <param name="actualBackground">Actual background brush.</param>
         protected virtual void OnActualBackgroundChanged(Brush actualBackground) { }
 
         /// <summary>
-        /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
+        /// Called when <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
         protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(VStateOverride());
 
         /// <summary>
-        /// Called when the <see cref="ToggleButton.IsChecked"/> is changed.
+        /// Called when <see cref="ToggleButton.IsChecked"/> is changed.
         /// </summary>
         /// <param name="checkedState">Actual state of <see cref="ToggleButton.IsChecked"/>.</param>
         protected virtual void OnCheckedChanged(bool? checkedState)

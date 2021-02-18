@@ -9,14 +9,14 @@ namespace FullControls
     /// <summary>
     /// Adds collapsing and expanding functionality to another element.
     /// </summary>
-    public class Collapsable : Decorator
+    public class Collapsible : Decorator
     {
         private bool loaded = false;
         private bool isAnimating = false;
         private Size preCollapsingSize;
 
         /// <summary>
-        /// Specifies if the <see cref="Collapsable"/> is expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).
+        /// Gets or sets a value indicating if the <see cref="Collapsible"/> is expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).
         /// </summary>
         /// <remarks>If <see cref="IsAnimating"/> is <see langword="true"/> the value is reverted to the previous value.</remarks>
         public bool IsExpanded
@@ -29,12 +29,12 @@ namespace FullControls
         /// Identifies the <see cref="IsExpanded"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty IsExpandedProperty =
-            DependencyProperty.Register(nameof(IsExpanded), typeof(bool), typeof(Collapsable),
-                new PropertyMetadata(true, new PropertyChangedCallback((d, e) => ((Collapsable)d).OnExpandedChanged((bool)e.NewValue)),
-                    new CoerceValueCallback((d, o) => ((Collapsable)d).IsAnimating ? d.GetValue(IsExpandedProperty) : o)));
+            DependencyProperty.Register(nameof(IsExpanded), typeof(bool), typeof(Collapsible),
+                new PropertyMetadata(true, new PropertyChangedCallback((d, e) => ((Collapsible)d).OnExpandedChanged((bool)e.NewValue)),
+                    new CoerceValueCallback((d, o) => ((Collapsible)d).IsAnimating ? d.GetValue(IsExpandedProperty) : o)));
 
         /// <summary>
-        /// Specifies if to enable the <see cref="FrameworkElement.Height"/> animation.
+        /// Gets or sets a value indicating if to enable the <see cref="FrameworkElement.Height"/> animation.
         /// </summary>
         public bool HeightAnimation
         {
@@ -46,10 +46,10 @@ namespace FullControls
         /// Identifies the <see cref="HeightAnimation"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty HeightAnimationProperty =
-            DependencyProperty.Register(nameof(HeightAnimation), typeof(bool), typeof(Collapsable), new PropertyMetadata(true));
+            DependencyProperty.Register(nameof(HeightAnimation), typeof(bool), typeof(Collapsible), new PropertyMetadata(true));
 
         /// <summary>
-        /// Specifies if to enable the <see cref="FrameworkElement.Width"/> animation.
+        /// Gets or sets a value indicating if to enable the <see cref="FrameworkElement.Width"/> animation.
         /// </summary>
         public bool WidthAnimation
         {
@@ -61,10 +61,10 @@ namespace FullControls
         /// Identifies the <see cref="WidthAnimation"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty WidthAnimationProperty =
-            DependencyProperty.Register(nameof(WidthAnimation), typeof(bool), typeof(Collapsable), new PropertyMetadata(false));
+            DependencyProperty.Register(nameof(WidthAnimation), typeof(bool), typeof(Collapsible), new PropertyMetadata(false));
 
         /// <summary>
-        /// Duration of the expanding and collapsing animations.
+        /// Gets or sets the duration of the expanding and collapsing animations.
         /// </summary>
         public TimeSpan ExpandingAnimationTime
         {
@@ -76,10 +76,10 @@ namespace FullControls
         /// Identifies the <see cref="ExpandingAnimationTime"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ExpandingAnimationTimeProperty =
-            DependencyProperty.Register(nameof(ExpandingAnimationTime), typeof(TimeSpan), typeof(Collapsable), new PropertyMetadata(TimeSpan.Zero));
+            DependencyProperty.Register(nameof(ExpandingAnimationTime), typeof(TimeSpan), typeof(Collapsible), new PropertyMetadata(TimeSpan.Zero));
 
         /// <summary>
-        /// Specifies if expanding or collapsing anination is currently executing.
+        /// Gets a value indicating if expanding or collapsing anination is currently executing.
         /// </summary>
         [Bindable(true)]
         public bool IsAnimating
@@ -101,7 +101,7 @@ namespace FullControls
         private bool isWidthAnimating = false;
 
         /// <summary>
-        /// Specifies if height anination is currently executing.
+        /// Gets a value indicating if height anination is currently executing.
         /// </summary>
         private bool IsHeightAnimating
         {
@@ -114,7 +114,7 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Specifies if width anination is currently executing.
+        /// Gets a value indicating if width anination is currently executing.
         /// </summary>
         private bool IsWidthAnimating
         {
@@ -134,7 +134,7 @@ namespace FullControls
         public event EventHandler<ExpandedChangedEventArgs> IsExpandedChanged;
 
         /// <summary>
-        /// Occurs when the collapsing or expanding animation is started.
+        /// Occurs when the collapsing or expanding animation started.
         /// </summary>
         public event EventHandler AnimationStarted;
 
@@ -145,9 +145,9 @@ namespace FullControls
 
 
         /// <summary>
-        /// Creates a new <see cref="Collapsable"/>.
+        /// Initializes a new instance of <see cref="Collapsible"/>.
         /// </summary>
-        public Collapsable()
+        public Collapsible() : base()
         {
             Loaded -= Collapsable_Loaded;
             Loaded += Collapsable_Loaded;
@@ -168,7 +168,7 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Called when <see cref="Collapsable"/> is loaded.
+        /// Called when <see cref="Collapsible"/> is loaded.
         /// </summary>
         private void Collapsable_Loaded(object sender, RoutedEventArgs e)
         {
@@ -266,18 +266,18 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Calculates the size of <see cref="Collapsable"/> on expanded state.
+        /// Calculates the size of <see cref="Collapsible"/> on expanded state.
         /// </summary>
         /// <remarks>
-        /// <para>If <see cref="Collapsable"/> is expanded will return <see cref="UIElement.RenderSize"/>.</para>
-        /// <para>If <see cref="Collapsable"/> is collapsed will calculate the expanded size in this way:</para>
+        /// <para>If <see cref="Collapsible"/> is expanded will return <see cref="UIElement.RenderSize"/>.</para>
+        /// <para>If <see cref="Collapsible"/> is collapsed will calculate the expanded size in this way:</para>
         /// <para>-> If <see cref="FrameworkElement.Width"/> or <see cref="FrameworkElement.Height"/> were <see cref="double.NaN"/> before collapsing,
         /// will rearrange the layout, then return <see cref="UIElement.RenderSize"/>.</para>
         /// <para>-> If <see cref="FrameworkElement.Width"/> and <see cref="FrameworkElement.Height"/> were both fixed before collapsing,
         /// will return <see cref="preCollapsingSize"/>
         /// (fixed to respect <see cref="FrameworkElement.MaxWidth"/> and <see cref="FrameworkElement.MaxHeight"/>).</para>
         /// </remarks>
-        /// <returns>Size of <see cref="Collapsable"/> on expanded state.</returns>
+        /// <returns>Size of <see cref="Collapsible"/> on expanded state.</returns>
         private Size CalculateExpandedSize(bool isExpanded)
         {
             if (isExpanded)

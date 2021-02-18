@@ -68,7 +68,9 @@
                                 Margin="{TemplateBinding MarginForShadow}"
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="{TemplateBinding CornerRadius}"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                IsHitTestVisible="False"
+                                Focusable="False">
                             <Border.Effect>
                                 <DropShadowEffect x:Name="PART_Shadow"
                                                   Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"

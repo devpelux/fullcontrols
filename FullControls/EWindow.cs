@@ -882,9 +882,6 @@ namespace FullControls
         public event EventHandler<CancelEventArgs> BeforeMinimizing;
 
 
-        /// <summary>
-        /// Creates a new <see cref="EWindow"/>.
-        /// </summary>
         static EWindow()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(EWindow), new FrameworkPropertyMetadata(typeof(EWindow)));
@@ -893,7 +890,7 @@ namespace FullControls
         /// <summary>
         /// Creates a new <see cref="EWindow"/>.
         /// </summary>
-        public EWindow()
+        public EWindow() : base()
         {
             Loaded -= OnLoaded;
             Loaded += OnLoaded;
@@ -936,14 +933,14 @@ namespace FullControls
             {
                 CaptionHeight = 0,
                 CornerRadius = new CornerRadius(0),
-                GlassFrameThickness = new Thickness(0),
+                GlassFrameThickness = new Thickness(-1),
                 ResizeBorderThickness = ResizeThickness
             };
             maxWindowChrome = new WindowChrome()
             {
                 CaptionHeight = 0,
                 CornerRadius = new CornerRadius(0),
-                GlassFrameThickness = new Thickness(0),
+                GlassFrameThickness = new Thickness(-1),
                 ResizeBorderThickness = new Thickness(0)
             };
             ApplyWindowChrome();
@@ -968,7 +965,7 @@ namespace FullControls
             {
                 CaptionHeight = 0,
                 CornerRadius = new CornerRadius(0),
-                GlassFrameThickness = new Thickness(0),
+                GlassFrameThickness = new Thickness(-1),
                 ResizeBorderThickness = newValue
             };
             ApplyWindowChrome();

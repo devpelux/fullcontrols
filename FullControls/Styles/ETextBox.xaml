@@ -11,6 +11,7 @@
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
+        
         <Setter Property="Background" Value="White"/>
         <Setter Property="BackgroundOnSelected" Value="White"/>
         <Setter Property="BackgroundOnDisabled" Value="{DynamicResource Gray1}"/>
@@ -22,6 +23,7 @@
         <Setter Property="SelectionBrush" Value="{DynamicResource Blue4}"/>
         <Setter Property="SelectionTextBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="0"/>
         <Setter Property="Padding" Value="5"/>
         <Setter Property="AdaptForegroundAutomatically" Value="True"/>
         <Setter Property="AdaptCaretBrushAutomatically" Value="True"/>
@@ -68,6 +70,7 @@
         <Setter Property="LabelFontStyle" Value="Normal"/>
         <Setter Property="LabelFontWeight" Value="Normal"/>
         <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
         <Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
@@ -81,6 +84,7 @@
         <Setter Property="AutoMargin" Value="False"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
+        
         <Setter Property="ContextMenu">
             <Setter.Value>
                 <local:FlatContextMenu>
@@ -172,6 +176,7 @@
                                     Background="{TemplateBinding ActualBackground}"
                                     BorderBrush="{TemplateBinding ActualBorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                                 <Grid x:Name="PART_TextBoxGrid">
                                     <ScrollViewer x:Name="PART_ContentHost"
@@ -181,6 +186,7 @@
                                     <TextBlock x:Name="PART_Hint"
                                                Margin="{TemplateBinding Padding}"
                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                                TextAlignment="{TemplateBinding TextAlignment}"
                                                Foreground="{TemplateBinding HintForeground}"
                                                Opacity="{TemplateBinding HintOpacity}"

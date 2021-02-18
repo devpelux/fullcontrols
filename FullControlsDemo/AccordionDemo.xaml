@@ -29,13 +29,13 @@
     
     <fc:EWindow.Resources>
         <ResourceDictionary>
-            <DataTemplate x:Key="AccordionDemoItemTemplate">
+            <DataTemplate x:Key="ShapeItemTemplate">
                 <Grid Height="60">
                     <TextBlock Text="{Binding Name}" Margin="5" FontSize="30" Foreground="DimGray" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                     <TextBlock Text="{Binding Details}" Margin="5" FontSize="10" Foreground="Gray" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Key="AccordionDemoItemTemplateDark">
+            <DataTemplate x:Key="ShapeItemTemplateDark">
                 <Grid Height="60">
                     <TextBlock Text="{Binding Name}" Margin="5" FontSize="30" Foreground="WhiteSmoke" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                     <TextBlock Text="{Binding Details}" Margin="5" FontSize="10" Foreground="Gray" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>

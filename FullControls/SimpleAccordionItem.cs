@@ -8,16 +8,14 @@ using System.Windows.Media;
 namespace FullControls
 {
     /// <summary>
-    /// Simple <see cref="AccordionItem"/> with header and content.
+    /// Implements an <see cref="AccordionItem"/> with header and content.
     /// </summary>
     [ContentProperty(nameof(Content))]
     [DefaultProperty(nameof(Content))]
     public class SimpleAccordionItem : AccordionItem
     {
-        private bool loaded = false;
-
         /// <summary>
-        /// Foreground brush when the mouse is over the control.
+        /// Gets or sets the foreground brush when the mouse is over the control.
         /// </summary>
         public Brush ForegroundOnMouseOver
         {
@@ -32,7 +30,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// Foreground brush when <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
+        /// Gets or sets the foreground brush when <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
         /// </summary>
         public Brush ForegroundOnExpanded
         {
@@ -47,7 +45,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnExpanded), typeof(Brush), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// Foreground brush when the mouse is over the control and <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
+        /// Gets or sets the foreground brush when the mouse is over the control and <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
         /// </summary>
         public Brush ForegroundOnMouseOverOnExpanded
         {
@@ -62,7 +60,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnMouseOverOnExpanded), typeof(Brush), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// Foreground brush when the control is disabled.
+        /// Gets or sets the foreground brush when the control is disabled.
         /// </summary>
         public Brush ForegroundOnDisabled
         {
@@ -77,7 +75,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// Actual Foreground brush of the control.
+        /// Gets the actual foreground brush of the control.
         /// </summary>
         public Brush ActualForeground => (Brush)GetValue(ActualForegroundProperty);
 
@@ -88,7 +86,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ActualForeground), typeof(Brush), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// FontWeight brush when the mouse is over the control.
+        /// Gets or sets the fontweight when the mouse is over the control.
         /// </summary>
         public FontWeight FontWeightOnMouseOver
         {
@@ -103,7 +101,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(FontWeightOnMouseOver), typeof(FontWeight), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// FontWeight brush when <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
+        /// Gets or sets the fontweight when <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
         /// </summary>
         public FontWeight FontWeightOnExpanded
         {
@@ -118,7 +116,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(FontWeightOnExpanded), typeof(FontWeight), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// FontWeight brush when the mouse is over the control and <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
+        /// Gets or sets the fontweight when the mouse is over the control and <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
         /// </summary>
         public FontWeight FontWeightOnMouseOverOnExpanded
         {
@@ -133,7 +131,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(FontWeightOnMouseOverOnExpanded), typeof(FontWeight), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// FontWeight brush when the control is disabled.
+        /// Gets or sets the fontweight when the control is disabled.
         /// </summary>
         public FontWeight FontWeightOnDisabled
         {
@@ -148,7 +146,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(FontWeightOnDisabled), typeof(FontWeight), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// Actual FontWeight of the control.
+        /// Gets the actual fontweight of the control.
         /// </summary>
         public FontWeight ActualFontWeight => (FontWeight)GetValue(ActualFontWeightProperty);
 
@@ -159,7 +157,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ActualFontWeight), typeof(FontWeight), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// Vertical alignment of the header.
+        /// Gets or sets the vertical alignment of the header.
         /// </summary>
         public VerticalAlignment VerticalHeaderAlignment
         {
@@ -174,7 +172,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(VerticalHeaderAlignment), typeof(VerticalAlignment), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// Horizontal alignment of the header.
+        /// Gets or sets the horizontal alignment of the header.
         /// </summary>
         public HorizontalAlignment HorizontalHeaderAlignment
         {
@@ -189,7 +187,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(HorizontalHeaderAlignment), typeof(HorizontalAlignment), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// Duration of the control animation when it changes state.
+        /// Gets or sets the duration of the control animation when it changes state.
         /// </summary>
         public TimeSpan AnimationTime
         {
@@ -204,7 +202,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(SimpleAccordionItem));
 
         /// <summary>
-        /// Content of the expanding part.
+        /// Gets or sets the content of the expanding part.
         /// </summary>
         public object Content
         {
@@ -219,9 +217,6 @@ namespace FullControls
             DependencyProperty.Register(nameof(Content), typeof(object), typeof(SimpleAccordionItem));
 
 
-        /// <summary>
-        /// Creates a new <see cref="SimpleAccordionItem"/>.
-        /// </summary>
         static SimpleAccordionItem()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SimpleAccordionItem), new FrameworkPropertyMetadata(typeof(SimpleAccordionItem)));

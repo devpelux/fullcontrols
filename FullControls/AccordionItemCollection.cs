@@ -8,6 +8,11 @@ namespace FullControls
     /// </summary>
     public class AccordionItemCollection : ObservableCollection<AccordionItem>
     {
+        /// <summary>
+        /// Initializes a new instance of an empty <see cref="AccordionItemCollection"/>.
+        /// </summary>
+        public AccordionItemCollection() : base() { }
+
         /// <inheritdoc/>
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {

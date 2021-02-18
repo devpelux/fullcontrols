@@ -9,14 +9,14 @@ using System.Windows.Media;
 namespace FullControls
 {
     /// <summary>
-    /// Control that can switch states, such as <see cref="CheckBox"/>.
+    /// Represents a control that can switch states, such as <see cref="CheckBox"/>.
     /// </summary>
     public class EToggleButton : ToggleButton
     {
         private bool loaded = false;
 
         /// <summary>
-        /// Background brush when the mouse is over the control.
+        /// Gets or sets the background brush when the mouse is over the control.
         /// </summary>
         public Brush BackgroundOnMouseOver
         {
@@ -31,7 +31,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnMouseOver), typeof(Brush), typeof(EToggleButton));
 
         /// <summary>
-        /// Background brush when the control is checked and the mouse is over the control.
+        /// Gets or sets the background brush when the control is checked and the mouse is over the control.
         /// </summary>
         public Brush BackgroundOnMouseOverOnChecked
         {
@@ -46,7 +46,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnMouseOverOnChecked), typeof(Brush), typeof(EToggleButton));
 
         /// <summary>
-        /// Background brush when the control is checked.
+        /// Gets or sets the background brush when the control is checked.
         /// </summary>
         public Brush BackgroundOnChecked
         {
@@ -61,7 +61,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnChecked), typeof(Brush), typeof(EToggleButton));
 
         /// <summary>
-        /// Background brush when the control is disabled.
+        /// Gets or sets the background brush when the control is disabled.
         /// </summary>
         public Brush BackgroundOnDisabled
         {
@@ -76,7 +76,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(EToggleButton));
 
         /// <summary>
-        /// Actual Background brush of the control.
+        /// Gets the actual background brush of the control.
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
@@ -88,7 +88,7 @@ namespace FullControls
                 new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((EToggleButton)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
-        /// BorderBrush when the mouse is over the control.
+        /// Gets or sets the border brush when the mouse is over the control.
         /// </summary>
         public Brush BorderBrushOnMouseOver
         {
@@ -103,7 +103,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnMouseOver), typeof(Brush), typeof(EToggleButton));
 
         /// <summary>
-        /// BorderBrush when the control is checked and the mouse is over the control.
+        /// Gets or sets the border brush when the control is checked and the mouse is over the control.
         /// </summary>
         public Brush BorderBrushOnMouseOverOnChecked
         {
@@ -118,7 +118,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnMouseOverOnChecked), typeof(Brush), typeof(EToggleButton));
 
         /// <summary>
-        /// BorderBrush when the control is checked.
+        /// Gets or sets the border brush when the control is checked.
         /// </summary>
         public Brush BorderBrushOnChecked
         {
@@ -133,7 +133,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnChecked), typeof(Brush), typeof(EToggleButton));
 
         /// <summary>
-        /// BorderBrush when the control is disabled.
+        /// Gets or sets the border brush when the control is disabled.
         /// </summary>
         public Brush BorderBrushOnDisabled
         {
@@ -148,7 +148,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(EToggleButton));
 
         /// <summary>
-        /// Actual BorderBrush of the control.
+        /// Gets the actual border brush of the control.
         /// </summary>
         public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
@@ -159,7 +159,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(EToggleButton));
 
         /// <summary>
-        /// Foreground brush when the mouse is over the control.
+        /// Gets or sets the foreground brush when the mouse is over the control.
         /// </summary>
         public Brush ForegroundOnMouseOver
         {
@@ -174,7 +174,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(EToggleButton));
 
         /// <summary>
-        /// Foreground brush when the control is checked and the mouse is over the control.
+        /// Gets or sets the foreground brush when the control is checked and the mouse is over the control.
         /// </summary>
         public Brush ForegroundOnMouseOverOnChecked
         {
@@ -189,7 +189,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnMouseOverOnChecked), typeof(Brush), typeof(EToggleButton));
 
         /// <summary>
-        /// Foreground brush when the control is checked.
+        /// Gets or sets the foreground brush when the control is checked.
         /// </summary>
         public Brush ForegroundOnChecked
         {
@@ -204,7 +204,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnChecked), typeof(Brush), typeof(EToggleButton));
 
         /// <summary>
-        /// Foreground brush when the control is disabled.
+        /// Gets or sets the foreground brush when the control is disabled.
         /// </summary>
         public Brush ForegroundOnDisabled
         {
@@ -219,7 +219,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(EToggleButton));
 
         /// <summary>
-        /// Actual Foreground brush of the control.
+        /// Gets the actual foreground brush of the control.
         /// </summary>
         public Brush ActualForeground => (Brush)GetValue(ActualForegroundProperty);
 
@@ -230,7 +230,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ActualForeground), typeof(Brush), typeof(EToggleButton));
 
         /// <summary>
-        /// CornerRadius of the control.
+        /// Gets or sets the corner radius of the control.
         /// </summary>
         public CornerRadius CornerRadius
         {
@@ -245,7 +245,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(EToggleButton));
 
         /// <summary>
-        /// Set if the button is activable-only by click, or deactivable-only by click, or both.
+        /// Gets or sets if the button is activable-only by click, or deactivable-only by click, or both.
         /// </summary>
         public ToggleType ClickToggleType
         {
@@ -260,7 +260,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(ClickToggleType), typeof(ToggleType), typeof(EToggleButton), new PropertyMetadata(ToggleType.Complete));
 
         /// <summary>
-        /// Duration of the control animation when it changes state.
+        /// Gets or sets the duration of the control animation when it changes state.
         /// </summary>
         public TimeSpan AnimationTime
         {

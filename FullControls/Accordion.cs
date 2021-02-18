@@ -25,7 +25,7 @@ namespace FullControls
         protected const string PartContentHost = "PART_ContentHost";
 
         /// <summary>
-        /// Collection of <see cref="AccordionItem"/> to display inside the <see cref="Accordion"/>.
+        /// Gets or sets a collection of <see cref="AccordionItem"/> to display inside the <see cref="Accordion"/>.
         /// </summary>
         public AccordionItemCollection Items
         {
@@ -57,9 +57,6 @@ namespace FullControls
         public event EventHandler<ItemExpandedChangedEventArgs> ItemIsExpandedChanged;
 
 
-        /// <summary>
-        /// Creates a new <see cref="Accordion"/>.
-        /// </summary>
         static Accordion()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Accordion), new FrameworkPropertyMetadata(typeof(Accordion)));
@@ -68,9 +65,9 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Creates a new <see cref="Accordion"/>.
+        /// Initializes a new instance of <see cref="Accordion"/>.
         /// </summary>
-        public Accordion()
+        public Accordion() : base()
         {
             itemsControl = new ItemsControl();
             Items = new();

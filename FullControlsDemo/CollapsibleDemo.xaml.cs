@@ -5,36 +5,36 @@ using System.Windows;
 namespace FullControlsDemo
 {
     /// <summary>
-    /// Logica di interazione per CollapsableDemo.xaml
+    /// Logica di interazione per CollapsibleDemo.xaml
     /// </summary>
-    public partial class CollapsableDemo : EWindow
+    public partial class CollapsibleDemo : EWindow
     {
-        public CollapsableDemo()
+        public CollapsibleDemo()
         {
             InitializeComponent();
         }
 
         private void Toggle_Checked(object sender, RoutedEventArgs e)
         {
-            collapsable.IsExpanded = true;
+            collapsible.IsExpanded = true;
         }
 
         private void Toggle_Unchecked(object sender, RoutedEventArgs e)
         {
-            collapsable.IsExpanded = false;
+            collapsible.IsExpanded = false;
         }
 
-        private void Collapsable_AnimationStarted(object sender, EventArgs e)
+        private void Collapsible_AnimationStarted(object sender, EventArgs e)
         {
             toggle.ClickToggleType = ToggleType.None;
         }
 
-        private void Collapsable_AnimationEnded(object sender, EventArgs e)
+        private void Collapsible_AnimationEnded(object sender, EventArgs e)
         {
             toggle.ClickToggleType = ToggleType.Complete;
         }
 
-        private void Collapsable_IsExpandedChanged(object sender, ExpandedChangedEventArgs e)
+        private void Collapsible_IsExpandedChanged(object sender, ExpandedChangedEventArgs e)
         {
             toggle.Content = e.IsExpanded ? "Collapse" : "Expand";
         }

@@ -44,8 +44,8 @@
                     Content="Accordion Demo" Click="AccordionDemo_Click" Height="70" Width="130"/>
         <fc:EButton x:Name="buttonsDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="444,177,0,0"
                     Content="Buttons Demo" Click="ButtonsDemo_Click" Height="70" Width="130"/>
-        <fc:EButton x:Name="collapsableDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="254,284,0,0"
-                    Content="Collapsable Demo" Click="CollapsableDemo_Click" Height="70" Width="130"/>
+        <fc:EButton x:Name="collapsibleDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="254,284,0,0"
+                    Content="Collapsible Demo" Click="CollapsibleDemo_Click" Height="70" Width="130"/>
         <fc:EButton x:Name="switcherDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="444,77,0,0"
                     Content="Switcher Demo" Click="SwitcherDemo_Click" Height="70" Width="130"/>
         <fc:EButton x:Name="checkboxesDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,390,0,0"

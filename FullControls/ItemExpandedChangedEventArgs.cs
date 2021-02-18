@@ -6,7 +6,7 @@
     public class ItemExpandedChangedEventArgs : ExpandedChangedEventArgs
     {
         /// <summary>
-        /// The index of the object that was expanded or collapsed.
+        /// The index of the object.
         /// </summary>
         public int Index { get; set; }
 
@@ -14,17 +14,22 @@
         /// <summary>
         /// Initializes a new instance of <see cref="ItemExpandedChangedEventArgs"/>.
         /// </summary>
-        /// <param name="isExpanded">Specifies if the object was expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).</param>
+        public ItemExpandedChangedEventArgs() : this(false) { }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ItemExpandedChangedEventArgs"/>
+        /// specifying if the object is expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).
+        /// </summary>
+        /// <param name="isExpanded">Specifies if the object is expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).</param>
         public ItemExpandedChangedEventArgs(bool isExpanded) : this(-1, isExpanded) { }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="ItemExpandedChangedEventArgs"/>.
+        /// Initializes a new instance of <see cref="ItemExpandedChangedEventArgs"/>
+        /// specifying if the object is expanded (<see langword="true"/>) or collapsed (<see langword="false"/>)
+        /// and the index of the object.
         /// </summary>
-        /// <param name="index">The index of the object that was expanded or collapsed.</param>
-        /// <param name="isExpanded">Specifies if the object was expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).</param>
-        public ItemExpandedChangedEventArgs(int index, bool isExpanded) : base(isExpanded)
-        {
-            Index = index;
-        }
+        /// <param name="index">The index of the object.</param>
+        /// <param name="isExpanded">Specifies if the object is expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).</param>
+        public ItemExpandedChangedEventArgs(int index, bool isExpanded) : base(isExpanded) => Index = index;
     }
 }

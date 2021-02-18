@@ -19,9 +19,9 @@ namespace FullControlsDemo
             new AccordionDemo().Show();
         }
 
-        private void CollapsableDemo_Click(object sender, RoutedEventArgs e)
+        private void CollapsibleDemo_Click(object sender, RoutedEventArgs e)
         {
-            new CollapsableDemo().Show();
+            new CollapsibleDemo().Show();
         }
 
         private void ButtonsDemo_Click(object sender, RoutedEventArgs e)

@@ -137,6 +137,21 @@ namespace FullControls
         #region Hint
 
         /// <summary>
+        /// Gets or sets the suggestion displayed if <see cref="TextBox.Text"/> is empty.
+        /// </summary>
+        public string Hint
+        {
+            get => (string)GetValue(HintProperty);
+            set => SetValue(HintProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="Hint"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty HintProperty =
+            DependencyProperty.Register(nameof(Hint), typeof(string), typeof(ETextBox));
+
+        /// <summary>
         /// Specifies if to display or not the hint.
         /// </summary>
         public bool ShowHint
@@ -196,27 +211,12 @@ namespace FullControls
         public static readonly DependencyProperty AdaptHintForegroundAutomaticallyProperty =
             DependencyProperty.Register(nameof(AdaptHintForegroundAutomatically), typeof(bool), typeof(ETextBox));
 
-        /// <summary>
-        /// Suggestion that will displayed if there is no text inside the textbox.
-        /// </summary>
-        public string Hint
-        {
-            get => (string)GetValue(HintProperty);
-            set => SetValue(HintProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="Hint"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty HintProperty =
-            DependencyProperty.Register(nameof(Hint), typeof(string), typeof(ETextBox));
-
         #endregion
 
         #region CopyButton
 
         /// <summary>
-        /// Specifies if to display or not a button that copies the text on the Clipboard when clicked.
+        /// Specifies if to display or not a button that copies the text on the <see cref="Clipboard"/> when clicked.
         /// </summary>
         public bool EnableCopyButton
         {
@@ -229,6 +229,21 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty EnableCopyButtonProperty =
             DependencyProperty.Register(nameof(EnableCopyButton), typeof(bool), typeof(ETextBox));
+
+        /// <summary>
+        /// Content of the copy button.
+        /// </summary>
+        public object CopyButtonContent
+        {
+            get => GetValue(CopyButtonContentProperty);
+            set => SetValue(CopyButtonContentProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CopyButtonContent"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CopyButtonContentProperty =
+            DependencyProperty.Register(nameof(CopyButtonContent), typeof(object), typeof(ETextBox));
 
         /// <summary>
         /// Width of the copy button.
@@ -334,21 +349,6 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty CopyButtonMarginProperty =
             DependencyProperty.Register(nameof(CopyButtonMargin), typeof(Thickness), typeof(ETextBox));
-
-        /// <summary>
-        /// Content of the copy button.
-        /// </summary>
-        public object CopyButtonContent
-        {
-            get => GetValue(CopyButtonContentProperty);
-            set => SetValue(CopyButtonContentProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonContent"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonContentProperty =
-            DependencyProperty.Register(nameof(CopyButtonContent), typeof(object), typeof(ETextBox));
 
         /// <summary>
         /// Background of the copy button.
@@ -841,6 +841,21 @@ namespace FullControls
         #endregion
 
         /// <summary>
+        /// CornerRadius of the control.
+        /// </summary>
+        public CornerRadius CornerRadius
+        {
+            get => (CornerRadius)GetValue(CornerRadiusProperty);
+            set => SetValue(CornerRadiusProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CornerRadius"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ETextBox));
+
+        /// <summary>
         /// Width of the TextBox.
         /// </summary>
         public double TextViewSize
@@ -959,7 +974,7 @@ namespace FullControls
         }
 
         /// <summary>
-        /// Copy the value of the <see cref="TextBox.Text"/> property on the Clipboard.
+        /// Copy the value of the <see cref="TextBox.Text"/> property on the <see cref="Clipboard"/>.
         /// </summary>
         public void CopyAll() => Clipboard.SetText(Text);
 

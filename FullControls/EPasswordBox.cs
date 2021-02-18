@@ -180,21 +180,6 @@ namespace FullControls
             DependencyProperty.Register(nameof(SelectionOpacity), typeof(double), typeof(EPasswordBox));
 
         /// <summary>
-        /// Horizontal alignment of the passwordbox content.
-        /// </summary>
-        public HorizontalAlignment TextAlignment
-        {
-            get => (HorizontalAlignment)GetValue(TextAlignmentProperty);
-            set => SetValue(TextAlignmentProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="TextAlignment"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty TextAlignmentProperty =
-            DependencyProperty.Register(nameof(TextAlignment), typeof(HorizontalAlignment), typeof(EPasswordBox));
-
-        /// <summary>
         /// Specifies if adapt automatically the foreground to the actual background of the control.
         /// </summary>
         public bool AdaptForegroundAutomatically
@@ -225,6 +210,21 @@ namespace FullControls
             DependencyProperty.Register(nameof(AdaptCaretBrushAutomatically), typeof(bool), typeof(EPasswordBox));
 
         #region Hint
+
+        /// <summary>
+        /// Suggestion that will displayed if there is no text inside the passwordbox.
+        /// </summary>
+        public string Hint
+        {
+            get => (string)GetValue(HintProperty);
+            set => SetValue(HintProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="Hint"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty HintProperty =
+            DependencyProperty.Register(nameof(Hint), typeof(string), typeof(EPasswordBox));
 
         /// <summary>
         /// Specifies if to display or not the hint.
@@ -285,21 +285,6 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty AdaptHintForegroundAutomaticallyProperty =
             DependencyProperty.Register(nameof(AdaptHintForegroundAutomatically), typeof(bool), typeof(EPasswordBox));
-
-        /// <summary>
-        /// Suggestion that will displayed if there is no text inside the passwordbox.
-        /// </summary>
-        public string Hint
-        {
-            get => (string)GetValue(HintProperty);
-            set => SetValue(HintProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="Hint"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty HintProperty =
-            DependencyProperty.Register(nameof(Hint), typeof(string), typeof(EPasswordBox));
 
         #endregion
 
@@ -516,7 +501,7 @@ namespace FullControls
         #region CopyButton
 
         /// <summary>
-        /// Specifies if to display or not a button that copies the password on the Clipboard when clicked.
+        /// Specifies if to display or not a button that copies the password on the <see cref="Clipboard"/> when clicked.
         /// </summary>
         public bool EnableCopyButton
         {
@@ -529,6 +514,21 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty EnableCopyButtonProperty =
             DependencyProperty.Register(nameof(EnableCopyButton), typeof(bool), typeof(EPasswordBox));
+
+        /// <summary>
+        /// Content of the copy button.
+        /// </summary>
+        public object CopyButtonContent
+        {
+            get => GetValue(CopyButtonContentProperty);
+            set => SetValue(CopyButtonContentProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CopyButtonContent"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CopyButtonContentProperty =
+            DependencyProperty.Register(nameof(CopyButtonContent), typeof(object), typeof(EPasswordBox));
 
         /// <summary>
         /// Width of the copy button.
@@ -634,21 +634,6 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty CopyButtonMarginProperty =
             DependencyProperty.Register(nameof(CopyButtonMargin), typeof(Thickness), typeof(EPasswordBox));
-
-        /// <summary>
-        /// Content of the copy button.
-        /// </summary>
-        public object CopyButtonContent
-        {
-            get => GetValue(CopyButtonContentProperty);
-            set => SetValue(CopyButtonContentProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonContent"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonContentProperty =
-            DependencyProperty.Register(nameof(CopyButtonContent), typeof(object), typeof(EPasswordBox));
 
         /// <summary>
         /// Background of the copy button.
@@ -1141,6 +1126,21 @@ namespace FullControls
         #endregion
 
         /// <summary>
+        /// CornerRadius of the control.
+        /// </summary>
+        public CornerRadius CornerRadius
+        {
+            get => (CornerRadius)GetValue(CornerRadiusProperty);
+            set => SetValue(CornerRadiusProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CornerRadius"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(EPasswordBox));
+
+        /// <summary>
         /// Width of the PasswordBox.
         /// </summary>
         public double TextViewSize
@@ -1260,9 +1260,19 @@ namespace FullControls
         public new bool IsFocused => passwordBox != null && passwordBox.IsFocused;
 
         /// <summary>
-        /// Raised when the password is changed.
+        /// Raised when <see cref="Password"/> is changed.
         /// </summary>
-        public event RoutedEventHandler PasswordChanged;
+        public event RoutedEventHandler PasswordChanged
+        {
+            add { AddHandler(PasswordChangedEvent, value); }
+            remove { RemoveHandler(PasswordChangedEvent, value); }
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PasswordChanged"/> routed event.
+        /// </summary>
+        public static readonly RoutedEvent PasswordChangedEvent =
+            EventManager.RegisterRoutedEvent(nameof(PasswordChanged), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EPasswordBox));
 
 
         /// <summary>
@@ -1281,12 +1291,12 @@ namespace FullControls
         public void Clear() => passwordBox?.Clear();
 
         /// <summary>
-        /// Copy the value of the <see cref="Password"/> property on the Clipboard.
+        /// Copy the value of the <see cref="Password"/> property on the <see cref="Clipboard"/>.
         /// </summary>
         public void CopyAll() => Clipboard.SetText(Password);
 
         /// <summary>
-        /// Replaces the current selection with the contents of the Clipboard.
+        /// Replaces the current selection with the contents of the <see cref="Clipboard"/>.
         /// </summary>
         public void Paste() => passwordBox?.Paste();
 
@@ -1468,8 +1478,9 @@ namespace FullControls
         /// </summary>
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
+            e.Handled = true;
             UpdateHintState();
-            PasswordChanged?.Invoke(sender, e);
+            RaiseEvent(new RoutedEventArgs(PasswordChangedEvent));
         }
 
         /// <summary>

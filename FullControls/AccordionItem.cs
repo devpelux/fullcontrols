@@ -10,13 +10,13 @@ namespace FullControls
     /// Represents a generic <see cref="Accordion"/> item.
     /// </summary>
     [TemplatePart(Name = PartHeader, Type = typeof(UIElement))]
-    [TemplatePart(Name = PartCollapsable, Type = typeof(Collapsable))]
+    [TemplatePart(Name = PartCollapsible, Type = typeof(Collapsible))]
     [DefaultEvent(nameof(IsExpandedChanged))]
     public abstract class AccordionItem : Control
     {
         private bool loaded = false;
         private UIElement header;
-        private Collapsable collapsable;
+        private Collapsible collapsible;
 
         /// <summary>
         /// Header template part.
@@ -24,12 +24,12 @@ namespace FullControls
         protected const string PartHeader = "PART_Header";
 
         /// <summary>
-        /// Collapsable template part.
+        /// Collapsible template part.
         /// </summary>
-        protected const string PartCollapsable = "PART_Collapsable";
+        protected const string PartCollapsible = "PART_Collapsible";
 
         /// <summary>
-        /// The header of the item.
+        /// Gets or sets the header of the item.
         /// </summary>
         public object Header
         {
@@ -44,7 +44,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(Header), typeof(object), typeof(AccordionItem), new PropertyMetadata(null));
 
         /// <summary>
-        /// Height of the header.
+        /// Gets or sets the height of the header.
         /// </summary>
         public double HeaderHeight
         {
@@ -59,7 +59,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(HeaderHeight), typeof(double), typeof(AccordionItem));
 
         /// <summary>
-        /// Margin of the header.
+        /// Gets or sets the margin of the header.
         /// </summary>
         public Thickness HeaderMargin
         {
@@ -74,7 +74,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(HeaderMargin), typeof(Thickness), typeof(AccordionItem));
 
         /// <summary>
-        /// Specify if the item is expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).
+        /// Gets or sets a value indicating if the item is expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).
         /// </summary>
         /// <remarks>If <see cref="IsAnimating"/> is <see langword="true"/> the value is reverted to the previous value.</remarks>
         public bool IsExpanded
@@ -92,7 +92,7 @@ namespace FullControls
                     new CoerceValueCallback((d, o) => ((AccordionItem)d).IsAnimating ? d.GetValue(IsExpandedProperty) : o)));
 
         /// <summary>
-        /// Duration of the control animation when <see cref="IsExpanded"/> is changed.
+        /// Gets or sets the duration of the control animation when <see cref="IsExpanded"/> is changed.
         /// </summary>
         public TimeSpan ExpandingAnimationTime
         {
@@ -107,15 +107,15 @@ namespace FullControls
             DependencyProperty.Register(nameof(ExpandingAnimationTime), typeof(TimeSpan), typeof(AccordionItem));
 
         /// <summary>
-        /// The index of the <see cref="AccordionItem"/> when in an <see cref="AccordionItemCollection"/>.
+        /// Gets the index of the <see cref="AccordionItem"/> when is in an <see cref="AccordionItemCollection"/>.
         /// </summary>
         public int Index { get; set; } = -1;
 
         /// <summary>
-        /// Specifies if expanding or collapsing anination is currently executing.
+        /// Gets a values indicating if expanding or collapsing anination is currently executing.
         /// </summary>
         [Bindable(true)]
-        public bool IsAnimating => collapsable != null && collapsable.IsAnimating;
+        public bool IsAnimating => collapsible != null && collapsible.IsAnimating;
 
         /// <summary>
         /// Gets a value indicating whether the mouse pointer is located over the header element
@@ -129,9 +129,6 @@ namespace FullControls
         public event EventHandler<ItemExpandedChangedEventArgs> IsExpandedChanged;
 
 
-        /// <summary>
-        /// Creates a new <see cref="AccordionItem"/>.
-        /// </summary>
         static AccordionItem()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(AccordionItem), new FrameworkPropertyMetadata(typeof(AccordionItem)));
@@ -139,11 +136,20 @@ namespace FullControls
                 new PropertyChangedCallback((d, e) => ((AccordionItem)d).OnEnabledChanged((bool)e.NewValue))));
         }
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="AccordionItem"/>.
+        /// </summary>
+        public AccordionItem() : base()
+        {
+            Loaded -= OnLoaded;
+            Loaded += OnLoaded;
+        }
+
         /// <inheritdoc/>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            collapsable = (Collapsable)Template.FindName(PartCollapsable, this);
+            collapsible = (Collapsible)Template.FindName(PartCollapsible, this);
             header = (UIElement)Template.FindName(PartHeader, this);
             if (header != null)
             {
@@ -152,11 +158,16 @@ namespace FullControls
                 header.MouseLeave += (o, e) => OnHeaderMouseLeave(e);
             }
             loaded = true;
-            OnVStateChanged(VStateOverride());
         }
 
         /// <summary>
-        /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
+        /// Called when the element is laid out, rendered, and ready for interaction.
+        /// </summary>
+        /// <param name="e">Event data.</param>
+        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(VStateOverride());
+
+        /// <summary>
+        /// Called when <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
         protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(VStateOverride());
@@ -178,13 +189,13 @@ namespace FullControls
         protected virtual void OnHeaderMouseLeftButtonDown(MouseButtonEventArgs e) => IsExpanded = !IsExpanded;
 
         /// <summary>
-        /// Called when the mouse enter the header control.
+        /// Called when the mouse enters the header control.
         /// </summary>
         /// <param name="e">Event data.</param>
         protected virtual void OnHeaderMouseEnter(MouseEventArgs e) => OnVStateChanged(VStateOverride());
 
         /// <summary>
-        /// Called when the mouse leave the header control.
+        /// Called when the mouse leaves the header control.
         /// </summary>
         /// <param name="e">Event data.</param>
         protected virtual void OnHeaderMouseLeave(MouseEventArgs e) => OnVStateChanged(VStateOverride());
@@ -222,5 +233,11 @@ namespace FullControls
 
         /// <inheritdoc/>
         public override string ToString() => ToString(true);
+
+        #region EventHandlers
+
+        private void OnLoaded(object sender, RoutedEventArgs e) => OnLoaded(e);
+
+        #endregion
     }
 }
