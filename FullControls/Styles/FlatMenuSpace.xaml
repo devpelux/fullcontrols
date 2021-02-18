@@ -10,12 +10,12 @@
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
-        
-        <Setter Property="Height" Value="28"/>
-        <Setter Property="Background" Value="{DynamicResource Gray1}"/>
+
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="IsHitTestVisible" Value="False"/>
-        
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:FlatMenuSpace}">

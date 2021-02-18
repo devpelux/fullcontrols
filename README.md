@@ -1,26 +1,49 @@
-<p align="center">
- <img width="90px" src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/FullControlsSimple.svg" align="center" alt="FullControls" />
- <h2 align="center">FullControls</h2>
- <p align="center">Set of fully customizable standard controls, plus new special controls and extra functionality.</p>
-</p>
+<!-- icon -->
 
 <p align="center">
-  <img alt="Latest Release" src="https://img.shields.io/github/v/release/devpelux/fullcontrols?sort=semver"/>
-  <img alt="Nuget Release" src="https://img.shields.io/nuget/v/fullcontrols">
-  <img alt="Documentation Release" src="https://img.shields.io/badge/doc:release-v1.2.4-blue">
-  <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/devpelux/fullcontrols">
-  <img alt="Nuget Downloads" src="https://img.shields.io/nuget/dt/fullcontrols"/>
-  <img alt="License" src="https://img.shields.io/github/license/devpelux/fullcontrols">
+  <a href="https://github.com/devpelux/fullcontrols/tree/main" title="Main branch">
+    <img width="90px" align="center" alt="FullControls" src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/FullControlsSimple.svg"></img>
+  </a>
+</p>
+<h2 align="center">FullControls</h2>
+<p align="center">Set of fully customizable standard controls, plus new special controls and extra functionality.</p>
+
+<!-- badges -->
+
+<p align="center">
+  <a href="https://github.com/devpelux/fullcontrols/releases/latest" title="Latest release on GitHub">
+    <img alt="Latest Release" src="https://img.shields.io/github/v/release/devpelux/fullcontrols?sort=semver"></img>
+  </a>
+  <a href="https://www.nuget.org/packages/FullControls" title="FullControls on NuGet">
+    <img alt="Nuget Release" src="https://img.shields.io/nuget/v/fullcontrols"></img>
+  </a>
+  <a href="https://github.com/devpelux/fullcontrols/wiki" title="Documentation">
+    <img alt="Documentation Release" src="https://img.shields.io/badge/doc:release-v1.2.4-blue"></img>
+  </a>
+  <a href="https://github.com/devpelux/fullcontrols/releases/latest" title="Latest release on GitHub">
+    <img alt="GitHub Release Date" src="https://img.shields.io/github/release-date/devpelux/fullcontrols"></img>
+  </a>
+  <a href="https://www.nuget.org/packages/FullControls" title="FullControls on NuGet">
+    <img alt="Nuget Downloads" src="https://img.shields.io/nuget/dt/fullcontrols"></img>
+  </a>
+  <a href="https://github.com/devpelux/fullcontrols/blob/main/LICENSE" title="Licensed under MIT license">
+    <img alt="License" src="https://img.shields.io/github/license/devpelux/fullcontrols"></img>
+  </a>
 </p>
 <p align="center">
-  <img alt="Main-branch Release" src="https://img.shields.io/badge/main:release-v1.3.0-orange"/>
-  <img alt="Main-branch Status" src="https://img.shields.io/badge/main:status-beta-orange"/>
+  <a href="https://github.com/devpelux/fullcontrols/tree/main" title="Main branch">
+    <img alt="Main-branch Release" src="https://img.shields.io/badge/main:release-v1.3.0-orange"></img>
+  </a>
+  <a href="https://github.com/devpelux/fullcontrols/tree/main" title="Main branch">
+    <img alt="Main-branch Status" src="https://img.shields.io/badge/main:status-beta-orange"></img>
+  </a>
 </p>
 
+<!-- description -->
 
 ## Full documentation
 
-Repository wiki: [https://github.com/devpelux/fullcontrols/wiki](https://github.com/devpelux/fullcontrols/wiki)
+Repository wiki: [https://github.com/devpelux/fullcontrols/wiki][wiki]
 
 
 ## Get this package from NuGet
@@ -28,12 +51,12 @@ Repository wiki: [https://github.com/devpelux/fullcontrols/wiki](https://github.
 <table align="left">
   <tr>
     <td align="center">
-      <a href="https://www.nuget.org/packages/FullControls">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/NuGet_project_logo.svg" height="48px" alt="FullControls on NuGet"></img>
+      <a href="https://www.nuget.org/packages/FullControls" title="FullControls on NuGet">
+        <img height="48px" alt="FullControls on NuGet" src="https://upload.wikimedia.org/wikipedia/commons/2/25/NuGet_project_logo.svg"></img>
       </a>
     </td>
     <td align="center">
-      <a href="https://www.nuget.org/packages/FullControls">
+      <a href="https://www.nuget.org/packages/FullControls" title="FullControls on NuGet">
         <b>FullControls</b>
       </a>
     </td>
@@ -44,17 +67,20 @@ Repository wiki: [https://github.com/devpelux/fullcontrols/wiki](https://github.
 
 ## Dependencies
 
-![.NET 5](https://img.shields.io/badge/.NET-v5.0-blue)
+[<img alt=".NET 5" src="https://img.shields.io/badge/.NET-v5.0-blue"/>][net5]
 <br><br>
 
 # Overview
 
+Here is an overview of all the features of the package.
+
+
 ## Controls
 
-### Collapsable
+### Collapsible
 Adds collapsing and expanding functionality to another element.
-For example you can specify a Grid as collapsable Child, so the content of this Grid can be expanded or collapsed.
-The collapsable works with Width and Height, so expanding means *"go from zero to full size"*, and collapsing means *"go from full size to zero"*.
+For example you can specify a Grid as collapsible Child, so the content of this Grid can be expanded or collapsed.
+The collapsible works with Width and Height, so expanding means *"go from zero to full size"*, and collapsing means *"go from full size to zero"*.
 
 ### Accordion
 Is a control that contains a stacked list of items.
@@ -63,12 +89,12 @@ Each item can be expanded or collapsed to reveal the content associated with tha
 ### SimpleAccordionItem
 This is a control that can be used within an Accordion.
 It can contain everything on its Content property.
-It has an header and contains a Collapsable, to make the content collapsable by clicking the header.
+It has an header and contains a Collapsible, to make the content collapsible by clicking the header.
 
 ### ItemsControlAccordionItem
 This is a control that can be used within an Accordion.
 It works as an items control, so can be used to display multiple items inside.
-It has an header and contains a Collapsable, to make the content collapsable by clicking the header.
+It has an header and contains a Collapsible, to make the content collapsible by clicking the header.
 
 ### FlatContextMenu
 Reworked version of the classic ContextMenu with more customizations.
@@ -148,4 +174,12 @@ It can be used to create custom messageboxes.
 Copyright (C) 2020-2021 devpelux (Salvatore Peluso)  
 Licensed under MIT license.   
 
-[![mit](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/64px-MIT_logo.svg.png "Licensed under MIT license")](https://github.com/devpelux/fullcontrols/blob/main/LICENSE)
+[![mit](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/64px-MIT_logo.svg.png)][license]
+
+
+
+
+
+[wiki]: https://github.com/devpelux/fullcontrols/wiki "Documentation"
+[license]: https://github.com/devpelux/fullcontrols/blob/main/LICENSE "Licensed under MIT license"
+[net5]: https://docs.microsoft.com/dotnet/core/dotnet-five ".NET 5"

@@ -27,7 +27,7 @@
         <Setter Property="PopupVerticalOffset" Value="0"/>
         <Setter Property="PopupHorizontalOffset" Value="0"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-        
+
     </Style>
     
 </ResourceDictionary>

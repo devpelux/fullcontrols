@@ -1065,6 +1065,8 @@ namespace FullControls
 
         #endregion
 
+        #region Sections margins
+
         /// <summary>
         /// Margin of the icon.
         /// </summary>
@@ -1111,19 +1113,36 @@ namespace FullControls
             DependencyProperty.Register(nameof(InputGestureMargin), typeof(Thickness), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Enables automatic margin adjustement to fit with other <see cref="MenuItem"/>.
+        /// Margin of the arrow.
         /// </summary>
-        public bool AutoMargin
+        public Thickness ArrowMargin
         {
-            get => (bool)GetValue(AutoMarginProperty);
-            set => SetValue(AutoMarginProperty, value);
+            get => (Thickness)GetValue(ArrowMarginProperty);
+            set => SetValue(ArrowMarginProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="AutoMargin"/> dependency property.
+        /// Identifies the <see cref="ArrowMargin"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty AutoMarginProperty =
-            DependencyProperty.Register(nameof(AutoMargin), typeof(bool), typeof(FlatMenuItem), new PropertyMetadata(true));
+        public static readonly DependencyProperty ArrowMarginProperty =
+            DependencyProperty.Register(nameof(ArrowMargin), typeof(Thickness), typeof(FlatMenuItem));
+
+        /// <summary>
+        /// Enables automatic alignment to fit with other items.
+        /// </summary>
+        public bool AlignWithOthers
+        {
+            get => (bool)GetValue(AlignWithOthersProperty);
+            set => SetValue(AlignWithOthersProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="AlignWithOthers"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty AlignWithOthersProperty =
+            DependencyProperty.Register(nameof(AlignWithOthers), typeof(bool), typeof(FlatMenuItem), new PropertyMetadata(true));
+
+        #endregion
 
         /// <summary>
         /// Style of the <see cref="ScrollViewer"/>.
@@ -1192,7 +1211,25 @@ namespace FullControls
         }
 
         /// <inheritdoc/>
-        protected override DependencyObject GetContainerForItemOverride() => new FlatMenuItem();
+        protected override DependencyObject GetContainerForItemOverride() => new FlatMenuItemContainer();
+
+        /// <inheritdoc/>
+        protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
+        {
+            base.PrepareContainerForItemOverride(element, item);
+            if (item is FlatMenuSeparator) FlatMenuSeparator.PrepareContainer(element as FlatMenuItemContainer, item as FlatMenuSeparator);
+            else if (item is FlatMenuSpace) FlatMenuSpace.PrepareContainer(element as FlatMenuItemContainer, item as FlatMenuSpace);
+            else if (item is FlatMenuTitle) FlatMenuTitle.PrepareContainer(element as FlatMenuItemContainer, item as FlatMenuTitle);
+            else PrepareContainer(element as FlatMenuItemContainer);
+        }
+
+        internal static void PrepareContainer(FlatMenuItemContainer container)
+        {
+            if (container != null)
+            {
+                container.PrepareContainer(false, false);
+            }
+        }
 
         /// <inheritdoc/>
         protected override void OnClick()

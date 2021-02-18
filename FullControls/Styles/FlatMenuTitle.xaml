@@ -12,13 +12,14 @@
         </Style.Resources>
 
         <Setter Property="Padding" Value="5,0,5,0"/>
-        <Setter Property="HeaderMargin" Value="2,0,2,0"/>
+        <Setter Property="HeaderMargin" Value="2,0,15,0"/>
+        <Setter Property="AlignWithOthers" Value="True"/>
         <Setter Property="Height" Value="28"/>
-        <Setter Property="Background" Value="{DynamicResource Gray1}"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{DynamicResource Gray11}"/>
         <Setter Property="Focusable" Value="False"/>
-        <Setter Property="IsHitTestVisible" Value="False"/>
         <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="IsHitTestVisible" Value="False"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
 
         <Setter Property="Template">
@@ -30,47 +31,7 @@
                             UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                         <Grid Margin="{TemplateBinding Padding}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto">
-                                    <ColumnDefinition.Style>
-                                        <Style>
-                                            <Setter Property="ColumnDefinition.SharedSizeGroup" Value="MenuItemColumnGroupIcon"/>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding AutoMargin, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
-                                                    <Setter Property="ColumnDefinition.SharedSizeGroup" Value="{x:Null}"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </ColumnDefinition.Style>
-                                </ColumnDefinition>
-                                <ColumnDefinition Width="*"/> <!-- Main column -->
-                                <ColumnDefinition Width="Auto">
-                                    <ColumnDefinition.Style>
-                                        <Style>
-                                            <Setter Property="ColumnDefinition.SharedSizeGroup" Value="MenuItemColumnGroupShortcut"/>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding AutoMargin, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
-                                                    <Setter Property="ColumnDefinition.SharedSizeGroup" Value="{x:Null}"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </ColumnDefinition.Style>
-                                </ColumnDefinition>
-                                <ColumnDefinition Width="Auto">
-                                    <ColumnDefinition.Style>
-                                        <Style>
-                                            <Setter Property="ColumnDefinition.SharedSizeGroup" Value="MenuItemColumnGroupArrow"/>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding AutoMargin, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
-                                                    <Setter Property="ColumnDefinition.SharedSizeGroup" Value="{x:Null}"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </ColumnDefinition.Style>
-                                </ColumnDefinition>
-                            </Grid.ColumnDefinitions>
                             <ContentPresenter x:Name="HeaderHost"
-                                              Grid.Column="1"
                                               Margin="{TemplateBinding HeaderMargin}"
                                               VerticalAlignment="Center"
                                               ContentSource="Header"

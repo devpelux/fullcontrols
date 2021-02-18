@@ -13,12 +13,18 @@
             </ResourceDictionary>
         </Style.Resources>
 
-        <Setter Property="Padding" Value="5,0,5,0"/>
         <Setter Property="Height" Value="28"/>
+        <Setter Property="Padding" Value="5,0,5,0"/>
+        <Setter Property="IconMargin" Value="5,0,5,0"/>
+        <Setter Property="HeaderMargin" Value="2,0,15,0"/>
+        <Setter Property="InputGestureMargin" Value="0"/>
+        <Setter Property="ArrowMargin" Value="5,0,0,0"/>
+        <Setter Property="AlignWithOthers" Value="True"/>
         <Setter Property="Background" Value="{DynamicResource Gray1}"/>
         <Setter Property="BackgroundOnHighlight" Value="{DynamicResource Gray3}"/>
         <Setter Property="BackgroundOnOpen" Value="{DynamicResource Gray4}"/>
         <Setter Property="BackgroundOnDisabled" Value="{DynamicResource Gray1}"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Gray5}"/>
         <Setter Property="BorderBrushOnHighlight" Value="{DynamicResource Gray5}"/>
         <Setter Property="BorderBrushOnOpen" Value="{DynamicResource Gray5}"/>
@@ -38,15 +44,12 @@
         <Setter Property="Arrow" Value="&#xE76C;"/>
         <Setter Property="ArrowSize" Value="12"/>
         <Setter Property="ArrowFont" Value="Segoe MDL2 Assets"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="IconMargin" Value="5,0,5,0"/>
-        <Setter Property="HeaderMargin" Value="2,0,2,0"/>
-        <Setter Property="InputGestureMargin" Value="15,0,5,0"/>
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
         <Setter Property="MaxDropDownHeight" Value="Infinity"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+
         <Setter Property="ScrollViewerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type local:GlassScrollViewer}">

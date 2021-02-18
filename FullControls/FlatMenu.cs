@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using FullControls.Core;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -228,6 +229,19 @@ namespace FullControls
         static FlatMenu()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenu), new FrameworkPropertyMetadata(typeof(FlatMenu)));
+        }
+
+        /// <inheritdoc/>
+        protected override DependencyObject GetContainerForItemOverride() => new FlatMenuItemContainer();
+
+        /// <inheritdoc/>
+        protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
+        {
+            base.PrepareContainerForItemOverride(element, item);
+            if (item is FlatMenuSeparator) FlatMenuSeparator.PrepareContainer(element as FlatMenuItemContainer, item as FlatMenuSeparator);
+            else if (item is FlatMenuSpace) FlatMenuSpace.PrepareContainer(element as FlatMenuItemContainer, item as FlatMenuSpace);
+            else if (item is FlatMenuTitle) FlatMenuTitle.PrepareContainer(element as FlatMenuItemContainer, item as FlatMenuTitle);
+            else FlatMenuItem.PrepareContainer(element as FlatMenuItemContainer);
         }
     }
 }

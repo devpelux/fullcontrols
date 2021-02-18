@@ -37,14 +37,15 @@
                 <fc:FlatMenuItem Header="Commands" Margin="10,0,0,0">
                     <fc:FlatMenuItem Header="Close" InputGestureText="ESC" Click="Close_Click"/>
                     <fc:FlatMenuItem Header="Minimize" Click="Minimize_Click"/>
-                    <fc:FlatMenuSeparator Height="5"/>
+                    <fc:FlatMenuSeparator/>
                     <fc:FlatMenuItem Header="Duplicate">
                         <fc:FlatMenuItem Header="As dialog" Click="DuplicateAsDialog_Click"/>
                         <fc:FlatMenuItem Header="As window" Click="DuplicateAsWindow_Click"/>
                     </fc:FlatMenuItem>
                 </fc:FlatMenuItem>
+                <fc:FlatMenuSeparator Orientation="Vertical"/>
                 <fc:FlatMenuItem Header="Reset" Click="ResetLight_Click" ToolTip="Reset all light menus"/>
-                <fc:FlatMenuSpace Width="20" Background="White"/>
+                <fc:FlatMenuSpace Width="5"/>
                 <fc:FlatMenuItem Header="Help">
                     <fc:FlatMenuItem Header="Github Wiki" Click="Gwiki_Click"/>
                     <fc:FlatMenuItem Header="Info" Click="Info_Click"/>
@@ -75,6 +76,26 @@
                 <TextBlock Margin="0,5,0,0" Foreground="Gray" FontSize="8" TextAlignment="Center" TextWrapping="Wrap" SnapsToDevicePixels="True"><Run Text="Right Click here"/><LineBreak/><Run Text="to show a"/><LineBreak/><Run Text="Context Menu"/></TextBlock>
             </Border>
 
+            <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,200,0,0" Height="70" Width="70"
+                    BorderThickness="1" BorderBrush="{DynamicResource GrayDashed}" Background="Transparent">
+                <Border.ContextMenu>
+                    <fc:FlatContextMenu>
+                        <fc:FlatMenuTitle Header="Group 1"/>
+                        <fc:FlatMenuItem x:Name="lrcm1" Header="Example Radio Item 1" IsCheckable="True" CheckType="Radio" IsChecked="True" GroupName="Group1"/>
+                        <fc:FlatMenuItem x:Name="lrcm2" Header="Example Radio Item 2" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group1"/>
+                        <fc:FlatMenuItem x:Name="lrcm3" Header="Example Radio Item 3" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group1"/>
+                        <fc:FlatMenuSeparator/>
+                        <fc:FlatMenuTitle Header="Group 2"/>
+                        <fc:FlatMenuItem x:Name="lrcm4" Header="Example Radio Item 4" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group2"/>
+                        <fc:FlatMenuItem x:Name="lrcm5" Header="Example Radio Item 5" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group2"/>
+                        <fc:FlatMenuSeparator/>
+                        <fc:FlatMenuItem x:Name="lrcm6" Header="Example Radio Item 6" IsCheckable="True" CheckType="Radio" IsChecked="True" GroupName="Group2" IsEnabled="False"/>
+                    </fc:FlatContextMenu>
+                </Border.ContextMenu>
+
+                <TextBlock Margin="0,5,0,0" Foreground="Gray" FontSize="8" TextAlignment="Center" TextWrapping="Wrap" SnapsToDevicePixels="True"><Run Text="Right Click here"/><LineBreak/><Run Text="to show a"/><LineBreak/><Run Text="Context Menu"/></TextBlock>
+            </Border>
+
             <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,300,0,0" Height="70" Width="70"
                     BorderThickness="1" BorderBrush="{DynamicResource GrayDashed}" Background="Transparent">
                 <Border.ContextMenu>
@@ -88,25 +109,6 @@
 
                 <TextBlock Margin="0,5,0,0" Foreground="Gray" FontSize="8" TextAlignment="Center" TextWrapping="Wrap" SnapsToDevicePixels="True"><Run Text="Right Click here"/><LineBreak/><Run Text="to show a"/><LineBreak/><Run Text="Context Menu"/></TextBlock>
             </Border>
-            <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,200,0,0" Height="70" Width="70"
-                    BorderThickness="1" BorderBrush="{DynamicResource GrayDashed}" Background="Transparent">
-                <Border.ContextMenu>
-                    <fc:FlatContextMenu>
-                        <fc:FlatMenuTitle Header="Group 1"/>
-                        <fc:FlatMenuItem x:Name="lrcm1" Header="Example Radio Item 1" IsCheckable="True" CheckType="Radio" IsChecked="True" GroupName="Group1"/>
-                        <fc:FlatMenuItem x:Name="lrcm2" Header="Example Radio Item 2" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group1"/>
-                        <fc:FlatMenuItem x:Name="lrcm3" Header="Example Radio Item 3" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group1"/>
-                        <fc:FlatMenuSeparator Height="5"/>
-                        <fc:FlatMenuTitle Header="Group 2"/>
-                        <fc:FlatMenuItem x:Name="lrcm4" Header="Example Radio Item 4" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group2"/>
-                        <fc:FlatMenuItem x:Name="lrcm5" Header="Example Radio Item 5" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group2"/>
-                        <fc:FlatMenuSeparator Height="5"/>
-                        <fc:FlatMenuItem x:Name="lrcm6" Header="Example Radio Item 6" IsCheckable="True" CheckType="Radio" IsChecked="True" GroupName="Group2" IsEnabled="False"/>
-                    </fc:FlatContextMenu>
-                </Border.ContextMenu>
-
-                <TextBlock Margin="0,5,0,0" Foreground="Gray" FontSize="8" TextAlignment="Center" TextWrapping="Wrap" SnapsToDevicePixels="True"><Run Text="Right Click here"/><LineBreak/><Run Text="to show a"/><LineBreak/><Run Text="Context Menu"/></TextBlock>
-            </Border>
         </Grid>
 
         <Grid Grid.Column="1" Background="{DynamicResource DarkWindowBackground}">
@@ -114,14 +116,15 @@
                 <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="Commands" Margin="10,0,0,0">
                     <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="Close" InputGestureText="ESC" Click="Close_Click"/>
                     <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="Minimize" Click="Minimize_Click"/>
-                    <fc:FlatMenuSeparator Style="{DynamicResource FlatMenuSeparatorDark}" Height="5"/>
+                    <fc:FlatMenuSeparator Foreground="DimGray"/>
                     <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="Duplicate">
                         <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="As dialog" Click="DuplicateAsDialog_Click"/>
                         <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="As window" Click="DuplicateAsWindow_Click"/>
                     </fc:FlatMenuItem>
                 </fc:FlatMenuItem>
+                <fc:FlatMenuSeparator Orientation="Vertical" Foreground="DimGray"/>
                 <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="Reset" Click="ResetDark_Click" ToolTip="Reset all dark menus"/>
-                <fc:FlatMenuSpace Style="{DynamicResource FlatMenuSpaceDark}" Width="20" Background="Black"/>
+                <fc:FlatMenuSpace Width="5"/>
                 <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="Help">
                     <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="Github Wiki" Click="Gwiki_Click"/>
                     <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="Info" Click="Info_Click"/>
@@ -152,6 +155,26 @@
                 <TextBlock Margin="0,5,0,0" Foreground="WhiteSmoke" FontSize="8" TextAlignment="Center" TextWrapping="Wrap" SnapsToDevicePixels="True"><Run Text="Right Click here"/><LineBreak/><Run Text="to show a"/><LineBreak/><Run Text="Context Menu"/></TextBlock>
             </Border>
 
+            <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,200,0,0" Height="70" Width="70"
+                    BorderThickness="1" BorderBrush="{DynamicResource WhiteSmokeDashed}" Background="Transparent">
+                <Border.ContextMenu>
+                    <fc:FlatContextMenu Style="{DynamicResource FlatContextMenuDark}">
+                        <fc:FlatMenuTitle Foreground="Gray" Header="Group 1"/>
+                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" x:Name="drcm1" Header="Example Radio Item 1" IsCheckable="True" CheckType="Radio" IsChecked="True" GroupName="Group1"/>
+                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" x:Name="drcm2" Header="Example Radio Item 2" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group1"/>
+                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" x:Name="drcm3" Header="Example Radio Item 3" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group1"/>
+                        <fc:FlatMenuSeparator Foreground="DimGray"/>
+                        <fc:FlatMenuTitle Foreground="Gray" Header="Group 2"/>
+                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" x:Name="drcm4" Header="Example Radio Item 4" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group2"/>
+                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" x:Name="drcm5" Header="Example Radio Item 5" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group2"/>
+                        <fc:FlatMenuSeparator Foreground="DimGray"/>
+                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" x:Name="drcm6" Header="Example Radio Item 6" IsCheckable="True" CheckType="Radio" IsChecked="True" GroupName="Group2" IsEnabled="False"/>
+                    </fc:FlatContextMenu>
+                </Border.ContextMenu>
+
+                <TextBlock Margin="0,5,0,0" Foreground="WhiteSmoke" FontSize="8" TextAlignment="Center" TextWrapping="Wrap" SnapsToDevicePixels="True"><Run Text="Right Click here"/><LineBreak/><Run Text="to show a"/><LineBreak/><Run Text="Context Menu"/></TextBlock>
+            </Border>
+
             <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,300,0,0" Height="70" Width="70"
                     BorderThickness="1" BorderBrush="{DynamicResource WhiteSmokeDashed}" Background="Transparent">
                 <Border.ContextMenu>
@@ -160,25 +183,6 @@
                         <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" x:Name="dccm2" Header="Example Check Item 2" IsCheckable="True" IsChecked="True"/>
                         <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" x:Name="dccm3" Header="Example Check Item 3" IsCheckable="True" IsChecked="True"/>
                         <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" x:Name="dccm4" Header="Example Check Item 4" IsCheckable="True" IsChecked="True" IsEnabled="False"/>
-                    </fc:FlatContextMenu>
-                </Border.ContextMenu>
-
-                <TextBlock Margin="0,5,0,0" Foreground="WhiteSmoke" FontSize="8" TextAlignment="Center" TextWrapping="Wrap" SnapsToDevicePixels="True"><Run Text="Right Click here"/><LineBreak/><Run Text="to show a"/><LineBreak/><Run Text="Context Menu"/></TextBlock>
-            </Border>
-            <Border HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,200,0,0" Height="70" Width="70"
-                    BorderThickness="1" BorderBrush="{DynamicResource WhiteSmokeDashed}" Background="Transparent">
-                <Border.ContextMenu>
-                    <fc:FlatContextMenu Style="{DynamicResource FlatContextMenuDark}">
-                        <fc:FlatMenuTitle Style="{DynamicResource FlatMenuTitleDark}" Header="Group 1"/>
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" x:Name="drcm1" Header="Example Radio Item 1" IsCheckable="True" CheckType="Radio" IsChecked="True" GroupName="Group1"/>
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" x:Name="drcm2" Header="Example Radio Item 2" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group1"/>
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" x:Name="drcm3" Header="Example Radio Item 3" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group1"/>
-                        <fc:FlatMenuSeparator Style="{DynamicResource FlatMenuSeparatorDark}" Height="5"/>
-                        <fc:FlatMenuTitle Style="{DynamicResource FlatMenuTitleDark}" Header="Group 2"/>
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" x:Name="drcm4" Header="Example Radio Item 4" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group2"/>
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" x:Name="drcm5" Header="Example Radio Item 5" IsCheckable="True" CheckType="Radio" IsChecked="False" GroupName="Group2"/>
-                        <fc:FlatMenuSeparator Style="{DynamicResource FlatMenuSeparatorDark}" Height="5"/>
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" x:Name="drcm6" Header="Example Radio Item 6" IsCheckable="True" CheckType="Radio" IsChecked="True" GroupName="Group2" IsEnabled="False"/>
                     </fc:FlatContextMenu>
                 </Border.ContextMenu>
 

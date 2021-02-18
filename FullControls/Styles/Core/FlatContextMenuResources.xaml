@@ -9,7 +9,9 @@
                     BorderThickness="1"
                     CornerRadius="{TemplateBinding PopupCornerRadius}"
                     Background="{TemplateBinding Background}"
-                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                    IsHitTestVisible="False"
+                    Focusable="False">
                 <Border.Effect>
                     <DropShadowEffect x:Name="PART_Shadow"
                                       Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"
@@ -49,7 +51,9 @@
                     BorderThickness="1"
                     CornerRadius="{TemplateBinding PopupCornerRadius}"
                     Background="{TemplateBinding Background}"
-                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                    IsHitTestVisible="False"
+                    Focusable="False">
                 <Border.Effect>
                     <DropShadowEffect x:Name="PART_Shadow"
                                       Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"

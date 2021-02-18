@@ -1,12 +1,13 @@
-﻿using System.Windows;
+﻿using FullControls.Core;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace FullControls
 {
     /// <summary>
-    /// Displays an empty space as <see cref="MenuItem"/>.
+    /// Displays an empty menu item.
     /// </summary>
-    public class FlatMenuSpace : MenuItem
+    public class FlatMenuSpace : Control
     {
         /// <summary>
         /// Creates a new <see cref="FlatMenuSpace"/>.
@@ -16,7 +17,18 @@ namespace FullControls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenuSpace), new FrameworkPropertyMetadata(typeof(FlatMenuSpace)));
         }
 
-        /// <inheritdoc/>
-        protected override DependencyObject GetContainerForItemOverride() => new FlatMenuSpace();
+        internal static void PrepareContainer(Control container)
+        {
+            if (container != null) container.IsEnabled = false;
+        }
+
+        internal static void PrepareContainer(FlatMenuItemContainer container, FlatMenuSpace item)
+        {
+            if (container != null && item != null)
+            {
+                container.IsEnabled = false;
+                container.PrepareContainer(false, false);
+            }
+        }
     }
 }

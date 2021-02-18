@@ -33,6 +33,7 @@
         <Setter Property="ShadowDepth" Value="2"/>
         <Setter Property="ShadowColor" Value="Black"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
+
         <Setter Property="ScrollViewerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type local:GlassScrollViewer}">

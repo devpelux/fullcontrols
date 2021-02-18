@@ -32,7 +32,9 @@
                                 BorderThickness="1"
                                 CornerRadius="{TemplateBinding PopupCornerRadius}"
                                 Background="{TemplateBinding PopupBackground}"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                IsHitTestVisible="False"
+                                Focusable="False">
                             <Border.Effect>
                                 <DropShadowEffect x:Name="PART_Shadow"
                                                   Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"
@@ -104,7 +106,7 @@
                             <Style>
                                 <Setter Property="ColumnDefinition.SharedSizeGroup" Value="MenuItemColumnGroupIcon"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding AutoMargin, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
+                                    <DataTrigger Binding="{Binding AlignWithOthers, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
                                         <Setter Property="ColumnDefinition.SharedSizeGroup" Value="{x:Null}"/>
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -117,7 +119,7 @@
                             <Style>
                                 <Setter Property="ColumnDefinition.SharedSizeGroup" Value="MenuItemColumnGroupShortcut"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding AutoMargin, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
+                                    <DataTrigger Binding="{Binding AlignWithOthers, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
                                         <Setter Property="ColumnDefinition.SharedSizeGroup" Value="{x:Null}"/>
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -129,7 +131,7 @@
                             <Style>
                                 <Setter Property="ColumnDefinition.SharedSizeGroup" Value="MenuItemColumnGroupArrow"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding AutoMargin, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
+                                    <DataTrigger Binding="{Binding AlignWithOthers, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
                                         <Setter Property="ColumnDefinition.SharedSizeGroup" Value="{x:Null}"/>
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -163,6 +165,7 @@
 
                 <ContentPresenter x:Name="Arrow"
                                   Grid.Column="3"
+                                  Margin="{TemplateBinding ArrowMargin}"
                                   VerticalAlignment="Center"
                                   Width="{TemplateBinding ArrowSize}"
                                   Height="{TemplateBinding ArrowSize}"
@@ -187,7 +190,9 @@
                                 BorderThickness="1"
                                 CornerRadius="{TemplateBinding PopupCornerRadius}"
                                 Background="{TemplateBinding PopupBackground}"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                IsHitTestVisible="False"
+                                Focusable="False">
                             <Border.Effect>
                                 <DropShadowEffect x:Name="PART_Shadow"
                                                   Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"
@@ -224,6 +229,9 @@
                 <Setter TargetName="ShadowBorder" Property="Visibility" Value="Collapsed"/>
                 <Setter TargetName="SubmenuBorder" Property="Margin" Value="0"/>
             </Trigger>
+            <Trigger Property="InputGestureText" Value="">
+                <Setter TargetName="InputGestureText" Property="Visibility" Value="Collapsed"/>
+            </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -241,7 +249,7 @@
                             <Style>
                                 <Setter Property="ColumnDefinition.SharedSizeGroup" Value="MenuItemColumnGroupIcon"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding AutoMargin, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
+                                    <DataTrigger Binding="{Binding AlignWithOthers, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
                                         <Setter Property="ColumnDefinition.SharedSizeGroup" Value="{x:Null}"/>
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -254,7 +262,7 @@
                             <Style>
                                 <Setter Property="ColumnDefinition.SharedSizeGroup" Value="MenuItemColumnGroupShortcut"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding AutoMargin, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
+                                    <DataTrigger Binding="{Binding AlignWithOthers, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
                                         <Setter Property="ColumnDefinition.SharedSizeGroup" Value="{x:Null}"/>
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -266,7 +274,7 @@
                             <Style>
                                 <Setter Property="ColumnDefinition.SharedSizeGroup" Value="MenuItemColumnGroupArrow"/>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding AutoMargin, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
+                                    <DataTrigger Binding="{Binding AlignWithOthers, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
                                         <Setter Property="ColumnDefinition.SharedSizeGroup" Value="{x:Null}"/>
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -333,7 +341,10 @@
             <Trigger Property="IsChecked" Value="True">
                 <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
             </Trigger>
+            <Trigger Property="InputGestureText" Value="">
+                <Setter TargetName="InputGestureText" Property="Visibility" Value="Collapsed"/>
+            </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    
+
 </ResourceDictionary>

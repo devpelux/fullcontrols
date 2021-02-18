@@ -1,13 +1,29 @@
-﻿using System.Windows;
+﻿using FullControls.Core;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace FullControls
 {
     /// <summary>
-    /// Displays an unclickable <see cref="MenuItem"/>.
+    /// Displays an unclickable menu item.
     /// </summary>
-    public class FlatMenuTitle : MenuItem
+    public class FlatMenuTitle : Control
     {
+        /// <summary>
+        /// Gets or sets the item that labels the control.
+        /// </summary>
+        public object Header
+        {
+            get => GetValue(HeaderProperty);
+            set => SetValue(HeaderProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="Header"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty HeaderProperty =
+            DependencyProperty.Register(nameof(Header), typeof(object), typeof(FlatMenuTitle));
+
         /// <summary>
         /// Margin of the header.
         /// </summary>
@@ -24,19 +40,19 @@ namespace FullControls
             DependencyProperty.Register(nameof(HeaderMargin), typeof(Thickness), typeof(FlatMenuTitle));
 
         /// <summary>
-        /// Enables automatic margin adjustement to fit with other <see cref="MenuItem"/>.
+        /// Enables automatic alignment to fit with other items.
         /// </summary>
-        public bool AutoMargin
+        public bool AlignWithOthers
         {
-            get => (bool)GetValue(AutoMarginProperty);
-            set => SetValue(AutoMarginProperty, value);
+            get => (bool)GetValue(AlignWithOthersProperty);
+            set => SetValue(AlignWithOthersProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="AutoMargin"/> dependency property.
+        /// Identifies the <see cref="AlignWithOthers"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty AutoMarginProperty =
-            DependencyProperty.Register(nameof(AutoMargin), typeof(bool), typeof(FlatMenuTitle), new PropertyMetadata(true));
+        public static readonly DependencyProperty AlignWithOthersProperty =
+            DependencyProperty.Register(nameof(AlignWithOthers), typeof(bool), typeof(FlatMenuTitle), new PropertyMetadata(true));
 
 
         /// <summary>
@@ -47,7 +63,14 @@ namespace FullControls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenuTitle), new FrameworkPropertyMetadata(typeof(FlatMenuTitle)));
         }
 
-        /// <inheritdoc/>
-        protected override DependencyObject GetContainerForItemOverride() => new FlatMenuTitle();
+        internal static void PrepareContainer(FlatMenuItemContainer container, FlatMenuTitle item)
+        {
+            if (container != null && item != null)
+            {
+                container.IsEnabled = false;
+                if (item.AlignWithOthers) container.PrepareContainer(true, true);
+                else container.PrepareContainer(false, false);
+            }
+        }
     }
 }

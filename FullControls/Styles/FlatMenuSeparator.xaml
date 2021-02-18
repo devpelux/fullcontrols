@@ -11,14 +11,14 @@
             </ResourceDictionary>
         </Style.Resources>
 
-        <Setter Property="Padding" Value="5,0,5,0"/>
-        <Setter Property="Background" Value="{DynamicResource Gray1}"/>
+        <Setter Property="AlignWithOthers" Value="False"/>
+        <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="{DynamicResource Gray5}"/>
         <Setter Property="BorderBrush" Value="{x:Null}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="CornerRadius" Value="0"/>
-        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="SeparatorCornerRadius" Value="0"/>
         <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Focusable" Value="False"/>
         <Setter Property="IsHitTestVisible" Value="False"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
 
@@ -27,29 +27,10 @@
                 <ControlTemplate TargetType="{x:Type local:FlatMenuSeparator}">
                     <Grid Background="{TemplateBinding Background}">
                         <Grid Margin="{TemplateBinding Padding}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto">
-                                    <ColumnDefinition.Style>
-                                        <Style>
-                                            <Setter Property="ColumnDefinition.SharedSizeGroup" Value="MenuItemColumnGroupIcon"/>
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding AutoMargin, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
-                                                    <Setter Property="ColumnDefinition.SharedSizeGroup" Value="{x:Null}"/>
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding Orientation, RelativeSource={RelativeSource TemplatedParent}}" Value="Vertical">
-                                                    <Setter Property="ColumnDefinition.SharedSizeGroup" Value="{x:Null}"/>
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </ColumnDefinition.Style>
-                                </ColumnDefinition>
-                                <ColumnDefinition Width="*"/> <!-- Main column -->
-                            </Grid.ColumnDefinitions>
                             <Border x:Name="Border"
-                                    Grid.Column="1"
                                     Width="{TemplateBinding SeparatorWidth}"
                                     Height="{TemplateBinding SeparatorHeight}"
-                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    CornerRadius="{TemplateBinding SeparatorCornerRadius}"
                                     Background="{TemplateBinding Foreground}"
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
@@ -60,11 +41,14 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="Orientation" Value="Horizontal">
+                            <Setter Property="Height" Value="5"/>
+                            <Setter Property="Padding" Value="5,0,5,0"/>
                             <Setter TargetName="Border" Property="Width" Value="Auto"/>
                         </Trigger>
                         <Trigger Property="Orientation" Value="Vertical">
+                            <Setter Property="Width" Value="3"/>
+                            <Setter Property="Padding" Value="0,1,0,1"/>
                             <Setter TargetName="Border" Property="Height" Value="Auto"/>
-                            <Setter Property="Padding" Value="0"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
