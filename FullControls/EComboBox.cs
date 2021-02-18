@@ -300,6 +300,8 @@ namespace FullControls
 
         #endregion
 
+        #region ToggleButton
+
         /// <summary>
         /// Padding of the control toggle button.
         /// </summary>
@@ -344,6 +346,119 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty ToggleHorizontalContentAlignmentProperty =
             DependencyProperty.Register(nameof(ToggleHorizontalContentAlignment), typeof(HorizontalAlignment), typeof(EComboBox));
+
+        #endregion
+
+        #region Popup
+
+        /// <summary>
+        /// Border thickness of the popup.
+        /// </summary>
+        public Thickness PopupBorderThickness
+        {
+            get => (Thickness)GetValue(PopupBorderThicknessProperty);
+            set => SetValue(PopupBorderThicknessProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupBorderThickness"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PopupBorderThicknessProperty =
+            DependencyProperty.Register(nameof(PopupBorderThickness), typeof(Thickness), typeof(EComboBox));
+
+        /// <summary>
+        /// BorderBrush of the popup.
+        /// </summary>
+        public Brush PopupBorderBrush
+        {
+            get => (Brush)GetValue(PopupBorderBrushProperty);
+            set => SetValue(PopupBorderBrushProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupBorderBrush"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PopupBorderBrushProperty =
+            DependencyProperty.Register(nameof(PopupBorderBrush), typeof(Brush), typeof(EComboBox));
+
+        /// <summary>
+        /// Background of the popup.
+        /// </summary>
+        public Brush PopupBackground
+        {
+            get => (Brush)GetValue(PopupBackgroundProperty);
+            set => SetValue(PopupBackgroundProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupBackground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PopupBackgroundProperty =
+            DependencyProperty.Register(nameof(PopupBackground), typeof(Brush), typeof(EComboBox));
+
+        /// <summary>
+        /// Padding of the popup.
+        /// </summary>
+        public Thickness PopupPadding
+        {
+            get => (Thickness)GetValue(PopupPaddingProperty);
+            set => SetValue(PopupPaddingProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupPadding"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PopupPaddingProperty =
+            DependencyProperty.Register(nameof(PopupPadding), typeof(Thickness), typeof(EComboBox));
+
+        /// <summary>
+        /// Animation type of the popup.
+        /// </summary>
+        public PopupAnimation PopupAnimation
+        {
+            get => (PopupAnimation)GetValue(PopupAnimationProperty);
+            set => SetValue(PopupAnimationProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupAnimation"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PopupAnimationProperty =
+            DependencyProperty.Register(nameof(PopupAnimation), typeof(PopupAnimation), typeof(EComboBox));
+
+        /// <summary>
+        /// Enables the shadow of the popup.
+        /// </summary>
+        public bool EnablePopupShadow
+        {
+            get => (bool)GetValue(EnablePopupShadowProperty);
+            set => SetValue(EnablePopupShadowProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnablePopupShadow"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnablePopupShadowProperty =
+            DependencyProperty.Register(nameof(EnablePopupShadow), typeof(bool), typeof(EComboBox));
+
+        /// <summary>
+        /// Style of the scroll viewer used if there are too many items.
+        /// </summary>
+        public Style ScrollViewerStyle
+        {
+            get => (Style)GetValue(ScrollViewerStyleProperty);
+            set => SetValue(ScrollViewerStyleProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ScrollViewerStyle"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ScrollViewerStyleProperty =
+            DependencyProperty.Register(nameof(ScrollViewerStyle), typeof(Style), typeof(EComboBox));
+
+        #endregion
+
+        #region TextArea
 
         /// <summary>
         /// Text alignment of the control text element.
@@ -450,114 +565,56 @@ namespace FullControls
         public static readonly DependencyProperty SelectionOpacityProperty =
             DependencyProperty.Register(nameof(SelectionOpacity), typeof(double), typeof(EComboBox));
 
-        #region Popup
-
         /// <summary>
-        /// Border thickness of the popup.
+        /// Gets or sets a value that specifies the padding of the text area.
         /// </summary>
-        public Thickness PopupBorderThickness
+        public Thickness TextPadding
         {
-            get => (Thickness)GetValue(PopupBorderThicknessProperty);
-            set => SetValue(PopupBorderThicknessProperty, value);
+            get => (Thickness)GetValue(TextPaddingProperty);
+            set => SetValue(TextPaddingProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="PopupBorderThickness"/> dependency property.
+        /// Identifies the <see cref="TextPadding"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty PopupBorderThicknessProperty =
-            DependencyProperty.Register(nameof(PopupBorderThickness), typeof(Thickness), typeof(EComboBox));
+        public static readonly DependencyProperty TextPaddingProperty =
+            DependencyProperty.Register(nameof(TextPadding), typeof(Thickness), typeof(EComboBox));
 
         /// <summary>
-        /// BorderBrush of the popup.
+        /// Gets or sets a value that specifies the context menu of the text area.
         /// </summary>
-        public Brush PopupBorderBrush
+        public ContextMenu TextContextMenu
         {
-            get => (Brush)GetValue(PopupBorderBrushProperty);
-            set => SetValue(PopupBorderBrushProperty, value);
+            get => (ContextMenu)GetValue(TextContextMenuProperty);
+            set => SetValue(TextContextMenuProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="PopupBorderBrush"/> dependency property.
+        /// Identifies the <see cref="TextContextMenu"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty PopupBorderBrushProperty =
-            DependencyProperty.Register(nameof(PopupBorderBrush), typeof(Brush), typeof(EComboBox));
+        public static readonly DependencyProperty TextContextMenuProperty =
+            DependencyProperty.Register(nameof(TextContextMenu), typeof(ContextMenu), typeof(EComboBox), new PropertyMetadata(null));
 
         /// <summary>
-        /// Background of the popup.
+        /// Gets or sets a value that specifies the background brush of the text area.
         /// </summary>
-        public Brush PopupBackground
+        /// <remarks>
+        /// After setting this value, may be useful disable <see cref="AdaptCaretBrushAutomatically"/> and <see cref="AdaptForegroundAutomatically"/>,
+        /// and set <see cref="CaretBrush"/> and <see cref="Control.Foreground"/> properties.
+        /// </remarks>
+        public Brush TextBackground
         {
-            get => (Brush)GetValue(PopupBackgroundProperty);
-            set => SetValue(PopupBackgroundProperty, value);
+            get => (Brush)GetValue(TextBackgroundProperty);
+            set => SetValue(TextBackgroundProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="PopupBackground"/> dependency property.
+        /// Identifies the <see cref="TextBackground"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty PopupBackgroundProperty =
-            DependencyProperty.Register(nameof(PopupBackground), typeof(Brush), typeof(EComboBox));
-
-        /// <summary>
-        /// Padding of the popup.
-        /// </summary>
-        public Thickness PopupPadding
-        {
-            get => (Thickness)GetValue(PopupPaddingProperty);
-            set => SetValue(PopupPaddingProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="PopupPadding"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty PopupPaddingProperty =
-            DependencyProperty.Register(nameof(PopupPadding), typeof(Thickness), typeof(EComboBox));
-
-        /// <summary>
-        /// Animation type of the popup.
-        /// </summary>
-        public PopupAnimation PopupAnimation
-        {
-            get => (PopupAnimation)GetValue(PopupAnimationProperty);
-            set => SetValue(PopupAnimationProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="PopupAnimation"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty PopupAnimationProperty =
-            DependencyProperty.Register(nameof(PopupAnimation), typeof(PopupAnimation), typeof(EComboBox));
-
-        /// <summary>
-        /// Enables the shadow of the popup.
-        /// </summary>
-        public bool EnablePopupShadow
-        {
-            get => (bool)GetValue(EnablePopupShadowProperty);
-            set => SetValue(EnablePopupShadowProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="EnablePopupShadow"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty EnablePopupShadowProperty =
-            DependencyProperty.Register(nameof(EnablePopupShadow), typeof(bool), typeof(EComboBox));
+        public static readonly DependencyProperty TextBackgroundProperty =
+            DependencyProperty.Register(nameof(TextBackground), typeof(Brush), typeof(EComboBox));
 
         #endregion
-
-        /// <summary>
-        /// Style of the scroll viewer used if there are too many items.
-        /// </summary>
-        public Style ScrollViewerStyle
-        {
-            get => (Style)GetValue(ScrollViewerStyleProperty);
-            set => SetValue(ScrollViewerStyleProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="ScrollViewerStyle"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ScrollViewerStyleProperty =
-            DependencyProperty.Register(nameof(ScrollViewerStyle), typeof(Style), typeof(EComboBox));
 
         /// <summary>
         /// Duration of the control animation when it changes state.
@@ -575,13 +632,17 @@ namespace FullControls
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EComboBox));
 
 
-        /// <summary>
-        /// Creates a new <see cref="EComboBox"/>.
-        /// </summary>
         static EComboBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(EComboBox), new FrameworkPropertyMetadata(typeof(EComboBox)));
+            IsEnabledProperty.OverrideMetadata(typeof(EComboBox), new FrameworkPropertyMetadata(
+                new PropertyChangedCallback((d, e) => ((EComboBox)d).OnEnabledChanged((bool)e.NewValue))));
         }
+
+        /// <summary>
+        /// Creates a new <see cref="EComboBox"/>.
+        /// </summary>
+        public EComboBox() : base() { }
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()
@@ -613,6 +674,12 @@ namespace FullControls
             SetValue(ActualBackgroundProperty, actualBackground);
             AdaptForeColors(actualBackground);
         }
+
+        /// <summary>
+        /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
+        /// </summary>
+        /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
+        protected virtual void OnEnabledChanged(bool enabledState) { }
 
         /// <summary>
         /// Adapt some brushes to the actual background of the control.

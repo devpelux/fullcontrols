@@ -7,7 +7,7 @@
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml"/>
-                    <ResourceDictionary Source="/FullControls;component/Resources/GenericResources.xaml"/>
+                    <ResourceDictionary Source="/FullControls;component/Styles/Core/EComboBoxResources.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
@@ -42,7 +42,8 @@
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="ToggleVerticalContentAlignment" Value="Center"/>
         <Setter Property="ToggleHorizontalContentAlignment" Value="Right"/>
-        <Setter Property="Padding" Value="6,3,23,3"/>
+        <Setter Property="Padding" Value="0,0,29,0"/>
+        <Setter Property="TextPadding" Value="5,2,5,2"/>
         <Setter Property="TogglePadding" Value="0,0,10,0"/>
         <Setter Property="Arrow" Value="&#xEDDC;"/>
         <Setter Property="ArrowSize" Value="9"/>
@@ -58,7 +59,9 @@
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+        <Setter Property="IsTabStop" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
+        
         <Setter Property="ScrollViewerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type local:GlassScrollViewer}">
@@ -68,136 +71,29 @@
             </Setter.Value>
         </Setter>
 
-        <Setter Property="Template">
+        <Setter Property="TextContextMenu">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:EComboBox}">
-                    <Grid>
-                        <local:EToggleButton x:Name="PART_ToggleButton"
-                                             Width="Auto"
-                                             Height="Auto"
-                                             Content="{TemplateBinding Arrow}"
-                                             Background="{TemplateBinding Background}"
-                                             BackgroundOnMouseOver="{TemplateBinding BackgroundOnMouseOver}"
-                                             BackgroundOnMouseOverOnChecked="{TemplateBinding BackgroundOnMouseOverOnChecked}"
-                                             BackgroundOnChecked="{TemplateBinding BackgroundOnChecked}"
-                                             BackgroundOnDisabled="{TemplateBinding BackgroundOnDisabled}"
-                                             BorderBrush="{TemplateBinding BorderBrush}"
-                                             BorderBrushOnMouseOver="{TemplateBinding BorderBrushOnMouseOver}"
-                                             BorderBrushOnMouseOverOnChecked="{TemplateBinding BorderBrushOnMouseOverOnChecked}"
-                                             BorderBrushOnChecked="{TemplateBinding BorderBrushOnChecked}"
-                                             BorderBrushOnDisabled="{TemplateBinding BorderBrushOnDisabled}"
-                                             BorderThickness="{TemplateBinding BorderThickness}"
-                                             FontFamily="{TemplateBinding ArrowFont}"
-                                             FontSize="{TemplateBinding ArrowSize}"
-                                             Foreground="{TemplateBinding ForeColor}"
-                                             ForegroundOnMouseOver="{TemplateBinding ForeColorOnMouseOver}"
-                                             ForegroundOnMouseOverOnChecked="{TemplateBinding ForeColorOnMouseOverOnChecked}"
-                                             ForegroundOnChecked="{TemplateBinding ForeColorOnChecked}"
-                                             ForegroundOnDisabled="{TemplateBinding ForeColorOnDisabled}"
-                                             CornerRadius="{TemplateBinding CornerRadius}"
-                                             HorizontalContentAlignment="{TemplateBinding ToggleHorizontalContentAlignment}"
-                                             VerticalContentAlignment="{TemplateBinding ToggleVerticalContentAlignment}"
-                                             Padding="{TemplateBinding TogglePadding}"
-                                             AnimationTime="{TemplateBinding AnimationTime}"
-                                             IsEnabled="{TemplateBinding IsEnabled}"
-                                             IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                             ClickMode="Press"
-                                             Focusable="False"/>
-                        <ContentPresenter x:Name="PART_ContentSite"
-                                          Margin="{TemplateBinding Padding}"
-                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                          Content="{TemplateBinding SelectionBoxItem}"
-                                          ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                                          ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                          IsEnabled="{TemplateBinding IsEnabled}"
-                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                          Visibility="Visible"
-                                          IsHitTestVisible="False"
-                                          Focusable="False"/>
-                        <TextBox x:Name="PART_EditableTextBox"
-                                 Style="{x:Null}"
-                                 Background="Transparent"
-                                 Foreground="{TemplateBinding Foreground}"
-                                 VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                 TextAlignment="{TemplateBinding TextAlignment}"
-                                 Margin="{TemplateBinding Padding}"
-                                 CaretBrush="{TemplateBinding CaretBrush}"
-                                 SelectionBrush="{TemplateBinding SelectionBrush}"
-                                 SelectionTextBrush="{TemplateBinding SelectionTextBrush}"
-                                 SelectionOpacity="{TemplateBinding SelectionOpacity}"
-                                 IsEnabled="{TemplateBinding IsEnabled}"
-                                 IsReadOnly="{TemplateBinding IsReadOnly}"
-                                 Visibility="Hidden"
-                                 Focusable="True">
-                            <TextBox.Template>
-                                <ControlTemplate>
-                                    <Border x:Name="PART_ContentHost"
-                                            Focusable="False"
-                                            Background="{TemplateBinding Background}"/>
-                                </ControlTemplate>
-                            </TextBox.Template>
-                        </TextBox>
-                        <Popup x:Name="PART_Popup"
-                               PopupAnimation="{TemplateBinding PopupAnimation}"
-                               IsOpen="{TemplateBinding IsDropDownOpen}"
-                               Placement="Bottom"
-                               AllowsTransparency="True"
-                               Focusable="False">
-                            <Grid>
-                                <Border x:Name="PART_ShadowBorder"
-                                        Margin="1,1,5,5"
-                                        BorderThickness="1"
-                                        Background="{TemplateBinding PopupBackground}"
-                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                                    <Border.Effect>
-                                        <DropShadowEffect x:Name="PART_Shadow"
-                                                          BlurRadius="5"
-                                                          Color="Black"
-                                                          Opacity="0.5"
-                                                          ShadowDepth="2.5"/>
-                                    </Border.Effect>
-                                </Border>
-                                <Border x:Name="PART_PopupBorder"
-                                        Margin="0,0,5,5"
-                                        Background="{TemplateBinding PopupBackground}"
-                                        BorderBrush="{TemplateBinding PopupBorderBrush}"
-                                        BorderThickness="{TemplateBinding PopupBorderThickness}"
-                                        MinWidth="{TemplateBinding ActualWidth}"
-                                        MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                                    <local:GlassScrollViewer x:Name="PART_PopupScrollViewer"
-                                                             Style="{TemplateBinding ScrollViewerStyle}"
-                                                             Margin="{TemplateBinding PopupPadding}"
-                                                             SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                                        <ItemsPresenter x:Name="PART_PopupItemsPresenter"
-                                                        KeyboardNavigation.DirectionalNavigation="Contained"
-                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                    </local:GlassScrollViewer>
-                                </Border>
-                            </Grid>
-                        </Popup>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="HasItems" Value="False">
-                            <Setter TargetName="PART_PopupBorder" Property="MinHeight" Value="100"/>
-                        </Trigger>
-                        <Trigger Property="IsGrouping" Value="True">
-                            <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
-                        </Trigger>
-                        <Trigger Property="IsEditable" Value="True">
-                            <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
-                            <Setter TargetName="PART_ContentSite" Property="Visibility" Value="Hidden"/>
-                        </Trigger>
-                        <Trigger Property="EnablePopupShadow" Value="False">
-                            <Setter TargetName="PART_ShadowBorder" Property="Visibility" Value="Collapsed"/>
-                            <Setter TargetName="PART_PopupBorder" Property="Margin" Value="0"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
+                <local:FlatContextMenu>
+                    <local:FlatMenuItem Command="ApplicationCommands.Cut"/>
+                    <local:FlatMenuItem Command="ApplicationCommands.Copy"/>
+                    <local:FlatMenuItem Command="ApplicationCommands.Paste"/>
+                </local:FlatContextMenu>
             </Setter.Value>
         </Setter>
+
+        <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}"/>
+        
+        <Style.Triggers>
+            <Trigger Property="IsEditable" Value="True">
+                <Setter Property="IsTabStop" Value="False"/>
+                <Setter Property="Padding" Value="0,0,29,0"/>
+                <Setter Property="TextPadding" Value="5,2,5,2"/>
+                <Setter Property="TextBackground" Value="Transparent"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     
 </ResourceDictionary>

@@ -31,7 +31,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Background="{DynamicResource WindowBackground}">
-            <fc:EComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" SelectedIndex="0" MinWidth="120">
+            <fc:EComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" SelectedIndex="0" IsEditable="True"
+                          MinWidth="120" Width="120" Height="30">
                 <fc:EComboBoxItem Content="Item1"/>
                 <fc:EComboBoxItem Content="Item2"/>
                 <fc:EComboBoxItem Content="Item3"/>
@@ -42,7 +43,8 @@
             </fc:EComboBox>
         </Grid>
         <Grid Grid.Column="1" Background="{DynamicResource DarkWindowBackground}">
-            <fc:EComboBox Style="{DynamicResource EComboBoxDark}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" SelectedIndex="3" MinWidth="120">
+            <fc:EComboBox Style="{DynamicResource EComboBoxDark}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" SelectedIndex="3"
+                          MinWidth="120" Width="120" Height="30">
                 <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item1"/>
                 <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item2"/>
                 <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item3"/>

@@ -206,6 +206,16 @@
         <Setter Property="SelectionTextBrush" Value="WhiteSmoke"/>
         <Setter Property="PopupBackground" Value="#FF2D2D30"/>
         <Setter Property="PopupBorderBrush" Value="#FF575759"/>
+
+        <Setter Property="TextContextMenu">
+            <Setter.Value>
+                <fc:FlatContextMenu Style="{DynamicResource FlatContextMenuDark}">
+                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Command="ApplicationCommands.Cut"/>
+                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Command="ApplicationCommands.Copy"/>
+                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Command="ApplicationCommands.Paste"/>
+                </fc:FlatContextMenu>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="EComboBoxItemDark" TargetType="{x:Type fc:EComboBoxItem}">
@@ -254,20 +264,6 @@
                 <Setter Property="Background" Value="Black"/>
             </Trigger>
         </Style.Triggers>
-    </Style>
-
-    <Style x:Key="FlatMenuSeparatorDark" TargetType="{x:Type fc:FlatMenuSeparator}">
-        <Setter Property="Background" Value="#FF2D2D30"/>
-        <Setter Property="Foreground" Value="Gray"/>
-    </Style>
-
-    <Style x:Key="FlatMenuSpaceDark" TargetType="{x:Type fc:FlatMenuSpace}">
-        <Setter Property="Background" Value="#FF2D2D30"/>
-    </Style>
-
-    <Style x:Key="FlatMenuTitleDark" TargetType="{x:Type fc:FlatMenuTitle}">
-        <Setter Property="Background" Value="#FF2D2D30"/>
-        <Setter Property="Foreground" Value="Gray"/>
     </Style>
 
     <Style x:Key="FlatContextMenuDark" TargetType="{x:Type fc:FlatContextMenu}">
