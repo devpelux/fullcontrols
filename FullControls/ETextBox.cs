@@ -871,6 +871,21 @@ namespace FullControls
             DependencyProperty.Register(nameof(TextViewSize), typeof(double), typeof(ETextBox));
 
         /// <summary>
+        /// Style of the scroll viewer used if the content is too long.
+        /// </summary>
+        public Style ScrollViewerStyle
+        {
+            get => (Style)GetValue(ScrollViewerStyleProperty);
+            set => SetValue(ScrollViewerStyleProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ScrollViewerStyle"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ScrollViewerStyleProperty =
+            DependencyProperty.Register(nameof(ScrollViewerStyle), typeof(Style), typeof(ETextBox));
+
+        /// <summary>
         /// Enables automatic adjustement of margins between all items in the same group.
         /// </summary>
         public bool AutoMargin

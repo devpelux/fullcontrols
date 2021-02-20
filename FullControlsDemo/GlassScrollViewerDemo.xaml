@@ -1,7 +1,7 @@
 ﻿<fc:EWindow x:Class="FullControlsDemo.GlassScrollViewerDemo"
             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-            xmlns:fc="http://devpelux.github.io/fullcontrols" 
+            xmlns:fc="http://devpelux.github.io/fullcontrols"
             WindowStyle="None"
             MergeToolbarAndContent="True"
             CornerRadius="{DynamicResource WindowCornerRadius}"
@@ -25,14 +25,20 @@
 
         <!--#endregion-->
 
-        <fc:GlassScrollViewer Margin="60,60,60,60" ScrollBarsColor="RoyalBlue" BorderBrush="LightGray" BorderThickness="1"
+        <fc:GlassScrollViewer Margin="60,60,60,60" BorderBrush="LightGray" BorderThickness="1" PlaceScrollBarsInside="True"
                               VerticalScrollBarContextMenu="{DynamicResource VerticalGlassScrollBarContextMenu}"
                               HorizontalScrollBarContextMenu="{DynamicResource HorizontalGlassScrollBarContextMenu}">
-            <Grid Background="Transparent" Width="280" Height="480" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Rectangle Fill="Red" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,47,0,0" Height="60" Width="60"/>
-                <Rectangle Fill="Green" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="172,233,0,0" Height="50" Width="50"/>
-                <Rectangle Fill="Blue" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="158,382,0,0" Height="40" Width="40"/>
+            <Grid Background="WhiteSmoke" Width="550" Height="500" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Rectangle Fill="Red" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,40,0,0" Height="60" Width="60"/>
+                <Rectangle Fill="Green" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,200,0,0" Height="50" Width="50"/>
+                <Rectangle Fill="Blue" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="150,350,0,0" Height="40" Width="40"/>
+                <Rectangle Fill="Yellow" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="500,450,0,0" Height="20" Width="20"/>
             </Grid>
         </fc:GlassScrollViewer>
+
+        <fc:GlassScrollBar HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,260,0,0" Height="10" Width="300" Padding="3,0,3,0"
+                           Orientation="Horizontal" CornerRadius="5" ThumbCornerRadius="5" Foreground="Green" ViewportSize="1" Value="0.2"/>
+        <fc:GlassScrollBar HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" Height="200" Width="10" Padding="0,3,0,3"
+                           Orientation="Vertical" CornerRadius="5" ThumbCornerRadius="5" Foreground="Red" ViewportSize="0.7" Value="0.4"/>
     </Grid>
 </fc:EWindow>

@@ -1,90 +1,91 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:FullControls">
-
-    <Style x:Key="GlassThumb" TargetType="{x:Type Thumb}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Grid Background="Transparent">
-                        <Border CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType={x:Type local:GlassScrollBar}}}"
-                                Background="{TemplateBinding Background}"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    
-    <Style x:Key="GlassRepeatButton" TargetType="{x:Type RepeatButton}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Grid Background="Transparent">
-                        <ContentPresenter VerticalAlignment="Center"
-                                          HorizontalAlignment="Center"
-                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                          Content="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"/>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+                    xmlns:local="clr-namespace:FullControls"
+                    xmlns:comp="clr-namespace:FullControls.Components">
 
     <ControlTemplate x:Key="VerticalGlassScrollbar" TargetType="{x:Type local:GlassScrollBar}">
-        <Grid x:Name="PART_ScrollBar"
-              Background="{TemplateBinding Background}">
+        <Grid x:Name="PART_ScrollBar">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <RepeatButton x:Name="PART_DecreaseButton"
-                          Grid.Row="0"
-                          Style="{DynamicResource GlassRepeatButton}"
-                          Height="{TemplateBinding ButtonsSize}"
-                          Command="ScrollBar.LineUpCommand"
-                          Foreground="{TemplateBinding DecreaseButtonForeground}"
-                          FontFamily="{TemplateBinding ButtonsFont}"
-                          FontSize="{TemplateBinding ButtonsContentSize}"
-                          Content="{TemplateBinding DecreaseButtonContent}"                          
-                          Opacity="{TemplateBinding OpacityNormal}"
-                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-            <Track x:Name="PART_Track"
-                   Grid.Row="1"
-                   IsDirectionReversed="True"
-                   Focusable="False">
-                <Track.Thumb>
-                    <Thumb x:Name="PART_Thumb"
-                           Background="{TemplateBinding ThumbBackground}"
-                           Style="{DynamicResource GlassThumb}"
-                           Opacity="{TemplateBinding OpacityNormal}"
-                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                </Track.Thumb>
-                <Track.DecreaseRepeatButton>
-                    <RepeatButton x:Name="PART_TrackDecreaseButton"
-                                  Command="ScrollBar.PageUpCommand"
-                                  Opacity="0"
-                                  Focusable="False"/>
-                </Track.DecreaseRepeatButton>
-                <Track.IncreaseRepeatButton>
-                    <RepeatButton x:Name="PART_TrackIncreaseButton"
-                                  Command="ScrollBar.PageDownCommand"
-                                  Opacity="0"
-                                  Focusable="False"/>
-                </Track.IncreaseRepeatButton>
-            </Track>
-            <RepeatButton x:Name="PART_IncreaseButton"
-                          Grid.Row="2"
-                          Style="{DynamicResource GlassRepeatButton}"
-                          Height="{TemplateBinding ButtonsSize}"
-                          Command="ScrollBar.LineDownCommand"
-                          Foreground="{TemplateBinding IncreaseButtonForeground}"
-                          FontFamily="{TemplateBinding ButtonsFont}"
-                          FontSize="{TemplateBinding ButtonsContentSize}"
-                          Content="{TemplateBinding IncreaseButtonContent}"
-                          Opacity="{TemplateBinding OpacityNormal}"
-                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            <comp:GlassRepeatButton x:Name="PART_DecreaseButton"
+                                    Grid.Row="0"
+                                    Command="ScrollBar.LineUpCommand"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Height="{TemplateBinding ButtonsSize}"
+                                    Background="{TemplateBinding ButtonsBackground}"
+                                    BorderBrush="{TemplateBinding ButtonsBorderBrush}"
+                                    BorderThickness="{TemplateBinding ButtonsBorderThickness}"
+                                    Foreground="{TemplateBinding ButtonsForeground}"
+                                    FontFamily="{TemplateBinding ButtonsFont}"
+                                    FontSize="{TemplateBinding ButtonsFontSize}"
+                                    CornerRadius="{TemplateBinding ButtonsCornerRadius}"
+                                    Content="{TemplateBinding DecreaseButtonContent}"
+                                    ContentOpacity="{TemplateBinding OpacityNormal}"
+                                    Delay="{TemplateBinding ScrollDelay}"
+                                    Interval="{TemplateBinding ScrollInterval}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            <Border x:Name="PART_Border"
+                    Grid.Row="1"
+                    Margin="{TemplateBinding Padding}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                <Track x:Name="PART_Track"
+                       Margin="{TemplateBinding ThumbPadding}"
+                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                       IsDirectionReversed="True"
+                       Focusable="False">
+                    <Track.Thumb>
+                        <comp:GlassThumb x:Name="PART_Thumb"
+                                         Background="{TemplateBinding Foreground}"
+                                         BorderBrush="{TemplateBinding ThumbBorderBrush}"
+                                         BorderThickness="{TemplateBinding ThumbBorderThickness}"
+                                         CornerRadius="{TemplateBinding ThumbCornerRadius}"
+                                         Opacity="{TemplateBinding OpacityNormal}"
+                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Track.Thumb>
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton x:Name="PART_TrackDecreaseButton"
+                                      Command="ScrollBar.PageUpCommand"
+                                      Opacity="0"
+                                      Delay="{TemplateBinding ScrollDelay}"
+                                      Interval="{TemplateBinding ScrollInterval}"
+                                      Focusable="False"/>
+                    </Track.DecreaseRepeatButton>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton x:Name="PART_TrackIncreaseButton"
+                                      Command="ScrollBar.PageDownCommand"
+                                      Opacity="0"
+                                      Delay="{TemplateBinding ScrollDelay}"
+                                      Interval="{TemplateBinding ScrollInterval}"
+                                      Focusable="False"/>
+                    </Track.IncreaseRepeatButton>
+                </Track>
+            </Border>
+            <comp:GlassRepeatButton x:Name="PART_IncreaseButton"
+                                    Grid.Row="2"
+                                    Command="ScrollBar.LineDownCommand"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Height="{TemplateBinding ButtonsSize}"
+                                    Background="{TemplateBinding ButtonsBackground}"
+                                    BorderBrush="{TemplateBinding ButtonsBorderBrush}"
+                                    BorderThickness="{TemplateBinding ButtonsBorderThickness}"
+                                    Foreground="{TemplateBinding ButtonsForeground}"
+                                    FontFamily="{TemplateBinding ButtonsFont}"
+                                    FontSize="{TemplateBinding ButtonsFontSize}"
+                                    CornerRadius="{TemplateBinding ButtonsCornerRadius}"
+                                    Content="{TemplateBinding IncreaseButtonContent}"
+                                    ContentOpacity="{TemplateBinding OpacityNormal}"
+                                    Delay="{TemplateBinding ScrollDelay}"
+                                    Interval="{TemplateBinding ScrollInterval}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
         </Grid>
 
         <ControlTemplate.Triggers>
@@ -95,83 +96,112 @@
                 <Setter TargetName="PART_Thumb" Property="Opacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
             </Trigger>
             <Trigger SourceName="PART_DecreaseButton" Property="IsMouseOver" Value="true">
-                <Setter TargetName="PART_DecreaseButton" Property="Opacity" Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_DecreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}"/>
             </Trigger>
             <Trigger SourceName="PART_DecreaseButton" Property="IsPressed" Value="true">
-                <Setter TargetName="PART_DecreaseButton" Property="Opacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_DecreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
             </Trigger>
             <Trigger SourceName="PART_IncreaseButton" Property="IsMouseOver" Value="true">
-                <Setter TargetName="PART_IncreaseButton" Property="Opacity" Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_IncreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}"/>
             </Trigger>
             <Trigger SourceName="PART_IncreaseButton" Property="IsPressed" Value="true">
-                <Setter TargetName="PART_IncreaseButton" Property="Opacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_IncreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
             </Trigger>
             <Trigger Property="EnableButtons" Value="False">
                 <Setter TargetName="PART_DecreaseButton" Property="Visibility" Value="Collapsed"/>
                 <Setter TargetName="PART_IncreaseButton" Property="Visibility" Value="Collapsed"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter TargetName="PART_Track" Property="Visibility" Value="Collapsed"/>
-                <Setter TargetName="PART_DecreaseButton" Property="Visibility" Value="Collapsed"/>
-                <Setter TargetName="PART_IncreaseButton" Property="Visibility" Value="Collapsed"/>
+                <Setter TargetName="PART_Thumb" Property="Background" Value="{Binding ForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_DecreaseButton" Property="Foreground" Value="{Binding ButtonsForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_IncreaseButton" Property="Foreground" Value="{Binding ButtonsForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <ControlTemplate x:Key="HorizontalGlassScrollbar" TargetType="{x:Type local:GlassScrollBar}">
-        <Grid x:Name="PART_ScrollBar"
-              Background="{TemplateBinding Background}">
+        <Grid x:Name="PART_ScrollBar">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <RepeatButton x:Name="PART_DecreaseButton"
-                          Grid.Column="0"
-                          Style="{DynamicResource GlassRepeatButton}"
-                          Width="{TemplateBinding ButtonsSize}"
-                          Command="ScrollBar.LineLeftCommand"
-                          Foreground="{TemplateBinding DecreaseButtonForeground}"
-                          FontFamily="{TemplateBinding ButtonsFont}"
-                          FontSize="{TemplateBinding ButtonsContentSize}"
-                          Content="{TemplateBinding DecreaseButtonContent}"
-                          Opacity="{TemplateBinding OpacityNormal}"
-                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-            <Track x:Name="PART_Track"
-                   Grid.Column="1"
-                   IsDirectionReversed="False"
-                   Focusable="False">
-                <Track.Thumb>
-                    <Thumb x:Name="PART_Thumb"
-                           Background="{TemplateBinding ThumbBackground}"
-                           Style="{DynamicResource GlassThumb}"
-                           Opacity="{TemplateBinding OpacityNormal}"
-                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                </Track.Thumb>
-                <Track.DecreaseRepeatButton>
-                    <RepeatButton x:Name="PART_TrackDecreaseButton"
-                                  Command="ScrollBar.PageLeftCommand"
-                                  Opacity="0"
-                                  Focusable="False"/>
-                </Track.DecreaseRepeatButton>
-                <Track.IncreaseRepeatButton>
-                    <RepeatButton x:Name="PART_TrackIncreaseButton"
-                                  Command="ScrollBar.PageRightCommand"
-                                  Opacity="0"
-                                  Focusable="False"/>
-                </Track.IncreaseRepeatButton>
-            </Track>
-            <RepeatButton x:Name="PART_IncreaseButton"
-                          Grid.Column="2"
-                          Style="{DynamicResource GlassRepeatButton}"
-                          Width="{TemplateBinding ButtonsSize}"
-                          Command="ScrollBar.LineRightCommand"
-                          Foreground="{TemplateBinding IncreaseButtonForeground}"
-                          FontFamily="{TemplateBinding ButtonsFont}"
-                          FontSize="{TemplateBinding ButtonsContentSize}"
-                          Content="{TemplateBinding IncreaseButtonContent}"
-                          Opacity="{TemplateBinding OpacityNormal}"
-                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            <comp:GlassRepeatButton x:Name="PART_DecreaseButton"
+                                    Grid.Column="0"
+                                    Command="ScrollBar.LineLeftCommand"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Width="{TemplateBinding ButtonsSize}"
+                                    Background="{TemplateBinding ButtonsBackground}"
+                                    BorderBrush="{TemplateBinding ButtonsBorderBrush}"
+                                    BorderThickness="{TemplateBinding ButtonsBorderThickness}"
+                                    Foreground="{TemplateBinding ButtonsForeground}"
+                                    FontFamily="{TemplateBinding ButtonsFont}"
+                                    FontSize="{TemplateBinding ButtonsFontSize}"
+                                    CornerRadius="{TemplateBinding ButtonsCornerRadius}"
+                                    Content="{TemplateBinding DecreaseButtonContent}"
+                                    ContentOpacity="{TemplateBinding OpacityNormal}"
+                                    Delay="{TemplateBinding ScrollDelay}"
+                                    Interval="{TemplateBinding ScrollInterval}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            <Border x:Name="PART_Border"
+                    Grid.Column="1"
+                    Margin="{TemplateBinding Padding}"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="{TemplateBinding CornerRadius}"
+                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                <Track x:Name="PART_Track"
+                       Margin="{TemplateBinding ThumbPadding}"
+                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                       IsDirectionReversed="False"
+                       Focusable="False">
+                    <Track.Thumb>
+                        <comp:GlassThumb x:Name="PART_Thumb"
+                                         Background="{TemplateBinding Foreground}"
+                                         BorderBrush="{TemplateBinding ThumbBorderBrush}"
+                                         BorderThickness="{TemplateBinding ThumbBorderThickness}"
+                                         CornerRadius="{TemplateBinding ThumbCornerRadius}"
+                                         Opacity="{TemplateBinding OpacityNormal}"
+                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                    </Track.Thumb>
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton x:Name="PART_TrackDecreaseButton"
+                                      Command="ScrollBar.PageLeftCommand"
+                                      Opacity="0"
+                                      Delay="{TemplateBinding ScrollDelay}"
+                                      Interval="{TemplateBinding ScrollInterval}"
+                                      Focusable="False"/>
+                    </Track.DecreaseRepeatButton>
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton x:Name="PART_TrackIncreaseButton"
+                                      Command="ScrollBar.PageRightCommand"
+                                      Opacity="0"
+                                      Delay="{TemplateBinding ScrollDelay}"
+                                      Interval="{TemplateBinding ScrollInterval}"
+                                      Focusable="False"/>
+                    </Track.IncreaseRepeatButton>
+                </Track>
+            </Border>
+            <comp:GlassRepeatButton x:Name="PART_IncreaseButton"
+                                    Grid.Column="2"
+                                    Command="ScrollBar.LineRightCommand"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Width="{TemplateBinding ButtonsSize}"
+                                    Background="{TemplateBinding ButtonsBackground}"
+                                    BorderBrush="{TemplateBinding ButtonsBorderBrush}"
+                                    BorderThickness="{TemplateBinding ButtonsBorderThickness}"
+                                    Foreground="{TemplateBinding ButtonsForeground}"
+                                    FontFamily="{TemplateBinding ButtonsFont}"
+                                    FontSize="{TemplateBinding ButtonsFontSize}"
+                                    CornerRadius="{TemplateBinding ButtonsCornerRadius}"
+                                    Content="{TemplateBinding IncreaseButtonContent}"
+                                    ContentOpacity="{TemplateBinding OpacityNormal}"
+                                    Delay="{TemplateBinding ScrollDelay}"
+                                    Interval="{TemplateBinding ScrollInterval}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
         </Grid>
 
         <ControlTemplate.Triggers>
@@ -182,25 +212,25 @@
                 <Setter TargetName="PART_Thumb" Property="Opacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
             </Trigger>
             <Trigger SourceName="PART_DecreaseButton" Property="IsMouseOver" Value="true">
-                <Setter TargetName="PART_DecreaseButton" Property="Opacity" Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_DecreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}"/>
             </Trigger>
             <Trigger SourceName="PART_DecreaseButton" Property="IsPressed" Value="true">
-                <Setter TargetName="PART_DecreaseButton" Property="Opacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_DecreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
             </Trigger>
             <Trigger SourceName="PART_IncreaseButton" Property="IsMouseOver" Value="true">
-                <Setter TargetName="PART_IncreaseButton" Property="Opacity" Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_IncreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}"/>
             </Trigger>
             <Trigger SourceName="PART_IncreaseButton" Property="IsPressed" Value="true">
-                <Setter TargetName="PART_IncreaseButton" Property="Opacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_IncreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
             </Trigger>
             <Trigger Property="EnableButtons" Value="False">
                 <Setter TargetName="PART_DecreaseButton" Property="Visibility" Value="Collapsed"/>
                 <Setter TargetName="PART_IncreaseButton" Property="Visibility" Value="Collapsed"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter TargetName="PART_Track" Property="Visibility" Value="Collapsed"/>
-                <Setter TargetName="PART_DecreaseButton" Property="Visibility" Value="Collapsed"/>
-                <Setter TargetName="PART_IncreaseButton" Property="Visibility" Value="Collapsed"/>
+                <Setter TargetName="PART_Thumb" Property="Background" Value="{Binding ForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_DecreaseButton" Property="Foreground" Value="{Binding ButtonsForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_IncreaseButton" Property="Foreground" Value="{Binding ButtonsForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

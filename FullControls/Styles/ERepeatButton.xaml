@@ -7,10 +7,10 @@
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml"/>
-                    <ResourceDictionary Source="/FullControls;component/Resources/GenericResources.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
+        
         <Setter Property="Background" Value="{DynamicResource Gray3}"/>
         <Setter Property="BackgroundOnMouseOver" Value="{DynamicResource Gray4}"/>
         <Setter Property="BackgroundOnPressed" Value="{DynamicResource Gray5}"/>

@@ -5,13 +5,14 @@
     <UseWPF>true</UseWPF>
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Authors>Salvatore Peluso</Authors>
-    <Description>This package includes a reworked, fully customizable, version of the most commonly used standard controls, plus some new special controls and extra functionality.
+    <Description>This package includes a reworked, fully customizable, version of the most commonly used controls, plus some new special controls and extra functionality.
 
-For the complete description see the readme here: https://github.com/devpelux/fullcontrols
-For examples and complete documentation see here: https://github.com/devpelux/fullcontrols/wiki</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageTags>Controls, Custom, Full, Button, CheckBox, ComboBox, ComboBoxItem, PasswordBox, RadioButton, RepeatButton, TextBox, ToggleButton, Window, ScrollBar, ScrollViewer, GlassScrollBar, GlassScrollViewer, MenuItem, PolymorphicMenuItem, Switcher</PackageTags>
-    <PackageReleaseNotes>Added Collapsable decorator.
+A fully description, and examples, can be found on github here: https://github.com/devpelux/fullcontrols
+
+The complete documentation can be found here: https://github.com/devpelux/fullcontrols/wiki</Description>
+    <PackageLicenseExpression></PackageLicenseExpression>
+    <PackageTags>xaml library control csharp nuget-packages dark-theme wpf accordion button menu window context-menu collapsible wpf-controls flat-design wpf-ui passwordbox net-5</PackageTags>
+    <PackageReleaseNotes>Added Collapsible decorator.
 Added Accordion control.
 Added AccordionItem control.
 Added SimpleAccordionItem control.
@@ -23,8 +24,9 @@ Added FlatContextMenu and FlatMenu.
 Removed PolymorphicMenuItem and replaced with FlatMenuItem, FlatMenuSeparator, FlatMenuSpace and FlatMenuTitle.
 Added radio-checking (mutually exclusive checking) feature to FlatMenuItem.
 Added more properties for menu items customization.
-Added HorizontalScrollBarContextMenu and VerticalScrollBarContextMenu properties to customize GlassScrollViewer context menus.
-Updated EPasswordBox and ETextBox for using the new context menu styles.
+Updated many controls to use FlatContextMenu.
+Updated GlassScrollViewer and GlassScrollBar to be more consistent and added more properties to customize them.
+Updated many controls to use GlassScrollViewer.
 General optimizations and bugfixes.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
@@ -32,21 +34,19 @@ General optimizations and bugfixes.</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>FullControls.png</PackageIcon>
     <Version>1.3.0</Version>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
     <None Include="Icons\FullControls.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Styles\FlatMenu.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
 
 </Project>

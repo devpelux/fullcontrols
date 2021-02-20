@@ -14,13 +14,17 @@
         <ResourceDictionary Source="/FullControls;component/Styles/FlatContextMenu.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/FlatMenu.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/FlatMenuItem.xaml"/>
-        <ResourceDictionary Source="/FullControls;component/Styles/FlatMenuSpace.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/FlatMenuSeparator.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/FlatMenuSpace.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/FlatMenuTitle.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/GlassScrollBar.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/GlassScrollViewer.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/ItemsControlAccordionItem.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/SimpleAccordionItem.xaml"/>
         <ResourceDictionary Source="/FullControls;component/Styles/Switcher.xaml"/>
+        
+        <!-- Components -->
+        <ResourceDictionary Source="/FullControls;component/Styles/Components/GlassRepeatButton.xaml"/>
+        <ResourceDictionary Source="/FullControls;component/Styles/Components/GlassThumb.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

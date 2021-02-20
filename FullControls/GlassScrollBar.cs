@@ -10,21 +10,6 @@ namespace FullControls
     public class GlassScrollBar : ScrollBar
     {
         /// <summary>
-        /// Thickness of the scrollbar.
-        /// </summary>
-        public double Thickness
-        {
-            get => (double)GetValue(ThicknessProperty);
-            set => SetValue(ThicknessProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="Thickness"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ThicknessProperty =
-            DependencyProperty.Register(nameof(Thickness), typeof(double), typeof(GlassScrollBar));
-
-        /// <summary>
         /// CornerRadius of the scrollbar.
         /// </summary>
         public CornerRadius CornerRadius
@@ -40,7 +25,114 @@ namespace FullControls
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Opacity of the scrollbar when is on his normal state.
+        /// Gets or sets the amount of time, in milliseconds, the control waits while it is pressed before it starts scrolling. The value must be non-negative.
+        /// </summary>
+        public int ScrollDelay
+        {
+            get => (int)GetValue(ScrollDelayProperty);
+            set => SetValue(ScrollDelayProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ScrollDelay"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ScrollDelayProperty =
+            DependencyProperty.Register(nameof(ScrollDelay), typeof(int), typeof(GlassScrollBar), new FrameworkPropertyMetadata(SystemParameters.KeyboardDelay));
+
+        /// <summary>
+        /// Gets or sets the amount of time, in milliseconds, the control repeats scrolling once repeating starts. The value must be non-negative.
+        /// </summary>
+        public int ScrollInterval
+        {
+            get => (int)GetValue(ScrollIntervalProperty);
+            set => SetValue(ScrollIntervalProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ScrollInterval"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ScrollIntervalProperty =
+            DependencyProperty.Register(nameof(ScrollInterval), typeof(int), typeof(GlassScrollBar), new FrameworkPropertyMetadata(SystemParameters.KeyboardSpeed));
+
+        #region Thumb
+
+        /// <summary>
+        /// Padding of the thumb.
+        /// </summary>
+        public Thickness ThumbPadding
+        {
+            get => (Thickness)GetValue(ThumbPaddingProperty);
+            set => SetValue(ThumbPaddingProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ThumbPadding"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ThumbPaddingProperty =
+            DependencyProperty.Register(nameof(ThumbPadding), typeof(Thickness), typeof(GlassScrollBar));
+
+        /// <summary>
+        /// CornerRadius of the thumb.
+        /// </summary>
+        public CornerRadius ThumbCornerRadius
+        {
+            get => (CornerRadius)GetValue(ThumbCornerRadiusProperty);
+            set => SetValue(ThumbCornerRadiusProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ThumbCornerRadius"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ThumbCornerRadiusProperty =
+            DependencyProperty.Register(nameof(ThumbCornerRadius), typeof(CornerRadius), typeof(GlassScrollBar));
+
+        /// <summary>
+        /// Border thickness of the thumb.
+        /// </summary>
+        public Thickness ThumbBorderThickness
+        {
+            get => (Thickness)GetValue(ThumbBorderThicknessProperty);
+            set => SetValue(ThumbBorderThicknessProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ThumbBorderThickness"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ThumbBorderThicknessProperty =
+            DependencyProperty.Register(nameof(ThumbBorderThickness), typeof(Thickness), typeof(GlassScrollBar));
+
+        /// <summary>
+        /// Border brush of the thumb.
+        /// </summary>
+        public Brush ThumbBorderBrush
+        {
+            get => (Brush)GetValue(ThumbBorderBrushProperty);
+            set => SetValue(ThumbBorderBrushProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ThumbBorderBrush"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ThumbBorderBrushProperty =
+            DependencyProperty.Register(nameof(ThumbBorderBrush), typeof(Brush), typeof(GlassScrollBar));
+
+        /// <summary>
+        /// Foreground when the control is disabled.
+        /// </summary>
+        public Brush ForegroundOnDisabled
+        {
+            get => (Brush)GetValue(ForegroundOnDisabledProperty);
+            set => SetValue(ForegroundOnDisabledProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForegroundOnDisabled"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForegroundOnDisabledProperty =
+            DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(GlassScrollBar));
+
+        /// <summary>
+        /// Opacity of the scrollbar thumb when is on his normal state.
         /// </summary>
         public double OpacityNormal
         {
@@ -55,7 +147,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(OpacityNormal), typeof(double), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Opacity of the scrollbar when the mouse is over the control.
+        /// Opacity of the scrollbar thumb when the mouse is over the control.
         /// </summary>
         public double OpacityOnMouseOver
         {
@@ -70,7 +162,7 @@ namespace FullControls
             DependencyProperty.Register(nameof(OpacityOnMouseOver), typeof(double), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Opacity of the scrollbar when is pressed.
+        /// Opacity of the scrollbar thumb when is pressed.
         /// </summary>
         public double OpacityOnMouseDown
         {
@@ -83,6 +175,10 @@ namespace FullControls
         /// </summary>
         public static readonly DependencyProperty OpacityOnMouseDownProperty =
             DependencyProperty.Register(nameof(OpacityOnMouseDown), typeof(double), typeof(GlassScrollBar));
+
+        #endregion
+
+        #region Buttons
 
         /// <summary>
         /// Enables the increase and decrease buttons.
@@ -130,19 +226,109 @@ namespace FullControls
             DependencyProperty.Register(nameof(ButtonsFont), typeof(FontFamily), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Size of the content of the increase and decrease buttons.
+        /// Size of the font of the increase and decrease buttons.
         /// </summary>
-        public double ButtonsContentSize
+        public double ButtonsFontSize
         {
-            get => (double)GetValue(ButtonsContentSizeProperty);
-            set => SetValue(ButtonsContentSizeProperty, value);
+            get => (double)GetValue(ButtonsFontSizeProperty);
+            set => SetValue(ButtonsFontSizeProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ButtonsContentSize"/> dependency property.
+        /// Identifies the <see cref="ButtonsFontSize"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ButtonsContentSizeProperty =
-            DependencyProperty.Register(nameof(ButtonsContentSize), typeof(double), typeof(GlassScrollBar));
+        public static readonly DependencyProperty ButtonsFontSizeProperty =
+            DependencyProperty.Register(nameof(ButtonsFontSize), typeof(double), typeof(GlassScrollBar));
+
+        /// <summary>
+        /// CornerRadius of the buttons.
+        /// </summary>
+        public CornerRadius ButtonsCornerRadius
+        {
+            get => (CornerRadius)GetValue(ButtonsCornerRadiusProperty);
+            set => SetValue(ButtonsCornerRadiusProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ButtonsCornerRadius"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ButtonsCornerRadiusProperty =
+            DependencyProperty.Register(nameof(ButtonsCornerRadius), typeof(CornerRadius), typeof(GlassScrollBar));
+
+        /// <summary>
+        /// Background of the buttons.
+        /// </summary>
+        public Brush ButtonsBackground
+        {
+            get => (Brush)GetValue(ButtonsBackgroundProperty);
+            set => SetValue(ButtonsBackgroundProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ButtonsBackground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ButtonsBackgroundProperty =
+            DependencyProperty.Register(nameof(ButtonsBackground), typeof(Brush), typeof(GlassScrollBar));
+
+        /// <summary>
+        /// BorderBrush of the buttons.
+        /// </summary>
+        public Brush ButtonsBorderBrush
+        {
+            get => (Brush)GetValue(ButtonsBorderBrushProperty);
+            set => SetValue(ButtonsBorderBrushProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ButtonsBorderBrush"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ButtonsBorderBrushProperty =
+            DependencyProperty.Register(nameof(ButtonsBorderBrush), typeof(Brush), typeof(GlassScrollBar));
+
+        /// <summary>
+        /// BorderThickness of the buttons.
+        /// </summary>
+        public Thickness ButtonsBorderThickness
+        {
+            get => (Thickness)GetValue(ButtonsBorderThicknessProperty);
+            set => SetValue(ButtonsBorderThicknessProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ButtonsBorderThickness"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ButtonsBorderThicknessProperty =
+            DependencyProperty.Register(nameof(ButtonsBorderThickness), typeof(Thickness), typeof(GlassScrollBar));
+
+        /// <summary>
+        /// Foreground of the buttons.
+        /// </summary>
+        public Brush ButtonsForeground
+        {
+            get => (Brush)GetValue(ButtonsForegroundProperty);
+            set => SetValue(ButtonsForegroundProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ButtonsForeground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ButtonsForegroundProperty =
+            DependencyProperty.Register(nameof(ButtonsForeground), typeof(Brush), typeof(GlassScrollBar));
+
+        /// <summary>
+        /// Foreground of the buttons when the control is disabled.
+        /// </summary>
+        public Brush ButtonsForegroundOnDisabled
+        {
+            get => (Brush)GetValue(ButtonsForegroundOnDisabledProperty);
+            set => SetValue(ButtonsForegroundOnDisabledProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ButtonsForegroundOnDisabled"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ButtonsForegroundOnDisabledProperty =
+            DependencyProperty.Register(nameof(ButtonsForegroundOnDisabled), typeof(Brush), typeof(GlassScrollBar));
 
         /// <summary>
         /// Content of the increase button.
@@ -174,50 +360,7 @@ namespace FullControls
         public static readonly DependencyProperty DecreaseButtonContentProperty =
             DependencyProperty.Register(nameof(DecreaseButtonContent), typeof(object), typeof(GlassScrollBar));
 
-        /// <summary>
-        /// Foreground of the increase button.
-        /// </summary>
-        public Brush IncreaseButtonForeground
-        {
-            get => (Brush)GetValue(IncreaseButtonForegroundProperty);
-            set => SetValue(IncreaseButtonForegroundProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="IncreaseButtonForeground"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty IncreaseButtonForegroundProperty =
-            DependencyProperty.Register(nameof(IncreaseButtonForeground), typeof(Brush), typeof(GlassScrollBar));
-
-        /// <summary>
-        /// Foreground of the decrease button.
-        /// </summary>
-        public Brush DecreaseButtonForeground
-        {
-            get => (Brush)GetValue(DecreaseButtonForegroundProperty);
-            set => SetValue(DecreaseButtonForegroundProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="DecreaseButtonForeground"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty DecreaseButtonForegroundProperty =
-            DependencyProperty.Register(nameof(DecreaseButtonForeground), typeof(Brush), typeof(GlassScrollBar));
-
-        /// <summary>
-        /// Background of the thumb.
-        /// </summary>
-        public Brush ThumbBackground
-        {
-            get => (Brush)GetValue(ThumbBackgroundProperty);
-            set => SetValue(ThumbBackgroundProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="ThumbBackground"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ThumbBackgroundProperty =
-            DependencyProperty.Register(nameof(ThumbBackground), typeof(Brush), typeof(GlassScrollBar));
+        #endregion
 
 
         /// <summary>

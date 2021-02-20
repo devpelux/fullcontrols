@@ -7,7 +7,6 @@
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml"/>
-                    <ResourceDictionary Source="/FullControls;component/Resources/GenericResources.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
@@ -72,8 +71,6 @@
         <Setter Property="TextAlignment" Value="Left"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
-        <Setter Property="VerticalScrollBarVisibility" Value="Hidden"/>
         <Setter Property="TextType" Value="Text"/>
         <Setter Property="ExternalBackground" Value="{x:Null}"/>
         <Setter Property="ExternalBorderBrush" Value="{x:Null}"/>
@@ -84,7 +81,20 @@
         <Setter Property="AutoMargin" Value="False"/>
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-        
+
+        <Setter Property="ScrollViewerStyle">
+            <Setter.Value>
+                <Style TargetType="{x:Type local:GlassScrollViewer}">
+                    <Setter Property="VerticalScrollBarThickness" Value="5"/>
+                    <Setter Property="VerticalScrollBarCornerRadius" Value="0"/>
+                    <Setter Property="VerticalScrollBarThumbCornerRadius" Value="2"/>
+                    <Setter Property="HorizontalScrollBarThickness" Value="5"/>
+                    <Setter Property="HorizontalScrollBarCornerRadius" Value="0"/>
+                    <Setter Property="HorizontalScrollBarThumbCornerRadius" Value="2"/>
+                </Style>
+            </Setter.Value>
+        </Setter>
+
         <Setter Property="ContextMenu">
             <Setter.Value>
                 <local:FlatContextMenu>
@@ -179,10 +189,13 @@
                                     CornerRadius="{TemplateBinding CornerRadius}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                                 <Grid x:Name="PART_TextBoxGrid">
-                                    <ScrollViewer x:Name="PART_ContentHost"
-                                                  HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}"
-                                                  VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
-                                                  Focusable="False"/>
+                                    <local:GlassScrollViewer x:Name="PART_ContentHost"
+                                                             Style="{TemplateBinding ScrollViewerStyle}"
+                                                             HorizontalContentAlignment="Stretch"
+                                                             VerticalContentAlignment="Stretch"
+                                                             HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}"
+                                                             VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
+                                                             Focusable="False"/>
                                     <TextBlock x:Name="PART_Hint"
                                                Margin="{TemplateBinding Padding}"
                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"

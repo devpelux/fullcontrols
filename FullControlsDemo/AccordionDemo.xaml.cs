@@ -48,7 +48,6 @@ namespace FullControlsDemo
             accordionItem.ItemsSource = Clone(shapes);
             accordionItem.Header = "SHAPES";
             accordionItem.IsExpanded = true;
-            accordionItem.IsEnabled = false;
 
             ItemsControlAccordionItem accordionItem2 = new ItemsControlAccordionItem();
             accordionItem2.ItemTemplate = (DataTemplate)FindResource("ShapeItemTemplate");

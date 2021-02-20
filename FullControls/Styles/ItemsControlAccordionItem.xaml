@@ -3,7 +3,6 @@
                     xmlns:local="clr-namespace:FullControls">
 
     <Style TargetType="{x:Type local:ItemsControlAccordionItem}">
-        
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="ForegroundOnExpanded" Value="Black"/>
         <Setter Property="ForegroundOnMouseOver" Value="Black"/>

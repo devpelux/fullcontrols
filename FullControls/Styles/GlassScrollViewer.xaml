@@ -3,116 +3,203 @@
                     xmlns:local="clr-namespace:FullControls">
 
     <Style TargetType="{x:Type local:GlassScrollViewer}" BasedOn="{StaticResource {x:Type ScrollViewer}}">
-        <Style.Resources>
-            <ResourceDictionary>
-                <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml"/>
-                    <ResourceDictionary Source="/FullControls;component/Resources/GenericResources.xaml"/>
-                    <ResourceDictionary Source="/FullControls;component/Styles/Core/GlassScrollBarResources.xaml"/>
-                </ResourceDictionary.MergedDictionaries>
-            </ResourceDictionary>
-        </Style.Resources>
-        <Setter Property="CanContentScroll" Value="True"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{x:Null}"/>
+        <Setter Property="InsideBorderBrush" Value="{x:Null}"/>
+        <Setter Property="InsideBorderThickness" Value="0"/>
         <Setter Property="PlaceScrollBarsInside" Value="False"/>
-        <Setter Property="VerticalScrollBarMargin" Value="1,0,1,0"/>
-        <Setter Property="HorizontalScrollBarMargin" Value="0,1,0,1"/>
-        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
-        <Setter Property="ScrollBarsThickness" Value="10"/>
-        <Setter Property="ScrollBarsCornerRadius" Value="5"/>
-        <Setter Property="ScrollBarsOpacityNormal" Value="0.6"/>
-        <Setter Property="ScrollBarsOpacityOnMouseOver" Value="0.8"/>
-        <Setter Property="ScrollBarsOpacityOnMouseDown" Value="0.7"/>
-        <Setter Property="ScrollBarsColor" Value="{DynamicResource Gray10}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="EnableButtons" Value="False"/>
-        <Setter Property="ButtonsSize" Value="10"/>
-        <Setter Property="ButtonsFont" Value="Segoe MDL2 Assets"/>
-        <Setter Property="ButtonsContentSize" Value="10"/>
-        <Setter Property="UpButtonContent" Value="&#xEDDB;"/>
-        <Setter Property="DownButtonContent" Value="&#xEDDC;"/>
+        <Setter Property="CanContentScroll" Value="True"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+
+        <!--#region Horizontal ScrollBar-->
+
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="HorizontalScrollBarThickness" Value="10"/>
+        <Setter Property="HorizontalScrollBarAreaPadding" Value="0"/>
+        <Setter Property="HorizontalScrollBarPadding" Value="0"/>
+        <Setter Property="HorizontalScrollBarCornerRadius" Value="0"/>
+        <Setter Property="HorizontalScrollBarBorderThickness" Value="0"/>
+        <Setter Property="HorizontalScrollBarBackground" Value="Transparent"/>
+        <Setter Property="HorizontalScrollBarBorderBrush" Value="{x:Null}"/>
+        <Setter Property="HorizontalScrollBarForeground" Value="LightSlateGray"/>
+        <Setter Property="HorizontalScrollBarForegroundOnDisabled" Value="Gray"/>
+        <Setter Property="HorizontalScrollBarThumbPadding" Value="0"/>
+        <Setter Property="HorizontalScrollBarThumbCornerRadius" Value="5"/>
+        <Setter Property="HorizontalScrollBarThumbBorderThickness" Value="0"/>
+        <Setter Property="HorizontalScrollBarThumbBorderBrush" Value="{x:Null}"/>
+        <Setter Property="HorizontalScrollBarOpacityNormal" Value="0.6"/>
+        <Setter Property="HorizontalScrollBarOpacityOnMouseOver" Value="0.8"/>
+        <Setter Property="HorizontalScrollBarOpacityOnMouseDown" Value="0.7"/>
+        <Setter Property="HorizontalScrollBarButtonsSize" Value="10"/>
+        <Setter Property="HorizontalScrollBarButtonsFont" Value="Segoe MDL2 Assets"/>
+        <Setter Property="HorizontalScrollBarButtonsFontSize" Value="10"/>
+        <Setter Property="HorizontalScrollBarButtonsCornerRadius" Value="0"/>
+        <Setter Property="HorizontalScrollBarButtonsBackground" Value="Transparent"/>
+        <Setter Property="HorizontalScrollBarButtonsBorderBrush" Value="{x:Null}"/>
+        <Setter Property="HorizontalScrollBarButtonsBorderThickness" Value="0"/>
+        <Setter Property="HorizontalScrollBarButtonsForeground" Value="Black"/>
+        <Setter Property="HorizontalScrollBarButtonsForegroundOnDisabled" Value="Black"/>
         <Setter Property="LeftButtonContent" Value="&#xEDD9;"/>
         <Setter Property="RightButtonContent" Value="&#xEDDA;"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="HorizontalScrollBarContextMenu" Value="{x:Null}"/>
+
+        <!--#endregion-->
+
+        <!--#region Vertical ScrollBar-->
+
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="VerticalScrollBarThickness" Value="10"/>
+        <Setter Property="VerticalScrollBarAreaPadding" Value="0"/>
+        <Setter Property="VerticalScrollBarPadding" Value="0"/>
+        <Setter Property="VerticalScrollBarCornerRadius" Value="0"/>
+        <Setter Property="VerticalScrollBarBorderThickness" Value="0"/>
+        <Setter Property="VerticalScrollBarBackground" Value="Transparent"/>
+        <Setter Property="VerticalScrollBarBorderBrush" Value="{x:Null}"/>
+        <Setter Property="VerticalScrollBarForeground" Value="LightSlateGray"/>
+        <Setter Property="VerticalScrollBarForegroundOnDisabled" Value="Gray"/>
+        <Setter Property="VerticalScrollBarThumbPadding" Value="0"/>
+        <Setter Property="VerticalScrollBarThumbCornerRadius" Value="5"/>
+        <Setter Property="VerticalScrollBarThumbBorderThickness" Value="0"/>
+        <Setter Property="VerticalScrollBarThumbBorderBrush" Value="{x:Null}"/>
+        <Setter Property="VerticalScrollBarOpacityNormal" Value="0.6"/>
+        <Setter Property="VerticalScrollBarOpacityOnMouseOver" Value="0.8"/>
+        <Setter Property="VerticalScrollBarOpacityOnMouseDown" Value="0.7"/>
+        <Setter Property="VerticalScrollBarButtonsSize" Value="10"/>
+        <Setter Property="VerticalScrollBarButtonsFont" Value="Segoe MDL2 Assets"/>
+        <Setter Property="VerticalScrollBarButtonsFontSize" Value="10"/>
+        <Setter Property="VerticalScrollBarButtonsCornerRadius" Value="0"/>
+        <Setter Property="VerticalScrollBarButtonsBackground" Value="Transparent"/>
+        <Setter Property="VerticalScrollBarButtonsBorderBrush" Value="{x:Null}"/>
+        <Setter Property="VerticalScrollBarButtonsBorderThickness" Value="0"/>
+        <Setter Property="VerticalScrollBarButtonsForeground" Value="Black"/>
+        <Setter Property="VerticalScrollBarButtonsForegroundOnDisabled" Value="Black"/>
+        <Setter Property="UpButtonContent" Value="&#xEDDB;"/>
+        <Setter Property="DownButtonContent" Value="&#xEDDC;"/>
+        <Setter Property="VerticalScrollBarContextMenu" Value="{x:Null}"/>
+
+        <!--#endregion-->
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:GlassScrollViewer}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="Auto"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Border x:Name="PART_Border"
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Grid.RowSpan="1"
-                                Grid.ColumnSpan="1"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                Background="{TemplateBinding Background}"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                            <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
-                                                    Margin="{TemplateBinding Padding}"/>
-                        </Border>
-                        <local:GlassScrollBar x:Name="PART_VerticalScrollBar"
-                                              Grid.Row="0"
-                                              Grid.Column="1"
-                                              Margin="{TemplateBinding VerticalScrollBarMargin}"
-                                              Minimum="0"
-                                              Maximum="{TemplateBinding ScrollableHeight}"
-                                              Value="{TemplateBinding VerticalOffset}"
-                                              ViewportSize="{TemplateBinding ViewportHeight}"
-                                              Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
-                                              Background="Transparent"
-                                              CornerRadius="{TemplateBinding ScrollBarsCornerRadius}"
-                                              OpacityNormal="{TemplateBinding ScrollBarsOpacityNormal}"
-                                              OpacityOnMouseOver="{TemplateBinding ScrollBarsOpacityOnMouseOver}"
-                                              OpacityOnMouseDown="{TemplateBinding ScrollBarsOpacityOnMouseDown}"
-                                              Thickness="{TemplateBinding ScrollBarsThickness}"
-                                              ButtonsSize="{TemplateBinding ButtonsSize}"
-                                              ButtonsFont="{TemplateBinding ButtonsFont}"
-                                              ButtonsContentSize="{TemplateBinding ButtonsContentSize}"
-                                              EnableButtons="{TemplateBinding EnableButtons}"
-                                              ThumbBackground="{TemplateBinding ScrollBarsColor}"
-                                              IncreaseButtonForeground="{TemplateBinding ScrollBarsColor}"
-                                              DecreaseButtonForeground="{TemplateBinding ScrollBarsColor}"
-                                              DecreaseButtonContent="{TemplateBinding UpButtonContent}"
-                                              IncreaseButtonContent="{TemplateBinding DownButtonContent}"
-                                              ContextMenu="{TemplateBinding VerticalScrollBarContextMenu}"
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                              Orientation="Vertical"/>
-                        <local:GlassScrollBar x:Name="PART_HorizontalScrollBar"
-                                              Grid.Row="1"
-                                              Grid.Column="0"
-                                              Margin="{TemplateBinding HorizontalScrollBarMargin}"
-                                              Minimum="0"
-                                              Maximum="{TemplateBinding ScrollableWidth}"
-                                              Value="{TemplateBinding HorizontalOffset}"
-                                              ViewportSize="{TemplateBinding ViewportWidth}"
-                                              Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
-                                              Background="Transparent"
-                                              CornerRadius="{TemplateBinding ScrollBarsCornerRadius}"
-                                              OpacityNormal="{TemplateBinding ScrollBarsOpacityNormal}"
-                                              OpacityOnMouseOver="{TemplateBinding ScrollBarsOpacityOnMouseOver}"
-                                              OpacityOnMouseDown="{TemplateBinding ScrollBarsOpacityOnMouseDown}"
-                                              Thickness="{TemplateBinding ScrollBarsThickness}"
-                                              ButtonsSize="{TemplateBinding ButtonsSize}"
-                                              ButtonsFont="{TemplateBinding ButtonsFont}"
-                                              ButtonsContentSize="{TemplateBinding ButtonsContentSize}"
-                                              EnableButtons="{TemplateBinding EnableButtons}"
-                                              ThumbBackground="{TemplateBinding ScrollBarsColor}"
-                                              IncreaseButtonForeground="{TemplateBinding ScrollBarsColor}"
-                                              DecreaseButtonForeground="{TemplateBinding ScrollBarsColor}"
-                                              DecreaseButtonContent="{TemplateBinding LeftButtonContent}"
-                                              IncreaseButtonContent="{TemplateBinding RightButtonContent}"
-                                              ContextMenu="{TemplateBinding HorizontalScrollBarContextMenu}"
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                              Orientation="Horizontal"/>
-                    </Grid>
+                    <Border Background="{TemplateBinding Foreground}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Border x:Name="PART_Border"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.RowSpan="1"
+                                    Grid.ColumnSpan="1"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding InsideBorderBrush}"
+                                    BorderThickness="{TemplateBinding InsideBorderThickness}">
+                                <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
+                                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                        CanContentScroll="{TemplateBinding CanContentScroll}"
+                                                        Margin="{TemplateBinding Padding}"
+                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                            </Border>
+                            <local:GlassScrollBar x:Name="PART_HorizontalScrollBar"
+                                                  Grid.Row="1"
+                                                  Grid.Column="0"
+                                                  Margin="{TemplateBinding HorizontalScrollBarAreaPadding}"
+                                                  Height="{TemplateBinding HorizontalScrollBarThickness}"
+                                                  Padding="{TemplateBinding HorizontalScrollBarPadding}"
+                                                  CornerRadius="{TemplateBinding HorizontalScrollBarCornerRadius}"
+                                                  BorderThickness="{TemplateBinding HorizontalScrollBarBorderThickness}"
+                                                  Background="{TemplateBinding HorizontalScrollBarBackground}"
+                                                  BorderBrush="{TemplateBinding HorizontalScrollBarBorderBrush}"
+                                                  Foreground="{TemplateBinding HorizontalScrollBarForeground}"
+                                                  ForegroundOnDisabled="{TemplateBinding HorizontalScrollBarForegroundOnDisabled}"
+                                                  ThumbPadding="{TemplateBinding HorizontalScrollBarThumbPadding}"
+                                                  ThumbCornerRadius="{TemplateBinding HorizontalScrollBarThumbCornerRadius}"
+                                                  ThumbBorderThickness="{TemplateBinding HorizontalScrollBarThumbBorderThickness}"
+                                                  ThumbBorderBrush="{TemplateBinding HorizontalScrollBarThumbBorderBrush}"
+                                                  OpacityNormal="{TemplateBinding HorizontalScrollBarOpacityNormal}"
+                                                  OpacityOnMouseOver="{TemplateBinding HorizontalScrollBarOpacityOnMouseOver}"
+                                                  OpacityOnMouseDown="{TemplateBinding HorizontalScrollBarOpacityOnMouseDown}"
+                                                  EnableButtons="{TemplateBinding EnableButtons}"
+                                                  ButtonsSize="{TemplateBinding HorizontalScrollBarButtonsSize}"
+                                                  ButtonsFont="{TemplateBinding HorizontalScrollBarButtonsFont}"
+                                                  ButtonsFontSize="{TemplateBinding HorizontalScrollBarButtonsFontSize}"
+                                                  ButtonsCornerRadius="{TemplateBinding HorizontalScrollBarButtonsCornerRadius}"
+                                                  ButtonsBackground="{TemplateBinding HorizontalScrollBarButtonsBackground}"
+                                                  ButtonsBorderBrush="{TemplateBinding HorizontalScrollBarButtonsBorderBrush}"
+                                                  ButtonsBorderThickness="{TemplateBinding HorizontalScrollBarButtonsBorderThickness}"
+                                                  ButtonsForeground="{TemplateBinding HorizontalScrollBarButtonsForeground}"
+                                                  ButtonsForegroundOnDisabled="{TemplateBinding HorizontalScrollBarButtonsForegroundOnDisabled}"
+                                                  DecreaseButtonContent="{TemplateBinding LeftButtonContent}"
+                                                  IncreaseButtonContent="{TemplateBinding RightButtonContent}"
+                                                  ContextMenu="{TemplateBinding HorizontalScrollBarContextMenu}"
+                                                  Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+                                                  ScrollDelay="{TemplateBinding ScrollDelay}"
+                                                  ScrollInterval="{TemplateBinding ScrollInterval}"
+                                                  Minimum="0"
+                                                  Maximum="{TemplateBinding ScrollableWidth}"
+                                                  Value="{TemplateBinding HorizontalOffset}"
+                                                  ViewportSize="{TemplateBinding ViewportWidth}"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                  Orientation="Horizontal"/>
+                            <local:GlassScrollBar x:Name="PART_VerticalScrollBar"
+                                                  Grid.Row="0"
+                                                  Grid.Column="1"
+                                                  Margin="{TemplateBinding VerticalScrollBarAreaPadding}"
+                                                  Width="{TemplateBinding VerticalScrollBarThickness}"
+                                                  Padding="{TemplateBinding VerticalScrollBarPadding}"
+                                                  CornerRadius="{TemplateBinding VerticalScrollBarCornerRadius}"
+                                                  BorderThickness="{TemplateBinding VerticalScrollBarBorderThickness}"
+                                                  Background="{TemplateBinding VerticalScrollBarBackground}"
+                                                  BorderBrush="{TemplateBinding VerticalScrollBarBorderBrush}"
+                                                  Foreground="{TemplateBinding VerticalScrollBarForeground}"
+                                                  ForegroundOnDisabled="{TemplateBinding VerticalScrollBarForegroundOnDisabled}"
+                                                  ThumbPadding="{TemplateBinding VerticalScrollBarThumbPadding}"
+                                                  ThumbCornerRadius="{TemplateBinding VerticalScrollBarThumbCornerRadius}"
+                                                  ThumbBorderThickness="{TemplateBinding VerticalScrollBarThumbBorderThickness}"
+                                                  ThumbBorderBrush="{TemplateBinding VerticalScrollBarThumbBorderBrush}"
+                                                  OpacityNormal="{TemplateBinding VerticalScrollBarOpacityNormal}"
+                                                  OpacityOnMouseOver="{TemplateBinding VerticalScrollBarOpacityOnMouseOver}"
+                                                  OpacityOnMouseDown="{TemplateBinding VerticalScrollBarOpacityOnMouseDown}"
+                                                  EnableButtons="{TemplateBinding EnableButtons}"
+                                                  ButtonsSize="{TemplateBinding VerticalScrollBarButtonsSize}"
+                                                  ButtonsFont="{TemplateBinding VerticalScrollBarButtonsFont}"
+                                                  ButtonsFontSize="{TemplateBinding VerticalScrollBarButtonsFontSize}"
+                                                  ButtonsCornerRadius="{TemplateBinding VerticalScrollBarButtonsCornerRadius}"
+                                                  ButtonsBackground="{TemplateBinding VerticalScrollBarButtonsBackground}"
+                                                  ButtonsBorderBrush="{TemplateBinding VerticalScrollBarButtonsBorderBrush}"
+                                                  ButtonsBorderThickness="{TemplateBinding VerticalScrollBarButtonsBorderThickness}"
+                                                  ButtonsForeground="{TemplateBinding VerticalScrollBarButtonsForeground}"
+                                                  ButtonsForegroundOnDisabled="{TemplateBinding VerticalScrollBarButtonsForegroundOnDisabled}"
+                                                  DecreaseButtonContent="{TemplateBinding UpButtonContent}"
+                                                  IncreaseButtonContent="{TemplateBinding DownButtonContent}"
+                                                  ContextMenu="{TemplateBinding VerticalScrollBarContextMenu}"
+                                                  Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                                                  ScrollDelay="{TemplateBinding ScrollDelay}"
+                                                  ScrollInterval="{TemplateBinding ScrollInterval}"
+                                                  Minimum="0"
+                                                  Maximum="{TemplateBinding ScrollableHeight}"
+                                                  Value="{TemplateBinding VerticalOffset}"
+                                                  ViewportSize="{TemplateBinding ViewportHeight}"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                  Orientation="Vertical"/>
+                        </Grid>
+                    </Border>
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="PlaceScrollBarsInside" Value="True">
@@ -124,5 +211,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
 </ResourceDictionary>

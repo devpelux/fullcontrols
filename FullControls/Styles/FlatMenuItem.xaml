@@ -7,7 +7,6 @@
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml"/>
-                    <ResourceDictionary Source="/FullControls;component/Resources/GenericResources.xaml"/>
                     <ResourceDictionary Source="/FullControls;component/Styles/Core/FlatMenuItemResources.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
@@ -53,8 +52,12 @@
         <Setter Property="ScrollViewerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type local:GlassScrollViewer}">
-                    <Setter Property="ScrollBarsThickness" Value="5"/>
-                    <Setter Property="ScrollBarsCornerRadius" Value="2"/>
+                    <Setter Property="VerticalScrollBarThickness" Value="5"/>
+                    <Setter Property="VerticalScrollBarCornerRadius" Value="0"/>
+                    <Setter Property="VerticalScrollBarThumbCornerRadius" Value="2"/>
+                    <Setter Property="HorizontalScrollBarThickness" Value="5"/>
+                    <Setter Property="HorizontalScrollBarCornerRadius" Value="0"/>
+                    <Setter Property="HorizontalScrollBarThumbCornerRadius" Value="2"/>
                 </Style>
             </Setter.Value>
         </Setter>

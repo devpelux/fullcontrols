@@ -11,6 +11,7 @@
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
+        
         <Setter Property="MinWidth" Value="150"/>
         <Setter Property="MinHeight" Value="30"/>
         <Setter Property="Background" Value="White"/>
@@ -65,8 +66,12 @@
         <Setter Property="ScrollViewerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type local:GlassScrollViewer}">
-                    <Setter Property="ScrollBarsThickness" Value="5"/>
-                    <Setter Property="ScrollBarsCornerRadius" Value="2"/>
+                    <Setter Property="VerticalScrollBarThickness" Value="5"/>
+                    <Setter Property="VerticalScrollBarCornerRadius" Value="0"/>
+                    <Setter Property="VerticalScrollBarThumbCornerRadius" Value="2"/>
+                    <Setter Property="HorizontalScrollBarThickness" Value="5"/>
+                    <Setter Property="HorizontalScrollBarCornerRadius" Value="0"/>
+                    <Setter Property="HorizontalScrollBarThumbCornerRadius" Value="2"/>
                 </Style>
             </Setter.Value>
         </Setter>

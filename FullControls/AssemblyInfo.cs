@@ -3,8 +3,10 @@ using System.Windows.Markup;
 
 [assembly: XmlnsPrefix("http://devpelux.github.io/fullcontrols", "fc")]
 [assembly: XmlnsPrefix("http://devpelux.github.io/fullcontrols/extra", "fce")]
+[assembly: XmlnsPrefix("http://devpelux.github.io/fullcontrols/components", "fcc")]
 [assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols", "FullControls")]
 [assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols/extra", "FullControls.Extra")]
+[assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols/components", "FullControls.Components")]
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
