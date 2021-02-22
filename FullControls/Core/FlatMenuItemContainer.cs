@@ -4,7 +4,7 @@ using System.Windows.Controls;
 namespace FullControls.Core
 {
     /// <summary>
-    /// Used to contain <see cref="FlatMenuItem"/>.
+    /// Used to contain menu items.
     /// </summary>
     internal class FlatMenuItemContainer : MenuItem
     {

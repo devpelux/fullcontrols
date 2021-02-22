@@ -1,4 +1,4 @@
-﻿using FullControls;
+﻿using FullControls.SystemControls;
 using System.Windows;
 
 namespace FullControlsDemo
