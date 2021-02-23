@@ -2,10 +2,10 @@
 using System.Windows;
 using System.Windows.Controls.Primitives;
 
-namespace FullControls.Components
+namespace FullControls.Controls.Components
 {
     /// <inheritdoc/>
-    [ToolboxItem(false)]
+    [DesignTimeVisible(false)]
     public class GlassThumb : Thumb
     {
         /// <summary>

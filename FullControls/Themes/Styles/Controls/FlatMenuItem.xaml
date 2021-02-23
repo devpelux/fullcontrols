@@ -7,7 +7,7 @@
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
                     <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml"/>
-                    <ResourceDictionary Source="/FullControls;component/Themes/Styles/Core/FlatMenuItemResources.xaml"/>
+                    <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Core/FlatMenuItemCore.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
@@ -47,14 +47,19 @@
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
 
         <Setter Property="ScrollViewerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type local:GlassScrollViewer}">
+                    <Setter Property="VerticalScrollBarAreaPadding" Value="1,0,1,0"/>
                     <Setter Property="VerticalScrollBarThickness" Value="5"/>
                     <Setter Property="VerticalScrollBarCornerRadius" Value="0"/>
                     <Setter Property="VerticalScrollBarThumbCornerRadius" Value="2"/>
+                    <Setter Property="HorizontalScrollBarAreaPadding" Value="0,1,0,1"/>
                     <Setter Property="HorizontalScrollBarThickness" Value="5"/>
                     <Setter Property="HorizontalScrollBarCornerRadius" Value="0"/>
                     <Setter Property="HorizontalScrollBarThumbCornerRadius" Value="2"/>

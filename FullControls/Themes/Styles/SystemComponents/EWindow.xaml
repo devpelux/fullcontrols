@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:FullControls.SystemControls"
+                    xmlns:local="clr-namespace:FullControls.SystemComponents"
                     xmlns:controls="clr-namespace:FullControls.Controls"
                     xmlns:extra="clr-namespace:FullControls.Extra">
 

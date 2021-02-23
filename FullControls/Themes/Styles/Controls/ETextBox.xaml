@@ -85,9 +85,11 @@
         <Setter Property="ScrollViewerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type local:GlassScrollViewer}">
+                    <Setter Property="VerticalScrollBarAreaPadding" Value="1,0,1,0"/>
                     <Setter Property="VerticalScrollBarThickness" Value="5"/>
                     <Setter Property="VerticalScrollBarCornerRadius" Value="0"/>
                     <Setter Property="VerticalScrollBarThumbCornerRadius" Value="2"/>
+                    <Setter Property="HorizontalScrollBarAreaPadding" Value="0,1,0,1"/>
                     <Setter Property="HorizontalScrollBarThickness" Value="5"/>
                     <Setter Property="HorizontalScrollBarCornerRadius" Value="0"/>
                     <Setter Property="HorizontalScrollBarThumbCornerRadius" Value="2"/>

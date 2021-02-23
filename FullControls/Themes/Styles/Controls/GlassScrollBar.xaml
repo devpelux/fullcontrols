@@ -6,7 +6,7 @@
         <Style.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="/FullControls;component/Themes/Styles/Core/GlassScrollBarResources.xaml"/>
+                    <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Core/GlassScrollBarCore.xaml"/>
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>

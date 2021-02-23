@@ -1,4 +1,4 @@
-﻿namespace FullControls.SystemControls
+﻿namespace FullControls.SystemComponents
 {
     /// <summary>
     /// Define an object that can return a result.

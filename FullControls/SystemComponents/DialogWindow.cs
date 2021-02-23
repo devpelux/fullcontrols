@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace FullControls.SystemControls
+namespace FullControls.SystemComponents
 {
     /// <summary>
     /// Incapsulates a <see cref="Window"/> to be displayed as dialog and, in the end, return an <see cref="object"/> as result.

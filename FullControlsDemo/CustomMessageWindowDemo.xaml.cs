@@ -1,4 +1,4 @@
-﻿using FullControls.SystemControls;
+﻿using FullControls.SystemComponents;
 using System.Media;
 using System.Windows;
 

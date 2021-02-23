@@ -23,11 +23,11 @@
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/SimpleAccordionItem.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Switcher.xaml" />
 
-        <!-- SystemControls -->
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemControls/EWindow.xaml" />
+        <!-- Controls components -->
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Components/GlassRepeatButton.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Components/GlassThumb.xaml" />
 
-        <!-- Components -->
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Components/GlassRepeatButton.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Components/GlassThumb.xaml" />
+        <!-- SystemComponents -->
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/EWindow.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
