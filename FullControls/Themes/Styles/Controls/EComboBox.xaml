@@ -11,7 +11,7 @@
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
-        
+
         <Setter Property="MinWidth" Value="150"/>
         <Setter Property="MinHeight" Value="30"/>
         <Setter Property="Background" Value="White"/>
@@ -59,10 +59,10 @@
         <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
         <Setter Property="IsTabStop" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-        
+
         <Setter Property="ScrollViewerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type local:GlassScrollViewer}">

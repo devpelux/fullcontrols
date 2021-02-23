@@ -14,13 +14,11 @@
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <Setter Property="EnableButtons" Value="False"/>
-        <Setter Property="CanContentScroll" Value="True"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
 
         <!--#region Horizontal ScrollBar-->
 
-        <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="HorizontalScrollBarThickness" Value="10"/>
         <Setter Property="HorizontalScrollBarAreaPadding" Value="0"/>
         <Setter Property="HorizontalScrollBarPadding" Value="0"/>
@@ -54,7 +52,6 @@
 
         <!--#region Vertical ScrollBar-->
 
-        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="VerticalScrollBarThickness" Value="10"/>
         <Setter Property="VerticalScrollBarAreaPadding" Value="0"/>
         <Setter Property="VerticalScrollBarPadding" Value="0"/>

@@ -26,8 +26,9 @@
         <!--#endregion-->
 
         <fc:GlassScrollViewer Margin="60,60,60,60" BorderBrush="LightGray" BorderThickness="1" PlaceScrollBarsInside="True"
-                              VerticalScrollBarContextMenu="{DynamicResource VerticalGlassScrollBarContextMenu}"
-                              HorizontalScrollBarContextMenu="{DynamicResource HorizontalGlassScrollBarContextMenu}">
+                              HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarContextMenu="{DynamicResource HorizontalGlassScrollBarContextMenu}"
+                              VerticalScrollBarContextMenu="{DynamicResource VerticalGlassScrollBarContextMenu}">
             <Grid Background="WhiteSmoke" Width="550" Height="500" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <Rectangle Fill="Red" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,40,0,0" Height="60" Width="60"/>
                 <Rectangle Fill="Green" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,200,0,0" Height="50" Width="50"/>
