@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>FlatMenuTitle</dc:title>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style>.icon-canvas-transparent,.icon-vs-out{fill:#f6f6f6;}.icon-canvas-transparent{opacity:0;}.cls-1{fill:#424242;}.icon-vs-blue{fill:#1ba1e2;}</style>
+ </defs>
+ <title>FlatMenuTitle</title>
+ <g id="canvas">
+  <rect class="icon-canvas-transparent" width="16" height="16"/>
+ </g>
+ <g id="outline">
+  <polygon class="icon-vs-out" points="10 3 10 0 0 0 0 3 0 5 0 16 16 16 16 3"/>
+ </g>
+ <g id="iconBg">
+  <path class="cls-1" d="m9 4v-3h-8v14h14v-11zm-7-2h6v2h-6zm12 12h-12v-9h12z"/>
+  <rect class="cls-1" x="3" y="12" width="8" height="1"/>
+  <rect class="cls-1" x="3" y="12" width="8" height="1"/>
+ </g>
+ <rect x="3" y="9" width="10" height="1" fill="#424242"/>
+ <rect x="3" y="6" width="7" height="1" fill="#1ba1e2" stroke-width=".83666"/>
+</svg>

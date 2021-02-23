@@ -38,8 +38,37 @@ General optimizations and bugfixes.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.Accordion.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.Collapsible.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.EButton.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ECheckBox.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.EComboBox.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.EComboBoxItem.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.EPasswordBox.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ERadioButton.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ERepeatButton.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ETextBox.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.EToggleButton.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.FlatContextMenu.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.FlatMenu.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.FlatMenuItem.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.FlatMenuSeparator.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.FlatMenuSpace.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.FlatMenuTitle.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.GlassScrollBar.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.GlassScrollViewer.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ItemsControlAccordionItem.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.SimpleAccordionItem.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.Switcher.icon.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
     <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="Resources\Icons\FullControls.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <title>FlatContextMenu</title>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>FlatContextMenu</dc:title>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <style>.st0{opacity:0}.st0,.st1{fill:#f6f6f6}.st2{fill:#424242}.st3{fill:#f0eff1}</style>
+ <g id="outline">
+  <path class="st0" d="M0 0h16v16H0z"/>
+  <path class="st1" d="M6.781 5L1.393 0H0v10.815l1-1.098V16h15V5z"/>
+ </g>
+ <g id="icon_x5F_bg">
+  <path class="st2" d="M4.955 8.463L3.869 5.998h2.518L1 1v7.231l1.629-1.789 1.137 2.562zM4 11h7v1H4zM6.189 9l-2.198 1H13V9z"/>
+  <path class="st2" d="M7.859 6l1.092 1H14v7H3V9.744l-.664-1.495-.336.37V15h13V6z"/>
+ </g>
+ <path id="icon_x5F_fg" class="st3" d="M5.403 7l.865 1.964L6.189 9H13v1H3.991l-.73.332L3 9.744V14h11V7H5.403zM11 12H4v-1h7v1z"/>
+</svg>

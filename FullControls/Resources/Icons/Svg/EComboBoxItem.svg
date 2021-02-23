@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16" height="16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <title>EComboBoxItem</title>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>EComboBoxItem</dc:title>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <style type="text/css">.icon-canvas-transparent{opacity:0;fill:#F6F6F6;} .icon-vs-out{fill:#F6F6F6;} .icon-vs-bg{fill:#424242;} .icon-vs-fg{fill:#F0EFF1;}</style>
+ <path id="canvas" class="icon-canvas-transparent" d="m16 16h-16v-16h16v16z"/>
+ <path id="outline" class="icon-vs-out" d="m16 0v16h-14v-10h-2v-6h16z"/>
+ <path id="iconBg" class="icon-vs-bg" d="m10 7h-5v-1h5v1zm1 5h-6v1h6v-1zm4-11v14h-12v-10h-2v-4h14zm-6 3v-2h-7v2h7zm5 7h-10v3h10v-3zm-1-1v-1h-8v1h8zm1-5h-10v3h10v-3zm0-3h-4l2 2 2-2z"/>
+ <path id="iconFg" class="icon-vs-fg" d="m9 4h-7v-2h7v2zm5-2h-4l2 2 2-2zm-10 3h10v3h-10v-3zm1 2h5v-1h-5v1zm-1 4h10v3h-10v-3zm1 2h6v-1h-6v1zm0-4v1h8v-1h-8z"/>
+</svg>
