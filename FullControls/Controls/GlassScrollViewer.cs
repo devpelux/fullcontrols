@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using FullControls.Core;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -904,7 +905,9 @@ namespace FullControls.Controls
         /// Identifies the <see cref="ScrollDelay"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ScrollDelayProperty =
-            DependencyProperty.Register(nameof(ScrollDelay), typeof(int), typeof(GlassScrollViewer), new FrameworkPropertyMetadata(SystemParameters.KeyboardDelay));
+            DependencyProperty.Register(nameof(ScrollDelay), typeof(int), typeof(GlassScrollViewer),
+                new FrameworkPropertyMetadata(Utility.GetKeyboardDelay()),
+                new ValidateValueCallback(GlassScrollBar.IsScrollDelayValid));
 
         /// <summary>
         /// Gets or sets the amount of time, in milliseconds, the sctollbars repeats scrolling once repeating starts. The value must be non-negative.
@@ -919,7 +922,9 @@ namespace FullControls.Controls
         /// Identifies the <see cref="ScrollInterval"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ScrollIntervalProperty =
-            DependencyProperty.Register(nameof(ScrollInterval), typeof(int), typeof(GlassScrollViewer), new FrameworkPropertyMetadata(SystemParameters.KeyboardSpeed));
+            DependencyProperty.Register(nameof(ScrollInterval), typeof(int), typeof(GlassScrollViewer),
+                new FrameworkPropertyMetadata(Utility.GetKeyboardSpeed()),
+                new ValidateValueCallback(GlassScrollBar.IsScrollIntervalValid));
 
         #endregion
 

@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:fc="http://devpelux.github.io/fullcontrols">
-    
+
     <Style x:Key="ETextBoxDark" TargetType="{x:Type fc:ETextBox}">
         <Setter Property="Background" Value="#FF333337"/>
         <Setter Property="BackgroundOnSelected" Value="#FF333337"/>
@@ -306,6 +306,30 @@
         <Setter Property="ForegroundOnMouseOver" Value="WhiteSmoke"/>
         <Setter Property="ForegroundOnMouseOverOnExpanded" Value="WhiteSmoke"/>
         <Setter Property="ForegroundOnDisabled" Value="Gray"/>
+    </Style>
+
+    <Style x:Key="GlassScrollBarDark" TargetType="{x:Type fc:GlassScrollBar}">
+        <Setter Property="Background" Value="#33ffffff"/>
+        <Setter Property="Foreground" Value="WhiteSmoke"/>
+        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
+        <Setter Property="ButtonsBackground" Value="Transparent"/>
+        <Setter Property="ButtonsForeground" Value="WhiteSmoke"/>
+        <Setter Property="ButtonsForegroundOnDisabled" Value="WhiteSmoke"/>
+    </Style>
+
+    <Style x:Key="GlassScrollViewerDark" TargetType="{x:Type fc:GlassScrollViewer}">
+        <Setter Property="HorizontalScrollBarBackground" Value="Transparent"/>
+        <Setter Property="HorizontalScrollBarForeground" Value="LightSlateGray"/>
+        <Setter Property="HorizontalScrollBarForegroundOnDisabled" Value="Gray"/>
+        <Setter Property="HorizontalScrollBarButtonsBackground" Value="Transparent"/>
+        <Setter Property="HorizontalScrollBarButtonsForeground" Value="Black"/>
+        <Setter Property="HorizontalScrollBarButtonsForegroundOnDisabled" Value="Black"/>
+        <Setter Property="VerticalScrollBarBackground" Value="Transparent"/>
+        <Setter Property="VerticalScrollBarForeground" Value="LightSlateGray"/>
+        <Setter Property="VerticalScrollBarForegroundOnDisabled" Value="Gray"/>
+        <Setter Property="VerticalScrollBarButtonsBackground" Value="Transparent"/>
+        <Setter Property="VerticalScrollBarButtonsForeground" Value="Black"/>
+        <Setter Property="VerticalScrollBarButtonsForegroundOnDisabled" Value="Black"/>
     </Style>
 
 </ResourceDictionary>

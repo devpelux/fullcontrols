@@ -933,14 +933,14 @@ namespace FullControls.SystemComponents
             {
                 CaptionHeight = 0,
                 CornerRadius = new CornerRadius(0),
-                GlassFrameThickness = new Thickness(-1),
+                GlassFrameThickness = new Thickness(0),
                 ResizeBorderThickness = ResizeThickness
             };
             maxWindowChrome = new WindowChrome()
             {
                 CaptionHeight = 0,
                 CornerRadius = new CornerRadius(0),
-                GlassFrameThickness = new Thickness(-1),
+                GlassFrameThickness = new Thickness(0),
                 ResizeBorderThickness = new Thickness(0)
             };
             ApplyWindowChrome();
@@ -965,7 +965,7 @@ namespace FullControls.SystemComponents
             {
                 CaptionHeight = 0,
                 CornerRadius = new CornerRadius(0),
-                GlassFrameThickness = new Thickness(-1),
+                GlassFrameThickness = new Thickness(0),
                 ResizeBorderThickness = newValue
             };
             ApplyWindowChrome();

@@ -17,21 +17,21 @@ namespace FullControls.Extra
         /// Check if the <see cref="string"/> is a <see cref="double"/>.
         /// </summary>
         /// <param name="str">The <see cref="string"/> to check.</param>
-        /// <returns><see langword="true"/> is the <see cref="string"/> is a <see cref="double"/>, <see langword="false"/> otherwise.</returns>
+        /// <returns><see langword="true"/> if the <see cref="string"/> is a <see cref="double"/>, <see langword="false"/> otherwise.</returns>
         public static bool IsDouble(this string str) => double.TryParse(str, out _);
 
         /// <summary>
         /// Check if the <see cref="string"/> is an <see cref="int"/>.
         /// </summary>
         /// <param name="str">The <see cref="string"/> to check.</param>
-        /// <returns><see langword="true"/> is the <see cref="string"/> is an <see cref="int"/>, <see langword="false"/> otherwise.</returns>
+        /// <returns><see langword="true"/> if the <see cref="string"/> is an <see cref="int"/>, <see langword="false"/> otherwise.</returns>
         public static bool IsInt(this string str) => int.TryParse(str, out _);
 
         /// <summary>
         /// Check if the <see cref="string"/> contains only numeric chars.
         /// </summary>
         /// <param name="str">The <see cref="string"/> to check.</param>
-        /// <returns><see langword="true"/> is the <see cref="string"/> contains only numeric chars, <see langword="false"/> otherwise.</returns>
+        /// <returns><see langword="true"/> if the <see cref="string"/> contains only numeric chars, <see langword="false"/> otherwise.</returns>
         public static bool IsNumeric(this string str) => str.All(char.IsDigit);
 
         /// <summary>

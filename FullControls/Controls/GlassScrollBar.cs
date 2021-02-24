@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using FullControls.Core;
+using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 
@@ -37,7 +38,9 @@ namespace FullControls.Controls
         /// Identifies the <see cref="ScrollDelay"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ScrollDelayProperty =
-            DependencyProperty.Register(nameof(ScrollDelay), typeof(int), typeof(GlassScrollBar), new FrameworkPropertyMetadata(SystemParameters.KeyboardDelay));
+            DependencyProperty.Register(nameof(ScrollDelay), typeof(int), typeof(GlassScrollBar),
+                new FrameworkPropertyMetadata(Utility.GetKeyboardDelay()),
+                new ValidateValueCallback(IsScrollDelayValid));
 
         /// <summary>
         /// Gets or sets the amount of time, in milliseconds, the control repeats scrolling once repeating starts. The value must be non-negative.
@@ -52,7 +55,9 @@ namespace FullControls.Controls
         /// Identifies the <see cref="ScrollInterval"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ScrollIntervalProperty =
-            DependencyProperty.Register(nameof(ScrollInterval), typeof(int), typeof(GlassScrollBar), new FrameworkPropertyMetadata(SystemParameters.KeyboardSpeed));
+            DependencyProperty.Register(nameof(ScrollInterval), typeof(int), typeof(GlassScrollBar),
+                new FrameworkPropertyMetadata(Utility.GetKeyboardSpeed()),
+                new ValidateValueCallback(IsScrollIntervalValid));
 
         #region Thumb
 
@@ -370,5 +375,19 @@ namespace FullControls.Controls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(GlassScrollBar), new FrameworkPropertyMetadata(typeof(GlassScrollBar)));
         }
+
+        /// <summary>
+        /// Check if the delay is valid.
+        /// </summary>
+        /// <param name="value">Value to validate.</param>
+        /// <returns><see langword="true"/> if the delay is valid, <see langword="false"/> otherwise.</returns>
+        internal static bool IsScrollDelayValid(object value) { return ((int)value) >= 0; }
+
+        /// <summary>
+        /// Check if the interval is valid.
+        /// </summary>
+        /// <param name="value">Value to validate.</param>
+        /// <returns><see langword="true"/> if the interval is valid, <see langword="false"/> otherwise.</returns>
+        internal static bool IsScrollIntervalValid(object value) { return ((int)value) > 0; }
     }
 }

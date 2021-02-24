@@ -6,7 +6,7 @@
   </a>
 </p>
 <h2 align="center">FullControls</h2>
-<p align="center">Set of fully customizable standard controls, plus new special controls and extra functionality.</p>
+<p align="center">Reworked version of the most commonly used controls, plus some new special controls and extra functionality.</p>
 
 <!-- badges -->
 
