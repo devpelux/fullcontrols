@@ -294,17 +294,17 @@
 
     <Style x:Key="SimpleAccordionItemDark" TargetType="{x:Type fc:SimpleAccordionItem}">
         <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnExpanded" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOverOnExpanded" Value="WhiteSmoke"/>
+        <Setter Property="ForegroundOnExpanded" Value="#67a9db"/>
+        <Setter Property="ForegroundOnMouseOver" Value="#b3b3b3"/>
+        <Setter Property="ForegroundOnMouseOverOnExpanded" Value="#4c8bba"/>
         <Setter Property="ForegroundOnDisabled" Value="Gray"/>
     </Style>
 
     <Style x:Key="ItemsControlAccordionItemDark" TargetType="{x:Type fc:ItemsControlAccordionItem}">
         <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnExpanded" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOverOnExpanded" Value="WhiteSmoke"/>
+        <Setter Property="ForegroundOnExpanded" Value="#67a9db"/>
+        <Setter Property="ForegroundOnMouseOver" Value="#b3b3b3"/>
+        <Setter Property="ForegroundOnMouseOverOnExpanded" Value="#4c8bba"/>
         <Setter Property="ForegroundOnDisabled" Value="Gray"/>
     </Style>
 

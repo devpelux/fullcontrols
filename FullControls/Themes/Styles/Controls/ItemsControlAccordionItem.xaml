@@ -3,23 +3,31 @@
                     xmlns:local="clr-namespace:FullControls.Controls">
 
     <Style TargetType="{x:Type local:ItemsControlAccordionItem}">
+        <Style.Resources>
+            <ResourceDictionary>
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml" />
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Style.Resources>
+
         <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="ForegroundOnExpanded" Value="Black"/>
-        <Setter Property="ForegroundOnMouseOver" Value="Black"/>
-        <Setter Property="ForegroundOnMouseOverOnExpanded" Value="Black"/>
+        <Setter Property="ForegroundOnExpanded" Value="{DynamicResource Blue7}"/>
+        <Setter Property="ForegroundOnMouseOver" Value="{DynamicResource Gray15}"/>
+        <Setter Property="ForegroundOnMouseOverOnExpanded" Value="{DynamicResource Blue10}"/>
         <Setter Property="ForegroundOnDisabled" Value="DimGray"/>
-        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="FontWeightOnExpanded" Value="Bold"/>
-        <Setter Property="FontWeightOnMouseOver" Value="Normal"/>
+        <Setter Property="FontWeightOnMouseOver" Value="Bold"/>
         <Setter Property="FontWeightOnMouseOverOnExpanded" Value="Bold"/>
-        <Setter Property="FontWeightOnDisabled" Value="Normal"/>
+        <Setter Property="FontWeightOnDisabled" Value="Bold"/>
         <Setter Property="HorizontalHeaderAlignment" Value="Left"/>
         <Setter Property="VerticalHeaderAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-        <Setter Property="HeaderHeight" Value="20"/>
-        <Setter Property="HeaderMargin" Value="2,0,2,0"/>
-        <Setter Property="AnimationTime" Value="0:0:0.4"/>
+        <Setter Property="HeaderHeight" Value="24"/>
+        <Setter Property="HeaderMargin" Value="6,0,6,0"/>
+        <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="ExpandingAnimationTime" Value="0:0:0.4"/>
 
         <Setter Property="ItemsPanel">
