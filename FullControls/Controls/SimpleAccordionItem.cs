@@ -222,6 +222,11 @@ namespace FullControls.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SimpleAccordionItem), new FrameworkPropertyMetadata(typeof(SimpleAccordionItem)));
         }
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="SimpleAccordionItem"/>.
+        /// </summary>
+        public SimpleAccordionItem() : base() { }
+
         /// <inheritdoc/>
         public override void OnApplyTemplate()
         {

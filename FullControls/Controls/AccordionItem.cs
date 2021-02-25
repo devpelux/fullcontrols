@@ -140,7 +140,7 @@ namespace FullControls.Controls
         /// <summary>
         /// Initializes a new instance of <see cref="AccordionItem"/>.
         /// </summary>
-        public AccordionItem() : base()
+        protected AccordionItem() : base()
         {
             Loaded -= OnLoaded;
             Loaded += OnLoaded;

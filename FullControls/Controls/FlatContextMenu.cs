@@ -12,7 +12,7 @@ namespace FullControls.Controls
     public class FlatContextMenu : ContextMenu
     {
         /// <summary>
-        /// Style of the <see cref="ScrollViewer"/>.
+        /// Gets or sets the style of the <see cref="ScrollViewer"/> of the menu.
         /// </summary>
         public Style ScrollViewerStyle
         {
@@ -29,7 +29,7 @@ namespace FullControls.Controls
         #region Shadow
 
         /// <summary>
-        /// Color of the shadow.
+        /// Gets or sets the color of the menu popup shadow.
         /// </summary>
         public Color ShadowColor
         {
@@ -44,7 +44,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ShadowColor), typeof(Color), typeof(FlatContextMenu));
 
         /// <summary>
-        /// Opacity of the shadow.
+        /// Gets or sets the opacity of the menu popup shadow.
         /// </summary>
         public double ShadowOpacity
         {
@@ -59,7 +59,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ShadowOpacity), typeof(double), typeof(FlatContextMenu));
 
         /// <summary>
-        /// Radius of the shadow.
+        /// Gets or sets the radius of the menu popup shadow.
         /// </summary>
         public double ShadowRadius
         {
@@ -75,7 +75,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateMarginForShadow(d))));
 
         /// <summary>
-        /// Depth of the shadow.
+        /// Gets or sets the depth of the menu popup shadow.
         /// </summary>
         public double ShadowDepth
         {
@@ -93,7 +93,7 @@ namespace FullControls.Controls
         #region MarginForShadow
 
         /// <summary>
-        /// Margin used to display the shadow.
+        /// Gets the margin used to display the menu popup shadow.
         /// </summary>
         public Thickness MarginForShadow => (Thickness)GetValue(MarginForShadowProperty);
 
@@ -129,7 +129,7 @@ namespace FullControls.Controls
         #region Global properties for child elements
 
         /// <summary>
-        /// CornerRadius of the popup and items popup.
+        /// Gets or sets the corner radius of the menu popup and items popup.
         /// </summary>
         public CornerRadius PopupCornerRadius
         {
@@ -145,7 +145,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(new CornerRadius(), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Padding of the popup and items popup.
+        /// Gets or sets the padding of the menu popup and items popup.
         /// </summary>
         public Thickness PopupPadding
         {
@@ -161,7 +161,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Vertical offset of the popup.
+        /// Gets or sets the vertical offset of the items popup.
         /// </summary>
         public double PopupVerticalOffset
         {
@@ -177,7 +177,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Horizontal offset of the popup.
+        /// Gets or sets the horizontal offset of the items popup.
         /// </summary>
         public double PopupHorizontalOffset
         {
@@ -193,7 +193,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Foreground brush of the items when are highlighted.
+        /// Gets or sets the foreground brush of the items when are highlighted.
         /// </summary>
         public Brush ForegroundOnHighlight
         {
@@ -209,7 +209,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(Extra.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Foreground brush of the items when have subitems and the popup is open.
+        /// Gets or sets the foreground brush of the items when have subitems and the popup is open.
         /// </summary>
         public Brush ForegroundOnOpen
         {
@@ -225,7 +225,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(Extra.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Foreground brush of the items when are disabled.
+        /// Gets or sets the foreground brush of the items when are disabled.
         /// </summary>
         public Brush ForegroundOnDisabled
         {
@@ -241,7 +241,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(Extra.Brushes.Gray9, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Brush of the items check icons.
+        /// Gets or sets the brush of the items check icons.
         /// </summary>
         public Brush CheckBrush
         {
@@ -257,7 +257,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(Extra.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Brush of the items check icons when are highlighted.
+        /// Gets or sets the brush of the items check icons when are highlighted.
         /// </summary>
         public Brush CheckBrushOnHighlight
         {
@@ -273,7 +273,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(Extra.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Brush of the items check icons when have subitems and the popup is open.
+        /// Gets or sets the brush of the items check icons when have subitems and the popup is open.
         /// </summary>
         public Brush CheckBrushOnOpen
         {
@@ -289,7 +289,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(Extra.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Brush of the items check icons when are disabled.
+        /// Gets or sets the brush of the items check icons when are disabled.
         /// </summary>
         public Brush CheckBrushOnDisabled
         {
@@ -307,13 +307,15 @@ namespace FullControls.Controls
         #endregion
 
 
-        /// <summary>
-        /// Creates a new <see cref="FlatContextMenu"/>.
-        /// </summary>
         static FlatContextMenu()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatContextMenu), new FrameworkPropertyMetadata(typeof(FlatContextMenu)));
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="FlatContextMenu"/>.
+        /// </summary>
+        public FlatContextMenu() : base() { }
 
         /// <inheritdoc/>
         protected override DependencyObject GetContainerForItemOverride() => new FlatMenuItemContainer();

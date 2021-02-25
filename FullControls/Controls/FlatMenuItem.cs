@@ -20,7 +20,7 @@ namespace FullControls.Controls
         private bool abortCheckChange = false;
 
         /// <summary>
-        /// Background brush when the item is highlighted.
+        /// Gets or sets the background brush when the item is highlighted.
         /// </summary>
         public Brush BackgroundOnHighlight
         {
@@ -35,7 +35,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BackgroundOnHighlight), typeof(Brush), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Background brush when the item has subitems and the popup is open.
+        /// Gets or sets the background brush when the item has subitems and the popup is open.
         /// </summary>
         public Brush BackgroundOnOpen
         {
@@ -50,7 +50,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BackgroundOnOpen), typeof(Brush), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Background brush when the item is disabled.
+        /// Gets or sets the background brush when the item is disabled.
         /// </summary>
         public Brush BackgroundOnDisabled
         {
@@ -65,7 +65,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Actual Background brush of the item.
+        /// Gets the actual background brush of the item.
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
@@ -77,7 +77,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((FlatMenuItem)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
-        /// BorderBrush when the item is highlighted.
+        /// Gets or sets the border brush when the item is highlighted.
         /// </summary>
         public Brush BorderBrushOnHighlight
         {
@@ -92,7 +92,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BorderBrushOnHighlight), typeof(Brush), typeof(FlatMenuItem));
 
         /// <summary>
-        /// BorderBrush when the item has subitems and the popup is open.
+        /// Gets or sets the border brush when the item has subitems and the popup is open.
         /// </summary>
         public Brush BorderBrushOnOpen
         {
@@ -107,7 +107,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BorderBrushOnOpen), typeof(Brush), typeof(FlatMenuItem));
 
         /// <summary>
-        /// BorderBrush when the item is disabled.
+        /// Gets or sets the border brush when the item is disabled.
         /// </summary>
         public Brush BorderBrushOnDisabled
         {
@@ -122,7 +122,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Actual BorderBrush of the item.
+        /// Gets the actual border brush of the item.
         /// </summary>
         public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
@@ -133,7 +133,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Foreground brush when the item is highlighted.
+        /// Gets or sets the foreground brush when the item is highlighted.
         /// </summary>
         public Brush ForegroundOnHighlight
         {
@@ -175,7 +175,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Foreground brush when the item has subitems and the popup is open.
+        /// Gets or sets the foreground brush when the item has subitems and the popup is open.
         /// </summary>
         public Brush ForegroundOnOpen
         {
@@ -217,7 +217,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Foreground brush when the item is disabled.
+        /// Gets or sets the foreground brush when the item is disabled.
         /// </summary>
         public Brush ForegroundOnDisabled
         {
@@ -259,7 +259,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Actual Foreground brush of the item.
+        /// Gets the actual foreground brush of the item.
         /// </summary>
         public Brush ActualForeground => (Brush)GetValue(ActualForegroundProperty);
 
@@ -272,7 +272,7 @@ namespace FullControls.Controls
         #region Popup
 
         /// <summary>
-        /// CornerRadius of the popup.
+        /// Gets or sets the corner radius of the popup.
         /// </summary>
         public CornerRadius PopupCornerRadius
         {
@@ -314,7 +314,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Padding of the popup.
+        /// Gets or sets the padding of the popup.
         /// </summary>
         public Thickness PopupPadding
         {
@@ -356,7 +356,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Vertical offset of the popup if its <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>..
+        /// Gets or sets the vertical offset of the item popup if its <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>.
         /// </summary>
         public double TopLevelPopupVerticalOffset
         {
@@ -398,7 +398,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Horizontal offset of the popup if its <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>.
+        /// Gets or sets the horizontal offset of the item popup if its <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>.
         /// </summary>
         public double TopLevelPopupHorizontalOffset
         {
@@ -440,7 +440,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Vertical offset of the popup.
+        /// Gets or sets the vertical offset of the popup.
         /// </summary>
         public double PopupVerticalOffset
         {
@@ -482,7 +482,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Horizontal offset of the popup.
+        /// Gets or sets the horizontal offset of the popup.
         /// </summary>
         public double PopupHorizontalOffset
         {
@@ -524,7 +524,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Border thickness of the popup.
+        /// Gets or sets the border thickness of the popup.
         /// </summary>
         public Thickness PopupBorderThickness
         {
@@ -539,7 +539,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PopupBorderThickness), typeof(Thickness), typeof(FlatMenuItem));
 
         /// <summary>
-        /// BorderBrush of the popup.
+        /// Gets or sets the border brush of the popup.
         /// </summary>
         public Brush PopupBorderBrush
         {
@@ -554,7 +554,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PopupBorderBrush), typeof(Brush), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Background of the popup.
+        /// Gets or sets the background of the popup.
         /// </summary>
         public Brush PopupBackground
         {
@@ -569,7 +569,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PopupBackground), typeof(Brush), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Animation type of the popup.
+        /// Gets or sets the animation type of the popup.
         /// </summary>
         public PopupAnimation PopupAnimation
         {
@@ -584,7 +584,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PopupAnimation), typeof(PopupAnimation), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Enables the shadow of the popup.
+        /// Gets or sets the a value indicating if enable the shadow of the popup.
         /// </summary>
         public bool HasDropShadow
         {
@@ -599,7 +599,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HasDropShadow), typeof(bool), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Max height of the popup (if the height is higher, a <see cref="ScrollViewer"/> is used).
+        /// Gets or sets the max height of the popup (if the height is higher, a <see cref="ScrollViewer"/> is used).
         /// </summary>
         public double MaxDropDownHeight
         {
@@ -618,7 +618,7 @@ namespace FullControls.Controls
         #region Shadow
 
         /// <summary>
-        /// Color of the shadow.
+        /// Gets or sets the color of the shadow.
         /// </summary>
         public Color ShadowColor
         {
@@ -633,7 +633,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ShadowColor), typeof(Color), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Opacity of the shadow.
+        /// Gets or sets the opacity of the shadow.
         /// </summary>
         public double ShadowOpacity
         {
@@ -648,7 +648,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ShadowOpacity), typeof(double), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Radius of the shadow.
+        /// Gets or sets the radius of the shadow.
         /// </summary>
         public double ShadowRadius
         {
@@ -664,7 +664,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateMarginForShadow(d))));
 
         /// <summary>
-        /// Depth of the shadow.
+        /// Gets or sets the depth of the shadow.
         /// </summary>
         public double ShadowDepth
         {
@@ -680,7 +680,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateMarginForShadow(d))));
 
         /// <summary>
-        /// Maintains the top and left margin to zero even if the shadow properties are changed.
+        /// Gets or sets a value inditating if maintain the top and left margin to zero even if the shadow properties are changed.
         /// </summary>
         public bool PreserveTopLeft
         {
@@ -698,7 +698,7 @@ namespace FullControls.Controls
         #region MarginForShadow
 
         /// <summary>
-        /// Back margin used to display the shadow.
+        /// Gets the back margin used to display the shadow.
         /// </summary>
         public Thickness BackMarginForShadow => (Thickness)GetValue(BackMarginForShadowProperty);
 
@@ -715,7 +715,7 @@ namespace FullControls.Controls
         public static readonly DependencyProperty BackMarginForShadowProperty = BackMarginForShadowPropertyKey.DependencyProperty;
 
         /// <summary>
-        /// Front margin used to display the shadow.
+        /// Gets the front margin used to display the shadow.
         /// </summary>
         public Thickness FrontMarginForShadow => (Thickness)GetValue(FrontMarginForShadowProperty);
 
@@ -756,7 +756,7 @@ namespace FullControls.Controls
         #region CheckMark
 
         /// <summary>
-        /// Brush of the check icon.
+        /// Gets or sets the brush of the check icon.
         /// </summary>
         public Brush CheckBrush
         {
@@ -798,7 +798,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Brush of the check icon when the item is highlighted.
+        /// Gets or sets the brush of the check icon when the item is highlighted.
         /// </summary>
         public Brush CheckBrushOnHighlight
         {
@@ -840,7 +840,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Brush of the check icon when the item has subitems and the popup is open.
+        /// Gets or sets the brush of the check icon when the item has subitems and the popup is open.
         /// </summary>
         public Brush CheckBrushOnOpen
         {
@@ -882,7 +882,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Brush of the check icon when the item is disabled.
+        /// Gets or sets the brush of the check icon when the item is disabled.
         /// </summary>
         public Brush CheckBrushOnDisabled
         {
@@ -924,7 +924,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Actual Brush of the check icon.
+        /// Gets the actual brush of the check icon.
         /// </summary>
         public Brush ActualCheckBrush => (Brush)GetValue(ActualCheckBrushProperty);
 
@@ -935,7 +935,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ActualCheckBrush), typeof(Brush), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Content of the icon displayed if <see cref="MenuItem.IsCheckable"/> is <see langword="true"/> and <see cref="MenuItem.IsChecked"/> is <see langword="true"/>.
+        /// Gets or sets the content of the icon displayed if <see cref="MenuItem.IsCheckable"/> is <see langword="true"/> and <see cref="MenuItem.IsChecked"/> is <see langword="true"/>.
         /// </summary>
         public object CheckMark
         {
@@ -950,7 +950,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CheckMark), typeof(object), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Size of the check icon.
+        /// Gets or sets the size of the check icon.
         /// </summary>
         public double CheckSize
         {
@@ -965,7 +965,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CheckSize), typeof(double), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Font of the check icon.
+        /// Gets or sets the font of the check icon.
         /// </summary>
         public FontFamily CheckFont
         {
@@ -984,7 +984,7 @@ namespace FullControls.Controls
         #region CheckType
 
         /// <summary>
-        /// Specifies if the check type is normal or mutually exclusive.
+        /// Gets or sets a value indicating if the check type is normal or mutually exclusive.
         /// </summary>
         public CheckType CheckType
         {
@@ -999,7 +999,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CheckType), typeof(CheckType), typeof(FlatMenuItem), new PropertyMetadata(CheckType.Check));
 
         /// <summary>
-        /// Gets or sets the name that specifies which <see cref="MenuItem"/> are mutually exclusive.
+        /// Gets or sets the name that specifies which items are mutually exclusive.
         /// </summary>
         [DefaultValue("")]
         public string GroupName
@@ -1020,7 +1020,7 @@ namespace FullControls.Controls
         #region Arrow
 
         /// <summary>
-        /// Content of the arrow displayed if the item has subitems.
+        /// Gets or sets the content of the arrow displayed if the item has subitems.
         /// </summary>
         public object Arrow
         {
@@ -1035,7 +1035,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(Arrow), typeof(object), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Size of the arrow.
+        /// Gets or sets the size of the arrow.
         /// </summary>
         public double ArrowSize
         {
@@ -1050,7 +1050,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ArrowSize), typeof(double), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Font of the arrow (if used a character).
+        /// Gets or sets the font of the arrow (if used a character).
         /// </summary>
         public FontFamily ArrowFont
         {
@@ -1069,7 +1069,7 @@ namespace FullControls.Controls
         #region Sections margins
 
         /// <summary>
-        /// Margin of the icon.
+        /// Gets or sets the margin of the icon.
         /// </summary>
         public Thickness IconMargin
         {
@@ -1084,7 +1084,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(IconMargin), typeof(Thickness), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Margin of the header.
+        /// Gets or sets the margin of the header.
         /// </summary>
         public Thickness HeaderMargin
         {
@@ -1099,7 +1099,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HeaderMargin), typeof(Thickness), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Margin of the shortcut hint.
+        /// Gets or sets the margin of the shortcut hint.
         /// </summary>
         public Thickness InputGestureMargin
         {
@@ -1114,7 +1114,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(InputGestureMargin), typeof(Thickness), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Margin of the arrow.
+        /// Gets or sets the margin of the arrow.
         /// </summary>
         public Thickness ArrowMargin
         {
@@ -1129,7 +1129,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ArrowMargin), typeof(Thickness), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Enables automatic alignment to fit with other items.
+        /// Gets or sets a value indicating if enable automatic alignment to fit with other items.
         /// </summary>
         public bool AlignWithOthers
         {
@@ -1146,7 +1146,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Style of the <see cref="ScrollViewer"/>.
+        /// Gets or sets the style of the <see cref="ScrollViewer"/>.
         /// </summary>
         public Style ScrollViewerStyle
         {
@@ -1161,7 +1161,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ScrollViewerStyle), typeof(Style), typeof(FlatMenuItem));
 
         /// <summary>
-        /// Duration of the item animation when it changes state.
+        /// Gets or sets the duration of the item animation when it changes state.
         /// </summary>
         public TimeSpan AnimationTime
         {
@@ -1176,9 +1176,6 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(FlatMenuItem));
 
 
-        /// <summary>
-        /// Creates a new <see cref="FlatMenuItem"/>.
-        /// </summary>
         static FlatMenuItem()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenuItem), new FrameworkPropertyMetadata(typeof(FlatMenuItem)));
@@ -1191,9 +1188,9 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Creates a new <see cref="FlatMenuItem"/>.
+        /// Initializes a new instance of <see cref="FlatMenuItem"/>.
         /// </summary>
-        public FlatMenuItem()
+        public FlatMenuItem() : base()
         {
             DependencyPropertyDescriptor.FromProperty(IsHighlightedProperty, typeof(FlatMenuItem))
                 ?.AddValueChanged(this, (s, e) => OnHighlightChanged(IsHighlighted));
@@ -1224,6 +1221,10 @@ namespace FullControls.Controls
             else PrepareContainer(element as FlatMenuItemContainer);
         }
 
+        /// <summary>
+        /// Prepares the container for the item.
+        /// </summary>
+        /// <param name="container">Container to prepare.</param>
         internal static void PrepareContainer(FlatMenuItemContainer container)
         {
             if (container != null)

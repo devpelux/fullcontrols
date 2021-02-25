@@ -100,7 +100,7 @@ namespace FullControls.Extra
             : throw new ArgumentOutOfRangeException(nameof(length), "Length cannot be less than zero.");
 
         /// <summary>
-        /// Inverts the color by subtracting every value R, G, B from 255.
+        /// Invert the color by subtracting every value R, G, B from 255.
         /// </summary>
         /// <param name="color">Colore.</param>
         /// <returns>Inverted color.</returns>

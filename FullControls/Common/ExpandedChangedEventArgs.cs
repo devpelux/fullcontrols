@@ -8,9 +8,9 @@ namespace FullControls.Common
     public class ExpandedChangedEventArgs : EventArgs
     {
         /// <summary>
-        /// Specifies if the object is expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).
+        /// Gets a value indicating if the object is expanded (<see langword="true"/>) or collapsed (<see langword="false"/>).
         /// </summary>
-        public bool IsExpanded { get; set; }
+        public bool IsExpanded { get; }
 
 
         /// <summary>

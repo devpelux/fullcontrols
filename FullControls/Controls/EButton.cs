@@ -215,15 +215,17 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EButton));
 
 
-        /// <summary>
-        /// Creates a new <see cref="EButton"/>.
-        /// </summary>
         static EButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(EButton), new FrameworkPropertyMetadata(typeof(EButton)));
             IsEnabledProperty.OverrideMetadata(typeof(EButton), new FrameworkPropertyMetadata(
                 new PropertyChangedCallback((d, e) => ((EButton)d).OnEnabledChanged((bool)e.NewValue))));
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="EButton"/>.
+        /// </summary>
+        public EButton() : base() { }
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()

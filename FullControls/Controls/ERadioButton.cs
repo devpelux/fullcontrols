@@ -467,9 +467,6 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CheckAnimationTime), typeof(TimeSpan), typeof(ERadioButton));
 
 
-        /// <summary>
-        /// Creates a new <see cref="ERadioButton"/>.
-        /// </summary>
         static ERadioButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ERadioButton), new FrameworkPropertyMetadata(typeof(ERadioButton)));
@@ -478,6 +475,11 @@ namespace FullControls.Controls
             IsCheckedProperty.OverrideMetadata(typeof(ERadioButton), new FrameworkPropertyMetadata(
                 new PropertyChangedCallback((d, e) => ((ERadioButton)d).OnCheckedChanged((bool?)e.NewValue))));
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ERadioButton"/>.
+        /// </summary>
+        public ERadioButton() : base() { }
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()

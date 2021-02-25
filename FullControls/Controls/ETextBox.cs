@@ -23,7 +23,7 @@ namespace FullControls.Controls
         protected const string PartCopyButton = "PART_CopyButton";
 
         /// <summary>
-        /// Background brush when the control is selected.
+        /// Gets or sets the background brush when the control is selected.
         /// </summary>
         public Brush BackgroundOnSelected
         {
@@ -38,7 +38,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BackgroundOnSelected), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// Background brush when the control is disabled.
+        /// Gets or sets the background brush when the control is disabled.
         /// </summary>
         public Brush BackgroundOnDisabled
         {
@@ -53,7 +53,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// Actual Background brush of the control.
+        /// Gets the actual background brush of the control.
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
@@ -65,7 +65,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((ETextBox)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
-        /// BorderBrush when the control is selected.
+        /// Gets or sets the border brush when the control is selected.
         /// </summary>
         public Brush BorderBrushOnSelected
         {
@@ -80,7 +80,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BorderBrushOnSelected), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// BorderBrush when the control is disabled.
+        /// Gets or sets the border brush when the control is disabled.
         /// </summary>
         public Brush BorderBrushOnDisabled
         {
@@ -95,7 +95,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// Actual BorderBrush of the control.
+        /// Gets the actual border brush of the control.
         /// </summary>
         public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
@@ -106,7 +106,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// Specifies if adapt automatically the foreground to the actual background of the control.
+        /// Gets or sets a value indicating if adapt automatically the foreground brush to the actual background brush of the control.
         /// </summary>
         public bool AdaptForegroundAutomatically
         {
@@ -121,7 +121,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AdaptForegroundAutomatically), typeof(bool), typeof(ETextBox));
 
         /// <summary>
-        /// Specifies if adapt automatically the caret brush to the actual background of the control.
+        /// Gets or sets a value indicating if adapt automatically the caret brush to the actual background brush of the control.
         /// </summary>
         public bool AdaptCaretBrushAutomatically
         {
@@ -153,7 +153,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(Hint), typeof(string), typeof(ETextBox));
 
         /// <summary>
-        /// Specifies if to display or not the hint.
+        /// Gets or sets a value indicating if to display or not the hint.
         /// </summary>
         public bool ShowHint
         {
@@ -168,7 +168,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ShowHint), typeof(bool), typeof(ETextBox));
 
         /// <summary>
-        /// Foreground of the hint.
+        /// Gets or sets the foreground brush of the hint.
         /// </summary>
         public Brush HintForeground
         {
@@ -183,7 +183,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HintForeground), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// Opacity of the hint.
+        /// Gets or sets the opacity of the hint.
         /// </summary>
         public double HintOpacity
         {
@@ -198,7 +198,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HintOpacity), typeof(double), typeof(ETextBox));
 
         /// <summary>
-        /// Specifies if adapt automatically the hint foreground to the actual background of the control.
+        /// Gets or sets a value indicating if adapt automatically the hint foreground brush to the actual background brush of the control.
         /// </summary>
         public bool AdaptHintForegroundAutomatically
         {
@@ -217,7 +217,7 @@ namespace FullControls.Controls
         #region CopyButton
 
         /// <summary>
-        /// Specifies if to display or not a button that copies the text on the <see cref="Clipboard"/> when clicked.
+        /// Gets or sets a value indicating if to display or not a button that copies the text on the <see cref="Clipboard"/> when clicked.
         /// </summary>
         public bool EnableCopyButton
         {
@@ -232,7 +232,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(EnableCopyButton), typeof(bool), typeof(ETextBox));
 
         /// <summary>
-        /// Content of the copy button.
+        /// Gets or sets the content of the copy button.
         /// </summary>
         public object CopyButtonContent
         {
@@ -247,7 +247,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonContent), typeof(object), typeof(ETextBox));
 
         /// <summary>
-        /// Width of the copy button.
+        /// Gets or sets the width of the copy button.
         /// </summary>
         public double CopyButtonSize
         {
@@ -262,7 +262,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonSize), typeof(double), typeof(ETextBox));
 
         /// <summary>
-        /// FontFamily of the copy button.
+        /// Gets or sets the font family of the copy button.
         /// </summary>
         public FontFamily CopyButtonFontFamily
         {
@@ -277,7 +277,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonFontFamily), typeof(FontFamily), typeof(ETextBox));
 
         /// <summary>
-        /// FontSize of the copy button.
+        /// Gets or sets the font size of the copy button.
         /// </summary>
         public double CopyButtonFontSize
         {
@@ -292,7 +292,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonFontSize), typeof(double), typeof(ETextBox));
 
         /// <summary>
-        /// FontStretch of the copy button.
+        /// Gets or sets the font stretch of the copy button.
         /// </summary>
         public FontStretch CopyButtonFontStretch
         {
@@ -307,7 +307,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonFontStretch), typeof(FontStretch), typeof(ETextBox));
 
         /// <summary>
-        /// FontStyle of the copy button.
+        /// Gets or sets the font style of the copy button.
         /// </summary>
         public FontStyle CopyButtonFontStyle
         {
@@ -322,7 +322,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonFontStyle), typeof(FontStyle), typeof(ETextBox));
 
         /// <summary>
-        /// FontWeight of the copy button.
+        /// Gets or sets the font weight of the copy button.
         /// </summary>
         public FontWeight CopyButtonFontWeight
         {
@@ -337,7 +337,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonFontWeight), typeof(FontWeight), typeof(ETextBox));
 
         /// <summary>
-        /// Margin of the copy button.
+        /// Gets or sets the margin of the copy button.
         /// </summary>
         public Thickness CopyButtonMargin
         {
@@ -352,7 +352,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonMargin), typeof(Thickness), typeof(ETextBox));
 
         /// <summary>
-        /// Background of the copy button.
+        /// Gets or sets the background brush of the copy button.
         /// </summary>
         public Brush CopyButtonBackground
         {
@@ -367,7 +367,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBackground), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// Background of the copy button when the mouse is over it.
+        /// Gets or sets the background brush of the copy button when the mouse is over it.
         /// </summary>
         public Brush CopyButtonBackgroundOnMouseOver
         {
@@ -382,7 +382,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBackgroundOnMouseOver), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// Background of the copy button when is pressed.
+        /// Gets or sets the background brush of the copy button when is pressed.
         /// </summary>
         public Brush CopyButtonBackgroundOnPressed
         {
@@ -397,7 +397,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBackgroundOnPressed), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// Background of the copy button when is disabled.
+        /// Gets or sets the background brush of the copy button when is disabled.
         /// </summary>
         public Brush CopyButtonBackgroundOnDisabled
         {
@@ -412,7 +412,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBackgroundOnDisabled), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// BorderBrush of the copy button.
+        /// Gets or sets the border brush of the copy button.
         /// </summary>
         public Brush CopyButtonBorderBrush
         {
@@ -427,7 +427,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBorderBrush), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// BorderBrush of the copy button when the mouse is over it.
+        /// Gets or sets the border brush of the copy button when the mouse is over it.
         /// </summary>
         public Brush CopyButtonBorderBrushOnMouseOver
         {
@@ -442,7 +442,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBorderBrushOnMouseOver), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// BorderBrush of the copy button when is pressed.
+        /// Gets or sets the border brush of the copy button when is pressed.
         /// </summary>
         public Brush CopyButtonBorderBrushOnPressed
         {
@@ -457,7 +457,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBorderBrushOnPressed), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// BorderBrush of the copy button when is disabled.
+        /// Gets or sets the border brush of the copy button when is disabled.
         /// </summary>
         public Brush CopyButtonBorderBrushOnDisabled
         {
@@ -472,7 +472,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBorderBrushOnDisabled), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// Foreground of the copy button.
+        /// Gets or sets the foreground brush of the copy button.
         /// </summary>
         public Brush CopyButtonForeground
         {
@@ -487,7 +487,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonForeground), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// Foreground of the copy button when the mouse is over it.
+        /// Gets or sets the foreground brush of the copy button when the mouse is over it.
         /// </summary>
         public Brush CopyButtonForegroundOnMouseOver
         {
@@ -502,7 +502,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonForegroundOnMouseOver), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// Foreground of the copy button when is pressed.
+        /// Gets or sets the foreground brush of the copy button when is pressed.
         /// </summary>
         public Brush CopyButtonForegroundOnPressed
         {
@@ -517,7 +517,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonForegroundOnPressed), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// Foreground of the copy button when is disabled.
+        /// Gets or sets the foreground brush of the copy button when is disabled.
         /// </summary>
         public Brush CopyButtonForegroundOnDisabled
         {
@@ -532,7 +532,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonForegroundOnDisabled), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// CornerRadius of the copy button.
+        /// Gets or sets the corner radius of the copy button.
         /// </summary>
         public CornerRadius CopyButtonCornerRadius
         {
@@ -547,7 +547,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonCornerRadius), typeof(CornerRadius), typeof(ETextBox));
 
         /// <summary>
-        /// BorderThickness of the copy button.
+        /// Gets or sets the border thickness of the copy button.
         /// </summary>
         public Thickness CopyButtonBorderThickness
         {
@@ -562,7 +562,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBorderThickness), typeof(Thickness), typeof(ETextBox));
 
         /// <summary>
-        /// Duration of the copy button animation when it changes state.
+        /// Gets or sets the duration of the copy button animation when it changes state.
         /// </summary>
         public TimeSpan CopyButtonAnimationTime
         {
@@ -581,7 +581,7 @@ namespace FullControls.Controls
         #region Label
 
         /// <summary>
-        /// Label that is displayed to the left or top of the TextBox.
+        /// Gets or sets the label displayed on the left or top of the control.
         /// </summary>
         public object Label
         {
@@ -596,7 +596,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(Label), typeof(object), typeof(ETextBox));
 
         /// <summary>
-        /// Icon that is displayed to the left or top of the TextBox.
+        /// Gets or sets the icon displayed on the left or top of the control.
         /// </summary>
         public ImageSource Icon
         {
@@ -611,7 +611,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(ETextBox));
 
         /// <summary>
-        /// Label type.
+        /// Gets or sets the label type.
         /// </summary>
         public LabelType LabelType
         {
@@ -626,7 +626,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelType), typeof(LabelType), typeof(ETextBox));
 
         /// <summary>
-        /// Orientation order between Label and TextBox.
+        /// Gets or sets the orientation order between the label and the text area.
         /// </summary>
         public Orientation Order
         {
@@ -641,7 +641,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(Order), typeof(Orientation), typeof(ETextBox));
 
         /// <summary>
-        /// Max Width of the label.
+        /// Gets or sets the max width of the label.
         /// </summary>
         public double LabelMaxSize
         {
@@ -656,7 +656,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelMaxSize), typeof(double), typeof(ETextBox), new FrameworkPropertyMetadata(double.PositiveInfinity));
 
         /// <summary>
-        /// Margin of the label.
+        /// Gets or sets the margin of the label.
         /// </summary>
         public Thickness LabelMargin
         {
@@ -671,7 +671,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelMargin), typeof(Thickness), typeof(ETextBox));
 
         /// <summary>
-        /// Foreground of the label.
+        /// Gets or sets the foreground brush of the label.
         /// </summary>
         public Brush LabelForeground
         {
@@ -686,7 +686,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelForeground), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// FontSize of the label.
+        /// Gets or sets the font size of the label.
         /// </summary>
         public double LabelFontSize
         {
@@ -701,7 +701,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelFontSize), typeof(double), typeof(ETextBox));
 
         /// <summary>
-        /// FontFamily of the label.
+        /// Gets or sets the font family of the label.
         /// </summary>
         public FontFamily LabelFontFamily
         {
@@ -716,7 +716,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelFontFamily), typeof(FontFamily), typeof(ETextBox));
 
         /// <summary>
-        /// FontStretch of the label.
+        /// Gets or sets the font stretch of the label.
         /// </summary>
         public FontStretch LabelFontStretch
         {
@@ -731,7 +731,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelFontStretch), typeof(FontStretch), typeof(ETextBox));
 
         /// <summary>
-        /// FontStyle of the label.
+        /// Gets or sets the font style of the label.
         /// </summary>
         public FontStyle LabelFontStyle
         {
@@ -746,7 +746,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelFontStyle), typeof(FontStyle), typeof(ETextBox));
 
         /// <summary>
-        /// FontWeight of the label.
+        /// Gets or sets the font weight of the label.
         /// </summary>
         public FontWeight LabelFontWeight
         {
@@ -762,10 +762,10 @@ namespace FullControls.Controls
 
         #endregion
 
-        #region ExternalBorder
+        #region ExternalOutline
 
         /// <summary>
-        /// Background brush of the external border.
+        /// Gets or sets the background brush of the external outline.
         /// </summary>
         public Brush ExternalBackground
         {
@@ -780,7 +780,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ExternalBackground), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// BorderBrush of the external border.
+        /// Gets or sets the border brush of the external outline.
         /// </summary>
         public Brush ExternalBorderBrush
         {
@@ -795,7 +795,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ExternalBorderBrush), typeof(Brush), typeof(ETextBox));
 
         /// <summary>
-        /// BorderThickness of the external border.
+        /// Gets or sets the border thickness of the external outline.
         /// </summary>
         public Thickness ExternalBorderThickness
         {
@@ -810,7 +810,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ExternalBorderThickness), typeof(Thickness), typeof(ETextBox));
 
         /// <summary>
-        /// Padding of the external border.
+        /// Gets or sets the padding of the external outline.
         /// </summary>
         public Thickness ExternalPadding
         {
@@ -825,7 +825,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ExternalPadding), typeof(Thickness), typeof(ETextBox));
 
         /// <summary>
-        /// CornerRadius of the external border.
+        /// Gets or sets the corner radius of the external outline.
         /// </summary>
         public CornerRadius ExternalCornerRadius
         {
@@ -842,7 +842,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// CornerRadius of the control.
+        /// Gets or sets the corner radius of the control.
         /// </summary>
         public CornerRadius CornerRadius
         {
@@ -857,7 +857,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ETextBox));
 
         /// <summary>
-        /// Width of the TextBox.
+        /// Gets or sets the width of the text area.
         /// </summary>
         public double TextViewSize
         {
@@ -872,7 +872,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(TextViewSize), typeof(double), typeof(ETextBox));
 
         /// <summary>
-        /// Style of the scroll viewer used if the content is too long.
+        /// Gets or sets the style of the scroll viewer used if the content is too long.
         /// </summary>
         public Style ScrollViewerStyle
         {
@@ -887,7 +887,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ScrollViewerStyle), typeof(Style), typeof(ETextBox));
 
         /// <summary>
-        /// Enables automatic adjustement of margins between all items in the same group.
+        /// Gets or sets a value indicating if enable automatic adjustement of margins between all text controls in the same group.
         /// </summary>
         public bool AutoMargin
         {
@@ -902,7 +902,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AutoMargin), typeof(bool), typeof(ETextBox));
 
         /// <summary>
-        /// Specifies the text type accepted by the textbox.
+        /// Gets or sets a value indicating the text type accepted.
         /// </summary>
         public TextType TextType
         {
@@ -918,22 +918,22 @@ namespace FullControls.Controls
                 new PropertyMetadata(TextType.Text, new PropertyChangedCallback((d, e) => ((ETextBox)d).OnTextTypeChanged((TextType)e.NewValue))));
 
         /// <summary>
-        /// Check if <see cref="TextBox.Text"/> is a <see cref="double"/> value.
+        /// Gets a value indicating if <see cref="TextBox.Text"/> is a <see cref="double"/> value.
         /// </summary>
         public bool IsDouble => Text?.IsDouble() == true || Text == "";
 
         /// <summary>
-        /// Check if <see cref="TextBox.Text"/> is an <see cref="int"/> value.
+        /// Gets a value indicating if <see cref="TextBox.Text"/> is an <see cref="int"/> value.
         /// </summary>
         public bool IsInt => Text?.IsInt() == true || Text == "";
 
         /// <summary>
-        /// Check if <see cref="TextBox.Text"/> contains only numeric chars.
+        /// Gets a value indicating if <see cref="TextBox.Text"/> contains only numeric chars.
         /// </summary>
         public bool IsNumeric => Text?.IsNumeric() == true;
 
         /// <summary>
-        /// Handles the <see cref="TextBox.Text"/> as <see cref="double"/>.
+        /// Gets or sets the <see cref="TextBox.Text"/> as <see cref="double"/>.
         /// </summary>
         /// <exception cref="ArgumentNullException"/>
         /// <exception cref="FormatException"/>
@@ -945,7 +945,7 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Handles the <see cref="TextBox.Text"/> as <see cref="int"/>.
+        /// Gets or sets the <see cref="TextBox.Text"/> as <see cref="int"/>.
         /// </summary>
         /// <exception cref="ArgumentNullException"/>
         /// <exception cref="FormatException"/>
@@ -957,12 +957,12 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Length of the text (Text.Length).
+        /// Gets the length of the text (Text.Length).
         /// </summary>
         public int TextLength => Text != null ? Text.Length : 0;
 
         /// <summary>
-        /// Duration of the control animation when it changes state.
+        /// Gets or sets the duration of the control animation when it changes state.
         /// </summary>
         public TimeSpan AnimationTime
         {
@@ -977,9 +977,6 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(ETextBox));
 
 
-        /// <summary>
-        /// Creates a new <see cref="ETextBox"/>.
-        /// </summary>
         static ETextBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ETextBox), new FrameworkPropertyMetadata(typeof(ETextBox)));
@@ -988,6 +985,11 @@ namespace FullControls.Controls
             TextProperty.OverrideMetadata(typeof(ETextBox), new FrameworkPropertyMetadata(null,
                 new CoerceValueCallback((d, o) => ((ETextBox)d).CoerceText((string)o))));
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ETextBox"/>.
+        /// </summary>
+        public ETextBox() : base() { }
 
         /// <summary>
         /// Copy the value of the <see cref="TextBox.Text"/> property on the <see cref="Clipboard"/>.

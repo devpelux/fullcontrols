@@ -276,9 +276,6 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EToggleButton));
 
 
-        /// <summary>
-        /// Creates a new <see cref="EToggleButton"/>.
-        /// </summary>
         static EToggleButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(EToggleButton), new FrameworkPropertyMetadata(typeof(EToggleButton)));
@@ -287,6 +284,11 @@ namespace FullControls.Controls
             IsCheckedProperty.OverrideMetadata(typeof(EToggleButton), new FrameworkPropertyMetadata(
                 new PropertyChangedCallback((d, e) => ((EToggleButton)d).OnCheckedChanged((bool?)e.NewValue))));
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="EToggleButton"/>.
+        /// </summary>
+        public EToggleButton() : base() { }
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()

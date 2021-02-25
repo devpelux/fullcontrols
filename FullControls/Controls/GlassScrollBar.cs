@@ -11,7 +11,7 @@ namespace FullControls.Controls
     public class GlassScrollBar : ScrollBar
     {
         /// <summary>
-        /// CornerRadius of the scrollbar.
+        /// Gets or sets the corner radius of the control.
         /// </summary>
         public CornerRadius CornerRadius
         {
@@ -62,7 +62,7 @@ namespace FullControls.Controls
         #region Thumb
 
         /// <summary>
-        /// Padding of the thumb.
+        /// Gets or sets the padding of the thumb.
         /// </summary>
         public Thickness ThumbPadding
         {
@@ -77,7 +77,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ThumbPadding), typeof(Thickness), typeof(GlassScrollBar));
 
         /// <summary>
-        /// CornerRadius of the thumb.
+        /// Gets or sets the corner radius of the thumb.
         /// </summary>
         public CornerRadius ThumbCornerRadius
         {
@@ -92,7 +92,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ThumbCornerRadius), typeof(CornerRadius), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Border thickness of the thumb.
+        /// Gets or sets the border thickness of the thumb.
         /// </summary>
         public Thickness ThumbBorderThickness
         {
@@ -107,7 +107,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ThumbBorderThickness), typeof(Thickness), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Border brush of the thumb.
+        /// Gets or sets the border brush of the thumb.
         /// </summary>
         public Brush ThumbBorderBrush
         {
@@ -122,7 +122,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ThumbBorderBrush), typeof(Brush), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Foreground when the control is disabled.
+        /// Gets or sets the foreground brush when the control is disabled.
         /// </summary>
         public Brush ForegroundOnDisabled
         {
@@ -137,7 +137,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Opacity of the scrollbar thumb when is on his normal state.
+        /// Gets or sets the opacity of the scrollbar thumb when is on his normal state.
         /// </summary>
         public double OpacityNormal
         {
@@ -152,7 +152,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(OpacityNormal), typeof(double), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Opacity of the scrollbar thumb when the mouse is over the control.
+        /// Gets or sets the opacity of the scrollbar thumb when the mouse is over the control.
         /// </summary>
         public double OpacityOnMouseOver
         {
@@ -167,7 +167,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(OpacityOnMouseOver), typeof(double), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Opacity of the scrollbar thumb when is pressed.
+        /// Gets or sets the opacity of the scrollbar thumb when is pressed.
         /// </summary>
         public double OpacityOnMouseDown
         {
@@ -186,7 +186,7 @@ namespace FullControls.Controls
         #region Buttons
 
         /// <summary>
-        /// Enables the increase and decrease buttons.
+        /// Gets or sets a value indicating if enable the increase and decrease buttons.
         /// </summary>
         public bool EnableButtons
         {
@@ -201,7 +201,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(EnableButtons), typeof(bool), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Size of the increase and decrease buttons.
+        /// Gets or sets the size of the increase and decrease buttons.
         /// </summary>
         public double ButtonsSize
         {
@@ -216,7 +216,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ButtonsSize), typeof(double), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Font of the increase and decrease buttons (if used a character).
+        /// Gets or sets the font of the increase and decrease buttons.
         /// </summary>
         public FontFamily ButtonsFont
         {
@@ -231,7 +231,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ButtonsFont), typeof(FontFamily), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Size of the font of the increase and decrease buttons.
+        /// Gets or sets the font size of the increase and decrease buttons.
         /// </summary>
         public double ButtonsFontSize
         {
@@ -246,7 +246,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ButtonsFontSize), typeof(double), typeof(GlassScrollBar));
 
         /// <summary>
-        /// CornerRadius of the buttons.
+        /// Gets or sets the corner radius of the buttons.
         /// </summary>
         public CornerRadius ButtonsCornerRadius
         {
@@ -261,7 +261,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ButtonsCornerRadius), typeof(CornerRadius), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Background of the buttons.
+        /// Gets or sets the background brush of the buttons.
         /// </summary>
         public Brush ButtonsBackground
         {
@@ -276,7 +276,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ButtonsBackground), typeof(Brush), typeof(GlassScrollBar));
 
         /// <summary>
-        /// BorderBrush of the buttons.
+        /// Gets or sets the border brush of the buttons.
         /// </summary>
         public Brush ButtonsBorderBrush
         {
@@ -291,7 +291,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ButtonsBorderBrush), typeof(Brush), typeof(GlassScrollBar));
 
         /// <summary>
-        /// BorderThickness of the buttons.
+        /// Gets or sets the border thickness of the buttons.
         /// </summary>
         public Thickness ButtonsBorderThickness
         {
@@ -306,7 +306,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ButtonsBorderThickness), typeof(Thickness), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Foreground of the buttons.
+        /// Gets or sets the foreground brush of the buttons.
         /// </summary>
         public Brush ButtonsForeground
         {
@@ -321,7 +321,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ButtonsForeground), typeof(Brush), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Foreground of the buttons when the control is disabled.
+        /// Gets or sets the foreground brush of the buttons when the control is disabled.
         /// </summary>
         public Brush ButtonsForegroundOnDisabled
         {
@@ -336,7 +336,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ButtonsForegroundOnDisabled), typeof(Brush), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Content of the increase button.
+        /// Gets or sets the content of the increase button.
         /// </summary>
         public object IncreaseButtonContent
         {
@@ -351,7 +351,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(IncreaseButtonContent), typeof(object), typeof(GlassScrollBar));
 
         /// <summary>
-        /// Content of the decrease button.
+        /// Gets or sets the content of the decrease button.
         /// </summary>
         public object DecreaseButtonContent
         {
@@ -368,13 +368,15 @@ namespace FullControls.Controls
         #endregion
 
 
-        /// <summary>
-        /// Creates a new <see cref="GlassScrollBar"/>.
-        /// </summary>
         static GlassScrollBar()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(GlassScrollBar), new FrameworkPropertyMetadata(typeof(GlassScrollBar)));
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="GlassScrollBar"/>.
+        /// </summary>
+        public GlassScrollBar() : base() { }
 
         /// <summary>
         /// Check if the delay is valid.

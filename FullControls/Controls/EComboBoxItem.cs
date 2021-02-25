@@ -349,9 +349,6 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EComboBoxItem));
 
 
-        /// <summary>
-        /// Creates a new <see cref="EComboBoxItem"/>.
-        /// </summary>
         static EComboBoxItem()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(EComboBoxItem), new FrameworkPropertyMetadata(typeof(EComboBoxItem)));
@@ -360,6 +357,11 @@ namespace FullControls.Controls
             IsSelectedProperty.OverrideMetadata(typeof(EComboBoxItem), new FrameworkPropertyMetadata(false,
                 new PropertyChangedCallback((d, e) => ((EComboBoxItem)d).OnSelectedChanged((bool)e.NewValue))));
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="EComboBoxItem"/>.
+        /// </summary>
+        public EComboBoxItem() : base() { }
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()

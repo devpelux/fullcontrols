@@ -8,8 +8,8 @@ namespace FullControls.Extra
 {
     /// <summary>
     /// <para>Used to clip elements that are out of a control.</para>
-    /// <para>You can specify CornerRadius and BorderThicknes if the control has these properties.</para>
-    /// <remarks>Are supported only uniform CornerRadius and BorderThickness.</remarks>
+    /// <para>You can specify <c>CornerRadius</c> and <c>BorderThickness</c> if the control has these properties.</para>
+    /// <remarks>Are supported only uniform <c>CornerRadius</c> and <c>BorderThickness</c>.</remarks>
     /// </summary>
     public class ClipConverter : IMultiValueConverter
     {
@@ -17,8 +17,8 @@ namespace FullControls.Extra
         /// <para>Calculates and returns a clip with the specified parameters.</para>
         /// </summary>
         /// <param name="values">
-        /// <para><b>Mandatory arguments:</b> Width (<paramref name="values"/>[0]), Height (<paramref name="values"/>[1]).</para>
-        /// <para><b>Optional arguments:</b> CornerRadius (<paramref name="values"/>[2]), BorderThickness (<paramref name="values"/>[3]).</para>
+        /// <para><b>Mandatory arguments:</b> <c>Width</c> (<paramref name="values"/>[0]), <c>Height</c> (<paramref name="values"/>[1]).</para>
+        /// <para><b>Optional arguments:</b> <c>CornerRadius</c> (<paramref name="values"/>[2]), <c>BorderThickness</c> (<paramref name="values"/>[3]).</para>
         /// <remarks>Are supported only uniform CornerRadius and BorderThickness.</remarks>
         /// </param>
         /// <param name="targetType">Unused.</param>

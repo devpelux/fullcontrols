@@ -13,7 +13,7 @@ namespace FullControls.Controls
         #region Horizontal ScrollBar properties
 
         /// <summary>
-        /// Thickness of the horizontal scrollbar.
+        /// Gets or sets the thickness of the horizontal scrollbar.
         /// </summary>
         public double HorizontalScrollBarThickness
         {
@@ -28,7 +28,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarThickness), typeof(double), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Padding of the area that contains the horizontal scrollbar.
+        /// Gets or sets the padding of the area that contains the horizontal scrollbar.
         /// </summary>
         public Thickness HorizontalScrollBarAreaPadding
         {
@@ -43,7 +43,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarAreaPadding), typeof(Thickness), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Padding of the horizontal scrollbar.
+        /// Gets or sets the padding of the horizontal scrollbar.
         /// </summary>
         public Thickness HorizontalScrollBarPadding
         {
@@ -58,7 +58,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarPadding), typeof(Thickness), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// CornerRadius of the horizontal scrollbar.
+        /// Gets or sets the corner radius of the horizontal scrollbar.
         /// </summary>
         public CornerRadius HorizontalScrollBarCornerRadius
         {
@@ -73,7 +73,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarCornerRadius), typeof(CornerRadius), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// BorderThickness of the horizontal scrollbar.
+        /// Gets or sets the border thickness of the horizontal scrollbar.
         /// </summary>
         public Thickness HorizontalScrollBarBorderThickness
         {
@@ -88,7 +88,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarBorderThickness), typeof(Thickness), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Background of the horizontal scrollbar.
+        /// Gets or sets the background brush of the horizontal scrollbar.
         /// </summary>
         public Brush HorizontalScrollBarBackground
         {
@@ -103,7 +103,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarBackground), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// BorderBrush of the horizontal scrollbar.
+        /// Gets or sets the border brush of the horizontal scrollbar.
         /// </summary>
         public Brush HorizontalScrollBarBorderBrush
         {
@@ -118,7 +118,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarBorderBrush), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Foreground of the horizontal scrollbar.
+        /// Gets or sets the foreground brush of the horizontal scrollbar.
         /// </summary>
         public Brush HorizontalScrollBarForeground
         {
@@ -133,7 +133,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarForeground), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Foreground of the horizontal scrollbar when the control is disabled.
+        /// Gets or sets the foreground brush of the horizontal scrollbar when the control is disabled.
         /// </summary>
         public Brush HorizontalScrollBarForegroundOnDisabled
         {
@@ -148,7 +148,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarForegroundOnDisabled), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Padding of the horizontal scrollbar thumb.
+        /// Gets or sets the padding of the horizontal scrollbar thumb.
         /// </summary>
         public Thickness HorizontalScrollBarThumbPadding
         {
@@ -163,7 +163,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarThumbPadding), typeof(Thickness), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// CornerRadius of the horizontal scrollbar thumb.
+        /// Gets or sets the corner radius of the horizontal scrollbar thumb.
         /// </summary>
         public CornerRadius HorizontalScrollBarThumbCornerRadius
         {
@@ -178,7 +178,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarThumbCornerRadius), typeof(CornerRadius), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// BorderThickness of the horizontal scrollbar thumb.
+        /// Gets or sets the border thickness of the horizontal scrollbar thumb.
         /// </summary>
         public Thickness HorizontalScrollBarThumbBorderThickness
         {
@@ -193,7 +193,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarThumbBorderThickness), typeof(Thickness), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// BorderBrush of the horizontal scrollbar thumb.
+        /// Gets or sets the border brush of the horizontal scrollbar thumb.
         /// </summary>
         public Brush HorizontalScrollBarThumbBorderBrush
         {
@@ -208,7 +208,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarThumbBorderBrush), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Opacity of the horizontal scrollbar when in normal state.
+        /// Gets or sets the opacity of the horizontal scrollbar when in normal state.
         /// </summary>
         public double HorizontalScrollBarOpacityNormal
         {
@@ -223,7 +223,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarOpacityNormal), typeof(double), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Opacity of the horizontal scrollbar when the mouse is over the control.
+        /// Gets or sets the opacity of the horizontal scrollbar when the mouse is over the control.
         /// </summary>
         public double HorizontalScrollBarOpacityOnMouseOver
         {
@@ -238,7 +238,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarOpacityOnMouseOver), typeof(double), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Opacity of the horizontal scrollbar when is pressed.
+        /// Gets or sets the opacity of the horizontal scrollbar when is pressed.
         /// </summary>
         public double HorizontalScrollBarOpacityOnMouseDown
         {
@@ -253,7 +253,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarOpacityOnMouseDown), typeof(double), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Size of the horizontal scrollbar buttons.
+        /// Gets or sets the size of the horizontal scrollbar buttons.
         /// </summary>
         public double HorizontalScrollBarButtonsSize
         {
@@ -268,7 +268,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarButtonsSize), typeof(double), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Font of the horizontal scrollbar buttons.
+        /// Gets or sets the font of the horizontal scrollbar buttons.
         /// </summary>
         public FontFamily HorizontalScrollBarButtonsFont
         {
@@ -283,7 +283,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarButtonsFont), typeof(FontFamily), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Size of the font of the horizontal scrollbar buttons.
+        /// Gets or sets the size of the font of the horizontal scrollbar buttons.
         /// </summary>
         public double HorizontalScrollBarButtonsFontSize
         {
@@ -298,7 +298,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarButtonsFontSize), typeof(double), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// CornerRadius of the horizontal scrollbar buttons.
+        /// Gets or sets the corner radius of the horizontal scrollbar buttons.
         /// </summary>
         public CornerRadius HorizontalScrollBarButtonsCornerRadius
         {
@@ -313,7 +313,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarButtonsCornerRadius), typeof(CornerRadius), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Background of the horizontal scrollbar buttons.
+        /// Gets or sets the background brush of the horizontal scrollbar buttons.
         /// </summary>
         public Brush HorizontalScrollBarButtonsBackground
         {
@@ -328,7 +328,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarButtonsBackground), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// BorderBrush of the horizontal scrollbar buttons.
+        /// Gets or sets the border brush of the horizontal scrollbar buttons.
         /// </summary>
         public Brush HorizontalScrollBarButtonsBorderBrush
         {
@@ -343,7 +343,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarButtonsBorderBrush), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// BorderThickness of the horizontal scrollbar buttons.
+        /// Gets or sets the border thickness of the horizontal scrollbar buttons.
         /// </summary>
         public Thickness HorizontalScrollBarButtonsBorderThickness
         {
@@ -358,7 +358,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarButtonsBorderThickness), typeof(Thickness), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Foreground of the horizontal scrollbar buttons.
+        /// Gets or sets the foreground brush of the horizontal scrollbar buttons.
         /// </summary>
         public Brush HorizontalScrollBarButtonsForeground
         {
@@ -372,9 +372,8 @@ namespace FullControls.Controls
         public static readonly DependencyProperty HorizontalScrollBarButtonsForegroundProperty =
             DependencyProperty.Register(nameof(HorizontalScrollBarButtonsForeground), typeof(Brush), typeof(GlassScrollViewer));
 
-
         /// <summary>
-        /// Foreground of the horizontal scrollbar buttons when the control is disabled.
+        /// Gets or sets the foreground brush of the horizontal scrollbar buttons when the control is disabled.
         /// </summary>
         public Brush HorizontalScrollBarButtonsForegroundOnDisabled
         {
@@ -389,7 +388,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarButtonsForegroundOnDisabled), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Content of the horizontal scrollbar left button.
+        /// Gets or sets the content of the horizontal scrollbar left button.
         /// </summary>
         public object LeftButtonContent
         {
@@ -404,7 +403,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LeftButtonContent), typeof(object), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Content of the horizontal scrollbar right button.
+        /// Gets or sets the content of the horizontal scrollbar right button.
         /// </summary>
         public object RightButtonContent
         {
@@ -419,7 +418,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(RightButtonContent), typeof(object), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// <see cref="ContextMenu"/> of the horizontal scrollbar.
+        /// Gets or sets the <see cref="ContextMenu"/> of the horizontal scrollbar.
         /// </summary>
         public ContextMenu HorizontalScrollBarContextMenu
         {
@@ -438,7 +437,7 @@ namespace FullControls.Controls
         #region Vertical ScrollBar properties
 
         /// <summary>
-        /// Thickness of the vertical scrollbar.
+        /// Gets or sets the thickness of the vertical scrollbar.
         /// </summary>
         public double VerticalScrollBarThickness
         {
@@ -453,7 +452,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarThickness), typeof(double), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Padding of the area that contains the vertical scrollbar.
+        /// Gets or sets the padding of the area that contains the vertical scrollbar.
         /// </summary>
         public Thickness VerticalScrollBarAreaPadding
         {
@@ -468,7 +467,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarAreaPadding), typeof(Thickness), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Padding of the vertical scrollbar.
+        /// Gets or sets the padding of the vertical scrollbar.
         /// </summary>
         public Thickness VerticalScrollBarPadding
         {
@@ -483,7 +482,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarPadding), typeof(Thickness), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// CornerRadius of the vertical scrollbar.
+        /// Gets or sets the corner radius of the vertical scrollbar.
         /// </summary>
         public CornerRadius VerticalScrollBarCornerRadius
         {
@@ -498,7 +497,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarCornerRadius), typeof(CornerRadius), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// BorderThickness of the vertical scrollbar.
+        /// Gets or sets the border thickness of the vertical scrollbar.
         /// </summary>
         public Thickness VerticalScrollBarBorderThickness
         {
@@ -513,7 +512,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarBorderThickness), typeof(Thickness), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Background of the vertical scrollbar.
+        /// Gets or sets the background brush of the vertical scrollbar.
         /// </summary>
         public Brush VerticalScrollBarBackground
         {
@@ -528,7 +527,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarBackground), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// BorderBrush of the vertical scrollbar.
+        /// Gets or sets the border brush of the vertical scrollbar.
         /// </summary>
         public Brush VerticalScrollBarBorderBrush
         {
@@ -543,7 +542,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarBorderBrush), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Foreground of the vertical scrollbar.
+        /// Gets or sets the foreground brush of the vertical scrollbar.
         /// </summary>
         public Brush VerticalScrollBarForeground
         {
@@ -558,7 +557,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarForeground), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Foreground of the vertical scrollbar when the control is disabled.
+        /// Gets or sets the foreground brush of the vertical scrollbar when the control is disabled.
         /// </summary>
         public Brush VerticalScrollBarForegroundOnDisabled
         {
@@ -573,7 +572,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarForegroundOnDisabled), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Padding of the vertical scrollbar thumb.
+        /// Gets or sets the padding of the vertical scrollbar thumb.
         /// </summary>
         public Thickness VerticalScrollBarThumbPadding
         {
@@ -588,7 +587,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarThumbPadding), typeof(Thickness), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// CornerRadius of the vertical scrollbar thumb.
+        /// Gets or sets the corner radius of the vertical scrollbar thumb.
         /// </summary>
         public CornerRadius VerticalScrollBarThumbCornerRadius
         {
@@ -603,7 +602,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarThumbCornerRadius), typeof(CornerRadius), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// BorderThickness of the vertical scrollbar thumb.
+        /// Gets or sets the border thickness of the vertical scrollbar thumb.
         /// </summary>
         public Thickness VerticalScrollBarThumbBorderThickness
         {
@@ -618,7 +617,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarThumbBorderThickness), typeof(Thickness), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// BorderBrush of the vertical scrollbar thumb.
+        /// Gets or sets the border brush of the vertical scrollbar thumb.
         /// </summary>
         public Brush VerticalScrollBarThumbBorderBrush
         {
@@ -633,7 +632,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarThumbBorderBrush), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Opacity of the vertical scrollbar when in normal state.
+        /// Gets or sets the opacity of the vertical scrollbar when in normal state.
         /// </summary>
         public double VerticalScrollBarOpacityNormal
         {
@@ -648,7 +647,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarOpacityNormal), typeof(double), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Opacity of the vertical scrollbar when the mouse is over the control.
+        /// Gets or sets the opacity of the vertical scrollbar when the mouse is over the control.
         /// </summary>
         public double VerticalScrollBarOpacityOnMouseOver
         {
@@ -663,7 +662,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarOpacityOnMouseOver), typeof(double), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Opacity of the vertical scrollbar when is pressed.
+        /// Gets or sets the opacity of the vertical scrollbar when is pressed.
         /// </summary>
         public double VerticalScrollBarOpacityOnMouseDown
         {
@@ -678,7 +677,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarOpacityOnMouseDown), typeof(double), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Size of the vertical scrollbar buttons.
+        /// Gets or sets the size of the vertical scrollbar buttons.
         /// </summary>
         public double VerticalScrollBarButtonsSize
         {
@@ -693,7 +692,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarButtonsSize), typeof(double), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Font of the vertical scrollbar buttons.
+        /// Gets or sets the font of the vertical scrollbar buttons.
         /// </summary>
         public FontFamily VerticalScrollBarButtonsFont
         {
@@ -708,7 +707,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarButtonsFont), typeof(FontFamily), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Size of the font of the vertical scrollbar buttons.
+        /// Gets or sets the size of the font of the vertical scrollbar buttons.
         /// </summary>
         public double VerticalScrollBarButtonsFontSize
         {
@@ -723,7 +722,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarButtonsFontSize), typeof(double), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// CornerRadius of the vertical scrollbar buttons.
+        /// Gets or sets the corner radius of the vertical scrollbar buttons.
         /// </summary>
         public CornerRadius VerticalScrollBarButtonsCornerRadius
         {
@@ -738,7 +737,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarButtonsCornerRadius), typeof(CornerRadius), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Background of the vertical scrollbar buttons.
+        /// Gets or sets the background brush of the vertical scrollbar buttons.
         /// </summary>
         public Brush VerticalScrollBarButtonsBackground
         {
@@ -753,7 +752,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarButtonsBackground), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// BorderBrush of the vertical scrollbar buttons.
+        /// Gets or sets the border brush of the vertical scrollbar buttons.
         /// </summary>
         public Brush VerticalScrollBarButtonsBorderBrush
         {
@@ -768,7 +767,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarButtonsBorderBrush), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// BorderThickness of the vertical scrollbar buttons.
+        /// Gets or sets the border thickness of the vertical scrollbar buttons.
         /// </summary>
         public Thickness VerticalScrollBarButtonsBorderThickness
         {
@@ -783,7 +782,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarButtonsBorderThickness), typeof(Thickness), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Foreground of the vertical scrollbar buttons.
+        /// Gets or sets the foreground brush of the vertical scrollbar buttons.
         /// </summary>
         public Brush VerticalScrollBarButtonsForeground
         {
@@ -797,9 +796,8 @@ namespace FullControls.Controls
         public static readonly DependencyProperty VerticalScrollBarButtonsForegroundProperty =
             DependencyProperty.Register(nameof(VerticalScrollBarButtonsForeground), typeof(Brush), typeof(GlassScrollViewer));
 
-
         /// <summary>
-        /// Foreground of the vertical scrollbar buttons when the control is disabled.
+        /// Gets or sets the foreground brush of the vertical scrollbar buttons when the control is disabled.
         /// </summary>
         public Brush VerticalScrollBarButtonsForegroundOnDisabled
         {
@@ -814,7 +812,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarButtonsForegroundOnDisabled), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Content of the vertical scrollbar up button.
+        /// Gets or sets the content of the vertical scrollbar up button.
         /// </summary>
         public object UpButtonContent
         {
@@ -829,7 +827,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(UpButtonContent), typeof(object), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Content of the vertical scrollbar down button.
+        /// Gets or sets the content of the vertical scrollbar down button.
         /// </summary>
         public object DownButtonContent
         {
@@ -844,7 +842,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(DownButtonContent), typeof(object), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// <see cref="ContextMenu"/> of the vertical scrollbar.
+        /// Gets or sets the <see cref="ContextMenu"/> of the vertical scrollbar.
         /// </summary>
         public ContextMenu VerticalScrollBarContextMenu
         {
@@ -863,7 +861,7 @@ namespace FullControls.Controls
         #region Common ScrollBar properties
 
         /// <summary>
-        /// Place the scrollbars inside the content area.
+        /// Gets or sets a value indicating if place the scrollbars inside the content area.
         /// </summary>
         public bool PlaceScrollBarsInside
         {
@@ -878,7 +876,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PlaceScrollBarsInside), typeof(bool), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Enables the scrollbars buttons.
+        /// Gets or sets a value indicating if enable the scrollbars buttons.
         /// </summary>
         public bool EnableButtons
         {
@@ -929,7 +927,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// BorderBrush of the content area.
+        /// Gets or sets the border brush of the content area.
         /// </summary>
         public Brush InsideBorderBrush
         {
@@ -944,7 +942,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(InsideBorderBrush), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// BorderThickness of the content area.
+        /// Gets or sets the border thickness of the content area.
         /// </summary>
         public Thickness InsideBorderThickness
         {
@@ -959,12 +957,14 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(InsideBorderThickness), typeof(Thickness), typeof(GlassScrollViewer));
 
 
-        /// <summary>
-        /// Creates a new <see cref="GlassScrollViewer"/>.
-        /// </summary>
         static GlassScrollViewer()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(GlassScrollViewer), new FrameworkPropertyMetadata(typeof(GlassScrollViewer)));
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="GlassScrollViewer"/>.
+        /// </summary>
+        public GlassScrollViewer() : base() { }
     }
 }

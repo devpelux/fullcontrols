@@ -6,9 +6,9 @@
     public class ItemExpandedChangedEventArgs : ExpandedChangedEventArgs
     {
         /// <summary>
-        /// The index of the object.
+        /// Gets a value indicating the index of the object.
         /// </summary>
-        public int Index { get; set; }
+        public int Index { get; }
 
 
         /// <summary>

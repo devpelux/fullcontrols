@@ -38,7 +38,7 @@ namespace FullControls.Controls
         private const string PartCopyButton = "PART_CopyButton";
 
         /// <summary>
-        /// Background brush when the control is selected.
+        /// Gets or sets the background brush when the control is selected.
         /// </summary>
         public Brush BackgroundOnSelected
         {
@@ -53,7 +53,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BackgroundOnSelected), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Background brush when the control is disabled.
+        /// Gets or sets the background brush when the control is disabled.
         /// </summary>
         public Brush BackgroundOnDisabled
         {
@@ -68,7 +68,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Actual Background brush of the control.
+        /// Gets the actual background brush of the control.
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
@@ -80,7 +80,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((EPasswordBox)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
-        /// BorderBrush when the control is selected.
+        /// Gets or sets the border brush when the control is selected.
         /// </summary>
         public Brush BorderBrushOnSelected
         {
@@ -95,7 +95,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BorderBrushOnSelected), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// BorderBrush when the control is disabled.
+        /// Gets or sets the border brush when the control is disabled.
         /// </summary>
         public Brush BorderBrushOnDisabled
         {
@@ -110,7 +110,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Actual BorderBrush of the control.
+        /// Gets the actual border brush of the control.
         /// </summary>
         public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
@@ -121,7 +121,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Brush of the caret of the passwordbox.
+        /// Gets or sets the brush of the caret.
         /// </summary>
         public Brush CaretBrush
         {
@@ -136,7 +136,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CaretBrush), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Brush of the highlighted part of the passwordbox text.
+        /// Gets or sets the brush of the highlighted part of the password.
         /// </summary>
         public Brush SelectionBrush
         {
@@ -151,7 +151,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(SelectionBrush), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Brush of the selected text.
+        /// Gets or sets the brush of the selected password.
         /// </summary>
         public Brush SelectionTextBrush
         {
@@ -166,7 +166,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(SelectionTextBrush), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Opacity of the highlighted part of the passwordbox text.
+        /// Gets or sets the opacity of the highlighted part of the password.
         /// </summary>
         public double SelectionOpacity
         {
@@ -181,7 +181,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(SelectionOpacity), typeof(double), typeof(EPasswordBox));
 
         /// <summary>
-        /// Specifies if adapt automatically the foreground to the actual background of the control.
+        /// Gets or sets a value indicating if adapt automatically the foreground brush to the actual background brush of the control.
         /// </summary>
         public bool AdaptForegroundAutomatically
         {
@@ -196,7 +196,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AdaptForegroundAutomatically), typeof(bool), typeof(EPasswordBox));
 
         /// <summary>
-        /// Specifies if adapt automatically the caret brush to the actual background of the control.
+        /// Gets or sets a value indicating if adapt automatically the caret brush to the actual background brush of the control.
         /// </summary>
         public bool AdaptCaretBrushAutomatically
         {
@@ -213,7 +213,7 @@ namespace FullControls.Controls
         #region Hint
 
         /// <summary>
-        /// Suggestion that will displayed if there is no text inside the passwordbox.
+        /// Gets or sets the suggestion displayed if <see cref="Password"/> is empty.
         /// </summary>
         public string Hint
         {
@@ -228,7 +228,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(Hint), typeof(string), typeof(EPasswordBox));
 
         /// <summary>
-        /// Specifies if to display or not the hint.
+        /// Gets or sets a value indicating if to display or not the hint.
         /// </summary>
         public bool ShowHint
         {
@@ -243,7 +243,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ShowHint), typeof(bool), typeof(EPasswordBox));
 
         /// <summary>
-        /// Foreground of the hint.
+        /// Gets or sets the foreground brush of the hint.
         /// </summary>
         public Brush HintForeground
         {
@@ -258,7 +258,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HintForeground), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Opacity of the hint.
+        /// Gets or sets the opacity of the hint.
         /// </summary>
         public double HintOpacity
         {
@@ -273,7 +273,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HintOpacity), typeof(double), typeof(EPasswordBox));
 
         /// <summary>
-        /// Specifies if adapt automatically the hint foreground to the actual background of the control.
+        /// Gets or sets a value indicating if adapt automatically the hint foreground brush to the actual background brush of the control.
         /// </summary>
         public bool AdaptHintForegroundAutomatically
         {
@@ -292,7 +292,7 @@ namespace FullControls.Controls
         #region Peek
 
         /// <summary>
-        /// Displays the password when the peek button is clicked.
+        /// Contains the password when the peek button is clicked.
         /// </summary>
         public string Peek => (string)GetValue(PeekProperty);
 
@@ -303,7 +303,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(Peek), typeof(string), typeof(EPasswordBox));
 
         /// <summary>
-        /// Specifies if to display or not a button that show the password while is pressed.
+        /// Gets or sets a value indicating if to display or not a button that show the password while is pressed.
         /// </summary>
         public bool EnablePeekButton
         {
@@ -318,7 +318,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(EnablePeekButton), typeof(bool), typeof(EPasswordBox));
 
         /// <summary>
-        /// Foreground of the text showing the password.
+        /// Gets or sets the foreground of the text showing the password.
         /// </summary>
         public Brush PeekForeground
         {
@@ -333,7 +333,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PeekForeground), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Foreground of the peek button.
+        /// Gets or sets the foreground of the peek button.
         /// </summary>
         public Brush PeekButtonForeground
         {
@@ -348,7 +348,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PeekButtonForeground), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Specifies if adapt automatically the peek foreground to the actual background of the control.
+        /// Gets or sets a value indicating if adapt automatically the peek foreground to the actual background of the control.
         /// </summary>
         public bool AdaptPeekForegroundAutomatically
         {
@@ -363,7 +363,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AdaptPeekForegroundAutomatically), typeof(bool), typeof(EPasswordBox));
 
         /// <summary>
-        /// Specifies if adapt automatically the peek button foreground to the actual background of the control.
+        /// Gets or sets a value indicating if adapt automatically the peek button foreground to the actual background of the control.
         /// </summary>
         public bool AdaptPeekButtonForegroundAutomatically
         {
@@ -378,7 +378,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AdaptPeekButtonForegroundAutomatically), typeof(bool), typeof(EPasswordBox));
 
         /// <summary>
-        /// Size of the peek button.
+        /// Gets or sets the size of the peek button.
         /// </summary>
         public double PeekButtonSize
         {
@@ -393,7 +393,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PeekButtonSize), typeof(double), typeof(EPasswordBox));
 
         /// <summary>
-        /// FontFamily of the peek button.
+        /// Gets or sets the font family of the peek button.
         /// </summary>
         public FontFamily PeekButtonFontFamily
         {
@@ -408,7 +408,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PeekButtonFontFamily), typeof(FontFamily), typeof(EPasswordBox));
 
         /// <summary>
-        /// FontSize of the peek button.
+        /// Gets or sets the font size of the peek button.
         /// </summary>
         public double PeekButtonFontSize
         {
@@ -423,7 +423,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PeekButtonFontSize), typeof(double), typeof(EPasswordBox));
 
         /// <summary>
-        /// FontStretch of the peek button.
+        /// Gets or sets the font stretch of the peek button.
         /// </summary>
         public FontStretch PeekButtonFontStretch
         {
@@ -438,7 +438,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PeekButtonFontStretch), typeof(FontStretch), typeof(EPasswordBox));
 
         /// <summary>
-        /// FontStyle of the peek button.
+        /// Gets or sets the font style of the peek button.
         /// </summary>
         public FontStyle PeekButtonFontStyle
         {
@@ -453,7 +453,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PeekButtonFontStyle), typeof(FontStyle), typeof(EPasswordBox));
 
         /// <summary>
-        /// FontWeight of the peek button.
+        /// Gets or sets the font weight of the peek button.
         /// </summary>
         public FontWeight PeekButtonFontWeight
         {
@@ -468,7 +468,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PeekButtonFontWeight), typeof(FontWeight), typeof(EPasswordBox));
 
         /// <summary>
-        /// Cursor when the mouse is over the peek button.
+        /// Gets or sets the cursor when the mouse is over the peek button.
         /// </summary>
         public Cursor PeekButtonCursor
         {
@@ -483,7 +483,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PeekButtonCursor), typeof(Cursor), typeof(EPasswordBox));
 
         /// <summary>
-        /// Content of the peek button.
+        /// Gets or sets the content of the peek button.
         /// </summary>
         public object PeekButtonContent
         {
@@ -502,7 +502,7 @@ namespace FullControls.Controls
         #region CopyButton
 
         /// <summary>
-        /// Specifies if to display or not a button that copies the password on the <see cref="Clipboard"/> when clicked.
+        /// Gets or sets a value indicating if to display or not a button that copies the password on the <see cref="Clipboard"/> when clicked.
         /// </summary>
         public bool EnableCopyButton
         {
@@ -517,7 +517,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(EnableCopyButton), typeof(bool), typeof(EPasswordBox));
 
         /// <summary>
-        /// Content of the copy button.
+        /// Gets or sets the content of the copy button.
         /// </summary>
         public object CopyButtonContent
         {
@@ -532,7 +532,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonContent), typeof(object), typeof(EPasswordBox));
 
         /// <summary>
-        /// Width of the copy button.
+        /// Gets or sets the width of the copy button.
         /// </summary>
         public double CopyButtonSize
         {
@@ -547,7 +547,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonSize), typeof(double), typeof(EPasswordBox));
 
         /// <summary>
-        /// FontFamily of the copy button.
+        /// Gets or sets the font family of the copy button.
         /// </summary>
         public FontFamily CopyButtonFontFamily
         {
@@ -562,7 +562,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonFontFamily), typeof(FontFamily), typeof(EPasswordBox));
 
         /// <summary>
-        /// FontSize of the copy button.
+        /// Gets or sets the font size of the copy button.
         /// </summary>
         public double CopyButtonFontSize
         {
@@ -577,7 +577,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonFontSize), typeof(double), typeof(EPasswordBox));
 
         /// <summary>
-        /// FontStretch of the copy button.
+        /// Gets or sets the font stretch of the copy button.
         /// </summary>
         public FontStretch CopyButtonFontStretch
         {
@@ -592,7 +592,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonFontStretch), typeof(FontStretch), typeof(EPasswordBox));
 
         /// <summary>
-        /// FontStyle of the copy button.
+        /// Gets or sets the font style of the copy button.
         /// </summary>
         public FontStyle CopyButtonFontStyle
         {
@@ -607,7 +607,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonFontStyle), typeof(FontStyle), typeof(EPasswordBox));
 
         /// <summary>
-        /// FontWeight of the copy button.
+        /// Gets or sets the font weight of the copy button.
         /// </summary>
         public FontWeight CopyButtonFontWeight
         {
@@ -622,7 +622,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonFontWeight), typeof(FontWeight), typeof(EPasswordBox));
 
         /// <summary>
-        /// Margin of the copy button.
+        /// Gets or sets the margin of the copy button.
         /// </summary>
         public Thickness CopyButtonMargin
         {
@@ -637,7 +637,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonMargin), typeof(Thickness), typeof(EPasswordBox));
 
         /// <summary>
-        /// Background of the copy button.
+        /// Gets or sets the background brush of the copy button.
         /// </summary>
         public Brush CopyButtonBackground
         {
@@ -652,7 +652,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBackground), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Background of the copy button when the mouse is over it.
+        /// Gets or sets the background brush of the copy button when the mouse is over it.
         /// </summary>
         public Brush CopyButtonBackgroundOnMouseOver
         {
@@ -667,7 +667,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBackgroundOnMouseOver), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Background of the copy button when is pressed.
+        /// Gets or sets the background brush of the copy button when is pressed.
         /// </summary>
         public Brush CopyButtonBackgroundOnPressed
         {
@@ -682,7 +682,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBackgroundOnPressed), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Background of the copy button when is disabled.
+        /// Gets or sets the background brush of the copy button when is disabled.
         /// </summary>
         public Brush CopyButtonBackgroundOnDisabled
         {
@@ -697,7 +697,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBackgroundOnDisabled), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// BorderBrush of the copy button.
+        /// Gets or sets the border brush of the copy button.
         /// </summary>
         public Brush CopyButtonBorderBrush
         {
@@ -712,7 +712,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBorderBrush), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// BorderBrush of the copy button when the mouse is over it.
+        /// Gets or sets the border brush of the copy button when the mouse is over it.
         /// </summary>
         public Brush CopyButtonBorderBrushOnMouseOver
         {
@@ -727,7 +727,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBorderBrushOnMouseOver), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// BorderBrush of the copy button when is pressed.
+        /// Gets or sets the border brush of the copy button when is pressed.
         /// </summary>
         public Brush CopyButtonBorderBrushOnPressed
         {
@@ -742,7 +742,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBorderBrushOnPressed), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// BorderBrush of the copy button when is disabled.
+        /// Gets or sets the border brush of the copy button when is disabled.
         /// </summary>
         public Brush CopyButtonBorderBrushOnDisabled
         {
@@ -757,7 +757,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBorderBrushOnDisabled), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Foreground of the copy button.
+        /// Gets or sets the foreground brush of the copy button.
         /// </summary>
         public Brush CopyButtonForeground
         {
@@ -772,7 +772,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonForeground), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Foreground of the copy button when the mouse is over it.
+        /// Gets or sets the foreground brush of the copy button when the mouse is over it.
         /// </summary>
         public Brush CopyButtonForegroundOnMouseOver
         {
@@ -787,7 +787,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonForegroundOnMouseOver), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Foreground of the copy button when is pressed.
+        /// Gets or sets the foreground brush of the copy button when is pressed.
         /// </summary>
         public Brush CopyButtonForegroundOnPressed
         {
@@ -802,7 +802,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonForegroundOnPressed), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// Foreground of the copy button when is disabled.
+        /// Gets or sets the foreground brush of the copy button when is disabled.
         /// </summary>
         public Brush CopyButtonForegroundOnDisabled
         {
@@ -817,7 +817,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonForegroundOnDisabled), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// CornerRadius of the copy button.
+        /// Gets or sets the corner radius of the copy button.
         /// </summary>
         public CornerRadius CopyButtonCornerRadius
         {
@@ -832,7 +832,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonCornerRadius), typeof(CornerRadius), typeof(EPasswordBox));
 
         /// <summary>
-        /// BorderThickness of the copy button.
+        /// Gets or sets the border thickness of the copy button.
         /// </summary>
         public Thickness CopyButtonBorderThickness
         {
@@ -847,7 +847,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CopyButtonBorderThickness), typeof(Thickness), typeof(EPasswordBox));
 
         /// <summary>
-        /// Duration of the copy button animation when it changes state.
+        /// Gets or sets the duration of the copy button animation when it changes state.
         /// </summary>
         public TimeSpan CopyButtonAnimationTime
         {
@@ -866,7 +866,7 @@ namespace FullControls.Controls
         #region Label
 
         /// <summary>
-        /// Label that is displayed to the left or top of the TextBox.
+        /// Gets or sets the label displayed on the left or top of the control.
         /// </summary>
         public object Label
         {
@@ -881,7 +881,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(Label), typeof(object), typeof(EPasswordBox));
 
         /// <summary>
-        /// Icon that is displayed to the left or top of the TextBox.
+        /// Gets or sets the icon displayed on the left or top of the control.
         /// </summary>
         public ImageSource Icon
         {
@@ -896,7 +896,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(EPasswordBox));
 
         /// <summary>
-        /// Label type.
+        /// Gets or sets the label type.
         /// </summary>
         public LabelType LabelType
         {
@@ -911,7 +911,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelType), typeof(LabelType), typeof(EPasswordBox));
 
         /// <summary>
-        /// Orientation order between Label and TextBox.
+        /// Gets or sets the orientation order between the label and the text area.
         /// </summary>
         public Orientation Order
         {
@@ -926,7 +926,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(Order), typeof(Orientation), typeof(EPasswordBox));
 
         /// <summary>
-        /// Max Width of the label.
+        /// Gets or sets the max width of the label.
         /// </summary>
         public double LabelMaxSize
         {
@@ -941,7 +941,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelMaxSize), typeof(double), typeof(EPasswordBox), new FrameworkPropertyMetadata(double.PositiveInfinity));
 
         /// <summary>
-        /// Margin of the label.
+        /// Gets or sets the margin of the label.
         /// </summary>
         public Thickness LabelMargin
         {
@@ -956,7 +956,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelMargin), typeof(Thickness), typeof(EPasswordBox));
 
         /// <summary>
-        /// Foreground of the label.
+        /// Gets or sets the foreground brush of the label.
         /// </summary>
         public Brush LabelForeground
         {
@@ -971,7 +971,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelForeground), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// FontSize of the label.
+        /// Gets or sets the font size of the label.
         /// </summary>
         public double LabelFontSize
         {
@@ -986,7 +986,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelFontSize), typeof(double), typeof(EPasswordBox));
 
         /// <summary>
-        /// FontFamily of the label.
+        /// Gets or sets the font family of the label.
         /// </summary>
         public FontFamily LabelFontFamily
         {
@@ -1001,7 +1001,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelFontFamily), typeof(FontFamily), typeof(EPasswordBox));
 
         /// <summary>
-        /// FontStretch of the label.
+        /// Gets or sets the font stretch of the label.
         /// </summary>
         public FontStretch LabelFontStretch
         {
@@ -1016,7 +1016,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelFontStretch), typeof(FontStretch), typeof(EPasswordBox));
 
         /// <summary>
-        /// FontStyle of the label.
+        /// Gets or sets the font style of the label.
         /// </summary>
         public FontStyle LabelFontStyle
         {
@@ -1031,7 +1031,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(LabelFontStyle), typeof(FontStyle), typeof(EPasswordBox));
 
         /// <summary>
-        /// FontWeight of the label.
+        /// Gets or sets the font weight of the label.
         /// </summary>
         public FontWeight LabelFontWeight
         {
@@ -1047,10 +1047,10 @@ namespace FullControls.Controls
 
         #endregion
 
-        #region ExternalBorder
+        #region ExternalOutline
 
         /// <summary>
-        /// Background brush of the external border.
+        /// Gets or sets the background brush of the external outline.
         /// </summary>
         public Brush ExternalBackground
         {
@@ -1065,7 +1065,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ExternalBackground), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// BorderBrush of the external border.
+        /// Gets or sets the border brush of the external outline.
         /// </summary>
         public Brush ExternalBorderBrush
         {
@@ -1080,7 +1080,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ExternalBorderBrush), typeof(Brush), typeof(EPasswordBox));
 
         /// <summary>
-        /// BorderThickness of the external border.
+        /// Gets or sets the border thickness of the external outline.
         /// </summary>
         public Thickness ExternalBorderThickness
         {
@@ -1095,7 +1095,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ExternalBorderThickness), typeof(Thickness), typeof(EPasswordBox));
 
         /// <summary>
-        /// Padding of the external border.
+        /// Gets or sets the padding of the external outline.
         /// </summary>
         public Thickness ExternalPadding
         {
@@ -1110,7 +1110,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ExternalPadding), typeof(Thickness), typeof(EPasswordBox));
 
         /// <summary>
-        /// CornerRadius of the external border.
+        /// Gets or sets the corner radius of the external outline.
         /// </summary>
         public CornerRadius ExternalCornerRadius
         {
@@ -1127,7 +1127,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// CornerRadius of the control.
+        /// Gets or sets the corner radius of the control.
         /// </summary>
         public CornerRadius CornerRadius
         {
@@ -1142,7 +1142,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(EPasswordBox));
 
         /// <summary>
-        /// Width of the PasswordBox.
+        /// Gets or sets the width of the text area.
         /// </summary>
         public double TextViewSize
         {
@@ -1157,7 +1157,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(TextViewSize), typeof(double), typeof(EPasswordBox));
 
         /// <summary>
-        /// Enables automatic adjustement of margins between all items in the same group.
+        /// Gets or sets a value indicating if enable automatic adjustement of margins between all text controls in the same group.
         /// </summary>
         public bool AutoMargin
         {
@@ -1172,7 +1172,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AutoMargin), typeof(bool), typeof(EPasswordBox));
 
         /// <summary>
-        /// Duration of the control animation when it changes state.
+        /// Gets or sets the duration of the control animation when it changes state.
         /// </summary>
         public TimeSpan AnimationTime
         {
@@ -1187,7 +1187,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EPasswordBox));
 
         /// <summary>
-        /// Masking character for <see cref="Password"/>.
+        /// Gets or sets the masking character for <see cref="Password"/>.
         /// </summary>
         public char PasswordChar
         {
@@ -1202,7 +1202,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PasswordChar), typeof(char), typeof(EPasswordBox));
 
         /// <summary>
-        /// Max length of <see cref="Password"/>.
+        /// Gets or sets the max length of <see cref="Password"/>.
         /// </summary>
         public int MaxLength
         {
@@ -1217,7 +1217,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(MaxLength), typeof(int), typeof(EPasswordBox));
 
         /// <summary>
-        /// Indicates if the passwordbox displays selected text when does not have focus.
+        /// Gets or sets a value indicating if the control displays selected text when does not have focus.
         /// </summary>
         public bool IsInactiveSelectionHighlightEnabled
         {
@@ -1232,12 +1232,12 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(IsInactiveSelectionHighlightEnabled), typeof(bool), typeof(EPasswordBox));
 
         /// <summary>
-        /// Value of <see cref="Password"/> as <see cref="SecureString"/>.
+        /// Gets the value of <see cref="Password"/> as <see cref="SecureString"/>.
         /// </summary>
         public SecureString SecurePassword => GetSecurePassword();
 
         /// <summary>
-        /// Value of the password.
+        /// Gets or sets the value of the password.
         /// </summary>
         public string Password
         {
@@ -1246,17 +1246,17 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Length of the password (SecurePassword.Length).
+        /// Gets the length of the password (SecurePassword.Length).
         /// </summary>
         public int PasswordLength => SecurePassword != null ? SecurePassword.Length : 0;
 
         /// <summary>
-        /// Indicates if the passwordbox has focus and selected text.
+        /// Gets a value indicating if the control has focus and selected text.
         /// </summary>
         public bool IsSelectionActive => passwordBox != null && passwordBox.IsSelectionActive;
 
         /// <summary>
-        /// Gets a value that determines if the passwordbox has the focus.
+        /// Gets a value indicating if the control has the focus.
         /// </summary>
         public new bool IsFocused => passwordBox != null && passwordBox.IsFocused;
 
@@ -1276,15 +1276,17 @@ namespace FullControls.Controls
             EventManager.RegisterRoutedEvent(nameof(PasswordChanged), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(EPasswordBox));
 
 
-        /// <summary>
-        /// Creates a new <see cref="EPasswordBox"/>.
-        /// </summary>
         static EPasswordBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(EPasswordBox), new FrameworkPropertyMetadata(typeof(EPasswordBox)));
             IsEnabledProperty.OverrideMetadata(typeof(EPasswordBox), new FrameworkPropertyMetadata(
                 new PropertyChangedCallback((d, e) => ((EPasswordBox)d).OnEnabledChanged())));
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="EPasswordBox"/>.
+        /// </summary>
+        public EPasswordBox() : base() { }
 
         /// <summary>
         /// Clears the value of the <see cref="Password"/> property.

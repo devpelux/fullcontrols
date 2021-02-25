@@ -10,7 +10,7 @@ namespace FullControls.Controls
     public class FlatMenuSeparator : Control
     {
         /// <summary>
-        /// CornerRadius of the separator line.
+        /// Gets or sets the corner radius of the separator line.
         /// </summary>
         public CornerRadius SeparatorCornerRadius
         {
@@ -25,7 +25,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(SeparatorCornerRadius), typeof(CornerRadius), typeof(FlatMenuSeparator), new FrameworkPropertyMetadata(new CornerRadius()));
 
         /// <summary>
-        /// Height of the separator line.
+        /// Gets or sets the height of the separator line.
         /// </summary>
         /// <remarks>(It has no effect if <see cref="Orientation"/> is set to <see cref="Orientation.Vertical"/>)</remarks>
         public double SeparatorHeight
@@ -41,7 +41,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(SeparatorHeight), typeof(double), typeof(FlatMenuSeparator), new FrameworkPropertyMetadata(1d));
 
         /// <summary>
-        /// Width of the separator line.
+        /// Gets or sets the width of the separator line.
         /// </summary>
         /// <remarks>(It has no effect if <see cref="Orientation"/> is set to <see cref="Orientation.Horizontal"/>)</remarks>
         public double SeparatorWidth
@@ -57,7 +57,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(SeparatorWidth), typeof(double), typeof(FlatMenuSeparator), new FrameworkPropertyMetadata(1d));
 
         /// <summary>
-        /// Orientation of the separator.
+        /// Gets or sets the orientation of the separator line.
         /// </summary>
         public Orientation Orientation
         {
@@ -72,7 +72,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(Orientation), typeof(Orientation), typeof(FlatMenuSeparator), new PropertyMetadata(Orientation.Horizontal));
 
         /// <summary>
-        /// Enables automatic alignment to fit with other items.
+        /// Gets or sets a value indicating if enable automatic alignment to fit with other items.
         /// </summary>
         public bool AlignWithOthers
         {
@@ -87,14 +87,21 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AlignWithOthers), typeof(bool), typeof(FlatMenuSeparator), new PropertyMetadata(false));
 
 
-        /// <summary>
-        /// Creates a new <see cref="FlatMenuSeparator"/>.
-        /// </summary>
         static FlatMenuSeparator()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenuSeparator), new FrameworkPropertyMetadata(typeof(FlatMenuSeparator)));
         }
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="FlatMenuSeparator"/>.
+        /// </summary>
+        public FlatMenuSeparator() : base() { }
+
+        /// <summary>
+        /// Prepares the container for the item.
+        /// </summary>
+        /// <param name="container">Container to prepare.</param>
+        /// <param name="item">Item contained.</param>
         internal static void PrepareContainer(FlatMenuItemContainer container, FlatMenuSeparator item)
         {
             if (container != null && item != null)

@@ -261,9 +261,6 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(Switcher));
 
 
-        /// <summary>
-        /// Creates a new <see cref="Switcher"/>.
-        /// </summary>
         static Switcher()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Switcher), new FrameworkPropertyMetadata(typeof(Switcher)));
@@ -272,6 +269,11 @@ namespace FullControls.Controls
             IsCheckedProperty.OverrideMetadata(typeof(Switcher), new FrameworkPropertyMetadata(
                 new PropertyChangedCallback((d, e) => ((Switcher)d).OnCheckedChanged((bool?)e.NewValue))));
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="Switcher"/>.
+        /// </summary>
+        public Switcher() : base() { }
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()

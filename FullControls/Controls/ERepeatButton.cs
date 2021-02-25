@@ -214,15 +214,17 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(ERepeatButton));
 
 
-        /// <summary>
-        /// Creates a new <see cref="ERepeatButton"/>.
-        /// </summary>
         static ERepeatButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ERepeatButton), new FrameworkPropertyMetadata(typeof(ERepeatButton)));
             IsEnabledProperty.OverrideMetadata(typeof(ERepeatButton), new FrameworkPropertyMetadata(
                 new PropertyChangedCallback((d, e) => ((ERepeatButton)d).OnEnabledChanged((bool)e.NewValue))));
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ERepeatButton"/>.
+        /// </summary>
+        public ERepeatButton() : base() { }
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()

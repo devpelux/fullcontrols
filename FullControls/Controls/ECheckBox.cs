@@ -466,9 +466,6 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CheckAnimationTime), typeof(TimeSpan), typeof(ECheckBox));
 
 
-        /// <summary>
-        /// Creates a new <see cref="ECheckBox"/>.
-        /// </summary>
         static ECheckBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ECheckBox), new FrameworkPropertyMetadata(typeof(ECheckBox)));
@@ -477,6 +474,11 @@ namespace FullControls.Controls
             IsCheckedProperty.OverrideMetadata(typeof(ECheckBox), new FrameworkPropertyMetadata(
                 new PropertyChangedCallback((d, e) => ((ECheckBox)d).OnCheckedChanged((bool?)e.NewValue))));
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="ECheckBox"/>.
+        /// </summary>
+        public ECheckBox() : base() { }
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()

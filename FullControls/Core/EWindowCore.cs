@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FullControls.SystemComponents;
+using System;
 using System.Runtime.InteropServices;
 
 namespace FullControls.Core

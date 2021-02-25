@@ -25,7 +25,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(Header), typeof(object), typeof(FlatMenuTitle));
 
         /// <summary>
-        /// Margin of the header.
+        /// Gets or sets the margin of the header.
         /// </summary>
         public Thickness HeaderMargin
         {
@@ -40,7 +40,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HeaderMargin), typeof(Thickness), typeof(FlatMenuTitle));
 
         /// <summary>
-        /// Enables automatic alignment to fit with other items.
+        /// Gets or sets a value indicating if enable automatic alignment to fit with other items.
         /// </summary>
         public bool AlignWithOthers
         {
@@ -55,14 +55,21 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AlignWithOthers), typeof(bool), typeof(FlatMenuTitle), new PropertyMetadata(true));
 
 
-        /// <summary>
-        /// Creates a new <see cref="FlatMenuTitle"/>.
-        /// </summary>
         static FlatMenuTitle()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenuTitle), new FrameworkPropertyMetadata(typeof(FlatMenuTitle)));
         }
 
+        /// <summary>
+        /// Initializes a new instance of <see cref="FlatMenuTitle"/>.
+        /// </summary>
+        public FlatMenuTitle() : base() { }
+
+        /// <summary>
+        /// Prepares the container for the item.
+        /// </summary>
+        /// <param name="container">Container to prepare.</param>
+        /// <param name="item">Item contained.</param>
         internal static void PrepareContainer(FlatMenuItemContainer container, FlatMenuTitle item)
         {
             if (container != null && item != null)

@@ -265,7 +265,7 @@ namespace FullControls.Controls
         /// <summary>
         /// Initializes a new instance of <see cref="ItemsControlAccordionItem"/>.
         /// </summary>
-        public ItemsControlAccordionItem()
+        public ItemsControlAccordionItem() : base()
         {
             itemsControl = new ItemsControl();
             SetItemsControlBindings();

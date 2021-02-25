@@ -7,7 +7,7 @@
 	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     <Authors>Salvatore Peluso</Authors>
     <Description>Demo project of FullControls library.</Description>
-    <Copyright>Copyright (c) 2020-2021 devpelux (Salvatore Peluso)</Copyright>
+    <Copyright>Copyright (C) 2020-2021 devpelux (Salvatore Peluso)</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>

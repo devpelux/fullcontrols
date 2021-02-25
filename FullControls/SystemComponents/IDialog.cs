@@ -9,6 +9,6 @@
         /// Get the result <see cref="object"/>.
         /// </summary>
         /// <returns>Result <see cref="object"/>.</returns>
-        object GetResult();
+        public object GetResult();
     }
 }

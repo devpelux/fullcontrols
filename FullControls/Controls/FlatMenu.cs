@@ -13,7 +13,7 @@ namespace FullControls.Controls
         #region Global properties for child elements
 
         /// <summary>
-        /// CornerRadius of the items popup.
+        /// Gets or sets the corner radius of the items popup.
         /// </summary>
         public CornerRadius PopupCornerRadius
         {
@@ -29,7 +29,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(new CornerRadius(), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Padding of the items popup.
+        /// Gets or sets the padding of the items popup.
         /// </summary>
         public Thickness PopupPadding
         {
@@ -45,7 +45,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Vertical offset of the popup if its <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>..
+        /// Gets or sets the vertical offset of the items popup if their <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>.
         /// </summary>
         public double TopLevelPopupVerticalOffset
         {
@@ -61,7 +61,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Horizontal offset of the popup if its <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>.
+        /// Gets or sets the horizontal offset of the items popup if their <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>.
         /// </summary>
         public double TopLevelPopupHorizontalOffset
         {
@@ -77,7 +77,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Vertical offset of the popup.
+        /// Gets or sets the vertical offset of the items popup.
         /// </summary>
         public double PopupVerticalOffset
         {
@@ -93,7 +93,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Horizontal offset of the popup.
+        /// Gets or sets the horizontal offset of the items popup.
         /// </summary>
         public double PopupHorizontalOffset
         {
@@ -109,7 +109,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Foreground brush of the items when are highlighted.
+        /// Gets or sets the foreground brush of the items when are highlighted.
         /// </summary>
         public Brush ForegroundOnHighlight
         {
@@ -125,7 +125,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(Extra.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Foreground brush of the items when have subitems and the popup is open.
+        /// Gets or sets the foreground brush of the items when have subitems and the popup is open.
         /// </summary>
         public Brush ForegroundOnOpen
         {
@@ -141,7 +141,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(Extra.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Foreground brush of the items when are disabled.
+        /// Gets or sets the foreground brush of the items when are disabled.
         /// </summary>
         public Brush ForegroundOnDisabled
         {
@@ -157,7 +157,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(Extra.Brushes.Gray9, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Brush of the items check icons.
+        /// Gets or sets the brush of the items check icons.
         /// </summary>
         public Brush CheckBrush
         {
@@ -173,7 +173,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(Extra.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Brush of the items check icons when are highlighted.
+        /// Gets or sets the brush of the items check icons when are highlighted.
         /// </summary>
         public Brush CheckBrushOnHighlight
         {
@@ -189,7 +189,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(Extra.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Brush of the items check icons when have subitems and the popup is open.
+        /// Gets or sets the brush of the items check icons when have subitems and the popup is open.
         /// </summary>
         public Brush CheckBrushOnOpen
         {
@@ -205,7 +205,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(Extra.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Brush of the items check icons when are disabled.
+        /// Gets or sets the brush of the items check icons when are disabled.
         /// </summary>
         public Brush CheckBrushOnDisabled
         {
@@ -223,13 +223,15 @@ namespace FullControls.Controls
         #endregion
 
 
-        /// <summary>
-        /// Creates a new <see cref="FlatMenu"/>.
-        /// </summary>
         static FlatMenu()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenu), new FrameworkPropertyMetadata(typeof(FlatMenu)));
         }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="FlatMenu"/>.
+        /// </summary>
+        public FlatMenu() : base() { }
 
         /// <inheritdoc/>
         protected override DependencyObject GetContainerForItemOverride() => new FlatMenuItemContainer();

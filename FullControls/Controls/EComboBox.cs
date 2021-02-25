@@ -20,7 +20,7 @@ namespace FullControls.Controls
         protected const string PartToggleButton = "PART_ToggleButton";
 
         /// <summary>
-        /// Background brush when the mouse is over the control.
+        /// Gets or sets the background brush when the mouse is over the control.
         /// </summary>
         public Brush BackgroundOnMouseOver
         {
@@ -35,7 +35,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BackgroundOnMouseOver), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// Background brush when the control is checked and the mouse is over the control.
+        /// Gets or sets the background brush when the control is checked and the mouse is over the control.
         /// </summary>
         public Brush BackgroundOnMouseOverOnChecked
         {
@@ -50,7 +50,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BackgroundOnMouseOverOnChecked), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// Background brush when the control is checked.
+        /// Gets or sets the background brush when the control is checked.
         /// </summary>
         public Brush BackgroundOnChecked
         {
@@ -65,7 +65,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BackgroundOnChecked), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// Background brush when the control is disabled.
+        /// Gets or sets the background brush when the control is disabled.
         /// </summary>
         public Brush BackgroundOnDisabled
         {
@@ -80,7 +80,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// Actual Background brush of the control.
+        /// Gets the actual background brush of the control.
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
@@ -91,7 +91,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// BorderBrush when the mouse is over the control.
+        /// Gets or sets the border brush when the mouse is over the control.
         /// </summary>
         public Brush BorderBrushOnMouseOver
         {
@@ -106,7 +106,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BorderBrushOnMouseOver), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// BorderBrush when the control is checked and the mouse is over the control.
+        /// Gets or sets the border brush when the control is checked and the mouse is over the control.
         /// </summary>
         public Brush BorderBrushOnMouseOverOnChecked
         {
@@ -121,7 +121,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BorderBrushOnMouseOverOnChecked), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// BorderBrush when the control is checked.
+        /// Gets or sets the border brush when the control is checked.
         /// </summary>
         public Brush BorderBrushOnChecked
         {
@@ -136,7 +136,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BorderBrushOnChecked), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// BorderBrush when the control is disabled.
+        /// Gets or sets the border brush when the control is disabled.
         /// </summary>
         public Brush BorderBrushOnDisabled
         {
@@ -151,7 +151,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// ForeColor brush of the control.
+        /// Gets or sets the forecolor brush of the control.
         /// </summary>
         public Brush ForeColor
         {
@@ -166,7 +166,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForeColor), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// ForeColor brush when the mouse is over the control.
+        /// Gets or sets the forecolor brush when the mouse is over the control.
         /// </summary>
         public Brush ForeColorOnMouseOver
         {
@@ -181,7 +181,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForeColorOnMouseOver), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// ForeColor brush when the control is checked and the mouse is over the control.
+        /// Gets or sets the forecolor brush when the control is checked and the mouse is over the control.
         /// </summary>
         public Brush ForeColorOnMouseOverOnChecked
         {
@@ -196,7 +196,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForeColorOnMouseOverOnChecked), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// ForeColor brush when the control is checked.
+        /// Gets or sets the forecolor brush when the control is checked.
         /// </summary>
         public Brush ForeColorOnChecked
         {
@@ -211,7 +211,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForeColorOnChecked), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// ForeColor brush when the control is disabled.
+        /// Gets or sets the forecolor brush when the control is disabled.
         /// </summary>
         public Brush ForeColorOnDisabled
         {
@@ -226,7 +226,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForeColorOnDisabled), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// Actual ForeColor brush of the control.
+        /// Gets the actual forecolor brush of the control.
         /// </summary>
         public Brush ActualForeColor => (Brush)GetValue(ActualForeColorProperty);
 
@@ -237,7 +237,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ActualForeColor), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// CornerRadius of the control.
+        /// Gets or sets the corner radius of the control.
         /// </summary>
         public CornerRadius CornerRadius
         {
@@ -254,7 +254,7 @@ namespace FullControls.Controls
         #region Arrow
 
         /// <summary>
-        /// Arrow displayed on the button part.
+        /// Gets or sets the arrow displayed on the button part.
         /// </summary>
         public object Arrow
         {
@@ -269,7 +269,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(Arrow), typeof(object), typeof(EComboBox));
 
         /// <summary>
-        /// Size of the arrow.
+        /// Gets or sets the size of the arrow.
         /// </summary>
         public double ArrowSize
         {
@@ -284,7 +284,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ArrowSize), typeof(double), typeof(EComboBox));
 
         /// <summary>
-        /// Font of the arrow (if used a character).
+        /// Gets or sets the font of the arrow (if used a character).
         /// </summary>
         public FontFamily ArrowFont
         {
@@ -303,7 +303,7 @@ namespace FullControls.Controls
         #region ToggleButton
 
         /// <summary>
-        /// Padding of the control toggle button.
+        /// Gets or sets the padding of the control toggle button.
         /// </summary>
         public Thickness TogglePadding
         {
@@ -318,7 +318,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(TogglePadding), typeof(Thickness), typeof(EComboBox));
 
         /// <summary>
-        /// Vertical alignment of the control toggle button content.
+        /// Gets or sets the vertical alignment of the control toggle button content.
         /// </summary>
         public VerticalAlignment ToggleVerticalContentAlignment
         {
@@ -333,7 +333,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ToggleVerticalContentAlignment), typeof(VerticalAlignment), typeof(EComboBox));
 
         /// <summary>
-        /// Horizontal alignment of the control toggle button content.
+        /// Gets or sets the horizontal alignment of the control toggle button content.
         /// </summary>
         public HorizontalAlignment ToggleHorizontalContentAlignment
         {
@@ -352,7 +352,7 @@ namespace FullControls.Controls
         #region Popup
 
         /// <summary>
-        /// Border thickness of the popup.
+        /// Gets or sets the border thickness of the popup.
         /// </summary>
         public Thickness PopupBorderThickness
         {
@@ -367,7 +367,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PopupBorderThickness), typeof(Thickness), typeof(EComboBox));
 
         /// <summary>
-        /// BorderBrush of the popup.
+        /// Gets or sets the border brush of the popup.
         /// </summary>
         public Brush PopupBorderBrush
         {
@@ -382,7 +382,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PopupBorderBrush), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// Background of the popup.
+        /// Gets or sets the background brush of the popup.
         /// </summary>
         public Brush PopupBackground
         {
@@ -397,7 +397,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PopupBackground), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// Padding of the popup.
+        /// Gets or sets the padding of the popup.
         /// </summary>
         public Thickness PopupPadding
         {
@@ -412,7 +412,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PopupPadding), typeof(Thickness), typeof(EComboBox));
 
         /// <summary>
-        /// Animation type of the popup.
+        /// Gets or sets the animation type of the popup.
         /// </summary>
         public PopupAnimation PopupAnimation
         {
@@ -427,7 +427,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PopupAnimation), typeof(PopupAnimation), typeof(EComboBox));
 
         /// <summary>
-        /// Enables the shadow of the popup.
+        /// Gets or sets a value indicating if the shadow of the popup is enabled.
         /// </summary>
         public bool EnablePopupShadow
         {
@@ -442,7 +442,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(EnablePopupShadow), typeof(bool), typeof(EComboBox));
 
         /// <summary>
-        /// Style of the scroll viewer used if there are too many items.
+        /// Gets or sets the style of the scroll viewer used if there are too many items.
         /// </summary>
         public Style ScrollViewerStyle
         {
@@ -461,7 +461,7 @@ namespace FullControls.Controls
         #region TextArea
 
         /// <summary>
-        /// Text alignment of the control text element.
+        /// Gets or sets the text alignment of the text area.
         /// </summary>
         public TextAlignment TextAlignment
         {
@@ -476,7 +476,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(TextAlignment), typeof(TextAlignment), typeof(EComboBox));
 
         /// <summary>
-        /// Specifies if adapt automatically the foreground to the actual background of the control.
+        /// Gets or sets a value indicating if adapt automatically the foreground to the actual background of the control.
         /// </summary>
         public bool AdaptForegroundAutomatically
         {
@@ -491,7 +491,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AdaptForegroundAutomatically), typeof(bool), typeof(EComboBox));
 
         /// <summary>
-        /// Specifies if adapt automatically the caret brush to the actual background of the control.
+        /// Gets or sets a value indicating if adapt automatically the caret brush to the actual background of the control.
         /// </summary>
         public bool AdaptCaretBrushAutomatically
         {
@@ -506,7 +506,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(AdaptCaretBrushAutomatically), typeof(bool), typeof(EComboBox));
 
         /// <summary>
-        /// Brush of the caret of the textbox.
+        /// Gets or sets the brush of the caret of the textbox.
         /// </summary>
         public Brush CaretBrush
         {
@@ -521,7 +521,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CaretBrush), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// Brush of the highlighted part of the textbox text.
+        /// Gets or sets the brush of the text area highlighted text.
         /// </summary>
         public Brush SelectionBrush
         {
@@ -536,7 +536,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(SelectionBrush), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// Brush of the selected text.
+        /// Gets or sets the brush of the text area selected text.
         /// </summary>
         public Brush SelectionTextBrush
         {
@@ -551,7 +551,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(SelectionTextBrush), typeof(Brush), typeof(EComboBox));
 
         /// <summary>
-        /// Opacity of the highlighted part of the textbox text.
+        /// Gets or sets the opacity of the text area highlighted text.
         /// </summary>
         public double SelectionOpacity
         {
@@ -566,7 +566,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(SelectionOpacity), typeof(double), typeof(EComboBox));
 
         /// <summary>
-        /// Gets or sets a value that specifies the padding of the text area.
+        /// Gets or sets the padding of the text area.
         /// </summary>
         public Thickness TextPadding
         {
@@ -581,7 +581,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(TextPadding), typeof(Thickness), typeof(EComboBox));
 
         /// <summary>
-        /// Gets or sets a value that specifies the context menu of the text area.
+        /// Gets or sets the context menu of the text area.
         /// </summary>
         public ContextMenu TextContextMenu
         {
@@ -596,7 +596,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(TextContextMenu), typeof(ContextMenu), typeof(EComboBox), new PropertyMetadata(null));
 
         /// <summary>
-        /// Gets or sets a value that specifies the background brush of the text area.
+        /// Gets or sets the background brush of the text area.
         /// </summary>
         /// <remarks>
         /// After setting this value, may be useful disable <see cref="AdaptCaretBrushAutomatically"/> and <see cref="AdaptForegroundAutomatically"/>,
@@ -617,7 +617,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Duration of the control animation when it changes state.
+        /// Gets or sets the duration of the control animation when it changes state.
         /// </summary>
         public TimeSpan AnimationTime
         {
@@ -640,7 +640,7 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Creates a new <see cref="EComboBox"/>.
+        /// Initializes a new instance of <see cref="EComboBox"/>.
         /// </summary>
         public EComboBox() : base() { }
 

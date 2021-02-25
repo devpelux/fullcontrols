@@ -64,7 +64,7 @@ namespace FullControls.SystemComponents
         public const double TOOLBAR_HEIGHT = 32;
 
         /// <summary>
-        /// Thickness of the resize border.
+        /// Gets or sets the thickness of the resize border.
         /// </summary>
         public Thickness ResizeThickness
         {
@@ -82,7 +82,7 @@ namespace FullControls.SystemComponents
         #region Shadow
 
         /// <summary>
-        /// Color of the shadow.
+        /// Gets or sets the color of the shadow.
         /// </summary>
         public Color ShadowColor
         {
@@ -97,7 +97,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(ShadowColor), typeof(Color), typeof(EWindow));
 
         /// <summary>
-        /// Opacity of the shadow.
+        /// Gets or sets the opacity of the shadow.
         /// </summary>
         public double ShadowOpacity
         {
@@ -112,7 +112,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(ShadowOpacity), typeof(double), typeof(EWindow));
 
         /// <summary>
-        /// Radius of the shadow.
+        /// Gets or sets the radius of the shadow.
         /// </summary>
         public double ShadowRadius
         {
@@ -128,7 +128,7 @@ namespace FullControls.SystemComponents
                 new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateMarginForShadow(d))));
 
         /// <summary>
-        /// Depth of the shadow.
+        /// Gets or sets the depth of the shadow.
         /// </summary>
         public double ShadowDepth
         {
@@ -146,7 +146,7 @@ namespace FullControls.SystemComponents
         #region MarginForShadow
 
         /// <summary>
-        /// Margin used to display the shadow.
+        /// Gets the margin used to display the shadow.
         /// </summary>
         public Thickness MarginForShadow => (Thickness)GetValue(MarginForShadowProperty);
 
@@ -180,7 +180,7 @@ namespace FullControls.SystemComponents
         #endregion
 
         /// <summary>
-        /// CornerRadius of the control.
+        /// Gets or sets the corner radius of the control.
         /// </summary>
         public CornerRadius CornerRadius
         {
@@ -197,9 +197,9 @@ namespace FullControls.SystemComponents
         #region CaptionButtons general properties
 
         /// <summary>
-        /// Enables the minimize action and button.
+        /// Gets or sets a value indicating if enable the minimize action and button.
         /// </summary>
-        /// <remarks>(It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.NoResize"/>)</remarks>
+        /// <remarks>(Has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.NoResize"/>)</remarks>
         public bool EnableMinimizeButton
         {
             get => (bool)GetValue(EnableMinimizeButtonProperty);
@@ -213,9 +213,9 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(EnableMinimizeButton), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
 
         /// <summary>
-        /// Enables the maximize/restore button.
+        /// Gets or sets a value indicating if enable the maximize/restore button.
         /// </summary>
-        /// <remarks>(It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.CanMinimize"/> or <see cref="ResizeMode.NoResize"/>)</remarks>
+        /// <remarks>(Has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.CanMinimize"/> or <see cref="ResizeMode.NoResize"/>)</remarks>
         public bool EnableMaximizeRestoreButton
         {
             get => (bool)GetValue(EnableMaximizeRestoreButtonProperty);
@@ -229,7 +229,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(EnableMaximizeRestoreButton), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
 
         /// <summary>
-        /// Enables the close button.
+        /// Gets or sets a value indicating if enable the close button.
         /// </summary>
         public bool EnableCloseButton
         {
@@ -244,7 +244,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(EnableCloseButton), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
 
         /// <summary>
-        /// Width of the caption buttons.
+        /// Gets or sets the width of the caption buttons.
         /// </summary>
         public double CaptionButtonsWidth
         {
@@ -259,7 +259,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CaptionButtonsWidth), typeof(double), typeof(EWindow), new PropertyMetadata(32d));
 
         /// <summary>
-        /// Height of the caption buttons.
+        /// Gets or sets the height of the caption buttons.
         /// </summary>
         public double CaptionButtonsHeight
         {
@@ -274,7 +274,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CaptionButtonsHeight), typeof(double), typeof(EWindow), new PropertyMetadata(32d));
 
         /// <summary>
-        /// Margin of the caption buttons.
+        /// Gets or sets the margin of the caption buttons.
         /// </summary>
         public Thickness CaptionButtonsMargin
         {
@@ -289,7 +289,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CaptionButtonsMargin), typeof(Thickness), typeof(EWindow));
 
         /// <summary>
-        /// CornerRadius of the caption buttons.
+        /// Gets or sets the corner radius of the caption buttons.
         /// </summary>
         public CornerRadius CaptionButtonsCornerRadius
         {
@@ -304,7 +304,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CaptionButtonsCornerRadius), typeof(CornerRadius), typeof(EWindow));
 
         /// <summary>
-        /// Border thickness of the caption buttons.
+        /// Gets or sets the border thickness of the caption buttons.
         /// </summary>
         public Thickness CaptionButtonsBorderThickness
         {
@@ -319,7 +319,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CaptionButtonsBorderThickness), typeof(Thickness), typeof(EWindow));
 
         /// <summary>
-        /// Background brush of the caption buttons.
+        /// Gets or sets the background brush of the caption buttons.
         /// </summary>
         public Brush CaptionButtonsBackground
         {
@@ -334,7 +334,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CaptionButtonsBackground), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Background brush of the caption buttons when the mouse is over them.
+        /// Gets or sets the background brush of the caption buttons when the mouse is over them.
         /// </summary>
         public Brush CaptionButtonsBackgroundOnMouseOver
         {
@@ -349,7 +349,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CaptionButtonsBackgroundOnMouseOver), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Background brush of the caption buttons when they are pressed.
+        /// Gets or sets the background brush of the caption buttons when are pressed.
         /// </summary>
         public Brush CaptionButtonsBackgroundOnPressed
         {
@@ -364,7 +364,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CaptionButtonsBackgroundOnPressed), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// BorderBrush brush of the caption buttons.
+        /// Gets or sets the border brush of the caption buttons.
         /// </summary>
         public Brush CaptionButtonsBorderBrush
         {
@@ -379,7 +379,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CaptionButtonsBorderBrush), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// BorderBrush brush of the caption buttons when the mouse is over them.
+        /// Gets or sets the border brush of the caption buttons when the mouse is over them.
         /// </summary>
         public Brush CaptionButtonsBorderBrushOnMouseOver
         {
@@ -394,7 +394,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CaptionButtonsBorderBrushOnMouseOver), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// BorderBrush brush of the caption buttons when they are pressed.
+        /// Gets or sets the border brush of the caption buttons when are pressed.
         /// </summary>
         public Brush CaptionButtonsBorderBrushOnPressed
         {
@@ -409,7 +409,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CaptionButtonsBorderBrushOnPressed), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Foreground brush of the caption buttons.
+        /// Gets or sets the foreground brush of the caption buttons.
         /// </summary>
         public Brush CaptionButtonsForeground
         {
@@ -424,7 +424,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CaptionButtonsForeground), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Foreground brush of the caption buttons when the mouse is over them.
+        /// Gets or sets the foreground brush of the caption buttons when the mouse is over them.
         /// </summary>
         public Brush CaptionButtonsForegroundOnMouseOver
         {
@@ -439,7 +439,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CaptionButtonsForegroundOnMouseOver), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Foreground brush of the caption buttons when they are pressed.
+        /// Gets or sets the foreground brush of the caption buttons when are pressed.
         /// </summary>
         public Brush CaptionButtonsForegroundOnPressed
         {
@@ -454,7 +454,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CaptionButtonsForegroundOnPressed), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// FontSize of the caption buttons.
+        /// Gets or sets the font size of the caption buttons.
         /// </summary>
         public double CaptionButtonsFontSize
         {
@@ -473,7 +473,7 @@ namespace FullControls.SystemComponents
         #region CloseButton properties
 
         /// <summary>
-        /// Width of the close button.
+        /// Gets or sets the width of the close button.
         /// </summary>
         public double CloseButtonWidth
         {
@@ -488,7 +488,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CloseButtonWidth), typeof(double), typeof(EWindow), new PropertyMetadata(32d));
 
         /// <summary>
-        /// Height of the close button.
+        /// Gets or sets the height of the close button.
         /// </summary>
         public double CloseButtonHeight
         {
@@ -503,7 +503,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CloseButtonHeight), typeof(double), typeof(EWindow), new PropertyMetadata(32d));
 
         /// <summary>
-        /// Margin of the close button.
+        /// Gets or sets the margin of the close button.
         /// </summary>
         public Thickness CloseButtonMargin
         {
@@ -518,7 +518,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CloseButtonMargin), typeof(Thickness), typeof(EWindow));
 
         /// <summary>
-        /// Background brush of the close button.
+        /// Gets or sets the background brush of the close button.
         /// </summary>
         public Brush CloseButtonBackground
         {
@@ -533,7 +533,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CloseButtonBackground), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Background brush of the close button when the mouse is over them.
+        /// Gets or sets the background brush of the close button when the mouse is over it.
         /// </summary>
         public Brush CloseButtonBackgroundOnMouseOver
         {
@@ -548,7 +548,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CloseButtonBackgroundOnMouseOver), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Background brush of the close button when they are pressed.
+        /// Gets or sets the background brush of the close button when is pressed.
         /// </summary>
         public Brush CloseButtonBackgroundOnPressed
         {
@@ -563,7 +563,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CloseButtonBackgroundOnPressed), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// BorderBrush brush of the close button.
+        /// Gets or sets the border brush of the close button.
         /// </summary>
         public Brush CloseButtonBorderBrush
         {
@@ -578,7 +578,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CloseButtonBorderBrush), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// BorderBrush brush of the close button when the mouse is over them.
+        /// Gets or sets the border brush of the close button when the mouse is over it.
         /// </summary>
         public Brush CloseButtonBorderBrushOnMouseOver
         {
@@ -593,7 +593,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CloseButtonBorderBrushOnMouseOver), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// BorderBrush brush of the close button when they are pressed.
+        /// Gets or sets the border brush of the close button when is pressed.
         /// </summary>
         public Brush CloseButtonBorderBrushOnPressed
         {
@@ -608,7 +608,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CloseButtonBorderBrushOnPressed), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Foreground brush of the close button.
+        /// Gets or sets the foreground brush of the close button.
         /// </summary>
         public Brush CloseButtonForeground
         {
@@ -623,7 +623,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CloseButtonForeground), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Foreground brush of the close button when the mouse is over them.
+        /// Gets or sets the foreground brush of the close button when the mouse is over it.
         /// </summary>
         public Brush CloseButtonForegroundOnMouseOver
         {
@@ -638,7 +638,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CloseButtonForegroundOnMouseOver), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Foreground brush of the close button when they are pressed.
+        /// Gets or sets the foreground brush of the close button when is pressed.
         /// </summary>
         public Brush CloseButtonForegroundOnPressed
         {
@@ -653,7 +653,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(CloseButtonForegroundOnPressed), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// FontSize of the close button.
+        /// Gets or sets the font size of the close button.
         /// </summary>
         public double CloseButtonFontSize
         {
@@ -670,9 +670,9 @@ namespace FullControls.SystemComponents
         #endregion
 
         /// <summary>
-        /// Enables the minimize action using the taskbar.
+        /// Gets or sets a value indicating if enable the minimize action using the taskbar.
         /// </summary>
-        /// <remarks>(It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.NoResize"/>)</remarks>
+        /// <remarks>(Has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.NoResize"/>)</remarks>
         public bool EnableMinimizeByTaskbar
         {
             get => (bool)GetValue(EnableMinimizeByTaskbarProperty);
@@ -686,9 +686,9 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(EnableMinimizeByTaskbar), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
 
         /// <summary>
-        /// Enables the maximize and restore action by double click on toolbar.
+        /// Gets or sets a value indicating if enable the maximize and restore action by double click on toolbar.
         /// </summary>
-        /// <remarks>(It has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.CanMinimize"/> or <see cref="ResizeMode.NoResize"/>)</remarks>
+        /// <remarks>(Has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.CanMinimize"/> or <see cref="ResizeMode.NoResize"/>)</remarks>
         public bool EnableDoubleClickMaximizeRestore
         {
             get => (bool)GetValue(EnableDoubleClickMaximizeRestoreProperty);
@@ -704,7 +704,7 @@ namespace FullControls.SystemComponents
         #region Toolbar properties
 
         /// <summary>
-        /// <para>Merge the toolbar with the content.</para>
+        /// <para>Gets or sets a value indicating if merge the toolbar with the content.</para>
         /// <para>The toolbar becomes transparent and is displayed above the content.</para>
         /// <para>Suggestion 1: Use <see cref="ToolbarHitZoneMargin"/> to resize the clickable part if you want insert a menu in the toolbar.</para>
         /// <para>Suggestion 2: Customize the brushes of the caption buttons.</para>
@@ -722,9 +722,9 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(MergeToolbarAndContent), typeof(bool), typeof(EWindow), new PropertyMetadata(false));
 
         /// <summary>
-        /// <para>Background brush of the toolbar.</para>
-        /// <para>Note: If <see cref="MergeToolbarAndContent"/> is <see langword="true"/> this property has no effect.</para>
+        /// Gets or sets the background brush of the toolbar.
         /// </summary>
+        /// <remarks>Has no effect if <see cref="MergeToolbarAndContent"/> is <see langword="true"/>.</remarks>
         public Brush ToolbarBackground
         {
             get => (Brush)GetValue(ToolbarBackgroundProperty);
@@ -738,7 +738,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(ToolbarBackground), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Margin of the toolbar.
+        /// Gets or sets the margin of the toolbar.
         /// </summary>
         public Thickness ToolbarMargin
         {
@@ -753,7 +753,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(ToolbarMargin), typeof(Thickness), typeof(EWindow));
 
         /// <summary>
-        /// Enable the toolbar to handles inputs.
+        /// Gets or sets a value indicating if enable the toolbar to handles inputs.
         /// </summary>
         public bool EnableToolbarHitZone
         {
@@ -768,7 +768,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(EnableToolbarHitZone), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
 
         /// <summary>
-        /// Background of the toolbar part that handles inputs.
+        /// Gets or sets the background brush of the toolbar part that handles inputs.
         /// </summary>
         public Brush ToolbarHitZoneBackground
         {
@@ -783,7 +783,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(ToolbarHitZoneBackground), typeof(Brush), typeof(EWindow));
 
         /// <summary>
-        /// Margin of the toolbar hit zone.
+        /// Gets or sets the margin of the toolbar hit zone.
         /// </summary>
         public Thickness ToolbarHitZoneMargin
         {
@@ -798,7 +798,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(ToolbarHitZoneMargin), typeof(Thickness), typeof(EWindow));
 
         /// <summary>
-        /// The menu that is shown at right click on toolbar.
+        /// Gets or sets the menu displayed at right click on toolbar.
         /// </summary>
         public ContextMenu ToolbarMenu
         {
@@ -815,7 +815,7 @@ namespace FullControls.SystemComponents
         #endregion
 
         /// <summary>
-        /// Specifies if to start the window hided.
+        /// Gets or sets a value indicating if start the window hided.
         /// </summary>
         public bool StartHided
         {
@@ -830,7 +830,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(StartHided), typeof(bool), typeof(EWindow), new PropertyMetadata(false));
 
         /// <summary>
-        /// Indicates if the window is docked.
+        /// Gets a value indicating if the window is docked.
         /// </summary>
         public bool IsDocked => (bool)GetValue(IsDockedProperty);
 
@@ -841,7 +841,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(IsDocked), typeof(bool), typeof(EWindow));
 
         /// <summary>
-        /// Duration of the state change animations.
+        /// Gets or sets the duration of the state change animations.
         /// </summary>
         public TimeSpan AnimationTime
         {
@@ -856,7 +856,7 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(EWindow));
 
         /// <summary>
-        /// Fix the height and the width of the window to be the same as in designer of Visual Studio.
+        /// Gets or sets a value indicating if fix the height and the width of the window to be the same as in designer of Visual Studio.
         /// </summary>
         /// <remarks>(Has effect only on initialization)</remarks>
         public bool FixVSDesigner
@@ -872,12 +872,12 @@ namespace FullControls.SystemComponents
             DependencyProperty.Register(nameof(FixVSDesigner), typeof(bool), typeof(EWindow), new PropertyMetadata(true));
 
         /// <summary>
-        /// Raised immediately before <see cref="Close"/> is executed.
+        /// Occurs immediately before <see cref="Close"/> is executed.
         /// </summary>
         public event EventHandler<CancelEventArgs> BeforeClosing;
 
         /// <summary>
-        /// Raised immediately before <see cref="Minimize"/> is executed.
+        /// Occurs immediately before <see cref="Minimize"/> is executed.
         /// </summary>
         public event EventHandler<CancelEventArgs> BeforeMinimizing;
 
@@ -888,7 +888,7 @@ namespace FullControls.SystemComponents
         }
 
         /// <summary>
-        /// Creates a new <see cref="EWindow"/>.
+        /// Initializes a new instance of <see cref="EWindow"/>.
         /// </summary>
         public EWindow() : base()
         {
@@ -1063,7 +1063,7 @@ namespace FullControls.SystemComponents
         #endregion
 
         /// <summary>
-        /// Raises the <see cref="FrameworkElement.Loaded"/> event.
+        /// Called when the window is loaded.
         /// </summary>
         /// <param name="e">Event data.</param>
         protected virtual void OnLoaded(RoutedEventArgs e)
