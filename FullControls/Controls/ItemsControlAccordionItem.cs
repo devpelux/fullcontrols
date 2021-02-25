@@ -191,6 +191,197 @@ namespace FullControls.Controls
         public static readonly DependencyProperty HorizontalHeaderAlignmentProperty =
             DependencyProperty.Register(nameof(HorizontalHeaderAlignment), typeof(HorizontalAlignment), typeof(ItemsControlAccordionItem));
 
+        #region Arrow
+
+        /// <summary>
+        /// Gets or sets the content of the arrow.
+        /// </summary>
+        public object Arrow
+        {
+            get => GetValue(ArrowProperty);
+            set => SetValue(ArrowProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="Arrow"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ArrowProperty =
+            DependencyProperty.Register(nameof(Arrow), typeof(object), typeof(ItemsControlAccordionItem));
+
+        /// <summary>
+        /// Gets or sets the margin of the arrow.
+        /// </summary>
+        public Thickness ArrowMargin
+        {
+            get => (Thickness)GetValue(ArrowMarginProperty);
+            set => SetValue(ArrowMarginProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ArrowMargin"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ArrowMarginProperty =
+            DependencyProperty.Register(nameof(ArrowMargin), typeof(Thickness), typeof(ItemsControlAccordionItem));
+
+        /// <summary>
+        /// Gets or sets the size of the arrow.
+        /// </summary>
+        public double ArrowSize
+        {
+            get => (double)GetValue(ArrowSizeProperty);
+            set => SetValue(ArrowSizeProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ArrowSize"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ArrowSizeProperty =
+            DependencyProperty.Register(nameof(ArrowSize), typeof(double), typeof(ItemsControlAccordionItem));
+
+        /// <summary>
+        /// Gets or sets the font of the arrow (if used a character).
+        /// </summary>
+        public FontFamily ArrowFont
+        {
+            get => (FontFamily)GetValue(ArrowFontProperty);
+            set => SetValue(ArrowFontProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ArrowFont"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ArrowFontProperty =
+            DependencyProperty.Register(nameof(ArrowFont), typeof(FontFamily), typeof(ItemsControlAccordionItem));
+
+        /// <summary>
+        /// Gets or sets the foreground brush of the arrow.
+        /// </summary>
+        public Brush ArrowForeground
+        {
+            get => (Brush)GetValue(ArrowForegroundProperty);
+            set => SetValue(ArrowForegroundProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ArrowForeground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ArrowForegroundProperty =
+            DependencyProperty.Register(nameof(ArrowForeground), typeof(Brush), typeof(ItemsControlAccordionItem));
+
+        /// <summary>
+        /// Gets or sets the foreground brush of the arrow when the mouse is over the control.
+        /// </summary>
+        public Brush ArrowForegroundOnMouseOver
+        {
+            get => (Brush)GetValue(ArrowForegroundOnMouseOverProperty);
+            set => SetValue(ArrowForegroundOnMouseOverProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ArrowForegroundOnMouseOver"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ArrowForegroundOnMouseOverProperty =
+            DependencyProperty.Register(nameof(ArrowForegroundOnMouseOver), typeof(Brush), typeof(ItemsControlAccordionItem));
+
+        /// <summary>
+        /// Gets or sets the foreground brush of the arrow when <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
+        /// </summary>
+        public Brush ArrowForegroundOnExpanded
+        {
+            get => (Brush)GetValue(ArrowForegroundOnExpandedProperty);
+            set => SetValue(ArrowForegroundOnExpandedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ArrowForegroundOnExpanded"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ArrowForegroundOnExpandedProperty =
+            DependencyProperty.Register(nameof(ArrowForegroundOnExpanded), typeof(Brush), typeof(ItemsControlAccordionItem));
+
+        /// <summary>
+        /// Gets or sets the foreground brush of the arrow when the mouse is over the control and <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
+        /// </summary>
+        public Brush ArrowForegroundOnMouseOverOnExpanded
+        {
+            get => (Brush)GetValue(ArrowForegroundOnMouseOverOnExpandedProperty);
+            set => SetValue(ArrowForegroundOnMouseOverOnExpandedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ArrowForegroundOnMouseOverOnExpanded"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ArrowForegroundOnMouseOverOnExpandedProperty =
+            DependencyProperty.Register(nameof(ArrowForegroundOnMouseOverOnExpanded), typeof(Brush), typeof(ItemsControlAccordionItem));
+
+        /// <summary>
+        /// Gets or sets the foreground brush of the arrow when the control is disabled.
+        /// </summary>
+        public Brush ArrowForegroundOnDisabled
+        {
+            get => (Brush)GetValue(ArrowForegroundOnDisabledProperty);
+            set => SetValue(ArrowForegroundOnDisabledProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ArrowForegroundOnDisabled"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ArrowForegroundOnDisabledProperty =
+            DependencyProperty.Register(nameof(ArrowForegroundOnDisabled), typeof(Brush), typeof(ItemsControlAccordionItem));
+
+        /// <summary>
+        /// Gets the actual foreground brush of the arrow.
+        /// </summary>
+        public Brush ActualArrowForeground => (Brush)GetValue(ActualArrowForegroundProperty);
+
+        /// <summary>
+        /// Identifies the <see cref="ActualArrowForeground"/> dependency property.
+        /// </summary>
+        internal static readonly DependencyProperty ActualArrowForegroundProperty =
+            DependencyProperty.Register(nameof(ActualArrowForeground), typeof(Brush), typeof(ItemsControlAccordionItem));
+
+        /// <summary>
+        /// Gets the rotation of the arrow.
+        /// </summary>
+        public double ArrowRotation => (double)GetValue(ArrowRotationProperty);
+
+        /// <summary>
+        /// Identifies the <see cref="ArrowRotation"/> dependency property.
+        /// </summary>
+        internal static readonly DependencyProperty ArrowRotationProperty =
+            DependencyProperty.Register(nameof(ArrowRotation), typeof(double), typeof(ItemsControlAccordionItem), new FrameworkPropertyMetadata(0d));
+
+        /// <summary>
+        /// Gets or sets the rotation of the arrow when <see cref="AccordionItem.IsExpanded"/> is <see langword="false"/>.
+        /// </summary>
+        public double ArrowCollapsedRotation
+        {
+            get => (double)GetValue(ArrowCollapsedRotationProperty);
+            set => SetValue(ArrowCollapsedRotationProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ArrowCollapsedRotation"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ArrowCollapsedRotationProperty =
+            DependencyProperty.Register(nameof(ArrowCollapsedRotation), typeof(double), typeof(ItemsControlAccordionItem), new FrameworkPropertyMetadata(0d));
+
+        /// <summary>
+        /// Gets or sets the rotation of the arrow when <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
+        /// </summary>
+        public double ArrowExpandedRotation
+        {
+            get => (double)GetValue(ArrowExpandedRotationProperty);
+            set => SetValue(ArrowExpandedRotationProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ArrowExpandedRotation"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ArrowExpandedRotationProperty =
+            DependencyProperty.Register(nameof(ArrowExpandedRotation), typeof(double), typeof(ItemsControlAccordionItem), new FrameworkPropertyMetadata(90d));
+
+        #endregion
+
         /// <summary>
         /// Gets or sets the duration of the control animation when it changes state.
         /// </summary>
@@ -278,7 +469,16 @@ namespace FullControls.Controls
             Collapsible collapsible = (Collapsible)Template.FindName(PartCollapsible, this);
             if (collapsible != null) collapsible.Child = itemsControl;
             Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
+            Utility.AnimateBrush(this, ActualArrowForegroundProperty, Foreground, TimeSpan.Zero);
             SetValue(ActualFontWeightProperty, FontWeight);
+            SetValue(ArrowRotationProperty, IsExpanded ? ArrowExpandedRotation : ArrowCollapsedRotation);
+        }
+
+        /// <inheritdoc/>
+        protected override void OnExpandedChanged(bool isExpanded)
+        {
+            base.OnExpandedChanged(isExpanded);
+            Utility.AnimateDouble(this, ArrowRotationProperty, isExpanded ? ArrowExpandedRotation : ArrowCollapsedRotation, AnimationTime);
         }
 
         /// <inheritdoc/>
@@ -288,22 +488,27 @@ namespace FullControls.Controls
             {
                 case "Normal":
                     Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, AnimationTime);
+                    Utility.AnimateBrush(this, ActualArrowForegroundProperty, ArrowForeground, AnimationTime);
                     SetValue(ActualFontWeightProperty, FontWeight);
                     break;
                 case "Expanded":
                     Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnExpanded, AnimationTime);
+                    Utility.AnimateBrush(this, ActualArrowForegroundProperty, ArrowForegroundOnExpanded, AnimationTime);
                     SetValue(ActualFontWeightProperty, FontWeightOnExpanded);
                     break;
                 case "MouseOverHeader":
                     Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnMouseOver, AnimationTime);
+                    Utility.AnimateBrush(this, ActualArrowForegroundProperty, ArrowForegroundOnMouseOver, AnimationTime);
                     SetValue(ActualFontWeightProperty, FontWeightOnMouseOver);
                     break;
                 case "MouseOverHeaderOnExpanded":
                     Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnMouseOverOnExpanded, AnimationTime);
+                    Utility.AnimateBrush(this, ActualArrowForegroundProperty, ArrowForegroundOnMouseOverOnExpanded, AnimationTime);
                     SetValue(ActualFontWeightProperty, FontWeightOnMouseOverOnExpanded);
                     break;
                 case "Disabled":
                     Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualArrowForegroundProperty, ArrowForegroundOnDisabled, TimeSpan.Zero);
                     SetValue(ActualFontWeightProperty, FontWeightOnDisabled);
                     break;
                 default:

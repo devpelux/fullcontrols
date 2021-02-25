@@ -298,6 +298,11 @@
         <Setter Property="ForegroundOnMouseOver" Value="#b3b3b3"/>
         <Setter Property="ForegroundOnMouseOverOnExpanded" Value="#4c8bba"/>
         <Setter Property="ForegroundOnDisabled" Value="Gray"/>
+        <Setter Property="ArrowForeground" Value="WhiteSmoke"/>
+        <Setter Property="ArrowForegroundOnExpanded" Value="#67a9db"/>
+        <Setter Property="ArrowForegroundOnMouseOver" Value="#b3b3b3"/>
+        <Setter Property="ArrowForegroundOnMouseOverOnExpanded" Value="#4c8bba"/>
+        <Setter Property="ArrowForegroundOnDisabled" Value="Gray"/>
     </Style>
 
     <Style x:Key="ItemsControlAccordionItemDark" TargetType="{x:Type fc:ItemsControlAccordionItem}">
@@ -306,6 +311,11 @@
         <Setter Property="ForegroundOnMouseOver" Value="#b3b3b3"/>
         <Setter Property="ForegroundOnMouseOverOnExpanded" Value="#4c8bba"/>
         <Setter Property="ForegroundOnDisabled" Value="Gray"/>
+        <Setter Property="ArrowForeground" Value="WhiteSmoke"/>
+        <Setter Property="ArrowForegroundOnExpanded" Value="#67a9db"/>
+        <Setter Property="ArrowForegroundOnMouseOver" Value="#b3b3b3"/>
+        <Setter Property="ArrowForegroundOnMouseOverOnExpanded" Value="#4c8bba"/>
+        <Setter Property="ArrowForegroundOnDisabled" Value="Gray"/>
     </Style>
 
     <Style x:Key="GlassScrollBarDark" TargetType="{x:Type fc:GlassScrollBar}">

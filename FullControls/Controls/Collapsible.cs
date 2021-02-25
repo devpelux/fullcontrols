@@ -157,14 +157,16 @@ namespace FullControls.Controls
         /// <summary>
         /// Called when <see cref="IsExpanded"/> is changed.
         /// </summary>
-        /// <param name="newValue">Actual state of <see cref="IsExpanded"/>.</param>
-        protected virtual void OnExpandedChanged(bool newValue)
+        /// <param name="isExpanded">Actual state of <see cref="IsExpanded"/>.</param>
+        protected virtual void OnExpandedChanged(bool isExpanded)
         {
             if (loaded)
             {
+                //Starts the animation
                 if (IsExpanded) Expand();
                 else Collapse();
-                IsExpandedChanged?.Invoke(this, new ExpandedChangedEventArgs(newValue));
+                //Raises the ExpandedChanged event
+                IsExpandedChanged?.Invoke(this, new ExpandedChangedEventArgs(isExpanded));
             }
         }
 

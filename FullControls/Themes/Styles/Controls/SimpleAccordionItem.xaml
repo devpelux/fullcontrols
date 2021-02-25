@@ -16,11 +16,22 @@
         <Setter Property="ForegroundOnMouseOver" Value="{DynamicResource Gray15}"/>
         <Setter Property="ForegroundOnMouseOverOnExpanded" Value="{DynamicResource Blue10}"/>
         <Setter Property="ForegroundOnDisabled" Value="DimGray"/>
+        <Setter Property="ArrowForeground" Value="Black"/>
+        <Setter Property="ArrowForegroundOnExpanded" Value="{DynamicResource Blue7}"/>
+        <Setter Property="ArrowForegroundOnMouseOver" Value="{DynamicResource Gray15}"/>
+        <Setter Property="ArrowForegroundOnMouseOverOnExpanded" Value="{DynamicResource Blue10}"/>
+        <Setter Property="ArrowForegroundOnDisabled" Value="DimGray"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="FontWeightOnExpanded" Value="Bold"/>
         <Setter Property="FontWeightOnMouseOver" Value="Bold"/>
         <Setter Property="FontWeightOnMouseOverOnExpanded" Value="Bold"/>
         <Setter Property="FontWeightOnDisabled" Value="Bold"/>
+        <Setter Property="ArrowMargin" Value="4,0,0,0"/>
+        <Setter Property="Arrow" Value="&#xEDDA;"/>
+        <Setter Property="ArrowSize" Value="12"/>
+        <Setter Property="ArrowFont" Value="Segoe MDL2 Assets"/>
+        <Setter Property="ArrowCollapsedRotation" Value="0"/>
+        <Setter Property="ArrowExpandedRotation" Value="90"/>
         <Setter Property="HorizontalHeaderAlignment" Value="Left"/>
         <Setter Property="VerticalHeaderAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -38,11 +49,33 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
+                        
                         <Grid x:Name="PART_Header"
                               Grid.Row="0"
                               Height="{TemplateBinding HeaderHeight}"
                               Background="Transparent">
-                            <TextBlock HorizontalAlignment="{TemplateBinding HorizontalHeaderAlignment}"
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <ContentPresenter x:Name="Arrow"
+                                              Grid.Column="0"
+                                              Margin="{TemplateBinding ArrowMargin}"
+                                              VerticalAlignment="Center"
+                                              Width="{TemplateBinding ArrowSize}"
+                                              Height="{TemplateBinding ArrowSize}"
+                                              TextBlock.Foreground="{TemplateBinding ActualArrowForeground}"
+                                              TextBlock.FontSize="{TemplateBinding ArrowSize}"
+                                              TextBlock.FontFamily="{TemplateBinding ArrowFont}"
+                                              ContentSource="Arrow"
+                                              RenderTransformOrigin="0.5,0.5"
+                                              Visibility="Visible">
+                                <ContentPresenter.RenderTransform>
+                                    <RotateTransform x:Name="ArrowRotation" Angle="{Binding ArrowRotation, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </ContentPresenter.RenderTransform>
+                            </ContentPresenter>
+                            <TextBlock Grid.Column="1"
+                                       HorizontalAlignment="{TemplateBinding HorizontalHeaderAlignment}"
                                        VerticalAlignment="{TemplateBinding VerticalHeaderAlignment}"
                                        Margin="{TemplateBinding HeaderMargin}"
                                        Foreground="{TemplateBinding ActualForeground}"
@@ -63,6 +96,12 @@
                                               ContentSource="Content"/>
                         </local:Collapsible>
                     </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Arrow" Value="{x:Null}">
+                            <Setter TargetName="Arrow" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

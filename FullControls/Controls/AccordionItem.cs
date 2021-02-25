@@ -158,6 +158,7 @@ namespace FullControls.Controls
                 header.MouseEnter += (o, e) => OnHeaderMouseEnter(e);
                 header.MouseLeave += (o, e) => OnHeaderMouseLeave(e);
             }
+            _ = VisualStateManager.GoToState(this, IsExpanded ? "Expanded" : "Collapsed", true);
             loaded = true;
         }
 
@@ -176,11 +177,12 @@ namespace FullControls.Controls
         /// <summary>
         /// Called when <see cref="IsExpanded"/> is changed.
         /// </summary>
-        /// <param name="newValue">Actual state of <see cref="IsExpanded"/>.</param>
-        protected virtual void OnExpandedChanged(bool newValue)
+        /// <param name="isExpanded">Actual state of <see cref="IsExpanded"/>.</param>
+        protected virtual void OnExpandedChanged(bool isExpanded)
         {
-            IsExpandedChanged?.Invoke(this, new ItemExpandedChangedEventArgs(Index, newValue));
+            _ = VisualStateManager.GoToState(this, isExpanded ? "Expanded" : "Collapsed", true);
             OnVStateChanged(VStateOverride());
+            IsExpandedChanged?.Invoke(this, new ItemExpandedChangedEventArgs(Index, isExpanded));
         }
 
         /// <summary>
