@@ -315,7 +315,16 @@ namespace FullControls.Controls
         /// <summary>
         /// Initializes a new instance of <see cref="FlatContextMenu"/>.
         /// </summary>
-        public FlatContextMenu() : base() { }
+        public FlatContextMenu() : base()
+        {
+            Loaded += (o, e) => OnLoaded(e);
+        }
+
+        /// <summary>
+        /// Called when the element is laid out, rendered, and ready for interaction.
+        /// </summary>
+        /// <param name="e">Event data.</param>
+        protected virtual void OnLoaded(RoutedEventArgs e) { }
 
         /// <inheritdoc/>
         protected override DependencyObject GetContainerForItemOverride() => new FlatMenuItemContainer();

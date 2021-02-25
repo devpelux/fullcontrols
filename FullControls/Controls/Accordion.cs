@@ -70,6 +70,7 @@ namespace FullControls.Controls
         /// </summary>
         public Accordion() : base()
         {
+            Loaded += (o, e) => OnLoaded(e);
             itemsControl = new ItemsControl();
             Items = new();
         }
@@ -81,6 +82,12 @@ namespace FullControls.Controls
             Decorator contentHost = (Decorator)Template.FindName(PartContentHost, this);
             if (contentHost != null) contentHost.Child = itemsControl;
         }
+
+        /// <summary>
+        /// Called when the element is laid out, rendered, and ready for interaction.
+        /// </summary>
+        /// <param name="e">Event data.</param>
+        protected virtual void OnLoaded(RoutedEventArgs e) { }
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.

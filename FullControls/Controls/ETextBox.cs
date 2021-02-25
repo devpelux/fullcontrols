@@ -989,7 +989,10 @@ namespace FullControls.Controls
         /// <summary>
         /// Initializes a new instance of <see cref="ETextBox"/>.
         /// </summary>
-        public ETextBox() : base() { }
+        public ETextBox() : base()
+        {
+            Loaded += (o, e) => OnLoaded(e);
+        }
 
         /// <summary>
         /// Copy the value of the <see cref="TextBox.Text"/> property on the <see cref="Clipboard"/>.
@@ -1006,8 +1009,13 @@ namespace FullControls.Controls
             Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
             Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
             loaded = true;
-            OnVStateChanged(VStateOverride());
         }
+
+        /// <summary>
+        /// Called when the element is laid out, rendered, and ready for interaction.
+        /// </summary>
+        /// <param name="e">Event data.</param>
+        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(VStateOverride());
 
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.

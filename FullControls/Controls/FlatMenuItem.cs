@@ -1192,6 +1192,7 @@ namespace FullControls.Controls
         /// </summary>
         public FlatMenuItem() : base()
         {
+            Loaded += (o, e) => OnLoaded(e);
             DependencyPropertyDescriptor.FromProperty(IsHighlightedProperty, typeof(FlatMenuItem))
                 ?.AddValueChanged(this, (s, e) => OnHighlightChanged(IsHighlighted));
         }
@@ -1205,8 +1206,13 @@ namespace FullControls.Controls
             Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
             Utility.AnimateBrush(this, ActualCheckBrushProperty, CheckBrush, TimeSpan.Zero);
             loaded = true;
-            OnVStateChanged(VStateOverride());
         }
+
+        /// <summary>
+        /// Called when the element is laid out, rendered, and ready for interaction.
+        /// </summary>
+        /// <param name="e">Event data.</param>
+        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(VStateOverride());
 
         /// <inheritdoc/>
         protected override DependencyObject GetContainerForItemOverride() => new FlatMenuItemContainer();

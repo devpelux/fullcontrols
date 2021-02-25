@@ -142,8 +142,7 @@ namespace FullControls.Controls
         /// </summary>
         protected AccordionItem() : base()
         {
-            Loaded -= OnLoaded;
-            Loaded += OnLoaded;
+            Loaded += (o, e) => OnLoaded(e);
         }
 
         /// <inheritdoc/>
@@ -158,7 +157,7 @@ namespace FullControls.Controls
                 header.MouseEnter += (o, e) => OnHeaderMouseEnter(e);
                 header.MouseLeave += (o, e) => OnHeaderMouseLeave(e);
             }
-            _ = VisualStateManager.GoToState(this, IsExpanded ? "Expanded" : "Collapsed", true);
+            UpdateExpandState();
             loaded = true;
         }
 
@@ -180,7 +179,7 @@ namespace FullControls.Controls
         /// <param name="isExpanded">Actual state of <see cref="IsExpanded"/>.</param>
         protected virtual void OnExpandedChanged(bool isExpanded)
         {
-            _ = VisualStateManager.GoToState(this, isExpanded ? "Expanded" : "Collapsed", true);
+            UpdateExpandState();
             OnVStateChanged(VStateOverride());
             IsExpandedChanged?.Invoke(this, new ItemExpandedChangedEventArgs(Index, isExpanded));
         }
@@ -237,10 +236,9 @@ namespace FullControls.Controls
         /// <inheritdoc/>
         public override string ToString() => ToString(true);
 
-        #region EventHandlers
-
-        private void OnLoaded(object sender, RoutedEventArgs e) => OnLoaded(e);
-
-        #endregion
+        /// <summary>
+        /// Update the visualstate to <see langword="Expanded"/> or <see langword="Collapsed"/> if the control is expanded or collapsed.
+        /// </summary>
+        private void UpdateExpandState() => _ = VisualStateManager.GoToState(this, IsExpanded ? "Expanded" : "Collapsed", true);
     }
 }

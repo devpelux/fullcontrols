@@ -1286,7 +1286,10 @@ namespace FullControls.Controls
         /// <summary>
         /// Initializes a new instance of <see cref="EPasswordBox"/>.
         /// </summary>
-        public EPasswordBox() : base() { }
+        public EPasswordBox() : base()
+        {
+            Loaded += (o, e) => OnLoaded(e);
+        }
 
         /// <summary>
         /// Clears the value of the <see cref="Password"/> property.
@@ -1328,18 +1331,26 @@ namespace FullControls.Controls
             }
             UIElement copyButton = (UIElement)Template.FindName(PartCopyButton, this);
             if (copyButton != null) copyButton.PreviewMouseLeftButtonDown += (s, e) => CopyAll();
-            OnInitialized();
             UpdateHintState();
             Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
             Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
             loaded = true;
+        }
+
+        /// <summary>
+        /// Called when the element is laid out, rendered, and ready for interaction.
+        /// </summary>
+        /// <param name="e">Event data.</param>
+        private void OnLoaded(RoutedEventArgs e)
+        {
+            Initialize();
             OnVStateChanged(VStateOverride());
         }
 
         /// <summary>
-        /// Executed when the control is initialized after the <see cref="OnApplyTemplate"/> method.
+        /// Set the initial password.
         /// </summary>
-        private void OnInitialized()
+        private void Initialize()
         {
             if (_tempPassword != null)
             {

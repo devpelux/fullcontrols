@@ -642,7 +642,10 @@ namespace FullControls.Controls
         /// <summary>
         /// Initializes a new instance of <see cref="EComboBox"/>.
         /// </summary>
-        public EComboBox() : base() { }
+        public EComboBox() : base()
+        {
+            Loaded += (o, e) => OnLoaded(e);
+        }
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()
@@ -664,6 +667,12 @@ namespace FullControls.Controls
                 SetValue(ActualBackgroundProperty, IsEnabled ? Background : BackgroundOnDisabled);
             }
         }
+
+        /// <summary>
+        /// Called when the element is laid out, rendered, and ready for interaction.
+        /// </summary>
+        /// <param name="e">Event data.</param>
+        protected virtual void OnLoaded(RoutedEventArgs e) { }
 
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.

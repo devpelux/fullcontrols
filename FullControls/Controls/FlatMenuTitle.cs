@@ -63,7 +63,16 @@ namespace FullControls.Controls
         /// <summary>
         /// Initializes a new instance of <see cref="FlatMenuTitle"/>.
         /// </summary>
-        public FlatMenuTitle() : base() { }
+        public FlatMenuTitle() : base()
+        {
+            Loaded += (o, e) => OnLoaded(e);
+        }
+
+        /// <summary>
+        /// Called when the element is laid out, rendered, and ready for interaction.
+        /// </summary>
+        /// <param name="e">Event data.</param>
+        protected virtual void OnLoaded(RoutedEventArgs e) { }
 
         /// <summary>
         /// Prepares the container for the item.

@@ -6,7 +6,7 @@ namespace FullControls.Controls.Components
 {
     /// <inheritdoc/>
     [DesignTimeVisible(false)]
-    public class GlassRepeatButton : RepeatButton
+    public sealed class GlassRepeatButton : RepeatButton
     {
         /// <summary>
         /// Gets or sets the corner radius of the control.

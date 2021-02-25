@@ -892,8 +892,7 @@ namespace FullControls.SystemComponents
         /// </summary>
         public EWindow() : base()
         {
-            Loaded -= OnLoaded;
-            Loaded += OnLoaded;
+            Loaded += (o, e) => OnLoaded(e);
         }
 
         /// <inheritdoc/>
@@ -1285,12 +1284,6 @@ namespace FullControls.SystemComponents
         /// </summary>
         /// <returns>Offset of width.</returns>
         private double VSDesignerWidthOffset() => MarginForShadow.Left + MarginForShadow.Right;
-
-        #endregion
-
-        #region EventHandlers
-
-        private void OnLoaded(object sender, RoutedEventArgs e) => OnLoaded(e);
 
         #endregion
     }

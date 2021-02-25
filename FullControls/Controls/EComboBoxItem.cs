@@ -361,7 +361,10 @@ namespace FullControls.Controls
         /// <summary>
         /// Initializes a new instance of <see cref="EComboBoxItem"/>.
         /// </summary>
-        public EComboBoxItem() : base() { }
+        public EComboBoxItem() : base()
+        {
+            Loaded += (o, e) => OnLoaded(e);
+        }
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()
@@ -371,8 +374,13 @@ namespace FullControls.Controls
             Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
             Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
             loaded = true;
-            OnVStateChanged(VStateOverride());
         }
+
+        /// <summary>
+        /// Called when the element is laid out, rendered, and ready for interaction.
+        /// </summary>
+        /// <param name="e">Event data.</param>
+        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(VStateOverride());
 
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.

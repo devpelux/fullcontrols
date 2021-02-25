@@ -150,8 +150,17 @@ namespace FullControls.Controls
         /// </summary>
         public Collapsible() : base()
         {
-            Loaded -= Collapsable_Loaded;
-            Loaded += Collapsable_Loaded;
+            Loaded += (o, e) => OnLoaded(e);
+        }
+
+        /// <summary>
+        /// Called when the element is laid out, rendered, and ready for interaction.
+        /// </summary>
+        /// <param name="e">Event data.</param>
+        protected virtual void OnLoaded(RoutedEventArgs e)
+        {
+            if (!IsExpanded) Collapse(false);
+            loaded = true;
         }
 
         /// <summary>
@@ -168,15 +177,6 @@ namespace FullControls.Controls
                 //Raises the ExpandedChanged event
                 IsExpandedChanged?.Invoke(this, new ExpandedChangedEventArgs(isExpanded));
             }
-        }
-
-        /// <summary>
-        /// Called when <see cref="Collapsible"/> is loaded.
-        /// </summary>
-        private void Collapsable_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (!IsExpanded) Collapse(false);
-            loaded = true;
         }
 
         /// <summary>

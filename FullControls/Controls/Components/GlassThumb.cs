@@ -6,7 +6,7 @@ namespace FullControls.Controls.Components
 {
     /// <inheritdoc/>
     [DesignTimeVisible(false)]
-    public class GlassThumb : Thumb
+    public sealed class GlassThumb : Thumb
     {
         /// <summary>
         /// Gets or sets the corner radius of the control.

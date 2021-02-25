@@ -965,6 +965,15 @@ namespace FullControls.Controls
         /// <summary>
         /// Initializes a new instance of <see cref="GlassScrollViewer"/>.
         /// </summary>
-        public GlassScrollViewer() : base() { }
+        public GlassScrollViewer() : base()
+        {
+            Loaded += (o, e) => OnLoaded(e);
+        }
+
+        /// <summary>
+        /// Called when the element is laid out, rendered, and ready for interaction.
+        /// </summary>
+        /// <param name="e">Event data.</param>
+        protected virtual void OnLoaded(RoutedEventArgs e) { }
     }
 }
