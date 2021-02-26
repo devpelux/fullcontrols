@@ -57,12 +57,28 @@ namespace FullControls.Controls
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
+        #region ActualBackgroundProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualBackground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualBackgroundPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualBackground), typeof(Brush), typeof(ETextBox),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((ETextBox)d).OnActualBackgroundChanged((Brush)e.NewValue))));
+
         /// <summary>
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ActualBackgroundProperty =
-            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(ETextBox),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((ETextBox)d).OnActualBackgroundChanged((Brush)e.NewValue))));
+        public static readonly DependencyProperty ActualBackgroundProperty = ActualBackgroundPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualBackground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualBackgroundPropertyProxy =
+            DependencyProperty.Register("ActualBackgroundProxy", typeof(Brush), typeof(ETextBox),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualBackgroundPropertyKey, e.NewValue))));
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the border brush when the control is selected.
@@ -99,11 +115,27 @@ namespace FullControls.Controls
         /// </summary>
         public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
+        #region ActualBorderBrushProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualBorderBrush"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualBorderBrushPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualBorderBrush), typeof(Brush), typeof(ETextBox), new FrameworkPropertyMetadata(default(Brush)));
+
         /// <summary>
         /// Identifies the <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ActualBorderBrushProperty =
-            DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(ETextBox));
+        public static readonly DependencyProperty ActualBorderBrushProperty = ActualBorderBrushPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualBorderBrush"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualBorderBrushPropertyProxy =
+            DependencyProperty.Register("ActualBorderBrushProxy", typeof(Brush), typeof(ETextBox),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualBorderBrushPropertyKey, e.NewValue))));
+
+        #endregion
 
         /// <summary>
         /// Gets or sets a value indicating if adapt automatically the foreground brush to the actual background brush of the control.
@@ -1006,8 +1038,8 @@ namespace FullControls.Controls
             UIElement copyButton = (UIElement)Template.FindName(PartCopyButton, this);
             if (copyButton != null) copyButton.PreviewMouseLeftButtonDown += (s, e) => CopyAll();
             UpdateHintState();
-            Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
-            Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
+            Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
+            Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
             loaded = true;
         }
 
@@ -1015,13 +1047,17 @@ namespace FullControls.Controls
         /// Called when the element is laid out, rendered, and ready for interaction.
         /// </summary>
         /// <param name="e">Event data.</param>
-        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(VStateOverride());
+        protected virtual void OnLoaded(RoutedEventArgs e)
+        {
+            AdaptForeColors(ActualBackground);
+            OnVStateChanged(VStateOverride());
+        }
 
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
         /// <param name="actualBackground">Actual background brush.</param>
-        protected virtual void OnActualBackgroundChanged(Brush actualBackground) => AdaptForeColors(actualBackground);
+        private void OnActualBackgroundChanged(Brush actualBackground) => AdaptForeColors(actualBackground);
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
@@ -1088,20 +1124,20 @@ namespace FullControls.Controls
             switch (vstate)
             {
                 case "Normal":
-                    Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
                     break;
                 case "MouseOver":
-                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnSelected, AnimationTime);
-                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, AnimationTime);
                     break;
                 case "Focused":
-                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnSelected, AnimationTime);
-                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, AnimationTime);
                     break;
                 case "Disabled":
-                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnDisabled, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
                     break;
                 default:
                     break;

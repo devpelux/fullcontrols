@@ -97,6 +97,8 @@ namespace FullControls.Controls
         /// </summary>
         public Thickness MarginForShadow => (Thickness)GetValue(MarginForShadowProperty);
 
+        #region MarginForShadowProperty
+
         /// <summary>
         /// The <see cref="DependencyPropertyKey"/> for <see cref="MarginForShadow"/> dependency property.
         /// </summary>
@@ -108,6 +110,8 @@ namespace FullControls.Controls
         /// Identifies the <see cref="MarginForShadow"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty MarginForShadowProperty = MarginForShadowPropertyKey.DependencyProperty;
+
+        #endregion
 
         /// <summary>
         /// Calculates the margin used to display the shadow.

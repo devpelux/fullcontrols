@@ -150,6 +150,8 @@ namespace FullControls.SystemComponents
         /// </summary>
         public Thickness MarginForShadow => (Thickness)GetValue(MarginForShadowProperty);
 
+        #region MarginForShadowProperty
+
         /// <summary>
         /// The <see cref="DependencyPropertyKey"/> for <see cref="MarginForShadow"/> dependency property.
         /// </summary>
@@ -161,6 +163,8 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="MarginForShadow"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty MarginForShadowProperty = MarginForShadowPropertyKey.DependencyProperty;
+
+        #endregion
 
         /// <summary>
         /// Calculates the margin used to display the shadow.
@@ -834,11 +838,20 @@ namespace FullControls.SystemComponents
         /// </summary>
         public bool IsDocked => (bool)GetValue(IsDockedProperty);
 
+        #region IsDockedProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="IsDocked"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey IsDockedPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(IsDocked), typeof(bool), typeof(EWindow), new PropertyMetadata(false));
+
         /// <summary>
         /// Identifies the <see cref="IsDocked"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty IsDockedProperty =
-            DependencyProperty.Register(nameof(IsDocked), typeof(bool), typeof(EWindow));
+        public static readonly DependencyProperty IsDockedProperty = IsDockedPropertyKey.DependencyProperty;
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the duration of the state change animations.
@@ -1083,7 +1096,7 @@ namespace FullControls.SystemComponents
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
         {
             base.OnRenderSizeChanged(sizeInfo);
-            SetValue(IsDockedProperty, WindowState == WindowState.Normal && Width != RestoreBounds.Width && Height != RestoreBounds.Height);
+            SetValue(IsDockedPropertyKey, WindowState == WindowState.Normal && Width != RestoreBounds.Width && Height != RestoreBounds.Height);
         }
 
         /// <inheritdoc/>

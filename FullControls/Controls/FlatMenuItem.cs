@@ -69,12 +69,27 @@ namespace FullControls.Controls
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
+        #region ActualBackgroundProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualBackground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualBackgroundPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualBackground), typeof(Brush), typeof(FlatMenuItem), new FrameworkPropertyMetadata(default(Brush)));
+
         /// <summary>
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ActualBackgroundProperty =
-            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((FlatMenuItem)d).OnActualBackgroundChanged((Brush)e.NewValue))));
+        public static readonly DependencyProperty ActualBackgroundProperty = ActualBackgroundPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualBackground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualBackgroundPropertyProxy =
+            DependencyProperty.Register("ActualBackgroundProxy", typeof(Brush), typeof(FlatMenuItem),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualBackgroundPropertyKey, e.NewValue))));
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the border brush when the item is highlighted.
@@ -126,11 +141,27 @@ namespace FullControls.Controls
         /// </summary>
         public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
+        #region ActualBorderBrushProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualBorderBrush"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualBorderBrushPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualBorderBrush), typeof(Brush), typeof(FlatMenuItem), new FrameworkPropertyMetadata(default(Brush)));
+
         /// <summary>
         /// Identifies the <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ActualBorderBrushProperty =
-            DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(FlatMenuItem));
+        public static readonly DependencyProperty ActualBorderBrushProperty = ActualBorderBrushPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualBorderBrush"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualBorderBrushPropertyProxy =
+            DependencyProperty.Register("ActualBorderBrushProxy", typeof(Brush), typeof(FlatMenuItem),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualBorderBrushPropertyKey, e.NewValue))));
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the foreground brush when the item is highlighted.
@@ -263,11 +294,27 @@ namespace FullControls.Controls
         /// </summary>
         public Brush ActualForeground => (Brush)GetValue(ActualForegroundProperty);
 
+        #region ActualForegroundProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualForeground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualForegroundPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualForeground), typeof(Brush), typeof(FlatMenuItem), new FrameworkPropertyMetadata(default(Brush)));
+
         /// <summary>
         /// Identifies the <see cref="ActualForeground"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ActualForegroundProperty =
-            DependencyProperty.Register(nameof(ActualForeground), typeof(Brush), typeof(FlatMenuItem));
+        public static readonly DependencyProperty ActualForegroundProperty = ActualForegroundPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualForeground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualForegroundPropertyProxy =
+            DependencyProperty.Register("ActualForegroundProxy", typeof(Brush), typeof(FlatMenuItem),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualForegroundPropertyKey, e.NewValue))));
+
+        #endregion
 
         #region Popup
 
@@ -702,6 +749,8 @@ namespace FullControls.Controls
         /// </summary>
         public Thickness BackMarginForShadow => (Thickness)GetValue(BackMarginForShadowProperty);
 
+        #region BackMarginForShadowProperty
+
         /// <summary>
         /// The <see cref="DependencyPropertyKey"/> for <see cref="BackMarginForShadow"/> dependency property.
         /// </summary>
@@ -714,10 +763,14 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty BackMarginForShadowProperty = BackMarginForShadowPropertyKey.DependencyProperty;
 
+        #endregion
+
         /// <summary>
         /// Gets the front margin used to display the shadow.
         /// </summary>
         public Thickness FrontMarginForShadow => (Thickness)GetValue(FrontMarginForShadowProperty);
+
+        #region FrontMarginForShadowProperty
 
         /// <summary>
         /// The <see cref="DependencyPropertyKey"/> for <see cref="FrontMarginForShadow"/> dependency property.
@@ -730,6 +783,8 @@ namespace FullControls.Controls
         /// Identifies the <see cref="FrontMarginForShadow"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty FrontMarginForShadowProperty = FrontMarginForShadowPropertyKey.DependencyProperty;
+
+        #endregion
 
         /// <summary>
         /// Calculates the margin used to display the shadow.
@@ -928,11 +983,27 @@ namespace FullControls.Controls
         /// </summary>
         public Brush ActualCheckBrush => (Brush)GetValue(ActualCheckBrushProperty);
 
+        #region ActualCheckBrushProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualCheckBrush"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualCheckBrushPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualCheckBrush), typeof(Brush), typeof(FlatMenuItem), new FrameworkPropertyMetadata(default(Brush)));
+
         /// <summary>
         /// Identifies the <see cref="ActualCheckBrush"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ActualCheckBrushProperty =
-            DependencyProperty.Register(nameof(ActualCheckBrush), typeof(Brush), typeof(FlatMenuItem));
+        public static readonly DependencyProperty ActualCheckBrushProperty = ActualCheckBrushPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualCheckBrush"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualCheckBrushPropertyProxy =
+            DependencyProperty.Register("ActualCheckBrushProxy", typeof(Brush), typeof(FlatMenuItem),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualCheckBrushPropertyKey, e.NewValue))));
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the content of the icon displayed if <see cref="MenuItem.IsCheckable"/> is <see langword="true"/> and <see cref="MenuItem.IsChecked"/> is <see langword="true"/>.
@@ -1201,10 +1272,10 @@ namespace FullControls.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
-            Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
-            Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
-            Utility.AnimateBrush(this, ActualCheckBrushProperty, CheckBrush, TimeSpan.Zero);
+            Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
+            Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
+            Utility.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
+            Utility.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrush, TimeSpan.Zero);
             loaded = true;
         }
 
@@ -1298,12 +1369,6 @@ namespace FullControls.Controls
 #nullable disable
 
         /// <summary>
-        /// Called when the <see cref="ActualBackground"/> is changed.
-        /// </summary>
-        /// <param name="actualBackground">Actual background brush.</param>
-        protected virtual void OnActualBackgroundChanged(Brush actualBackground) { }
-
-        /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
@@ -1343,28 +1408,28 @@ namespace FullControls.Controls
             switch (vstate)
             {
                 case "Normal":
-                    Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualCheckBrushProperty, CheckBrush, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrush, TimeSpan.Zero);
                     break;
                 case "Highlighted":
-                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnHighlight, AnimationTime);
-                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnHighlight, AnimationTime);
-                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnHighlight, AnimationTime);
-                    Utility.AnimateBrush(this, ActualCheckBrushProperty, CheckBrushOnHighlight, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnHighlight, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnHighlight, AnimationTime);
+                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnHighlight, AnimationTime);
+                    Utility.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrushOnHighlight, AnimationTime);
                     break;
                 case "SubmenuOpen":
-                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnOpen, AnimationTime);
-                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnOpen, AnimationTime);
-                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnOpen, AnimationTime);
-                    Utility.AnimateBrush(this, ActualCheckBrushProperty, CheckBrushOnOpen, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnOpen, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnOpen, AnimationTime);
+                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnOpen, AnimationTime);
+                    Utility.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrushOnOpen, AnimationTime);
                     break;
                 case "Disabled":
-                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnDisabled, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnDisabled, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnDisabled, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualCheckBrushProperty, CheckBrushOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrushOnDisabled, TimeSpan.Zero);
                     break;
                 default:
                     break;

@@ -84,11 +84,21 @@ namespace FullControls.Controls
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
+        #region ActualBackgroundProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualBackground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualBackgroundPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualBackground), typeof(Brush), typeof(EComboBox),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((EComboBox)d).OnActualBackgroundChanged((Brush)e.NewValue))));
+
         /// <summary>
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ActualBackgroundProperty =
-            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(EComboBox));
+        public static readonly DependencyProperty ActualBackgroundProperty = ActualBackgroundPropertyKey.DependencyProperty;
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the border brush when the mouse is over the control.
@@ -230,11 +240,20 @@ namespace FullControls.Controls
         /// </summary>
         public Brush ActualForeColor => (Brush)GetValue(ActualForeColorProperty);
 
+        #region ActualForeColorProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualForeColor"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualForeColorPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualForeColor), typeof(Brush), typeof(EComboBox), new FrameworkPropertyMetadata(default(Brush)));
+
         /// <summary>
         /// Identifies the <see cref="ActualForeColor"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ActualForeColorProperty =
-            DependencyProperty.Register(nameof(ActualForeColor), typeof(Brush), typeof(EComboBox));
+        public static readonly DependencyProperty ActualForeColorProperty = ActualForeColorPropertyKey.DependencyProperty;
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the corner radius of the control.
@@ -654,17 +673,17 @@ namespace FullControls.Controls
             EToggleButton toggleButton = (EToggleButton)Template.FindName(PartToggleButton, this);
             if (toggleButton != null)
             {
-                DependencyPropertyDescriptor.FromProperty(EToggleButton.ActualForegroundProperty, typeof(EToggleButton))
-                    ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualForeColorProperty, toggleButton.ActualForeground));
                 DependencyPropertyDescriptor.FromProperty(EToggleButton.ActualBackgroundProperty, typeof(EToggleButton))
-                    ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualBackgroundProperty, toggleButton.ActualBackground));
-                SetValue(ActualForeColorProperty, IsEnabled ? IsDropDownOpen ? ForeColorOnChecked : ForeColor : ForeColorOnDisabled);
-                SetValue(ActualBackgroundProperty, IsEnabled ? IsDropDownOpen ? BackgroundOnChecked : Background : BackgroundOnDisabled);
+                    ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualBackgroundPropertyKey, toggleButton.ActualBackground));
+                DependencyPropertyDescriptor.FromProperty(EToggleButton.ActualForegroundProperty, typeof(EToggleButton))
+                    ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualForeColorPropertyKey, toggleButton.ActualForeground));
+                SetValue(ActualBackgroundPropertyKey, IsEnabled ? IsDropDownOpen ? BackgroundOnChecked : Background : BackgroundOnDisabled);
+                SetValue(ActualForeColorPropertyKey, IsEnabled ? IsDropDownOpen ? ForeColorOnChecked : ForeColor : ForeColorOnDisabled);
             }
             else
             {
-                SetValue(ActualForeColorProperty, IsEnabled ? ForeColor : ForeColorOnDisabled);
-                SetValue(ActualBackgroundProperty, IsEnabled ? Background : BackgroundOnDisabled);
+                SetValue(ActualBackgroundPropertyKey, IsEnabled ? Background : BackgroundOnDisabled);
+                SetValue(ActualForeColorPropertyKey, IsEnabled ? ForeColor : ForeColorOnDisabled);
             }
         }
 
@@ -672,17 +691,13 @@ namespace FullControls.Controls
         /// Called when the element is laid out, rendered, and ready for interaction.
         /// </summary>
         /// <param name="e">Event data.</param>
-        protected virtual void OnLoaded(RoutedEventArgs e) { }
+        protected virtual void OnLoaded(RoutedEventArgs e) => AdaptForeColors(ActualBackground);
 
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
         /// <param name="actualBackground">Actual background brush.</param>
-        protected virtual void OnActualBackgroundChanged(Brush actualBackground)
-        {
-            SetValue(ActualBackgroundProperty, actualBackground);
-            AdaptForeColors(actualBackground);
-        }
+        private void OnActualBackgroundChanged(Brush actualBackground) => AdaptForeColors(actualBackground);
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.

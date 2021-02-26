@@ -84,11 +84,28 @@ namespace FullControls.Controls
         /// </summary>
         public Brush ActualForeground => (Brush)GetValue(ActualForegroundProperty);
 
+        #region ActualForegroundProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualForeground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualForegroundPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualForeground), typeof(Brush), typeof(ItemsControlAccordionItem),
+                new FrameworkPropertyMetadata(default(Brush)));
+
         /// <summary>
         /// Identifies the <see cref="ActualForeground"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ActualForegroundProperty =
-            DependencyProperty.Register(nameof(ActualForeground), typeof(Brush), typeof(ItemsControlAccordionItem));
+        public static readonly DependencyProperty ActualForegroundProperty = ActualForegroundPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualForeground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualForegroundPropertyProxy =
+            DependencyProperty.Register("ActualForegroundProxy", typeof(Brush), typeof(ItemsControlAccordionItem),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualForegroundPropertyKey, e.NewValue))));
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the fontweight when the mouse is over the control.
@@ -155,11 +172,21 @@ namespace FullControls.Controls
         /// </summary>
         public FontWeight ActualFontWeight => (FontWeight)GetValue(ActualFontWeightProperty);
 
+        #region ActualFontWeightProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualFontWeight"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualFontWeightPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualFontWeight), typeof(FontWeight), typeof(ItemsControlAccordionItem),
+                new FrameworkPropertyMetadata(default(FontWeight)));
+
         /// <summary>
         /// Identifies the <see cref="ActualFontWeight"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ActualFontWeightProperty =
-            DependencyProperty.Register(nameof(ActualFontWeight), typeof(FontWeight), typeof(ItemsControlAccordionItem));
+        public static readonly DependencyProperty ActualFontWeightProperty = ActualFontWeightPropertyKey.DependencyProperty;
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the vertical alignment of the header.
@@ -333,22 +360,56 @@ namespace FullControls.Controls
         /// </summary>
         public Brush ActualArrowForeground => (Brush)GetValue(ActualArrowForegroundProperty);
 
+        #region ActualArrowForegroundProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualArrowForeground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualArrowForegroundPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualArrowForeground), typeof(Brush), typeof(ItemsControlAccordionItem),
+                new FrameworkPropertyMetadata(default(Brush)));
+
         /// <summary>
         /// Identifies the <see cref="ActualArrowForeground"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ActualArrowForegroundProperty =
-            DependencyProperty.Register(nameof(ActualArrowForeground), typeof(Brush), typeof(ItemsControlAccordionItem));
+        public static readonly DependencyProperty ActualArrowForegroundProperty = ActualArrowForegroundPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualArrowForeground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualArrowForegroundPropertyProxy =
+            DependencyProperty.Register("ActualArrowForegroundProxy", typeof(Brush), typeof(ItemsControlAccordionItem),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualArrowForegroundPropertyKey, e.NewValue))));
+
+        #endregion
 
         /// <summary>
         /// Gets the rotation of the arrow.
         /// </summary>
         public double ArrowRotation => (double)GetValue(ArrowRotationProperty);
 
+        #region ArrowRotationProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ArrowRotation"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ArrowRotationPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ArrowRotation), typeof(double), typeof(ItemsControlAccordionItem),
+                new FrameworkPropertyMetadata(0d));
+
         /// <summary>
         /// Identifies the <see cref="ArrowRotation"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ArrowRotationProperty =
-            DependencyProperty.Register(nameof(ArrowRotation), typeof(double), typeof(ItemsControlAccordionItem), new FrameworkPropertyMetadata(0d));
+        public static readonly DependencyProperty ArrowRotationProperty = ArrowRotationPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ArrowRotation"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ArrowRotationPropertyProxy =
+            DependencyProperty.Register("ArrowRotationProxy", typeof(double), typeof(ItemsControlAccordionItem),
+                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => d.SetValue(ArrowRotationPropertyKey, e.NewValue))));
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the rotation of the arrow when <see cref="AccordionItem.IsExpanded"/> is <see langword="false"/>.
@@ -468,17 +529,17 @@ namespace FullControls.Controls
             base.OnApplyTemplate();
             Collapsible collapsible = (Collapsible)Template.FindName(PartCollapsible, this);
             if (collapsible != null) collapsible.Child = itemsControl;
-            Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, TimeSpan.Zero);
-            Utility.AnimateBrush(this, ActualArrowForegroundProperty, Foreground, TimeSpan.Zero);
-            SetValue(ActualFontWeightProperty, FontWeight);
-            SetValue(ArrowRotationProperty, IsExpanded ? ArrowExpandedRotation : ArrowCollapsedRotation);
+            Utility.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
+            Utility.AnimateBrush(this, ActualArrowForegroundPropertyProxy, Foreground, TimeSpan.Zero);
+            SetValue(ActualFontWeightPropertyKey, FontWeight);
+            SetValue(ArrowRotationPropertyProxy, IsExpanded ? ArrowExpandedRotation : ArrowCollapsedRotation);
         }
 
         /// <inheritdoc/>
         protected override void OnExpandedChanged(bool isExpanded)
         {
             base.OnExpandedChanged(isExpanded);
-            Utility.AnimateDouble(this, ArrowRotationProperty, isExpanded ? ArrowExpandedRotation : ArrowCollapsedRotation, AnimationTime);
+            Utility.AnimateDouble(this, ArrowRotationPropertyProxy, isExpanded ? ArrowExpandedRotation : ArrowCollapsedRotation, AnimationTime);
         }
 
         /// <inheritdoc/>
@@ -487,29 +548,29 @@ namespace FullControls.Controls
             switch (vstate)
             {
                 case "Normal":
-                    Utility.AnimateBrush(this, ActualForegroundProperty, Foreground, AnimationTime);
-                    Utility.AnimateBrush(this, ActualArrowForegroundProperty, ArrowForeground, AnimationTime);
-                    SetValue(ActualFontWeightProperty, FontWeight);
+                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, AnimationTime);
+                    Utility.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForeground, AnimationTime);
+                    SetValue(ActualFontWeightPropertyKey, FontWeight);
                     break;
                 case "Expanded":
-                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnExpanded, AnimationTime);
-                    Utility.AnimateBrush(this, ActualArrowForegroundProperty, ArrowForegroundOnExpanded, AnimationTime);
-                    SetValue(ActualFontWeightProperty, FontWeightOnExpanded);
+                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnExpanded, AnimationTime);
+                    Utility.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnExpanded, AnimationTime);
+                    SetValue(ActualFontWeightPropertyKey, FontWeightOnExpanded);
                     break;
                 case "MouseOverHeader":
-                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnMouseOver, AnimationTime);
-                    Utility.AnimateBrush(this, ActualArrowForegroundProperty, ArrowForegroundOnMouseOver, AnimationTime);
-                    SetValue(ActualFontWeightProperty, FontWeightOnMouseOver);
+                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOver, AnimationTime);
+                    Utility.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnMouseOver, AnimationTime);
+                    SetValue(ActualFontWeightPropertyKey, FontWeightOnMouseOver);
                     break;
                 case "MouseOverHeaderOnExpanded":
-                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnMouseOverOnExpanded, AnimationTime);
-                    Utility.AnimateBrush(this, ActualArrowForegroundProperty, ArrowForegroundOnMouseOverOnExpanded, AnimationTime);
-                    SetValue(ActualFontWeightProperty, FontWeightOnMouseOverOnExpanded);
+                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOverOnExpanded, AnimationTime);
+                    Utility.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnMouseOverOnExpanded, AnimationTime);
+                    SetValue(ActualFontWeightPropertyKey, FontWeightOnMouseOverOnExpanded);
                     break;
                 case "Disabled":
-                    Utility.AnimateBrush(this, ActualForegroundProperty, ForegroundOnDisabled, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualArrowForegroundProperty, ArrowForegroundOnDisabled, TimeSpan.Zero);
-                    SetValue(ActualFontWeightProperty, FontWeightOnDisabled);
+                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnDisabled, TimeSpan.Zero);
+                    SetValue(ActualFontWeightPropertyKey, FontWeightOnDisabled);
                     break;
                 default:
                     break;

@@ -72,12 +72,28 @@ namespace FullControls.Controls
         /// </summary>
         public Brush ActualBackground => (Brush)GetValue(ActualBackgroundProperty);
 
+        #region ActualBackgroundProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualBackground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualBackgroundPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualBackground), typeof(Brush), typeof(EPasswordBox),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((EPasswordBox)d).OnActualBackgroundChanged((Brush)e.NewValue))));
+
         /// <summary>
         /// Identifies the <see cref="ActualBackground"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ActualBackgroundProperty =
-            DependencyProperty.Register(nameof(ActualBackground), typeof(Brush), typeof(EPasswordBox),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((EPasswordBox)d).OnActualBackgroundChanged((Brush)e.NewValue))));
+        public static readonly DependencyProperty ActualBackgroundProperty = ActualBackgroundPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualBackground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualBackgroundPropertyProxy =
+            DependencyProperty.Register("ActualBackgroundProxy", typeof(Brush), typeof(EPasswordBox),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualBackgroundPropertyKey, e.NewValue))));
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the border brush when the control is selected.
@@ -114,11 +130,27 @@ namespace FullControls.Controls
         /// </summary>
         public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
 
+        #region ActualBorderBrushProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualBorderBrush"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualBorderBrushPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualBorderBrush), typeof(Brush), typeof(EPasswordBox), new FrameworkPropertyMetadata(default(Brush)));
+
         /// <summary>
         /// Identifies the <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty ActualBorderBrushProperty =
-            DependencyProperty.Register(nameof(ActualBorderBrush), typeof(Brush), typeof(EPasswordBox));
+        public static readonly DependencyProperty ActualBorderBrushProperty = ActualBorderBrushPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualBorderBrush"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualBorderBrushPropertyProxy =
+            DependencyProperty.Register("ActualBorderBrushProxy", typeof(Brush), typeof(EPasswordBox),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualBorderBrushPropertyKey, e.NewValue))));
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the brush of the caret.
@@ -296,11 +328,20 @@ namespace FullControls.Controls
         /// </summary>
         public string Peek => (string)GetValue(PeekProperty);
 
+        #region PeekProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="Peek"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey PeekPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(Peek), typeof(string), typeof(EPasswordBox), new FrameworkPropertyMetadata(string.Empty));
+
         /// <summary>
         /// Identifies the <see cref="Peek"/> dependency property.
         /// </summary>
-        internal static readonly DependencyProperty PeekProperty =
-            DependencyProperty.Register(nameof(Peek), typeof(string), typeof(EPasswordBox));
+        public static readonly DependencyProperty PeekProperty = PeekPropertyKey.DependencyProperty;
+
+        #endregion
 
         /// <summary>
         /// Gets or sets a value indicating if to display or not a button that show the password while is pressed.
@@ -1332,8 +1373,8 @@ namespace FullControls.Controls
             UIElement copyButton = (UIElement)Template.FindName(PartCopyButton, this);
             if (copyButton != null) copyButton.PreviewMouseLeftButtonDown += (s, e) => CopyAll();
             UpdateHintState();
-            Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
-            Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
+            Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
+            Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
             loaded = true;
         }
 
@@ -1344,6 +1385,7 @@ namespace FullControls.Controls
         private void OnLoaded(RoutedEventArgs e)
         {
             Initialize();
+            AdaptForeColors(ActualBackground);
             OnVStateChanged(VStateOverride());
         }
 
@@ -1443,20 +1485,20 @@ namespace FullControls.Controls
             switch (vstate)
             {
                 case "Normal":
-                    Utility.AnimateBrush(this, ActualBackgroundProperty, Background, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrush, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
                     break;
                 case "MouseOver":
-                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnSelected, AnimationTime);
-                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, AnimationTime);
                     break;
                 case "Focused":
-                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnSelected, AnimationTime);
-                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, AnimationTime);
+                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, AnimationTime);
                     break;
                 case "Disabled":
-                    Utility.AnimateBrush(this, ActualBackgroundProperty, BackgroundOnDisabled, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualBorderBrushProperty, BorderBrushOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
+                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
                     break;
                 default:
                     break;
@@ -1526,7 +1568,7 @@ namespace FullControls.Controls
         /// </summary>
         private void PeekButton_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            SetValue(PeekProperty, Password);
+            SetValue(PeekPropertyKey, Password);
             _ = VisualStateManager.GoToState(this, "Peeked", true);
         }
 
@@ -1535,7 +1577,7 @@ namespace FullControls.Controls
         /// </summary>
         private void PeekButton_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            SetValue(PeekProperty, "");
+            SetValue(PeekPropertyKey, string.Empty);
             _ = VisualStateManager.GoToState(this, "Unpeeked", true);
         }
 
@@ -1544,7 +1586,7 @@ namespace FullControls.Controls
         /// </summary>
         private void PeekButton_MouseLeave(object sender, MouseEventArgs e)
         {
-            SetValue(PeekProperty, "");
+            SetValue(PeekPropertyKey, string.Empty);
             _ = VisualStateManager.GoToState(this, "Unpeeked", true);
         }
 
