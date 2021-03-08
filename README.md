@@ -78,34 +78,43 @@ Here is an overview of all the features of the package.
 ## Controls
 
 ### Collapsible
-Adds collapsing and expanding functionality to another element.
-For example you can specify a Grid as collapsible Child, so the content of this Grid can be expanded or collapsed.
-The collapsible works with Width and Height, so expanding means *"go from zero to full size"*, and collapsing means *"go from full size to zero"*.
+Adds collapsing and expanding functionality to another element.  
+For example you can specify a Grid as collapsible Child, so the content of this Grid can be expanded or collapsed.  
+The collapsible works with Width and Height, so expanding means *"go from zero to full size"*, and collapsing means *"go from full size to zero"*.  
+Is possible to collapse only width, only height, or both.
+
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/collapsible.gif"/>
+
+---
 
 ### Accordion
-Is a control that contains a stacked list of items.
+Is a control that contains a stacked list of items.  
 Each item can be expanded or collapsed to reveal the content associated with that item.
 
 ### SimpleAccordionItem
-This is a control that can be used within an Accordion.
-It can contain everything on its Content property.
+This is a control that can be used within an Accordion.  
+It can contain everything on its Content property.  
 It has an header and contains a Collapsible, to make the content collapsible by clicking the header.
 
 ### ItemsControlAccordionItem
-This is a control that can be used within an Accordion.
-It works as an items control, so can be used to display multiple items inside.
+This is a control that can be used within an Accordion.  
+It works as an items control, so can be used to display multiple items inside.  
 It has an header and contains a Collapsible, to make the content collapsible by clicking the header.
 
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/accordion.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/accordion_dark.png"/>
+
+---
+
 ### FlatContextMenu
-Reworked version of the classic ContextMenu with more customizations.
-For example you can change the color of the shadow or display a scroll viewer if needed.
+Reworked version of the classic ContextMenu with more customizations.  
+For example you can change the color of the shadow or display a scroll viewer if needed.  
 However, it was created primarily for handling some inherited properties of FlatMenuItem.
 
 ### FlatMenu
 This control was created only for handling some inherited properties of FlatMenuItem.
 
 ### FlatMenuItem
-Extended version of the MenuItem with more features and customizations.
+Extended version of the MenuItem with more features and customizations.  
 It contains also a "radio-checking" feature to make checkable items mutually exclusive.
 
 ### FlatMenuSeparator
@@ -117,11 +126,50 @@ This is a blank menu item: is made to add a blank space (without any separator l
 ### FlatMenuTitle
 This is an unclickable menu item that works only as SubmenuItem, it can be used to add an item that works as a title for a group of items.
 
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/flatcontextmenu.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/flatcontextmenu_dark.png"/> <br>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/flatcontextmenu_check.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/flatcontextmenu_check_dark.png"/> <br>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/flatcontextmenu_radiocheck.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/flatcontextmenu_radiocheck_dark.png"/>
+
+---
+
 ### EButton
 Extended version of the classic button with more customizations.
 
+### ERepeatButton
+Extended version of the classic repeat button with more customizations.
+
+### EToggleButton
+Extended version of the classic toggle button with more customizations and features.
+
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/ebuttons.png"/> <br> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/ebuttons_dark.png"/>
+
+---
+
+### Switcher
+Button with the behaviour of a radio button.  
+It can be used, for example, to switch between different section of an application.
+
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/switcher.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/switcher_dark.png"/> <br>
+
+With multiple switchers you can easily do a navigation drawer menu.
+
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/switcher_navigation_drawer.png"/>
+
+---
+
 ### ECheckBox
 Extended version of the classic checkbox with more customizations.
+
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/echeckbox.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/echeckbox_dark.png"/>
+
+---
+
+### ERadioButton
+Extended version of the classic radiobutton with more customizations.
+
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/eradiobutton.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/eradiobutton_dark.png"/>
+
+---
 
 ### EComboBox
 Extended version of the classic combobox with more customizations and features.
@@ -129,39 +177,51 @@ Extended version of the classic combobox with more customizations and features.
 ### EComboBoxItem
 Extended version of the classic combobox item with more customizations and features.
 
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/ecombobox.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/ecombobox_dark.png"/>
+
+---
+
 ### EPasswordBox
-Reworked version of the standard password box with more features and customizations.
+Extended version of the standard password box with more features and customizations.  
 Is possible to add a label (or icon) and display an hint, add a button to show the password when pressed and copy the password.  
 It maintains the same security of the original password box.
 
-### ERadioButton
-Extended version of the classic radiobutton with more customizations.
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/epasswordbox.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/epasswordbox_dark.png"/> <br>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/epasswordbox_hinted.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/epasswordbox_hinted_dark.png"/> <br>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/epasswordbox_labeled.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/epasswordbox_labeled_dark.png"/> <br>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/epasswordbox_peeked.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/epasswordbox_peeked_dark.png"/>
 
-### ERepeatButton
-Extended version of the classic repeat button with more customizations.
+---
 
 ### ETextBox
-Reworked version of the standard text box with more features and customizations.
+Extended version of the standard text box with more features and customizations.  
 Is possible to add a label (or icon) and display an hint, add a button to copy the text, choose if the textbox can contain only number, doubles…
 
-### EToggleButton
-Extended version of the classic toggle button with more customizations and features.
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/etextbox.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/etextbox_dark.png"/> <br>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/etextbox_hinted.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/etextbox_hinted_dark.png"/> <br>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/etextbox_labeled.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/etextbox_labeled_dark.png"/> <br>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/etextbox_types.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/etextbox_types_dark.png"/> <br>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/etextbox_flatcontextmenu.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/etextbox_flatcontextmenu_dark.png"/>
+
+---
 
 ### GlassScrollBar
 Reworked version of the classic scrollbar adapted to be semi-transparent and colored.
 
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/vertical_glassscrollbar.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/horizontal_glassscrollbar.png"/>
+
+---
+
 ### GlassScrollViewer
 This is a scroll viewer that uses the GlassScrollBars and with some new functionality, as draw the scrollbars inside the scroll viewer.
 
-### Switcher
-Button with the behaviour of a radio button.  
-It can be used, for example, to switch between different section of an application.
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/glassscrollviewer.png"/>
 
 
 ## Special
 
 ### EWindow
-Reworked version of the classic window with possibility to customize the titlebar, fuse the titlebar with the content of the window, add corner radius to the window, better handling of close, minimize, etc...
+Extended version of the classic window with possibility to customize the titlebar, fuse the titlebar with the content of the window, add corner radius to the window, better handling of close, minimize, etc...
 
 ### DialogWindow
 Incapsulates a Window to be displayed as dialog and, in the end, return an object as result.  
