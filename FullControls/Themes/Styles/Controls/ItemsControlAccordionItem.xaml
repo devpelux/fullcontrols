@@ -97,7 +97,12 @@
                         <local:Collapsible x:Name="PART_Collapsible"
                                            Grid.Row="1"
                                            ExpandingAnimationTime="{TemplateBinding ExpandingAnimationTime}"
-                                           IsExpanded="{TemplateBinding IsExpanded}"/>
+                                           IsExpanded="{TemplateBinding IsExpanded}">
+                            <ContentPresenter x:Name="PART_ContentHost"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </local:Collapsible>
                     </Grid>
 
                     <ControlTemplate.Triggers>

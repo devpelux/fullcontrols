@@ -7,6 +7,7 @@ using System.Security;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -15,18 +16,17 @@ namespace FullControls.Controls
     /// <summary>
     /// Represents a control designed for entering and handling passwords.
     /// </summary>
-    [TemplatePart(Name = PartPasswordBox, Type = typeof(PasswordBox))]
+    [TemplatePart(Name = PartContentHost, Type = typeof(ContentPresenter))]
     [TemplatePart(Name = PartPeekButton, Type = typeof(UIElement))]
     public sealed class EPasswordBox : Control
     {
         private bool loaded = false;
-        private PasswordBox passwordBox = null;
-        private string tempPassword = null;
+        private readonly PasswordBox passwordBox;
 
         /// <summary>
-        /// PasswordBox template part.
+        /// ContentHost template part.
         /// </summary>
-        private const string PartPasswordBox = "PART_PasswordBox";
+        private const string PartContentHost = "PART_ContentHost";
 
         /// <summary>
         /// PeekButton template part.
@@ -1064,15 +1064,15 @@ namespace FullControls.Controls
         /// <summary>
         /// Gets the value of <see cref="Password"/> as <see cref="SecureString"/>.
         /// </summary>
-        public SecureString SecurePassword => GetSecurePassword();
+        public SecureString SecurePassword => passwordBox.SecurePassword;
 
         /// <summary>
         /// Gets or sets the value of the password.
         /// </summary>
         public string Password
         {
-            get => GetPassword();
-            set => SetPassword(value);
+            get => passwordBox.Password;
+            set => passwordBox.Password = value;
         }
 
         /// <summary>
@@ -1083,12 +1083,12 @@ namespace FullControls.Controls
         /// <summary>
         /// Gets a value indicating if the control has focus and selected text.
         /// </summary>
-        public bool IsSelectionActive => passwordBox != null && passwordBox.IsSelectionActive;
+        public bool IsSelectionActive => passwordBox.IsSelectionActive;
 
         /// <summary>
         /// Gets a value indicating if the control has the focus.
         /// </summary>
-        public new bool IsFocused => passwordBox != null && passwordBox.IsFocused;
+        public new bool IsFocused => passwordBox.IsFocused;
 
         /// <summary>
         /// Raised when <see cref="Password"/> is changed.
@@ -1122,12 +1122,14 @@ namespace FullControls.Controls
         public EPasswordBox() : base()
         {
             Loaded += (o, e) => OnLoaded(e);
+            passwordBox = new PasswordBox();
+            PreparePasswordBox();
         }
 
         /// <summary>
         /// Clears the value of the <see cref="Password"/> property.
         /// </summary>
-        public void Clear() => passwordBox?.Clear();
+        public void Clear() => passwordBox.Clear();
 
         /// <summary>
         /// Copy the value of the <see cref="Password"/> property on the <see cref="Clipboard"/>.
@@ -1137,24 +1139,18 @@ namespace FullControls.Controls
         /// <summary>
         /// Replaces the current selection with the contents of the <see cref="Clipboard"/>.
         /// </summary>
-        public void Paste() => passwordBox?.Paste();
+        public void Paste() => passwordBox.Paste();
 
         /// <summary>
         /// Select the entire content.
         /// </summary>
-        public void SelectAll() => passwordBox?.SelectAll();
+        public void SelectAll() => passwordBox.SelectAll();
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            passwordBox = (PasswordBox)Template.FindName(PartPasswordBox, this);
-            if (passwordBox != null)
-            {
-                passwordBox.PasswordChanged += PasswordBox_PasswordChanged;
-                passwordBox.GotFocus += PasswordBox_GotFocus;
-                passwordBox.LostFocus += PasswordBox_LostFocus;
-            }
+            AttachPasswordBox();
             UIElement peekButton = (UIElement)Template.FindName(PartPeekButton, this);
             if (peekButton != null)
             {
@@ -1172,46 +1168,13 @@ namespace FullControls.Controls
         /// Called when the element is laid out, rendered, and ready for interaction.
         /// </summary>
         /// <param name="e">Event data.</param>
+#pragma warning disable IDE0060 //Remove unused parameter | Justification: Coerence
         private void OnLoaded(RoutedEventArgs e)
+#pragma warning restore IDE0060 //Remove unused parameter
         {
-            Initialize();
             AdaptForeColors(ActualBackground);
             OnVStateChanged(VStateOverride());
         }
-
-        /// <summary>
-        /// Set the initial password.
-        /// </summary>
-        private void Initialize()
-        {
-            if (tempPassword != null)
-            {
-                SetPassword(tempPassword);
-                tempPassword = null;
-            }
-        }
-
-        /// <summary>
-        /// Gets the password as a <see cref="SecureString"/>.
-        /// </summary>
-        /// <returns>The password as <see cref="SecureString"/>.</returns>
-        private SecureString GetSecurePassword() => passwordBox != null ? passwordBox.SecurePassword : new SecureString();
-
-        /// <summary>
-        /// Sets the password.
-        /// </summary>
-        /// <param name="password">Password.</param>
-        private void SetPassword(string password)
-        {
-            if (passwordBox != null) passwordBox.Password = password;
-            else tempPassword = password;
-        }
-
-        /// <summary>
-        /// Gets the password.
-        /// </summary>
-        /// <returns>Password.</returns>
-        private string GetPassword() => passwordBox != null ? passwordBox.Password : "";
 
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.
@@ -1228,7 +1191,7 @@ namespace FullControls.Controls
         protected override void OnGotFocus(RoutedEventArgs e)
         {
             base.OnGotFocus(e);
-            passwordBox?.Focus();
+            passwordBox.Focus();
         }
 
         /// <inheritdoc/>
@@ -1332,7 +1295,7 @@ namespace FullControls.Controls
             }
         }
 
-        #region Internal PasswordBox events
+        #region PasswordBox events
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
@@ -1384,5 +1347,45 @@ namespace FullControls.Controls
         private void PeekButton_MouseLeave(object sender, MouseEventArgs e) => SetValue(PeekPropertyKey, null);
 
         #endregion
+
+        /// <summary>
+        /// Attach the <see cref="PasswordBox"/> control to the <see cref="ContentPresenter"/> content host part.
+        /// </summary>
+        private void AttachPasswordBox()
+        {
+            ContentPresenter contentHost = (ContentPresenter)Template.FindName(PartContentHost, this);
+            if (contentHost != null) contentHost.Content = passwordBox;
+        }
+
+        /// <summary>
+        /// Prepare the <see cref="PasswordBox"/> part.
+        /// </summary>
+        private void PreparePasswordBox()
+        {
+            //Setting events
+            passwordBox.PasswordChanged += PasswordBox_PasswordChanged;
+            passwordBox.GotFocus += PasswordBox_GotFocus;
+            passwordBox.LostFocus += PasswordBox_LostFocus;
+            //Setting properties
+            passwordBox.Background = System.Windows.Media.Brushes.Transparent;
+            passwordBox.BorderThickness = new Thickness(0);
+            passwordBox.Focusable = true;
+            //Setting bindings
+#pragma warning disable IDE0002 //Simplify member access | Justification: Clarity
+            passwordBox.SetBinding(PasswordBox.HorizontalContentAlignmentProperty, new Binding(nameof(HorizontalContentAlignment)) { Source = this });
+            passwordBox.SetBinding(PasswordBox.VerticalContentAlignmentProperty, new Binding(nameof(VerticalContentAlignment)) { Source = this });
+            passwordBox.SetBinding(PasswordBox.ForegroundProperty, new Binding(nameof(Foreground)) { Source = this });
+            passwordBox.SetBinding(PasswordBox.CaretBrushProperty, new Binding(nameof(CaretBrush)) { Source = this });
+            passwordBox.SetBinding(PasswordBox.SelectionBrushProperty, new Binding(nameof(SelectionBrush)) { Source = this });
+            passwordBox.SetBinding(PasswordBox.SelectionTextBrushProperty, new Binding(nameof(SelectionTextBrush)) { Source = this });
+            passwordBox.SetBinding(PasswordBox.SelectionOpacityProperty, new Binding(nameof(SelectionOpacity)) { Source = this });
+            passwordBox.SetBinding(PasswordBox.ContextMenuProperty, new Binding(nameof(ContextMenu)) { Source = this });
+            passwordBox.SetBinding(PasswordBox.PasswordCharProperty, new Binding(nameof(PasswordChar)) { Source = this });
+            passwordBox.SetBinding(PasswordBox.MaxLengthProperty, new Binding(nameof(MaxLength)) { Source = this });
+            passwordBox.SetBinding(PasswordBox.IsInactiveSelectionHighlightEnabledProperty, new Binding(nameof(IsInactiveSelectionHighlightEnabled)) { Source = this });
+            passwordBox.SetBinding(PasswordBox.IsEnabledProperty, new Binding(nameof(IsEnabled)) { Source = this });
+            passwordBox.SetBinding(PasswordBox.SnapsToDevicePixelsProperty, new Binding(nameof(SnapsToDevicePixels)) { Source = this });
+#pragma warning restore IDE0002 //Simplify member access
+        }
     }
 }

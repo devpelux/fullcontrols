@@ -15,9 +15,15 @@ namespace FullControls.Controls
     /// </summary>
     [ContentProperty(nameof(Items))]
     [DefaultProperty(nameof(Items))]
+    [TemplatePart(Name = PartContentHost, Type = typeof(ContentPresenter))]
     public class ItemsControlAccordionItem : AccordionItem
     {
         private readonly ItemsControl itemsControl;
+
+        /// <summary>
+        /// ContentHost template part.
+        /// </summary>
+        private const string PartContentHost = "PART_ContentHost";
 
         /// <summary>
         /// Gets or sets the foreground brush when the mouse is over the control.
@@ -529,15 +535,14 @@ namespace FullControls.Controls
         public ItemsControlAccordionItem() : base()
         {
             itemsControl = new ItemsControl();
-            SetItemsControlBindings();
+            PrepareItemsControl();
         }
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            Collapsible collapsible = (Collapsible)Template.FindName(PartCollapsible, this);
-            if (collapsible != null) collapsible.Child = itemsControl;
+            AttachItemsControl();
             Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
             Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, Foreground, TimeSpan.Zero);
             SetValue(ActualFontWeightPropertyKey, FontWeight);
@@ -587,16 +592,22 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Sets the bindings to <see cref="itemsControl"/>.
+        /// Attach the <see cref="ItemsControl"/> to the <see cref="Collapsible"/> part.
         /// </summary>
-        private void SetItemsControlBindings()
+        private void AttachItemsControl()
+        {
+            ContentPresenter contentHost = (ContentPresenter)Template.FindName(PartContentHost, this);
+            if (contentHost != null) contentHost.Content = itemsControl;
+        }
+
+        /// <summary>
+        /// Prepare the <see cref="ItemsControl"/> part.
+        /// </summary>
+        private void PrepareItemsControl()
         {
             itemsControl.SetBinding(ItemsControl.ItemsSourceProperty, new Binding(nameof(ItemsSource)) { Source = this });
             itemsControl.SetBinding(ItemsControl.ItemTemplateProperty, new Binding(nameof(ItemTemplate)) { Source = this });
             itemsControl.SetBinding(ItemsControl.ItemsPanelProperty, new Binding(nameof(ItemsPanel)) { Source = this });
-            itemsControl.SetBinding(MarginProperty, new Binding(nameof(Padding)) { Source = this });
-            itemsControl.SetBinding(HorizontalAlignmentProperty, new Binding(nameof(HorizontalContentAlignment)) { Source = this });
-            itemsControl.SetBinding(VerticalAlignmentProperty, new Binding(nameof(VerticalContentAlignment)) { Source = this });
         }
     }
 }

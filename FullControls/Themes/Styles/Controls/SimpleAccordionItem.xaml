@@ -90,7 +90,8 @@
                                            Grid.Row="1"
                                            ExpandingAnimationTime="{TemplateBinding ExpandingAnimationTime}"
                                            IsExpanded="{TemplateBinding IsExpanded}">
-                            <ContentPresenter Margin="{TemplateBinding Padding}"
+                            <ContentPresenter x:Name="PART_ContentHost"
+                                              Margin="{TemplateBinding Padding}"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                               ContentSource="Content"/>
