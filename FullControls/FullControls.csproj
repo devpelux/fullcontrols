@@ -26,6 +26,7 @@ Added more properties for menu items customization.
 Updated many controls to use FlatContextMenu.
 Updated GlassScrollViewer and GlassScrollBar to be more consistent and added more properties to customize them.
 Updated many controls to use GlassScrollViewer.
+Removed copy button from EPasswordBox and ETextBox.
 General optimizations and bugfixes.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>

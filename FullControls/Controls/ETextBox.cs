@@ -259,7 +259,7 @@ namespace FullControls.Controls
         #region Label
 
         /// <summary>
-        /// Gets or sets the label displayed on the left or top of the control.
+        /// Gets or sets the label displayed alongside the control.
         /// </summary>
         public object Label
         {
@@ -276,7 +276,7 @@ namespace FullControls.Controls
                     => d.SetValue(LabelTypePropertyKey, CurrentLabelType(d)))));
 
         /// <summary>
-        /// Gets or sets the icon displayed on the left or top of the control.
+        /// Gets or sets the icon displayed alongside the control.
         /// </summary>
         /// <remarks>The icon will be displayed only if <see cref="Label"/> is <see langword="null"/>.</remarks>
         public ImageSource Icon
