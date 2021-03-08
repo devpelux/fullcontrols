@@ -21,7 +21,8 @@ namespace FullControls.Controls.Components
         /// Identifies the <see cref="CornerRadius"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(GlassThumb), new FrameworkPropertyMetadata(new CornerRadius()));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(GlassThumb),
+                new FrameworkPropertyMetadata(default(CornerRadius)));
 
 
         static GlassThumb()

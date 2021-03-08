@@ -26,7 +26,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty PopupCornerRadiusProperty =
             FlatMenuItem.PopupCornerRadiusProperty.AddOwner(typeof(FlatMenu),
-                new FrameworkPropertyMetadata(new CornerRadius(), FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(CornerRadius), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
         /// Gets or sets the padding of the items popup.
@@ -42,7 +42,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty PopupPaddingProperty =
             FlatMenuItem.PopupPaddingProperty.AddOwner(typeof(FlatMenu),
-                new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
         /// Gets or sets the vertical offset of the items popup if their <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>.
@@ -225,7 +225,8 @@ namespace FullControls.Controls
 
         static FlatMenu()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenu), new FrameworkPropertyMetadata(typeof(FlatMenu)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenu),
+                new FrameworkPropertyMetadata(typeof(FlatMenu)));
         }
 
         /// <summary>

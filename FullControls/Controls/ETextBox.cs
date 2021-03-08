@@ -2,6 +2,7 @@
 using FullControls.Core;
 using FullControls.Extra;
 using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -12,15 +13,9 @@ namespace FullControls.Controls
     /// <summary>
     /// Represents a control that can be used to display or edit unformatted text.
     /// </summary>
-    [TemplatePart(Name = PartCopyButton, Type = typeof(UIElement))]
     public class ETextBox : TextBox
     {
         private bool loaded = false;
-
-        /// <summary>
-        /// CopyButton template part.
-        /// </summary>
-        protected const string PartCopyButton = "PART_CopyButton";
 
         /// <summary>
         /// Gets or sets the background brush when the control is selected.
@@ -64,7 +59,8 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyPropertyKey ActualBackgroundPropertyKey =
             DependencyProperty.RegisterReadOnly(nameof(ActualBackground), typeof(Brush), typeof(ETextBox),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((ETextBox)d).OnActualBackgroundChanged((Brush)e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => ((ETextBox)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
         /// Identifies the <see cref="ActualBackground"/> dependency property.
@@ -76,7 +72,8 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyProperty ActualBackgroundPropertyProxy =
             DependencyProperty.Register("ActualBackgroundProxy", typeof(Brush), typeof(ETextBox),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualBackgroundPropertyKey, e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualBackgroundPropertyKey, e.NewValue))));
 
         #endregion
 
@@ -121,7 +118,8 @@ namespace FullControls.Controls
         /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey ActualBorderBrushPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(ActualBorderBrush), typeof(Brush), typeof(ETextBox), new FrameworkPropertyMetadata(default(Brush)));
+            DependencyProperty.RegisterReadOnly(nameof(ActualBorderBrush), typeof(Brush), typeof(ETextBox),
+                new FrameworkPropertyMetadata(default(Brush)));
 
         /// <summary>
         /// Identifies the <see cref="ActualBorderBrush"/> dependency property.
@@ -133,7 +131,8 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyProperty ActualBorderBrushPropertyProxy =
             DependencyProperty.Register("ActualBorderBrushProxy", typeof(Brush), typeof(ETextBox),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualBorderBrushPropertyKey, e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualBorderBrushPropertyKey, e.NewValue))));
 
         #endregion
 
@@ -143,14 +142,15 @@ namespace FullControls.Controls
         public bool AdaptForegroundAutomatically
         {
             get => (bool)GetValue(AdaptForegroundAutomaticallyProperty);
-            set => SetValue(AdaptForegroundAutomaticallyProperty, value);
+            set => SetValue(AdaptForegroundAutomaticallyProperty, BoolBox.Box(value));
         }
 
         /// <summary>
         /// Identifies the <see cref="AdaptForegroundAutomatically"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AdaptForegroundAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptForegroundAutomatically), typeof(bool), typeof(ETextBox));
+            DependencyProperty.Register(nameof(AdaptForegroundAutomatically), typeof(bool), typeof(ETextBox),
+                new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets a value indicating if adapt automatically the caret brush to the actual background brush of the control.
@@ -158,14 +158,15 @@ namespace FullControls.Controls
         public bool AdaptCaretBrushAutomatically
         {
             get => (bool)GetValue(AdaptCaretBrushAutomaticallyProperty);
-            set => SetValue(AdaptCaretBrushAutomaticallyProperty, value);
+            set => SetValue(AdaptCaretBrushAutomaticallyProperty, BoolBox.Box(value));
         }
 
         /// <summary>
         /// Identifies the <see cref="AdaptCaretBrushAutomatically"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AdaptCaretBrushAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptCaretBrushAutomatically), typeof(bool), typeof(ETextBox));
+            DependencyProperty.Register(nameof(AdaptCaretBrushAutomatically), typeof(bool), typeof(ETextBox),
+                new PropertyMetadata(BoolBox.True));
 
         #region Hint
 
@@ -182,22 +183,30 @@ namespace FullControls.Controls
         /// Identifies the <see cref="Hint"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty HintProperty =
-            DependencyProperty.Register(nameof(Hint), typeof(string), typeof(ETextBox));
+            DependencyProperty.Register(nameof(Hint), typeof(string), typeof(ETextBox),
+                new FrameworkPropertyMetadata(null, new PropertyChangedCallback((d, e)
+                    => ((ETextBox)d).UpdateHintState())));
 
         /// <summary>
-        /// Gets or sets a value indicating if to display or not the hint.
+        /// Gets a value indicating if the hint is displayed.
         /// </summary>
-        public bool ShowHint
-        {
-            get => (bool)GetValue(ShowHintProperty);
-            set => SetValue(ShowHintProperty, value);
-        }
+        public bool IsHintDisplayed => (bool)GetValue(IsHintDisplayedProperty);
+
+        #region IsHintDisplayedProperty
 
         /// <summary>
-        /// Identifies the <see cref="ShowHint"/> dependency property.
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="IsHintDisplayed"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ShowHintProperty =
-            DependencyProperty.Register(nameof(ShowHint), typeof(bool), typeof(ETextBox));
+        private static readonly DependencyPropertyKey IsHintDisplayedPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(IsHintDisplayed), typeof(bool), typeof(ETextBox),
+                new FrameworkPropertyMetadata(BoolBox.False));
+
+        /// <summary>
+        /// Identifies the <see cref="IsHintDisplayed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IsHintDisplayedProperty = IsHintDisplayedPropertyKey.DependencyProperty;
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the foreground brush of the hint.
@@ -235,378 +244,15 @@ namespace FullControls.Controls
         public bool AdaptHintForegroundAutomatically
         {
             get => (bool)GetValue(AdaptHintForegroundAutomaticallyProperty);
-            set => SetValue(AdaptHintForegroundAutomaticallyProperty, value);
+            set => SetValue(AdaptHintForegroundAutomaticallyProperty, BoolBox.Box(value));
         }
 
         /// <summary>
         /// Identifies the <see cref="AdaptHintForegroundAutomatically"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AdaptHintForegroundAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptHintForegroundAutomatically), typeof(bool), typeof(ETextBox));
-
-        #endregion
-
-        #region CopyButton
-
-        /// <summary>
-        /// Gets or sets a value indicating if to display or not a button that copies the text on the <see cref="Clipboard"/> when clicked.
-        /// </summary>
-        public bool EnableCopyButton
-        {
-            get => (bool)GetValue(EnableCopyButtonProperty);
-            set => SetValue(EnableCopyButtonProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="EnableCopyButton"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty EnableCopyButtonProperty =
-            DependencyProperty.Register(nameof(EnableCopyButton), typeof(bool), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the content of the copy button.
-        /// </summary>
-        public object CopyButtonContent
-        {
-            get => GetValue(CopyButtonContentProperty);
-            set => SetValue(CopyButtonContentProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonContent"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonContentProperty =
-            DependencyProperty.Register(nameof(CopyButtonContent), typeof(object), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the width of the copy button.
-        /// </summary>
-        public double CopyButtonSize
-        {
-            get => (double)GetValue(CopyButtonSizeProperty);
-            set => SetValue(CopyButtonSizeProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonSize"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonSizeProperty =
-            DependencyProperty.Register(nameof(CopyButtonSize), typeof(double), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the font family of the copy button.
-        /// </summary>
-        public FontFamily CopyButtonFontFamily
-        {
-            get => (FontFamily)GetValue(CopyButtonFontFamilyProperty);
-            set => SetValue(CopyButtonFontFamilyProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonFontFamily"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonFontFamilyProperty =
-            DependencyProperty.Register(nameof(CopyButtonFontFamily), typeof(FontFamily), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the font size of the copy button.
-        /// </summary>
-        public double CopyButtonFontSize
-        {
-            get => (double)GetValue(CopyButtonFontSizeProperty);
-            set => SetValue(CopyButtonFontSizeProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonFontSize"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonFontSizeProperty =
-            DependencyProperty.Register(nameof(CopyButtonFontSize), typeof(double), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the font stretch of the copy button.
-        /// </summary>
-        public FontStretch CopyButtonFontStretch
-        {
-            get => (FontStretch)GetValue(CopyButtonFontStretchProperty);
-            set => SetValue(CopyButtonFontStretchProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonFontStretch"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonFontStretchProperty =
-            DependencyProperty.Register(nameof(CopyButtonFontStretch), typeof(FontStretch), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the font style of the copy button.
-        /// </summary>
-        public FontStyle CopyButtonFontStyle
-        {
-            get => (FontStyle)GetValue(CopyButtonFontStyleProperty);
-            set => SetValue(CopyButtonFontStyleProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonFontStyle"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonFontStyleProperty =
-            DependencyProperty.Register(nameof(CopyButtonFontStyle), typeof(FontStyle), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the font weight of the copy button.
-        /// </summary>
-        public FontWeight CopyButtonFontWeight
-        {
-            get => (FontWeight)GetValue(CopyButtonFontWeightProperty);
-            set => SetValue(CopyButtonFontWeightProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonFontWeight"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonFontWeightProperty =
-            DependencyProperty.Register(nameof(CopyButtonFontWeight), typeof(FontWeight), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the margin of the copy button.
-        /// </summary>
-        public Thickness CopyButtonMargin
-        {
-            get => (Thickness)GetValue(CopyButtonMarginProperty);
-            set => SetValue(CopyButtonMarginProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonMargin"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonMarginProperty =
-            DependencyProperty.Register(nameof(CopyButtonMargin), typeof(Thickness), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the background brush of the copy button.
-        /// </summary>
-        public Brush CopyButtonBackground
-        {
-            get => (Brush)GetValue(CopyButtonBackgroundProperty);
-            set => SetValue(CopyButtonBackgroundProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonBackground"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonBackgroundProperty =
-            DependencyProperty.Register(nameof(CopyButtonBackground), typeof(Brush), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the background brush of the copy button when the mouse is over it.
-        /// </summary>
-        public Brush CopyButtonBackgroundOnMouseOver
-        {
-            get => (Brush)GetValue(CopyButtonBackgroundOnMouseOverProperty);
-            set => SetValue(CopyButtonBackgroundOnMouseOverProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonBackgroundOnMouseOver"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonBackgroundOnMouseOverProperty =
-            DependencyProperty.Register(nameof(CopyButtonBackgroundOnMouseOver), typeof(Brush), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the background brush of the copy button when is pressed.
-        /// </summary>
-        public Brush CopyButtonBackgroundOnPressed
-        {
-            get => (Brush)GetValue(CopyButtonBackgroundOnPressedProperty);
-            set => SetValue(CopyButtonBackgroundOnPressedProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonBackgroundOnPressed"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonBackgroundOnPressedProperty =
-            DependencyProperty.Register(nameof(CopyButtonBackgroundOnPressed), typeof(Brush), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the background brush of the copy button when is disabled.
-        /// </summary>
-        public Brush CopyButtonBackgroundOnDisabled
-        {
-            get => (Brush)GetValue(CopyButtonBackgroundOnDisabledProperty);
-            set => SetValue(CopyButtonBackgroundOnDisabledProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonBackgroundOnDisabled"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonBackgroundOnDisabledProperty =
-            DependencyProperty.Register(nameof(CopyButtonBackgroundOnDisabled), typeof(Brush), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the border brush of the copy button.
-        /// </summary>
-        public Brush CopyButtonBorderBrush
-        {
-            get => (Brush)GetValue(CopyButtonBorderBrushProperty);
-            set => SetValue(CopyButtonBorderBrushProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonBorderBrush"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonBorderBrushProperty =
-            DependencyProperty.Register(nameof(CopyButtonBorderBrush), typeof(Brush), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the border brush of the copy button when the mouse is over it.
-        /// </summary>
-        public Brush CopyButtonBorderBrushOnMouseOver
-        {
-            get => (Brush)GetValue(CopyButtonBorderBrushOnMouseOverProperty);
-            set => SetValue(CopyButtonBorderBrushOnMouseOverProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonBorderBrushOnMouseOver"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonBorderBrushOnMouseOverProperty =
-            DependencyProperty.Register(nameof(CopyButtonBorderBrushOnMouseOver), typeof(Brush), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the border brush of the copy button when is pressed.
-        /// </summary>
-        public Brush CopyButtonBorderBrushOnPressed
-        {
-            get => (Brush)GetValue(CopyButtonBorderBrushOnPressedProperty);
-            set => SetValue(CopyButtonBorderBrushOnPressedProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonBorderBrushOnPressed"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonBorderBrushOnPressedProperty =
-            DependencyProperty.Register(nameof(CopyButtonBorderBrushOnPressed), typeof(Brush), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the border brush of the copy button when is disabled.
-        /// </summary>
-        public Brush CopyButtonBorderBrushOnDisabled
-        {
-            get => (Brush)GetValue(CopyButtonBorderBrushOnDisabledProperty);
-            set => SetValue(CopyButtonBorderBrushOnDisabledProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonBorderBrushOnDisabled"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonBorderBrushOnDisabledProperty =
-            DependencyProperty.Register(nameof(CopyButtonBorderBrushOnDisabled), typeof(Brush), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the foreground brush of the copy button.
-        /// </summary>
-        public Brush CopyButtonForeground
-        {
-            get => (Brush)GetValue(CopyButtonForegroundProperty);
-            set => SetValue(CopyButtonForegroundProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonForeground"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonForegroundProperty =
-            DependencyProperty.Register(nameof(CopyButtonForeground), typeof(Brush), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the foreground brush of the copy button when the mouse is over it.
-        /// </summary>
-        public Brush CopyButtonForegroundOnMouseOver
-        {
-            get => (Brush)GetValue(CopyButtonForegroundOnMouseOverProperty);
-            set => SetValue(CopyButtonForegroundOnMouseOverProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonForegroundOnMouseOver"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonForegroundOnMouseOverProperty =
-            DependencyProperty.Register(nameof(CopyButtonForegroundOnMouseOver), typeof(Brush), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the foreground brush of the copy button when is pressed.
-        /// </summary>
-        public Brush CopyButtonForegroundOnPressed
-        {
-            get => (Brush)GetValue(CopyButtonForegroundOnPressedProperty);
-            set => SetValue(CopyButtonForegroundOnPressedProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonForegroundOnPressed"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonForegroundOnPressedProperty =
-            DependencyProperty.Register(nameof(CopyButtonForegroundOnPressed), typeof(Brush), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the foreground brush of the copy button when is disabled.
-        /// </summary>
-        public Brush CopyButtonForegroundOnDisabled
-        {
-            get => (Brush)GetValue(CopyButtonForegroundOnDisabledProperty);
-            set => SetValue(CopyButtonForegroundOnDisabledProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonForegroundOnDisabled"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonForegroundOnDisabledProperty =
-            DependencyProperty.Register(nameof(CopyButtonForegroundOnDisabled), typeof(Brush), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the corner radius of the copy button.
-        /// </summary>
-        public CornerRadius CopyButtonCornerRadius
-        {
-            get => (CornerRadius)GetValue(CopyButtonCornerRadiusProperty);
-            set => SetValue(CopyButtonCornerRadiusProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonCornerRadius"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonCornerRadiusProperty =
-            DependencyProperty.Register(nameof(CopyButtonCornerRadius), typeof(CornerRadius), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the border thickness of the copy button.
-        /// </summary>
-        public Thickness CopyButtonBorderThickness
-        {
-            get => (Thickness)GetValue(CopyButtonBorderThicknessProperty);
-            set => SetValue(CopyButtonBorderThicknessProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonBorderThickness"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonBorderThicknessProperty =
-            DependencyProperty.Register(nameof(CopyButtonBorderThickness), typeof(Thickness), typeof(ETextBox));
-
-        /// <summary>
-        /// Gets or sets the duration of the copy button animation when it changes state.
-        /// </summary>
-        public TimeSpan CopyButtonAnimationTime
-        {
-            get => (TimeSpan)GetValue(CopyButtonAnimationTimeProperty);
-            set => SetValue(CopyButtonAnimationTimeProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CopyButtonAnimationTime"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CopyButtonAnimationTimeProperty =
-            DependencyProperty.Register(nameof(CopyButtonAnimationTime), typeof(TimeSpan), typeof(ETextBox));
+            DependencyProperty.Register(nameof(AdaptHintForegroundAutomatically), typeof(bool), typeof(ETextBox),
+                new PropertyMetadata(BoolBox.True));
 
         #endregion
 
@@ -625,11 +271,14 @@ namespace FullControls.Controls
         /// Identifies the <see cref="Label"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty LabelProperty =
-            DependencyProperty.Register(nameof(Label), typeof(object), typeof(ETextBox));
+            DependencyProperty.Register(nameof(Label), typeof(object), typeof(ETextBox),
+                new FrameworkPropertyMetadata(null, new PropertyChangedCallback((d, e)
+                    => d.SetValue(LabelTypePropertyKey, CurrentLabelType(d)))));
 
         /// <summary>
         /// Gets or sets the icon displayed on the left or top of the control.
         /// </summary>
+        /// <remarks>The icon will be displayed only if <see cref="Label"/> is <see langword="null"/>.</remarks>
         public ImageSource Icon
         {
             get => (ImageSource)GetValue(IconProperty);
@@ -640,52 +289,134 @@ namespace FullControls.Controls
         /// Identifies the <see cref="Icon"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(ETextBox));
+            DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(ETextBox),
+                new FrameworkPropertyMetadata(null, new PropertyChangedCallback((d, e)
+                    => d.SetValue(LabelTypePropertyKey, CurrentLabelType(d)))));
 
         /// <summary>
-        /// Gets or sets the label type.
+        /// Gets a value indicating the actual label type.
         /// </summary>
-        public LabelType LabelType
-        {
-            get => (LabelType)GetValue(LabelTypeProperty);
-            set => SetValue(LabelTypeProperty, value);
-        }
+        public LabelType LabelType => (LabelType)GetValue(LabelTypeProperty);
+
+        #region LabelTypeProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="LabelType"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey LabelTypePropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(LabelType), typeof(LabelType), typeof(ETextBox),
+                new FrameworkPropertyMetadata(LabelType.Undefined));
 
         /// <summary>
         /// Identifies the <see cref="LabelType"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty LabelTypeProperty =
-            DependencyProperty.Register(nameof(LabelType), typeof(LabelType), typeof(ETextBox));
+        public static readonly DependencyProperty LabelTypeProperty = LabelTypePropertyKey.DependencyProperty;
 
         /// <summary>
-        /// Gets or sets the orientation order between the label and the text area.
+        /// Calculates the current label type based on the values of <see cref="Label"/> and <see cref="Icon"/>.
         /// </summary>
-        public Orientation Order
+        private static LabelType CurrentLabelType(DependencyObject d)
         {
-            get => (Orientation)GetValue(OrderProperty);
-            set => SetValue(OrderProperty, value);
+            bool label = d.IsNotNull(LabelProperty);
+            bool icon = d.IsNotNull(IconProperty);
+
+            //Visualization predominance: Label -> Icon -> Nothing
+            return label ? LabelType.Content : icon ? LabelType.Icon : LabelType.Undefined;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Gets or sets the placement of the label.
+        /// </summary>
+        public Dock LabelPlacement
+        {
+            get => (Dock)GetValue(LabelPlacementProperty);
+            set => SetValue(LabelPlacementProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="Order"/> dependency property.
+        /// Identifies the <see cref="LabelPlacement"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty OrderProperty =
-            DependencyProperty.Register(nameof(Order), typeof(Orientation), typeof(ETextBox));
+        public static readonly DependencyProperty LabelPlacementProperty =
+            DependencyProperty.Register(nameof(LabelPlacement), typeof(Dock), typeof(ETextBox),
+                new PropertyMetadata(Dock.Top));
+
+        /// <summary>
+        /// Gets or sets the width of the label.
+        /// </summary>
+        [TypeConverter(typeof(LengthConverter))]
+        [Localizability(LocalizationCategory.None, Readability = Readability.Unreadable)]
+        public double LabelWidth
+        {
+            get => (double)GetValue(LabelWidthProperty);
+            set => SetValue(LabelWidthProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelWidth"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelWidthProperty =
+            DependencyProperty.Register(nameof(LabelWidth), typeof(double), typeof(ETextBox),
+                new FrameworkPropertyMetadata(double.NaN),
+                new ValidateValueCallback(Util.IsWidthHeightValid));
+
+        /// <summary>
+        /// Gets or sets the height of the label.
+        /// </summary>
+        [TypeConverter(typeof(LengthConverter))]
+        [Localizability(LocalizationCategory.None, Readability = Readability.Unreadable)]
+        public double LabelHeight
+        {
+            get => (double)GetValue(LabelHeightProperty);
+            set => SetValue(LabelHeightProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelHeight"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelHeightProperty =
+            DependencyProperty.Register(nameof(LabelHeight), typeof(double), typeof(ETextBox),
+                new FrameworkPropertyMetadata(double.NaN),
+                new ValidateValueCallback(Util.IsWidthHeightValid));
 
         /// <summary>
         /// Gets or sets the max width of the label.
         /// </summary>
-        public double LabelMaxSize
+        [TypeConverter(typeof(LengthConverter))]
+        [Localizability(LocalizationCategory.None, Readability = Readability.Unreadable)]
+        public double LabelMaxWidth
         {
-            get => (double)GetValue(LabelMaxSizeProperty);
-            set => SetValue(LabelMaxSizeProperty, value);
+            get => (double)GetValue(LabelMaxWidthProperty);
+            set => SetValue(LabelMaxWidthProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="LabelMaxSize"/> dependency property.
+        /// Identifies the <see cref="LabelMaxWidth"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty LabelMaxSizeProperty =
-            DependencyProperty.Register(nameof(LabelMaxSize), typeof(double), typeof(ETextBox), new FrameworkPropertyMetadata(double.PositiveInfinity));
+        public static readonly DependencyProperty LabelMaxWidthProperty =
+            DependencyProperty.Register(nameof(LabelMaxWidth), typeof(double), typeof(ETextBox),
+                new FrameworkPropertyMetadata(double.PositiveInfinity),
+                new ValidateValueCallback(Util.IsMaxWidthHeightValid));
+
+        /// <summary>
+        /// Gets or sets the max height of the label.
+        /// </summary>
+        [TypeConverter(typeof(LengthConverter))]
+        [Localizability(LocalizationCategory.None, Readability = Readability.Unreadable)]
+        public double LabelMaxHeight
+        {
+            get => (double)GetValue(LabelMaxHeightProperty);
+            set => SetValue(LabelMaxHeightProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelMaxHeight"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelMaxHeightProperty =
+            DependencyProperty.Register(nameof(LabelMaxHeight), typeof(double), typeof(ETextBox),
+                new FrameworkPropertyMetadata(double.PositiveInfinity),
+                new ValidateValueCallback(Util.IsMaxWidthHeightValid));
 
         /// <summary>
         /// Gets or sets the margin of the label.
@@ -701,6 +432,36 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty LabelMarginProperty =
             DependencyProperty.Register(nameof(LabelMargin), typeof(Thickness), typeof(ETextBox));
+
+        /// <summary>
+        /// Gets or sets the vertical alignment of the label.
+        /// </summary>
+        public VerticalAlignment LabelVerticalAlignment
+        {
+            get => (VerticalAlignment)GetValue(LabelVerticalAlignmentProperty);
+            set => SetValue(LabelVerticalAlignmentProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelVerticalAlignment"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelVerticalAlignmentProperty =
+            DependencyProperty.Register(nameof(LabelVerticalAlignment), typeof(VerticalAlignment), typeof(ETextBox));
+
+        /// <summary>
+        /// Gets or sets the horizontal alignment of the label.
+        /// </summary>
+        public HorizontalAlignment LabelHorizontalAlignment
+        {
+            get => (HorizontalAlignment)GetValue(LabelHorizontalAlignmentProperty);
+            set => SetValue(LabelHorizontalAlignmentProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LabelHorizontalAlignment"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LabelHorizontalAlignmentProperty =
+            DependencyProperty.Register(nameof(LabelHorizontalAlignment), typeof(HorizontalAlignment), typeof(ETextBox));
 
         /// <summary>
         /// Gets or sets the foreground brush of the label.
@@ -889,21 +650,6 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ETextBox));
 
         /// <summary>
-        /// Gets or sets the width of the text area.
-        /// </summary>
-        public double TextViewSize
-        {
-            get => (double)GetValue(TextViewSizeProperty);
-            set => SetValue(TextViewSizeProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="TextViewSize"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty TextViewSizeProperty =
-            DependencyProperty.Register(nameof(TextViewSize), typeof(double), typeof(ETextBox));
-
-        /// <summary>
         /// Gets or sets the style of the scroll viewer used if the content is too long.
         /// </summary>
         public Style ScrollViewerStyle
@@ -924,14 +670,15 @@ namespace FullControls.Controls
         public bool AutoMargin
         {
             get => (bool)GetValue(AutoMarginProperty);
-            set => SetValue(AutoMarginProperty, value);
+            set => SetValue(AutoMarginProperty, BoolBox.Box(value));
         }
 
         /// <summary>
         /// Identifies the <see cref="AutoMargin"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AutoMarginProperty =
-            DependencyProperty.Register(nameof(AutoMargin), typeof(bool), typeof(ETextBox));
+            DependencyProperty.Register(nameof(AutoMargin), typeof(bool), typeof(ETextBox),
+                new PropertyMetadata(BoolBox.False));
 
         /// <summary>
         /// Gets or sets a value indicating the text type accepted.
@@ -1011,11 +758,16 @@ namespace FullControls.Controls
 
         static ETextBox()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(ETextBox), new FrameworkPropertyMetadata(typeof(ETextBox)));
-            IsEnabledProperty.OverrideMetadata(typeof(ETextBox), new FrameworkPropertyMetadata(
-                new PropertyChangedCallback((d, e) => ((ETextBox)d).OnEnabledChanged((bool)e.NewValue))));
-            TextProperty.OverrideMetadata(typeof(ETextBox), new FrameworkPropertyMetadata(null,
-                new CoerceValueCallback((d, o) => ((ETextBox)d).CoerceText((string)o))));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ETextBox),
+                new FrameworkPropertyMetadata(typeof(ETextBox)));
+
+            IsEnabledProperty.OverrideMetadata(typeof(ETextBox),
+                new FrameworkPropertyMetadata(new PropertyChangedCallback((d, e)
+                => ((ETextBox)d).OnEnabledChanged((bool)e.NewValue))));
+
+            TextProperty.OverrideMetadata(typeof(ETextBox),
+                new FrameworkPropertyMetadata(null, new CoerceValueCallback((d, o)
+                => ((ETextBox)d).CoerceText((string)o))));
         }
 
         /// <summary>
@@ -1035,11 +787,9 @@ namespace FullControls.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            UIElement copyButton = (UIElement)Template.FindName(PartCopyButton, this);
-            if (copyButton != null) copyButton.PreviewMouseLeftButtonDown += (s, e) => CopyAll();
             UpdateHintState();
-            Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
-            Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
+            Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
+            Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
             loaded = true;
         }
 
@@ -1124,20 +874,20 @@ namespace FullControls.Controls
             switch (vstate)
             {
                 case "Normal":
-                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
                     break;
                 case "MouseOver":
-                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, AnimationTime);
-                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, AnimationTime);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, AnimationTime);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, AnimationTime);
                     break;
                 case "Focused":
-                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, AnimationTime);
-                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, AnimationTime);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, AnimationTime);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, AnimationTime);
                     break;
                 case "Disabled":
-                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
                     break;
                 default:
                     break;
@@ -1186,7 +936,12 @@ namespace FullControls.Controls
         /// <summary>
         /// Update the visualstate to <see langword="Hinted"/> or <see langword="Unhinted"/> if is necessary to display or hide the hint.
         /// </summary>
-        private void UpdateHintState() => _ = VisualStateManager.GoToState(this, TextLength == 0 && !IsFocused && ShowHint ? "Hinted" : "Unhinted", true);
+        private void UpdateHintState()
+        {
+            bool hinted = TextLength == 0 && !IsFocused && !string.IsNullOrEmpty(Hint);
+            SetValue(IsHintDisplayedPropertyKey, BoolBox.Box(hinted));
+            _ = VisualStateManager.GoToState(this, hinted ? "Hinted" : "Unhinted", true);
+        }
 
         /// <summary>
         /// Adapt some brushes to the actual background of the control.

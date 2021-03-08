@@ -21,7 +21,8 @@ namespace FullControls.Controls.Components
         /// Identifies the <see cref="CornerRadius"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(GlassRepeatButton), new FrameworkPropertyMetadata(new CornerRadius()));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(GlassRepeatButton),
+                new FrameworkPropertyMetadata(default(CornerRadius)));
 
         /// <summary>
         /// Gets or sets the opacity of the content.
@@ -36,7 +37,8 @@ namespace FullControls.Controls.Components
         /// Identifies the <see cref="ContentOpacity"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ContentOpacityProperty =
-            DependencyProperty.Register(nameof(ContentOpacity), typeof(double), typeof(GlassRepeatButton), new FrameworkPropertyMetadata(1d));
+            DependencyProperty.Register(nameof(ContentOpacity), typeof(double), typeof(GlassRepeatButton),
+                new FrameworkPropertyMetadata(1d));
 
 
         static GlassRepeatButton()

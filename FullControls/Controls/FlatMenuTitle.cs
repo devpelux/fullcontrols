@@ -45,19 +45,21 @@ namespace FullControls.Controls
         public bool AlignWithOthers
         {
             get => (bool)GetValue(AlignWithOthersProperty);
-            set => SetValue(AlignWithOthersProperty, value);
+            set => SetValue(AlignWithOthersProperty, BoolBox.Box(value));
         }
 
         /// <summary>
         /// Identifies the <see cref="AlignWithOthers"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AlignWithOthersProperty =
-            DependencyProperty.Register(nameof(AlignWithOthers), typeof(bool), typeof(FlatMenuTitle), new PropertyMetadata(true));
+            DependencyProperty.Register(nameof(AlignWithOthers), typeof(bool), typeof(FlatMenuTitle),
+                new PropertyMetadata(BoolBox.True));
 
 
         static FlatMenuTitle()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenuTitle), new FrameworkPropertyMetadata(typeof(FlatMenuTitle)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenuTitle),
+                new FrameworkPropertyMetadata(typeof(FlatMenuTitle)));
         }
 
         /// <summary>

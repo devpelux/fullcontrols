@@ -60,9 +60,12 @@ namespace FullControls.Controls
 
         static Accordion()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(Accordion), new FrameworkPropertyMetadata(typeof(Accordion)));
-            IsEnabledProperty.OverrideMetadata(typeof(Accordion), new FrameworkPropertyMetadata(
-                new PropertyChangedCallback((d, e) => ((Accordion)d).OnEnabledChanged((bool)e.NewValue))));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(Accordion),
+                new FrameworkPropertyMetadata(typeof(Accordion)));
+
+            IsEnabledProperty.OverrideMetadata(typeof(Accordion),
+                new FrameworkPropertyMetadata(new PropertyChangedCallback((d, e)
+                => ((Accordion)d).OnEnabledChanged((bool)e.NewValue))));
         }
 
         /// <summary>

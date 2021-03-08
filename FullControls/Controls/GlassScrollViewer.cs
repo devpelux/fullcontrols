@@ -866,14 +866,15 @@ namespace FullControls.Controls
         public bool PlaceScrollBarsInside
         {
             get => (bool)GetValue(PlaceScrollBarsInsideProperty);
-            set => SetValue(PlaceScrollBarsInsideProperty, value);
+            set => SetValue(PlaceScrollBarsInsideProperty, BoolBox.Box(value));
         }
 
         /// <summary>
         /// Identifies the <see cref="PlaceScrollBarsInside"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty PlaceScrollBarsInsideProperty =
-            DependencyProperty.Register(nameof(PlaceScrollBarsInside), typeof(bool), typeof(GlassScrollViewer));
+            DependencyProperty.Register(nameof(PlaceScrollBarsInside), typeof(bool), typeof(GlassScrollViewer),
+                new PropertyMetadata(BoolBox.False));
 
         /// <summary>
         /// Gets or sets a value indicating if enable the scrollbars buttons.
@@ -881,14 +882,15 @@ namespace FullControls.Controls
         public bool EnableButtons
         {
             get => (bool)GetValue(EnableButtonsProperty);
-            set => SetValue(EnableButtonsProperty, value);
+            set => SetValue(EnableButtonsProperty, BoolBox.Box(value));
         }
 
         /// <summary>
         /// Identifies the <see cref="EnableButtons"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableButtonsProperty =
-            DependencyProperty.Register(nameof(EnableButtons), typeof(bool), typeof(GlassScrollViewer));
+            DependencyProperty.Register(nameof(EnableButtons), typeof(bool), typeof(GlassScrollViewer),
+                new PropertyMetadata(BoolBox.False));
 
         /// <summary>
         /// Gets or sets the amount of time, in milliseconds, the sctollbars waits while they are pressed before they starts scrolling. The value must be non-negative.
@@ -904,7 +906,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ScrollDelayProperty =
             DependencyProperty.Register(nameof(ScrollDelay), typeof(int), typeof(GlassScrollViewer),
-                new FrameworkPropertyMetadata(Utility.GetKeyboardDelay()),
+                new FrameworkPropertyMetadata(Util.GetKeyboardDelay()),
                 new ValidateValueCallback(GlassScrollBar.IsScrollDelayValid));
 
         /// <summary>
@@ -921,7 +923,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ScrollIntervalProperty =
             DependencyProperty.Register(nameof(ScrollInterval), typeof(int), typeof(GlassScrollViewer),
-                new FrameworkPropertyMetadata(Utility.GetKeyboardSpeed()),
+                new FrameworkPropertyMetadata(Util.GetKeyboardSpeed()),
                 new ValidateValueCallback(GlassScrollBar.IsScrollIntervalValid));
 
         #endregion
@@ -959,7 +961,8 @@ namespace FullControls.Controls
 
         static GlassScrollViewer()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(GlassScrollViewer), new FrameworkPropertyMetadata(typeof(GlassScrollViewer)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(GlassScrollViewer),
+                new FrameworkPropertyMetadata(typeof(GlassScrollViewer)));
         }
 
         /// <summary>

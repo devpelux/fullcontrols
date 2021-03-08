@@ -1,4 +1,5 @@
 ﻿using FullControls.Common;
+using FullControls.Core;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -42,7 +43,7 @@ namespace FullControls.Controls
         /// Identifies the <see cref="Header"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty HeaderProperty =
-            DependencyProperty.Register(nameof(Header), typeof(object), typeof(AccordionItem), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(Header), typeof(object), typeof(AccordionItem));
 
         /// <summary>
         /// Gets or sets the height of the header.
@@ -81,7 +82,7 @@ namespace FullControls.Controls
         public bool IsExpanded
         {
             get => (bool)GetValue(IsExpandedProperty);
-            set => SetValue(IsExpandedProperty, value);
+            set => SetValue(IsExpandedProperty, BoolBox.Box(value));
         }
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty IsExpandedProperty =
             DependencyProperty.Register(nameof(IsExpanded), typeof(bool), typeof(AccordionItem),
-                new PropertyMetadata(true, new PropertyChangedCallback((d, e) => ((AccordionItem)d).OnExpandedChanged((bool)e.NewValue)),
+                new PropertyMetadata(BoolBox.True, new PropertyChangedCallback((d, e) => ((AccordionItem)d).OnExpandedChanged((bool)e.NewValue)),
                     new CoerceValueCallback((d, o) => ((AccordionItem)d).IsAnimating ? d.GetValue(IsExpandedProperty) : o)));
 
         /// <summary>
@@ -132,9 +133,12 @@ namespace FullControls.Controls
 
         static AccordionItem()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(AccordionItem), new FrameworkPropertyMetadata(typeof(AccordionItem)));
-            IsEnabledProperty.OverrideMetadata(typeof(AccordionItem), new FrameworkPropertyMetadata(
-                new PropertyChangedCallback((d, e) => ((AccordionItem)d).OnEnabledChanged((bool)e.NewValue))));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(AccordionItem),
+                new FrameworkPropertyMetadata(typeof(AccordionItem)));
+
+            IsEnabledProperty.OverrideMetadata(typeof(AccordionItem),
+                new FrameworkPropertyMetadata(new PropertyChangedCallback((d, e)
+                => ((AccordionItem)d).OnEnabledChanged((bool)e.NewValue))));
         }
 
         /// <summary>

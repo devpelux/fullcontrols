@@ -22,7 +22,8 @@ namespace FullControls.Controls
         /// Identifies the <see cref="SeparatorCornerRadius"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty SeparatorCornerRadiusProperty =
-            DependencyProperty.Register(nameof(SeparatorCornerRadius), typeof(CornerRadius), typeof(FlatMenuSeparator), new FrameworkPropertyMetadata(new CornerRadius()));
+            DependencyProperty.Register(nameof(SeparatorCornerRadius), typeof(CornerRadius), typeof(FlatMenuSeparator),
+                new FrameworkPropertyMetadata(default(CornerRadius)));
 
         /// <summary>
         /// Gets or sets the height of the separator line.
@@ -38,7 +39,8 @@ namespace FullControls.Controls
         /// Identifies the <see cref="SeparatorHeight"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty SeparatorHeightProperty =
-            DependencyProperty.Register(nameof(SeparatorHeight), typeof(double), typeof(FlatMenuSeparator), new FrameworkPropertyMetadata(1d));
+            DependencyProperty.Register(nameof(SeparatorHeight), typeof(double), typeof(FlatMenuSeparator),
+                new FrameworkPropertyMetadata(1d));
 
         /// <summary>
         /// Gets or sets the width of the separator line.
@@ -54,7 +56,8 @@ namespace FullControls.Controls
         /// Identifies the <see cref="SeparatorWidth"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty SeparatorWidthProperty =
-            DependencyProperty.Register(nameof(SeparatorWidth), typeof(double), typeof(FlatMenuSeparator), new FrameworkPropertyMetadata(1d));
+            DependencyProperty.Register(nameof(SeparatorWidth), typeof(double), typeof(FlatMenuSeparator),
+                new FrameworkPropertyMetadata(1d));
 
         /// <summary>
         /// Gets or sets the orientation of the separator line.
@@ -69,7 +72,8 @@ namespace FullControls.Controls
         /// Identifies the <see cref="Orientation"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty OrientationProperty =
-            DependencyProperty.Register(nameof(Orientation), typeof(Orientation), typeof(FlatMenuSeparator), new PropertyMetadata(Orientation.Horizontal));
+            DependencyProperty.Register(nameof(Orientation), typeof(Orientation), typeof(FlatMenuSeparator),
+                new PropertyMetadata(Orientation.Horizontal));
 
         /// <summary>
         /// Gets or sets a value indicating if enable automatic alignment to fit with other items.
@@ -77,19 +81,21 @@ namespace FullControls.Controls
         public bool AlignWithOthers
         {
             get => (bool)GetValue(AlignWithOthersProperty);
-            set => SetValue(AlignWithOthersProperty, value);
+            set => SetValue(AlignWithOthersProperty, BoolBox.Box(value));
         }
 
         /// <summary>
         /// Identifies the <see cref="AlignWithOthers"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AlignWithOthersProperty =
-            DependencyProperty.Register(nameof(AlignWithOthers), typeof(bool), typeof(FlatMenuSeparator), new PropertyMetadata(false));
+            DependencyProperty.Register(nameof(AlignWithOthers), typeof(bool), typeof(FlatMenuSeparator),
+                new PropertyMetadata(BoolBox.False));
 
 
         static FlatMenuSeparator()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenuSeparator), new FrameworkPropertyMetadata(typeof(FlatMenuSeparator)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenuSeparator),
+                new FrameworkPropertyMetadata(typeof(FlatMenuSeparator)));
         }
 
         /// <summary>

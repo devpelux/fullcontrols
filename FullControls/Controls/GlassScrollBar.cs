@@ -39,7 +39,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ScrollDelayProperty =
             DependencyProperty.Register(nameof(ScrollDelay), typeof(int), typeof(GlassScrollBar),
-                new FrameworkPropertyMetadata(Utility.GetKeyboardDelay()),
+                new FrameworkPropertyMetadata(Util.GetKeyboardDelay()),
                 new ValidateValueCallback(IsScrollDelayValid));
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ScrollIntervalProperty =
             DependencyProperty.Register(nameof(ScrollInterval), typeof(int), typeof(GlassScrollBar),
-                new FrameworkPropertyMetadata(Utility.GetKeyboardSpeed()),
+                new FrameworkPropertyMetadata(Util.GetKeyboardSpeed()),
                 new ValidateValueCallback(IsScrollIntervalValid));
 
         #region Thumb
@@ -191,14 +191,15 @@ namespace FullControls.Controls
         public bool EnableButtons
         {
             get => (bool)GetValue(EnableButtonsProperty);
-            set => SetValue(EnableButtonsProperty, value);
+            set => SetValue(EnableButtonsProperty, BoolBox.Box(value));
         }
 
         /// <summary>
         /// Identifies the <see cref="EnableButtons"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableButtonsProperty =
-            DependencyProperty.Register(nameof(EnableButtons), typeof(bool), typeof(GlassScrollBar));
+            DependencyProperty.Register(nameof(EnableButtons), typeof(bool), typeof(GlassScrollBar),
+                new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets the size of the increase and decrease buttons.
@@ -370,7 +371,8 @@ namespace FullControls.Controls
 
         static GlassScrollBar()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(GlassScrollBar), new FrameworkPropertyMetadata(typeof(GlassScrollBar)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(GlassScrollBar),
+                new FrameworkPropertyMetadata(typeof(GlassScrollBar)));
         }
 
         /// <summary>

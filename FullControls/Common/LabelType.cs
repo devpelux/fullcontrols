@@ -13,6 +13,11 @@
         /// <summary>
         /// The label is a content.
         /// </summary>
-        Content
+        Content,
+
+        /// <summary>
+        /// Undefined label type.
+        /// </summary>
+        Undefined
     }
 }

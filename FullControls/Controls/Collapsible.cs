@@ -1,4 +1,5 @@
 ﻿using FullControls.Common;
+using FullControls.Core;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -23,7 +24,7 @@ namespace FullControls.Controls
         public bool IsExpanded
         {
             get => (bool)GetValue(IsExpandedProperty);
-            set => SetValue(IsExpandedProperty, value);
+            set => SetValue(IsExpandedProperty, BoolBox.Box(value));
         }
 
         /// <summary>
@@ -31,7 +32,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty IsExpandedProperty =
             DependencyProperty.Register(nameof(IsExpanded), typeof(bool), typeof(Collapsible),
-                new PropertyMetadata(true, new PropertyChangedCallback((d, e) => ((Collapsible)d).OnExpandedChanged((bool)e.NewValue)),
+                new PropertyMetadata(BoolBox.True, new PropertyChangedCallback((d, e) => ((Collapsible)d).OnExpandedChanged((bool)e.NewValue)),
                     new CoerceValueCallback((d, o) => ((Collapsible)d).IsAnimating ? d.GetValue(IsExpandedProperty) : o)));
 
         /// <summary>
@@ -40,14 +41,14 @@ namespace FullControls.Controls
         public bool HeightAnimation
         {
             get => (bool)GetValue(HeightAnimationProperty);
-            set => SetValue(HeightAnimationProperty, value);
+            set => SetValue(HeightAnimationProperty, BoolBox.Box(value));
         }
 
         /// <summary>
         /// Identifies the <see cref="HeightAnimation"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty HeightAnimationProperty =
-            DependencyProperty.Register(nameof(HeightAnimation), typeof(bool), typeof(Collapsible), new PropertyMetadata(true));
+            DependencyProperty.Register(nameof(HeightAnimation), typeof(bool), typeof(Collapsible), new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets a value indicating if to enable the <see cref="FrameworkElement.Width"/> animation.
@@ -55,14 +56,14 @@ namespace FullControls.Controls
         public bool WidthAnimation
         {
             get => (bool)GetValue(WidthAnimationProperty);
-            set => SetValue(WidthAnimationProperty, value);
+            set => SetValue(WidthAnimationProperty, BoolBox.Box(value));
         }
 
         /// <summary>
         /// Identifies the <see cref="WidthAnimation"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty WidthAnimationProperty =
-            DependencyProperty.Register(nameof(WidthAnimation), typeof(bool), typeof(Collapsible), new PropertyMetadata(false));
+            DependencyProperty.Register(nameof(WidthAnimation), typeof(bool), typeof(Collapsible), new PropertyMetadata(BoolBox.False));
 
         /// <summary>
         /// Gets or sets the duration of the expanding and collapsing animations.

@@ -11,7 +11,8 @@ namespace FullControls.Controls
     {
         static FlatMenuSpace()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenuSpace), new FrameworkPropertyMetadata(typeof(FlatMenuSpace)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenuSpace),
+                new FrameworkPropertyMetadata(typeof(FlatMenuSpace)));
         }
 
         /// <summary>

@@ -9,7 +9,7 @@ namespace FullControls.Core
     /// <summary>
     /// Some utility methods.
     /// </summary>
-    internal static class Utility
+    internal static class Util
     {
         /// <summary>
         /// Animate a <see cref="double"/> of an <see cref="UIElement"/> with a specified time.
@@ -103,6 +103,39 @@ namespace FullControls.Core
             if (speed < 0 || speed > 31)
                 speed = 31;
             return (31 - speed) * (400 - 1000 / 30) / 31 + 1000 / 30;
+        }
+
+        /// <summary>
+        /// Check if a width or height value is valid.
+        /// </summary>
+        /// <param name="value">The value to check.</param>
+        /// <returns><see langword="true"/> if the value is valid, <see langword="false"/> otherwise.</returns>
+        internal static bool IsWidthHeightValid(object value)
+        {
+            double v = (double)value;
+            return (double.IsNaN(v)) || (v >= 0.0d && !double.IsPositiveInfinity(v));
+        }
+
+        /// <summary>
+        /// Check if a min width or min height value is valid.
+        /// </summary>
+        /// <param name="value">The value to check.</param>
+        /// <returns><see langword="true"/> if the value is valid, <see langword="false"/> otherwise.</returns>
+        internal static bool IsMinWidthHeightValid(object value)
+        {
+            double v = (double)value;
+            return (!double.IsNaN(v) && v >= 0.0d && !double.IsPositiveInfinity(v));
+        }
+
+        /// <summary>
+        /// Check if a max width or max height value is valid.
+        /// </summary>
+        /// <param name="value">The value to check.</param>
+        /// <returns><see langword="true"/> if the value is valid, <see langword="false"/> otherwise.</returns>
+        internal static bool IsMaxWidthHeightValid(object value)
+        {
+            double v = (double)value;
+            return (!double.IsNaN(v) && v >= 0.0d);
         }
     }
 }

@@ -104,7 +104,7 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyPropertyKey MarginForShadowPropertyKey =
             DependencyProperty.RegisterReadOnly(nameof(MarginForShadow), typeof(Thickness), typeof(FlatContextMenu),
-                new FrameworkPropertyMetadata(new Thickness()));
+                new FrameworkPropertyMetadata(default(Thickness)));
 
         /// <summary>
         /// Identifies the <see cref="MarginForShadow"/> dependency property.
@@ -146,7 +146,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty PopupCornerRadiusProperty =
             FlatMenuItem.PopupCornerRadiusProperty.AddOwner(typeof(FlatContextMenu),
-                new FrameworkPropertyMetadata(new CornerRadius(), FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(CornerRadius), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
         /// Gets or sets the padding of the menu popup and items popup.
@@ -162,7 +162,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty PopupPaddingProperty =
             FlatMenuItem.PopupPaddingProperty.AddOwner(typeof(FlatContextMenu),
-                new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
         /// Gets or sets the vertical offset of the items popup.
@@ -313,7 +313,8 @@ namespace FullControls.Controls
 
         static FlatContextMenu()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatContextMenu), new FrameworkPropertyMetadata(typeof(FlatContextMenu)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatContextMenu),
+                new FrameworkPropertyMetadata(typeof(FlatContextMenu)));
         }
 
         /// <summary>

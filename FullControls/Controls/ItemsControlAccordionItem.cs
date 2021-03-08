@@ -103,7 +103,8 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyProperty ActualForegroundPropertyProxy =
             DependencyProperty.Register("ActualForegroundProxy", typeof(Brush), typeof(ItemsControlAccordionItem),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualForegroundPropertyKey, e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualForegroundPropertyKey, e.NewValue))));
 
         #endregion
 
@@ -379,7 +380,8 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyProperty ActualArrowForegroundPropertyProxy =
             DependencyProperty.Register("ActualArrowForegroundProxy", typeof(Brush), typeof(ItemsControlAccordionItem),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualArrowForegroundPropertyKey, e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualArrowForegroundPropertyKey, e.NewValue))));
 
         #endregion
 
@@ -407,7 +409,8 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyProperty ArrowRotationPropertyProxy =
             DependencyProperty.Register("ArrowRotationProxy", typeof(double), typeof(ItemsControlAccordionItem),
-                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => d.SetValue(ArrowRotationPropertyKey, e.NewValue))));
+                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e)
+                    => d.SetValue(ArrowRotationPropertyKey, e.NewValue))));
 
         #endregion
 
@@ -424,7 +427,8 @@ namespace FullControls.Controls
         /// Identifies the <see cref="ArrowCollapsedRotation"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ArrowCollapsedRotationProperty =
-            DependencyProperty.Register(nameof(ArrowCollapsedRotation), typeof(double), typeof(ItemsControlAccordionItem), new FrameworkPropertyMetadata(0d));
+            DependencyProperty.Register(nameof(ArrowCollapsedRotation), typeof(double), typeof(ItemsControlAccordionItem),
+                new FrameworkPropertyMetadata(0d));
 
         /// <summary>
         /// Gets or sets the rotation of the arrow when <see cref="AccordionItem.IsExpanded"/> is <see langword="true"/>.
@@ -439,7 +443,8 @@ namespace FullControls.Controls
         /// Identifies the <see cref="ArrowExpandedRotation"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ArrowExpandedRotationProperty =
-            DependencyProperty.Register(nameof(ArrowExpandedRotation), typeof(double), typeof(ItemsControlAccordionItem), new FrameworkPropertyMetadata(90d));
+            DependencyProperty.Register(nameof(ArrowExpandedRotation), typeof(double), typeof(ItemsControlAccordionItem),
+                new FrameworkPropertyMetadata(90d));
 
         #endregion
 
@@ -471,7 +476,8 @@ namespace FullControls.Controls
         /// Identifies the <see cref="ItemsSource"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register(nameof(ItemsSource), typeof(IEnumerable), typeof(ItemsControlAccordionItem), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(ItemsSource), typeof(IEnumerable), typeof(ItemsControlAccordionItem),
+                new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the <see cref="DataTemplate"/> used to display each item of the <see cref="ItemsControl"/>.
@@ -486,7 +492,8 @@ namespace FullControls.Controls
         /// Identifies the <see cref="ItemTemplate"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ItemTemplateProperty =
-            DependencyProperty.Register(nameof(ItemTemplate), typeof(DataTemplate), typeof(ItemsControlAccordionItem), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(ItemTemplate), typeof(DataTemplate), typeof(ItemsControlAccordionItem),
+                new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the template that defines the panel that controls the layout of the <see cref="ItemsControl"/> items.
@@ -501,7 +508,8 @@ namespace FullControls.Controls
         /// Identifies the <see cref="ItemsPanel"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ItemsPanelProperty =
-            DependencyProperty.Register(nameof(ItemsPanel), typeof(ItemsPanelTemplate), typeof(ItemsControlAccordionItem), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(ItemsPanel), typeof(ItemsPanelTemplate), typeof(ItemsControlAccordionItem),
+                new PropertyMetadata(null));
 
         /// <summary>
         /// Gets the collection used to generate the content of the <see cref="ItemsControl"/>.
@@ -511,7 +519,8 @@ namespace FullControls.Controls
 
         static ItemsControlAccordionItem()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(ItemsControlAccordionItem), new FrameworkPropertyMetadata(typeof(ItemsControlAccordionItem)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ItemsControlAccordionItem),
+                new FrameworkPropertyMetadata(typeof(ItemsControlAccordionItem)));
         }
 
         /// <summary>
@@ -529,8 +538,8 @@ namespace FullControls.Controls
             base.OnApplyTemplate();
             Collapsible collapsible = (Collapsible)Template.FindName(PartCollapsible, this);
             if (collapsible != null) collapsible.Child = itemsControl;
-            Utility.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
-            Utility.AnimateBrush(this, ActualArrowForegroundPropertyProxy, Foreground, TimeSpan.Zero);
+            Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
+            Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, Foreground, TimeSpan.Zero);
             SetValue(ActualFontWeightPropertyKey, FontWeight);
             SetValue(ArrowRotationPropertyProxy, IsExpanded ? ArrowExpandedRotation : ArrowCollapsedRotation);
         }
@@ -539,7 +548,7 @@ namespace FullControls.Controls
         protected override void OnExpandedChanged(bool isExpanded)
         {
             base.OnExpandedChanged(isExpanded);
-            Utility.AnimateDouble(this, ArrowRotationPropertyProxy, isExpanded ? ArrowExpandedRotation : ArrowCollapsedRotation, AnimationTime);
+            Util.AnimateDouble(this, ArrowRotationPropertyProxy, isExpanded ? ArrowExpandedRotation : ArrowCollapsedRotation, AnimationTime);
         }
 
         /// <inheritdoc/>
@@ -548,28 +557,28 @@ namespace FullControls.Controls
             switch (vstate)
             {
                 case "Normal":
-                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, AnimationTime);
-                    Utility.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForeground, AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, AnimationTime);
+                    Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForeground, AnimationTime);
                     SetValue(ActualFontWeightPropertyKey, FontWeight);
                     break;
                 case "Expanded":
-                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnExpanded, AnimationTime);
-                    Utility.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnExpanded, AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnExpanded, AnimationTime);
+                    Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnExpanded, AnimationTime);
                     SetValue(ActualFontWeightPropertyKey, FontWeightOnExpanded);
                     break;
                 case "MouseOverHeader":
-                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOver, AnimationTime);
-                    Utility.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnMouseOver, AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOver, AnimationTime);
+                    Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnMouseOver, AnimationTime);
                     SetValue(ActualFontWeightPropertyKey, FontWeightOnMouseOver);
                     break;
                 case "MouseOverHeaderOnExpanded":
-                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOverOnExpanded, AnimationTime);
-                    Utility.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnMouseOverOnExpanded, AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOverOnExpanded, AnimationTime);
+                    Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnMouseOverOnExpanded, AnimationTime);
                     SetValue(ActualFontWeightPropertyKey, FontWeightOnMouseOverOnExpanded);
                     break;
                 case "Disabled":
-                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnDisabled, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnDisabled, TimeSpan.Zero);
                     SetValue(ActualFontWeightPropertyKey, FontWeightOnDisabled);
                     break;
                 default:

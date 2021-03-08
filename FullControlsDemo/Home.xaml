@@ -23,41 +23,155 @@
 
         <!--#region Background part-->
 
-        <Grid x:Name="background" Visibility="Collapsed">
-            <Ellipse Fill="{DynamicResource WindowBackground2}" Margin="164,-312,-707,143"/>
-            <Ellipse Fill="{DynamicResource WindowBackground2}" Margin="-245,499,247,-84"/>
+        <Grid x:Name="background"
+              Visibility="Collapsed">
+            <Ellipse Fill="{DynamicResource WindowBackground2}"
+                     Margin="164,-312,-707,143" />
+            <Ellipse Fill="{DynamicResource WindowBackground2}"
+                     Margin="-245,499,247,-84" />
         </Grid>
 
         <!--#endregion-->
 
-        <!--#region Project details-->
+        <Border Margin="32"
+                BorderThickness="1"
+                BorderBrush="#a6a6a6">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,7" Width="234" Text="FullControls demo project" FontSize="20" Height="29" VerticalAlignment="Bottom"/>
-        <TextBlock HorizontalAlignment="Left" Margin="244,0,0,7" Width="76" Text="by devpelux" Foreground="Gray" Height="20" VerticalAlignment="Bottom"/>
-        <TextBlock HorizontalAlignment="RIght" VerticalAlignment="Bottom" Margin="0,0,10,7" Cursor="Hand"
-                   Height="20" Width="29" Text="Info" Foreground="Gray" MouseLeftButtonDown="Info_MouseLeftButtonDown"/>
+                <Grid x:Name="filling" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Background="{DynamicResource HatchBrush}"/>
 
-        <!--#endregion-->
+                <fc:EButton x:Name="accordion"
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Content="Accordion"
+                            Click="Accordion_Click"
+                            BorderThickness="0,0,1,1"
+                            Background="#0C646464"
+                            BackgroundOnDisabled="#0C646464"
+                            BackgroundOnMouseOver="#7F2191C5"
+                            BackgroundOnPressed="#B22191C5" />
+                <fc:EButton x:Name="collapsible"
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Content="Collapsible"
+                            Click="Collapsible_Click"
+                            BorderThickness="0,0,1,1"
+                            Background="#0C646464"
+                            BackgroundOnDisabled="#0C646464"
+                            BackgroundOnMouseOver="#7F2191C5"
+                            BackgroundOnPressed="#B22191C5" />
+                <fc:EButton x:Name="buttons"
+                            Grid.Column="2"
+                            Grid.Row="0"
+                            Content="Buttons"
+                            Click="Buttons_Click"
+                            BorderThickness="0,0,0,1"
+                            Background="#0C646464"
+                            BackgroundOnDisabled="#0C646464"
+                            BackgroundOnMouseOver="#7F2191C5"
+                            BackgroundOnPressed="#B22191C5" />
+                <fc:EButton x:Name="switcher"
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Content="Switcher"
+                            Click="Switcher_Click"
+                            BorderThickness="0,0,1,1"
+                            Background="#0C646464"
+                            BackgroundOnDisabled="#0C646464"
+                            BackgroundOnMouseOver="#7F2191C5"
+                            BackgroundOnPressed="#B22191C5" />
+                <fc:EButton x:Name="checkboxes"
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Content="CheckBoxes"
+                            Click="CheckBoxes_Click"
+                            BorderThickness="0,0,1,1"
+                            Background="#0C646464"
+                            BackgroundOnDisabled="#0C646464"
+                            BackgroundOnMouseOver="#7F2191C5"
+                            BackgroundOnPressed="#B22191C5" />
+                <fc:EButton x:Name="combobox"
+                            Grid.Column="2"
+                            Grid.Row="1"
+                            Content="ComboBox"
+                            Click="ComboBox_Click"
+                            BorderThickness="0,0,0,1"
+                            Background="#0C646464"
+                            BackgroundOnDisabled="#0C646464"
+                            BackgroundOnMouseOver="#7F2191C5"
+                            BackgroundOnPressed="#B22191C5" />
+                <fc:EButton x:Name="textboxes"
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            Content="TextBoxes"
+                            Click="TextBoxes_Click"
+                            BorderThickness="0,0,1,1"
+                            Background="#0C646464"
+                            BackgroundOnDisabled="#0C646464"
+                            BackgroundOnMouseOver="#7F2191C5"
+                            BackgroundOnPressed="#B22191C5" />
+                <fc:EButton x:Name="flatmenu"
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            Content="FlatMenu"
+                            Click="FlatMenu_Click"
+                            BorderThickness="0,0,1,1"
+                            Background="#0C646464"
+                            BackgroundOnDisabled="#0C646464"
+                            BackgroundOnMouseOver="#7F2191C5"
+                            BackgroundOnPressed="#B22191C5" />
+                <fc:EButton x:Name="scrollviewer"
+                            Grid.Column="2"
+                            Grid.Row="2"
+                            Content="ScrollViewer"
+                            Click="ScrollViewer_Click"
+                            BorderThickness="0,0,0,1"
+                            Background="#0C646464"
+                            BackgroundOnDisabled="#0C646464"
+                            BackgroundOnMouseOver="#7F2191C5"
+                            BackgroundOnPressed="#B22191C5" />
+                <fc:EButton x:Name="dialogwindow"
+                            Grid.Column="0"
+                            Grid.Row="3"
+                            Content="DialogWindow"
+                            Click="DialogWindow_Click"
+                            BorderThickness="0,0,1,0"
+                            Background="#0C646464"
+                            BackgroundOnDisabled="#0C646464"
+                            BackgroundOnMouseOver="#7F2191C5"
+                            BackgroundOnPressed="#B22191C5" />
+            </Grid>
+        </Border>
 
-        <fc:EButton x:Name="accordionDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="444,284,0,0"
-                    Content="Accordion Demo" Click="AccordionDemo_Click" Height="70" Width="130"/>
-        <fc:EButton x:Name="buttonsDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="444,177,0,0"
-                    Content="Buttons Demo" Click="ButtonsDemo_Click" Height="70" Width="130"/>
-        <fc:EButton x:Name="collapsibleDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="254,284,0,0"
-                    Content="Collapsible Demo" Click="CollapsibleDemo_Click" Height="70" Width="130"/>
-        <fc:EButton x:Name="switcherDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="444,77,0,0"
-                    Content="Switcher Demo" Click="SwitcherDemo_Click" Height="70" Width="130"/>
-        <fc:EButton x:Name="checkboxesDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,390,0,0"
-                    Content="Checkboxes Demo" Click="CheckboxesDemo_Click" Height="70" Width="130"/>
-        <fc:EButton x:Name="comboboxDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,284,0,0"
-                    Content="Combobox Demo" Click="ComboboxDemo_Click" Height="70" Width="130"/>
-        <fc:EButton x:Name="scrollviewerDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,177,0,0"
-                    Content="Scrollviewer Demo" Click="ScrollviewerDemo_Click" Height="70" Width="130"/>
-        <fc:EButton x:Name="dialogwindowDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="254,177,0,0"
-                    Content="Dialogwindow Demo" Click="DialogwindowDemo_Click" Height="70" Width="130"/>
-        <fc:EButton x:Name="textboxesDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="254,77,0,0"
-                    Content="Textboxes Demo" Click="TextboxesDemo_Click" Height="70" Width="130"/>
-        <fc:EButton x:Name="flatMenuDemo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="56,77,0,0"
-                    Content="FlatMenu Demo" Click="FlatMenuDemo_Click" Height="70" Width="130"/>
+        <Grid Height="32" VerticalAlignment="Bottom">
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="10,0,0,0"
+                       FontSize="20"
+                       Text="FullControls demo project" />
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="244,5,0,0"
+                       Foreground="Gray"
+                       Text="by devpelux" />
+            <TextBlock HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Margin="0,5,10,0"
+                       Foreground="Gray"
+                       Text="Info"
+                       Cursor="Hand"
+                       MouseLeftButtonDown="Info_MouseLeftButtonDown" />
+        </Grid>
     </Grid>
 </fc:EWindow>

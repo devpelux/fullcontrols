@@ -75,7 +75,8 @@ namespace FullControls.Controls
         /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualBackground"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey ActualBackgroundPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(ActualBackground), typeof(Brush), typeof(FlatMenuItem), new FrameworkPropertyMetadata(default(Brush)));
+            DependencyProperty.RegisterReadOnly(nameof(ActualBackground), typeof(Brush), typeof(FlatMenuItem),
+                new FrameworkPropertyMetadata(default(Brush)));
 
         /// <summary>
         /// Identifies the <see cref="ActualBackground"/> dependency property.
@@ -87,7 +88,8 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyProperty ActualBackgroundPropertyProxy =
             DependencyProperty.Register("ActualBackgroundProxy", typeof(Brush), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualBackgroundPropertyKey, e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualBackgroundPropertyKey, e.NewValue))));
 
         #endregion
 
@@ -147,7 +149,8 @@ namespace FullControls.Controls
         /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey ActualBorderBrushPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(ActualBorderBrush), typeof(Brush), typeof(FlatMenuItem), new FrameworkPropertyMetadata(default(Brush)));
+            DependencyProperty.RegisterReadOnly(nameof(ActualBorderBrush), typeof(Brush), typeof(FlatMenuItem),
+                new FrameworkPropertyMetadata(default(Brush)));
 
         /// <summary>
         /// Identifies the <see cref="ActualBorderBrush"/> dependency property.
@@ -159,7 +162,8 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyProperty ActualBorderBrushPropertyProxy =
             DependencyProperty.Register("ActualBorderBrushProxy", typeof(Brush), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualBorderBrushPropertyKey, e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualBorderBrushPropertyKey, e.NewValue))));
 
         #endregion
 
@@ -300,7 +304,8 @@ namespace FullControls.Controls
         /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualForeground"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey ActualForegroundPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(ActualForeground), typeof(Brush), typeof(FlatMenuItem), new FrameworkPropertyMetadata(default(Brush)));
+            DependencyProperty.RegisterReadOnly(nameof(ActualForeground), typeof(Brush), typeof(FlatMenuItem),
+                new FrameworkPropertyMetadata(default(Brush)));
 
         /// <summary>
         /// Identifies the <see cref="ActualForeground"/> dependency property.
@@ -312,7 +317,8 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyProperty ActualForegroundPropertyProxy =
             DependencyProperty.Register("ActualForegroundProxy", typeof(Brush), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualForegroundPropertyKey, e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualForegroundPropertyKey, e.NewValue))));
 
         #endregion
 
@@ -356,7 +362,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty PopupCornerRadiusProperty =
             DependencyProperty.RegisterAttached(nameof(PopupCornerRadius), typeof(CornerRadius), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(new CornerRadius(), FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(CornerRadius), FrameworkPropertyMetadataOptions.Inherits));
 
         #endregion
 
@@ -398,7 +404,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty PopupPaddingProperty =
             DependencyProperty.RegisterAttached(nameof(PopupPadding), typeof(Thickness), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.Inherits));
 
         #endregion
 
@@ -636,14 +642,15 @@ namespace FullControls.Controls
         public bool HasDropShadow
         {
             get => (bool)GetValue(HasDropShadowProperty);
-            set => SetValue(HasDropShadowProperty, value);
+            set => SetValue(HasDropShadowProperty, BoolBox.Box(value));
         }
 
         /// <summary>
         /// Identifies the <see cref="HasDropShadow"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty HasDropShadowProperty =
-            DependencyProperty.Register(nameof(HasDropShadow), typeof(bool), typeof(FlatMenuItem));
+            DependencyProperty.Register(nameof(HasDropShadow), typeof(bool), typeof(FlatMenuItem),
+                new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets the max height of the popup (if the height is higher, a <see cref="ScrollViewer"/> is used).
@@ -732,7 +739,7 @@ namespace FullControls.Controls
         public bool PreserveTopLeft
         {
             get => (bool)GetValue(PreserveTopLeftProperty);
-            set => SetValue(PreserveTopLeftProperty, value);
+            set => SetValue(PreserveTopLeftProperty, BoolBox.Box(value));
         }
 
         /// <summary>
@@ -740,7 +747,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty PreserveTopLeftProperty =
             DependencyProperty.Register(nameof(PreserveTopLeft), typeof(bool), typeof(FlatMenuItem),
-                new PropertyMetadata(true, new PropertyChangedCallback((d, e) => CalculateMarginForShadow(d))));
+                new PropertyMetadata(BoolBox.True, new PropertyChangedCallback((d, e) => CalculateMarginForShadow(d))));
 
         #region MarginForShadow
 
@@ -756,7 +763,7 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyPropertyKey BackMarginForShadowPropertyKey =
             DependencyProperty.RegisterReadOnly(nameof(BackMarginForShadow), typeof(Thickness), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(new Thickness()));
+                new FrameworkPropertyMetadata(default(Thickness)));
 
         /// <summary>
         /// Identifies the <see cref="BackMarginForShadow"/> dependency property.
@@ -777,7 +784,7 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyPropertyKey FrontMarginForShadowPropertyKey =
             DependencyProperty.RegisterReadOnly(nameof(FrontMarginForShadow), typeof(Thickness), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(new Thickness()));
+                new FrameworkPropertyMetadata(default(Thickness)));
 
         /// <summary>
         /// Identifies the <see cref="FrontMarginForShadow"/> dependency property.
@@ -989,7 +996,8 @@ namespace FullControls.Controls
         /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualCheckBrush"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey ActualCheckBrushPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(ActualCheckBrush), typeof(Brush), typeof(FlatMenuItem), new FrameworkPropertyMetadata(default(Brush)));
+            DependencyProperty.RegisterReadOnly(nameof(ActualCheckBrush), typeof(Brush), typeof(FlatMenuItem),
+                new FrameworkPropertyMetadata(default(Brush)));
 
         /// <summary>
         /// Identifies the <see cref="ActualCheckBrush"/> dependency property.
@@ -1001,7 +1009,8 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyProperty ActualCheckBrushPropertyProxy =
             DependencyProperty.Register("ActualCheckBrushProxy", typeof(Brush), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualCheckBrushPropertyKey, e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualCheckBrushPropertyKey, e.NewValue))));
 
         #endregion
 
@@ -1084,7 +1093,8 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty GroupNameProperty =
             DependencyProperty.Register(nameof(GroupName), typeof(string), typeof(FlatMenuItem),
-                new PropertyMetadata("", new PropertyChangedCallback((d, e) => ((FlatMenuItem)d).OnGroupNameChanged((string)e.NewValue, (string)e.OldValue))));
+                new PropertyMetadata("", new PropertyChangedCallback((d, e)
+                    => ((FlatMenuItem)d).OnGroupNameChanged((string)e.NewValue, (string)e.OldValue))));
 
         #endregion
 
@@ -1205,14 +1215,15 @@ namespace FullControls.Controls
         public bool AlignWithOthers
         {
             get => (bool)GetValue(AlignWithOthersProperty);
-            set => SetValue(AlignWithOthersProperty, value);
+            set => SetValue(AlignWithOthersProperty, BoolBox.Box(value));
         }
 
         /// <summary>
         /// Identifies the <see cref="AlignWithOthers"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AlignWithOthersProperty =
-            DependencyProperty.Register(nameof(AlignWithOthers), typeof(bool), typeof(FlatMenuItem), new PropertyMetadata(true));
+            DependencyProperty.Register(nameof(AlignWithOthers), typeof(bool), typeof(FlatMenuItem),
+                new PropertyMetadata(BoolBox.True));
 
         #endregion
 
@@ -1250,12 +1261,18 @@ namespace FullControls.Controls
         static FlatMenuItem()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatMenuItem), new FrameworkPropertyMetadata(typeof(FlatMenuItem)));
+
             IsEnabledProperty.OverrideMetadata(typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(new PropertyChangedCallback((d, e) => ((FlatMenuItem)d).OnEnabledChanged((bool)e.NewValue))));
+                new FrameworkPropertyMetadata(new PropertyChangedCallback((d, e)
+                => ((FlatMenuItem)d).OnEnabledChanged((bool)e.NewValue))));
+
             IsSubmenuOpenProperty.OverrideMetadata(typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(new PropertyChangedCallback((d, e) => ((FlatMenuItem)d).OnSubmenuOpenChanged((bool)e.NewValue))));
+                new FrameworkPropertyMetadata(new PropertyChangedCallback((d, e)
+                => ((FlatMenuItem)d).OnSubmenuOpenChanged((bool)e.NewValue))));
+
             IsCheckedProperty.OverrideMetadata(typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(null, new CoerceValueCallback((d, o) => ((FlatMenuItem)d).abortCheckChange ? d.GetValue(IsCheckedProperty) : o)));
+                new FrameworkPropertyMetadata(null, new CoerceValueCallback((d, o)
+                => ((FlatMenuItem)d).abortCheckChange ? d.GetValue(IsCheckedProperty) : o)));
         }
 
         /// <summary>
@@ -1272,10 +1289,10 @@ namespace FullControls.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
-            Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
-            Utility.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
-            Utility.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrush, TimeSpan.Zero);
+            Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
+            Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
+            Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
+            Util.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrush, TimeSpan.Zero);
             loaded = true;
         }
 
@@ -1408,28 +1425,28 @@ namespace FullControls.Controls
             switch (vstate)
             {
                 case "Normal":
-                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrush, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrush, TimeSpan.Zero);
                     break;
                 case "Highlighted":
-                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnHighlight, AnimationTime);
-                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnHighlight, AnimationTime);
-                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnHighlight, AnimationTime);
-                    Utility.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrushOnHighlight, AnimationTime);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnHighlight, AnimationTime);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnHighlight, AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnHighlight, AnimationTime);
+                    Util.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrushOnHighlight, AnimationTime);
                     break;
                 case "SubmenuOpen":
-                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnOpen, AnimationTime);
-                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnOpen, AnimationTime);
-                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnOpen, AnimationTime);
-                    Utility.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrushOnOpen, AnimationTime);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnOpen, AnimationTime);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnOpen, AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnOpen, AnimationTime);
+                    Util.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrushOnOpen, AnimationTime);
                     break;
                 case "Disabled":
-                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrushOnDisabled, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrushOnDisabled, TimeSpan.Zero);
                     break;
                 default:
                     break;

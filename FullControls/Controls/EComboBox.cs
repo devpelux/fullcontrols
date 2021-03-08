@@ -1,4 +1,5 @@
-﻿using FullControls.Extra;
+﻿using FullControls.Core;
+using FullControls.Extra;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -91,7 +92,8 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyPropertyKey ActualBackgroundPropertyKey =
             DependencyProperty.RegisterReadOnly(nameof(ActualBackground), typeof(Brush), typeof(EComboBox),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => ((EComboBox)d).OnActualBackgroundChanged((Brush)e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => ((EComboBox)d).OnActualBackgroundChanged((Brush)e.NewValue))));
 
         /// <summary>
         /// Identifies the <see cref="ActualBackground"/> dependency property.
@@ -246,7 +248,8 @@ namespace FullControls.Controls
         /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualForeColor"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey ActualForeColorPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(ActualForeColor), typeof(Brush), typeof(EComboBox), new FrameworkPropertyMetadata(default(Brush)));
+            DependencyProperty.RegisterReadOnly(nameof(ActualForeColor), typeof(Brush), typeof(EComboBox),
+                new FrameworkPropertyMetadata(default(Brush)));
 
         /// <summary>
         /// Identifies the <see cref="ActualForeColor"/> dependency property.
@@ -500,14 +503,15 @@ namespace FullControls.Controls
         public bool AdaptForegroundAutomatically
         {
             get => (bool)GetValue(AdaptForegroundAutomaticallyProperty);
-            set => SetValue(AdaptForegroundAutomaticallyProperty, value);
+            set => SetValue(AdaptForegroundAutomaticallyProperty, BoolBox.Box(value));
         }
 
         /// <summary>
         /// Identifies the <see cref="AdaptForegroundAutomatically"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AdaptForegroundAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptForegroundAutomatically), typeof(bool), typeof(EComboBox));
+            DependencyProperty.Register(nameof(AdaptForegroundAutomatically), typeof(bool), typeof(EComboBox),
+                new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets a value indicating if adapt automatically the caret brush to the actual background of the control.
@@ -515,14 +519,15 @@ namespace FullControls.Controls
         public bool AdaptCaretBrushAutomatically
         {
             get => (bool)GetValue(AdaptCaretBrushAutomaticallyProperty);
-            set => SetValue(AdaptCaretBrushAutomaticallyProperty, value);
+            set => SetValue(AdaptCaretBrushAutomaticallyProperty, BoolBox.Box(value));
         }
 
         /// <summary>
         /// Identifies the <see cref="AdaptCaretBrushAutomatically"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AdaptCaretBrushAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptCaretBrushAutomatically), typeof(bool), typeof(EComboBox));
+            DependencyProperty.Register(nameof(AdaptCaretBrushAutomatically), typeof(bool), typeof(EComboBox),
+                new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets the brush of the caret of the textbox.
@@ -612,7 +617,8 @@ namespace FullControls.Controls
         /// Identifies the <see cref="TextContextMenu"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty TextContextMenuProperty =
-            DependencyProperty.Register(nameof(TextContextMenu), typeof(ContextMenu), typeof(EComboBox), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(TextContextMenu), typeof(ContextMenu), typeof(EComboBox),
+                new PropertyMetadata(null));
 
         /// <summary>
         /// Gets or sets the background brush of the text area.
@@ -653,9 +659,12 @@ namespace FullControls.Controls
 
         static EComboBox()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(EComboBox), new FrameworkPropertyMetadata(typeof(EComboBox)));
-            IsEnabledProperty.OverrideMetadata(typeof(EComboBox), new FrameworkPropertyMetadata(
-                new PropertyChangedCallback((d, e) => ((EComboBox)d).OnEnabledChanged((bool)e.NewValue))));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(EComboBox),
+                new FrameworkPropertyMetadata(typeof(EComboBox)));
+
+            IsEnabledProperty.OverrideMetadata(typeof(EComboBox),
+                new FrameworkPropertyMetadata(new PropertyChangedCallback((d, e)
+                => ((EComboBox)d).OnEnabledChanged((bool)e.NewValue))));
         }
 
         /// <summary>

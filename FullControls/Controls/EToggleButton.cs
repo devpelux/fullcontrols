@@ -87,7 +87,8 @@ namespace FullControls.Controls
         /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualBackground"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey ActualBackgroundPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(ActualBackground), typeof(Brush), typeof(EToggleButton), new FrameworkPropertyMetadata(default(Brush)));
+            DependencyProperty.RegisterReadOnly(nameof(ActualBackground), typeof(Brush), typeof(EToggleButton),
+                new FrameworkPropertyMetadata(default(Brush)));
 
         /// <summary>
         /// Identifies the <see cref="ActualBackground"/> dependency property.
@@ -99,7 +100,8 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyProperty ActualBackgroundPropertyProxy =
             DependencyProperty.Register("ActualBackgroundProxy", typeof(Brush), typeof(EToggleButton),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualBackgroundPropertyKey, e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualBackgroundPropertyKey, e.NewValue))));
 
         #endregion
 
@@ -174,7 +176,8 @@ namespace FullControls.Controls
         /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey ActualBorderBrushPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(ActualBorderBrush), typeof(Brush), typeof(EToggleButton), new FrameworkPropertyMetadata(default(Brush)));
+            DependencyProperty.RegisterReadOnly(nameof(ActualBorderBrush), typeof(Brush), typeof(EToggleButton),
+                new FrameworkPropertyMetadata(default(Brush)));
 
         /// <summary>
         /// Identifies the <see cref="ActualBorderBrush"/> dependency property.
@@ -186,7 +189,8 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyProperty ActualBorderBrushPropertyProxy =
             DependencyProperty.Register("ActualBorderBrushProxy", typeof(Brush), typeof(EToggleButton),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualBorderBrushPropertyKey, e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualBorderBrushPropertyKey, e.NewValue))));
 
         #endregion
 
@@ -261,7 +265,8 @@ namespace FullControls.Controls
         /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualForeground"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey ActualForegroundPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(ActualForeground), typeof(Brush), typeof(EToggleButton), new FrameworkPropertyMetadata(default(Brush)));
+            DependencyProperty.RegisterReadOnly(nameof(ActualForeground), typeof(Brush), typeof(EToggleButton),
+                new FrameworkPropertyMetadata(default(Brush)));
 
         /// <summary>
         /// Identifies the <see cref="ActualForeground"/> dependency property.
@@ -273,7 +278,8 @@ namespace FullControls.Controls
         /// </summary>
         private static readonly DependencyProperty ActualForegroundPropertyProxy =
             DependencyProperty.Register("ActualForegroundProxy", typeof(Brush), typeof(EToggleButton),
-                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e) => d.SetValue(ActualForegroundPropertyKey, e.NewValue))));
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualForegroundPropertyKey, e.NewValue))));
 
         #endregion
 
@@ -305,7 +311,8 @@ namespace FullControls.Controls
         /// Identifies the <see cref="ClickToggleType"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ClickToggleTypeProperty =
-            DependencyProperty.Register(nameof(ClickToggleType), typeof(ToggleType), typeof(EToggleButton), new PropertyMetadata(ToggleType.Complete));
+            DependencyProperty.Register(nameof(ClickToggleType), typeof(ToggleType), typeof(EToggleButton),
+                new PropertyMetadata(ToggleType.Complete));
 
         /// <summary>
         /// Gets or sets the duration of the control animation when it changes state.
@@ -325,11 +332,16 @@ namespace FullControls.Controls
 
         static EToggleButton()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(EToggleButton), new FrameworkPropertyMetadata(typeof(EToggleButton)));
-            IsEnabledProperty.OverrideMetadata(typeof(EToggleButton), new FrameworkPropertyMetadata(
-                new PropertyChangedCallback((d, e) => ((EToggleButton)d).OnEnabledChanged((bool)e.NewValue))));
-            IsCheckedProperty.OverrideMetadata(typeof(EToggleButton), new FrameworkPropertyMetadata(
-                new PropertyChangedCallback((d, e) => ((EToggleButton)d).OnCheckedChanged((bool?)e.NewValue))));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(EToggleButton),
+                new FrameworkPropertyMetadata(typeof(EToggleButton)));
+
+            IsEnabledProperty.OverrideMetadata(typeof(EToggleButton),
+                new FrameworkPropertyMetadata(new PropertyChangedCallback((d, e)
+                => ((EToggleButton)d).OnEnabledChanged((bool)e.NewValue))));
+
+            IsCheckedProperty.OverrideMetadata(typeof(EToggleButton),
+                new FrameworkPropertyMetadata(new PropertyChangedCallback((d, e)
+                => ((EToggleButton)d).OnCheckedChanged((bool?)e.NewValue))));
         }
 
         /// <summary>
@@ -344,9 +356,9 @@ namespace FullControls.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
-            Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
-            Utility.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
+            Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
+            Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
+            Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
             loaded = true;
         }
 
@@ -427,29 +439,29 @@ namespace FullControls.Controls
             switch (vstate)
             {
                 case "Normal":
-                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
                     break;
                 case "Checked":
-                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnChecked, AnimationTime);
-                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnChecked, AnimationTime);
-                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnChecked, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnChecked, AnimationTime);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnChecked, AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnChecked, TimeSpan.Zero);
                     break;
                 case "MouseOver":
-                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOver, AnimationTime);
-                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOver, AnimationTime);
-                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOver, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOver, AnimationTime);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOver, AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOver, TimeSpan.Zero);
                     break;
                 case "MouseOverOnChecked":
-                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOverOnChecked, AnimationTime);
-                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOverOnChecked, AnimationTime);
-                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOverOnChecked, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOverOnChecked, AnimationTime);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOverOnChecked, AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOverOnChecked, TimeSpan.Zero);
                     break;
                 case "Disabled":
-                    Utility.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
-                    Utility.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, TimeSpan.Zero);
                     break;
                 default:
                     break;

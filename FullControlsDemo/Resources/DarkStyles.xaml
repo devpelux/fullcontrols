@@ -14,18 +14,6 @@
         <Setter Property="SelectionBrush" Value="#FF0099FF"/>
         <Setter Property="SelectionTextBrush" Value="WhiteSmoke"/>
         <Setter Property="HintForeground" Value="WhiteSmoke"/>
-        <Setter Property="CopyButtonBackground" Value="#FF3F3F46"/>
-        <Setter Property="CopyButtonBackgroundOnMouseOver" Value="#FF575759"/>
-        <Setter Property="CopyButtonBackgroundOnPressed" Value="#FF2D2D30"/>
-        <Setter Property="CopyButtonBackgroundOnDisabled" Value="#FF3F3F46"/>
-        <Setter Property="CopyButtonBorderBrush" Value="#FF575759"/>
-        <Setter Property="CopyButtonBorderBrushOnMouseOver" Value="#FF575759"/>
-        <Setter Property="CopyButtonBorderBrushOnPressed" Value="#FF575759"/>
-        <Setter Property="CopyButtonBorderBrushOnDisabled" Value="#FF575759"/>
-        <Setter Property="CopyButtonForeground" Value="WhiteSmoke"/>
-        <Setter Property="CopyButtonForegroundOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="CopyButtonForegroundOnPressed" Value="WhiteSmoke"/>
-        <Setter Property="CopyButtonForegroundOnDisabled" Value="Gray"/>
 
         <Setter Property="ContextMenu">
             <Setter.Value>
@@ -50,18 +38,6 @@
         <Setter Property="SelectionBrush" Value="#FF0099FF"/>
         <Setter Property="SelectionTextBrush" Value="WhiteSmoke"/>
         <Setter Property="HintForeground" Value="WhiteSmoke"/>
-        <Setter Property="CopyButtonBackground" Value="#FF3F3F46"/>
-        <Setter Property="CopyButtonBackgroundOnMouseOver" Value="#FF575759"/>
-        <Setter Property="CopyButtonBackgroundOnPressed" Value="#FF2D2D30"/>
-        <Setter Property="CopyButtonBackgroundOnDisabled" Value="#FF3F3F46"/>
-        <Setter Property="CopyButtonBorderBrush" Value="#FF575759"/>
-        <Setter Property="CopyButtonBorderBrushOnMouseOver" Value="#FF575759"/>
-        <Setter Property="CopyButtonBorderBrushOnPressed" Value="#FF575759"/>
-        <Setter Property="CopyButtonBorderBrushOnDisabled" Value="#FF575759"/>
-        <Setter Property="CopyButtonForeground" Value="WhiteSmoke"/>
-        <Setter Property="CopyButtonForegroundOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="CopyButtonForegroundOnPressed" Value="WhiteSmoke"/>
-        <Setter Property="CopyButtonForegroundOnDisabled" Value="Gray"/>
 
         <Setter Property="ContextMenu">
             <Setter.Value>
