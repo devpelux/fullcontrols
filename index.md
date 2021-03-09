@@ -1,83 +1,118 @@
-![FullControls](https://raw.githubusercontent.com/devpelux/fullcontrols/main/FullControls/Icons/FullControls.png)  
-<br>
-Set of fully customizable standard controls, plus new special controls and extra functionality.  
-
-### Controls included:  
-**[EButton][1]**  
-Extended version of the classic button with more customizations.
-
-**[ECheckBox][2]**  
-Extended version of the classic checkbox with more customizations.
-
-**[EComboBox][3]**  
-Extended version of the classic combobox with more customizations and features.
-
-**[EComboBoxItem][4]**  
-Extended version of the classic combobox item with more customizations and features.
-
-**[EPasswordBox][5]**  
-Reworked version of the standard password box with more features and customizations, you can add a label (or icon) and display an hint, add a button to show the password when pressed and copy the password.
-It maintains the same security of the original password box.
-
-**[ERadioButton][6]**  
-Extended version of the classic radiobutton with more customizations.
-
-**[ERepeatButton][7]**  
-Extended version of the classic repeat button with more customizations.
-
-**[ETextBox][8]**  
-Reworked version of the standard text box with more features and customizations, you can add a label (or icon) and display an hint, add a button to copy the text, choose if the textbox can contain only number, doubles...
-
-**[EToggleButton][9]**  
-Extended version of the classic toggle button with more customizations and features.
-
-**[EWindow][10]**  
-This is a reworked version of the classic window with possibility to customize the titlebar, fuse the titlebar with the content of the window, add corner radius to the window, better handling of close, minimize, etc...
-
-**[GlassScrollBar][11]**  
-Reworked version of the classic scrollbar adapted to be semi-transparent and colored.
-
-**[GlassScrollViewer][12]**  
-This is a scroll viewer that uses the GlassScrollBars and with some new functionality, as draw the scrollbars inside the scroll viewer.
-
-**[PolymorphicMenuItem][13]**  
-Reworked and enhanced menu item that adds customizations to the standard menu item and some features, for example it can be used as an unclickable title, as separator, or as a blank space with specified height.
-
-**[Switcher][14]**  
-Button with the behaviour of a radio button, it can be used, for example, to switch between different section of an application.
-
-<br><br>
-
-### Get this package from NuGet  
-**[FullControls on NuGet][15]**
-
-### Dependencies
-> .NET 5
-
-<br>
-
-### License
-Copyright (C) 2020-2021 devpelux (Salvatore Peluso)  
-Licensed under MIT license.   
-
-[![mit](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MIT_logo.svg/64px-MIT_logo.svg.png "Licensed under MIT license")](https://github.com/devpelux/fullcontrols/blob/main/LICENSE)
+This uri maps the following namespaces:
 
 
+## FullControls.Common Namespace
+_Provides general common functionality._
+
+### Components included
+
+[AccordionItemCollection](AccordionItemCollection-Class)  
+Represents a list of accordionitem.
+
+[ExpandedChangedEventArgs](ExpandedChangedEventArgs-Class)  
+Provides data for ExpandedChanged events.
+
+[ItemExpandedChangedEventArgs](ItemExpandedChangedEventArgs-Class)  
+Provides data for ExpandedChanged events for objects with an index.
+
+[CheckType](CheckType-Enum)  
+Check type.
+
+[LabelType](LabelType-Enum)  
+Label type.
+
+[TextType](TextType-Enum)  
+Text type.
+
+[ToggleType](ToggleType-Enum)  
+Toggle type.
 
 
+## FullControls.Controls Namespace
+_Provides a set of fully customizable standard controls, plus new special controls and extra functionality._
 
-[1]: https://github.com/devpelux/fullcontrols/wiki/EButton-Class
-[2]: https://github.com/devpelux/fullcontrols/wiki/ECheckBox-Class
-[3]: https://github.com/devpelux/fullcontrols/wiki/EComboBox-Class
-[4]: https://github.com/devpelux/fullcontrols/wiki/EComboBoxItem-Class
-[5]: https://github.com/devpelux/fullcontrols/wiki/EPasswordBox-Class
-[6]: https://github.com/devpelux/fullcontrols/wiki/ERadioButton-Class
-[7]: https://github.com/devpelux/fullcontrols/wiki/ERepeatButton-Class
-[8]: https://github.com/devpelux/fullcontrols/wiki/ETextBox-Class
-[9]: https://github.com/devpelux/fullcontrols/wiki/EToggleButton-Class
-[10]: https://github.com/devpelux/fullcontrols/wiki/EWindow-Class
-[11]: https://github.com/devpelux/fullcontrols/wiki/GlassScrollBar-Class
-[12]: https://github.com/devpelux/fullcontrols/wiki/GlassScrollViewer-Class
-[13]: https://github.com/devpelux/fullcontrols/wiki/PolymorphicMenuItem-Class
-[14]: https://github.com/devpelux/fullcontrols/wiki/Switcher-Class
-[15]: https://www.nuget.org/packages/FullControls
+### Components included
+
+[Accordion](Accordion-Class)  
+Represents a control that contains a stacked list of items. Each item can be expanded or collapsed to reveal the content associated with that item.
+
+[AccordionItem](Accordion-Class)  
+Represents a generic accordion item.
+
+[Collapsible](Collapsible-Class)  
+Adds collapsing and expanding functionality to another element.
+
+[EButton](EButton-Class)  
+Represents a Windows button control, which reacts to the event.
+
+[ECheckBox](ECheckBox-Class)  
+Represents a control that a user can select and clear.
+
+[EComboBox](EComboBox-Class)  
+Represents a selection control with a drop-down list that can be shown or hidden by clicking the arrow on the control.
+
+[EComboBoxItem](EComboBoxItem-Class)  
+Implements a selectable item inside a combobox.
+
+[EPasswordBox](EPasswordBox-Class)  
+Represents a control designed for entering and handling passwords.
+
+[ERadioButton](ERadioButton-Class)  
+Represents a button that can be selected, but not cleared, by a user. The ischecked property of a ERadioButton can be set by clicking it, but it can only be cleared programmatically.
+
+[ERepeatButton](ERepeatButton-Class)  
+Represents a control that raises its click event repeatedly from the time it is pressed until it is released.
+
+[ETextBox](ETextBox-Class)  
+Represents a control that can be used to display or edit unformatted text.
+
+[EToggleButton](EToggleButton-Class)  
+Represents a control that can switch states, such as checkbox.
+
+[FlatContextMenu](FlatContextMenu-Class)  
+Represents a pop-up menu that enables a control to expose functionality that is specific to the context of the control.
+
+[FlatMenu](FlatMenu-Class)  
+Represents a Windows menu control that enables you to hierarchically organize elements associated with commands and event handlers.
+
+[FlatMenuItem](FlatMenuItem-Class)  
+Represents a selectable item inside a menu.
+
+[FlatMenuSeparator](FlatMenuSeparator-Class)  
+Displays an empty menuitem with a colored line inside.
+
+[FlatMenuSpace](FlatMenuSpace-Class)  
+Displays an empty menuitem.
+
+[FlatMenuTitle](FlatMenuTitle-Class)  
+Displays a menuitem unclickable.
+
+[GlassScrollBar](GlassScrollBar-Class)  
+Represents a control that provides a scroll bar that has a semi-transparent sliding thumb whose position corresponds to a value.
+
+[GlassScrollViewer](GlassScrollViewer-Class)  
+Represents a scrollable area that can contain other visible elements with semi-transparent scroll bars.
+
+[ItemsControlAccordionItem](ItemsControlAccordionItem-Class)  
+Implements an accordionitem with header and content, where the main content is an itemscontrol.
+
+[SimpleAccordionItem](SimpleAccordionItem-Class)  
+Implements an accordionitem with header and content.
+
+[Switcher](Switcher-Class)  
+Represents a button that can be selected, but not cleared, by a user. The ischecked property of a Switcher can be set by clicking it, but it can only be cleared programmatically.
+
+
+## FullControls.SystemComponents Namespace
+_Provides a set of fully customizable system controls, and extra functionality._
+
+### Components included
+
+[EWindow](EWindow-Class)  
+Provides the ability to create, configure, show, and manage the lifetime of windows and dialog boxes.
+
+[DialogWindow](DialogWindow-Class)  
+Incapsulates a window to be displayed as dialog and, in the end, return an object as result.
+
+[IDialog](IDialog-Interface)  
+Define an object that can return a result.
