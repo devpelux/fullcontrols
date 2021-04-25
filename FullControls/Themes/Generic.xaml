@@ -29,5 +29,7 @@
 
         <!-- SystemComponents -->
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/EWindow.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/FlatWindow.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/WindowTitleBar.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

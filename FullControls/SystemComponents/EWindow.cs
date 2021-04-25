@@ -26,7 +26,6 @@ namespace FullControls.SystemComponents
     {
         private WindowState beforeState;
         private WindowChrome windowChrome, maxWindowChrome;
-        private bool canMove = true;
 
         /// <summary>
         /// MinimizeButton template part.
@@ -1059,7 +1058,7 @@ namespace FullControls.SystemComponents
         /// <param name="e">Event data.</param>
         private void PART_ToolbarHitZone_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed) DragMove(e.GetPosition((Grid)sender));
+            if (e.LeftButton == MouseButtonState.Pressed) DragMove();
         }
 
         /// <summary>
@@ -1069,7 +1068,7 @@ namespace FullControls.SystemComponents
         /// <param name="e">Event data.</param>
         private void PART_ToolbarHitZone_TouchMove(object sender, TouchEventArgs e)
         {
-            DragMove(e.GetTouchPoint(this).Position);
+            DragMove();
         }
 
         #endregion
@@ -1247,7 +1246,6 @@ namespace FullControls.SystemComponents
         /// </summary>
         public void Maximize()
         {
-            canMove = false;
             WindowState = WindowState.Maximized;
         }
 
@@ -1260,26 +1258,25 @@ namespace FullControls.SystemComponents
         }
 
         /// <summary>
-        /// Move the window.
+        /// Allows a window to be dragged by a mouse with its left button down over an exposed area of the window's client area.
         /// </summary>
-        public void DragMove(Point mousepos)
+        /// <exception cref="InvalidOperationException">The left mouse button is not down.</exception>
+        public new void DragMove()
         {
-            if (canMove)
+            if (WindowState == WindowState.Maximized)
             {
-                if (WindowState == WindowState.Maximized)
-                {
-                    double targetHorizontal = (RestoreBounds.Width * (mousepos.X / ActualWidth)) + ShadowRadius;
-                    double targetVertical = (mousepos.Y > 32 ? (RestoreBounds.Height * (mousepos.Y / ActualHeight)) : mousepos.Y) + ShadowRadius;
+                Point curpos = Tools.GetCursorPos();
+                double targetVertical = TOOLBAR_HEIGHT / 2;
+                double targetHorizontal = curpos.X < RestoreBounds.Width / 2 ? curpos.X
+                                        : curpos.X > ActualWidth - (RestoreBounds.Width / 2) ? RestoreBounds.Width - (ActualWidth - curpos.X)
+                                        : RestoreBounds.Width / 2;
 
-                    WindowState = WindowState.Normal;
+                WindowState = WindowState.Normal;
 
-                    Point curpos = Tools.GetCursorPos();
-                    Left = curpos.X - targetHorizontal;
-                    Top = curpos.Y - targetVertical;
-                }
-                DragMove();
+                Top = curpos.Y - targetVertical - MarginForShadow.Left;
+                Left = curpos.X - targetHorizontal - MarginForShadow.Top;
             }
-            canMove = true;
+            base.DragMove();
         }
 
         #endregion

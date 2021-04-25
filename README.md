@@ -31,8 +31,8 @@
   </a>
 </p>
 <p align="center">
-  <img alt="Code release" src="https://img.shields.io/badge/code:release-v1.3.0-blue"></img>
-  <img alt="Code status" src="https://img.shields.io/badge/code:status-stable-blue"></img>
+  <img alt="Code release" src="https://img.shields.io/badge/code:release-v1.4.0-red"></img>
+  <img alt="Code status" src="https://img.shields.io/badge/code:status-alpha-red"></img>
 </p>
 
 <!-- description -->
