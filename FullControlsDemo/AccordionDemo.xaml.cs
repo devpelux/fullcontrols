@@ -11,13 +11,12 @@ namespace FullControlsDemo
     /// <summary>
     /// Logica di interazione per AccordionDemo.xaml
     /// </summary>
-    public partial class AccordionDemo : EWindow
+    public partial class AccordionDemo : FlatWindow
     {
-        List<Shape> shapes = new();
-        List<Shape> roundShapes = new();
-
-        AccordionItemCollection accordionItems = new();
-        AccordionItemCollection accordionDarkItems = new();
+        private readonly List<Shape> shapes = new();
+        private readonly List<Shape> roundShapes = new();
+        private readonly AccordionItemCollection accordionItems = new();
+        private readonly AccordionItemCollection accordionDarkItems = new();
 
         public AccordionDemo()
         {
@@ -45,17 +44,21 @@ namespace FullControlsDemo
 
         private void LoadAccordionItems()
         {
-            ItemsControlAccordionItem accordionItem = new ItemsControlAccordionItem();
-            accordionItem.ItemTemplate = (DataTemplate)FindResource("ShapeItemTemplate");
-            accordionItem.ItemsSource = Clone(shapes);
-            accordionItem.Header = "SHAPES";
-            accordionItem.IsExpanded = true;
+            ItemsControlAccordionItem accordionItem = new()
+            {
+                ItemTemplate = (DataTemplate)FindResource("ShapeItemTemplate"),
+                ItemsSource = Clone(shapes),
+                Header = "SHAPES",
+                IsExpanded = true
+            };
 
-            ItemsControlAccordionItem accordionItem2 = new ItemsControlAccordionItem();
-            accordionItem2.ItemTemplate = (DataTemplate)FindResource("ShapeItemTemplate");
-            accordionItem2.ItemsSource = Clone(roundShapes);
-            accordionItem2.Header = "CIRCULAR SHAPES";
-            accordionItem2.IsExpanded = true;
+            ItemsControlAccordionItem accordionItem2 = new()
+            {
+                ItemTemplate = (DataTemplate)FindResource("ShapeItemTemplate"),
+                ItemsSource = Clone(roundShapes),
+                Header = "CIRCULAR SHAPES",
+                IsExpanded = true
+            };
 
             accordionItems.Add(accordionItem);
             accordionItems.Add(accordionItem2);
@@ -65,19 +68,23 @@ namespace FullControlsDemo
 
         private void LoadAccordionDarkItems()
         {
-            ItemsControlAccordionItem accordionDarkItem = new ItemsControlAccordionItem();
-            accordionDarkItem.Style = (Style)FindResource("ItemsControlAccordionItemDark");
-            accordionDarkItem.ItemTemplate = (DataTemplate)FindResource("ShapeItemTemplateDark");
-            accordionDarkItem.ItemsSource = Clone(shapes);
-            accordionDarkItem.Header = "SHAPES";
-            accordionDarkItem.IsExpanded = false;
+            ItemsControlAccordionItem accordionDarkItem = new()
+            {
+                Style = (Style)FindResource("ItemsControlAccordionItemDark"),
+                ItemTemplate = (DataTemplate)FindResource("ShapeItemTemplateDark"),
+                ItemsSource = Clone(shapes),
+                Header = "SHAPES",
+                IsExpanded = false
+            };
 
-            ItemsControlAccordionItem accordionDarkItem2 = new ItemsControlAccordionItem();
-            accordionDarkItem2.Style = (Style)FindResource("ItemsControlAccordionItemDark");
-            accordionDarkItem2.ItemTemplate = (DataTemplate)FindResource("ShapeItemTemplateDark");
-            accordionDarkItem2.ItemsSource = Clone(roundShapes);
-            accordionDarkItem2.Header = "CIRCULAR SHAPES";
-            accordionDarkItem2.IsExpanded = false;
+            ItemsControlAccordionItem accordionDarkItem2 = new()
+            {
+                Style = (Style)FindResource("ItemsControlAccordionItemDark"),
+                ItemTemplate = (DataTemplate)FindResource("ShapeItemTemplateDark"),
+                ItemsSource = Clone(roundShapes),
+                Header = "CIRCULAR SHAPES",
+                IsExpanded = false
+            };
 
             accordionDarkItems.Add(accordionDarkItem);
             accordionDarkItems.Add(accordionDarkItem2);
@@ -85,7 +92,7 @@ namespace FullControlsDemo
             accordionDark.Items = accordionDarkItems;
         }
 
-        private List<Shape> Clone(List<Shape> listToClone)
+        private static List<Shape> Clone(List<Shape> listToClone)
             => listToClone.Select(item => (Shape)item.Clone()).ToList();
 
         private class Shape : ICloneable

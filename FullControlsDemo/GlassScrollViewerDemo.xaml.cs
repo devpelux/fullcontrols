@@ -7,7 +7,7 @@ namespace FullControlsDemo
     /// <summary>
     /// Logica di interazione per GlassScrollViewerDemo.xaml
     /// </summary>
-    public partial class GlassScrollViewerDemo : EWindow
+    public partial class GlassScrollViewerDemo : FlatWindow
     {
         public GlassScrollViewerDemo()
         {

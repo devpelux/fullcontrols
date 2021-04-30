@@ -722,7 +722,7 @@ namespace FullControls.Controls
         {
             if (backgroundBrush is SolidColorBrush brush)
             {
-                SolidColorBrush inverseBrush = new SolidColorBrush(brush.Color.Invert());
+                SolidColorBrush inverseBrush = new(brush.Color.Invert());
                 if (AdaptForegroundAutomatically) Foreground = inverseBrush;
                 if (AdaptCaretBrushAutomatically) CaretBrush = inverseBrush;
             }

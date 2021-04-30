@@ -1,20 +1,17 @@
-﻿<fc:EWindow x:Class="FullControlsDemo.Info"
-            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-            xmlns:fc="http://devpelux.github.io/fullcontrols"
-            xmlns:p="clr-namespace:FullControlsDemo.Properties"
-            WindowStyle="None"
-            CornerRadius="{DynamicResource WindowCornerRadius}"
-            BorderThickness="{DynamicResource WindowBorderThickness}"
-            Background="{DynamicResource WindowBackground}"
-            BorderBrush="{DynamicResource WindowBorderBrush}"
-            CaptionButtonsBackground="{DynamicResource WindowBackground}"
-            Title="Info"
-            Icon="/Icons/FullControlsSimple.ico"
-            ResizeMode="NoResize"
-            WindowStartupLocation="CenterScreen"
-            Height="190"
-            Width="200">
+﻿<fc:FlatWindow x:Class="FullControlsDemo.Info"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:fc="http://devpelux.github.io/fullcontrols"
+               xmlns:p="clr-namespace:FullControlsDemo.Properties"
+               BorderThickness="{DynamicResource WindowBorderThickness}"
+               Background="{DynamicResource WindowBackground}"
+               BorderBrush="{DynamicResource WindowBorderBrush}"
+               Title="Info"
+               Icon="/Icons/FullControlsSimple.ico"
+               ResizeMode="NoResize"
+               WindowStartupLocation="CenterScreen"
+               Height="190"
+               Width="200">
     <Grid>
         
         <!--#region Background part-->
@@ -53,4 +50,4 @@
             </Grid>
         </Grid>
     </Grid>
-</fc:EWindow>
+</fc:FlatWindow>

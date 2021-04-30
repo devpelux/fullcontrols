@@ -5,7 +5,7 @@ namespace FullControlsDemo
     /// <summary>
     /// Logica di interazione per SwitcherDemo.xaml
     /// </summary>
-    public partial class SwitcherDemo : EWindow
+    public partial class SwitcherDemo : FlatWindow
     {
         public SwitcherDemo()
         {

@@ -217,7 +217,7 @@ namespace FullControls.Controls
             IsHeightAnimating = true;
             if (duration > TimeSpan.Zero)
             {
-                DoubleAnimation animation = new DoubleAnimation
+                DoubleAnimation animation = new()
                 {
                     From = from,
                     To = to,
@@ -249,7 +249,7 @@ namespace FullControls.Controls
             IsWidthAnimating = true;
             if (duration > TimeSpan.Zero)
             {
-                DoubleAnimation animation = new DoubleAnimation
+                DoubleAnimation animation = new()
                 {
                     From = from,
                     To = to,

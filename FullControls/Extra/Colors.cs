@@ -7,6 +7,12 @@ namespace FullControls.Extra
     /// </summary>
     public static class Colors
     {
+        /// <summary><see cref="Color"/> with value of <c>#00FFFFFF</c>.</summary>
+        public static Color WhiteTransparent => Color.FromArgb(0, 255, 255, 255);
+
+        /// <summary><see cref="Color"/> with value of <c>#00000000</c>.</summary>
+        public static Color BlackTransparent => Color.FromArgb(0, 0, 0, 0);
+
         /// <summary><see cref="Color"/> with value of <c>#FFF2F2F2</c>.</summary>
         public static Color Gray1 => Color.FromRgb(242, 242, 242);
 

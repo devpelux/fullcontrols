@@ -1,30 +1,17 @@
-﻿<fc:EWindow x:Class="FullControlsDemo.ButtonsDemo"
-            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-            xmlns:fc="http://devpelux.github.io/fullcontrols"
-            WindowStyle="None"
-            MergeToolbarAndContent="True"
-            CornerRadius="{DynamicResource WindowCornerRadius}"
-            BorderThickness="{DynamicResource WindowBorderThickness}"
-            Background="{DynamicResource WindowBackground}"
-            BorderBrush="{DynamicResource WindowBorderBrush}"
-            CaptionButtonsBackground="{DynamicResource DarkWindowBackground}"
-            CaptionButtonsBackgroundOnMouseOver="#333333"
-            CaptionButtonsBackgroundOnPressed="#404040"
-            CaptionButtonsForeground="White"
-            CaptionButtonsForegroundOnMouseOver="White"
-            CaptionButtonsForegroundOnPressed="White"
-            CloseButtonBackground="{DynamicResource DarkWindowBackground}"
-            CloseButtonBackgroundOnMouseOver="#333333"
-            CloseButtonForeground="White"
-            CloseButtonForegroundOnMouseOver="White"
-            CloseButtonForegroundOnPressed="White"
-            Title="Buttons"
-            Icon="/Icons/FullControlsSimple.ico"
-            ResizeMode="CanMinimize"
-            WindowStartupLocation="CenterScreen"
-            Height="260"
-            Width="400">
+﻿<fc:FlatWindow x:Class="FullControlsDemo.ButtonsDemo"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:fc="http://devpelux.github.io/fullcontrols"
+               MergeTitlebarAndContent="True"
+               BorderThickness="{DynamicResource WindowBorderThickness}"
+               Background="{DynamicResource WindowBackground}"
+               BorderBrush="{DynamicResource WindowBorderBrush}"
+               Title="Buttons"
+               Icon="/Icons/FullControlsSimple.ico"
+               ResizeMode="CanMinimize"
+               WindowStartupLocation="CenterScreen"
+               Height="260"
+               Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -41,4 +28,4 @@
             <fc:ERepeatButton Style="{DynamicResource ERepeatButtonDark}" Content="RepeatButton" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
         </Grid>
     </Grid>
-</fc:EWindow>
+</fc:FlatWindow>

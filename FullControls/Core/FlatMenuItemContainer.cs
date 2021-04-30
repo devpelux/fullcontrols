@@ -43,7 +43,7 @@ namespace FullControls.Core
             }
         }
 
-        private ControlTemplate AlignLeftRightTemplate()
+        private static ControlTemplate AlignLeftRightTemplate()
         {
             /*
              *  <ControlTemplate TargetType="{x:Type local:FlatMenuItemContainer}">
@@ -60,26 +60,26 @@ namespace FullControls.Core
              *  </ControlTemplate>
              */
 
-            ControlTemplate template = new ControlTemplate(typeof(FlatMenuItemContainer));
+            ControlTemplate template = new(typeof(FlatMenuItemContainer));
 
-            FrameworkElementFactory grid = new FrameworkElementFactory(typeof(Grid));
+            FrameworkElementFactory grid = new(typeof(Grid));
 
-            FrameworkElementFactory column0 = new FrameworkElementFactory(typeof(ColumnDefinition));
+            FrameworkElementFactory column0 = new(typeof(ColumnDefinition));
             column0.SetValue(ColumnDefinition.WidthProperty, new GridLength(1, GridUnitType.Auto));
             column0.SetValue(DefinitionBase.SharedSizeGroupProperty, "MenuItemColumnGroupIcon");
 
-            FrameworkElementFactory column1 = new FrameworkElementFactory(typeof(ColumnDefinition));
+            FrameworkElementFactory column1 = new(typeof(ColumnDefinition));
             column1.SetValue(ColumnDefinition.WidthProperty, new GridLength(1, GridUnitType.Star));
 
-            FrameworkElementFactory column2 = new FrameworkElementFactory(typeof(ColumnDefinition));
+            FrameworkElementFactory column2 = new(typeof(ColumnDefinition));
             column2.SetValue(ColumnDefinition.WidthProperty, new GridLength(1, GridUnitType.Auto));
             column2.SetValue(DefinitionBase.SharedSizeGroupProperty, "MenuItemColumnGroupShortcut");
 
-            FrameworkElementFactory column3 = new FrameworkElementFactory(typeof(ColumnDefinition));
+            FrameworkElementFactory column3 = new(typeof(ColumnDefinition));
             column3.SetValue(ColumnDefinition.WidthProperty, new GridLength(1, GridUnitType.Auto));
             column3.SetValue(DefinitionBase.SharedSizeGroupProperty, "MenuItemColumnGroupArrow");
 
-            FrameworkElementFactory headerHost = new FrameworkElementFactory(typeof(ContentPresenter));
+            FrameworkElementFactory headerHost = new(typeof(ContentPresenter));
             headerHost.Name = "HeaderHost";
             headerHost.SetValue(ContentPresenter.ContentSourceProperty, "Header");
             headerHost.SetValue(Grid.ColumnProperty, 1);
@@ -95,7 +95,7 @@ namespace FullControls.Core
             return template;
         }
 
-        private ControlTemplate AlignLeftTemplate()
+        private static ControlTemplate AlignLeftTemplate()
         {
             /*
              *  <ControlTemplate TargetType="{x:Type local:FlatMenuItemContainer}">
@@ -110,18 +110,18 @@ namespace FullControls.Core
              *  </ControlTemplate>
              */
 
-            ControlTemplate template = new ControlTemplate(typeof(FlatMenuItemContainer));
+            ControlTemplate template = new(typeof(FlatMenuItemContainer));
 
-            FrameworkElementFactory grid = new FrameworkElementFactory(typeof(Grid));
+            FrameworkElementFactory grid = new(typeof(Grid));
 
-            FrameworkElementFactory column0 = new FrameworkElementFactory(typeof(ColumnDefinition));
+            FrameworkElementFactory column0 = new(typeof(ColumnDefinition));
             column0.SetValue(ColumnDefinition.WidthProperty, new GridLength(1, GridUnitType.Auto));
             column0.SetValue(DefinitionBase.SharedSizeGroupProperty, "MenuItemColumnGroupIcon");
 
-            FrameworkElementFactory column1 = new FrameworkElementFactory(typeof(ColumnDefinition));
+            FrameworkElementFactory column1 = new(typeof(ColumnDefinition));
             column1.SetValue(ColumnDefinition.WidthProperty, new GridLength(1, GridUnitType.Star));
 
-            FrameworkElementFactory headerHost = new FrameworkElementFactory(typeof(ContentPresenter));
+            FrameworkElementFactory headerHost = new(typeof(ContentPresenter));
             headerHost.Name = "HeaderHost";
             headerHost.SetValue(ContentPresenter.ContentSourceProperty, "Header");
             headerHost.SetValue(Grid.ColumnProperty, 1);
@@ -135,7 +135,7 @@ namespace FullControls.Core
             return template;
         }
 
-        private ControlTemplate AlignRightTemplate()
+        private static ControlTemplate AlignRightTemplate()
         {
             /*
              *  <ControlTemplate TargetType="{x:Type local:FlatMenuItemContainer}">
@@ -151,22 +151,22 @@ namespace FullControls.Core
              *  </ControlTemplate>
              */
 
-            ControlTemplate template = new ControlTemplate(typeof(FlatMenuItemContainer));
+            ControlTemplate template = new(typeof(FlatMenuItemContainer));
 
-            FrameworkElementFactory grid = new FrameworkElementFactory(typeof(Grid));
+            FrameworkElementFactory grid = new(typeof(Grid));
 
-            FrameworkElementFactory column0 = new FrameworkElementFactory(typeof(ColumnDefinition));
+            FrameworkElementFactory column0 = new(typeof(ColumnDefinition));
             column0.SetValue(ColumnDefinition.WidthProperty, new GridLength(1, GridUnitType.Star));
 
-            FrameworkElementFactory column1 = new FrameworkElementFactory(typeof(ColumnDefinition));
+            FrameworkElementFactory column1 = new(typeof(ColumnDefinition));
             column1.SetValue(ColumnDefinition.WidthProperty, new GridLength(1, GridUnitType.Auto));
             column1.SetValue(DefinitionBase.SharedSizeGroupProperty, "MenuItemColumnGroupShortcut");
 
-            FrameworkElementFactory column2 = new FrameworkElementFactory(typeof(ColumnDefinition));
+            FrameworkElementFactory column2 = new(typeof(ColumnDefinition));
             column2.SetValue(ColumnDefinition.WidthProperty, new GridLength(1, GridUnitType.Auto));
             column2.SetValue(DefinitionBase.SharedSizeGroupProperty, "MenuItemColumnGroupArrow");
 
-            FrameworkElementFactory headerHost = new FrameworkElementFactory(typeof(ContentPresenter));
+            FrameworkElementFactory headerHost = new(typeof(ContentPresenter));
             headerHost.Name = "HeaderHost";
             headerHost.SetValue(ContentPresenter.ContentSourceProperty, "Header");
             headerHost.SetValue(Grid.ColumnProperty, 0);
@@ -181,7 +181,7 @@ namespace FullControls.Core
             return template;
         }
 
-        private ControlTemplate NoAlignTemplate()
+        private static ControlTemplate NoAlignTemplate()
         {
             /*
              *  <ControlTemplate TargetType="{x:Type local:FlatMenuItemContainer}">
@@ -191,11 +191,11 @@ namespace FullControls.Core
              *  </ControlTemplate>
              */
 
-            ControlTemplate template = new ControlTemplate(typeof(FlatMenuItemContainer));
+            ControlTemplate template = new(typeof(FlatMenuItemContainer));
 
-            FrameworkElementFactory grid = new FrameworkElementFactory(typeof(Grid));
+            FrameworkElementFactory grid = new(typeof(Grid));
 
-            FrameworkElementFactory headerHost = new FrameworkElementFactory(typeof(ContentPresenter));
+            FrameworkElementFactory headerHost = new(typeof(ContentPresenter));
             headerHost.Name = "HeaderHost";
             headerHost.SetValue(ContentPresenter.ContentSourceProperty, "Header");
 

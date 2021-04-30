@@ -23,7 +23,7 @@ namespace FullControls.Core
             if (animationTime > TimeSpan.Zero)
             {
                 double from = (double)uiElement.GetValue(doubleProperty);
-                DoubleAnimation animation = new DoubleAnimation
+                DoubleAnimation animation = new()
                 {
                     From = from,
                     To = to,
@@ -56,7 +56,7 @@ namespace FullControls.Core
 
                 if (from is SolidColorBrush sbFrom && to is SolidColorBrush sbTo)
                 {
-                    ColorAnimation animation = new ColorAnimation
+                    ColorAnimation animation = new()
                     {
                         From = sbFrom.Color,
                         To = sbTo.Color,

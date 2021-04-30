@@ -32,7 +32,7 @@ namespace FullControls.Extra
                 if (values[0] is double width && values[1] is double height)
                 {
                     if (width < double.Epsilon || height < double.Epsilon) return Geometry.Empty;
-                    RectangleGeometry clip = new RectangleGeometry(new Rect(0, 0, width, height));
+                    RectangleGeometry clip = new(new Rect(0, 0, width, height));
                     clip.Freeze();
                     return clip;
                 }
@@ -43,7 +43,7 @@ namespace FullControls.Extra
                 if (values[0] is double width && values[1] is double height && values[2] is CornerRadius radius)
                 {
                     if (width < double.Epsilon || height < double.Epsilon) return Geometry.Empty;
-                    RectangleGeometry clip = new RectangleGeometry(new Rect(0, 0, width, height), radius.TopLeft, radius.TopLeft);
+                    RectangleGeometry clip = new(new Rect(0, 0, width, height), radius.TopLeft, radius.TopLeft);
                     clip.Freeze();
                     return clip;
                 }
@@ -54,7 +54,7 @@ namespace FullControls.Extra
                 if (values[0] is double width && values[1] is double height && values[2] is CornerRadius radius && values[3] is Thickness thickness)
                 {
                     if (width < double.Epsilon || height < double.Epsilon) return Geometry.Empty;
-                    RectangleGeometry clip = new RectangleGeometry(new Rect(0, 0, width, height), radius.TopLeft - (thickness.Left / 2), radius.TopLeft - (thickness.Left / 2));
+                    RectangleGeometry clip = new(new Rect(0, 0, width, height), radius.TopLeft - (thickness.Left / 2), radius.TopLeft - (thickness.Left / 2));
                     clip.Freeze();
                     return clip;
                 }

@@ -7,7 +7,7 @@ namespace FullControlsDemo
     /// <summary>
     /// Logica di interazione per CustomMessageWindowDemo.xaml
     /// </summary>
-    public partial class CustomMessageWindowDemo : EWindow, IDialog
+    public partial class CustomMessageWindowDemo : FlatWindow, IDialog
     {
         public const string YES = "CustomMessageWindowDemo.YES";
         public const string NO = "CustomMessageWindowDemo.NO";
@@ -33,25 +33,25 @@ namespace FullControlsDemo
             if (result == null) result = ABORT;
         }
 
-        private void yes_Click(object sender, RoutedEventArgs e)
+        private void Yes_Click(object sender, RoutedEventArgs e)
         {
             result = YES;
             Close();
         }
 
-        private void no_Click(object sender, RoutedEventArgs e)
+        private void No_Click(object sender, RoutedEventArgs e)
         {
             result = NO;
             Close();
         }
 
-        private void maybe_Click(object sender, RoutedEventArgs e)
+        private void Maybe_Click(object sender, RoutedEventArgs e)
         {
             result = MAYBE;
             Close();
         }
 
-        private void what_Click(object sender, RoutedEventArgs e)
+        private void What_Click(object sender, RoutedEventArgs e)
         {
             result = WHAT;
             Close();

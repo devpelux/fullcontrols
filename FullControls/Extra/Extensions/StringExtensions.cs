@@ -54,7 +54,7 @@ namespace FullControls.Extra.Extensions
                     if (lastSeparator != -1)
                     {
                         string intPart = double.Parse(str.Substring(0, lastSeparator + 1).Append(NON_ZERO_DIGIT)).ToString().Reduce(1);
-                        string fracPart = str.Substring(lastSeparator + 1);
+                        string fracPart = str[(lastSeparator + 1)..];
                         return string.Concat(intPart, fracPart);
                     }
                     else return double.Parse(str).ToString();

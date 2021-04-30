@@ -1,5 +1,8 @@
+using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
+
+[assembly: NeutralResourcesLanguage("en")]
 
 //Namespaces prefix
 [assembly: XmlnsPrefix("http://devpelux.github.io/fullcontrols", "fc")]

@@ -1,4 +1,7 @@
+using System.Resources;
 using System.Windows;
+
+[assembly: NeutralResourcesLanguage("en")]
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located

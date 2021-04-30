@@ -1121,7 +1121,7 @@ namespace FullControls.Controls
         /// </summary>
         public EPasswordBox() : base()
         {
-            Loaded += (o, e) => OnLoaded(e);
+            Loaded += (o, e) => OnLoaded();
             passwordBox = new PasswordBox();
             PreparePasswordBox();
         }
@@ -1167,10 +1167,7 @@ namespace FullControls.Controls
         /// <summary>
         /// Called when the element is laid out, rendered, and ready for interaction.
         /// </summary>
-        /// <param name="e">Event data.</param>
-#pragma warning disable IDE0060 //Remove unused parameter | Justification: Coerence
-        private void OnLoaded(RoutedEventArgs e)
-#pragma warning restore IDE0060 //Remove unused parameter
+        private void OnLoaded()
         {
             AdaptForeColors(ActualBackground);
             OnVStateChanged(VStateOverride());
@@ -1286,7 +1283,7 @@ namespace FullControls.Controls
         {
             if (backgroundBrush is SolidColorBrush brush)
             {
-                SolidColorBrush inverseBrush = new SolidColorBrush(brush.Color.Invert());
+                SolidColorBrush inverseBrush = new(brush.Color.Invert());
                 if (AdaptForegroundAutomatically) Foreground = inverseBrush;
                 if (AdaptHintForegroundAutomatically) HintForeground = inverseBrush;
                 if (AdaptPeekForegroundAutomatically) PeekForeground = inverseBrush;
@@ -1367,11 +1364,10 @@ namespace FullControls.Controls
             passwordBox.GotFocus += PasswordBox_GotFocus;
             passwordBox.LostFocus += PasswordBox_LostFocus;
             //Setting properties
-            passwordBox.Background = System.Windows.Media.Brushes.Transparent;
+            passwordBox.Background = Extra.Brushes.WhiteTransparent;
             passwordBox.BorderThickness = new Thickness(0);
             passwordBox.Focusable = true;
             //Setting bindings
-#pragma warning disable IDE0002 //Simplify member access | Justification: Clarity
             passwordBox.SetBinding(PasswordBox.HorizontalContentAlignmentProperty, new Binding(nameof(HorizontalContentAlignment)) { Source = this });
             passwordBox.SetBinding(PasswordBox.VerticalContentAlignmentProperty, new Binding(nameof(VerticalContentAlignment)) { Source = this });
             passwordBox.SetBinding(PasswordBox.ForegroundProperty, new Binding(nameof(Foreground)) { Source = this });
@@ -1385,7 +1381,6 @@ namespace FullControls.Controls
             passwordBox.SetBinding(PasswordBox.IsInactiveSelectionHighlightEnabledProperty, new Binding(nameof(IsInactiveSelectionHighlightEnabled)) { Source = this });
             passwordBox.SetBinding(PasswordBox.IsEnabledProperty, new Binding(nameof(IsEnabled)) { Source = this });
             passwordBox.SetBinding(PasswordBox.SnapsToDevicePixelsProperty, new Binding(nameof(SnapsToDevicePixels)) { Source = this });
-#pragma warning restore IDE0002 //Simplify member access
         }
     }
 }

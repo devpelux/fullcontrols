@@ -1131,7 +1131,7 @@ namespace FullControls.SystemComponents
         {
             if (AnimationTime > TimeSpan.Zero)
             {
-                DoubleAnimation doubleAnimation = new DoubleAnimation(1, 0, new Duration(AnimationTime));
+                DoubleAnimation doubleAnimation = new(1, 0, new Duration(AnimationTime));
                 doubleAnimation.Completed += MinimizeAnimation_Completed;
                 BeginAnimation(OpacityProperty, doubleAnimation);
             }
@@ -1159,7 +1159,7 @@ namespace FullControls.SystemComponents
         {
             if (AnimationTime > TimeSpan.Zero)
             {
-                DoubleAnimation doubleAnimation = new DoubleAnimation(0, 1, new Duration(AnimationTime));
+                DoubleAnimation doubleAnimation = new(0, 1, new Duration(AnimationTime));
                 BeginAnimation(OpacityProperty, doubleAnimation);
             }
             else
@@ -1175,7 +1175,7 @@ namespace FullControls.SystemComponents
         {
             if (AnimationTime > TimeSpan.Zero)
             {
-                DoubleAnimation doubleAnimation = new DoubleAnimation(0, 1, new Duration(AnimationTime));
+                DoubleAnimation doubleAnimation = new(0, 1, new Duration(AnimationTime));
                 BeginAnimation(OpacityProperty, doubleAnimation);
             }
             else
@@ -1191,7 +1191,7 @@ namespace FullControls.SystemComponents
         {
             if (AnimationTime > TimeSpan.Zero)
             {
-                DoubleAnimation doubleAnimation = new DoubleAnimation(1, 0, new Duration(AnimationTime));
+                DoubleAnimation doubleAnimation = new(1, 0, new Duration(AnimationTime));
                 doubleAnimation.Completed += ExitAnimation_Completed;
                 BeginAnimation(OpacityProperty, doubleAnimation);
             }
@@ -1221,7 +1221,7 @@ namespace FullControls.SystemComponents
         /// </summary>
         public new void Close()
         {
-            CancelEventArgs e = new CancelEventArgs();
+            CancelEventArgs e = new();
             BeforeClosing?.Invoke(this, e);
             if (!e.Cancel)
             {
@@ -1234,7 +1234,7 @@ namespace FullControls.SystemComponents
         /// </summary>
         public void Minimize()
         {
-            CancelEventArgs e = new CancelEventArgs();
+            CancelEventArgs e = new();
             BeforeMinimizing?.Invoke(this, e);
             if (!e.Cancel)
             {
