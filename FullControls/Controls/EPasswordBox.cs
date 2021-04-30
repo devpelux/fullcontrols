@@ -1,6 +1,6 @@
 ﻿using FullControls.Common;
 using FullControls.Core;
-using FullControls.Extra;
+using FullControls.Extra.Extensions;
 using System;
 using System.ComponentModel;
 using System.Security;

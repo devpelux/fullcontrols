@@ -7,7 +7,7 @@
         <Style.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml" />
+                    <ResourceDictionary Source="/FullControls;component/Resources/Styles.xaml" />
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Style.Resources>
@@ -15,6 +15,11 @@
         <Setter Property="IconBackground" Value="Transparent" />
         <Setter Property="DragAreaBackground" Value="Transparent" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
+        
+        <Setter Property="MinimizeButtonStyle" Value="{DynamicResource CaptionButtonStyle}" />
+        <Setter Property="MaximizeButtonStyle" Value="{DynamicResource CaptionButtonStyle}" />
+        <Setter Property="RestoreButtonStyle" Value="{DynamicResource CaptionButtonStyle}" />
+        <Setter Property="CloseButtonStyle" Value="{DynamicResource CaptionCloseButtonStyle}" />
 
         <Setter Property="Template">
             <Setter.Value>

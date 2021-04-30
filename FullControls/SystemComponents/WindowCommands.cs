@@ -3,7 +3,7 @@
 namespace FullControls.SystemComponents
 {
     /// <summary>
-    /// Contains a list of commands used by windows.
+    /// Contains a list of commands to control a window.
     /// </summary>
     public static class WindowCommands
     {
@@ -11,7 +11,7 @@ namespace FullControls.SystemComponents
         private static readonly RoutedUICommand _minimize = new("Minimize", "Minimize", typeof(WindowCommands));
         private static readonly RoutedUICommand _maximize = new("Maximize", "Maximize", typeof(WindowCommands));
         private static readonly RoutedUICommand _restore = new("Restore", "Restore", typeof(WindowCommands));
-        private static readonly RoutedUICommand _maximizeRestore = new("MaximizeRestore", "MaximizeRestore", typeof(WindowCommands));
+        private static readonly RoutedUICommand _switchState = new("SwitchState", "SwitchState", typeof(WindowCommands));
         private static readonly RoutedUICommand _hide = new("Hide", "Hide", typeof(WindowCommands));
         private static readonly RoutedUICommand _show = new("Show", "Show", typeof(WindowCommands));
         private static readonly RoutedUICommand _drag = new("Drag", "Drag", typeof(WindowCommands));
@@ -38,9 +38,9 @@ namespace FullControls.SystemComponents
         public static RoutedUICommand Restore => _restore;
 
         /// <summary>
-        /// Maximize the window if is normalized or restore the window if is maximized.
+        /// Switch between the window states.
         /// </summary>
-        public static RoutedUICommand MaximizeRestore => _maximizeRestore;
+        public static RoutedUICommand SwitchState => _switchState;
 
         /// <summary>
         /// Hide the window.
@@ -58,7 +58,7 @@ namespace FullControls.SystemComponents
         public static RoutedUICommand Drag => _drag;
 
         /// <summary>
-        /// Action the window.
+        /// Send a custom action to the window.
         /// </summary>
         public static RoutedUICommand Action => _action;
     }

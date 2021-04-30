@@ -5,30 +5,16 @@
                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                xmlns:fc="http://devpelux.github.io/fullcontrols"
                mc:Ignorable="d"
-               WindowStyle="None"
                MergeTitlebarAndContent="True"
-               CornerRadius="{DynamicResource WindowCornerRadius}"
                BorderThickness="{DynamicResource WindowBorderThickness}"
                Background="{DynamicResource WindowBackground}"
                BorderBrush="{DynamicResource WindowBorderBrush}"
-               MinimizeButtonStyle="{DynamicResource RegularCaptionButtonStyle}"
-               MaximizeButtonStyle="{DynamicResource RegularCaptionButtonStyle}"
-               RestoreButtonStyle="{DynamicResource RegularCaptionButtonStyle}"
-               CloseButtonStyle="{DynamicResource CloseCaptionButtonStyle}"
                Title="FullControls"
                Icon="/Icons/FullControlsSimple.ico"
                ResizeMode="CanResize"
                WindowStartupLocation="CenterScreen"
                Height="550"
                Width="632">
-    <fc:FlatWindow.TitlebarContextMenu>
-        <fc:FlatContextMenu>
-            <fc:FlatMenuItem Header="Test" />
-            <fc:FlatMenuItem Header="Test 2" />
-            <fc:FlatMenuItem Header="Test 3" />
-        </fc:FlatContextMenu>
-    </fc:FlatWindow.TitlebarContextMenu>
-    
     <Grid>
 
         <!--#region Background part-->

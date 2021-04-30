@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+﻿using FullControls.Core.Service;
 using System.Windows;
 
 namespace FullControls.Extra
@@ -14,26 +14,8 @@ namespace FullControls.Extra
         /// <returns>Cursor position.</returns>
         public static Point GetCursorPos()
         {
-            GetCursorPos(out POINT lMousePosition);
+            Extern.GetCursorPos(out IntPoint lMousePosition);
             return new Point(lMousePosition.X, lMousePosition.Y);
-        }
-
-
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool GetCursorPos(out POINT lpPoint);
-
-        [StructLayout(LayoutKind.Sequential)]
-        private struct POINT
-        {
-            public int X;
-            public int Y;
-
-            public POINT(int x, int y)
-            {
-                X = x;
-                Y = y;
-            }
         }
     }
 }

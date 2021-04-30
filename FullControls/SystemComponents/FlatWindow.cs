@@ -1,14 +1,13 @@
 ﻿using FullControls.Common;
 using FullControls.Core;
 using FullControls.Extra;
+using FullControls.Extra.Extensions;
 using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Interop;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Shell;
 
 namespace FullControls.SystemComponents
@@ -16,196 +15,108 @@ namespace FullControls.SystemComponents
     /// <summary>
     /// Provides the ability to create, configure, show, and manage the lifetime of windows and dialog boxes.
     /// </summary>
-    [TemplatePart(Name = PartTitleBar, Type = typeof(TitleBar))]
     public class FlatWindow : Window
     {
-        private WindowState beforeState;
-        private WindowChrome windowChrome, maxWindowChrome;
+        private bool loaded = false;
 
         /// <summary>
-        /// TitleBar template part.
+        /// Height of the titlebar.
         /// </summary>
-        protected const string PartTitleBar = "PART_TitleBar";
+        public const double TITLEBAR_HEIGHT = 32;
 
         /// <summary>
-        /// Height of the toolbar.
+        /// Gets or sets the border brush when <see cref="Window.IsActive"/> is <see langword="true"/>.
         /// </summary>
-        public const double TOOLBAR_HEIGHT = 32;
-
-        /// <summary>
-        /// Gets or sets the thickness of the resize border.
-        /// </summary>
-        public Thickness ResizeThickness
+        public Brush BorderBrushOnActive
         {
-            get => (Thickness)GetValue(ResizeThicknessProperty);
-            set => SetValue(ResizeThicknessProperty, value);
+            get => (Brush)GetValue(BorderBrushOnActiveProperty);
+            set => SetValue(BorderBrushOnActiveProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ResizeThickness"/> dependency property.
+        /// Identifies the <see cref="BorderBrushOnActive"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ResizeThicknessProperty =
-            DependencyProperty.Register(nameof(ResizeThickness), typeof(Thickness), typeof(FlatWindow),
-                new FrameworkPropertyMetadata(new Thickness(), new PropertyChangedCallback((d, e) => ((FlatWindow)d).OnResizeThicknessChanged((Thickness)e.NewValue))));
-
-        #region Shadow
+        public static readonly DependencyProperty BorderBrushOnActiveProperty =
+            DependencyProperty.Register(nameof(BorderBrushOnActive), typeof(Brush), typeof(FlatWindow));
 
         /// <summary>
-        /// Gets or sets the color of the shadow.
+        /// Gets the actual border brush of the control.
         /// </summary>
-        public Color ShadowColor
-        {
-            get => (Color)GetValue(ShadowColorProperty);
-            set => SetValue(ShadowColorProperty, value);
-        }
+        public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
+
+        #region ActualBorderBrushProperty
 
         /// <summary>
-        /// Identifies the <see cref="ShadowColor"/> dependency property.
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register(nameof(ShadowColor), typeof(Color), typeof(FlatWindow));
+        private static readonly DependencyPropertyKey ActualBorderBrushPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualBorderBrush), typeof(Brush), typeof(FlatWindow),
+                new FrameworkPropertyMetadata(default(Brush)));
 
         /// <summary>
-        /// Gets or sets the opacity of the shadow.
+        /// Identifies the <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
-        public double ShadowOpacity
-        {
-            get => (double)GetValue(ShadowOpacityProperty);
-            set => SetValue(ShadowOpacityProperty, value);
-        }
+        public static readonly DependencyProperty ActualBorderBrushProperty = ActualBorderBrushPropertyKey.DependencyProperty;
 
         /// <summary>
-        /// Identifies the <see cref="ShadowOpacity"/> dependency property.
+        /// Proxy for <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ShadowOpacityProperty =
-            DependencyProperty.Register(nameof(ShadowOpacity), typeof(double), typeof(FlatWindow));
-
-        /// <summary>
-        /// Gets or sets the radius of the shadow.
-        /// </summary>
-        public double ShadowRadius
-        {
-            get => (double)GetValue(ShadowRadiusProperty);
-            set => SetValue(ShadowRadiusProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="ShadowRadius"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ShadowRadiusProperty =
-            DependencyProperty.Register(nameof(ShadowRadius), typeof(double), typeof(FlatWindow),
-                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateMarginForShadow(d))));
-
-        /// <summary>
-        /// Gets or sets the depth of the shadow.
-        /// </summary>
-        public double ShadowDepth
-        {
-            get => (double)GetValue(ShadowDepthProperty);
-            set => SetValue(ShadowDepthProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="ShadowDepth"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ShadowDepthProperty =
-            DependencyProperty.Register(nameof(ShadowDepth), typeof(double), typeof(FlatWindow),
-                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateMarginForShadow(d))));
-
-        #region MarginForShadow
-
-        /// <summary>
-        /// Gets the margin used to display the shadow.
-        /// </summary>
-        public Thickness MarginForShadow => (Thickness)GetValue(MarginForShadowProperty);
-
-        #region MarginForShadowProperty
-
-        /// <summary>
-        /// The <see cref="DependencyPropertyKey"/> for <see cref="MarginForShadow"/> dependency property.
-        /// </summary>
-        private static readonly DependencyPropertyKey MarginForShadowPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(MarginForShadow), typeof(Thickness), typeof(FlatWindow),
-                new FrameworkPropertyMetadata(new Thickness()));
-
-        /// <summary>
-        /// Identifies the <see cref="MarginForShadow"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty MarginForShadowProperty = MarginForShadowPropertyKey.DependencyProperty;
+        private static readonly DependencyProperty ActualBorderBrushPropertyProxy =
+            DependencyProperty.Register("ActualBorderBrushProxy", typeof(Brush), typeof(FlatWindow),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualBorderBrushPropertyKey, e.NewValue))));
 
         #endregion
 
         /// <summary>
-        /// Calculates the margin used to display the shadow.
+        /// Gets or sets the foreground brush when <see cref="Window.IsActive"/> is <see langword="true"/>.
         /// </summary>
-        private static void CalculateMarginForShadow(DependencyObject d)
+        public Brush ForegroundOnActive
         {
-            double margin = (double)d.GetValue(ShadowRadiusProperty) / 2;
-            double offset = (double)d.GetValue(ShadowDepthProperty);
-            d.SetValue(MarginForShadowPropertyKey, new Thickness(Math.Max(0, Math.Ceiling(margin - offset)),
-                                                                 Math.Max(0, Math.Ceiling(margin - offset)),
-                                                                 Math.Max(0, Math.Ceiling(margin + offset)),
-                                                                 Math.Max(0, Math.Ceiling(margin + offset))));
+            get => (Brush)GetValue(ForegroundOnActiveProperty);
+            set => SetValue(ForegroundOnActiveProperty, value);
         }
+
+        /// <summary>
+        /// Identifies the <see cref="ForegroundOnActive"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForegroundOnActiveProperty =
+            DependencyProperty.Register(nameof(ForegroundOnActive), typeof(Brush), typeof(FlatWindow));
+
+        /// <summary>
+        /// Gets the actual foreground brush of the control.
+        /// </summary>
+        public Brush ActualForeground => (Brush)GetValue(ActualForegroundProperty);
+
+        #region ActualForegroundProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualForeground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualForegroundPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualForeground), typeof(Brush), typeof(FlatWindow),
+                new FrameworkPropertyMetadata(default(Brush)));
+
+        /// <summary>
+        /// Identifies the <see cref="ActualForeground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ActualForegroundProperty = ActualForegroundPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualForeground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualForegroundPropertyProxy =
+            DependencyProperty.Register("ActualForegroundProxy", typeof(Brush), typeof(FlatWindow),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualForegroundPropertyKey, e.NewValue))));
 
         #endregion
-
-        #endregion
-
-        /// <summary>
-        /// Gets or sets the corner radius of the control.
-        /// </summary>
-        public CornerRadius CornerRadius
-        {
-            get => (CornerRadius)GetValue(CornerRadiusProperty);
-            set => SetValue(CornerRadiusProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CornerRadius"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(FlatWindow));
-
-        /// <summary>
-        /// Gets or sets a value indicating if enable the minimize action using the taskbar.
-        /// </summary>
-        /// <remarks>(Has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.NoResize"/>)</remarks>
-        public bool EnableMinimizeByTaskbar
-        {
-            get => (bool)GetValue(EnableMinimizeByTaskbarProperty);
-            set => SetValue(EnableMinimizeByTaskbarProperty, BoolBox.Box(value));
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="EnableMinimizeByTaskbar"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty EnableMinimizeByTaskbarProperty =
-            DependencyProperty.Register(nameof(EnableMinimizeByTaskbar), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.True));
-
-        /// <summary>
-        /// Gets or sets a value indicating if enable the maximize and restore action by double click on toolbar.
-        /// </summary>
-        /// <remarks>(Has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.CanMinimize"/> or <see cref="ResizeMode.NoResize"/>)</remarks>
-        public bool EnableDoubleClickMaximizeRestore
-        {
-            get => (bool)GetValue(EnableDoubleClickMaximizeRestoreProperty);
-            set => SetValue(EnableDoubleClickMaximizeRestoreProperty, BoolBox.Box(value));
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="EnableDoubleClickMaximizeRestore"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty EnableDoubleClickMaximizeRestoreProperty =
-            DependencyProperty.Register(nameof(EnableDoubleClickMaximizeRestore), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.True));
 
         #region Titlebar properties
 
         /// <summary>
         /// <para>Gets or sets a value indicating if merge the titlebar with the content.</para>
         /// <para>The titlebar becomes transparent and is displayed above the content.</para>
-        /// <para>Suggestion 1: Use <see cref="DragAreaMargin"/> to resize the clickable part if you want insert a menu in the titlebar.</para>
-        /// <para>Suggestion 2: Customize the brushes of the caption buttons.</para>
         /// </summary>
         public bool MergeTitlebarAndContent
         {
@@ -249,6 +160,51 @@ namespace FullControls.SystemComponents
         /// </summary>
         public static readonly DependencyProperty TitlebarBackgroundProperty =
             DependencyProperty.Register(nameof(TitlebarBackground), typeof(Brush), typeof(FlatWindow));
+
+        /// <summary>
+        /// Gets or sets the background brush of the titlebar when <see cref="Window.IsActive"/> is <see langword="true"/>.
+        /// </summary>
+        /// <remarks>Has no effect if <see cref="MergeTitlebarAndContent"/> is <see langword="true"/>.</remarks>
+        public Brush TitlebarBackgroundOnActive
+        {
+            get => (Brush)GetValue(TitlebarBackgroundOnActiveProperty);
+            set => SetValue(TitlebarBackgroundOnActiveProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="TitlebarBackgroundOnActive"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty TitlebarBackgroundOnActiveProperty =
+            DependencyProperty.Register(nameof(TitlebarBackgroundOnActive), typeof(Brush), typeof(FlatWindow));
+
+        /// <summary>
+        /// Gets the actual background brush of the titlebar.
+        /// </summary>
+        public Brush ActualTitlebarBackground => (Brush)GetValue(ActualTitlebarBackgroundProperty);
+
+        #region ActualTitlebarBackgroundProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualTitlebarBackground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualTitlebarBackgroundPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualTitlebarBackground), typeof(Brush), typeof(FlatWindow),
+                new FrameworkPropertyMetadata(default(Brush)));
+
+        /// <summary>
+        /// Identifies the <see cref="ActualTitlebarBackground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ActualTitlebarBackgroundProperty = ActualTitlebarBackgroundPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualTitlebarBackground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualTitlebarBackgroundPropertyProxy =
+            DependencyProperty.Register("ActualTitlebarBackgroundProxy", typeof(Brush), typeof(FlatWindow),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualTitlebarBackgroundPropertyKey, e.NewValue))));
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the margin of the titlebar title.
@@ -385,67 +341,7 @@ namespace FullControls.SystemComponents
         public static readonly DependencyProperty TitlebarContextMenuProperty =
             DependencyProperty.Register(nameof(TitlebarContextMenu), typeof(ContextMenu), typeof(FlatWindow));
 
-        #region Caption buttons
-
-        /// <summary>
-        /// Gets or sets the style of the minimize button.
-        /// </summary>
-        public Style MinimizeButtonStyle
-        {
-            get => (Style)GetValue(MinimizeButtonStyleProperty);
-            set => SetValue(MinimizeButtonStyleProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="MinimizeButtonStyle"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty MinimizeButtonStyleProperty =
-            DependencyProperty.Register(nameof(MinimizeButtonStyle), typeof(Style), typeof(FlatWindow));
-
-        /// <summary>
-        /// Gets or sets the style of the maximize button.
-        /// </summary>
-        public Style MaximizeButtonStyle
-        {
-            get => (Style)GetValue(MaximizeButtonStyleProperty);
-            set => SetValue(MaximizeButtonStyleProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="MaximizeButtonStyle"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty MaximizeButtonStyleProperty =
-            DependencyProperty.Register(nameof(MaximizeButtonStyle), typeof(Style), typeof(FlatWindow));
-
-        /// <summary>
-        /// Gets or sets the style of the restore button.
-        /// </summary>
-        public Style RestoreButtonStyle
-        {
-            get => (Style)GetValue(RestoreButtonStyleProperty);
-            set => SetValue(RestoreButtonStyleProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="RestoreButtonStyle"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty RestoreButtonStyleProperty =
-            DependencyProperty.Register(nameof(RestoreButtonStyle), typeof(Style), typeof(FlatWindow));
-
-        /// <summary>
-        /// Gets or sets the style of the close button.
-        /// </summary>
-        public Style CloseButtonStyle
-        {
-            get => (Style)GetValue(CloseButtonStyleProperty);
-            set => SetValue(CloseButtonStyleProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="CloseButtonStyle"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty CloseButtonStyleProperty =
-            DependencyProperty.Register(nameof(CloseButtonStyle), typeof(Style), typeof(FlatWindow));
+        #region Caption buttons properties
 
         /// <summary>
         /// Gets or sets a value indicating if enable the minimize button.
@@ -507,24 +403,153 @@ namespace FullControls.SystemComponents
         public static readonly DependencyProperty EnableCloseButtonProperty =
             DependencyProperty.Register(nameof(EnableCloseButton), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.True));
 
-        #endregion
-
-        #endregion
-
         /// <summary>
-        /// Gets or sets a value indicating if start the window hided.
+        /// Gets or sets the style of the minimize button.
         /// </summary>
-        public bool StartHided
+        public Style MinimizeButtonStyle
         {
-            get => (bool)GetValue(StartHidedProperty);
-            set => SetValue(StartHidedProperty, BoolBox.Box(value));
+            get => (Style)GetValue(MinimizeButtonStyleProperty);
+            set => SetValue(MinimizeButtonStyleProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="StartHided"/> dependency property.
+        /// Identifies the <see cref="MinimizeButtonStyle"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty StartHidedProperty =
-            DependencyProperty.Register(nameof(StartHided), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.False));
+        public static readonly DependencyProperty MinimizeButtonStyleProperty =
+            DependencyProperty.Register(nameof(MinimizeButtonStyle), typeof(Style), typeof(FlatWindow));
+
+        /// <summary>
+        /// Gets or sets the style of the maximize button.
+        /// </summary>
+        public Style MaximizeButtonStyle
+        {
+            get => (Style)GetValue(MaximizeButtonStyleProperty);
+            set => SetValue(MaximizeButtonStyleProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="MaximizeButtonStyle"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty MaximizeButtonStyleProperty =
+            DependencyProperty.Register(nameof(MaximizeButtonStyle), typeof(Style), typeof(FlatWindow));
+
+        /// <summary>
+        /// Gets or sets the style of the restore button.
+        /// </summary>
+        public Style RestoreButtonStyle
+        {
+            get => (Style)GetValue(RestoreButtonStyleProperty);
+            set => SetValue(RestoreButtonStyleProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="RestoreButtonStyle"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty RestoreButtonStyleProperty =
+            DependencyProperty.Register(nameof(RestoreButtonStyle), typeof(Style), typeof(FlatWindow));
+
+        /// <summary>
+        /// Gets or sets the style of the close button.
+        /// </summary>
+        public Style CloseButtonStyle
+        {
+            get => (Style)GetValue(CloseButtonStyleProperty);
+            set => SetValue(CloseButtonStyleProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CloseButtonStyle"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CloseButtonStyleProperty =
+            DependencyProperty.Register(nameof(CloseButtonStyle), typeof(Style), typeof(FlatWindow));
+
+        #endregion
+
+        #endregion
+
+        /// <summary>
+        /// Gets or sets the thickness of the resize border.
+        /// </summary>
+        public Thickness ResizeThickness
+        {
+            get => (Thickness)GetValue(ResizeThicknessProperty);
+            set => SetValue(ResizeThicknessProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ResizeThickness"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ResizeThicknessProperty =
+            DependencyProperty.Register(nameof(ResizeThickness), typeof(Thickness), typeof(FlatWindow),
+                new FrameworkPropertyMetadata(new Thickness(4d), new PropertyChangedCallback((d, e) => ((FlatWindow)d).OnResizeThicknessChanged((Thickness)e.NewValue))));
+
+        /// <summary>
+        /// Gets or sets a value indicating if enable the minimize action by using the taskbar.
+        /// </summary>
+        /// <remarks>(Has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.NoResize"/>)</remarks>
+        public bool EnableMinimizeByTaskbar
+        {
+            get => (bool)GetValue(EnableMinimizeByTaskbarProperty);
+            set => SetValue(EnableMinimizeByTaskbarProperty, BoolBox.Box(value));
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnableMinimizeByTaskbar"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnableMinimizeByTaskbarProperty =
+            DependencyProperty.Register(nameof(EnableMinimizeByTaskbar), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.True));
+
+        /// <summary>
+        /// Gets or sets a value indicating if enable the maximize and restore action by double click on titlebar.
+        /// </summary>
+        /// <remarks>(Has no effect if <see cref="Window.ResizeMode"/> is set to <see cref="ResizeMode.CanMinimize"/> or <see cref="ResizeMode.NoResize"/>)</remarks>
+        public bool EnableDoubleClickMaximizeRestore
+        {
+            get => (bool)GetValue(EnableDoubleClickMaximizeRestoreProperty);
+            set => SetValue(EnableDoubleClickMaximizeRestoreProperty, BoolBox.Box(value));
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnableDoubleClickMaximizeRestore"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnableDoubleClickMaximizeRestoreProperty =
+            DependencyProperty.Register(nameof(EnableDoubleClickMaximizeRestore), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.True));
+
+        /// <summary>
+        /// Gets or sets the duration of the state change animations.
+        /// </summary>
+        public TimeSpan AnimationTime
+        {
+            get => (TimeSpan)GetValue(AnimationTimeProperty);
+            set => SetValue(AnimationTimeProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="AnimationTime"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty AnimationTimeProperty =
+            DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(FlatWindow));
+
+        /// <summary>
+        /// Gets the overflow margin of the window.
+        /// </summary>
+        public Thickness OverflowMargin => (Thickness)GetValue(OverflowMarginProperty);
+
+        #region OverflowMarginProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="OverflowMargin"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey OverflowMarginPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(OverflowMargin), typeof(Thickness), typeof(FlatWindow),
+                new FrameworkPropertyMetadata(new Thickness()));
+
+        /// <summary>
+        /// Identifies the <see cref="OverflowMargin"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty OverflowMarginProperty = OverflowMarginPropertyKey.DependencyProperty;
+
+        #endregion
 
         /// <summary>
         /// Gets a value indicating if the window is docked.
@@ -537,7 +562,8 @@ namespace FullControls.SystemComponents
         /// The <see cref="DependencyPropertyKey"/> for <see cref="IsDocked"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey IsDockedPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(IsDocked), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.False));
+            DependencyProperty.RegisterReadOnly(nameof(IsDocked), typeof(bool), typeof(FlatWindow),
+                new PropertyMetadata(BoolBox.False));
 
         /// <summary>
         /// Identifies the <see cref="IsDocked"/> dependency property.
@@ -557,7 +583,8 @@ namespace FullControls.SystemComponents
         /// The <see cref="DependencyPropertyKey"/> for <see cref="IsHided"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey IsHidedPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(IsHided), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.True));
+            DependencyProperty.RegisterReadOnly(nameof(IsHided), typeof(bool), typeof(FlatWindow),
+                new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Identifies the <see cref="IsHided"/> dependency property.
@@ -565,37 +592,6 @@ namespace FullControls.SystemComponents
         public static readonly DependencyProperty IsHidedProperty = IsHidedPropertyKey.DependencyProperty;
 
         #endregion
-
-        /// <summary>
-        /// Gets or sets the duration of the state change animations.
-        /// </summary>
-        public TimeSpan AnimationTime
-        {
-            get => (TimeSpan)GetValue(AnimationTimeProperty);
-            set => SetValue(AnimationTimeProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="AnimationTime"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty AnimationTimeProperty =
-            DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(FlatWindow));
-
-        /// <summary>
-        /// Gets or sets a value indicating if fix the height and the width of the window to be the same as in designer of Visual Studio.
-        /// </summary>
-        /// <remarks>(Has effect only on initialization)</remarks>
-        public bool FixVSDesigner
-        {
-            get => (bool)GetValue(FixVSDesignerProperty);
-            set => SetValue(FixVSDesignerProperty, BoolBox.Box(value));
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="FixVSDesigner"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty FixVSDesignerProperty =
-            DependencyProperty.Register(nameof(FixVSDesigner), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Occurs immediately before <see cref="Close"/> is executed.
@@ -615,7 +611,12 @@ namespace FullControls.SystemComponents
 
         static FlatWindow()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatWindow), new FrameworkPropertyMetadata(typeof(FlatWindow)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatWindow),
+                new FrameworkPropertyMetadata(typeof(FlatWindow)));
+
+            IsEnabledProperty.OverrideMetadata(typeof(FlatWindow),
+                new FrameworkPropertyMetadata(new PropertyChangedCallback((d, e)
+                => ((FlatWindow)d).OnEnabledChanged((bool)e.NewValue))));
         }
 
         /// <summary>
@@ -624,189 +625,81 @@ namespace FullControls.SystemComponents
         public FlatWindow() : base()
         {
             Loaded += (o, e) => OnLoaded(e);
+            OnPreInitialize();
             LoadCommands();
+            DependencyPropertyDescriptor.FromProperty(IsActiveProperty, typeof(FlatWindow))
+                ?.AddValueChanged(this, (s, e) => OnActiveChanged(IsActive));
         }
-
-
-
-        #region Commands
-
-        #region LoadCommands
-
-        private void LoadCommands()
-        {
-            //Close command
-            CommandBinding close = new(WindowCommands.Close);
-            close.CanExecute += Close_CanExecute;
-            close.Executed += Close_Executed;
-            CommandBindings.Add(close);
-
-            //Minimize command
-            CommandBinding minimize = new(WindowCommands.Minimize);
-            minimize.CanExecute += Minimize_CanExecute;
-            minimize.Executed += Minimize_Executed;
-            CommandBindings.Add(minimize);
-
-            //Maximize command
-            CommandBinding maximize = new(WindowCommands.Maximize);
-            maximize.CanExecute += Maximize_CanExecute;
-            maximize.Executed += Maximize_Executed;
-            CommandBindings.Add(maximize);
-
-            //Restore command
-            CommandBinding restore = new(WindowCommands.Restore);
-            restore.CanExecute += Restore_CanExecute;
-            restore.Executed += Restore_Executed;
-            CommandBindings.Add(restore);
-
-            //MaximizeRestore command
-            CommandBinding maximizeRestore = new(WindowCommands.MaximizeRestore);
-            maximizeRestore.CanExecute += MaximizeRestore_CanExecute;
-            maximizeRestore.Executed += MaximizeRestore_Executed;
-            CommandBindings.Add(maximizeRestore);
-
-            //Hide command
-            CommandBinding hide = new(WindowCommands.Hide);
-            hide.CanExecute += Hide_CanExecute;
-            hide.Executed += Hide_Executed;
-            CommandBindings.Add(hide);
-
-            //Show command
-            CommandBinding show = new(WindowCommands.Show);
-            show.CanExecute += Show_CanExecute;
-            show.Executed += Show_Executed;
-            CommandBindings.Add(show);
-
-            //Drag command
-            CommandBinding drag = new(WindowCommands.Drag);
-            drag.CanExecute += Drag_CanExecute;
-            drag.Executed += Drag_Executed;
-            CommandBindings.Add(drag);
-
-            //Action command
-            CommandBinding action = new(WindowCommands.Action);
-            action.CanExecute += Action_CanExecute;
-            action.Executed += Action_Executed;
-            CommandBindings.Add(action);
-        }
-
-        #endregion
-
-        private void Close_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
-
-        private void Close_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void Minimize_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-            //e.CanExecute = WindowState != WindowState.Minimized;
-        }
-
-        private void Minimize_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            Minimize();
-        }
-
-        private void Maximize_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-            //e.CanExecute = WindowState != WindowState.Maximized;
-        }
-
-        private void Maximize_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            Maximize();
-        }
-
-        private void Restore_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-            //e.CanExecute = WindowState == WindowState.Maximized || WindowState == WindowState.Minimized;
-        }
-
-        private void Restore_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            Restore();
-        }
-
-        private void MaximizeRestore_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = EnableDoubleClickMaximizeRestore && (ResizeMode == ResizeMode.CanResize || ResizeMode == ResizeMode.CanResizeWithGrip);
-        }
-
-        private void MaximizeRestore_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            if (WindowState == WindowState.Maximized) Restore();
-            else Maximize();
-        }
-
-        private void Hide_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-            //e.CanExecute = !IsHided;
-        }
-
-        private void Hide_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            Hide();
-        }
-
-        private void Show_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-            //e.CanExecute = IsHided;
-        }
-
-        private void Show_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            Show();
-        }
-
-        private void Drag_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
-
-        private void Drag_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            DragMove();
-        }
-
-        private void Action_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
-
-        private void Action_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            string actionName = e.Parameter is string parameter ? parameter : "ACTION_UNKNOWN";
-            OnActionExecuted(new CommandAction(actionName, e.Command));
-        }
-
-        #endregion
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            ((HwndSource)PresentationSource.FromVisual(this)).AddHook(new HwndSourceHook(HandleMessages));
-            LoadWindowChromes();
-            LoadInitialState();
+            Util.AnimateBrush(this, ActualTitlebarBackgroundPropertyProxy, TitlebarBackgroundOnActive, TimeSpan.Zero);
+            Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnActive, TimeSpan.Zero);
+            Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnActive, TimeSpan.Zero);
+            loaded = true;
         }
 
         /// <summary>
-        /// Loads the initial window state.
+        /// Executed before the window is initialized.
         /// </summary>
-        private void LoadInitialState()
+        protected virtual void OnPreInitialize()
         {
-            Opacity = 0; //Initial state
-            beforeState = WindowState;
+            WindowChrome wc = WindowChromeExtensions.DefaultWindowChrome;
+            wc.ResizeBorderThickness = ResizeThickness;
+            WindowChrome.SetWindowChrome(this, wc);
+        }
+
+        /// <inheritdoc/>
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            WindowCore.GetHwndSource(this)?.AddHook(HandleMessages);
+            base.OnSourceInitialized(e);
+        }
+
+        /// <summary>
+        /// Called when the window is loaded.
+        /// </summary>
+        /// <param name="e">Event data.</param>
+        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(VStateOverride());
+
+        /// <summary>
+        /// Called when <see cref="UIElement.IsEnabled"/> is changed.
+        /// </summary>
+        /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
+        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(VStateOverride());
+
+        /// <summary>
+        /// Called when <see cref="Window.IsActive"/> is changed.
+        /// </summary>
+        /// <param name="activeState">Actual state of <see cref="Window.IsActive"/>.</param>
+        protected virtual void OnActiveChanged(bool activeState) => OnVStateChanged(VStateOverride());
+
+        /// <inheritdoc/>
+        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
+        {
+            base.OnRenderSizeChanged(sizeInfo);
+            SetValue(IsDockedPropertyKey, BoolBox.Box(WindowState == WindowState.Normal
+                && Width != RestoreBounds.Width && Height != RestoreBounds.Height));
+        }
+
+        /// <inheritdoc/>
+        protected override void OnStateChanged(EventArgs e)
+        {
+            base.OnStateChanged(e);
+            SetValue(OverflowMarginPropertyKey, WindowCore.GetOverflowMargin(WindowState));
+        }
+
+        /// <summary>
+        /// Called when <see cref="ResizeThickness"/> is changed.
+        /// </summary>
+        /// <param name="newValue">New thickness value.</param>
+        protected virtual void OnResizeThicknessChanged(Thickness newValue)
+        {
+            WindowChrome wc = WindowChromeExtensions.CloneOrCreateWindowChrome(this);
+            wc.ResizeBorderThickness = newValue;
+            WindowChrome.SetWindowChrome(this, wc);
         }
 
         /// <summary>
@@ -814,58 +707,49 @@ namespace FullControls.SystemComponents
         /// </summary>
         /// <param name="action">Action executed.</param>
         protected virtual void OnActionExecuted(IAction action)
+            => ActionExecuted?.Invoke(this, new ActionEventArgs(action));
+
+        /// <summary>
+        /// Called to calculate the <b>v-state</b> of the control.
+        /// </summary>
+        protected virtual string VStateOverride()
         {
-            ActionExecuted?.Invoke(this, new ActionEventArgs(action));
+            if (!loaded) return "Undefined";
+            if (!IsEnabled) return "Disabled";
+            else if (!IsActive) return "Inactive";
+            else return "Active";
         }
 
         /// <summary>
-        /// Initializes the window chromes used.
+        /// Called when the <b>v-state</b> of the control changed.
         /// </summary>
-        private void LoadWindowChromes()
+        /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
+        /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
+        protected virtual void OnVStateChanged(string vstate)
         {
-            windowChrome = new WindowChrome()
+            switch (vstate)
             {
-                CaptionHeight = 0,
-                CornerRadius = new CornerRadius(0),
-                GlassFrameThickness = new Thickness(0),
-                ResizeBorderThickness = ResizeThickness
-            };
-            maxWindowChrome = new WindowChrome()
-            {
-                CaptionHeight = 0,
-                CornerRadius = new CornerRadius(0),
-                GlassFrameThickness = new Thickness(0),
-                ResizeBorderThickness = new Thickness(0)
-            };
-            ApplyWindowChrome();
+                case "Active":
+                    Util.AnimateBrush(this, ActualTitlebarBackgroundPropertyProxy, TitlebarBackgroundOnActive, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnActive, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnActive, TimeSpan.Zero);
+                    break;
+                case "Inactive":
+                    Util.AnimateBrush(this, ActualTitlebarBackgroundPropertyProxy, TitlebarBackground, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
+                    break;
+                case "Disabled":
+                    Util.AnimateBrush(this, ActualTitlebarBackgroundPropertyProxy, TitlebarBackground, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
+                    break;
+                default:
+                    break;
+            }
         }
 
-        /// <summary>
-        /// Apply the correct window chrome based on the window state.
-        /// </summary>
-        private void ApplyWindowChrome()
-        {
-            if (WindowState == WindowState.Maximized) WindowChrome.SetWindowChrome(this, maxWindowChrome);
-            else WindowChrome.SetWindowChrome(this, windowChrome);
-        }
-
-        /// <summary>
-        /// Called when <see cref="ResizeThickness"/> is changed.
-        /// </summary>
-        /// <param name="newValue">New <see cref="ResizeThickness"/> value.</param>
-        private void OnResizeThicknessChanged(Thickness newValue)
-        {
-            windowChrome = new WindowChrome()
-            {
-                CaptionHeight = 0,
-                CornerRadius = new CornerRadius(0),
-                GlassFrameThickness = new Thickness(0),
-                ResizeBorderThickness = newValue
-            };
-            ApplyWindowChrome();
-        }
-
-        #region CaptionButtonsClicks
+        #region Caption buttons events
 
         /// <summary>
         /// Called when close button is clicked.
@@ -897,158 +781,19 @@ namespace FullControls.SystemComponents
 
         #endregion
 
-        /// <summary>
-        /// Called when the window is loaded.
-        /// </summary>
-        /// <param name="e">Event data.</param>
-        protected virtual void OnLoaded(RoutedEventArgs e)
-        {
-            if (FixVSDesigner)
-            {
-                Height += VSDesignerHeightOffset();
-                Width += VSDesignerWidthOffset();
-                MinHeight += VSDesignerHeightOffset();
-                MinWidth += VSDesignerWidthOffset();
-            }
-            if (WindowState != WindowState.Minimized) EnterAnimation();
-            beforeState = WindowState;
-            if (StartHided) Hide();
-        }
-
-        /// <inheritdoc/>
-        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
-        {
-            base.OnRenderSizeChanged(sizeInfo);
-            SetValue(IsDockedPropertyKey, BoolBox.Box(WindowState == WindowState.Normal && Width != RestoreBounds.Width && Height != RestoreBounds.Height));
-        }
-
-        /// <inheritdoc/>
-        protected override void OnStateChanged(EventArgs e)
-        {
-            base.OnStateChanged(e);
-            if (beforeState == WindowState.Minimized) AntiMinimizeAnimation();
-            ApplyWindowChrome();
-            beforeState = WindowState;
-        }
-
-        /// <summary>
-        /// Handles the window messages.
-        /// </summary>
-        private IntPtr HandleMessages(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {
-            if (msg == EWindowCore.WM_GETMINMAXINFO) EWindowCore.WmGetMinMaxInfo(hwnd, lParam);
-            else if (msg == EWindowCore.WM_SYSCOMMAND && ((int)wParam & 0xFFF0) == EWindowCore.SC_MINIMIZE)
-            {
-                handled = true;
-                if (EnableMinimizeByTaskbar) Minimize();
-            }
-            return IntPtr.Zero;
-        }
-
-        #region Animations
-
-        /// <summary>
-        /// Start the animation used to minimize the window.
-        /// </summary>
-        private void MinimizeAnimation()
-        {
-            if (AnimationTime > TimeSpan.Zero)
-            {
-                DoubleAnimation doubleAnimation = new DoubleAnimation(1, 0, new Duration(AnimationTime));
-                doubleAnimation.Completed += MinimizeAnimation_Completed;
-                BeginAnimation(OpacityProperty, doubleAnimation);
-            }
-            else
-            {
-                Opacity = 0;
-                WindowState = WindowState.Minimized;
-            }
-        }
-
-        /// <summary>
-        /// Called when the animation used to minimize the window ended.
-        /// </summary>
-        /// <param name="sender">Object that triggered the event.</param>
-        /// <param name="e">Event data.</param>
-        private void MinimizeAnimation_Completed(object sender, EventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-        /// <summary>
-        /// Start the animation used to restore the window after was minimized.
-        /// </summary>
-        private void AntiMinimizeAnimation()
-        {
-            if (AnimationTime > TimeSpan.Zero)
-            {
-                DoubleAnimation doubleAnimation = new DoubleAnimation(0, 1, new Duration(AnimationTime));
-                BeginAnimation(OpacityProperty, doubleAnimation);
-            }
-            else
-            {
-                Opacity = 1;
-            }
-        }
-
-        /// <summary>
-        /// Start the animation used to start the window.
-        /// </summary>
-        private void EnterAnimation()
-        {
-            if (AnimationTime > TimeSpan.Zero)
-            {
-                DoubleAnimation doubleAnimation = new DoubleAnimation(0, 1, new Duration(AnimationTime));
-                BeginAnimation(OpacityProperty, doubleAnimation);
-            }
-            else
-            {
-                Opacity = 1;
-            }
-        }
-
-        /// <summary>
-        /// Start the animation used to close the window.
-        /// </summary>
-        private void ExitAnimation()
-        {
-            if (AnimationTime > TimeSpan.Zero)
-            {
-                DoubleAnimation doubleAnimation = new DoubleAnimation(1, 0, new Duration(AnimationTime));
-                doubleAnimation.Completed += ExitAnimation_Completed;
-                BeginAnimation(OpacityProperty, doubleAnimation);
-            }
-            else
-            {
-                Opacity = 0;
-                base.Close();
-            }
-        }
-
-        /// <summary>
-        /// Called when the animation used to close the window ended.
-        /// </summary>
-        /// <param name="sender">Object that triggered the event.</param>
-        /// <param name="e">Event data.</param>
-        private void ExitAnimation_Completed(object sender, EventArgs e)
-        {
-            base.Close();
-        }
-
-        #endregion
-
-        #region Commands
+        #region Window interaction functions
 
         /// <summary>
         /// Close the window.
         /// </summary>
         public new void Close()
         {
-            CancelEventArgs e = new CancelEventArgs();
+            CancelEventArgs e = new();
             PreviewClose?.Invoke(this, e);
             if (!e.Cancel)
             {
-                ExitAnimation();
+                SetValue(OverflowMarginPropertyKey, new Thickness());
+                base.Close();
             }
         }
 
@@ -1057,11 +802,14 @@ namespace FullControls.SystemComponents
         /// </summary>
         public void Minimize()
         {
-            CancelEventArgs e = new CancelEventArgs();
-            PreviewMinimize?.Invoke(this, e);
-            if (!e.Cancel)
+            if (WindowState != WindowState.Minimized)
             {
-                MinimizeAnimation();
+                CancelEventArgs e = new();
+                PreviewMinimize?.Invoke(this, e);
+                if (!e.Cancel)
+                {
+                    WindowState = WindowState.Minimized;
+                }
             }
         }
 
@@ -1123,34 +871,153 @@ namespace FullControls.SystemComponents
             if (WindowState == WindowState.Maximized)
             {
                 Point curpos = Tools.GetCursorPos();
-                double targetVertical = TOOLBAR_HEIGHT / 2;
+                double targetVertical = TITLEBAR_HEIGHT / 2;
                 double targetHorizontal = curpos.X < RestoreBounds.Width / 2 ? curpos.X
                                         : curpos.X > ActualWidth - (RestoreBounds.Width / 2) ? RestoreBounds.Width - (ActualWidth - curpos.X)
                                         : RestoreBounds.Width / 2;
 
-                WindowState = WindowState.Normal;
+                Top = curpos.Y - targetVertical;
+                Left = curpos.X - targetHorizontal;
 
-                Top = curpos.Y - targetVertical - MarginForShadow.Left;
-                Left = curpos.X - targetHorizontal - MarginForShadow.Top;
+                Restore();
             }
             base.DragMove();
         }
 
         #endregion
 
-        #region VSDesignerFix
+        #region Commands handlers
+
+        #region LoadCommands
+
+        private void LoadCommands()
+        {
+            //Close command
+            CommandBinding close = new(WindowCommands.Close);
+            close.CanExecute += Close_CanExecute;
+            close.Executed += Close_Executed;
+            CommandBindings.Add(close);
+
+            //Minimize command
+            CommandBinding minimize = new(WindowCommands.Minimize);
+            minimize.CanExecute += Minimize_CanExecute;
+            minimize.Executed += Minimize_Executed;
+            CommandBindings.Add(minimize);
+
+            //Maximize command
+            CommandBinding maximize = new(WindowCommands.Maximize);
+            maximize.CanExecute += Maximize_CanExecute;
+            maximize.Executed += Maximize_Executed;
+            CommandBindings.Add(maximize);
+
+            //Restore command
+            CommandBinding restore = new(WindowCommands.Restore);
+            restore.CanExecute += Restore_CanExecute;
+            restore.Executed += Restore_Executed;
+            CommandBindings.Add(restore);
+
+            //SwitchState command
+            CommandBinding switchState = new(WindowCommands.SwitchState);
+            switchState.CanExecute += SwitchState_CanExecute;
+            switchState.Executed += SwitchState_Executed;
+            CommandBindings.Add(switchState);
+
+            //Hide command
+            CommandBinding hide = new(WindowCommands.Hide);
+            hide.CanExecute += Hide_CanExecute;
+            hide.Executed += Hide_Executed;
+            CommandBindings.Add(hide);
+
+            //Show command
+            CommandBinding show = new(WindowCommands.Show);
+            show.CanExecute += Show_CanExecute;
+            show.Executed += Show_Executed;
+            CommandBindings.Add(show);
+
+            //Drag command
+            CommandBinding drag = new(WindowCommands.Drag);
+            drag.CanExecute += Drag_CanExecute;
+            drag.Executed += Drag_Executed;
+            CommandBindings.Add(drag);
+
+            //Action command
+            CommandBinding action = new(WindowCommands.Action);
+            action.CanExecute += Action_CanExecute;
+            action.Executed += Action_Executed;
+            CommandBindings.Add(action);
+        }
+
+        #endregion
+
+        #region Commands
+
+        private void Close_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+            => e.CanExecute = true;
+
+        private void Minimize_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+            => e.CanExecute = ResizeMode != ResizeMode.NoResize;
+
+        private void Maximize_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+            => e.CanExecute = ResizeMode == ResizeMode.CanResize || ResizeMode == ResizeMode.CanResizeWithGrip;
+
+        private void Restore_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+            => e.CanExecute = ResizeMode != ResizeMode.NoResize;
+
+        private void SwitchState_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+            => e.CanExecute = EnableDoubleClickMaximizeRestore && (ResizeMode == ResizeMode.CanResize || ResizeMode == ResizeMode.CanResizeWithGrip);
+
+        private void Hide_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+            => e.CanExecute = true;
+
+        private void Show_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+            => e.CanExecute = true;
+
+        private void Drag_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+            => e.CanExecute = true;
+
+        private void Action_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+            => e.CanExecute = true;
+
+        private void Close_Executed(object sender, ExecutedRoutedEventArgs e) => Close();
+
+        private void Minimize_Executed(object sender, ExecutedRoutedEventArgs e) => Minimize();
+
+        private void Maximize_Executed(object sender, ExecutedRoutedEventArgs e) => Maximize();
+
+        private void Restore_Executed(object sender, ExecutedRoutedEventArgs e) => Restore();
+
+        private void SwitchState_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized) Restore();
+            else Maximize();
+        }
+
+        private void Hide_Executed(object sender, ExecutedRoutedEventArgs e) => Hide();
+
+        private void Show_Executed(object sender, ExecutedRoutedEventArgs e) => Show();
+
+        private void Drag_Executed(object sender, ExecutedRoutedEventArgs e) => DragMove();
+
+        private void Action_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            string actionName = e.Parameter is string parameter ? parameter : "ACTION_UNKNOWN";
+            OnActionExecuted(new CommandAction(actionName, e.Command));
+        }
+
+        #endregion
 
         /// <summary>
-        /// Offset of height between Visual Stuio designer and reality.
+        /// Handles the window messages.
         /// </summary>
-        /// <returns>Offset of height.</returns>
-        private double VSDesignerHeightOffset() => MarginForShadow.Top + MarginForShadow.Bottom + (!MergeTitlebarAndContent ? TOOLBAR_HEIGHT : 0);
-
-        /// <summary>
-        /// Offset of width between Visual Stuio designer and reality.
-        /// </summary>
-        /// <returns>Offset of width.</returns>
-        private double VSDesignerWidthOffset() => MarginForShadow.Left + MarginForShadow.Right;
+        private IntPtr HandleMessages(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == WindowCore.WM_SYSCOMMAND && ((int)wParam & 0xFFF0) == WindowCore.SC_MINIMIZE)
+            {
+                handled = true;
+                if (EnableMinimizeByTaskbar) Minimize();
+            }
+            return IntPtr.Zero;
+        }
 
         #endregion
     }

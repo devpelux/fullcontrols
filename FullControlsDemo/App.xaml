@@ -9,7 +9,6 @@
                 <ResourceDictionary Source="/FullControlsDemo;component/Resources/ScrollBarsContextMenus.xaml"/>
                 <ResourceDictionary Source="/FullControlsDemo;component/Resources/DarkStyles.xaml"/>
                 <ResourceDictionary Source="/FullControlsDemo;component/Resources/Brushes.xaml"/>
-                <ResourceDictionary Source="/FullControlsDemo;component/Resources/CaptionButtonsStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

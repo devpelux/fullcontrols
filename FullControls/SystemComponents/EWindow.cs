@@ -22,6 +22,7 @@ namespace FullControls.SystemComponents
     [TemplatePart(Name = PartCloseButton, Type = typeof(ButtonBase))]
     [TemplatePart(Name = PartToolbarHitZone, Type = typeof(UIElement))]
     [TemplatePart(Name = PartIcon, Type = typeof(UIElement))]
+    [Obsolete("EWindow has been reworked for better performance, use the new window types instead.", false)]
     public class EWindow : Window
     {
         private WindowState beforeState;
@@ -259,7 +260,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="CaptionButtonsWidth"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CaptionButtonsWidthProperty =
-            DependencyProperty.Register(nameof(CaptionButtonsWidth), typeof(double), typeof(EWindow), new PropertyMetadata(32d));
+            DependencyProperty.Register(nameof(CaptionButtonsWidth), typeof(double), typeof(EWindow), new PropertyMetadata(46d));
 
         /// <summary>
         /// Gets or sets the height of the caption buttons.
@@ -488,7 +489,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="CloseButtonWidth"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CloseButtonWidthProperty =
-            DependencyProperty.Register(nameof(CloseButtonWidth), typeof(double), typeof(EWindow), new PropertyMetadata(32d));
+            DependencyProperty.Register(nameof(CloseButtonWidth), typeof(double), typeof(EWindow), new PropertyMetadata(46d));
 
         /// <summary>
         /// Gets or sets the height of the close button.
@@ -1112,8 +1113,8 @@ namespace FullControls.SystemComponents
         /// </summary>
         private IntPtr HandleMessages(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-            if (msg == EWindowCore.WM_GETMINMAXINFO) EWindowCore.WmGetMinMaxInfo(hwnd, lParam);
-            else if (msg == EWindowCore.WM_SYSCOMMAND && ((int)wParam & 0xFFF0) == EWindowCore.SC_MINIMIZE)
+            if (msg == WindowCore.WM_GETMINMAXINFO) WindowCore.WmGetMinMaxInfo(lParam);
+            else if (msg == WindowCore.WM_SYSCOMMAND && ((int)wParam & 0xFFF0) == WindowCore.SC_MINIMIZE)
             {
                 handled = true;
                 if (EnableMinimizeByTaskbar) Minimize();

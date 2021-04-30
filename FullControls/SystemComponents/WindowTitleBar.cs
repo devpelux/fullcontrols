@@ -75,7 +75,8 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="IconBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty IconBackgroundProperty =
-            DependencyProperty.Register(nameof(IconBackground), typeof(Brush), typeof(WindowTitleBar));
+            DependencyProperty.Register(nameof(IconBackground), typeof(Brush), typeof(WindowTitleBar),
+                new FrameworkPropertyMetadata(Brushes.Transparent));
 
         /// <summary>
         /// Gets or sets a value indicating if enable the drag area.
@@ -90,7 +91,8 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="EnableDragArea"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableDragAreaProperty =
-            DependencyProperty.Register(nameof(EnableDragArea), typeof(bool), typeof(WindowTitleBar), new PropertyMetadata(BoolBox.True));
+            DependencyProperty.Register(nameof(EnableDragArea), typeof(bool), typeof(WindowTitleBar),
+                new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets the margin of the drag area.
@@ -120,7 +122,23 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="DragAreaBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty DragAreaBackgroundProperty =
-            DependencyProperty.Register(nameof(DragAreaBackground), typeof(Brush), typeof(WindowTitleBar));
+            DependencyProperty.Register(nameof(DragAreaBackground), typeof(Brush), typeof(WindowTitleBar),
+                new FrameworkPropertyMetadata(Brushes.Transparent));
+
+        /// <summary>
+        /// Gets or sets the context menu of the title bar.
+        /// </summary>
+        public ContextMenu TitlebarContextMenu
+        {
+            get => (ContextMenu)GetValue(TitlebarContextMenuProperty);
+            set => SetValue(TitlebarContextMenuProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="TitlebarContextMenu"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty TitlebarContextMenuProperty =
+            DependencyProperty.Register(nameof(TitlebarContextMenu), typeof(ContextMenu), typeof(WindowTitleBar));
 
         /// <summary>
         /// Gets or sets the margin of the buttons area.
@@ -151,6 +169,72 @@ namespace FullControls.SystemComponents
         /// </summary>
         public static readonly DependencyProperty ButtonsAreaBackgroundProperty =
             DependencyProperty.Register(nameof(ButtonsAreaBackground), typeof(Brush), typeof(WindowTitleBar));
+
+        #region Caption buttons properties
+
+        /// <summary>
+        /// Gets or sets a value indicating if enable the minimize button.
+        /// </summary>
+        public bool EnableMinimizeButton
+        {
+            get => (bool)GetValue(EnableMinimizeButtonProperty);
+            set => SetValue(EnableMinimizeButtonProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnableMinimizeButton"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnableMinimizeButtonProperty =
+            DependencyProperty.Register(nameof(EnableMinimizeButton), typeof(bool), typeof(WindowTitleBar),
+                new PropertyMetadata(BoolBox.True));
+
+        /// <summary>
+        /// Gets or sets a value indicating if enable the maximize button.
+        /// </summary>
+        public bool EnableMaximizeButton
+        {
+            get => (bool)GetValue(EnableMaximizeButtonProperty);
+            set => SetValue(EnableMaximizeButtonProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnableMaximizeButton"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnableMaximizeButtonProperty =
+            DependencyProperty.Register(nameof(EnableMaximizeButton), typeof(bool), typeof(WindowTitleBar),
+                new PropertyMetadata(BoolBox.True));
+
+        /// <summary>
+        /// Gets or sets a value indicating if enable the restore button.
+        /// </summary>
+        public bool EnableRestoreButton
+        {
+            get => (bool)GetValue(EnableRestoreButtonProperty);
+            set => SetValue(EnableRestoreButtonProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnableRestoreButton"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnableRestoreButtonProperty =
+            DependencyProperty.Register(nameof(EnableRestoreButton), typeof(bool), typeof(WindowTitleBar),
+                new PropertyMetadata(BoolBox.True));
+
+        /// <summary>
+        /// Gets or sets a value indicating if enable the close button.
+        /// </summary>
+        public bool EnableCloseButton
+        {
+            get => (bool)GetValue(EnableCloseButtonProperty);
+            set => SetValue(EnableCloseButtonProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnableCloseButton"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnableCloseButtonProperty =
+            DependencyProperty.Register(nameof(EnableCloseButton), typeof(bool), typeof(WindowTitleBar),
+                new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets the style of the minimize button.
@@ -212,80 +296,7 @@ namespace FullControls.SystemComponents
         public static readonly DependencyProperty CloseButtonStyleProperty =
             DependencyProperty.Register(nameof(CloseButtonStyle), typeof(Style), typeof(WindowTitleBar));
 
-        /// <summary>
-        /// Gets or sets a value indicating if enable the minimize button.
-        /// </summary>
-        public bool EnableMinimizeButton
-        {
-            get => (bool)GetValue(EnableMinimizeButtonProperty);
-            set => SetValue(EnableMinimizeButtonProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="EnableMinimizeButton"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty EnableMinimizeButtonProperty =
-            DependencyProperty.Register(nameof(EnableMinimizeButton), typeof(bool), typeof(WindowTitleBar), new PropertyMetadata(BoolBox.True));
-
-        /// <summary>
-        /// Gets or sets a value indicating if enable the maximize button.
-        /// </summary>
-        public bool EnableMaximizeButton
-        {
-            get => (bool)GetValue(EnableMaximizeButtonProperty);
-            set => SetValue(EnableMaximizeButtonProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="EnableMaximizeButton"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty EnableMaximizeButtonProperty =
-            DependencyProperty.Register(nameof(EnableMaximizeButton), typeof(bool), typeof(WindowTitleBar), new PropertyMetadata(BoolBox.True));
-
-        /// <summary>
-        /// Gets or sets a value indicating if enable the restore button.
-        /// </summary>
-        public bool EnableRestoreButton
-        {
-            get => (bool)GetValue(EnableRestoreButtonProperty);
-            set => SetValue(EnableRestoreButtonProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="EnableRestoreButton"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty EnableRestoreButtonProperty =
-            DependencyProperty.Register(nameof(EnableRestoreButton), typeof(bool), typeof(WindowTitleBar), new PropertyMetadata(BoolBox.True));
-
-        /// <summary>
-        /// Gets or sets a value indicating if enable the close button.
-        /// </summary>
-        public bool EnableCloseButton
-        {
-            get => (bool)GetValue(EnableCloseButtonProperty);
-            set => SetValue(EnableCloseButtonProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="EnableCloseButton"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty EnableCloseButtonProperty =
-            DependencyProperty.Register(nameof(EnableCloseButton), typeof(bool), typeof(WindowTitleBar), new PropertyMetadata(BoolBox.True));
-
-        /// <summary>
-        /// Gets or sets the context menu of the title bar.
-        /// </summary>
-        public ContextMenu TitlebarContextMenu
-        {
-            get => (ContextMenu)GetValue(TitlebarContextMenuProperty);
-            set => SetValue(TitlebarContextMenuProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="TitlebarContextMenu"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty TitlebarContextMenuProperty =
-            DependencyProperty.Register(nameof(TitlebarContextMenu), typeof(ContextMenu), typeof(WindowTitleBar));
+        #endregion
 
 
         static WindowTitleBar()
@@ -322,7 +333,7 @@ namespace FullControls.SystemComponents
         private void PART_DragArea_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             e.Handled = true;
-            if (e.ClickCount >= 2) WindowCommands.MaximizeRestore.Execute(null, this);
+            if (e.ClickCount >= 2) WindowCommands.SwitchState.Execute(null, this);
         }
 
         /// <summary>

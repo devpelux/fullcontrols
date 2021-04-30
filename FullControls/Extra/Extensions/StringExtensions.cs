@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Linq;
-using System.Windows;
-using System.Windows.Media;
 
-namespace FullControls.Extra
+namespace FullControls.Extra.Extensions
 {
     /// <summary>
-    /// Provides a set of extensions.
+    /// Provides a set of <see cref="string"/> extensions.
     /// </summary>
-    public static class Extensions
+    public static class StringExtensions
     {
         private static readonly char[] doubleSeparators = new char[] { '.', ',' };
         private const char NON_ZERO_DIGIT = '1';
+
 
         /// <summary>
         /// Check if the <see cref="string"/> is a <see cref="double"/>.
@@ -98,31 +97,5 @@ namespace FullControls.Extra
             : length > 0 ? length <= str.Length ? str.Remove(str.Length - length)
             : throw new ArgumentOutOfRangeException(nameof(length), "Length must must be less than or equal to length of string.")
             : throw new ArgumentOutOfRangeException(nameof(length), "Length cannot be less than zero.");
-
-        /// <summary>
-        /// Invert the color by subtracting every value R, G, B from 255.
-        /// </summary>
-        /// <param name="color">Colore.</param>
-        /// <returns>Inverted color.</returns>
-        public static Color Invert(this Color color)
-            => Color.FromRgb((byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
-
-        /// <summary>
-        /// Check if the <see cref="DependencyProperty"/> is <see langword="null"/>.
-        /// </summary>
-        /// <param name="dependencyObject"><see cref="DependencyObject"/> that contains the property.</param>
-        /// <param name="dependencyProperty"><see cref="DependencyProperty"/> to check if is <see langword="null"/>.</param>
-        /// <returns><see langword="true"/> if is <see langword="null"/>, <see langword="false"/> otherwise.</returns>
-        public static bool IsNull(this DependencyObject dependencyObject, DependencyProperty dependencyProperty)
-            => dependencyObject.GetValue(dependencyProperty) == null;
-
-        /// <summary>
-        /// Check if the <see cref="DependencyProperty"/> is not <see langword="null"/>.
-        /// </summary>
-        /// <param name="dependencyObject"><see cref="DependencyObject"/> that contains the property.</param>
-        /// <param name="dependencyProperty"><see cref="DependencyProperty"/> to check if is not <see langword="null"/>.</param>
-        /// <returns><see langword="true"/> if is not <see langword="null"/>, <see langword="false"/> otherwise.</returns>
-        public static bool IsNotNull(this DependencyObject dependencyObject, DependencyProperty dependencyProperty)
-            => dependencyObject.GetValue(dependencyProperty) != null;
     }
 }
