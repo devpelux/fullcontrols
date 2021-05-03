@@ -213,17 +213,31 @@ This is a scroll viewer that uses the GlassScrollBars and with some new function
 
 <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/1.3.0/Assets/Overview/glassscrollviewer.png"/>
 
+---
 
 ## System components
 
 ### EWindow ![Deprecated](https://img.shields.io/badge/-DEPRECATED-orange)
 Extended version of the classic window with possibility to customize the titlebar, fuse the titlebar with the content of the window, add corner radius to the window, better handling of close, minimize, etc...
 
-### FlatWindow ![New](https://img.shields.io/badge/-NEW!-blue)
+---
+
+### AvalonWindow ![New](https://img.shields.io/badge/-NEW!-blue)
 Extended version of the classic window with possibility to customize the titlebar, fuse the titlebar with the content of the window, better handling of close, minimize, etc...
+
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/avalonwindow.png"/>
+
+---
+
+### CornerWindow ![Experimental](https://img.shields.io/badge/-EXPERIMENTAL!-blueviolet)
+Extended version of AvalonWindow with support for round angles.
+
+---
 
 ### WindowTitleBar ![New](https://img.shields.io/badge/-NEW!-blue)
 A fully customizable titlebar used in custom windows.
+
+---
 
 ### DialogWindow
 Incapsulates a Window to be displayed as dialog and, in the end, return an object as result.  

@@ -1,0 +1,25 @@
+﻿<fc:AvalonWindow x:Class="FullControlsDemo.AvalonWindowDemo"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:fc="http://devpelux.github.io/fullcontrols"
+                 BorderThickness="{DynamicResource WindowBorderThickness}"
+                 Background="{DynamicResource WindowBackground}"
+                 BorderBrush="{DynamicResource WindowBorderBrush}"
+                 MergeTitlebarAndContent="True"
+                 Title="AvalonWindow"
+                 Icon="/Icons/FullControlsSimple.ico"
+                 ResizeMode="CanResize"
+                 WindowStartupLocation="CenterScreen"
+                 Height="300"
+                 Width="500">
+    <Grid>
+        <Grid x:Name="background"
+              ClipToBounds="True"
+              Visibility="Visible">
+            <Ellipse Fill="#FFC7D7E0"
+                     Margin="-255,-185,151,119" />
+            <Ellipse Fill="#FFECECEC"
+                     Margin="170,168,-274,-234" />
+        </Grid>
+    </Grid>
+</fc:AvalonWindow>

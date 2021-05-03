@@ -6,7 +6,7 @@ namespace FullControlsDemo
     /// <summary>
     /// Logica di interazione per DialogWindowDemo.xaml
     /// </summary>
-    public partial class DialogWindowDemo : FlatWindow
+    public partial class DialogWindowDemo : AvalonWindow
     {
         public DialogWindowDemo()
         {

@@ -1,22 +1,22 @@
-﻿<fc:FlatWindow x:Class="FullControlsDemo.FlatMenuDemo"
-               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-               xmlns:fc="http://devpelux.github.io/fullcontrols"
-               MergeTitlebarAndContent="True"
-               BorderThickness="{DynamicResource WindowBorderThickness}"
-               Background="{DynamicResource WindowBackground}"
-               BorderBrush="{DynamicResource WindowBorderBrush}"
-               MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-               MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-               RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-               CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
-               Title="Menu"
-               Icon="/Icons/FullControlsSimple.ico"
-               ResizeMode="CanMinimize"
-               WindowStartupLocation="CenterScreen"
-               Height="500"
-               Width="700"
-               KeyDown="EWindow_KeyDown">
+﻿<fc:AvalonWindow x:Class="FullControlsDemo.FlatMenuDemo"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:fc="http://devpelux.github.io/fullcontrols"
+                 MergeTitlebarAndContent="True"
+                 BorderThickness="{DynamicResource WindowBorderThickness}"
+                 Background="{DynamicResource WindowBackground}"
+                 BorderBrush="{DynamicResource WindowBorderBrush}"
+                 MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
+                 MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
+                 RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
+                 CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
+                 Title="Menu"
+                 Icon="/Icons/FullControlsSimple.ico"
+                 ResizeMode="CanMinimize"
+                 WindowStartupLocation="CenterScreen"
+                 Height="500"
+                 Width="700"
+                 KeyDown="EWindow_KeyDown">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -183,4 +183,4 @@
             </Border>
         </Grid>
     </Grid>
-</fc:FlatWindow>
+</fc:AvalonWindow>

@@ -8,7 +8,7 @@ namespace FullControlsDemo
     /// <summary>
     /// Logica di interazione per Info.xaml
     /// </summary>
-    public partial class Info : FlatWindow
+    public partial class Info : AvalonWindow
     {
         public Info()
         {

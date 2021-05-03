@@ -1,21 +1,21 @@
-﻿<fc:FlatWindow x:Class="FullControlsDemo.CheckBoxesDemo"
-               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-               xmlns:fc="http://devpelux.github.io/fullcontrols"
-               MergeTitlebarAndContent="True"
-               BorderThickness="{DynamicResource WindowBorderThickness}"
-               Background="{DynamicResource WindowBackground}"
-               BorderBrush="{DynamicResource WindowBorderBrush}"
-               MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-               MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-               RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-               CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
-               Title="CheckBoxes"
-               Icon="/Icons/FullControlsSimple.ico"
-               ResizeMode="CanMinimize"
-               WindowStartupLocation="CenterScreen"
-               Height="267"
-               Width="400">
+﻿<fc:AvalonWindow x:Class="FullControlsDemo.CheckBoxesDemo"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:fc="http://devpelux.github.io/fullcontrols"
+                 MergeTitlebarAndContent="True"
+                 BorderThickness="{DynamicResource WindowBorderThickness}"
+                 Background="{DynamicResource WindowBackground}"
+                 BorderBrush="{DynamicResource WindowBorderBrush}"
+                 MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
+                 MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
+                 RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
+                 CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
+                 Title="CheckBoxes"
+                 Icon="/Icons/FullControlsSimple.ico"
+                 ResizeMode="CanMinimize"
+                 WindowStartupLocation="CenterScreen"
+                 Height="267"
+                 Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -46,4 +46,4 @@
                       Height="20" Margin="30,200,0,0" Content="CheckBox 2" IsChecked="True"/>
         </Grid>
     </Grid>
-</fc:FlatWindow>
+</fc:AvalonWindow>

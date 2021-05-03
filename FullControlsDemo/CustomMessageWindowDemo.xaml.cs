@@ -7,7 +7,7 @@ namespace FullControlsDemo
     /// <summary>
     /// Logica di interazione per CustomMessageWindowDemo.xaml
     /// </summary>
-    public partial class CustomMessageWindowDemo : FlatWindow, IDialog
+    public partial class CustomMessageWindowDemo : AvalonWindow, IDialog
     {
         public const string YES = "CustomMessageWindowDemo.YES";
         public const string NO = "CustomMessageWindowDemo.NO";

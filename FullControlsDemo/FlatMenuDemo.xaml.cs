@@ -8,7 +8,7 @@ namespace FullControlsDemo
     /// <summary>
     /// Logica di interazione per FlatMenuDemo.xaml
     /// </summary>
-    public partial class FlatMenuDemo : FlatWindow
+    public partial class FlatMenuDemo : AvalonWindow
     {
         public FlatMenuDemo()
         {

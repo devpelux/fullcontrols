@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:FullControls.SystemComponents"
                     xmlns:extra="clr-namespace:FullControls.Extra">
 
-    <Style TargetType="{x:Type local:FlatWindow}" BasedOn="{StaticResource {x:Type Window}}">
+    <Style TargetType="{x:Type local:AvalonWindow}" BasedOn="{StaticResource {x:Type Window}}">
         <Style.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
@@ -38,7 +38,7 @@
 
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:FlatWindow}">
+                <ControlTemplate TargetType="{x:Type local:AvalonWindow}">
                     <Grid x:Name="PART_Window"
                           Background="{TemplateBinding ActualBorderBrush}">
                         <Border x:Name="PART_Border"

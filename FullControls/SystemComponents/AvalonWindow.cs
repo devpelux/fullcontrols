@@ -13,7 +13,7 @@ namespace FullControls.SystemComponents
     /// <summary>
     /// Provides the ability to create, configure, show, and manage the lifetime of windows and dialog boxes.
     /// </summary>
-    public class FlatWindow : Window
+    public class AvalonWindow : Window
     {
         private bool loaded = false;
 
@@ -35,7 +35,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="BorderBrushOnActive"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnActiveProperty =
-            DependencyProperty.Register(nameof(BorderBrushOnActive), typeof(Brush), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(BorderBrushOnActive), typeof(Brush), typeof(AvalonWindow));
 
         /// <summary>
         /// Gets the actual border brush of the control.
@@ -48,7 +48,7 @@ namespace FullControls.SystemComponents
         /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey ActualBorderBrushPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(ActualBorderBrush), typeof(Brush), typeof(FlatWindow),
+            DependencyProperty.RegisterReadOnly(nameof(ActualBorderBrush), typeof(Brush), typeof(AvalonWindow),
                 new FrameworkPropertyMetadata(default(Brush)));
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace FullControls.SystemComponents
         /// Proxy for <see cref="ActualBorderBrush"/> dependency property.
         /// </summary>
         private static readonly DependencyProperty ActualBorderBrushPropertyProxy =
-            DependencyProperty.Register("ActualBorderBrushProxy", typeof(Brush), typeof(FlatWindow),
+            DependencyProperty.Register("ActualBorderBrushProxy", typeof(Brush), typeof(AvalonWindow),
                 new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
                     => d.SetValue(ActualBorderBrushPropertyKey, e.NewValue))));
 
@@ -79,7 +79,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="ForegroundOnActive"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ForegroundOnActiveProperty =
-            DependencyProperty.Register(nameof(ForegroundOnActive), typeof(Brush), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(ForegroundOnActive), typeof(Brush), typeof(AvalonWindow));
 
         /// <summary>
         /// Gets the actual foreground brush of the control.
@@ -92,7 +92,7 @@ namespace FullControls.SystemComponents
         /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualForeground"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey ActualForegroundPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(ActualForeground), typeof(Brush), typeof(FlatWindow),
+            DependencyProperty.RegisterReadOnly(nameof(ActualForeground), typeof(Brush), typeof(AvalonWindow),
                 new FrameworkPropertyMetadata(default(Brush)));
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace FullControls.SystemComponents
         /// Proxy for <see cref="ActualForeground"/> dependency property.
         /// </summary>
         private static readonly DependencyProperty ActualForegroundPropertyProxy =
-            DependencyProperty.Register("ActualForegroundProxy", typeof(Brush), typeof(FlatWindow),
+            DependencyProperty.Register("ActualForegroundProxy", typeof(Brush), typeof(AvalonWindow),
                 new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
                     => d.SetValue(ActualForegroundPropertyKey, e.NewValue))));
 
@@ -126,7 +126,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="MergeTitlebarAndContent"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty MergeTitlebarAndContentProperty =
-            DependencyProperty.Register(nameof(MergeTitlebarAndContent), typeof(bool), typeof(FlatWindow),
+            DependencyProperty.Register(nameof(MergeTitlebarAndContent), typeof(bool), typeof(AvalonWindow),
                 new FrameworkPropertyMetadata(BoolBox.False, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="TitlebarMargin"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty TitlebarMarginProperty =
-            DependencyProperty.Register(nameof(TitlebarMargin), typeof(Thickness), typeof(FlatWindow),
+            DependencyProperty.Register(nameof(TitlebarMargin), typeof(Thickness), typeof(AvalonWindow),
                 new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="TitlebarBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty TitlebarBackgroundProperty =
-            DependencyProperty.Register(nameof(TitlebarBackground), typeof(Brush), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(TitlebarBackground), typeof(Brush), typeof(AvalonWindow));
 
         /// <summary>
         /// Gets or sets the background brush of the titlebar when <see cref="Window.IsActive"/> is <see langword="true"/>.
@@ -175,7 +175,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="TitlebarBackgroundOnActive"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty TitlebarBackgroundOnActiveProperty =
-            DependencyProperty.Register(nameof(TitlebarBackgroundOnActive), typeof(Brush), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(TitlebarBackgroundOnActive), typeof(Brush), typeof(AvalonWindow));
 
         /// <summary>
         /// Gets the actual background brush of the titlebar.
@@ -188,7 +188,7 @@ namespace FullControls.SystemComponents
         /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualTitlebarBackground"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey ActualTitlebarBackgroundPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(ActualTitlebarBackground), typeof(Brush), typeof(FlatWindow),
+            DependencyProperty.RegisterReadOnly(nameof(ActualTitlebarBackground), typeof(Brush), typeof(AvalonWindow),
                 new FrameworkPropertyMetadata(default(Brush)));
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace FullControls.SystemComponents
         /// Proxy for <see cref="ActualTitlebarBackground"/> dependency property.
         /// </summary>
         private static readonly DependencyProperty ActualTitlebarBackgroundPropertyProxy =
-            DependencyProperty.Register("ActualTitlebarBackgroundProxy", typeof(Brush), typeof(FlatWindow),
+            DependencyProperty.Register("ActualTitlebarBackgroundProxy", typeof(Brush), typeof(AvalonWindow),
                 new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
                     => d.SetValue(ActualTitlebarBackgroundPropertyKey, e.NewValue))));
 
@@ -219,7 +219,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="TitleMargin"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty TitleMarginProperty =
-            DependencyProperty.Register(nameof(TitleMargin), typeof(Thickness), typeof(FlatWindow),
+            DependencyProperty.Register(nameof(TitleMargin), typeof(Thickness), typeof(AvalonWindow),
                 new FrameworkPropertyMetadata(new Thickness(5, 0, 5, 0)));
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="IconMargin"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty IconMarginProperty =
-            DependencyProperty.Register(nameof(IconMargin), typeof(Thickness), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(IconMargin), typeof(Thickness), typeof(AvalonWindow));
 
         /// <summary>
         /// Gets or sets the background brush of the titlebar icon.
@@ -250,7 +250,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="IconBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty IconBackgroundProperty =
-            DependencyProperty.Register(nameof(IconBackground), typeof(Brush), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(IconBackground), typeof(Brush), typeof(AvalonWindow));
 
         /// <summary>
         /// Gets or sets the margin of the titlebar buttons area.
@@ -265,7 +265,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="ButtonsAreaMargin"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ButtonsAreaMarginProperty =
-            DependencyProperty.Register(nameof(ButtonsAreaMargin), typeof(Thickness), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(ButtonsAreaMargin), typeof(Thickness), typeof(AvalonWindow));
 
         /// <summary>
         /// Gets or sets the background brush of the titlebar buttons area.
@@ -280,7 +280,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="ButtonsAreaBackground"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ButtonsAreaBackgroundProperty =
-            DependencyProperty.Register(nameof(ButtonsAreaBackground), typeof(Brush), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(ButtonsAreaBackground), typeof(Brush), typeof(AvalonWindow));
 
         /// <summary>
         /// Gets or sets the context menu of the titlebar.
@@ -295,7 +295,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="TitlebarContextMenu"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty TitlebarContextMenuProperty =
-            DependencyProperty.Register(nameof(TitlebarContextMenu), typeof(ContextMenu), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(TitlebarContextMenu), typeof(ContextMenu), typeof(AvalonWindow));
 
         #region Caption buttons properties
 
@@ -312,7 +312,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="EnableMinimizeButton"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableMinimizeButtonProperty =
-            DependencyProperty.Register(nameof(EnableMinimizeButton), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.True));
+            DependencyProperty.Register(nameof(EnableMinimizeButton), typeof(bool), typeof(AvalonWindow), new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets a value indicating if enable the maximize button.
@@ -327,7 +327,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="EnableMaximizeButton"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableMaximizeButtonProperty =
-            DependencyProperty.Register(nameof(EnableMaximizeButton), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.True));
+            DependencyProperty.Register(nameof(EnableMaximizeButton), typeof(bool), typeof(AvalonWindow), new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets a value indicating if enable the restore button.
@@ -342,7 +342,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="EnableRestoreButton"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableRestoreButtonProperty =
-            DependencyProperty.Register(nameof(EnableRestoreButton), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.True));
+            DependencyProperty.Register(nameof(EnableRestoreButton), typeof(bool), typeof(AvalonWindow), new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets a value indicating if enable the close button.
@@ -357,7 +357,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="EnableCloseButton"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableCloseButtonProperty =
-            DependencyProperty.Register(nameof(EnableCloseButton), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.True));
+            DependencyProperty.Register(nameof(EnableCloseButton), typeof(bool), typeof(AvalonWindow), new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets the style of the minimize button.
@@ -372,7 +372,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="MinimizeButtonStyle"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty MinimizeButtonStyleProperty =
-            DependencyProperty.Register(nameof(MinimizeButtonStyle), typeof(Style), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(MinimizeButtonStyle), typeof(Style), typeof(AvalonWindow));
 
         /// <summary>
         /// Gets or sets the style of the maximize button.
@@ -387,7 +387,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="MaximizeButtonStyle"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty MaximizeButtonStyleProperty =
-            DependencyProperty.Register(nameof(MaximizeButtonStyle), typeof(Style), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(MaximizeButtonStyle), typeof(Style), typeof(AvalonWindow));
 
         /// <summary>
         /// Gets or sets the style of the restore button.
@@ -402,7 +402,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="RestoreButtonStyle"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty RestoreButtonStyleProperty =
-            DependencyProperty.Register(nameof(RestoreButtonStyle), typeof(Style), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(RestoreButtonStyle), typeof(Style), typeof(AvalonWindow));
 
         /// <summary>
         /// Gets or sets the style of the close button.
@@ -417,7 +417,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="CloseButtonStyle"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty CloseButtonStyleProperty =
-            DependencyProperty.Register(nameof(CloseButtonStyle), typeof(Style), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(CloseButtonStyle), typeof(Style), typeof(AvalonWindow));
 
         #endregion
 
@@ -436,9 +436,9 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="ResizeThickness"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty ResizeThicknessProperty =
-            DependencyProperty.Register(nameof(ResizeThickness), typeof(Thickness), typeof(FlatWindow),
+            DependencyProperty.Register(nameof(ResizeThickness), typeof(Thickness), typeof(AvalonWindow),
                 new FrameworkPropertyMetadata(new Thickness(4d), FrameworkPropertyMetadataOptions.AffectsMeasure,
-                    new PropertyChangedCallback((d, e) => ((FlatWindow)d).OnResizeThicknessChanged((Thickness)e.NewValue))));
+                    new PropertyChangedCallback((d, e) => ((AvalonWindow)d).OnResizeThicknessChanged((Thickness)e.NewValue))));
 
         /// <summary>
         /// Gets or sets a value indicating if enable the minimize action by using the taskbar.
@@ -454,7 +454,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="EnableMinimizeByTaskbar"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableMinimizeByTaskbarProperty =
-            DependencyProperty.Register(nameof(EnableMinimizeByTaskbar), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.True));
+            DependencyProperty.Register(nameof(EnableMinimizeByTaskbar), typeof(bool), typeof(AvalonWindow), new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets a value indicating if enable the maximize and restore action by double click on titlebar.
@@ -470,7 +470,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="EnableDoubleClickMaximizeRestore"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableDoubleClickMaximizeRestoreProperty =
-            DependencyProperty.Register(nameof(EnableDoubleClickMaximizeRestore), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.True));
+            DependencyProperty.Register(nameof(EnableDoubleClickMaximizeRestore), typeof(bool), typeof(AvalonWindow), new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets the duration of the state change animations.
@@ -485,7 +485,7 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="AnimationTime"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty AnimationTimeProperty =
-            DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(AvalonWindow));
 
         /// <summary>
         /// Gets the overflow margin of the window.
@@ -498,7 +498,7 @@ namespace FullControls.SystemComponents
         /// The <see cref="DependencyPropertyKey"/> for <see cref="OverflowMargin"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey OverflowMarginPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(OverflowMargin), typeof(Thickness), typeof(FlatWindow),
+            DependencyProperty.RegisterReadOnly(nameof(OverflowMargin), typeof(Thickness), typeof(AvalonWindow),
                 new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         /// <summary>
@@ -519,7 +519,7 @@ namespace FullControls.SystemComponents
         /// The <see cref="DependencyPropertyKey"/> for <see cref="IsDocked"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey IsDockedPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(IsDocked), typeof(bool), typeof(FlatWindow),
+            DependencyProperty.RegisterReadOnly(nameof(IsDocked), typeof(bool), typeof(AvalonWindow),
                 new PropertyMetadata(BoolBox.False));
 
         /// <summary>
@@ -540,7 +540,7 @@ namespace FullControls.SystemComponents
         /// The <see cref="DependencyPropertyKey"/> for <see cref="IsHided"/> dependency property.
         /// </summary>
         private static readonly DependencyPropertyKey IsHidedPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(IsHided), typeof(bool), typeof(FlatWindow),
+            DependencyProperty.RegisterReadOnly(nameof(IsHided), typeof(bool), typeof(AvalonWindow),
                 new PropertyMetadata(BoolBox.True));
 
         /// <summary>
@@ -566,23 +566,23 @@ namespace FullControls.SystemComponents
         public event EventHandler<ActionEventArgs> ActionExecuted;
 
 
-        static FlatWindow()
+        static AvalonWindow()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(FlatWindow),
-                new FrameworkPropertyMetadata(typeof(FlatWindow)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(AvalonWindow),
+                new FrameworkPropertyMetadata(typeof(AvalonWindow)));
 
-            IsEnabledProperty.OverrideMetadata(typeof(FlatWindow),
+            IsEnabledProperty.OverrideMetadata(typeof(AvalonWindow),
                 new FrameworkPropertyMetadata(new PropertyChangedCallback((d, e)
-                => ((FlatWindow)d).OnEnabledChanged((bool)e.NewValue))));
+                => ((AvalonWindow)d).OnEnabledChanged((bool)e.NewValue))));
         }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="FlatWindow"/>.
+        /// Initializes a new instance of <see cref="AvalonWindow"/>.
         /// </summary>
-        public FlatWindow() : base()
+        public AvalonWindow() : base()
         {
             Loaded += (o, e) => OnLoaded(e);
-            DependencyPropertyDescriptor.FromProperty(IsActiveProperty, typeof(FlatWindow))
+            DependencyPropertyDescriptor.FromProperty(IsActiveProperty, typeof(AvalonWindow))
                 ?.AddValueChanged(this, (s, e) => OnActiveChanged(IsActive));
             LoadCommands();
             OnInitializing();

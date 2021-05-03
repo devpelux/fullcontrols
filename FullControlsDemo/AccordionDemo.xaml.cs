@@ -11,7 +11,7 @@ namespace FullControlsDemo
     /// <summary>
     /// Logica di interazione per AccordionDemo.xaml
     /// </summary>
-    public partial class AccordionDemo : FlatWindow
+    public partial class AccordionDemo : AvalonWindow
     {
         private readonly List<Shape> shapes = new();
         private readonly List<Shape> roundShapes = new();

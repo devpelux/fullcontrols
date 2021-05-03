@@ -7,7 +7,7 @@ namespace FullControlsDemo
     /// <summary>
     /// Logica di interazione per Home.xaml
     /// </summary>
-    public partial class Home : FlatWindow
+    public partial class Home : AvalonWindow
     {
         public Home()
         {

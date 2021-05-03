@@ -1,24 +1,24 @@
-﻿<fc:FlatWindow x:Class="FullControlsDemo.AccordionDemo"
-               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-               xmlns:fc="http://devpelux.github.io/fullcontrols"
-               MergeTitlebarAndContent="True"
-               BorderThickness="{DynamicResource WindowBorderThickness}"
-               Background="{DynamicResource WindowBackground}"
-               BorderBrush="{DynamicResource WindowBorderBrush}"
-               MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-               MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-               RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-               CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
-               Title="Accordion"
-               Icon="/Icons/FullControlsSimple.ico"
-               ResizeMode="CanMinimize"
-               WindowStartupLocation="CenterScreen"
-               Height="380"
-               Width="600"
-               Loaded="EWindow_Loaded">
-
-    <fc:FlatWindow.Resources>
+﻿<fc:AvalonWindow x:Class="FullControlsDemo.AccordionDemo"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:fc="http://devpelux.github.io/fullcontrols"
+                 MergeTitlebarAndContent="True"
+                 BorderThickness="{DynamicResource WindowBorderThickness}"
+                 Background="{DynamicResource WindowBackground}"
+                 BorderBrush="{DynamicResource WindowBorderBrush}"
+                 MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
+                 MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
+                 RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
+                 CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
+                 Title="Accordion"
+                 Icon="/Icons/FullControlsSimple.ico"
+                 ResizeMode="CanMinimize"
+                 WindowStartupLocation="CenterScreen"
+                 Height="380"
+                 Width="600"
+                 Loaded="EWindow_Loaded">
+    
+    <fc:AvalonWindow.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="ShapeItemTemplate">
                 <Grid Height="60">
@@ -33,7 +33,7 @@
                 </Grid>
             </DataTemplate>
         </ResourceDictionary>
-    </fc:FlatWindow.Resources>
+    </fc:AvalonWindow.Resources>
     
     <Grid>
         <Grid.ColumnDefinitions>
@@ -51,4 +51,4 @@
             </fc:GlassScrollViewer>
         </Grid>
     </Grid>
-</fc:FlatWindow>
+</fc:AvalonWindow>

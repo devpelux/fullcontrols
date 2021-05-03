@@ -1,21 +1,21 @@
-﻿<fc:FlatWindow x:Class="FullControlsDemo.TextBoxesDemo"
-               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-               xmlns:fc="http://devpelux.github.io/fullcontrols"
-               MergeTitlebarAndContent="True"
-               BorderThickness="{DynamicResource WindowBorderThickness}"
-               Background="{DynamicResource WindowBackground}"
-               BorderBrush="{DynamicResource WindowBorderBrush}"
-               MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-               MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-               RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-               CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
-               Title="TextBoxes"
-               Icon="/Icons/FullControlsSimple.ico"
-               ResizeMode="CanMinimize"
-               WindowStartupLocation="CenterScreen"
-               Height="460"
-               Width="400">
+﻿<fc:AvalonWindow x:Class="FullControlsDemo.TextBoxesDemo"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:fc="http://devpelux.github.io/fullcontrols"
+                 MergeTitlebarAndContent="True"
+                 BorderThickness="{DynamicResource WindowBorderThickness}"
+                 Background="{DynamicResource WindowBackground}"
+                 BorderBrush="{DynamicResource WindowBorderBrush}"
+                 MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
+                 MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
+                 RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
+                 CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
+                 Title="TextBoxes"
+                 Icon="/Icons/FullControlsSimple.ico"
+                 ResizeMode="CanMinimize"
+                 WindowStartupLocation="CenterScreen"
+                 Height="460"
+                 Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -189,4 +189,4 @@
             </Grid>
         </Grid>
     </Grid>
-</fc:FlatWindow>
+</fc:AvalonWindow>

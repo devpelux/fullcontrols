@@ -60,4 +60,11 @@ General optimizations.</PackageReleaseNotes>
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Themes\Styles\SystemComponents\CornerWindow.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>

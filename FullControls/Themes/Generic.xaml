@@ -1,5 +1,6 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
     <ResourceDictionary.MergedDictionaries>
+        
         <!-- Controls -->
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Accordion.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/EButton.xaml" />
@@ -29,7 +30,9 @@
 
         <!-- SystemComponents -->
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/EWindow.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/FlatWindow.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/AvalonWindow.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/CornerWindow.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/WindowTitleBar.xaml" />
+        
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

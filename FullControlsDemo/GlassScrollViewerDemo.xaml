@@ -1,18 +1,18 @@
-﻿<fc:FlatWindow x:Class="FullControlsDemo.GlassScrollViewerDemo"
-               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-               xmlns:fc="http://devpelux.github.io/fullcontrols"
-               MergeTitlebarAndContent="True"
-               BorderThickness="{DynamicResource WindowBorderThickness}"
-               Background="{DynamicResource WindowBackground}"
-               BorderBrush="{DynamicResource WindowBorderBrush}"
-               Title="GlassScrollViewer"
-               Icon="/Icons/FullControlsSimple.ico"
-               ResizeMode="CanMinimize"
-               WindowStartupLocation="CenterScreen"
-               Height="300"
-               Width="400"
-               Loaded="Window_Loaded">
+﻿<fc:AvalonWindow x:Class="FullControlsDemo.GlassScrollViewerDemo"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:fc="http://devpelux.github.io/fullcontrols"
+                 MergeTitlebarAndContent="True"
+                 BorderThickness="{DynamicResource WindowBorderThickness}"
+                 Background="{DynamicResource WindowBackground}"
+                 BorderBrush="{DynamicResource WindowBorderBrush}"
+                 Title="GlassScrollViewer"
+                 Icon="/Icons/FullControlsSimple.ico"
+                 ResizeMode="CanMinimize"
+                 WindowStartupLocation="CenterScreen"
+                 Height="300"
+                 Width="400"
+                 Loaded="Window_Loaded">
     <Grid>
 
         <!--#region Background part-->
@@ -45,4 +45,4 @@
         <TextBlock x:Name="v1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,28,347,0" Text="0" Foreground="Gray" TextAlignment="Center"/>
         <TextBlock x:Name="v2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,256,0,0" Text="0" Foreground="Gray" TextAlignment="Center"/>
     </Grid>
-</fc:FlatWindow>
+</fc:AvalonWindow>
