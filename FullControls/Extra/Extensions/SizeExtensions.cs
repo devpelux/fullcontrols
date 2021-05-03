@@ -8,10 +8,10 @@ namespace FullControls.Extra.Extensions
     public static class SizeExtensions
     {
         /// <summary>
-        /// Sum a <see cref="Size"/> to another.
+        /// Sum a <see cref="Size"/> to the current <see cref="Size"/>.
         /// </summary>
-        /// <param name="a">Original <see cref="Size"/>.</param>
-        /// <param name="b"><see cref="Size"/> to sum to the original.</param>
+        /// <param name="a">Current <see cref="Size"/>.</param>
+        /// <param name="b"><see cref="Size"/> to sum to the current.</param>
         /// <returns></returns>
         public static Size Add(this Size a, Size b) => new(a.Width + b.Width, a.Height + b.Height);
 

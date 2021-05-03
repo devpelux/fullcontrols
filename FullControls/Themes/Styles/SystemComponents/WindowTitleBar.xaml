@@ -13,7 +13,6 @@
         </Style.Resources>
 
         <Setter Property="IconBackground" Value="Transparent" />
-        <Setter Property="DragAreaBackground" Value="Transparent" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         
         <Setter Property="MinimizeButtonStyle" Value="{DynamicResource CaptionButtonStyle}" />
@@ -44,7 +43,6 @@
                                   ContextMenu="{TemplateBinding TitlebarContextMenu}"
                                   Visibility="Visible">
                                 <Image x:Name="PART_IconImage"
-                                       Grid.Column="0"
                                        Width="24"
                                        Height="24"
                                        Stretch="Uniform"
@@ -62,13 +60,8 @@
                                        Foreground="{TemplateBinding Foreground}"
                                        Text="{TemplateBinding Title}"
                                        TextWrapping="NoWrap"
+                                       TextTrimming="CharacterEllipsis"
                                        IsHitTestVisible="False" />
-
-                            <Grid x:Name="PART_DragArea"
-                                  Grid.Column="1"
-                                  Margin="{TemplateBinding DragAreaMargin}"
-                                  Background="{TemplateBinding DragAreaBackground}"
-                                  Visibility="Visible" />
 
                             <Grid x:Name="PART_ButtonsArea"
                                   Grid.Column="2"
@@ -91,7 +84,9 @@
                                                   Content="&#xE949;"
                                                   Command="local:WindowCommands.Minimize"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                  Visibility="Visible" />
+                                                  Visibility="Visible"
+                                                  IsTabStop="False"
+                                                  WindowChrome.IsHitTestVisibleInChrome="True" />
                                 <controls:EButton x:Name="PART_MaximizeButton"
                                                   Grid.Column="1"
                                                   Style="{TemplateBinding MaximizeButtonStyle}"
@@ -101,7 +96,9 @@
                                                   Content="&#xE739;"
                                                   Command="local:WindowCommands.Maximize"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                  Visibility="Visible" />
+                                                  Visibility="Visible"
+                                                  IsTabStop="False"
+                                                  WindowChrome.IsHitTestVisibleInChrome="True" />
                                 <controls:EButton x:Name="PART_RestoreButton"
                                                   Grid.Column="2"
                                                   Style="{TemplateBinding RestoreButtonStyle}"
@@ -111,7 +108,9 @@
                                                   Content="&#xE923;"
                                                   Command="local:WindowCommands.Restore"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                  Visibility="Visible" />
+                                                  Visibility="Visible"
+                                                  IsTabStop="False"
+                                                  WindowChrome.IsHitTestVisibleInChrome="True" />
                                 <controls:EButton x:Name="PART_CloseButton"
                                                   Grid.Column="3"
                                                   Style="{TemplateBinding CloseButtonStyle}"
@@ -121,7 +120,9 @@
                                                   Content="&#xE106;"
                                                   Command="local:WindowCommands.Close"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                  Visibility="Visible" />
+                                                  Visibility="Visible"
+                                                  IsTabStop="False"
+                                                  WindowChrome.IsHitTestVisibleInChrome="True" />
                             </Grid>
                         </Grid>
                     </Border>
@@ -129,9 +130,6 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="Icon" Value="{x:Null}">
                             <Setter TargetName="PART_Icon" Property="Visibility" Value="Collapsed" />
-                        </Trigger>
-                        <Trigger Property="EnableDragArea" Value="False">
-                            <Setter TargetName="PART_DragArea" Property="Visibility" Value="Collapsed" />
                         </Trigger>
                         <Trigger Property="EnableMinimizeButton" Value="False">
                             <Setter TargetName="PART_MinimizeButton" Property="Visibility" Value="Collapsed" />

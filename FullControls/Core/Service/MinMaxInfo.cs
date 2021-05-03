@@ -3,12 +3,12 @@
 namespace FullControls.Core.Service
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal struct MinMaxInfo
+    internal struct MINMAXINFO
     {
-        public IntPoint ptReserved;
-        public IntPoint ptMaxSize;
-        public IntPoint ptMaxPosition;
-        public IntPoint ptMinTrackSize;
-        public IntPoint ptMaxTrackSize;
+        public POINT ptReserved;
+        public POINT ptMaxSize;
+        public POINT ptMaxPosition;
+        public POINT ptMinTrackSize;
+        public POINT ptMaxTrackSize;
     };
 }

@@ -1,7 +1,6 @@
 ﻿using FullControls.Core;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 
 namespace FullControls.SystemComponents
@@ -9,14 +8,8 @@ namespace FullControls.SystemComponents
     /// <summary>
     /// Represents a standard window title bar with an icon, a title, and four caption buttons.
     /// </summary>
-    [TemplatePart(Name = PartDragArea, Type = typeof(UIElement))]
     public class WindowTitleBar : TitleBar
     {
-        /// <summary>
-        /// TitleBar template part.
-        /// </summary>
-        protected const string PartDragArea = "PART_DragArea";
-
         /// <summary>
         /// Gets or sets the margin of the title.
         /// </summary>
@@ -30,7 +23,8 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="TitleMargin"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty TitleMarginProperty =
-            DependencyProperty.Register(nameof(TitleMargin), typeof(Thickness), typeof(WindowTitleBar));
+            DependencyProperty.Register(nameof(TitleMargin), typeof(Thickness), typeof(WindowTitleBar),
+                new FrameworkPropertyMetadata(new Thickness(5,0,5,0)));
 
         /// <summary>
         /// Gets or sets the icon.
@@ -76,53 +70,6 @@ namespace FullControls.SystemComponents
         /// </summary>
         public static readonly DependencyProperty IconBackgroundProperty =
             DependencyProperty.Register(nameof(IconBackground), typeof(Brush), typeof(WindowTitleBar),
-                new FrameworkPropertyMetadata(Brushes.Transparent));
-
-        /// <summary>
-        /// Gets or sets a value indicating if enable the drag area.
-        /// </summary>
-        public bool EnableDragArea
-        {
-            get => (bool)GetValue(EnableDragAreaProperty);
-            set => SetValue(EnableDragAreaProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="EnableDragArea"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty EnableDragAreaProperty =
-            DependencyProperty.Register(nameof(EnableDragArea), typeof(bool), typeof(WindowTitleBar),
-                new PropertyMetadata(BoolBox.True));
-
-        /// <summary>
-        /// Gets or sets the margin of the drag area.
-        /// </summary>
-        public Thickness DragAreaMargin
-        {
-            get => (Thickness)GetValue(DragAreaMarginProperty);
-            set => SetValue(DragAreaMarginProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="DragAreaMargin"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty DragAreaMarginProperty =
-            DependencyProperty.Register(nameof(DragAreaMargin), typeof(Thickness), typeof(WindowTitleBar));
-
-        /// <summary>
-        /// Gets or sets the background brush of the drag area.
-        /// </summary>
-        public Brush DragAreaBackground
-        {
-            get => (Brush)GetValue(DragAreaBackgroundProperty);
-            set => SetValue(DragAreaBackgroundProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="DragAreaBackground"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty DragAreaBackgroundProperty =
-            DependencyProperty.Register(nameof(DragAreaBackground), typeof(Brush), typeof(WindowTitleBar),
                 new FrameworkPropertyMetadata(Brushes.Transparent));
 
         /// <summary>
@@ -309,55 +256,5 @@ namespace FullControls.SystemComponents
         /// Initializes a new instance of <see cref="WindowTitleBar"/>.
         /// </summary>
         public WindowTitleBar() : base() { }
-
-        /// <inheritdoc/>
-        public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-            UIElement dragArea = (UIElement)Template.FindName(PartDragArea, this);
-            if (dragArea != null)
-            {
-                dragArea.MouseLeftButtonDown += PART_DragArea_MouseLeftButtonDown;
-                dragArea.MouseMove += PART_DragArea_MouseMove;
-                dragArea.TouchMove += PART_DragArea_TouchMove;
-            }
-        }
-
-        #region Drag area event handlers
-
-        /// <summary>
-        /// Called when the drag area is clicked by the mouse left button.
-        /// </summary>
-        /// <param name="sender">Object that triggered the event.</param>
-        /// <param name="e">Event data.</param>
-        private void PART_DragArea_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            e.Handled = true;
-            if (e.ClickCount >= 2) WindowCommands.SwitchState.Execute(null, this);
-        }
-
-        /// <summary>
-        /// Called when the mouse is moved above the drag area.
-        /// </summary>
-        /// <param name="sender">Object that triggered the event.</param>
-        /// <param name="e">Event data.</param>
-        private void PART_DragArea_MouseMove(object sender, MouseEventArgs e)
-        {
-            e.Handled = true;
-            if (e.LeftButton == MouseButtonState.Pressed) WindowCommands.Drag.Execute(null, this);
-        }
-
-        /// <summary>
-        /// Called when the touch is moved above the drag area.
-        /// </summary>
-        /// <param name="sender">Object that triggered the event.</param>
-        /// <param name="e">Event data.</param>
-        private void PART_DragArea_TouchMove(object sender, TouchEventArgs e)
-        {
-            e.Handled = true;
-            WindowCommands.Drag.Execute(null, this);
-        }
-
-        #endregion
     }
 }

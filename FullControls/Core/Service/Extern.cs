@@ -40,12 +40,37 @@ namespace FullControls.Core.Service
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        internal static extern bool GetCursorPos(out IntPoint lpPoint);
+        internal static extern bool GetCursorPos(out POINT lpPoint);
 
         [DllImport("user32.dll", SetLastError = true)]
-        internal static extern IntPtr MonitorFromPoint(IntPoint pt, MonitorOptions dwFlags);
+        internal static extern IntPtr MonitorFromPoint(POINT pt, MonitorOptions dwFlags);
 
         [DllImport("user32.dll")]
-        internal static extern bool GetMonitorInfo(IntPtr hMonitor, MonitorInfo lpmi);
+        internal static extern bool GetMonitorInfo(IntPtr hMonitor, MONITORINFO lpmi);
+
+        [DllImport("kernel32", SetLastError = true, ExactSpelling = true, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern IntPtr GetProcAddress(IntPtr hModule, string procName);
+
+        [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern IntPtr LoadLibrary(string lpFileName);
+
+        [DllImport("dwmapi.dll", PreserveSig = false)]
+        internal static extern bool DwmIsCompositionEnabled();
+
+        internal delegate int DwmExtendFrameIntoClientAreaDelegate(IntPtr hwnd, ref MARGINS margins);
+
+        internal static int DwmExtendFrameIntoClientArea(IntPtr hwnd, ref MARGINS margins)
+        {
+            var hModule = LoadLibrary("dwmapi");
+            if (hModule == IntPtr.Zero) return 0;
+
+            var procAddress = GetProcAddress(hModule, "DwmExtendFrameIntoClientArea");
+            if (procAddress == IntPtr.Zero) return 0;
+
+            var delegateForFunctionPointer = (DwmExtendFrameIntoClientAreaDelegate)Marshal.GetDelegateForFunctionPointer(procAddress, typeof(DwmExtendFrameIntoClientAreaDelegate));
+            return delegateForFunctionPointer(hwnd, ref margins);
+        }
+
+        internal static bool IsDwmAvailable() => LoadLibrary("dwmapi") != IntPtr.Zero;
     }
 }

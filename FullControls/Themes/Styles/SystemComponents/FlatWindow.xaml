@@ -19,13 +19,12 @@
         <Setter Property="ResizeThickness" Value="4"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Gray10}"/>
-        <Setter Property="BorderBrushOnActive" Value="{DynamicResource Blue10}"/>
+        <Setter Property="BorderBrushOnActive" Value="{DynamicResource Blue7}"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="ForegroundOnActive" Value="Black"/>
         <Setter Property="TitlebarBackground" Value="White"/>
         <Setter Property="TitlebarBackgroundOnActive" Value="White"/>
-        <Setter Property="DragAreaBackground" Value="Transparent"/>
         <Setter Property="IconBackground" Value="Transparent"/>
         <Setter Property="ButtonsAreaBackground" Value="Transparent"/>
         <Setter Property="ContextMenu" Value="{x:Null}"/>
@@ -40,7 +39,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:FlatWindow}">
-                    <Grid x:Name="PART_Window">
+                    <Grid x:Name="PART_Window"
+                          Background="{TemplateBinding ActualBorderBrush}">
                         <Border x:Name="PART_Border"
                                 Margin="{TemplateBinding OverflowMargin}"
                                 Background="{TemplateBinding Background}"
@@ -79,9 +79,6 @@
                                                       Icon="{TemplateBinding Icon}"
                                                       IconMargin="{TemplateBinding IconMargin}"
                                                       IconBackground="{TemplateBinding IconBackground}"
-                                                      EnableDragArea="{TemplateBinding EnableDragArea}"
-                                                      DragAreaMargin="{TemplateBinding DragAreaMargin}"
-                                                      DragAreaBackground="{TemplateBinding DragAreaBackground}"
                                                       ButtonsAreaMargin="{TemplateBinding ButtonsAreaMargin}"
                                                       ButtonsAreaBackground="{TemplateBinding ButtonsAreaBackground}"
                                                       MinimizeButtonStyle="{TemplateBinding MinimizeButtonStyle}"
@@ -104,6 +101,7 @@
                         </Trigger>
                         <Trigger Property="WindowState" Value="Maximized">
                             <Setter TargetName="PART_TitleBar" Property="EnableMaximizeButton" Value="False" />
+                            <Setter TargetName="PART_Border" Property="BorderThickness" Value="0" />
                         </Trigger>
                         <Trigger Property="ResizeMode" Value="CanMinimize">
                             <Setter TargetName="PART_TitleBar" Property="EnableMaximizeButton" Value="False" />

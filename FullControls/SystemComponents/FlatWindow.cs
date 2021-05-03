@@ -1,7 +1,5 @@
 ﻿using FullControls.Common;
 using FullControls.Core;
-using FullControls.Extra;
-using FullControls.Extra.Extensions;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -128,7 +126,8 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="MergeTitlebarAndContent"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty MergeTitlebarAndContentProperty =
-            DependencyProperty.Register(nameof(MergeTitlebarAndContent), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.False));
+            DependencyProperty.Register(nameof(MergeTitlebarAndContent), typeof(bool), typeof(FlatWindow),
+                new FrameworkPropertyMetadata(BoolBox.False, FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         /// <summary>
         /// Gets or sets the margin of the titlebar.
@@ -143,7 +142,8 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="TitlebarMargin"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty TitlebarMarginProperty =
-            DependencyProperty.Register(nameof(TitlebarMargin), typeof(Thickness), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(TitlebarMargin), typeof(Thickness), typeof(FlatWindow),
+                new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         /// <summary>
         /// Gets or sets the background brush of the titlebar.
@@ -219,7 +219,8 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="TitleMargin"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty TitleMarginProperty =
-            DependencyProperty.Register(nameof(TitleMargin), typeof(Thickness), typeof(FlatWindow));
+            DependencyProperty.Register(nameof(TitleMargin), typeof(Thickness), typeof(FlatWindow),
+                new FrameworkPropertyMetadata(new Thickness(5, 0, 5, 0)));
 
         /// <summary>
         /// Gets or sets the margin of the titlebar icon.
@@ -250,51 +251,6 @@ namespace FullControls.SystemComponents
         /// </summary>
         public static readonly DependencyProperty IconBackgroundProperty =
             DependencyProperty.Register(nameof(IconBackground), typeof(Brush), typeof(FlatWindow));
-
-        /// <summary>
-        /// Gets or sets a value indicating if enable the titlebar drag area.
-        /// </summary>
-        public bool EnableDragArea
-        {
-            get => (bool)GetValue(EnableDragAreaProperty);
-            set => SetValue(EnableDragAreaProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="EnableDragArea"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty EnableDragAreaProperty =
-            DependencyProperty.Register(nameof(EnableDragArea), typeof(bool), typeof(FlatWindow), new PropertyMetadata(BoolBox.True));
-
-        /// <summary>
-        /// Gets or sets the margin of the titlebar drag area.
-        /// </summary>
-        public Thickness DragAreaMargin
-        {
-            get => (Thickness)GetValue(DragAreaMarginProperty);
-            set => SetValue(DragAreaMarginProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="DragAreaMargin"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty DragAreaMarginProperty =
-            DependencyProperty.Register(nameof(DragAreaMargin), typeof(Thickness), typeof(FlatWindow));
-
-        /// <summary>
-        /// Gets or sets the background brush of the titlebar drag area.
-        /// </summary>
-        public Brush DragAreaBackground
-        {
-            get => (Brush)GetValue(DragAreaBackgroundProperty);
-            set => SetValue(DragAreaBackgroundProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="DragAreaBackground"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty DragAreaBackgroundProperty =
-            DependencyProperty.Register(nameof(DragAreaBackground), typeof(Brush), typeof(FlatWindow));
 
         /// <summary>
         /// Gets or sets the margin of the titlebar buttons area.
@@ -481,7 +437,8 @@ namespace FullControls.SystemComponents
         /// </summary>
         public static readonly DependencyProperty ResizeThicknessProperty =
             DependencyProperty.Register(nameof(ResizeThickness), typeof(Thickness), typeof(FlatWindow),
-                new FrameworkPropertyMetadata(new Thickness(4d), new PropertyChangedCallback((d, e) => ((FlatWindow)d).OnResizeThicknessChanged((Thickness)e.NewValue))));
+                new FrameworkPropertyMetadata(new Thickness(4d), FrameworkPropertyMetadataOptions.AffectsMeasure,
+                    new PropertyChangedCallback((d, e) => ((FlatWindow)d).OnResizeThicknessChanged((Thickness)e.NewValue))));
 
         /// <summary>
         /// Gets or sets a value indicating if enable the minimize action by using the taskbar.
@@ -542,7 +499,7 @@ namespace FullControls.SystemComponents
         /// </summary>
         private static readonly DependencyPropertyKey OverflowMarginPropertyKey =
             DependencyProperty.RegisterReadOnly(nameof(OverflowMargin), typeof(Thickness), typeof(FlatWindow),
-                new FrameworkPropertyMetadata(new Thickness()));
+                new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         /// <summary>
         /// Identifies the <see cref="OverflowMargin"/> dependency property.
@@ -625,10 +582,10 @@ namespace FullControls.SystemComponents
         public FlatWindow() : base()
         {
             Loaded += (o, e) => OnLoaded(e);
-            OnPreInitialize();
-            LoadCommands();
             DependencyPropertyDescriptor.FromProperty(IsActiveProperty, typeof(FlatWindow))
                 ?.AddValueChanged(this, (s, e) => OnActiveChanged(IsActive));
+            LoadCommands();
+            OnInitializing();
         }
 
         /// <inheritdoc/>
@@ -642,20 +599,28 @@ namespace FullControls.SystemComponents
         }
 
         /// <summary>
-        /// Executed before the window is initialized.
+        /// Executed when the object is initializing (is called directly in the main constructor).
         /// </summary>
-        protected virtual void OnPreInitialize()
+        protected virtual void OnInitializing()
         {
-            WindowChrome wc = WindowChromeExtensions.DefaultWindowChrome;
-            wc.ResizeBorderThickness = ResizeThickness;
+            WindowChrome wc = new()
+            {
+                GlassFrameThickness = new Thickness(0, 0, 0, 1),
+                NonClientFrameEdges = NonClientFrameEdges.Bottom,
+                UseAeroCaptionButtons = false,
+                CaptionHeight = TITLEBAR_HEIGHT,
+                ResizeBorderThickness = ResizeThickness,
+                CornerRadius = new CornerRadius()
+            };
             WindowChrome.SetWindowChrome(this, wc);
+            SetValue(OverflowMarginPropertyKey, WindowCore.GetOverflowMargin(WindowState));
         }
 
         /// <inheritdoc/>
         protected override void OnSourceInitialized(EventArgs e)
         {
-            WindowCore.GetHwndSource(this)?.AddHook(HandleMessages);
             base.OnSourceInitialized(e);
+            WindowCore.GetHwndSource(this)?.AddHook(HandleMessages);
         }
 
         /// <summary>
@@ -697,9 +662,8 @@ namespace FullControls.SystemComponents
         /// <param name="newValue">New thickness value.</param>
         protected virtual void OnResizeThicknessChanged(Thickness newValue)
         {
-            WindowChrome wc = WindowChromeExtensions.CloneOrCreateWindowChrome(this);
-            wc.ResizeBorderThickness = newValue;
-            WindowChrome.SetWindowChrome(this, wc);
+            WindowChrome wc = WindowChrome.GetWindowChrome(this);
+            if (wc != null) wc.ResizeBorderThickness = newValue;
         }
 
         /// <summary>
@@ -792,7 +756,7 @@ namespace FullControls.SystemComponents
             PreviewClose?.Invoke(this, e);
             if (!e.Cancel)
             {
-                SetValue(OverflowMarginPropertyKey, new Thickness());
+                SetValue(OverflowMarginPropertyKey, WindowCore.GetOverflowMargin(WindowState));
                 base.Close();
             }
         }
@@ -860,28 +824,6 @@ namespace FullControls.SystemComponents
         {
             SetValue(IsHidedPropertyKey, BoolBox.False);
             return base.ShowDialog();
-        }
-
-        /// <summary>
-        /// Allows a window to be dragged by a mouse with its left button down over an exposed area of the window's client area.
-        /// </summary>
-        /// <exception cref="InvalidOperationException">The left mouse button is not down.</exception>
-        public new void DragMove()
-        {
-            if (WindowState == WindowState.Maximized)
-            {
-                Point curpos = Tools.GetCursorPos();
-                double targetVertical = TITLEBAR_HEIGHT / 2;
-                double targetHorizontal = curpos.X < RestoreBounds.Width / 2 ? curpos.X
-                                        : curpos.X > ActualWidth - (RestoreBounds.Width / 2) ? RestoreBounds.Width - (ActualWidth - curpos.X)
-                                        : RestoreBounds.Width / 2;
-
-                Top = curpos.Y - targetVertical;
-                Left = curpos.X - targetHorizontal;
-
-                Restore();
-            }
-            base.DragMove();
         }
 
         #endregion
@@ -1016,6 +958,17 @@ namespace FullControls.SystemComponents
                 handled = true;
                 if (EnableMinimizeByTaskbar) Minimize();
             }
+            else if (msg == WindowCore.WM_NCPAINT)
+            {
+                handled = false;
+                WindowCore.RemoveFrame(this, new Thickness(0, 0, 0, 1));
+            }
+            else if (msg == WindowCore.WM_NCCALCSIZE)
+            {
+                handled = true;
+                return WindowCore.WmNcCalcSize(wParam, lParam);
+            }
+
             return IntPtr.Zero;
         }
 

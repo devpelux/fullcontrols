@@ -12,6 +12,11 @@
     <SolidColorBrush x:Key="WindowBorderBrush"
                      Color="Gray" />
 
+    <SolidColorBrush x:Key="WhiteTransparent"
+                     Color="#00FFFFFF" />
+    <SolidColorBrush x:Key="BlackTransparent"
+                     Color="#00000000" />
+
     <DrawingBrush x:Key="GrayDashed"
                   Viewport="0,0,8,8"
                   ViewportUnits="Absolute"

@@ -318,4 +318,44 @@
         <Setter Property="VerticalScrollBarButtonsForegroundOnDisabled" Value="Black"/>
     </Style>
 
+    <Style x:Key="CaptionButtonStyleDark" TargetType="{x:Type fc:EButton}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Width" Value="46"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Background" Value="#00000000"/>
+        <Setter Property="BackgroundOnMouseOver" Value="#FF333333"/>
+        <Setter Property="BackgroundOnPressed" Value="#FF404040"/>
+        <Setter Property="BackgroundOnDisabled" Value="#00000000"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="#00000000"/>
+        <Setter Property="BorderBrushOnMouseOver" Value="#FF333333"/>
+        <Setter Property="BorderBrushOnPressed" Value="#FF404040"/>
+        <Setter Property="BorderBrushOnDisabled" Value="#00000000"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="ForegroundOnMouseOver" Value="White"/>
+        <Setter Property="ForegroundOnPressed" Value="White"/>
+        <Setter Property="ForegroundOnDisabled" Value="DimGray"/>
+        <Setter Property="AnimationTime" Value="0:0:0.07"/>
+    </Style>
+
+    <Style x:Key="CaptionCloseButtonStyleDark" TargetType="{x:Type fc:EButton}">
+        <Setter Property="Height" Value="32"/>
+        <Setter Property="Width" Value="46"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Background" Value="#00000000"/>
+        <Setter Property="BackgroundOnMouseOver" Value="Red"/>
+        <Setter Property="BackgroundOnPressed" Value="Firebrick"/>
+        <Setter Property="BackgroundOnDisabled" Value="#00000000"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="#00000000"/>
+        <Setter Property="BorderBrushOnMouseOver" Value="Red"/>
+        <Setter Property="BorderBrushOnPressed" Value="Firebrick"/>
+        <Setter Property="BorderBrushOnDisabled" Value="#00000000"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="ForegroundOnMouseOver" Value="White"/>
+        <Setter Property="ForegroundOnPressed" Value="White"/>
+        <Setter Property="ForegroundOnDisabled" Value="DimGray"/>
+        <Setter Property="AnimationTime" Value="0:0:0.07"/>
+    </Style>
+
 </ResourceDictionary>

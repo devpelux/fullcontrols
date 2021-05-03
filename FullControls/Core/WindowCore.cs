@@ -1,4 +1,5 @@
 ﻿using FullControls.Core.Service;
+using FullControls.Extra.Extensions;
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -12,6 +13,8 @@ namespace FullControls.Core
     /// </summary>
     internal static class WindowCore
     {
+        internal const int WM_NCCALCSIZE = 0x83;
+        internal const int WM_NCPAINT = 0x85;
         internal const int WM_SYSCOMMAND = 0x0112;
         internal const int WM_GETMINMAXINFO = 0x0024;
         internal const int SC_CLOSE = 0xF060;
@@ -24,18 +27,41 @@ namespace FullControls.Core
 
         internal static Window GetActiveWindow() => Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
 
+        internal static IntPtr WmNcCalcSize(IntPtr wParam, IntPtr lParam)
+        {
+            RECT rcClientArea = (RECT)Marshal.PtrToStructure(lParam, typeof(RECT));
+            rcClientArea.Bottom += (int)(SysParams.WindowResizeBorderThickness.Bottom / 2);
+            Marshal.StructureToPtr(rcClientArea, lParam, false);
+
+            return wParam == new IntPtr(1) ? new IntPtr((int)WVR.REDRAW) : IntPtr.Zero;
+        }
+
+        internal static void RemoveFrame(Window window, Thickness frameThickness)
+        {
+            if (Environment.OSVersion.Version.Major >= 6 && Extern.IsDwmAvailable())
+            {
+                if (Extern.DwmIsCompositionEnabled() && SystemParameters.DropShadow)
+                {
+                    MARGINS margins = new(frameThickness);
+                    WindowInteropHelper helper = new(window);
+
+                    Extern.DwmExtendFrameIntoClientArea(helper.Handle, ref margins);
+                }
+            }
+        }
+
         internal static void WmGetMinMaxInfo(IntPtr lParam)
         {
-            Extern.GetCursorPos(out IntPoint lMousePosition);
+            Extern.GetCursorPos(out POINT lMousePosition);
 
-            IntPtr lPrimaryScreen = Extern.MonitorFromPoint(new IntPoint(0, 0), MonitorOptions.MONITOR_DEFAULTTOPRIMARY);
-            MonitorInfo lPrimaryScreenInfo = new();
+            IntPtr lPrimaryScreen = Extern.MonitorFromPoint(new POINT(0, 0), MonitorOptions.MONITOR_DEFAULTTOPRIMARY);
+            MONITORINFO lPrimaryScreenInfo = new();
 
             if (Extern.GetMonitorInfo(lPrimaryScreen, lPrimaryScreenInfo) == false) return;
 
             IntPtr lCurrentScreen = Extern.MonitorFromPoint(lMousePosition, MonitorOptions.MONITOR_DEFAULTTONEAREST);
 
-            MinMaxInfo lMmi = (MinMaxInfo)Marshal.PtrToStructure(lParam, typeof(MinMaxInfo));
+            MINMAXINFO lMmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
 
             if (lPrimaryScreen.Equals(lCurrentScreen) == true)
             {
@@ -59,6 +85,7 @@ namespace FullControls.Core
             => HwndSource.FromHwnd(new WindowInteropHelper(window).EnsureHandle());
 
         internal static Thickness GetOverflowMargin(WindowState windowState)
-            => windowState == WindowState.Maximized ? SysParams.WindowResizeBorderThickness : new Thickness();
+            => windowState == WindowState.Maximized ? SysParams.WindowResizeBorderThickness.Add(SysParams.LayoutOffsetThickness)
+                                                    : SysParams.LayoutOffsetThickness;
     }
 }

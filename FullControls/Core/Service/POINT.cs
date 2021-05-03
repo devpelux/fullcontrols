@@ -3,12 +3,12 @@
 namespace FullControls.Core.Service
 {
     [StructLayout(LayoutKind.Sequential)]
-    internal struct IntPoint
+    internal struct POINT
     {
         public int X;
         public int Y;
 
-        public IntPoint(int x, int y)
+        public POINT(int x, int y)
         {
             X = x;
             Y = y;

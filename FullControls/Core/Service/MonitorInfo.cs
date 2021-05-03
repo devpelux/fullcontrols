@@ -3,11 +3,11 @@
 namespace FullControls.Core.Service
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
-    internal class MonitorInfo
+    internal class MONITORINFO
     {
-        public int cbSize = Marshal.SizeOf(typeof(MonitorInfo));
-        public IntRect rcMonitor = new();
-        public IntRect rcWork = new();
+        public int cbSize = Marshal.SizeOf(typeof(MONITORINFO));
+        public RECT rcMonitor = new();
+        public RECT rcWork = new();
         public int dwFlags = 0;
     }
 }

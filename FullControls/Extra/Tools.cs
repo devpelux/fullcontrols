@@ -14,7 +14,7 @@ namespace FullControls.Extra
         /// <returns>Cursor position.</returns>
         public static Point GetCursorPos()
         {
-            Extern.GetCursorPos(out IntPoint lMousePosition);
+            Extern.GetCursorPos(out POINT lMousePosition);
             return new Point(lMousePosition.X, lMousePosition.Y);
         }
     }

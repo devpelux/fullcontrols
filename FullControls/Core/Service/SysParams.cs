@@ -144,6 +144,8 @@ namespace FullControls.Core.Service
             }
         }
 
+        public static Thickness LayoutOffsetThickness => new(0d, 0d, 0d, SystemParameters.WindowResizeBorderThickness.Bottom);
+
         #endregion
 
 
