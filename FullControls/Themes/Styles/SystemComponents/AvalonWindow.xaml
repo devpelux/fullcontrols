@@ -28,7 +28,6 @@
         <Setter Property="IconBackground" Value="Transparent"/>
         <Setter Property="ButtonsAreaBackground" Value="Transparent"/>
         <Setter Property="ContextMenu" Value="{x:Null}"/>
-        <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
 
         <Setter Property="MinimizeButtonStyle" Value="{DynamicResource CaptionButtonStyle}" />
@@ -88,8 +87,7 @@
                                                       EnableMinimizeButton="{TemplateBinding EnableMinimizeButton}"
                                                       EnableMaximizeButton="{TemplateBinding EnableMaximizeButton}"
                                                       EnableRestoreButton="{TemplateBinding EnableRestoreButton}"
-                                                      EnableCloseButton="{TemplateBinding EnableCloseButton}"
-                                                      TitlebarContextMenu="{TemplateBinding TitlebarContextMenu}" />
+                                                      EnableCloseButton="{TemplateBinding EnableCloseButton}" />
 
                             </Grid>
                         </Border>

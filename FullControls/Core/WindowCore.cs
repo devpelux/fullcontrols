@@ -81,10 +81,13 @@ namespace FullControls.Core
             Marshal.StructureToPtr(lMmi, lParam, true);
         }
 
+        internal static void AddHook(this Window window, HwndSourceHook hook)
+            => GetHwndSource(window)?.AddHook(hook);
+
         internal static HwndSource GetHwndSource(Window window)
             => HwndSource.FromHwnd(new WindowInteropHelper(window).EnsureHandle());
 
-        internal static Thickness GetOverflowMargin(WindowState windowState)
+        internal static Thickness CalcAvalonWindowOverflowMargin(WindowState windowState)
             => windowState == WindowState.Maximized ? SysParams.WindowResizeBorderThickness.Add(SysParams.LayoutOffsetThickness)
                                                     : SysParams.LayoutOffsetThickness;
     }

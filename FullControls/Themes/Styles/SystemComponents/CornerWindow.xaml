@@ -16,7 +16,9 @@
             </ResourceDictionary>
         </Style.Resources>
         
+        <Setter Property="WindowStyle" Value="None"/>
         <Setter Property="ResizeThickness" Value="4"/>
+        <Setter Property="CornerRadius" Value="8"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Gray10}"/>
         <Setter Property="BorderBrushOnActive" Value="{DynamicResource Blue7}"/>
@@ -28,7 +30,6 @@
         <Setter Property="IconBackground" Value="Transparent"/>
         <Setter Property="ButtonsAreaBackground" Value="Transparent"/>
         <Setter Property="ContextMenu" Value="{x:Null}"/>
-        <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
 
         <Setter Property="MinimizeButtonStyle" Value="{DynamicResource CaptionButtonStyle}" />
@@ -39,13 +40,29 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:CornerWindow}">
-                    <Grid x:Name="PART_Window"
-                          Background="{TemplateBinding ActualBorderBrush}">
+                    <Grid x:Name="PART_Window">
+                        <Border x:Name="PART_ShadowBorder"
+                                BorderThickness="1"
+                                Margin="20"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                IsHitTestVisible="False"
+                                Focusable="False">
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="PART_Shadow"
+                                                  Color="Black"
+                                                  Opacity="0.8"
+                                                  BlurRadius="20"
+                                                  ShadowDepth="0" />
+                            </Border.Effect>
+                        </Border>
                         <Border x:Name="PART_Border"
-                                Margin="{TemplateBinding OverflowMargin}"
+                                Margin="20"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding ActualBorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                             <Grid x:Name="PART_WindowParts">
                                 <Grid.Clip>
@@ -88,8 +105,7 @@
                                                       EnableMinimizeButton="{TemplateBinding EnableMinimizeButton}"
                                                       EnableMaximizeButton="{TemplateBinding EnableMaximizeButton}"
                                                       EnableRestoreButton="{TemplateBinding EnableRestoreButton}"
-                                                      EnableCloseButton="{TemplateBinding EnableCloseButton}"
-                                                      TitlebarContextMenu="{TemplateBinding TitlebarContextMenu}" />
+                                                      EnableCloseButton="{TemplateBinding EnableCloseButton}" />
 
                             </Grid>
                         </Border>
