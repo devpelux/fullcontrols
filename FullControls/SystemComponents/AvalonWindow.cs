@@ -30,7 +30,7 @@ namespace FullControls.SystemComponents
                 GlassFrameThickness = new Thickness(0, 0, 0, 1),
                 NonClientFrameEdges = NonClientFrameEdges.Bottom,
                 UseAeroCaptionButtons = false,
-                CaptionHeight = TITLEBAR_HEIGHT,
+                CaptionHeight = EnableTitlebar ? TITLEBAR_HEIGHT : 0,
                 ResizeBorderThickness = ResizeThickness,
                 CornerRadius = new CornerRadius()
             };

@@ -112,13 +112,29 @@ namespace FullControls.SystemComponents
         #region Titlebar properties
 
         /// <summary>
+        /// Gets or sets a value indicating if enable the titlebar.
+        /// </summary>
+        public bool EnableTitlebar
+        {
+            get => (bool)GetValue(EnableTitlebarProperty);
+            set => SetValue(EnableTitlebarProperty, BoolBox.Box(value));
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnableTitlebar"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnableTitlebarProperty =
+            DependencyProperty.Register(nameof(EnableTitlebar), typeof(bool), typeof(WindowPlus),
+                new FrameworkPropertyMetadata(BoolBox.True, FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        /// <summary>
         /// <para>Gets or sets a value indicating if merge the titlebar with the content.</para>
         /// <para>The titlebar becomes transparent and is displayed above the content.</para>
         /// </summary>
         public bool MergeTitlebarAndContent
         {
             get => (bool)GetValue(MergeTitlebarAndContentProperty);
-            set => SetValue(MergeTitlebarAndContentProperty, value);
+            set => SetValue(MergeTitlebarAndContentProperty, BoolBox.Box(value));
         }
 
         /// <summary>
@@ -289,7 +305,7 @@ namespace FullControls.SystemComponents
         public bool EnableMinimizeButton
         {
             get => (bool)GetValue(EnableMinimizeButtonProperty);
-            set => SetValue(EnableMinimizeButtonProperty, value);
+            set => SetValue(EnableMinimizeButtonProperty, BoolBox.Box(value));
         }
 
         /// <summary>
@@ -304,7 +320,7 @@ namespace FullControls.SystemComponents
         public bool EnableMaximizeButton
         {
             get => (bool)GetValue(EnableMaximizeButtonProperty);
-            set => SetValue(EnableMaximizeButtonProperty, value);
+            set => SetValue(EnableMaximizeButtonProperty, BoolBox.Box(value));
         }
 
         /// <summary>
@@ -319,7 +335,7 @@ namespace FullControls.SystemComponents
         public bool EnableRestoreButton
         {
             get => (bool)GetValue(EnableRestoreButtonProperty);
-            set => SetValue(EnableRestoreButtonProperty, value);
+            set => SetValue(EnableRestoreButtonProperty, BoolBox.Box(value));
         }
 
         /// <summary>
@@ -334,7 +350,7 @@ namespace FullControls.SystemComponents
         public bool EnableCloseButton
         {
             get => (bool)GetValue(EnableCloseButtonProperty);
-            set => SetValue(EnableCloseButtonProperty, value);
+            set => SetValue(EnableCloseButtonProperty, BoolBox.Box(value));
         }
 
         /// <summary>

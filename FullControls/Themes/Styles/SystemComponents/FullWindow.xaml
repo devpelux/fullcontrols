@@ -108,7 +108,8 @@
                                                       EnableMinimizeButton="{TemplateBinding EnableMinimizeButton}"
                                                       EnableMaximizeButton="{TemplateBinding EnableMaximizeButton}"
                                                       EnableRestoreButton="{TemplateBinding EnableRestoreButton}"
-                                                      EnableCloseButton="{TemplateBinding EnableCloseButton}" />
+                                                      EnableCloseButton="{TemplateBinding EnableCloseButton}"
+                                                      Visibility="Visible" />
 
                             </Grid>
                         </Border>
@@ -140,7 +141,10 @@
                         <Trigger Property="MergeTitlebarAndContent" Value="True">
                             <Setter TargetName="PART_Content" Property="Margin" Value="0" />
                             <Setter TargetName="PART_TitleBar" Property="Background" Value="Transparent" />
-                        </Trigger>                        
+                        </Trigger>
+                        <Trigger Property="EnableTitlebar" Value="False">
+                            <Setter TargetName="PART_TitleBar" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

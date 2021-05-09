@@ -81,7 +81,7 @@ namespace FullControls.SystemComponents
                 GlassFrameThickness = new Thickness(-1),
                 NonClientFrameEdges = NonClientFrameEdges.None,
                 UseAeroCaptionButtons = false,
-                CaptionHeight = TITLEBAR_HEIGHT + OverflowMargin.Top,
+                CaptionHeight = EnableTitlebar ? TITLEBAR_HEIGHT + OverflowMargin.Top : 0,
                 ResizeBorderThickness = ResizeThickness,
                 CornerRadius = new CornerRadius()
             };
@@ -103,7 +103,7 @@ namespace FullControls.SystemComponents
         protected override void OnOverflowMarginChanged(Thickness thickness)
         {
             WindowChrome wc = WindowChrome.GetWindowChrome(this);
-            if (wc != null) wc.CaptionHeight = TITLEBAR_HEIGHT + thickness.Top;
+            if (wc != null) wc.CaptionHeight = EnableTitlebar ? TITLEBAR_HEIGHT + thickness.Top : 0;
         }
 
         /// <inheritdoc/>
