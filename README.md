@@ -236,6 +236,13 @@ Extended version of the classic window with the same features of AvalonWindow, b
 
 ---
 
+### FullWindow ![New](https://img.shields.io/badge/-NEW!-blue)
+Extended version of the classic window with the same features of FlexWindow but resizable. (This uses `AllowsTransparency=True`)
+
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/fullwindow.png"/>
+
+---
+
 ### WindowTitleBar ![New](https://img.shields.io/badge/-NEW!-blue)
 A fully customizable titlebar used in custom windows.
 

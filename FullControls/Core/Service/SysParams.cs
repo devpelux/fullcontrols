@@ -9,6 +9,7 @@ using System.Collections;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Shell;
 
 namespace FullControls.Core.Service
 {
@@ -144,6 +145,10 @@ namespace FullControls.Core.Service
             }
         }
 
+        /// <summary>
+        /// Offset margin based on <see cref="SystemParameters.WindowResizeBorderThickness"/>
+        /// when <see cref="WindowChrome.NonClientFrameEdges"/> is set to <see cref="NonClientFrameEdges.Bottom"/>.
+        /// </summary>
         public static Thickness LayoutOffsetThickness => new(0d, 0d, 0d, SystemParameters.WindowResizeBorderThickness.Bottom);
 
         #endregion

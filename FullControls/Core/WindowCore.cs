@@ -24,6 +24,10 @@ namespace FullControls.Core
         internal const int SC_MINIMIZE = 0xF020;
         internal const int SC_RESTORE = 0xF120;
 
+        internal static Thickness LayoutOffsetThickness => SysParams.LayoutOffsetThickness;
+
+        internal static Thickness WindowResizeBorderThickness => SysParams.WindowResizeBorderThickness;
+
 
         internal static Window GetActiveWindow() => Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
 

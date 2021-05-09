@@ -474,7 +474,8 @@ namespace FullControls.SystemComponents
         /// </summary>
         private static readonly DependencyPropertyKey IsDockedPropertyKey =
             DependencyProperty.RegisterReadOnly(nameof(IsDocked), typeof(bool), typeof(WindowPlus),
-                new PropertyMetadata(BoolBox.False));
+                new PropertyMetadata(BoolBox.False, new PropertyChangedCallback((d, e)
+                    => ((WindowPlus)d).OnIsDockedChanged((bool)e.NewValue))));
 
         /// <summary>
         /// Identifies the <see cref="IsDocked"/> dependency property.
@@ -658,11 +659,17 @@ namespace FullControls.SystemComponents
         }
 
         /// <summary>
-        /// Executed when the <see cref="Window.WindowState"/> is changed.
+        /// Called when <see cref="Window.WindowState"/> is changed.
         /// </summary>
         /// <param name="state">Current <see cref="WindowState"/>.</param>
         /// <param name="prevState">Previous <see cref="WindowState"/>.</param>
         protected virtual void OnStateChanged(WindowState state, WindowState prevState) => UpdateOverflowMargin();
+
+        /// <summary>
+        /// Called when <see cref="IsDocked"/> is changed.
+        /// </summary>
+        /// <param name="isDocked">Actual state of <see cref="IsDocked"/>.</param>
+        protected virtual void OnIsDockedChanged(bool isDocked) => UpdateOverflowMargin();
 
         /// <summary>
         /// Force the update of <see cref="OverflowMargin"/>.

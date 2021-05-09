@@ -32,6 +32,7 @@
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/EWindow.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/AvalonWindow.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/FlexWindow.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/FullWindow.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/WindowTitleBar.xaml" />
         
     </ResourceDictionary.MergedDictionaries>

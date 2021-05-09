@@ -1,0 +1,33 @@
+﻿<fc:FullWindow x:Class="FullControlsDemo.FullWindowDemo"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:fc="http://devpelux.github.io/fullcontrols"
+               BorderThickness="{DynamicResource WindowBorderThickness}"
+               Background="{DynamicResource WindowBackground}"
+               BorderBrush="{DynamicResource WindowBorderBrush}"
+               MergeTitlebarAndContent="True"
+               Title="FullWindow"
+               Icon="/Icons/FullControlsSimple.ico"
+               ResizeMode="CanResize"
+               WindowStartupLocation="CenterScreen"
+               Height="300"
+               Width="500">
+    <Grid>
+        <Grid x:Name="background"
+              ClipToBounds="True"
+              Visibility="Visible">
+            <Rectangle Fill="#FFE0EAF0"
+                       Margin="68,-236,256,64"
+                       RenderTransformOrigin="0.5,0.5">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform Angle="64.51" />
+                        <TranslateTransform />
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+        </Grid>
+    </Grid>
+</fc:FullWindow>
