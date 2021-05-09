@@ -229,8 +229,10 @@ Extended version of the classic window with possibility to customize the titleba
 
 ---
 
-### CornerWindow ![Experimental](https://img.shields.io/badge/-EXPERIMENTAL!-blueviolet)
-Extended version of AvalonWindow with support for round angles.
+### FlexWindow ![New](https://img.shields.io/badge/-NEW!-blue)
+Extended version of the classic window with the same features of AvalonWindow, but with the support for round angles and custom shadow. (This window can only be minimized, is not resizable or maximizable)
+
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/flexwindow.png"/>
 
 ---
 

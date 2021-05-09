@@ -76,6 +76,23 @@ namespace FullControls.Core
         }
 
         /// <summary>
+        /// Generates a <see cref="DoubleAnimation"/> ready to be added to a <see cref="Storyboard"/> with the specified parameters.
+        /// </summary>
+        /// <param name="from">Starting value.</param>
+        /// <param name="to">Ending value.</param>
+        /// <param name="duration">Animation duration.</param>
+        /// <param name="targetObject">Target object of the animation.</param>
+        /// <param name="targetProperty">Target property to animate.</param>
+        /// <returns><see cref="DoubleAnimation"/> ready to be added to a <see cref="Storyboard"/>.</returns>
+        internal static DoubleAnimation GenerateDoubleAnimation(double from, double to, TimeSpan duration, DependencyObject targetObject, PropertyPath targetProperty)
+        {
+            DoubleAnimation doubleAnimation = new(from, to, new Duration(duration));
+            Storyboard.SetTarget(doubleAnimation, targetObject);
+            Storyboard.SetTargetProperty(doubleAnimation, targetProperty);
+            return doubleAnimation;
+        }
+
+        /// <summary>
         /// Retrieves the keyboard repeat-delay setting, which is a value in the range from 0
         /// (approximately 250 ms delay) through 3 (approximately 1 second delay).
         /// The actual delay associated with each value may vary depending on the hardware.

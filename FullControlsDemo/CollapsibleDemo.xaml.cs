@@ -8,7 +8,7 @@ namespace FullControlsDemo
     /// <summary>
     /// Logica di interazione per CollapsibleDemo.xaml
     /// </summary>
-    public partial class CollapsibleDemo : CornerWindow
+    public partial class CollapsibleDemo : AvalonWindow
     {
         public CollapsibleDemo()
         {

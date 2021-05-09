@@ -14,6 +14,7 @@ namespace FullControls.SystemComponents
     public abstract class WindowPlus : Window
     {
         private bool loaded = false;
+        private WindowState prevState = WindowState.Normal;
 
         /// <summary>
         /// Height of the titlebar.
@@ -652,8 +653,16 @@ namespace FullControls.SystemComponents
         protected override void OnStateChanged(EventArgs e)
         {
             base.OnStateChanged(e);
-            UpdateOverflowMargin();
+            OnStateChanged(WindowState, prevState);
+            prevState = WindowState;
         }
+
+        /// <summary>
+        /// Executed when the <see cref="Window.WindowState"/> is changed.
+        /// </summary>
+        /// <param name="state">Current <see cref="WindowState"/>.</param>
+        /// <param name="prevState">Previous <see cref="WindowState"/>.</param>
+        protected virtual void OnStateChanged(WindowState state, WindowState prevState) => UpdateOverflowMargin();
 
         /// <summary>
         /// Force the update of <see cref="OverflowMargin"/>.
@@ -733,7 +742,7 @@ namespace FullControls.SystemComponents
         /// <summary>
         /// Close the window.
         /// </summary>
-        public new void Close()
+        public new virtual void Close()
         {
             if (RequestClose()) PerformClose();
         }
@@ -741,7 +750,7 @@ namespace FullControls.SystemComponents
         /// <summary>
         /// Minimize the window.
         /// </summary>
-        public void Minimize()
+        public virtual void Minimize()
         {
             if (RequestMinimize()) PerformMinimize();
         }
@@ -749,24 +758,24 @@ namespace FullControls.SystemComponents
         /// <summary>
         /// Maximize the window.
         /// </summary>
-        public void Maximize() => PerformMaximize();
+        public virtual void Maximize() => PerformMaximize();
 
         /// <summary>
         /// Restore the window.
         /// </summary>
-        public void Restore() => PerformRestore();
+        public virtual void Restore() => PerformRestore();
 
         /// <summary>
         /// Makes a window invisible.
         /// </summary>
         /// <exception cref="InvalidOperationException"/>
-        public new void Hide() => PerformHide();
+        public new virtual void Hide() => PerformHide();
 
         /// <summary>
         /// Opens a window and returns without waiting for the newly opened window to close.
         /// </summary>
         /// <exception cref="InvalidOperationException"/>
-        public new void Show() => PerformShow();
+        public new virtual void Show() => PerformShow();
 
         /// <summary>
         /// Opens a window and returns only when the newly opened window is closed.
@@ -775,7 +784,7 @@ namespace FullControls.SystemComponents
         /// whether the activity was accepted (<see langword="true"/>) or canceled (<see langword="false"/>).
         /// The return value is the value of the <see cref="Window.DialogResult"/> property before a window closes.</returns>
         /// <exception cref="InvalidOperationException"/>
-        public new bool? ShowDialog() => PerformShowDialog();
+        public new virtual bool? ShowDialog() => PerformShowDialog();
 
         #region Perform commands
 

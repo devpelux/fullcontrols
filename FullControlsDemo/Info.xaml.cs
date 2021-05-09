@@ -35,5 +35,15 @@ namespace FullControlsDemo
         {
             Process.Start("explorer.exe", "https://github.com/devpelux/fullcontrols/releases/latest");
         }
+
+        private void FlW_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            new FlexWindowDemo().Show();
+        }
+
+        private void AW_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            new AvalonWindowDemo().Show();
+        }
     }
 }

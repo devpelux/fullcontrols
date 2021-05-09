@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:FullControls.SystemComponents"
                     xmlns:extra="clr-namespace:FullControls.Extra">
 
-    <Style TargetType="{x:Type local:CornerWindow}" BasedOn="{StaticResource {x:Type Window}}">
+    <Style TargetType="{x:Type local:FlexWindow}" BasedOn="{StaticResource {x:Type Window}}">
         <Style.Resources>
             <ResourceDictionary>
                 <ResourceDictionary.MergedDictionaries>
@@ -16,9 +16,12 @@
             </ResourceDictionary>
         </Style.Resources>
         
-        <Setter Property="WindowStyle" Value="None"/>
-        <Setter Property="ResizeThickness" Value="4"/>
         <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="ShadowRadius" Value="10"/>
+        <Setter Property="ShadowOpacity" Value="0.8"/>
+        <Setter Property="ShadowDepth" Value="0.5"/>
+        <Setter Property="ShadowColor" Value="Black"/>
+        <Setter Property="ResizeThickness" Value="4"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource Gray10}"/>
         <Setter Property="BorderBrushOnActive" Value="{DynamicResource Blue7}"/>
@@ -29,7 +32,7 @@
         <Setter Property="TitlebarBackgroundOnActive" Value="White"/>
         <Setter Property="IconBackground" Value="Transparent"/>
         <Setter Property="ButtonsAreaBackground" Value="Transparent"/>
-        <Setter Property="ContextMenu" Value="{x:Null}"/>
+        <Setter Property="AnimationTime" Value="0:0:0.2"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
 
         <Setter Property="MinimizeButtonStyle" Value="{DynamicResource CaptionButtonStyle}" />
@@ -39,11 +42,11 @@
 
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:CornerWindow}">
-                    <Grid x:Name="PART_Window">
+                <ControlTemplate TargetType="{x:Type local:FlexWindow}">
+                    <Grid x:Name="PART_Window" Opacity="{TemplateBinding ContentOpacity}">
                         <Border x:Name="PART_ShadowBorder"
                                 BorderThickness="1"
-                                Margin="20"
+                                Margin="{TemplateBinding OverflowMargin}"
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
@@ -51,14 +54,14 @@
                                 Focusable="False">
                             <Border.Effect>
                                 <DropShadowEffect x:Name="PART_Shadow"
-                                                  Color="Black"
-                                                  Opacity="0.8"
-                                                  BlurRadius="20"
-                                                  ShadowDepth="0" />
+                                                  Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  Opacity="{Binding ShadowOpacity, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  BlurRadius="{Binding ShadowRadius, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  ShadowDepth="{Binding ShadowDepth, RelativeSource={RelativeSource TemplatedParent}}"/>
                             </Border.Effect>
                         </Border>
                         <Border x:Name="PART_Border"
-                                Margin="20"
+                                Margin="{TemplateBinding OverflowMargin}"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding ActualBorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
