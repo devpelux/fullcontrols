@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using FullControls.Core;
 using FullControls.Extra.Extensions;
 
 namespace FullControls.SystemComponents
@@ -83,6 +83,38 @@ namespace FullControls.SystemComponents
         #endregion
 
         /// <summary>
+        /// Gets or sets a value indicating if enable the enter and exit animations.
+        /// </summary>
+        public bool EnableEnterExitAnimations
+        {
+            get => (bool)GetValue(EnableEnterExitAnimationsProperty);
+            set => SetValue(EnableEnterExitAnimationsProperty, BoolBox.Box(value));
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnableEnterExitAnimations"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnableEnterExitAnimationsProperty =
+            DependencyProperty.Register(nameof(EnableEnterExitAnimations), typeof(bool), typeof(CustomWindow),
+                new PropertyMetadata(BoolBox.True));
+
+        /// <summary>
+        /// Gets or sets a value indicating if enable the enter and exit animations.
+        /// </summary>
+        public bool EnableMinimizeRestoreAnimations
+        {
+            get => (bool)GetValue(EnableMinimizeRestoreAnimationsProperty);
+            set => SetValue(EnableMinimizeRestoreAnimationsProperty, BoolBox.Box(value));
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="EnableMinimizeRestoreAnimations"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty EnableMinimizeRestoreAnimationsProperty =
+            DependencyProperty.Register(nameof(EnableMinimizeRestoreAnimations), typeof(bool), typeof(CustomWindow),
+                new PropertyMetadata(BoolBox.False));
+
+        /// <summary>
         /// Gets or sets the duration of the state change animations.
         /// </summary>
         public TimeSpan AnimationTime
@@ -117,25 +149,25 @@ namespace FullControls.SystemComponents
         /// Gets the enter animation of the window. (<see langword="null"/> equals to not animate)
         /// </summary>
         /// <returns>Enter animation timeline.</returns>
-        protected abstract Timeline GetEnterAnimation();
+        protected abstract Storyboard GetEnterAnimation();
 
         /// <summary>
         /// Gets the exit animation of the window. (<see langword="null"/> equals to not animate)
         /// </summary>
         /// <returns>Exit animation timeline.</returns>
-        protected abstract Timeline GetExitAnimation();
+        protected abstract Storyboard GetExitAnimation();
 
         /// <summary>
         /// Gets the minimize animation of the window. (<see langword="null"/> equals to not animate)
         /// </summary>
         /// <returns>Minimize animation timeline.</returns>
-        protected abstract Timeline GetMinimizeAnimation();
+        protected abstract Storyboard GetMinimizeAnimation();
 
         /// <summary>
         /// Gets the restore animation of the window. (<see langword="null"/> equals to not animate)
         /// </summary>
         /// <returns>Restore animation timeline.</returns>
-        protected abstract Timeline GetRestoreFromMinimizeAnimation();
+        protected abstract Storyboard GetRestoreFromMinimizeAnimation();
 
         /// <inheritdoc/>
         protected override void OnLoaded(RoutedEventArgs e)
@@ -143,7 +175,7 @@ namespace FullControls.SystemComponents
             base.OnLoaded(e);
             if (WindowState != WindowState.Minimized)
             {
-                if (GetEnterAnimation() is Timeline anim) Animate(anim);
+                if (EnableEnterExitAnimations && GetEnterAnimation() is Storyboard anim) anim.Begin();
             }
         }
 
@@ -153,7 +185,7 @@ namespace FullControls.SystemComponents
             base.OnStateChanged(state, prevState);
             if (prevState == WindowState.Minimized)
             {
-                if (GetRestoreFromMinimizeAnimation() is Timeline anim) Animate(anim);
+                if (EnableMinimizeRestoreAnimations && GetRestoreFromMinimizeAnimation() is Storyboard anim) anim.Begin();
             }
         }
 
@@ -162,7 +194,7 @@ namespace FullControls.SystemComponents
         {
             if (RequestClose())
             {
-                if (GetExitAnimation() is Timeline anim) await AnimateAsync(anim);
+                if (EnableEnterExitAnimations && GetExitAnimation() is Storyboard anim) await anim.BeginAsync();
                 PerformClose();
             }
         }
@@ -172,29 +204,9 @@ namespace FullControls.SystemComponents
         {
             if (RequestMinimize())
             {
-                if (GetMinimizeAnimation() is Timeline anim) await AnimateAsync(anim);
+                if (EnableMinimizeRestoreAnimations && GetMinimizeAnimation() is Storyboard anim) await anim.BeginAsync();
                 PerformMinimize();
             }
         }
-
-        #region Animation
-
-        //Storyboard generators and starters.
-
-        private static async Task AnimateAsync(Timeline animation)
-        {
-            Storyboard sb = new();
-            sb.Children.Add(animation);
-            await sb.BeginAsync();
-        }
-
-        private static void Animate(Timeline animation)
-        {
-            Storyboard sb = new();
-            sb.Children.Add(animation);
-            sb.Begin();
-        }
-
-        #endregion
     }
 }

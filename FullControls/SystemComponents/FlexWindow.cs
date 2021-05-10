@@ -122,17 +122,35 @@ namespace FullControls.SystemComponents
         }
 
         /// <inheritdoc/>
-        protected override Timeline GetEnterAnimation()
-            => Util.GenerateDoubleAnimation(0, 1, AnimationTime, this, new PropertyPath(ContentOpacityPropertyProxy));
+        protected override Storyboard GetEnterAnimation()
+        {
+            Storyboard sb = new();
+            sb.Children.Add(Util.GenerateDoubleAnimation(0, 1, AnimationTime, this, new PropertyPath(ContentOpacityPropertyProxy)));
+            return sb;
+        }
 
         /// <inheritdoc/>
-        protected override Timeline GetExitAnimation()
-            => Util.GenerateDoubleAnimation(1, 0, AnimationTime, this, new PropertyPath(ContentOpacityPropertyProxy));
+        protected override Storyboard GetExitAnimation()
+        {
+            Storyboard sb = new();
+            sb.Children.Add(Util.GenerateDoubleAnimation(1, 0, AnimationTime, this, new PropertyPath(ContentOpacityPropertyProxy)));
+            return sb;
+        }
 
         /// <inheritdoc/>
-        protected override Timeline GetMinimizeAnimation() => null;
+        protected override Storyboard GetMinimizeAnimation()
+        {
+            Storyboard sb = new();
+            sb.Children.Add(Util.GenerateDoubleAnimation(1, 0, AnimationTime, this, new PropertyPath(ContentOpacityPropertyProxy)));
+            return sb;
+        }
 
         /// <inheritdoc/>
-        protected override Timeline GetRestoreFromMinimizeAnimation() => null;
+        protected override Storyboard GetRestoreFromMinimizeAnimation()
+        {
+            Storyboard sb = new();
+            sb.Children.Add(Util.GenerateDoubleAnimation(0, 1, AnimationTime, this, new PropertyPath(ContentOpacityPropertyProxy)));
+            return sb;
+        }
     }
 }
