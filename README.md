@@ -31,8 +31,8 @@
   </a>
 </p>
 <p align="center">
-  <img alt="Code release" src="https://img.shields.io/badge/code:release-v1.4.0-red"></img>
-  <img alt="Code status" src="https://img.shields.io/badge/code:status-alpha-red"></img>
+  <img alt="Code release" src="https://img.shields.io/badge/code:release-v1.4.0-orange"></img>
+  <img alt="Code status" src="https://img.shields.io/badge/code:status-beta-orange"></img>
 </p>
 
 <!-- description -->
@@ -217,6 +217,20 @@ This is a scroll viewer that uses the GlassScrollBars and with some new function
 
 ## System components
 
+### DialogWindow
+Incapsulates a Window to be displayed as dialog and, in the end, return an object as result.  
+It can be used to create custom messageboxes.
+
+---
+
+### WindowTitleBar ![New](https://img.shields.io/badge/-NEW!-blue)
+A fully customizable titlebar used in custom windows.
+
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/titlebar.png"/> <br>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/titlebar_close_hovered.png"/>
+
+---
+
 ### EWindow ![Deprecated](https://img.shields.io/badge/-DEPRECATED-orange)
 Extended version of the classic window with possibility to customize the titlebar, fuse the titlebar with the content of the window, add corner radius to the window, better handling of close, minimize, etc...
 
@@ -227,30 +241,19 @@ Extended version of the classic window with possibility to customize the titleba
 
 <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/avalonwindow.png"/>
 
----
-
 ### FlexWindow ![New](https://img.shields.io/badge/-NEW!-blue)
-Extended version of the classic window with the same features of AvalonWindow, but with the support for round angles and custom shadow. (This window can only be minimized, is not resizable or maximizable)
+Extended version of the classic window with the same features of AvalonWindow, but with support for round angles and custom shadow. (This window can only be minimized, is not resizable or maximizable)
 
 <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/flexwindow.png"/>
-
----
 
 ### FullWindow ![New](https://img.shields.io/badge/-NEW!-blue)
 Extended version of the classic window with the same features of FlexWindow but resizable. (This uses `AllowsTransparency=True`)
 
 <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/main/Assets/Overview/fullwindow.png"/>
 
----
-
-### WindowTitleBar ![New](https://img.shields.io/badge/-NEW!-blue)
-A fully customizable titlebar used in custom windows.
-
----
-
-### DialogWindow
-Incapsulates a Window to be displayed as dialog and, in the end, return an object as result.  
-It can be used to create custom messageboxes.
+### Why 3 window types instead of one (FullWindow)?
+**FullWindow** requires `AllowsTransparency` set to `True` to be fully customizable, and using `AllowsTransparency` may drastically reduce the performances of the window.  
+In most cases, if you don't need to resize the window, or if you don't need round angles, you can use **FlexWindow** or **AvalonWindow** respectively, that achieve the same goals without using `AllowsTransparency`.
 
 
 
