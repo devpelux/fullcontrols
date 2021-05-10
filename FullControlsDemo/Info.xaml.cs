@@ -13,7 +13,6 @@ namespace FullControlsDemo
         public Info()
         {
             InitializeComponent();
-            background.Visibility = Visibility.Visible;
         }
 
         private void GH_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

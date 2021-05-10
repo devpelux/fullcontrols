@@ -11,7 +11,6 @@ namespace FullControlsDemo
         public AvalonWindowDemo()
         {
             InitializeComponent();
-            background.Visibility = Visibility.Visible;
         }
     }
 }

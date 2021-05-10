@@ -12,7 +12,6 @@ namespace FullControlsDemo
         public GlassScrollViewerDemo()
         {
             InitializeComponent();
-            background.Visibility = Visibility.Visible;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

@@ -3,9 +3,6 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  MergeTitlebarAndContent="True"
-                 BorderThickness="{DynamicResource WindowBorderThickness}"
-                 Background="{DynamicResource WindowBackground}"
-                 BorderBrush="{DynamicResource WindowBorderBrush}"
                  MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
                  MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
                  RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
@@ -21,12 +18,12 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Background="{DynamicResource WindowBackground}">
+        <Grid Grid.Column="0" Background="White">
             <fc:EButton Content="Button" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
             <fc:EToggleButton Content="ToggleButton" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
             <fc:ERepeatButton Content="RepeatButton" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
         </Grid>
-        <Grid Grid.Column="1" Background="{DynamicResource DarkWindowBackground}">
+        <Grid Grid.Column="1" Background="Black">
             <fc:EButton Style="{DynamicResource EButtonDark}" Content="Button" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
             <fc:EToggleButton Style="{DynamicResource EToggleButtonDark}" Content="ToggleButton" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
             <fc:ERepeatButton Style="{DynamicResource ERepeatButtonDark}" Content="RepeatButton" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Height="30" Width="90"/>

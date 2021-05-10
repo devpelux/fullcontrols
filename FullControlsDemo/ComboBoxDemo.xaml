@@ -3,9 +3,6 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  MergeTitlebarAndContent="True"
-                 BorderThickness="{DynamicResource WindowBorderThickness}"
-                 Background="{DynamicResource WindowBackground}"
-                 BorderBrush="{DynamicResource WindowBorderBrush}"
                  MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
                  MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
                  RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
@@ -21,7 +18,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Background="{DynamicResource WindowBackground}">
+        <Grid Grid.Column="0" Background="White">
             <fc:EComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" SelectedIndex="0" IsEditable="True"
                           MinWidth="120" Width="120" Height="30">
                 <fc:EComboBoxItem Content="Item1"/>
@@ -33,7 +30,7 @@
                 <fc:EComboBoxItem Content="Item7"/>
             </fc:EComboBox>
         </Grid>
-        <Grid Grid.Column="1" Background="{DynamicResource DarkWindowBackground}">
+        <Grid Grid.Column="1" Background="Black">
             <fc:EComboBox Style="{DynamicResource EComboBoxDark}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" SelectedIndex="3"
                           MinWidth="120" Width="120" Height="30">
                 <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item1"/>

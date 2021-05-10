@@ -3,9 +3,6 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  MergeTitlebarAndContent="True"
-                 BorderThickness="{DynamicResource WindowBorderThickness}"
-                 Background="{DynamicResource WindowBackground}"
-                 BorderBrush="{DynamicResource WindowBorderBrush}"
                  MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
                  MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
                  RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
@@ -22,7 +19,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0"
-              Background="{DynamicResource WindowBackground}">
+              Background="White">
             <Grid HorizontalAlignment="Center"
                   VerticalAlignment="Top"
                   Margin="0,40,0,0">
@@ -102,7 +99,7 @@
             </Grid>
         </Grid>
         <Grid Grid.Column="1"
-              Background="{DynamicResource DarkWindowBackground}">
+              Background="Black">
             <Grid HorizontalAlignment="Center"
                   VerticalAlignment="Top"
                   Margin="0,40,0,0">

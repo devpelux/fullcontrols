@@ -3,9 +3,6 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  MergeTitlebarAndContent="True"
-                 BorderThickness="{DynamicResource WindowBorderThickness}"
-                 Background="{DynamicResource WindowBackground}"
-                 BorderBrush="{DynamicResource WindowBorderBrush}"
                  MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
                  MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
                  RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
@@ -21,13 +18,13 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Background="{DynamicResource WindowBackground}">
+        <Grid Grid.Column="0" Background="White">
             <fc:Switcher Content="Switcher 1" GroupName="G1" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
             <fc:Switcher Content="Switcher 2" GroupName="G1" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Height="30" Width="90" IsChecked="True"/>
             <fc:Switcher Content="Switcher 3" GroupName="G1" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
             <fc:Switcher Content="Switcher 4" GroupName="G1" HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
         </Grid>
-        <Grid Grid.Column="1" Background="{DynamicResource DarkWindowBackground}">
+        <Grid Grid.Column="1" Background="Black">
             <fc:Switcher Style="{DynamicResource SwitcherDark}" GroupName="G2" Content="Switcher 1" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
             <fc:Switcher Style="{DynamicResource SwitcherDark}" GroupName="G2" Content="Switcher 2" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
             <fc:Switcher Style="{DynamicResource SwitcherDark}" GroupName="G2" Content="Switcher 3" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Top" Height="30" Width="90" IsChecked="True"/>

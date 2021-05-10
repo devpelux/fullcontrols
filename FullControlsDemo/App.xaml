@@ -5,7 +5,6 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/FullControlsDemo;component/Resources/GenericResources.xaml"/>
                 <ResourceDictionary Source="/FullControlsDemo;component/Resources/ScrollBarsContextMenus.xaml"/>
                 <ResourceDictionary Source="/FullControlsDemo;component/Resources/DarkStyles.xaml"/>
                 <ResourceDictionary Source="/FullControlsDemo;component/Resources/Brushes.xaml"/>

@@ -3,9 +3,6 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  MergeTitlebarAndContent="True"
-                 BorderThickness="{DynamicResource WindowBorderThickness}"
-                 Background="{DynamicResource WindowBackground}"
-                 BorderBrush="{DynamicResource WindowBorderBrush}"
                  MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
                  MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
                  RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
@@ -23,7 +20,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0" Background="{DynamicResource WindowBackground}">
+        <Grid Grid.Column="0" Background="White">
             <fc:FlatMenu VerticalAlignment="Top" Margin="0,32,0,0">
                 <fc:FlatMenuItem Header="Commands" Margin="10,0,0,0">
                     <fc:FlatMenuItem Header="Close" InputGestureText="ESC" Click="Close_Click"/>
@@ -103,7 +100,7 @@
             </Border>
         </Grid>
 
-        <Grid Grid.Column="1" Background="{DynamicResource DarkWindowBackground}">
+        <Grid Grid.Column="1" Background="Black">
             <fc:FlatMenu Style="{DynamicResource FlatMenuDark}" VerticalAlignment="Top" Margin="0,32,0,0">
                 <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="Commands" Margin="10,0,0,0">
                     <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Header="Close" InputGestureText="ESC" Click="Close_Click"/>

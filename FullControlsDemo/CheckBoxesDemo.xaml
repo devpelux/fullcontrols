@@ -3,9 +3,6 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  MergeTitlebarAndContent="True"
-                 BorderThickness="{DynamicResource WindowBorderThickness}"
-                 Background="{DynamicResource WindowBackground}"
-                 BorderBrush="{DynamicResource WindowBorderBrush}"
                  MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
                  MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
                  RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
@@ -21,7 +18,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Background="{DynamicResource WindowBackground}">
+        <Grid Grid.Column="0" Background="White">
             <fc:ERadioButton HorizontalAlignment="Left" VerticalAlignment="Top"
                          Height="20" Margin="30,40,0,0" Content="RadioButton 1" IsChecked="True" GroupName="G1"/>
             <fc:ERadioButton HorizontalAlignment="Left" VerticalAlignment="Top"
@@ -33,7 +30,7 @@
             <fc:ECheckBox HorizontalAlignment="Left" VerticalAlignment="Top"
                       Height="20" Margin="30,200,0,0" Content="CheckBox 2" IsChecked="True"/>
         </Grid>
-        <Grid Grid.Column="1" Background="{DynamicResource DarkWindowBackground}">
+        <Grid Grid.Column="1" Background="Black">
             <fc:ERadioButton Style="{DynamicResource ERadioButtonDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
                          Height="20" Margin="30,40,0,0" Content="RadioButton 1" GroupName="G2"/>
             <fc:ERadioButton Style="{DynamicResource ERadioButtonDark}" HorizontalAlignment="Left" VerticalAlignment="Top"

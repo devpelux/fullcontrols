@@ -3,9 +3,6 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  MergeTitlebarAndContent="True"
-                 BorderThickness="{DynamicResource WindowBorderThickness}"
-                 Background="{DynamicResource WindowBackground}"
-                 BorderBrush="{DynamicResource WindowBorderBrush}"
                  Title="GlassScrollViewer"
                  Icon="/Icons/FullControlsSimple.ico"
                  ResizeMode="CanMinimize"
@@ -13,13 +10,12 @@
                  Height="300"
                  Width="400"
                  Loaded="Window_Loaded">
-    <Grid>
+    <Grid ClipToBounds="True">
 
         <!--#region Background part-->
 
-        <Grid x:Name="background" Visibility="Collapsed">
-            <Ellipse Fill="{DynamicResource WindowBackground2}" Margin="180,87,-238,-177"/>
-        </Grid>
+        <Ellipse Fill="WhiteSmoke"
+                 Margin="180,87,-238,-177" />
 
         <!--#endregion-->
 

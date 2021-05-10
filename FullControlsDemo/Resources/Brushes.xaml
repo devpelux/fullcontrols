@@ -1,22 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <SolidColorBrush x:Key="WindowBackground"
-                     Color="White" />
-    <SolidColorBrush x:Key="WindowBackground2"
-                     Color="WhiteSmoke" />
-    <SolidColorBrush x:Key="DarkWindowBackground"
-                     Color="Black" />
-    <SolidColorBrush x:Key="DarkWindowBackground2"
-                     Color="#FF171717" />
-    <SolidColorBrush x:Key="WindowBorderBrush"
-                     Color="Gray" />
-
-    <SolidColorBrush x:Key="WhiteTransparent"
-                     Color="#00FFFFFF" />
-    <SolidColorBrush x:Key="BlackTransparent"
-                     Color="#00000000" />
-
     <DrawingBrush x:Key="GrayDashed"
                   Viewport="0,0,8,8"
                   ViewportUnits="Absolute"

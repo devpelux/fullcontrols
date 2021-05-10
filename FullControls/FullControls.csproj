@@ -9,10 +9,11 @@
 
 The fully overview, and examples, can be found here: https://github.com/devpelux/fullcontrols
 The complete documentation can be found here: https://github.com/devpelux/fullcontrols/wiki</Description>
-    <PackageLicenseExpression></PackageLicenseExpression>
     <PackageTags>xaml library control csharp nuget-packages dark-theme wpf accordion button menu window context-menu collapsible wpf-controls flat-design wpf-ui passwordbox net-5</PackageTags>
-    <PackageReleaseNotes>Added FlatWindow.
-Added WindowTitleBar.
+    <PackageReleaseNotes>Added WindowTitleBar.
+Added AvalonWindow.
+Added FlexWindow.
+Added FullWindow.
 General optimizations.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>

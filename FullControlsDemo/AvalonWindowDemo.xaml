@@ -2,24 +2,27 @@
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
-                 BorderThickness="{DynamicResource WindowBorderThickness}"
-                 Background="{DynamicResource WindowBackground}"
-                 BorderBrush="{DynamicResource WindowBorderBrush}"
                  MergeTitlebarAndContent="True"
                  Title="AvalonWindow"
                  Icon="/Icons/FullControlsSimple.ico"
                  ResizeMode="CanResize"
                  WindowStartupLocation="CenterScreen"
+                 MinHeight="240"
+                 MinWidth="420"
                  Height="300"
                  Width="500">
-    <Grid>
-        <Grid x:Name="background"
-              ClipToBounds="True"
-              Visibility="Visible">
-            <Ellipse Fill="#FFC7D7E0"
-                     Margin="-255,-185,151,119" />
-            <Ellipse Fill="#FFECECEC"
-                     Margin="170,168,-274,-234" />
-        </Grid>
+    <Grid ClipToBounds="True">
+        <Ellipse Fill="#FFC7D7E0"
+                 Margin="-250,-190,0,0"
+                 Width="600"
+                 Height="350"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top" />
+        <Ellipse Fill="#FFECECEC"
+                 Margin="0,0,-270,-230"
+                 Width="600"
+                 Height="350"
+                 HorizontalAlignment="Right"
+                 VerticalAlignment="Bottom" />
     </Grid>
 </fc:AvalonWindow>

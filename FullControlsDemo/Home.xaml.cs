@@ -12,7 +12,6 @@ namespace FullControlsDemo
         public Home()
         {
             InitializeComponent();
-            background.Visibility = Visibility.Visible;
         }
 
         private void Accordion_Click(object sender, RoutedEventArgs e)

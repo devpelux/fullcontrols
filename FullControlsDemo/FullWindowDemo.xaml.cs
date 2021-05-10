@@ -11,7 +11,6 @@ namespace FullControlsDemo
         public FullWindowDemo()
         {
             InitializeComponent();
-            background.Visibility = Visibility.Visible;
         }
     }
 }
