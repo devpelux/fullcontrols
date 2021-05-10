@@ -8,8 +8,12 @@ namespace FullControls.SystemComponents
 {
     /// <summary>
     /// <para>Provides the ability to create, configure, show, and manage the lifetime of windows and dialog boxes.</para>
-    /// <para>This window type supports round angles and custom shadow.</para>
+    /// <para>This window type supports custom animations for state transitions, round angles, and custom shadow.</para>
     /// </summary>
+    /// <remarks>
+    /// <para><see cref="Window.WindowStyle"/> can be only <see cref="WindowStyle.None"/>.</para>
+    /// <para><see cref="Window.AllowsTransparency"/> can be only <see langword="true"/>.</para>
+    /// </remarks>
     public class FullWindow : CustomWindow
     {
         /// <summary>
@@ -81,7 +85,7 @@ namespace FullControls.SystemComponents
                 GlassFrameThickness = new Thickness(-1),
                 NonClientFrameEdges = NonClientFrameEdges.None,
                 UseAeroCaptionButtons = false,
-                CaptionHeight = EnableTitlebar ? TITLEBAR_HEIGHT + OverflowMargin.Top : 0,
+                CaptionHeight = EnableTitlebar ? TITLEBAR_HEIGHT + OutsideMargin.Top : 0,
                 ResizeBorderThickness = ResizeThickness,
                 CornerRadius = new CornerRadius()
             };
@@ -89,7 +93,7 @@ namespace FullControls.SystemComponents
         }
 
         /// <inheritdoc/>
-        protected override Thickness CalcOverflowMargin()
+        protected override Thickness CalcOutsideMargin()
         {
             if (!IsDocked)
             {
@@ -108,7 +112,7 @@ namespace FullControls.SystemComponents
         }
 
         /// <inheritdoc/>
-        protected override void OnOverflowMarginChanged(Thickness thickness)
+        protected override void OnOutsideMarginChanged(Thickness thickness)
         {
             WindowChrome wc = WindowChrome.GetWindowChrome(this);
             if (wc != null) wc.CaptionHeight = EnableTitlebar ? TITLEBAR_HEIGHT + thickness.Top : 0;

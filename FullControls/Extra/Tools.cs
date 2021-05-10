@@ -1,4 +1,5 @@
 ﻿using FullControls.Core.Service;
+using System.Linq;
 using System.Windows;
 
 namespace FullControls.Extra
@@ -9,7 +10,7 @@ namespace FullControls.Extra
     public static class Tools
     {
         /// <summary>
-        /// Get the current cursor position on display.
+        /// Gets the current cursor position on display.
         /// </summary>
         /// <returns>Cursor position.</returns>
         public static Point GetCursorPos()
@@ -17,5 +18,12 @@ namespace FullControls.Extra
             Extern.GetCursorPos(out POINT lMousePosition);
             return new Point(lMousePosition.X, lMousePosition.Y);
         }
+
+        /// <summary>
+        /// Gets the current active window.
+        /// </summary>
+        /// <returns>Active window.</returns>
+        public static Window GetActiveWindow()
+            => Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
     }
 }

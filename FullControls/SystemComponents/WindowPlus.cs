@@ -14,7 +14,7 @@ namespace FullControls.SystemComponents
     public abstract class WindowPlus : Window
     {
         private bool loaded = false;
-        private WindowState prevState = WindowState.Normal;
+        private WindowState previousState = WindowState.Normal;
 
         /// <summary>
         /// Height of the titlebar.
@@ -312,7 +312,8 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="EnableMinimizeButton"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableMinimizeButtonProperty =
-            DependencyProperty.Register(nameof(EnableMinimizeButton), typeof(bool), typeof(WindowPlus), new PropertyMetadata(BoolBox.True));
+            DependencyProperty.Register(nameof(EnableMinimizeButton), typeof(bool), typeof(WindowPlus),
+                new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets a value indicating if enable the maximize button.
@@ -327,7 +328,8 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="EnableMaximizeButton"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableMaximizeButtonProperty =
-            DependencyProperty.Register(nameof(EnableMaximizeButton), typeof(bool), typeof(WindowPlus), new PropertyMetadata(BoolBox.True));
+            DependencyProperty.Register(nameof(EnableMaximizeButton), typeof(bool), typeof(WindowPlus),
+                new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets a value indicating if enable the restore button.
@@ -342,7 +344,8 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="EnableRestoreButton"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableRestoreButtonProperty =
-            DependencyProperty.Register(nameof(EnableRestoreButton), typeof(bool), typeof(WindowPlus), new PropertyMetadata(BoolBox.True));
+            DependencyProperty.Register(nameof(EnableRestoreButton), typeof(bool), typeof(WindowPlus),
+                new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets a value indicating if enable the close button.
@@ -357,7 +360,8 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="EnableCloseButton"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableCloseButtonProperty =
-            DependencyProperty.Register(nameof(EnableCloseButton), typeof(bool), typeof(WindowPlus), new PropertyMetadata(BoolBox.True));
+            DependencyProperty.Register(nameof(EnableCloseButton), typeof(bool), typeof(WindowPlus),
+                new PropertyMetadata(BoolBox.True));
 
         /// <summary>
         /// Gets or sets the style of the minimize button.
@@ -454,27 +458,28 @@ namespace FullControls.SystemComponents
         /// Identifies the <see cref="EnableMinimizeByTaskbar"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty EnableMinimizeByTaskbarProperty =
-            DependencyProperty.Register(nameof(EnableMinimizeByTaskbar), typeof(bool), typeof(WindowPlus), new PropertyMetadata(BoolBox.True));
+            DependencyProperty.Register(nameof(EnableMinimizeByTaskbar), typeof(bool), typeof(WindowPlus),
+                new PropertyMetadata(BoolBox.True));
 
         /// <summary>
-        /// Gets the overflow margin of the window.
+        /// Gets the outside margin of the window.
         /// </summary>
-        public Thickness OverflowMargin => (Thickness)GetValue(OverflowMarginProperty);
+        public Thickness OutsideMargin => (Thickness)GetValue(OutsideMarginProperty);
 
-        #region OverflowMarginProperty
+        #region OutsideMarginProperty
 
         /// <summary>
-        /// The <see cref="DependencyPropertyKey"/> for <see cref="OverflowMargin"/> dependency property.
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="OutsideMargin"/> dependency property.
         /// </summary>
-        private static readonly DependencyPropertyKey OverflowMarginPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(OverflowMargin), typeof(Thickness), typeof(WindowPlus),
+        private static readonly DependencyPropertyKey OutsideMarginPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(OutsideMargin), typeof(Thickness), typeof(WindowPlus),
                 new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.AffectsMeasure,
-                    new PropertyChangedCallback((d, e) => ((WindowPlus)d).OnOverflowMarginChanged((Thickness)e.NewValue))));
+                    new PropertyChangedCallback((d, e) => ((WindowPlus)d).OnOutsideMarginChanged((Thickness)e.NewValue))));
 
         /// <summary>
-        /// Identifies the <see cref="OverflowMargin"/> dependency property.
+        /// Identifies the <see cref="OutsideMargin"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty OverflowMarginProperty = OverflowMarginPropertyKey.DependencyProperty;
+        public static readonly DependencyProperty OutsideMarginProperty = OutsideMarginPropertyKey.DependencyProperty;
 
         #endregion
 
@@ -628,7 +633,7 @@ namespace FullControls.SystemComponents
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            UpdateOverflowMargin();
+            UpdateOutsideMargin();
             OnVStateChanged(VStateOverride());
             loaded = true;
         }
@@ -670,33 +675,33 @@ namespace FullControls.SystemComponents
         protected override void OnStateChanged(EventArgs e)
         {
             base.OnStateChanged(e);
-            OnStateChanged(WindowState, prevState);
-            prevState = WindowState;
+            OnStateChanged(WindowState, previousState);
+            previousState = WindowState;
         }
 
         /// <summary>
         /// Called when <see cref="Window.WindowState"/> is changed.
         /// </summary>
         /// <param name="state">Current <see cref="WindowState"/>.</param>
-        /// <param name="prevState">Previous <see cref="WindowState"/>.</param>
-        protected virtual void OnStateChanged(WindowState state, WindowState prevState) => UpdateOverflowMargin();
+        /// <param name="previousState">Previous <see cref="WindowState"/>.</param>
+        protected virtual void OnStateChanged(WindowState state, WindowState previousState) => UpdateOutsideMargin();
 
         /// <summary>
         /// Called when <see cref="IsDocked"/> is changed.
         /// </summary>
         /// <param name="isDocked">Actual state of <see cref="IsDocked"/>.</param>
-        protected virtual void OnIsDockedChanged(bool isDocked) => UpdateOverflowMargin();
+        protected virtual void OnIsDockedChanged(bool isDocked) => UpdateOutsideMargin();
 
         /// <summary>
-        /// Force the update of <see cref="OverflowMargin"/>.
+        /// Force the update of <see cref="OutsideMargin"/>.
         /// </summary>
-        protected void UpdateOverflowMargin() => SetValue(OverflowMarginPropertyKey, CalcOverflowMargin());
+        protected void UpdateOutsideMargin() => SetValue(OutsideMarginPropertyKey, CalcOutsideMargin());
 
         /// <summary>
-        /// Override this method to change the calculation of <see cref="OverflowMargin"/>.
+        /// Override this method to change the calculation of <see cref="OutsideMargin"/>.
         /// </summary>
-        /// <returns><see cref="OverflowMargin"/> thickness.</returns>
-        protected abstract Thickness CalcOverflowMargin();
+        /// <returns><see cref="OutsideMargin"/> thickness.</returns>
+        protected abstract Thickness CalcOutsideMargin();
 
         /// <summary>
         /// Called when <see cref="ResizeThickness"/> is changed.
@@ -705,10 +710,10 @@ namespace FullControls.SystemComponents
         protected virtual void OnResizeThicknessChanged(Thickness thickness) { }
 
         /// <summary>
-        /// Called when <see cref="OverflowMargin"/> is changed.
+        /// Called when <see cref="OutsideMargin"/> is changed.
         /// </summary>
         /// <param name="thickness">New thickness value.</param>
-        protected virtual void OnOverflowMarginChanged(Thickness thickness) { }
+        protected virtual void OnOutsideMarginChanged(Thickness thickness) { }
 
         /// <summary>
         /// Called when an action is executed.
@@ -809,7 +814,7 @@ namespace FullControls.SystemComponents
         /// <exception cref="InvalidOperationException"/>
         public new virtual bool? ShowDialog() => PerformShowDialog();
 
-        #region Perform commands
+        #region Commands performers
 
         /// <summary>
         /// Actually closes the window.
@@ -870,7 +875,7 @@ namespace FullControls.SystemComponents
 
         #endregion
 
-        #region Request commands
+        #region Commands requesters
 
         //Request for commands that could be canceled.
 

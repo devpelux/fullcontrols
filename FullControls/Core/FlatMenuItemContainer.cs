@@ -43,6 +43,8 @@ namespace FullControls.Core
             }
         }
 
+        #region Template generators
+
         private static ControlTemplate AlignLeftRightTemplate()
         {
             /*
@@ -205,5 +207,7 @@ namespace FullControls.Core
 
             return template;
         }
+
+        #endregion
     }
 }

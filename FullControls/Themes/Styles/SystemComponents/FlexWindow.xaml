@@ -46,7 +46,7 @@
                     <Grid x:Name="PART_Window" Opacity="{TemplateBinding ContentOpacity}">
                         <Border x:Name="PART_ShadowBorder"
                                 BorderThickness="1"
-                                Margin="{TemplateBinding OverflowMargin}"
+                                Margin="{TemplateBinding OutsideMargin}"
                                 Background="{TemplateBinding Background}"
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
@@ -61,7 +61,7 @@
                             </Border.Effect>
                         </Border>
                         <Border x:Name="PART_Border"
-                                Margin="{TemplateBinding OverflowMargin}"
+                                Margin="{TemplateBinding OutsideMargin}"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding ActualBorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"

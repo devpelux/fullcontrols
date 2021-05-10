@@ -149,7 +149,7 @@ namespace FullControls.Core.Service
         /// Offset margin based on <see cref="SystemParameters.WindowResizeBorderThickness"/>
         /// when <see cref="WindowChrome.NonClientFrameEdges"/> is set to <see cref="NonClientFrameEdges.Bottom"/>.
         /// </summary>
-        public static Thickness LayoutOffsetThickness => new(0d, 0d, 0d, SystemParameters.WindowResizeBorderThickness.Bottom);
+        public static Thickness WindowFrameThickness => new(0d, 0d, 0d, SystemParameters.WindowResizeBorderThickness.Bottom);
 
         #endregion
 

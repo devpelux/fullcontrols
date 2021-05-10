@@ -9,8 +9,9 @@ namespace FullControls.SystemComponents
 {
     /// <summary>
     /// <para>Provides the ability to create, configure, show, and manage the lifetime of windows and dialog boxes.</para>
-    /// <para>This window type uses custom animations for state transitions.</para>
+    /// <para>This window type supports custom animations for state transitions and custom shadow.</para>
     /// </summary>
+    /// <remarks><see cref="Window.WindowStyle"/> can be only <see cref="WindowStyle.None"/>.</remarks>
     public abstract class CustomWindow : WindowPlus
     {
         #region Shadow
@@ -59,7 +60,8 @@ namespace FullControls.SystemComponents
         /// </summary>
         public static readonly DependencyProperty ShadowRadiusProperty =
             DependencyProperty.Register(nameof(ShadowRadius), typeof(double), typeof(CustomWindow),
-                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => ((CustomWindow)d).UpdateOverflowMargin())));
+                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                    new PropertyChangedCallback((d, e) => ((CustomWindow)d).UpdateOutsideMargin())));
 
         /// <summary>
         /// Gets or sets the depth of the shadow.
@@ -75,7 +77,8 @@ namespace FullControls.SystemComponents
         /// </summary>
         public static readonly DependencyProperty ShadowDepthProperty =
             DependencyProperty.Register(nameof(ShadowDepth), typeof(double), typeof(CustomWindow),
-                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => ((CustomWindow)d).UpdateOverflowMargin())));
+                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.AffectsMeasure,
+                    new PropertyChangedCallback((d, e) => ((CustomWindow)d).UpdateOutsideMargin())));
 
         #endregion
 
@@ -175,6 +178,8 @@ namespace FullControls.SystemComponents
         }
 
         #region Animation
+
+        //Storyboard generators and starters.
 
         private static async Task AnimateAsync(Timeline animation)
         {

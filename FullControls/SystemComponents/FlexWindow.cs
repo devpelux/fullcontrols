@@ -8,8 +8,14 @@ namespace FullControls.SystemComponents
 {
     /// <summary>
     /// <para>Provides the ability to create, configure, show, and manage the lifetime of windows and dialog boxes.</para>
-    /// <para>This window type supports round angles and custom shadow.</para>
+    /// <para>This window type supports custom animations for state transitions, round angles, and custom shadow.</para>
     /// </summary>
+    /// <remarks>
+    /// <para>This window type is more performant than <see cref="FullWindow"/>
+    /// because not uses <see cref="Window.AllowsTransparency"/> = <see langword="true"/>.</para>
+    /// <para><see cref="Window.WindowStyle"/> can be only <see cref="WindowStyle.None"/>.</para>
+    /// <para><see cref="Window.ResizeMode"/> can be only <see cref="ResizeMode.CanMinimize"/> or <see cref="ResizeMode.NoResize"/>.</para>
+    /// </remarks>
     public class FlexWindow : CustomWindow
     {
         /// <summary>
@@ -64,7 +70,8 @@ namespace FullControls.SystemComponents
 
             ResizeModeProperty.OverrideMetadata(typeof(FlexWindow),
                 new FrameworkPropertyMetadata(ResizeMode.CanMinimize, null,
-                new CoerceValueCallback((d, o) => CoerceResizeMode((ResizeMode)o))));
+                new CoerceValueCallback((d, o) => o is ResizeMode.CanMinimize or ResizeMode.NoResize ?
+                                                  o : ResizeMode.CanMinimize)));
         }
 
         /// <summary>
@@ -81,7 +88,7 @@ namespace FullControls.SystemComponents
                 GlassFrameThickness = new Thickness(-1),
                 NonClientFrameEdges = NonClientFrameEdges.None,
                 UseAeroCaptionButtons = false,
-                CaptionHeight = EnableTitlebar ? TITLEBAR_HEIGHT + OverflowMargin.Top : 0,
+                CaptionHeight = EnableTitlebar ? TITLEBAR_HEIGHT + OutsideMargin.Top : 0,
                 ResizeBorderThickness = ResizeThickness,
                 CornerRadius = new CornerRadius()
             };
@@ -89,7 +96,7 @@ namespace FullControls.SystemComponents
         }
 
         /// <inheritdoc/>
-        protected override Thickness CalcOverflowMargin()
+        protected override Thickness CalcOutsideMargin()
         {
             double margin = ShadowRadius / 2;
             double offset = ShadowDepth;
@@ -100,7 +107,7 @@ namespace FullControls.SystemComponents
         }
 
         /// <inheritdoc/>
-        protected override void OnOverflowMarginChanged(Thickness thickness)
+        protected override void OnOutsideMarginChanged(Thickness thickness)
         {
             WindowChrome wc = WindowChrome.GetWindowChrome(this);
             if (wc != null) wc.CaptionHeight = EnableTitlebar ? TITLEBAR_HEIGHT + thickness.Top : 0;
@@ -127,15 +134,5 @@ namespace FullControls.SystemComponents
 
         /// <inheritdoc/>
         protected override Timeline GetRestoreFromMinimizeAnimation() => null;
-
-        #region ResizeMode
-
-        private static object CoerceResizeMode(ResizeMode mode)
-            => ValidateResizeMode(mode) ? mode : ResizeMode.CanMinimize;
-
-        private static bool ValidateResizeMode(ResizeMode mode)
-            => mode is ResizeMode.CanMinimize or ResizeMode.NoResize;
-
-        #endregion
     }
 }

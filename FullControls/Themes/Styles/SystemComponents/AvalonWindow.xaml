@@ -40,7 +40,7 @@
                     <Grid x:Name="PART_Window"
                           Background="{TemplateBinding ActualBorderBrush}">
                         <Border x:Name="PART_Border"
-                                Margin="{TemplateBinding OverflowMargin}"
+                                Margin="{TemplateBinding OutsideMargin}"
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding ActualBorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"

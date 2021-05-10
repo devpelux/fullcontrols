@@ -45,7 +45,8 @@ namespace FullControls.SystemComponents
         }
 
         /// <inheritdoc/>
-        protected override Thickness CalcOverflowMargin() => WindowCore.CalcAvalonWindowOverflowMargin(WindowState);
+        protected override Thickness CalcOutsideMargin()
+            => WindowCore.CalcAvalonWindowOutsideMargin(WindowState);
 
         /// <inheritdoc/>
         protected override void OnResizeThicknessChanged(Thickness thickness)
