@@ -3,7 +3,7 @@
 namespace FullControls.SystemComponents
 {
     /// <summary>
-    /// Contains a list of commands to control a window.
+    /// Provides a list of commands to control a window.
     /// </summary>
     public static class WindowCommands
     {

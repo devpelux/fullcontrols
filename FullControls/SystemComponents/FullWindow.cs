@@ -11,6 +11,8 @@ namespace FullControls.SystemComponents
     /// <para>This window type supports custom animations for state transitions, round angles, and custom shadow.</para>
     /// </summary>
     /// <remarks>
+    /// <para>This window type is less performant than <see cref="FlexWindow"/>
+    /// because uses <see cref="Window.AllowsTransparency"/> = <see langword="true"/>.</para>
     /// <para><see cref="Window.WindowStyle"/> can be only <see cref="WindowStyle.None"/>.</para>
     /// <para><see cref="Window.AllowsTransparency"/> can be only <see langword="true"/>.</para>
     /// </remarks>
@@ -158,7 +160,7 @@ namespace FullControls.SystemComponents
         }
 
         /// <inheritdoc/>
-        protected override Storyboard GetRestoreFromMinimizeAnimation()
+        protected override Storyboard GetRestoreFromMinimizedAnimation()
         {
             Storyboard sb = new();
             sb.Children.Add(Util.GenerateDoubleAnimation(0, 1, AnimationTime, this, new PropertyPath(ContentOpacityPropertyProxy)));

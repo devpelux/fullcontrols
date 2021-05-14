@@ -794,19 +794,19 @@ namespace FullControls.SystemComponents
         public virtual void Restore() => PerformRestore();
 
         /// <summary>
-        /// Makes a window invisible.
+        /// Makes the window invisible.
         /// </summary>
         /// <exception cref="InvalidOperationException"/>
         public new virtual void Hide() => PerformHide();
 
         /// <summary>
-        /// Opens a window and returns without waiting for the newly opened window to close.
+        /// Opens the window and returns without waiting for the newly opened window to close.
         /// </summary>
         /// <exception cref="InvalidOperationException"/>
         public new virtual void Show() => PerformShow();
 
         /// <summary>
-        /// Opens a window and returns only when the newly opened window is closed.
+        /// Opens the window and returns only when the newly opened window is closed.
         /// </summary>
         /// <returns>A <see cref="Nullable{T}"/> value of type <see cref="bool"/> that specifies
         /// whether the activity was accepted (<see langword="true"/>) or canceled (<see langword="false"/>).
@@ -880,17 +880,6 @@ namespace FullControls.SystemComponents
         //Request for commands that could be canceled.
 
         /// <summary>
-        /// Request if minimize the window.
-        /// </summary>
-        /// <returns><see langword="true"/> if the minimize operation can be performed, <see langword="false"/> otherwise.</returns>
-        protected bool RequestMinimize()
-        {
-            CancelEventArgs e = new();
-            PreviewMinimize?.Invoke(this, e);
-            return !e.Cancel && WindowState != WindowState.Minimized;
-        }
-
-        /// <summary>
         /// Request if close the window.
         /// </summary>
         /// <returns><see langword="true"/> if the close operation can be performed, <see langword="false"/> otherwise.</returns>
@@ -899,6 +888,17 @@ namespace FullControls.SystemComponents
             CancelEventArgs e = new();
             PreviewClose?.Invoke(this, e);
             return !e.Cancel;
+        }
+
+        /// <summary>
+        /// Request if minimize the window.
+        /// </summary>
+        /// <returns><see langword="true"/> if the minimize operation can be performed, <see langword="false"/> otherwise.</returns>
+        protected bool RequestMinimize()
+        {
+            CancelEventArgs e = new();
+            PreviewMinimize?.Invoke(this, e);
+            return !e.Cancel && WindowState != WindowState.Minimized;
         }
 
         #endregion

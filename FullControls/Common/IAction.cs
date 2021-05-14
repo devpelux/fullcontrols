@@ -1,7 +1,7 @@
 ﻿namespace FullControls.Common
 {
     /// <summary>
-    /// Implements a simple action with a specified name.
+    /// Defines a simple action with a specified name.
     /// </summary>
     public interface IAction
     {

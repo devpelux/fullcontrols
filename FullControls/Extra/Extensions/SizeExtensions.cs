@@ -16,15 +16,22 @@ namespace FullControls.Extra.Extensions
         public static Size Add(this Size a, Size b) => new(a.Width + b.Width, a.Height + b.Height);
 
         /// <summary>
-        /// Subtract a <see cref="Size"/> to another.
+        /// Subtract a <see cref="Size"/> from the current <see cref="Size"/>.
         /// </summary>
-        /// <param name="a">Original <see cref="Size"/>.</param>
-        /// <param name="b"><see cref="Size"/> to subtract from the original.</param>
+        /// <param name="a">Current <see cref="Size"/>.</param>
+        /// <param name="b"><see cref="Size"/> to subtract from the current.</param>
         /// <returns></returns>
         public static Size Subtract(this Size a, Size b) => new(a.Width - b.Width, a.Height - b.Height);
 
         /// <summary>
-        /// Initializes a new <see cref="Size"/> with uniform dimensions from a <see cref="double"/> value.
+        /// Invert the <see cref="Size"/> by replacing every value with its negative.
+        /// </summary>
+        /// <param name="size">Current <see cref="Size"/>.</param>
+        /// <returns></returns>
+        public static Size Invert(this Size size) => new(-size.Width, -size.Height);
+
+        /// <summary>
+        /// Initializes a new <see cref="Size"/> with uniform dimensions.
         /// </summary>
         /// <param name="dim">Dimensions.</param>
         /// <returns>New <see cref="Size"/> with uniform dimensions.</returns>

@@ -146,7 +146,7 @@ namespace FullControls.SystemComponents
         }
 
         /// <inheritdoc/>
-        protected override Storyboard GetRestoreFromMinimizeAnimation()
+        protected override Storyboard GetRestoreFromMinimizedAnimation()
         {
             Storyboard sb = new();
             sb.Children.Add(Util.GenerateDoubleAnimation(0, 1, AnimationTime, this, new PropertyPath(ContentOpacityPropertyProxy)));

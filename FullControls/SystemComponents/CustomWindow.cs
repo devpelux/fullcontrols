@@ -99,7 +99,7 @@ namespace FullControls.SystemComponents
                 new PropertyMetadata(BoolBox.True));
 
         /// <summary>
-        /// Gets or sets a value indicating if enable the enter and exit animations.
+        /// Gets or sets a value indicating if enable the minimize and restore animations.
         /// </summary>
         public bool EnableMinimizeRestoreAnimations
         {
@@ -164,10 +164,10 @@ namespace FullControls.SystemComponents
         protected abstract Storyboard GetMinimizeAnimation();
 
         /// <summary>
-        /// Gets the restore animation of the window. (<see langword="null"/> equals to not animate)
+        /// Gets the restore from minimized animation of the window. (<see langword="null"/> equals to not animate)
         /// </summary>
         /// <returns>Restore animation timeline.</returns>
-        protected abstract Storyboard GetRestoreFromMinimizeAnimation();
+        protected abstract Storyboard GetRestoreFromMinimizedAnimation();
 
         /// <inheritdoc/>
         protected override void OnLoaded(RoutedEventArgs e)
@@ -185,7 +185,7 @@ namespace FullControls.SystemComponents
             base.OnStateChanged(state, prevState);
             if (prevState == WindowState.Minimized)
             {
-                if (EnableMinimizeRestoreAnimations && GetRestoreFromMinimizeAnimation() is Storyboard anim) anim.Begin();
+                if (EnableMinimizeRestoreAnimations && GetRestoreFromMinimizedAnimation() is Storyboard anim) anim.Begin();
             }
         }
 

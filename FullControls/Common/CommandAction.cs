@@ -11,7 +11,7 @@ namespace FullControls.Common
         public string ActionName { get; }
 
         /// <summary>
-        /// Command that executed the action.
+        /// Gets the command that executed the action.
         /// </summary>
         public ICommand Command { get; }
 
