@@ -8,6 +8,7 @@ using System.Windows.Markup;
 [assembly: XmlnsPrefix("http://devpelux.github.io/fullcontrols", "fc")]
 [assembly: XmlnsPrefix("http://devpelux.github.io/fullcontrols/controls/components", "fcc")]
 [assembly: XmlnsPrefix("http://devpelux.github.io/fullcontrols/extra", "fce")]
+[assembly: XmlnsPrefix("http://devpelux.github.io/fullcontrols/extra/extensions", "fcex")]
 
 //Namespaces
 [assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols", "FullControls.Common")]
@@ -15,6 +16,7 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols", "FullControls.SystemComponents")]
 [assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols/controls/components", "FullControls.Controls.Components")]
 [assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols/extra", "FullControls.Extra")]
+[assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols/extra/extensions", "FullControls.Extra.Extensions")]
 
 //Theme
 [assembly: ThemeInfo(

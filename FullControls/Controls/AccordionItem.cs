@@ -162,6 +162,7 @@ namespace FullControls.Controls
                 header.MouseLeave += (o, e) => OnHeaderMouseLeave(e);
             }
             UpdateExpandState();
+            OnVStateChanged(VStateOverride());
             loaded = true;
         }
 

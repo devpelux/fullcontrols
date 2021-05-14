@@ -543,9 +543,6 @@ namespace FullControls.Controls
         {
             base.OnApplyTemplate();
             AttachItemsControl();
-            Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
-            Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, Foreground, TimeSpan.Zero);
-            SetValue(ActualFontWeightPropertyKey, FontWeight);
             SetValue(ArrowRotationPropertyProxy, IsExpanded ? ArrowExpandedRotation : ArrowCollapsedRotation);
         }
 
@@ -587,6 +584,9 @@ namespace FullControls.Controls
                     SetValue(ActualFontWeightPropertyKey, FontWeightOnDisabled);
                     break;
                 default:
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, Foreground, TimeSpan.Zero);
+                    SetValue(ActualFontWeightPropertyKey, FontWeight);
                     break;
             }
         }

@@ -1159,8 +1159,7 @@ namespace FullControls.Controls
                 peekButton.MouseLeave += PeekButton_MouseLeave;
             }
             UpdateHintState();
-            Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
-            Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
+            OnVStateChanged(VStateOverride());
             loaded = true;
         }
 
@@ -1251,6 +1250,8 @@ namespace FullControls.Controls
                     Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
                     break;
                 default:
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
                     break;
             }
         }
