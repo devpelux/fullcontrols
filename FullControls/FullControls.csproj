@@ -9,18 +9,18 @@
 
 The fully overview, and examples, can be found here: https://github.com/devpelux/fullcontrols
 The complete documentation can be found here: https://github.com/devpelux/fullcontrols/wiki</Description>
-    <PackageTags>xaml library control csharp nuget-packages dark-theme wpf accordion button menu window context-menu collapsible wpf-controls flat-design wpf-ui passwordbox net-5</PackageTags>
-    <PackageReleaseNotes>Added WindowTitleBar.
-Added AvalonWindow.
-Added FlexWindow.
-Added FullWindow.
+    <PackageTags>controls csharp net5 wpf wpfui flat-design dark-theme accordion button passwordbox textbox scrollviewer menu contextmenu collapsible drawer window</PackageTags>
+    <PackageReleaseNotes>Optimized OnVStateChanged by moving the default values from OnApplyTemplate to OnVStateChanged.
+Moved IDialog to FullControls.Common.
+Added uri reference for FullControls.Extra.Extensions.
+Added Invert Size extension.
 General optimizations.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <Copyright>Copyright (C) 2020-2021 devpelux (Salvatore Peluso)</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>FullControls.png</PackageIcon>
-    <Version>1.4.0</Version>
+    <Version>1.4.1</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
