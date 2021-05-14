@@ -19,7 +19,8 @@ namespace FullControls.SystemComponents
         /// <para>(Must implement <see cref="IDialog"/>)</para>
         /// </param>
         public DialogWindow(Window window)
-            => this.window = window != null ? window is IDialog ? window : throw new InvalidCastException($"{window} must implement {nameof(IDialog)}.")
+            => this.window = window != null ? window is Common.IDialog or IDialog ? window
+            : throw new InvalidCastException($"{window} must implement {nameof(Common.IDialog)}.")
             : throw new ArgumentNullException(nameof(window));
 
         /// <summary>
@@ -29,7 +30,7 @@ namespace FullControls.SystemComponents
         public object Show()
         {
             _ = window.ShowDialog();
-            return ((IDialog)window).GetResult();
+            return window is Common.IDialog dialog ? dialog.GetResult() : ((IDialog)window).GetResult();
         }
     }
 }

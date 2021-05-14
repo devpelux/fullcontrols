@@ -1,12 +1,8 @@
-﻿using System;
-
-namespace FullControls.SystemComponents
+﻿namespace FullControls.Common
 {
     /// <summary>
     /// Defines an object that can return a result.
     /// </summary>
-    [Obsolete("IDialog has been moved to FullControls.Common for better organization, and will be moved definitely in a future release. " +
-              "Use FullControls.Common.IDialog instead.", false)]
     public interface IDialog
     {
         /// <summary>
