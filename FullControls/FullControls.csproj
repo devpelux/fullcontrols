@@ -10,8 +10,9 @@
 The fully overview, and examples, can be found here: https://github.com/devpelux/fullcontrols
 The complete documentation can be found here: https://github.com/devpelux/fullcontrols/wiki</Description>
     <PackageTags>controls csharp net5 wpf wpfui flat-design dark-theme accordion button passwordbox textbox scrollviewer menu contextmenu collapsible drawer window</PackageTags>
-    <PackageReleaseNotes>Optimized OnVStateChanged by moving the default values from OnApplyTemplate to OnVStateChanged.
+    <PackageReleaseNotes>Removed system menu from the windows and added TitlebarContextMenu property to set a custom context menu.
 Moved IDialog to FullControls.Common.
+Optimized OnVStateChanged by moving the default values from OnApplyTemplate to OnVStateChanged.
 Added uri reference for FullControls.Extra.Extensions.
 Added Invert Size extension.
 General optimizations.</PackageReleaseNotes>

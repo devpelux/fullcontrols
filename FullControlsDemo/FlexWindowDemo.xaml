@@ -7,6 +7,7 @@
                Icon="/Icons/FullControlsSimple.ico"
                ResizeMode="CanMinimize"
                WindowStartupLocation="CenterScreen"
+               TitlebarContextMenu="{DynamicResource WindowContextMenu}"
                Height="300"
                Width="500">
     <Grid ClipToBounds="True">

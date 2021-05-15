@@ -18,6 +18,9 @@ namespace FullControls.Core
         internal const int WM_NCPAINT = 0x85;
         internal const int WM_SYSCOMMAND = 0x0112;
         internal const int WM_GETMINMAXINFO = 0x0024;
+        internal const int WP_SYSTEMMENU = 0x02;
+        internal const int VK_LMENU = 0xA4;
+        internal const int VK_RMENU = 0xA5;
         internal const int SC_CLOSE = 0xF060;
         internal const int SC_SIZE = 0xF000;
         internal const int SC_MOVE = 0xF010;

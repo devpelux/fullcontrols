@@ -98,7 +98,7 @@ namespace FullControls.SystemComponents
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
-            this.AddHook(HookMaximize);
+            this.AddHook(HandleMaximize);
         }
 
         /// <inheritdoc/>
@@ -172,7 +172,7 @@ namespace FullControls.SystemComponents
         /// <summary>
         /// Handles the maximization.
         /// </summary>
-        private IntPtr HookMaximize(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        private IntPtr HandleMaximize(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             if (msg == WindowCore.WM_GETMINMAXINFO) WindowCore.WmGetMinMaxInfo(lParam);
             return IntPtr.Zero;

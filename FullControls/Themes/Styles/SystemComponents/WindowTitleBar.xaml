@@ -41,7 +41,8 @@
                                   Margin="{TemplateBinding IconMargin}"
                                   Background="{TemplateBinding IconBackground}"
                                   ContextMenu="{TemplateBinding TitlebarContextMenu}"
-                                  Visibility="Visible">
+                                  Visibility="Visible"
+                                  WindowChrome.IsHitTestVisibleInChrome="True">
                                 <Image x:Name="PART_IconImage"
                                        Width="24"
                                        Height="24"

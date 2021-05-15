@@ -3,6 +3,7 @@ using FullControls.Core;
 using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -143,6 +144,21 @@ namespace FullControls.SystemComponents
         public static readonly DependencyProperty MergeTitlebarAndContentProperty =
             DependencyProperty.Register(nameof(MergeTitlebarAndContent), typeof(bool), typeof(WindowPlus),
                 new FrameworkPropertyMetadata(BoolBox.False, FrameworkPropertyMetadataOptions.AffectsMeasure));
+
+        /// <summary>
+        /// Gets or sets the context menu of the titlebar.
+        /// </summary>
+        public ContextMenu TitlebarContextMenu
+        {
+            get => (ContextMenu)GetValue(TitlebarContextMenuProperty);
+            set => SetValue(TitlebarContextMenuProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="TitlebarContextMenu"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty TitlebarContextMenuProperty =
+            DependencyProperty.Register(nameof(TitlebarContextMenu), typeof(ContextMenu), typeof(WindowPlus));
 
         /// <summary>
         /// Gets or sets the margin of the titlebar.
@@ -642,7 +658,8 @@ namespace FullControls.SystemComponents
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
-            this.AddHook(HookMinimize);
+            this.AddHook(HandleMinimize);
+            this.AddHook(HandleSystemMenu);
         }
 
         /// <summary>
@@ -913,13 +930,16 @@ namespace FullControls.SystemComponents
             => e.CanExecute = true;
 
         private void Minimize_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-            => e.CanExecute = ResizeMode != ResizeMode.NoResize;
+            => e.CanExecute = ResizeMode != ResizeMode.NoResize &&
+                            WindowState != WindowState.Minimized;
 
         private void Maximize_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-            => e.CanExecute = ResizeMode == ResizeMode.CanResize || ResizeMode == ResizeMode.CanResizeWithGrip;
+            => e.CanExecute = (ResizeMode == ResizeMode.CanResize || ResizeMode == ResizeMode.CanResizeWithGrip) &&
+                            WindowState != WindowState.Maximized;
 
         private void Restore_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-            => e.CanExecute = ResizeMode != ResizeMode.NoResize;
+            => e.CanExecute = ResizeMode != ResizeMode.NoResize &&
+                            WindowState != WindowState.Normal;
 
         private void Hide_CanExecute(object sender, CanExecuteRoutedEventArgs e)
             => e.CanExecute = true;
@@ -960,12 +980,25 @@ namespace FullControls.SystemComponents
         /// <summary>
         /// Handles the minimization.
         /// </summary>
-        private IntPtr HookMinimize(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        private IntPtr HandleMinimize(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             if (msg == WindowCore.WM_SYSCOMMAND && ((int)wParam & 0xFFF0) == WindowCore.SC_MINIMIZE)
             {
                 handled = true;
                 if (EnableMinimizeByTaskbar) Minimize();
+            }
+
+            return IntPtr.Zero;
+        }
+
+        /// <summary>
+        /// Hides the system menu.
+        /// </summary>
+        private IntPtr HandleSystemMenu(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (wParam.ToInt32() == WindowCore.WP_SYSTEMMENU && (msg == WindowCore.VK_LMENU || msg == WindowCore.VK_RMENU))
+            {
+                handled = true;
             }
 
             return IntPtr.Zero;
