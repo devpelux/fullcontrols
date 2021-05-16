@@ -19,7 +19,9 @@ namespace FullControls.SystemComponents
         /// <para>(Must implement <see cref="IDialog"/>)</para>
         /// </param>
         public DialogWindow(Window window)
+#pragma warning disable CS0618 // The type or the member is obsolete
             => this.window = window != null ? window is Common.IDialog or IDialog ? window
+#pragma warning restore CS0618 // The type or the member is obsolete
             : throw new InvalidCastException($"{window} must implement {nameof(Common.IDialog)}.")
             : throw new ArgumentNullException(nameof(window));
 
@@ -30,7 +32,9 @@ namespace FullControls.SystemComponents
         public object Show()
         {
             _ = window.ShowDialog();
+#pragma warning disable CS0618 // The type or the member is obsolete
             return window is Common.IDialog dialog ? dialog.GetResult() : ((IDialog)window).GetResult();
+#pragma warning restore CS0618 // The type or the member is obsolete
         }
     }
 }

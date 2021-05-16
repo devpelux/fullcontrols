@@ -26,8 +26,10 @@ namespace FullControls.Core.Service
             Bottom = bottom;
         }
 
-        public RECT(Rectangle rectangle) : this(rectangle.Left, rectangle.Top, rectangle.Right, rectangle.Bottom) { }
-
         public static RECT FromXYWH(int x, int y, int width, int height) => new(x, y, x + width, y + height);
+
+        public static explicit operator Rectangle(RECT r) => Rectangle.FromLTRB(r.Left, r.Top, r.Right, r.Bottom);
+
+        public static explicit operator RECT(Rectangle r) => new(r.Left, r.Top, r.Right, r.Bottom);
     }
 }

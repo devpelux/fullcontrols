@@ -61,7 +61,7 @@ namespace FullControls.Core
             {
                 if (Extern.DwmIsCompositionEnabled() && SystemParameters.DropShadow)
                 {
-                    MARGINS margins = new(frameThickness);
+                    MARGINS margins = (MARGINS)frameThickness;
                     WindowInteropHelper helper = new(window);
 
                     Extern.DwmExtendFrameIntoClientArea(helper.Handle, ref margins);

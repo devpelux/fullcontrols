@@ -11,6 +11,7 @@ namespace FullControls.Core.Service
         public int TopHeight;
         public int BottomHeight;
 
+
         public MARGINS(int leftWidth, int rightWidth, int topHeight, int bottomHeight)
         {
             LeftWidth = leftWidth;
@@ -19,6 +20,8 @@ namespace FullControls.Core.Service
             BottomHeight = bottomHeight;
         }
 
-        public MARGINS(Thickness thickness) : this((int)thickness.Left, (int)thickness.Right, (int)thickness.Top, (int)thickness.Bottom) { }
+        public static explicit operator Thickness(MARGINS m) => new(m.LeftWidth, m.TopHeight, m.RightWidth, m.BottomHeight);
+
+        public static explicit operator MARGINS(Thickness t) => new(checked((int)t.Left), checked((int)t.Right), checked((int)t.Top), checked((int)t.Bottom));
     }
 }
