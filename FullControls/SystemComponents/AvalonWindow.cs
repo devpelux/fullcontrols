@@ -41,7 +41,7 @@ namespace FullControls.SystemComponents
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
-            this.AddHook(HookGlassFrame);
+            this.AddHook(HandleGlassFrame);
         }
 
         /// <inheritdoc/>
@@ -61,7 +61,7 @@ namespace FullControls.SystemComponents
         /// <summary>
         /// Handles the glass frame.
         /// </summary>
-        private IntPtr HookGlassFrame(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        private IntPtr HandleGlassFrame(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             if (msg == WindowCore.WM_NCPAINT)
             {

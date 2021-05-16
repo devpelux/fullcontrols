@@ -28,7 +28,7 @@
   </a>
 </p>
 <p align="center">
-  <img alt="Code release" src="https://img.shields.io/badge/code:release-v1.4.1-blue"></img>
+  <img alt="Code release" src="https://img.shields.io/badge/code:release-v1.4.2-blue"></img>
   <img alt="Code status" src="https://img.shields.io/badge/code:status-stable-blue"></img>
 </p>
 

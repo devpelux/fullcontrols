@@ -982,7 +982,7 @@ namespace FullControls.SystemComponents
         /// </summary>
         private IntPtr HandleMinimize(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-            if (msg == WindowCore.WM_SYSCOMMAND && ((int)wParam & 0xFFF0) == WindowCore.SC_MINIMIZE)
+            if (msg == WindowCore.WM_SYSCOMMAND && ((long)wParam & 0xFFF0) == WindowCore.SC_MINIMIZE)
             {
                 handled = true;
                 if (EnableMinimizeByTaskbar) Minimize();
@@ -996,7 +996,7 @@ namespace FullControls.SystemComponents
         /// </summary>
         private IntPtr HandleSystemMenu(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
-            if (wParam.ToInt32() == WindowCore.WP_SYSTEMMENU && (msg == WindowCore.VK_LMENU || msg == WindowCore.VK_RMENU))
+            if ((long)wParam == WindowCore.WP_SYSTEMMENU && (msg == WindowCore.VK_LMENU || msg == WindowCore.VK_RMENU))
             {
                 handled = true;
             }
