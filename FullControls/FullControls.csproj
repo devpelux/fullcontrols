@@ -10,8 +10,9 @@
 The fully overview, and examples, can be found here: https://github.com/devpelux/fullcontrols
 The complete documentation can be found here: https://github.com/devpelux/fullcontrols/wiki</Description>
     <PackageTags>controls csharp net5 wpf wpfui flat-design dark-theme accordion button passwordbox textbox scrollviewer menu contextmenu collapsible drawer window</PackageTags>
-    <PackageReleaseNotes>Fixed OverflowException while converting IntPtr to int in 64bit platforms.
+    <PackageReleaseNotes>Added possibility to convert an AccordionItemCollection to a List&lt;AccordionItem&gt; and vice-versa.
 Added Tools.GetExecutingDirectory() to get the current app executing directory.
+Fixed OverflowException while converting IntPtr to int in 64bit platforms.
 General optimizations.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>

@@ -1,4 +1,5 @@
 ﻿using FullControls.Controls;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 
@@ -59,5 +60,56 @@ namespace FullControls.Common
                 if (this[i] != null) this[i].Index = i;
             }
         }
+
+        #region Conversion functions
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="AccordionItemCollection"/>
+        /// and populates it with elements from a specified <see cref="List{T}"/> of <see cref="AccordionItem"/>.
+        /// </summary>
+        /// <param name="accordionItemList"><see cref="List{T}"/> of <see cref="AccordionItem"/> from which to get the items.</param>
+        public static AccordionItemCollection FromList(List<AccordionItem> accordionItemList)
+        {
+            AccordionItemCollection accordionItemCollection = new();
+            foreach (AccordionItem accordionItem in accordionItemList)
+            {
+                accordionItemCollection.Add(accordionItem);
+            }
+            return accordionItemCollection;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of a <see cref="List{T}"/> of <see cref="AccordionItem"/>
+        /// and populates it with elements from the current <see cref="AccordionItemCollection"/>.
+        /// </summary>
+        public List<AccordionItem> ToList()
+        {
+            List<AccordionItem> accordionItemsList = new();
+            foreach (AccordionItem accordionItem in this)
+            {
+                accordionItemsList.Add(accordionItem);
+            }
+            return accordionItemsList;
+        }
+
+        #endregion
+
+        #region Operators
+
+        /// <summary>
+        /// Converts the <see cref="List{T}"/> of <see cref="AccordionItem"/> to an <see cref="AccordionItemCollection"/>.
+        /// </summary>
+        /// <param name="accordionItemList"><see cref="List{T}"/> of <see cref="AccordionItem"/> to convert.</param>
+        public static explicit operator AccordionItemCollection(List<AccordionItem> accordionItemList)
+            => FromList(accordionItemList);
+
+        /// <summary>
+        /// Converts the <see cref="AccordionItemCollection"/> to a <see cref="List{T}"/> of <see cref="AccordionItem"/>.
+        /// </summary>
+        /// <param name="accordionItemCollection"><see cref="AccordionItemCollection"/> to convert.</param>
+        public static explicit operator List<AccordionItem>(AccordionItemCollection accordionItemCollection)
+            => accordionItemCollection.ToList();
+
+        #endregion
     }
 }
