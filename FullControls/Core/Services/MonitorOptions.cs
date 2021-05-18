@@ -1,4 +1,4 @@
-﻿namespace FullControls.Core.Service
+﻿namespace FullControls.Core.Services
 {
     internal enum MonitorOptions : uint
     {

@@ -1,16 +1,16 @@
 ﻿[*.cs]
 
-# CA1305: Specificare IFormatProvider
-dotnet_diagnostic.CA1305.severity = none
-
 # IDE0011: Aggiungi parentesi graffe
-csharp_prefer_braces = when_multiline:silent
+csharp_prefer_braces = when_multiline
 
 # IDE0021: Usa il corpo del blocco per i costruttori
 csharp_style_expression_bodied_constructors = when_on_single_line:none
 
-# CA1707: Gli identificatori non devono contenere caratteri di sottolineatura
-dotnet_diagnostic.CA1707.severity = none
+# IDE0022: Usa il corpo del blocco per i metodi
+csharp_style_expression_bodied_methods = when_on_single_line:none
 
 # IDE0021: Usa il corpo dell'espressione per i costruttori
 dotnet_diagnostic.IDE0021.severity = none
+
+# IDE0022: Usa il corpo dell'espressione per i metodi
+dotnet_diagnostic.IDE0022.severity = none

@@ -1,5 +1,4 @@
-﻿using FullControls.Core.Service;
-using System;
+﻿using FullControls.Core.Services;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -17,7 +16,7 @@ namespace FullControls.Extra
         /// <returns>Current cursor position on display.</returns>
         public static Point GetCursorPos()
         {
-            Extern.GetCursorPos(out POINT lMousePosition);
+            NativeMethods.GetCursorPos(out POINT lMousePosition);
             return lMousePosition;
         }
 
@@ -28,9 +27,15 @@ namespace FullControls.Extra
         public static Window GetActiveWindow() => Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
 
         /// <summary>
-        /// Gets the current application executing directory path.
+        /// Gets the current application executing file.
         /// </summary>
-        /// <returns>Current application executing directory path.</returns>
-        public static string GetExecutingDirectory() => Path.GetDirectoryName(AppContext.BaseDirectory);
+        /// <returns>Current application executing file.</returns>
+        public static FileInfo GetExecutingFile() => new(InternalMethods.GetExecutablePath());
+
+        /// <summary>
+        /// Gets the current application executing directory.
+        /// </summary>
+        /// <returns>Current application executing directory.</returns>
+        public static DirectoryInfo GetExecutingDirectory() => GetExecutingFile().Directory;
     }
 }

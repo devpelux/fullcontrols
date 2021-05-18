@@ -1,4 +1,4 @@
-﻿using FullControls.Core.Service;
+﻿using FullControls.Core.Services;
 using FullControls.Extra.Extensions;
 using FullControls.SystemComponents;
 using System;
@@ -57,14 +57,14 @@ namespace FullControls.Core
         /// </summary>
         internal static void RemoveFrame(Window window, Thickness frameThickness)
         {
-            if (Environment.OSVersion.Version.Major >= 6 && Extern.IsDwmAvailable())
+            if (Environment.OSVersion.Version.Major >= 6 && InternalMethods.IsDwmAvailable())
             {
-                if (Extern.DwmIsCompositionEnabled() && SystemParameters.DropShadow)
+                if (NativeMethods.DwmIsCompositionEnabled() && SystemParameters.DropShadow)
                 {
                     MARGINS margins = (MARGINS)frameThickness;
                     WindowInteropHelper helper = new(window);
 
-                    Extern.DwmExtendFrameIntoClientArea(helper.Handle, ref margins);
+                    InternalMethods.DwmExtendFrameIntoClientArea(helper.Handle, ref margins);
                 }
             }
         }
@@ -74,14 +74,14 @@ namespace FullControls.Core
         /// </summary>
         internal static void WmGetMinMaxInfo(IntPtr lParam)
         {
-            Extern.GetCursorPos(out POINT lMousePosition);
+            NativeMethods.GetCursorPos(out POINT lMousePosition);
 
-            IntPtr lPrimaryScreen = Extern.MonitorFromPoint(new POINT(0, 0), MonitorOptions.MONITOR_DEFAULTTOPRIMARY);
+            IntPtr lPrimaryScreen = NativeMethods.MonitorFromPoint(new POINT(0, 0), MonitorOptions.MONITOR_DEFAULTTOPRIMARY);
             MONITORINFO lPrimaryScreenInfo = new();
 
-            if (Extern.GetMonitorInfo(lPrimaryScreen, lPrimaryScreenInfo) == false) return;
+            if (NativeMethods.GetMonitorInfo(lPrimaryScreen, lPrimaryScreenInfo) == false) return;
 
-            IntPtr lCurrentScreen = Extern.MonitorFromPoint(lMousePosition, MonitorOptions.MONITOR_DEFAULTTONEAREST);
+            IntPtr lCurrentScreen = NativeMethods.MonitorFromPoint(lMousePosition, MonitorOptions.MONITOR_DEFAULTTONEAREST);
 
             MINMAXINFO lMmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
 

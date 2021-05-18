@@ -6,7 +6,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace FullControls.Core.Service
+namespace FullControls.Core.Services
 {
     internal static class HandleCollector
     {

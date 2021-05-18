@@ -7,7 +7,7 @@ using System;
 using System.Windows;
 using System.Windows.Media;
 
-namespace FullControls.Core.Service
+namespace FullControls.Core.Services
 {
     internal static class DpiHelper
     {

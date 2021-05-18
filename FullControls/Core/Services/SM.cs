@@ -3,7 +3,7 @@
 // See the LICENSE file in the project root for more information.
 // LICENSE: https://github.com/dotnet/wpf/blob/main/LICENSE.TXT
 
-namespace FullControls.Core.Service
+namespace FullControls.Core.Services
 {
     /// <summary>
     /// SystemMetrics.

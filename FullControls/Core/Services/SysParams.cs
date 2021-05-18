@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Shell;
 
-namespace FullControls.Core.Service
+namespace FullControls.Core.Services
 {
     internal static class SysParams
     {
@@ -34,7 +34,7 @@ namespace FullControls.Core.Service
                             HandleRef desktopWnd = new(null, IntPtr.Zero);
 
                             // Win32Exception will get the Win32 error code so we don't have to
-                            IntPtr dc = Extern.GetDC(desktopWnd);
+                            IntPtr dc = InternalMethods.GetDC(desktopWnd);
 
                             // Detecting error case from unmanaged call, required by PREsharp to throw a Win32Exception
                             if (dc == IntPtr.Zero)
@@ -44,12 +44,12 @@ namespace FullControls.Core.Service
 
                             try
                             {
-                                _dpiX = Extern.GetDeviceCaps(new HandleRef(null, dc), (int)DeviceCap.LOGPIXELSX);
+                                _dpiX = NativeMethods.GetDeviceCaps(new HandleRef(null, dc), (int)DeviceCap.LOGPIXELSX);
                                 _cacheValid[(int)CacheSlot.DpiX] = true;
                             }
                             finally
                             {
-                                Extern.ReleaseDC(desktopWnd, new HandleRef(null, dc));
+                                InternalMethods.ReleaseDC(desktopWnd, new HandleRef(null, dc));
                             }
                         }
                     }
@@ -78,7 +78,7 @@ namespace FullControls.Core.Service
                             HandleRef desktopWnd = new(null, IntPtr.Zero);
 
                             // Win32Exception will get the Win32 error code so we don't have to
-                            IntPtr dc = Extern.GetDC(desktopWnd);
+                            IntPtr dc = InternalMethods.GetDC(desktopWnd);
 
                             // Detecting error case from unmanaged call, required by PREsharp to throw a Win32Exception
                             if (dc == IntPtr.Zero)
@@ -88,12 +88,12 @@ namespace FullControls.Core.Service
 
                             try
                             {
-                                _dpiY = Extern.GetDeviceCaps(new HandleRef(null, dc), (int)DeviceCap.LOGPIXELSY);
+                                _dpiY = NativeMethods.GetDeviceCaps(new HandleRef(null, dc), (int)DeviceCap.LOGPIXELSY);
                                 _cacheValid[(int)CacheSlot.DpiY] = true;
                             }
                             finally
                             {
-                                Extern.ReleaseDC(desktopWnd, new HandleRef(null, dc));
+                                InternalMethods.ReleaseDC(desktopWnd, new HandleRef(null, dc));
                             }
                         }
                     }
@@ -127,10 +127,10 @@ namespace FullControls.Core.Service
                             float dpix = ConvertInPixelsPerDip(DpiX);
                             float dpiy = ConvertInPixelsPerDip(DpiY);
 
-                            Size frameSize = new(Extern.GetSystemMetrics(SM.CXSIZEFRAME), Extern.GetSystemMetrics(SM.CYSIZEFRAME));
+                            Size frameSize = new(NativeMethods.GetSystemMetrics(SM.CXSIZEFRAME), NativeMethods.GetSystemMetrics(SM.CYSIZEFRAME));
 
                             // this adjustment is needed only since .NET 4.5 
-                            Size paddedBorder = SizeExtensions.UniformSize(Extern.GetSystemMetrics(SM.CXPADDEDBORDER));
+                            Size paddedBorder = SizeExtensions.UniformSize(NativeMethods.GetSystemMetrics(SM.CXPADDEDBORDER));
                             frameSize = frameSize.Add(paddedBorder);
 
                             Size frameSizeInDips = DpiHelper.DeviceSizeToLogical(frameSize, dpix, dpiy);

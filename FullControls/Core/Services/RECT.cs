@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace FullControls.Core.Service
+namespace FullControls.Core.Services
 {
     [StructLayout(LayoutKind.Sequential)]
     internal struct RECT

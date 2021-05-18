@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using System.Windows;
 
-namespace FullControls.Core.Service
+namespace FullControls.Core.Services
 {
     [StructLayout(LayoutKind.Sequential)]
     internal struct MARGINS
