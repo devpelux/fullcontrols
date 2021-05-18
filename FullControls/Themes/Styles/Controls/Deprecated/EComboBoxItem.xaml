@@ -1,0 +1,59 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FullControls.Controls">
+
+    <Style TargetType="{x:Type local:EComboBoxItem}" BasedOn="{StaticResource {x:Type ComboBoxItem}}">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Background" Value="#f2f2f2"/>
+        <Setter Property="BackgroundOnMouseOver" Value="#cccccc"/>
+        <Setter Property="BackgroundOnSelected" Value="#86caff"/>
+        <Setter Property="BackgroundOnMouseOverOnSelected" Value="#7cbff2"/>
+        <Setter Property="BackgroundOnFocused" Value="#cccccc"/>
+        <Setter Property="BackgroundOnFocusedOnSelected" Value="#86caff"/>
+        <Setter Property="BackgroundOnDisabled" Value="#f2f2f2"/>
+        <Setter Property="BorderBrush" Value="#a6a6a6"/>
+        <Setter Property="BorderBrushOnMouseOver" Value="#a6a6a6"/>
+        <Setter Property="BorderBrushOnSelected" Value="#5e9fd1"/>
+        <Setter Property="BorderBrushOnMouseOverOnSelected" Value="#5e9fd1"/>
+        <Setter Property="BorderBrushOnFocused" Value="#a6a6a6"/>
+        <Setter Property="BorderBrushOnFocusedOnSelected" Value="#a6a6a6"/>
+        <Setter Property="BorderBrushOnDisabled" Value="#bfbfbf"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="ForegroundOnMouseOver" Value="Black"/>
+        <Setter Property="ForegroundOnSelected" Value="Black"/>
+        <Setter Property="ForegroundOnMouseOverOnSelected" Value="Black"/>
+        <Setter Property="ForegroundOnFocused" Value="Black"/>
+        <Setter Property="ForegroundOnFocusedOnSelected" Value="Black"/>
+        <Setter Property="ForegroundOnDisabled" Value="#666666"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="AnimationTime" Value="0:0:0.2"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:EComboBoxItem}">
+                    <Border x:Name="PART_Border"
+                            Background="{TemplateBinding ActualBackground}"
+                            BorderBrush="{TemplateBinding ActualBorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            TextBlock.Foreground="{TemplateBinding ActualForeground}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Margin="{TemplateBinding Padding}"
+                                          Content="{TemplateBinding Content}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          Focusable="False"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

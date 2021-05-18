@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:fc="http://devpelux.github.io/fullcontrols">
 
-    <Style x:Key="ETextBoxDark" TargetType="{x:Type fc:ETextBox}">
+    <Style x:Key="TextBoxPlusDark" TargetType="{x:Type fc:TextBoxPlus}">
         <Setter Property="Background" Value="#FF333337"/>
         <Setter Property="BackgroundOnSelected" Value="#FF333337"/>
         <Setter Property="BackgroundOnDisabled" Value="#FF333337"/>
@@ -26,7 +26,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="EPasswordBoxDark" TargetType="{x:Type fc:EPasswordBox}">
+    <Style x:Key="PasswordBoxPlusDark" TargetType="{x:Type fc:PasswordBoxPlus}">
         <Setter Property="Background" Value="#FF333337"/>
         <Setter Property="BackgroundOnSelected" Value="#FF333337"/>
         <Setter Property="BackgroundOnDisabled" Value="#FF333337"/>
@@ -48,7 +48,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="EButtonDark" TargetType="{x:Type fc:EButton}">
+    <Style x:Key="ButtonPlusDark" TargetType="{x:Type fc:ButtonPlus}">
         <Setter Property="Background" Value="#FF3F3F46"/>
         <Setter Property="BackgroundOnMouseOver" Value="#FF575759"/>
         <Setter Property="BackgroundOnPressed" Value="#FF2D2D30"/>
@@ -63,7 +63,7 @@
         <Setter Property="ForegroundOnDisabled" Value="Gray"/>
     </Style>
 
-    <Style x:Key="ERepeatButtonDark" TargetType="{x:Type fc:ERepeatButton}">
+    <Style x:Key="RepeatButtonPlusDark" TargetType="{x:Type fc:RepeatButtonPlus}">
         <Setter Property="Background" Value="#FF3F3F46"/>
         <Setter Property="BackgroundOnMouseOver" Value="#FF575759"/>
         <Setter Property="BackgroundOnPressed" Value="#FF2D2D30"/>
@@ -96,7 +96,7 @@
         <Setter Property="ForegroundOnDisabled" Value="Gray"/>
     </Style>
 
-    <Style x:Key="EToggleButtonDark" TargetType="{x:Type fc:EToggleButton}">
+    <Style x:Key="ToggleButtonPlusDark" TargetType="{x:Type fc:ToggleButtonPlus}">
         <Setter Property="Background" Value="#FF3F3F46"/>
         <Setter Property="BackgroundOnMouseOver" Value="#FF575759"/>
         <Setter Property="BackgroundOnChecked" Value="#FF19478B"/>
@@ -114,7 +114,7 @@
         <Setter Property="ForegroundOnDisabled" Value="Gray"/>
     </Style>
 
-    <Style x:Key="ECheckBoxDark" TargetType="{x:Type fc:ECheckBox}">
+    <Style x:Key="CheckBoxPlusDark" TargetType="{x:Type fc:CheckBoxPlus}">
         <Setter Property="Background" Value="#FF262626"/>
         <Setter Property="BackgroundOnMouseOver" Value="#FF343434"/>
         <Setter Property="BackgroundOnChecked" Value="#FF262626"/>
@@ -137,7 +137,7 @@
         <Setter Property="ForeColorOnDisabled" Value="Gray"/>
     </Style>
 
-    <Style x:Key="ERadioButtonDark" TargetType="{x:Type fc:ERadioButton}">
+    <Style x:Key="RadioButtonPlusDark" TargetType="{x:Type fc:RadioButtonPlus}">
         <Setter Property="Background" Value="#FF262626"/>
         <Setter Property="BackgroundOnMouseOver" Value="#FF343434"/>
         <Setter Property="BackgroundOnChecked" Value="#FF262626"/>
@@ -160,7 +160,7 @@
         <Setter Property="ForeColorOnDisabled" Value="Gray"/>
     </Style>
 
-    <Style x:Key="EComboBoxDark" TargetType="{x:Type fc:EComboBox}">
+    <Style x:Key="ComboBoxPlusDark" TargetType="{x:Type fc:ComboBoxPlus}">
         <Setter Property="Background" Value="#FF3F3F46"/>
         <Setter Property="BackgroundOnMouseOver" Value="#FF575759"/>
         <Setter Property="BackgroundOnMouseOverOnChecked" Value="#FF2D2D30"/>
@@ -194,7 +194,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="EComboBoxItemDark" TargetType="{x:Type fc:EComboBoxItem}">
+    <Style x:Key="ComboBoxItemPlusDark" TargetType="{x:Type fc:ComboBoxItemPlus}">
         <Setter Property="Background" Value="#FF2D2D30"/>
         <Setter Property="BackgroundOnMouseOver" Value="#FF575759"/>
         <Setter Property="BackgroundOnSelected" Value="#FF0099FF"/>
@@ -318,7 +318,7 @@
         <Setter Property="VerticalScrollBarButtonsForegroundOnDisabled" Value="Black"/>
     </Style>
 
-    <Style x:Key="CaptionButtonStyleDark" TargetType="{x:Type fc:EButton}">
+    <Style x:Key="CaptionButtonStyleDark" TargetType="{x:Type fc:ButtonPlus}">
         <Setter Property="Height" Value="32"/>
         <Setter Property="Width" Value="46"/>
         <Setter Property="FontSize" Value="10"/>
@@ -338,7 +338,7 @@
         <Setter Property="AnimationTime" Value="0:0:0.07"/>
     </Style>
 
-    <Style x:Key="CaptionCloseButtonStyleDark" TargetType="{x:Type fc:EButton}">
+    <Style x:Key="CaptionCloseButtonStyleDark" TargetType="{x:Type fc:ButtonPlus}">
         <Setter Property="Height" Value="32"/>
         <Setter Property="Width" Value="46"/>
         <Setter Property="FontSize" Value="10"/>

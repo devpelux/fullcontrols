@@ -1,25 +1,20 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls.Controls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml" />
+    </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type local:ItemsControlAccordionItem}">
-        <Style.Resources>
-            <ResourceDictionary>
-                <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml" />
-                </ResourceDictionary.MergedDictionaries>
-            </ResourceDictionary>
-        </Style.Resources>
-
         <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="ForegroundOnExpanded" Value="{DynamicResource Blue7}"/>
-        <Setter Property="ForegroundOnMouseOver" Value="{DynamicResource Gray15}"/>
-        <Setter Property="ForegroundOnMouseOverOnExpanded" Value="{DynamicResource Blue10}"/>
+        <Setter Property="ForegroundOnExpanded" Value="{StaticResource Blue7}"/>
+        <Setter Property="ForegroundOnMouseOver" Value="{StaticResource Gray15}"/>
+        <Setter Property="ForegroundOnMouseOverOnExpanded" Value="{StaticResource Blue10}"/>
         <Setter Property="ForegroundOnDisabled" Value="DimGray"/>
         <Setter Property="ArrowForeground" Value="Black"/>
-        <Setter Property="ArrowForegroundOnExpanded" Value="{DynamicResource Blue7}"/>
-        <Setter Property="ArrowForegroundOnMouseOver" Value="{DynamicResource Gray15}"/>
-        <Setter Property="ArrowForegroundOnMouseOverOnExpanded" Value="{DynamicResource Blue10}"/>
+        <Setter Property="ArrowForegroundOnExpanded" Value="{StaticResource Blue7}"/>
+        <Setter Property="ArrowForegroundOnMouseOver" Value="{StaticResource Gray15}"/>
+        <Setter Property="ArrowForegroundOnMouseOverOnExpanded" Value="{StaticResource Blue10}"/>
         <Setter Property="ArrowForegroundOnDisabled" Value="DimGray"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="FontWeightOnExpanded" Value="Bold"/>

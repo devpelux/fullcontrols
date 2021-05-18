@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16" height="16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <title>RepeatButtonPlus</title>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title>RepeatButtonPlus</dc:title>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <style type="text/css">.icon-canvas-transparent{opacity:0;fill:#F6F6F6;} .icon-vs-out{fill:#F6F6F6;} .icon-vs-bg{fill:#424242;}</style>
+ <path id="canvas" class="icon-canvas-transparent" d="m16 16h-16v-16h16v16z"/>
+ <path id="outline" class="icon-vs-out" d="M11.789 9.789c-.434 1.44-1.56 2.566-3 3-.558 1.851-2.259 3.211-4.289 3.211-2.481 0-4.5-2.019-4.5-4.5 0-2.03 1.36-3.731 3.211-4.289.434-1.44 1.56-2.566 3-3 .558-1.851 2.259-3.211 4.289-3.211 2.481 0 4.5 2.019 4.5 4.5 0 2.03-1.36 3.731-3.211 4.289z"/>
+ <g id="iconBg">
+  <path class="icon-vs-bg" d="M14 5.5c0 1.4-.828 2.599-2.016 3.159l.016-.159c0-2.481-2.019-4.5-4.5-4.5l-.159.016c.56-1.188 1.759-2.016 3.159-2.016 1.933 0 3.5 1.567 3.5 3.5zm-6.5-.5c-1.4 0-2.599.828-3.159 2.016l.159-.016c2.481 0 4.5 2.019 4.5 4.5l-.016.159c1.188-.56 2.016-1.759 2.016-3.159 0-1.933-1.567-3.5-3.5-3.5zm-3 3c-1.933 0-3.5 1.567-3.5 3.5s1.567 3.5 3.5 3.5 3.5-1.567 3.5-3.5-1.567-3.5-3.5-3.5z"/>
+ </g>
+</svg>

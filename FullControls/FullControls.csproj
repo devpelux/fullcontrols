@@ -22,17 +22,12 @@ The complete documentation can be found here: https://github.com/devpelux/fullco
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.Accordion.icon.bmp" />
-	<EmbeddedResource Include="Resources\Icons\FullControls.Controls.BorderedGrid.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.BorderedGrid.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ButtonPlus.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.CheckBoxPlus.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.Collapsible.icon.bmp" />
-    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.EButton.icon.bmp" />
-    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ECheckBox.icon.bmp" />
-    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.EComboBox.icon.bmp" />
-    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.EComboBoxItem.icon.bmp" />
-    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.EPasswordBox.icon.bmp" />
-    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ERadioButton.icon.bmp" />
-    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ERepeatButton.icon.bmp" />
-    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ETextBox.icon.bmp" />
-    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.EToggleButton.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ComboBoxItemPlus.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ComboBoxPlus.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.FlatContextMenu.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.FlatMenu.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.FlatMenuItem.icon.bmp" />
@@ -42,8 +37,13 @@ The complete documentation can be found here: https://github.com/devpelux/fullco
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.GlassScrollBar.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.GlassScrollViewer.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ItemsControlAccordionItem.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.PasswordBoxPlus.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.RadioButtonPlus.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.RepeatButtonPlus.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.SimpleAccordionItem.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.Switcher.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.TextBoxPlus.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ToggleButtonPlus.icon.bmp" />
   </ItemGroup>
 
   <ItemGroup>

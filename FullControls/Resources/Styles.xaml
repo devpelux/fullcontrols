@@ -5,18 +5,18 @@
         <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml" />
     </ResourceDictionary.MergedDictionaries>
     
-    <Style x:Key="CaptionButtonStyle" TargetType="{x:Type controls:EButton}">
+    <Style x:Key="CaptionButtonStyle" TargetType="{x:Type controls:ButtonPlus}">
         <Setter Property="Height" Value="32" />
         <Setter Property="Width" Value="46" />
         <Setter Property="FontSize" Value="10" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BackgroundOnMouseOver" Value="{DynamicResource Gray4}" />
-        <Setter Property="BackgroundOnPressed" Value="{DynamicResource Gray5}" />
+        <Setter Property="BackgroundOnMouseOver" Value="{StaticResource Gray4}" />
+        <Setter Property="BackgroundOnPressed" Value="{StaticResource Gray5}" />
         <Setter Property="BackgroundOnDisabled" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="BorderBrushOnMouseOver" Value="{DynamicResource Gray4}" />
-        <Setter Property="BorderBrushOnPressed" Value="{DynamicResource Gray5}" />
+        <Setter Property="BorderBrushOnMouseOver" Value="{StaticResource Gray4}" />
+        <Setter Property="BorderBrushOnPressed" Value="{StaticResource Gray5}" />
         <Setter Property="BorderBrushOnDisabled" Value="Transparent" />
         <Setter Property="Foreground" Value="Black" />
         <Setter Property="ForegroundOnMouseOver" Value="Black" />
@@ -25,7 +25,7 @@
         <Setter Property="AnimationTime" Value="0:0:0.07" />
     </Style>
 
-    <Style x:Key="CaptionCloseButtonStyle" TargetType="{x:Type controls:EButton}">
+    <Style x:Key="CaptionCloseButtonStyle" TargetType="{x:Type controls:ButtonPlus}">
         <Setter Property="Height" Value="32" />
         <Setter Property="Width" Value="46" />
         <Setter Property="FontSize" Value="10" />

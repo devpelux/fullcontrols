@@ -19,14 +19,14 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Background="White">
-            <fc:EButton Content="Button" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
-            <fc:EToggleButton Content="ToggleButton" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
-            <fc:ERepeatButton Content="RepeatButton" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:ButtonPlus Content="Button" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:ToggleButtonPlus Content="ToggleButton" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:RepeatButtonPlus Content="RepeatButton" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
         </Grid>
         <Grid Grid.Column="1" Background="Black">
-            <fc:EButton Style="{DynamicResource EButtonDark}" Content="Button" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
-            <fc:EToggleButton Style="{DynamicResource EToggleButtonDark}" Content="ToggleButton" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
-            <fc:ERepeatButton Style="{DynamicResource ERepeatButtonDark}" Content="RepeatButton" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:ButtonPlus Style="{DynamicResource ButtonPlusDark}" Content="Button" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:ToggleButtonPlus Style="{DynamicResource ToggleButtonPlusDark}" Content="ToggleButton" HorizontalAlignment="Center" Margin="0,110,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
+            <fc:RepeatButtonPlus Style="{DynamicResource RepeatButtonPlusDark}" Content="RepeatButton" HorizontalAlignment="Center" Margin="0,170,0,0" VerticalAlignment="Top" Height="30" Width="90"/>
         </Grid>
     </Grid>
 </fc:AvalonWindow>

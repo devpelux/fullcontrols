@@ -1,0 +1,302 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:FullControls.SystemComponents"
+                    xmlns:controls="clr-namespace:FullControls.Controls"
+                    xmlns:extra="clr-namespace:FullControls.Extra">
+    
+    <extra:ClipConverter x:Key="ClipConverter"/>
+
+    <Style TargetType="{x:Type local:EWindow}" BasedOn="{StaticResource {x:Type Window}}">
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="AllowsTransparency" Value="True"/>
+        <Setter Property="ResizeThickness" Value="11"/>
+        <Setter Property="Opacity" Value="1"/>
+        <Setter Property="ShadowRadius" Value="10"/>
+        <Setter Property="ShadowOpacity" Value="0.8"/>
+        <Setter Property="ShadowDepth" Value="0.5"/>
+        <Setter Property="ShadowColor" Value="Black"/>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="#808080"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="ToolbarHitZoneMargin" Value="0"/>
+        <Setter Property="ToolbarHitZoneBackground" Value="Transparent"/>
+        <Setter Property="ToolbarBackground" Value="White"/>
+        <Setter Property="ToolbarMenu" Value="{x:Null}"/>
+        <Setter Property="AnimationTime" Value="0:0:0.2"/>
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        
+        <!--#region CaptionButtons properties-->
+        
+        <Setter Property="CaptionButtonsBackground" Value="White"/>
+        <Setter Property="CaptionButtonsBackgroundOnMouseOver" Value="#cccccc"/>
+        <Setter Property="CaptionButtonsBackgroundOnPressed" Value="#bfbfbf"/>
+        <Setter Property="CaptionButtonsBorderBrush" Value="White"/>
+        <Setter Property="CaptionButtonsBorderBrushOnMouseOver" Value="#cccccc"/>
+        <Setter Property="CaptionButtonsBorderBrushOnPressed" Value="#bfbfbf"/>
+        <Setter Property="CaptionButtonsForeground" Value="Black"/>
+        <Setter Property="CaptionButtonsForegroundOnMouseOver" Value="Black"/>
+        <Setter Property="CaptionButtonsForegroundOnPressed" Value="White"/>
+        
+        <!--#endregion-->
+        
+        <!--#region CloseButton properties-->
+        
+        <Setter Property="CloseButtonBackground" Value="White"/>
+        <Setter Property="CloseButtonBackgroundOnMouseOver" Value="#cccccc"/>
+        <Setter Property="CloseButtonBackgroundOnPressed" Value="Red"/>
+        <Setter Property="CloseButtonBorderBrush" Value="WhiteSmoke"/>
+        <Setter Property="CloseButtonBorderBrushOnMouseOver" Value="WhiteSmoke"/>
+        <Setter Property="CloseButtonBorderBrushOnPressed" Value="Firebrick"/>
+        <Setter Property="CloseButtonForeground" Value="Black"/>
+        <Setter Property="CloseButtonForegroundOnMouseOver" Value="Black"/>
+        <Setter Property="CloseButtonForegroundOnPressed" Value="White"/>
+        
+        <!--#endregion-->
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:EWindow}">
+                    <Grid x:Name="PART_Window">
+                        <Border x:Name="PART_ShadowBorder"
+                                BorderThickness="1"
+                                Margin="{TemplateBinding MarginForShadow}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                IsHitTestVisible="False"
+                                Focusable="False">
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="PART_Shadow"
+                                                  Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  Opacity="{Binding ShadowOpacity, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  BlurRadius="{Binding ShadowRadius, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  ShadowDepth="{Binding ShadowDepth, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </Border.Effect>
+                        </Border>
+                        <Border x:Name="PART_Border"
+                                Margin="{TemplateBinding MarginForShadow}"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                            <Grid x:Name="PART_WindowParts">
+                                <Grid.Clip>
+                                    <MultiBinding Converter="{StaticResource ClipConverter}">
+                                        <Binding Path="ActualWidth"
+                                                 RelativeSource="{RelativeSource Self}"/>
+                                        <Binding Path="ActualHeight"
+                                                 RelativeSource="{RelativeSource Self}"/>
+                                        <Binding Path="CornerRadius"
+                                                 RelativeSource="{RelativeSource FindAncestor, AncestorType=Border}"/>
+                                        <Binding Path="BorderThickness"
+                                                 RelativeSource="{RelativeSource FindAncestor, AncestorType=Border}"/>
+                                    </MultiBinding>
+                                </Grid.Clip>
+                                <Grid x:Name="PART_Content"
+                                      Margin="0,32,0,0">
+                                    <AdornerDecorator>
+                                        <ContentPresenter/>
+                                    </AdornerDecorator>
+                                </Grid>
+                                <Grid x:Name="PART_Toolbar"
+                                      VerticalAlignment="Top"
+                                      Height="32"
+                                      Margin="{TemplateBinding ToolbarMargin}"
+                                      Background="{TemplateBinding ToolbarBackground}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid x:Name="PART_Brand"
+                                          Grid.Column="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid x:Name="PART_Icon"
+                                              Width="32"
+                                              Height="32"
+                                              Background="Transparent"
+                                              Visibility="Visible">
+                                            <Image x:Name="PART_IconImage"
+                                                   Grid.Column="0"
+                                                   Width="24"
+                                                   Height="24"
+                                                   Source="{TemplateBinding Icon}"
+                                                   Stretch="Uniform"
+                                                   RenderOptions.BitmapScalingMode="Fant"
+                                                   IsHitTestVisible="False"
+                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                        </Grid>
+                                        <TextBlock x:Name="PART_Title"
+                                                   Grid.Column="1"
+                                                   HorizontalAlignment="Left"
+                                                   VerticalAlignment="Center"
+                                                   Margin="10,0,10,0"
+                                                   TextWrapping="NoWrap"
+                                                   IsHitTestVisible="False"
+                                                   Text="{TemplateBinding Title}"
+                                                   Foreground="{TemplateBinding Foreground}"/>
+                                        <Grid x:Name="PART_ToolbarHitZone"
+                                              Grid.Column="1"
+                                              Margin="{TemplateBinding ToolbarHitZoneMargin}"
+                                              Background="{TemplateBinding ToolbarHitZoneBackground}"
+                                              Visibility="Visible"/>
+                                    </Grid>
+                                    <Grid x:Name="PART_Buttons"
+                                          Grid.Column="1"
+                                          HorizontalAlignment="Right">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <controls:EButton x:Name="PART_MinimizeButton"
+                                                          Grid.Column="0"
+                                                          VerticalAlignment="Top"
+                                                          HorizontalAlignment="Right"
+                                                          Margin="{TemplateBinding CaptionButtonsMargin}"
+                                                          Width="{TemplateBinding CaptionButtonsWidth}"
+                                                          Height="{TemplateBinding CaptionButtonsHeight}"
+                                                          CornerRadius="{TemplateBinding CaptionButtonsCornerRadius}"
+                                                          BorderThickness="{TemplateBinding CaptionButtonsBorderThickness}"
+                                                          Background="{TemplateBinding CaptionButtonsBackground}"
+                                                          BackgroundOnMouseOver="{TemplateBinding CaptionButtonsBackgroundOnMouseOver}"
+                                                          BackgroundOnPressed="{TemplateBinding CaptionButtonsBackgroundOnPressed}"
+                                                          BorderBrush="{TemplateBinding CaptionButtonsBorderBrush}"
+                                                          BorderBrushOnMouseOver="{TemplateBinding CaptionButtonsBorderBrushOnMouseOver}"
+                                                          BorderBrushOnPressed="{TemplateBinding CaptionButtonsBorderBrushOnPressed}"
+                                                          Foreground="{TemplateBinding CaptionButtonsForeground}"
+                                                          ForegroundOnMouseOver="{TemplateBinding CaptionButtonsForegroundOnMouseOver}"
+                                                          ForegroundOnPressed="{TemplateBinding CaptionButtonsForegroundOnPressed}"
+                                                          FontSize="{TemplateBinding CaptionButtonsFontSize}"
+                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                          FontFamily="Segoe MDL2 Assets"
+                                                          Content="&#xE949;"/>
+                                        <controls:EButton x:Name="PART_MaximizeButton"
+                                                          Grid.Column="1"
+                                                          VerticalAlignment="Top"
+                                                          HorizontalAlignment="Right"
+                                                          Margin="{TemplateBinding CaptionButtonsMargin}"
+                                                          Width="{TemplateBinding CaptionButtonsWidth}"
+                                                          Height="{TemplateBinding CaptionButtonsHeight}"
+                                                          CornerRadius="{TemplateBinding CaptionButtonsCornerRadius}"
+                                                          BorderThickness="{TemplateBinding CaptionButtonsBorderThickness}"
+                                                          Background="{TemplateBinding CaptionButtonsBackground}"
+                                                          BackgroundOnMouseOver="{TemplateBinding CaptionButtonsBackgroundOnMouseOver}"
+                                                          BackgroundOnPressed="{TemplateBinding CaptionButtonsBackgroundOnPressed}"
+                                                          BorderBrush="{TemplateBinding CaptionButtonsBorderBrush}"
+                                                          BorderBrushOnMouseOver="{TemplateBinding CaptionButtonsBorderBrushOnMouseOver}"
+                                                          BorderBrushOnPressed="{TemplateBinding CaptionButtonsBorderBrushOnPressed}"
+                                                          Foreground="{TemplateBinding CaptionButtonsForeground}"
+                                                          ForegroundOnMouseOver="{TemplateBinding CaptionButtonsForegroundOnMouseOver}"
+                                                          ForegroundOnPressed="{TemplateBinding CaptionButtonsForegroundOnPressed}"
+                                                          FontSize="{TemplateBinding CaptionButtonsFontSize}"
+                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                          FontFamily="Segoe MDL2 Assets"
+                                                          Content="&#xE739;"
+                                                          Visibility="Visible"/>
+                                        <controls:EButton x:Name="PART_RestoreButton"
+                                                          Grid.Column="2"
+                                                          VerticalAlignment="Top"
+                                                          HorizontalAlignment="Right"
+                                                          Margin="{TemplateBinding CaptionButtonsMargin}"
+                                                          Width="{TemplateBinding CaptionButtonsWidth}"
+                                                          Height="{TemplateBinding CaptionButtonsHeight}"
+                                                          CornerRadius="{TemplateBinding CaptionButtonsCornerRadius}"
+                                                          BorderThickness="{TemplateBinding CaptionButtonsBorderThickness}"
+                                                          Background="{TemplateBinding CaptionButtonsBackground}"
+                                                          BackgroundOnMouseOver="{TemplateBinding CaptionButtonsBackgroundOnMouseOver}"
+                                                          BackgroundOnPressed="{TemplateBinding CaptionButtonsBackgroundOnPressed}"
+                                                          BorderBrush="{TemplateBinding CaptionButtonsBorderBrush}"
+                                                          BorderBrushOnMouseOver="{TemplateBinding CaptionButtonsBorderBrushOnMouseOver}"
+                                                          BorderBrushOnPressed="{TemplateBinding CaptionButtonsBorderBrushOnPressed}"
+                                                          Foreground="{TemplateBinding CaptionButtonsForeground}"
+                                                          ForegroundOnMouseOver="{TemplateBinding CaptionButtonsForegroundOnMouseOver}"
+                                                          ForegroundOnPressed="{TemplateBinding CaptionButtonsForegroundOnPressed}"
+                                                          FontSize="{TemplateBinding CaptionButtonsFontSize}"
+                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                          FontFamily="Segoe MDL2 Assets"
+                                                          Content="&#xE923;"
+                                                          Visibility="Collapsed"/>
+                                        <controls:EButton x:Name="PART_CloseButton"
+                                                          Grid.Column="3"
+                                                          VerticalAlignment="Top"
+                                                          HorizontalAlignment="Right"
+                                                          Margin="{TemplateBinding CloseButtonMargin}"
+                                                          Width="{TemplateBinding CloseButtonWidth}"
+                                                          Height="{TemplateBinding CloseButtonHeight}"
+                                                          CornerRadius="{TemplateBinding CaptionButtonsCornerRadius}"
+                                                          BorderThickness="{TemplateBinding CaptionButtonsBorderThickness}"
+                                                          Background="{TemplateBinding CloseButtonBackground}"
+                                                          BackgroundOnMouseOver="{TemplateBinding CloseButtonBackgroundOnMouseOver}"
+                                                          BackgroundOnPressed="{TemplateBinding CloseButtonBackgroundOnPressed}"
+                                                          BorderBrush="{TemplateBinding CloseButtonBorderBrush}"
+                                                          BorderBrushOnMouseOver="{TemplateBinding CloseButtonBorderBrushOnMouseOver}"
+                                                          BorderBrushOnPressed="{TemplateBinding CloseButtonBorderBrushOnPressed}"
+                                                          Foreground="{TemplateBinding CloseButtonForeground}"
+                                                          ForegroundOnMouseOver="{TemplateBinding CloseButtonForegroundOnMouseOver}"
+                                                          ForegroundOnPressed="{TemplateBinding CloseButtonForegroundOnPressed}"
+                                                          FontSize="{TemplateBinding CloseButtonFontSize}"
+                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                          FontFamily="Segoe MDL2 Assets"
+                                                          Content="&#xE106;"/>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDocked" Value="True">
+                            <Setter TargetName="PART_ShadowBorder" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_Border" Property="Margin" Value="0"/>
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="0"/>
+                        </Trigger>
+                        <Trigger Property="WindowState" Value="Maximized">
+                            <Setter TargetName="PART_ShadowBorder" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_Border" Property="Margin" Value="0"/>
+                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="0"/>
+                            <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_RestoreButton" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                        <Trigger Property="ResizeMode" Value="NoResize">
+                            <Setter TargetName="PART_MinimizeButton" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_RestoreButton" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="ResizeMode" Value="CanMinimize">
+                            <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_RestoreButton" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="EnableMinimizeButton" Value="False">
+                            <Setter TargetName="PART_MinimizeButton" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="EnableMaximizeRestoreButton" Value="False">
+                            <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed"/>
+                            <Setter TargetName="PART_RestoreButton" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="EnableCloseButton" Value="False">
+                            <Setter TargetName="PART_CloseButton" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="EnableToolbarHitZone" Value="False">
+                            <Setter TargetName="PART_ToolbarHitZone" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="Icon" Value="{x:Null}">
+                            <Setter TargetName="PART_Icon" Property="Visibility" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="MergeToolbarAndContent" Value="True">
+                            <Setter TargetName="PART_Content" Property="Margin" Value="0"/>
+                            <Setter TargetName="PART_Toolbar" Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

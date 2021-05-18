@@ -1,17 +1,12 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
     <ResourceDictionary.MergedDictionaries>
-        
+
         <!-- Controls -->
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Accordion.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/EButton.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/ECheckBox.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/EComboBox.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/EComboBoxItem.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/EPasswordBox.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/ERadioButton.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/ERepeatButton.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/ETextBox.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/EToggleButton.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/ButtonPlus.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/CheckBoxPlus.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/ComboBoxItemPlus.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/ComboBoxPlus.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/FlatContextMenu.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/FlatMenu.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/FlatMenuItem.xaml" />
@@ -21,19 +16,35 @@
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/GlassScrollBar.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/GlassScrollViewer.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/ItemsControlAccordionItem.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/PasswordBoxPlus.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/RadioButtonPlus.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/RepeatButtonPlus.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/SimpleAccordionItem.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Switcher.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/TextBoxPlus.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/ToggleButtonPlus.xaml" />
 
         <!-- Controls components -->
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Components/GlassRepeatButton.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Components/GlassThumb.xaml" />
 
         <!-- SystemComponents -->
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/EWindow.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/AvalonWindow.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/FlexWindow.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/FullWindow.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/WindowTitleBar.xaml" />
-        
+
+        <!-- Deprecated -->
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/EButton.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/ECheckBox.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/EComboBox.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/EComboBoxItem.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/EPasswordBox.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/ERadioButton.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/ERepeatButton.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/ETextBox.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/EToggleButton.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/Deprecated/EWindow.xaml" />
+
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

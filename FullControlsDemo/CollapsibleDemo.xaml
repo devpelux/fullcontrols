@@ -19,8 +19,8 @@
                 <Rectangle Fill="Blue" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="158,122,0,0" Height="40" Width="40"/>
             </Grid>
         </fc:Collapsible>
-        <fc:EToggleButton x:Name="toggle" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,15"
-                          Width="70" Height="30" Content="Collapse" IsChecked="True"
-                          Checked="Toggle_Checked" Unchecked="Toggle_Unchecked"/>
+        <fc:ToggleButtonPlus x:Name="toggle" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,15"
+                             Width="70" Height="30" Content="Collapse" IsChecked="True"
+                             Checked="Toggle_Checked" Unchecked="Toggle_Unchecked"/>
     </Grid>
 </fc:AvalonWindow>

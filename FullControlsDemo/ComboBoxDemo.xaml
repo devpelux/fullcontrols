@@ -19,28 +19,28 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Background="White">
-            <fc:EComboBox HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" SelectedIndex="0" IsEditable="True"
-                          MinWidth="120" Width="120" Height="30">
-                <fc:EComboBoxItem Content="Item1"/>
-                <fc:EComboBoxItem Content="Item2"/>
-                <fc:EComboBoxItem Content="Item3"/>
-                <fc:EComboBoxItem Content="Item4"/>
-                <fc:EComboBoxItem Content="Item5"/>
-                <fc:EComboBoxItem Content="Item6"/>
-                <fc:EComboBoxItem Content="Item7"/>
-            </fc:EComboBox>
+            <fc:ComboBoxPlus HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" SelectedIndex="0" IsEditable="True"
+                             MinWidth="120" Width="120" Height="30">
+                <fc:ComboBoxItemPlus Content="Item1"/>
+                <fc:ComboBoxItemPlus Content="Item2"/>
+                <fc:ComboBoxItemPlus Content="Item3"/>
+                <fc:ComboBoxItemPlus Content="Item4"/>
+                <fc:ComboBoxItemPlus Content="Item5"/>
+                <fc:ComboBoxItemPlus Content="Item6"/>
+                <fc:ComboBoxItemPlus Content="Item7"/>
+            </fc:ComboBoxPlus>
         </Grid>
         <Grid Grid.Column="1" Background="Black">
-            <fc:EComboBox Style="{DynamicResource EComboBoxDark}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" SelectedIndex="3"
-                          MinWidth="120" Width="120" Height="30">
-                <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item1"/>
-                <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item2"/>
-                <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item3"/>
-                <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item4"/>
-                <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item5"/>
-                <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item6"/>
-                <fc:EComboBoxItem Style="{DynamicResource EComboBoxItemDark}" Content="Item7"/>
-            </fc:EComboBox>
+            <fc:ComboBoxPlus Style="{DynamicResource ComboBoxPlusDark}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" SelectedIndex="3"
+                             MinWidth="120" Width="120" Height="30">
+                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}" Content="Item1"/>
+                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}" Content="Item2"/>
+                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}" Content="Item3"/>
+                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}" Content="Item4"/>
+                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}" Content="Item5"/>
+                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}" Content="Item6"/>
+                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}" Content="Item7"/>
+            </fc:ComboBoxPlus>
         </Grid>
     </Grid>
 </fc:AvalonWindow>

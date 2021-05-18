@@ -19,28 +19,28 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Background="White">
-            <fc:ERadioButton HorizontalAlignment="Left" VerticalAlignment="Top"
-                         Height="20" Margin="30,40,0,0" Content="RadioButton 1" IsChecked="True" GroupName="G1"/>
-            <fc:ERadioButton HorizontalAlignment="Left" VerticalAlignment="Top"
-                         Height="20" Margin="30,70,0,0" Content="RadioButton 2" GroupName="G1"/>
-            <fc:ERadioButton HorizontalAlignment="Left" VerticalAlignment="Top"
-                         Height="20" Margin="30,100,0,0" Content="RadioButton 3" GroupName="G1"/>
-            <fc:ECheckBox HorizontalAlignment="Left" VerticalAlignment="Top"
-                      Height="20" Margin="30,170,0,0" Content="CheckBox 1" IsChecked="False"/>
-            <fc:ECheckBox HorizontalAlignment="Left" VerticalAlignment="Top"
-                      Height="20" Margin="30,200,0,0" Content="CheckBox 2" IsChecked="True"/>
+            <fc:RadioButtonPlus HorizontalAlignment="Left" VerticalAlignment="Top"
+                                Height="20" Margin="30,40,0,0" Content="RadioButton 1" IsChecked="True" GroupName="G1"/>
+            <fc:RadioButtonPlus HorizontalAlignment="Left" VerticalAlignment="Top"
+                                Height="20" Margin="30,70,0,0" Content="RadioButton 2" GroupName="G1"/>
+            <fc:RadioButtonPlus HorizontalAlignment="Left" VerticalAlignment="Top"
+                                Height="20" Margin="30,100,0,0" Content="RadioButton 3" GroupName="G1"/>
+            <fc:CheckBoxPlus HorizontalAlignment="Left" VerticalAlignment="Top"
+                             Height="20" Margin="30,170,0,0" Content="CheckBox 1" IsChecked="False"/>
+            <fc:CheckBoxPlus HorizontalAlignment="Left" VerticalAlignment="Top"
+                             Height="20" Margin="30,200,0,0" Content="CheckBox 2" IsChecked="True"/>
         </Grid>
         <Grid Grid.Column="1" Background="Black">
-            <fc:ERadioButton Style="{DynamicResource ERadioButtonDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
-                         Height="20" Margin="30,40,0,0" Content="RadioButton 1" GroupName="G2"/>
-            <fc:ERadioButton Style="{DynamicResource ERadioButtonDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
-                         Height="20" Margin="30,70,0,0" Content="RadioButton 2" IsChecked="True" GroupName="G2"/>
-            <fc:ERadioButton Style="{DynamicResource ERadioButtonDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
-                         Height="20" Margin="30,100,0,0" Content="RadioButton 3" GroupName="G2"/>
-            <fc:ECheckBox Style="{DynamicResource ECheckBoxDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
-                      Height="20" Margin="30,170,0,0" Content="CheckBox 1" IsChecked="False"/>
-            <fc:ECheckBox Style="{DynamicResource ECheckBoxDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
-                      Height="20" Margin="30,200,0,0" Content="CheckBox 2" IsChecked="True"/>
+            <fc:RadioButtonPlus Style="{DynamicResource RadioButtonPlusDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                Height="20" Margin="30,40,0,0" Content="RadioButton 1" GroupName="G2"/>
+            <fc:RadioButtonPlus Style="{DynamicResource RadioButtonPlusDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                Height="20" Margin="30,70,0,0" Content="RadioButton 2" IsChecked="True" GroupName="G2"/>
+            <fc:RadioButtonPlus Style="{DynamicResource RadioButtonPlusDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                Height="20" Margin="30,100,0,0" Content="RadioButton 3" GroupName="G2"/>
+            <fc:CheckBoxPlus Style="{DynamicResource CheckBoxPlusDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
+                             Height="20" Margin="30,170,0,0" Content="CheckBox 1" IsChecked="False"/>
+            <fc:CheckBoxPlus Style="{DynamicResource CheckBoxPlusDark}" HorizontalAlignment="Left" VerticalAlignment="Top"
+                             Height="20" Margin="30,200,0,0" Content="CheckBox 2" IsChecked="True"/>
         </Grid>
     </Grid>
 </fc:AvalonWindow>

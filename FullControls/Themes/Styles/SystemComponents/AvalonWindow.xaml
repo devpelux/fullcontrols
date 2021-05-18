@@ -2,24 +2,18 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls.SystemComponents"
                     xmlns:extra="clr-namespace:FullControls.Extra">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Resources/Styles.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+    <extra:ClipConverter x:Key="ClipConverter" />
 
     <Style TargetType="{x:Type local:AvalonWindow}" BasedOn="{StaticResource {x:Type Window}}">
-        <Style.Resources>
-            <ResourceDictionary>
-                <ResourceDictionary.MergedDictionaries>
-                    <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml" />
-                    <ResourceDictionary Source="/FullControls;component/Resources/Styles.xaml" />
-                    <ResourceDictionary>
-                        <extra:ClipConverter x:Key="ClipConverter" />
-                    </ResourceDictionary>
-                </ResourceDictionary.MergedDictionaries>
-            </ResourceDictionary>
-        </Style.Resources>
-        
         <Setter Property="ResizeThickness" Value="4"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource Gray10}"/>
-        <Setter Property="BorderBrushOnActive" Value="{DynamicResource Blue7}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Gray10}"/>
+        <Setter Property="BorderBrushOnActive" Value="{StaticResource Blue7}"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="ForegroundOnActive" Value="Black"/>
@@ -29,10 +23,10 @@
         <Setter Property="ButtonsAreaBackground" Value="Transparent"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
 
-        <Setter Property="MinimizeButtonStyle" Value="{DynamicResource CaptionButtonStyle}" />
-        <Setter Property="MaximizeButtonStyle" Value="{DynamicResource CaptionButtonStyle}" />
-        <Setter Property="RestoreButtonStyle" Value="{DynamicResource CaptionButtonStyle}" />
-        <Setter Property="CloseButtonStyle" Value="{DynamicResource CaptionCloseButtonStyle}" />
+        <Setter Property="MinimizeButtonStyle" Value="{StaticResource CaptionButtonStyle}" />
+        <Setter Property="MaximizeButtonStyle" Value="{StaticResource CaptionButtonStyle}" />
+        <Setter Property="RestoreButtonStyle" Value="{StaticResource CaptionButtonStyle}" />
+        <Setter Property="CloseButtonStyle" Value="{StaticResource CaptionCloseButtonStyle}" />
 
         <Setter Property="Template">
             <Setter.Value>

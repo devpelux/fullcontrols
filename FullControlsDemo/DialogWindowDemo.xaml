@@ -11,7 +11,7 @@
                  Width="340">
     <Grid>
         <TextBlock Text="Click the button to show a custom demo message box." HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0"/>
-        <fc:EButton x:Name="showdialog" Content="Show Dialog" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,90,0,0" Height="30" Width="100" Click="Showdialog_Click"/>
+        <fc:ButtonPlus x:Name="showdialog" Content="Show Dialog" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,90,0,0" Height="30" Width="100" Click="Showdialog_Click"/>
         <TextBlock x:Name="result" Text="" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,150,0,0"/>
     </Grid>
 </fc:AvalonWindow>
