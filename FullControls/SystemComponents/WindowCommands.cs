@@ -7,14 +7,14 @@ namespace FullControls.SystemComponents
     /// </summary>
     public static class WindowCommands
     {
-        private static readonly RoutedUICommand _close = new("Close", "Close", typeof(WindowCommands));
-        private static readonly RoutedUICommand _minimize = new("Minimize", "Minimize", typeof(WindowCommands));
-        private static readonly RoutedUICommand _maximize = new("Maximize", "Maximize", typeof(WindowCommands));
-        private static readonly RoutedUICommand _restore = new("Restore", "Restore", typeof(WindowCommands));
-        private static readonly RoutedUICommand _hide = new("Hide", "Hide", typeof(WindowCommands));
-        private static readonly RoutedUICommand _show = new("Show", "Show", typeof(WindowCommands));
-        private static readonly RoutedUICommand _drag = new("Drag", "Drag", typeof(WindowCommands));
-        private static readonly RoutedUICommand _action = new("Action", "Action", typeof(WindowCommands));
+        private static readonly RoutedUICommand _close = new("Close", nameof(Close), typeof(WindowCommands));
+        private static readonly RoutedUICommand _minimize = new("Minimize", nameof(Minimize), typeof(WindowCommands));
+        private static readonly RoutedUICommand _maximize = new("Maximize", nameof(Maximize), typeof(WindowCommands));
+        private static readonly RoutedUICommand _restore = new("Restore", nameof(Restore), typeof(WindowCommands));
+        private static readonly RoutedUICommand _hide = new("Hide", nameof(Hide), typeof(WindowCommands));
+        private static readonly RoutedUICommand _show = new("Show", nameof(Show), typeof(WindowCommands));
+        private static readonly RoutedUICommand _drag = new("Drag", nameof(Drag), typeof(WindowCommands));
+        private static readonly RoutedUICommand _action = new("", nameof(Action), typeof(WindowCommands));
 
         /// <summary>
         /// Close the window.
