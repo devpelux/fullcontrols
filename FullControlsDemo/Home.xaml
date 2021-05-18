@@ -43,7 +43,7 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Grid x:Name="filling" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Background="{DynamicResource HatchBrush}"/>
+                <Grid x:Name="filling" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="1" Background="{DynamicResource HatchBrush}"/>
 
                 <fc:EButton x:Name="accordion"
                             Grid.Column="0"
@@ -140,6 +140,16 @@
                             Grid.Row="3"
                             Content="DialogWindow"
                             Click="DialogWindow_Click"
+                            BorderThickness="0,0,1,0"
+                            Background="#0C646464"
+                            BackgroundOnDisabled="#0C646464"
+                            BackgroundOnMouseOver="#7F2191C5"
+                            BackgroundOnPressed="#B22191C5" />
+                <fc:EButton x:Name="borderedgrid"
+                            Grid.Column="1"
+                            Grid.Row="3"
+                            Content="BorderedGrid"
+                            Click="BorderedGrid_Click"
                             BorderThickness="0,0,1,0"
                             Background="#0C646464"
                             BackgroundOnDisabled="#0C646464"

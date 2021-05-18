@@ -6,7 +6,7 @@
                  Title="Collapsible"
                  Icon="/Icons/FullControlsSimple.ico"
                  ResizeMode="CanMinimize"
-                 WindowStartupLocation="CenterScreen"
+                 WindowStartupLocation="CenterOwner"
                  Height="302"
                  Width="402">
     <Grid>

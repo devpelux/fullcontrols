@@ -10,7 +10,7 @@
                  Title="CheckBoxes"
                  Icon="/Icons/FullControlsSimple.ico"
                  ResizeMode="CanMinimize"
-                 WindowStartupLocation="CenterScreen"
+                 WindowStartupLocation="CenterOwner"
                  Height="267"
                  Width="400">
     <Grid>

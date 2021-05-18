@@ -6,7 +6,7 @@
                  Title="AvalonWindow"
                  Icon="/Icons/FullControlsSimple.ico"
                  ResizeMode="CanResize"
-                 WindowStartupLocation="CenterScreen"
+                 WindowStartupLocation="CenterOwner"
                  TitlebarContextMenu="{DynamicResource WindowContextMenu}"
                  MinHeight="240"
                  MinWidth="420"

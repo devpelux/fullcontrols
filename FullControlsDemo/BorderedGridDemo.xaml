@@ -1,0 +1,32 @@
+﻿<fc:AvalonWindow x:Class="FullControlsDemo.BorderedGridDemo"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:fc="http://devpelux.github.io/fullcontrols"
+                 MergeTitlebarAndContent="True"
+                 Title="BorderedGrid"
+                 Icon="/Icons/FullControlsSimple.ico"
+                 ResizeMode="CanResize"
+                 WindowStartupLocation="CenterOwner"
+                 MinHeight="80"
+                 MinWidth="270"
+                 Height="350"
+                 Width="450">
+    <Grid>
+        <fc:BorderedGrid Margin="40"
+                         GridLinesVisibility="All"
+                         GridBorderVisibility="True"
+                         GridLineThickness="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+        </fc:BorderedGrid>
+    </Grid>
+</fc:AvalonWindow>

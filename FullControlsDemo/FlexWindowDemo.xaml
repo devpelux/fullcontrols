@@ -6,7 +6,7 @@
                Title="FlexWindow"
                Icon="/Icons/FullControlsSimple.ico"
                ResizeMode="CanMinimize"
-               WindowStartupLocation="CenterScreen"
+               WindowStartupLocation="CenterOwner"
                TitlebarContextMenu="{DynamicResource WindowContextMenu}"
                Height="300"
                Width="500">

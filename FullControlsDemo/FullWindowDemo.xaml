@@ -6,7 +6,7 @@
                Title="FullWindow"
                Icon="/Icons/FullControlsSimple.ico"
                ResizeMode="CanResize"
-               WindowStartupLocation="CenterScreen"
+               WindowStartupLocation="CenterOwner"
                TitlebarContextMenu="{DynamicResource WindowContextMenu}"
                MinHeight="200"
                MinWidth="300"

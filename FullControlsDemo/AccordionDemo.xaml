@@ -10,7 +10,7 @@
                  Title="Accordion"
                  Icon="/Icons/FullControlsSimple.ico"
                  ResizeMode="CanMinimize"
-                 WindowStartupLocation="CenterScreen"
+                 WindowStartupLocation="CenterOwner"
                  Height="380"
                  Width="600"
                  Loaded="EWindow_Loaded">

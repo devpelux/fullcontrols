@@ -14,59 +14,64 @@ namespace FullControlsDemo
             InitializeComponent();
         }
 
+        private void Info_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            new Info() { Owner = this }.ShowDialog();
+        }
+
         private void Accordion_Click(object sender, RoutedEventArgs e)
         {
-            new AccordionDemo().Show();
+            new AccordionDemo() { Owner = this }.Show();
         }
 
         private void Collapsible_Click(object sender, RoutedEventArgs e)
         {
-            new CollapsibleDemo().Show();
+            new CollapsibleDemo() { Owner = this }.Show();
         }
 
         private void Buttons_Click(object sender, RoutedEventArgs e)
         {
-            new ButtonsDemo().Show();
+            new ButtonsDemo() { Owner = this }.Show();
         }
 
         private void Switcher_Click(object sender, RoutedEventArgs e)
         {
-            new SwitcherDemo().Show();
+            new SwitcherDemo() { Owner = this }.Show();
         }
 
         private void CheckBoxes_Click(object sender, RoutedEventArgs e)
         {
-            new CheckBoxesDemo().Show();
+            new CheckBoxesDemo() { Owner = this }.Show();
         }
 
         private void ComboBox_Click(object sender, RoutedEventArgs e)
         {
-            new ComboBoxDemo().Show();
+            new ComboBoxDemo() { Owner = this }.Show();
         }
 
         private void ScrollViewer_Click(object sender, RoutedEventArgs e)
         {
-            new GlassScrollViewerDemo().Show();
+            new GlassScrollViewerDemo() { Owner = this }.Show();
         }
 
         private void DialogWindow_Click(object sender, RoutedEventArgs e)
         {
-            new DialogWindowDemo().Show();
+            new DialogWindowDemo() { Owner = this }.Show();
         }
 
         private void TextBoxes_Click(object sender, RoutedEventArgs e)
         {
-            new TextBoxesDemo().Show();
+            new TextBoxesDemo() { Owner = this }.Show();
         }
 
         private void FlatMenu_Click(object sender, RoutedEventArgs e)
         {
-            new FlatMenuDemo().Show();
+            new FlatMenuDemo() { Owner = this }.Show();
         }
 
-        private void Info_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void BorderedGrid_Click(object sender, RoutedEventArgs e)
         {
-            new Info().ShowDialog();
+            new BorderedGridDemo() { Owner = this }.Show();
         }
     }
 }

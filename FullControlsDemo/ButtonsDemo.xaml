@@ -10,7 +10,7 @@
                  Title="Buttons"
                  Icon="/Icons/FullControlsSimple.ico"
                  ResizeMode="CanMinimize"
-                 WindowStartupLocation="CenterScreen"
+                 WindowStartupLocation="CenterOwner"
                  Height="260"
                  Width="400">
     <Grid>

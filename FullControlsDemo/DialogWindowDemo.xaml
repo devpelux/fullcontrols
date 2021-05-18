@@ -6,7 +6,7 @@
                  Title="DialogWindow"
                  Icon="/Icons/FullControlsSimple.ico"
                  ResizeMode="CanMinimize"
-                 WindowStartupLocation="CenterScreen"
+                 WindowStartupLocation="CenterOwner"
                  Height="200"
                  Width="340">
     <Grid>

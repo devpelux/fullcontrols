@@ -1,5 +1,4 @@
 ﻿using FullControls.SystemComponents;
-using System.Windows;
 
 namespace FullControlsDemo
 {

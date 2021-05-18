@@ -10,7 +10,7 @@
                  Title="Switcher"
                  Icon="/Icons/FullControlsSimple.ico"
                  ResizeMode="CanMinimize"
-                 WindowStartupLocation="CenterScreen"
+                 WindowStartupLocation="CenterOwner"
                  Height="280"
                  Width="400">
     <Grid>

@@ -32,12 +32,12 @@ namespace FullControlsDemo
 
         private void DuplicateAsDialog_Click(object sender, RoutedEventArgs e)
         {
-            new FlatMenuDemo().ShowDialog();
+            new FlatMenuDemo() { Owner = this }.ShowDialog();
         }
 
         private void DuplicateAsWindow_Click(object sender, RoutedEventArgs e)
         {
-            new FlatMenuDemo().Show();
+            new FlatMenuDemo() { Owner = this }.Show();
         }
 
         private void ResetLight_Click(object sender, RoutedEventArgs e)
@@ -77,7 +77,7 @@ namespace FullControlsDemo
 
         private void Info_Click(object sender, RoutedEventArgs e)
         {
-            new Info().ShowDialog();
+            new Info() { Owner = this }.ShowDialog();
         }
     }
 }

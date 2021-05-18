@@ -1,6 +1,7 @@
 ﻿using FullControls.SystemComponents;
+using System;
 using System.Diagnostics;
-using System.Windows;
+using System.Reflection;
 using System.Windows.Input;
 
 namespace FullControlsDemo
@@ -13,6 +14,7 @@ namespace FullControlsDemo
         public Info()
         {
             InitializeComponent();
+            VersionCode.Text = GetVersionCode();
         }
 
         private void GH_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -37,17 +39,23 @@ namespace FullControlsDemo
 
         private void FullW_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            new FullWindowDemo().Show();
+            new FullWindowDemo() { Owner = this }.Show();
         }
 
         private void FlexW_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            new FlexWindowDemo().Show();
+            new FlexWindowDemo() { Owner = this }.Show();
         }
 
         private void AvalonW_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            new AvalonWindowDemo().Show();
+            new AvalonWindowDemo() { Owner = this }.Show();
+        }
+
+        private static string GetVersionCode()
+        {
+            Version v = Assembly.GetExecutingAssembly().GetName().Version;
+            return v != null ? $"{v.Major}.{v.Minor}.{v.Build}" : "N/A";
         }
     }
 }

@@ -3,11 +3,11 @@
 namespace FullControlsDemo
 {
     /// <summary>
-    /// Logica di interazione per FullWindowDemo.xaml
+    /// Logica di interazione per BorderedGridDemo.xaml
     /// </summary>
-    public partial class FullWindowDemo : FullWindow
+    public partial class BorderedGridDemo : AvalonWindow
     {
-        public FullWindowDemo()
+        public BorderedGridDemo()
         {
             InitializeComponent();
         }

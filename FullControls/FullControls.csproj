@@ -22,6 +22,7 @@ The complete documentation can be found here: https://github.com/devpelux/fullco
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.Accordion.icon.bmp" />
+	<EmbeddedResource Include="Resources\Icons\FullControls.Controls.BorderedGrid.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.Collapsible.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.EButton.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ECheckBox.icon.bmp" />
