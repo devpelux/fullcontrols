@@ -14,37 +14,67 @@
                  Height="380"
                  Width="600"
                  Loaded="EWindow_Loaded">
-    
+
     <fc:AvalonWindow.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="ShapeItemTemplate">
                 <Grid Height="60">
-                    <TextBlock Text="{Binding Name}" Margin="5" FontSize="30" Foreground="DimGray" FontWeight="Normal" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <TextBlock Text="{Binding Details}" Margin="5" FontSize="10" Foreground="Gray" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding Name}"
+                               Margin="5"
+                               FontSize="30"
+                               Foreground="DimGray"
+                               FontWeight="Normal"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left" />
+                    <TextBlock Text="{Binding Details}"
+                               Margin="5"
+                               FontSize="10"
+                               Foreground="Gray"
+                               FontWeight="Normal"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Left" />
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="ShapeItemTemplateDark">
                 <Grid Height="60">
-                    <TextBlock Text="{Binding Name}" Margin="5" FontSize="30" Foreground="WhiteSmoke" FontWeight="Normal" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                    <TextBlock Text="{Binding Details}" Margin="5" FontSize="10" Foreground="Gray" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <TextBlock Text="{Binding Name}"
+                               Margin="5"
+                               FontSize="30"
+                               Foreground="WhiteSmoke"
+                               FontWeight="Normal"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Left" />
+                    <TextBlock Text="{Binding Details}"
+                               Margin="5"
+                               FontSize="10"
+                               Foreground="Gray"
+                               FontWeight="Normal"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Left" />
                 </Grid>
             </DataTemplate>
         </ResourceDictionary>
     </fc:AvalonWindow.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Background="White">
-            <fc:GlassScrollViewer Margin="40,60,40,40" PlaceScrollBarsInside="True">
-                <fc:Accordion x:Name="accordion" Background="WhiteSmoke"/>
+        <Grid Grid.Column="0"
+              Background="White">
+            <fc:GlassScrollViewer Margin="40,60,40,40"
+                                  PlaceScrollBarsInside="True">
+                <fc:Accordion x:Name="accordion"
+                              Background="WhiteSmoke" />
             </fc:GlassScrollViewer>
         </Grid>
-        <Grid Grid.Column="1" Background="Black">
-            <fc:GlassScrollViewer Margin="40,60,40,40" PlaceScrollBarsInside="True">
-                <fc:Accordion x:Name="accordionDark" Background="#FF171717"/>
+        <Grid Grid.Column="1"
+              Background="Black">
+            <fc:GlassScrollViewer Margin="40,60,40,40"
+                                  PlaceScrollBarsInside="True">
+                <fc:Accordion x:Name="accordionDark"
+                              Background="#FF171717" />
             </fc:GlassScrollViewer>
         </Grid>
     </Grid>

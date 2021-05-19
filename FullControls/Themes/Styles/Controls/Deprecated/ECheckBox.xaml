@@ -2,60 +2,97 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls.Controls">
 
-    <Style TargetType="{x:Type local:ECheckBox}" BasedOn="{StaticResource {x:Type CheckBox}}">
-        <Setter Property="Background" Value="#f2f2f2"/>
-        <Setter Property="BackgroundOnMouseOver" Value="#d9d9d9"/>
-        <Setter Property="BackgroundOnChecked" Value="#f2f2f2"/>
-        <Setter Property="BackgroundOnMouseOverOnChecked" Value="#d9d9d9"/>
-        <Setter Property="BackgroundOnDisabled" Value="#d9d9d9"/>
-        <Setter Property="BorderBrush" Value="#404040"/>
-        <Setter Property="BorderBrushOnMouseOver" Value="#404040"/>
-        <Setter Property="BorderBrushOnChecked" Value="#404040"/>
-        <Setter Property="BorderBrushOnMouseOverOnChecked" Value="#404040"/>
-        <Setter Property="BorderBrushOnDisabled" Value="#737373"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="ForegroundOnMouseOver" Value="Black"/>
-        <Setter Property="ForegroundOnChecked" Value="Black"/>
-        <Setter Property="ForegroundOnMouseOverOnChecked" Value="Black"/>
-        <Setter Property="ForegroundOnDisabled" Value="#666666"/>
-        <Setter Property="ForeColor" Value="#404040"/>
-        <Setter Property="ForeColorOnMouseOver" Value="#404040"/>
-        <Setter Property="ForeColorOnChecked" Value="#404040"/>
-        <Setter Property="ForeColorOnMouseOverOnChecked" Value="#404040"/>
-        <Setter Property="ForeColorOnDisabled" Value="#737373"/>
-        <Setter Property="CheckMark" Value="{x:Null}"/>
-        <Setter Property="CheckSize" Value="14"/>
-        <Setter Property="CheckFont" Value="Segoe MDL2 Assets"/>
-        <Setter Property="CheckWeight" Value="Bold"/>
-        <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="CornerRadius" Value="0"/>
-        <Setter Property="InsideCornerRadius" Value="0"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="InsideMargin" Value="2"/>
-        <Setter Property="Padding" Value="4,0,0,0"/>
-        <Setter Property="IsChecked" Value="False"/>
-        <Setter Property="ClickMode" Value="Press"/>
-        <Setter Property="AnimationTime" Value="0:0:0.2"/>
-        <Setter Property="CheckAnimationTime" Value="0:0:0.04"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+    <Style TargetType="{x:Type local:ECheckBox}"
+           BasedOn="{StaticResource {x:Type CheckBox}}">
+        <Setter Property="Background"
+                Value="#f2f2f2" />
+        <Setter Property="BackgroundOnMouseOver"
+                Value="#d9d9d9" />
+        <Setter Property="BackgroundOnChecked"
+                Value="#f2f2f2" />
+        <Setter Property="BackgroundOnMouseOverOnChecked"
+                Value="#d9d9d9" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#d9d9d9" />
+        <Setter Property="BorderBrush"
+                Value="#404040" />
+        <Setter Property="BorderBrushOnMouseOver"
+                Value="#404040" />
+        <Setter Property="BorderBrushOnChecked"
+                Value="#404040" />
+        <Setter Property="BorderBrushOnMouseOverOnChecked"
+                Value="#404040" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="#737373" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="ForegroundOnMouseOver"
+                Value="Black" />
+        <Setter Property="ForegroundOnChecked"
+                Value="Black" />
+        <Setter Property="ForegroundOnMouseOverOnChecked"
+                Value="Black" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="#666666" />
+        <Setter Property="ForeColor"
+                Value="#404040" />
+        <Setter Property="ForeColorOnMouseOver"
+                Value="#404040" />
+        <Setter Property="ForeColorOnChecked"
+                Value="#404040" />
+        <Setter Property="ForeColorOnMouseOverOnChecked"
+                Value="#404040" />
+        <Setter Property="ForeColorOnDisabled"
+                Value="#737373" />
+        <Setter Property="CheckMark"
+                Value="{x:Null}" />
+        <Setter Property="CheckSize"
+                Value="14" />
+        <Setter Property="CheckFont"
+                Value="Segoe MDL2 Assets" />
+        <Setter Property="CheckWeight"
+                Value="Bold" />
+        <Setter Property="BorderThickness"
+                Value="2" />
+        <Setter Property="CornerRadius"
+                Value="0" />
+        <Setter Property="InsideCornerRadius"
+                Value="0" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left" />
+        <Setter Property="InsideMargin"
+                Value="2" />
+        <Setter Property="Padding"
+                Value="4,0,0,0" />
+        <Setter Property="IsChecked"
+                Value="False" />
+        <Setter Property="ClickMode"
+                Value="Press" />
+        <Setter Property="AnimationTime"
+                Value="0:0:0.2" />
+        <Setter Property="CheckAnimationTime"
+                Value="0:0:0.04" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ECheckBox}">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Border x:Name="PART_Border"
-                            Grid.Column="0"
-                            Width="{TemplateBinding ActualHeight}"
-                            Background="{TemplateBinding ActualBackground}"
-                            BorderBrush="{TemplateBinding ActualBorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="{TemplateBinding CornerRadius}"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                Grid.Column="0"
+                                Width="{TemplateBinding ActualHeight}"
+                                Background="{TemplateBinding ActualBackground}"
+                                BorderBrush="{TemplateBinding ActualBorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                             <Grid x:Name="PART_Check"
                                   Margin="{TemplateBinding InsideMargin}"
                                   Visibility="Visible">
@@ -69,7 +106,7 @@
                                     <Border.RenderTransform>
                                         <ScaleTransform x:Name="PART_CheckBackgroundScale"
                                                         ScaleX="{Binding CheckScale, RelativeSource={RelativeSource TemplatedParent}}"
-                                                        ScaleY="{Binding CheckScale, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                        ScaleY="{Binding CheckScale, RelativeSource={RelativeSource TemplatedParent}}" />
                                     </Border.RenderTransform>
                                 </Border>
                                 <ContentPresenter x:Name="PART_CheckMark"
@@ -83,7 +120,7 @@
                                                   ContentSource="CheckMark"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                                   Visibility="Visible"
-                                                  Focusable="False"/>
+                                                  Focusable="False" />
                             </Grid>
                         </Border>
                         <ContentPresenter x:Name="PART_ContentPresenter"
@@ -94,24 +131,35 @@
                                           TextBlock.Foreground="{TemplateBinding ActualForeground}"
                                           Content="{TemplateBinding Content}"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                          Focusable="False"/>
+                                          Focusable="False" />
                     </Grid>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="CheckMark" Value="{x:Null}">
-                            <Setter TargetName="PART_CheckBackground" Property="Visibility" Value="Visible"/>
-                            <Setter TargetName="PART_CheckMark" Property="Visibility" Value="Collapsed"/>
+                        <Trigger Property="CheckMark"
+                                 Value="{x:Null}">
+                            <Setter TargetName="PART_CheckBackground"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                            <Setter TargetName="PART_CheckMark"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="IsChecked" Value="False">
-                            <Setter TargetName="PART_CheckMark" Property="Visibility" Value="Collapsed"/>
+                        <Trigger Property="IsChecked"
+                                 Value="False">
+                            <Setter TargetName="PART_CheckMark"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="IsChecked" Value="{x:Null}">
-                            <Setter TargetName="PART_CheckMark" Property="Visibility" Value="Collapsed"/>
+                        <Trigger Property="IsChecked"
+                                 Value="{x:Null}">
+                            <Setter TargetName="PART_CheckMark"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    
+
 </ResourceDictionary>

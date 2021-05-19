@@ -19,26 +19,88 @@
 
         <!--#endregion-->
 
-        <fc:GlassScrollViewer Margin="60,60,60,60" BorderBrush="LightGray" BorderThickness="1" PlaceScrollBarsInside="True"
-                              HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+        <fc:GlassScrollViewer Margin="60,60,60,60"
+                              BorderBrush="LightGray"
+                              BorderThickness="1"
+                              PlaceScrollBarsInside="True"
+                              HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Auto"
                               HorizontalScrollBarContextMenu="{DynamicResource HorizontalScrollBarContextMenu}"
                               VerticalScrollBarContextMenu="{DynamicResource VerticalScrollBarContextMenu}">
-            <Grid Background="WhiteSmoke" Width="550" Height="500" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <Rectangle Fill="Red" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,40,0,0" Height="60" Width="60"/>
-                <Rectangle Fill="Green" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="450,200,0,0" Height="50" Width="50"/>
-                <Rectangle Fill="Blue" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="150,350,0,0" Height="40" Width="40"/>
-                <Rectangle Fill="Yellow" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="500,450,0,0" Height="20" Width="20"/>
+            <Grid Background="WhiteSmoke"
+                  Width="550"
+                  Height="500"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Top">
+                <Rectangle Fill="Red"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Margin="50,40,0,0"
+                           Height="60"
+                           Width="60" />
+                <Rectangle Fill="Green"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Margin="450,200,0,0"
+                           Height="50"
+                           Width="50" />
+                <Rectangle Fill="Blue"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Margin="150,350,0,0"
+                           Height="40"
+                           Width="40" />
+                <Rectangle Fill="Yellow"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Margin="500,450,0,0"
+                           Height="20"
+                           Width="20" />
             </Grid>
         </fc:GlassScrollViewer>
 
-        <fc:GlassScrollBar x:Name="gsb1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" Height="200" Width="10" Padding="0,3,0,3"
-                           Orientation="Vertical" CornerRadius="5" ThumbCornerRadius="5" Foreground="Red" ViewportSize="0.7" Value="0.4"
-                           ValueChanged="GlassScrollBar1_ValueChanged"/>
-        <fc:GlassScrollBar x:Name="gsb2" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,260,0,0" Height="10" Width="300" Padding="3,0,3,0"
-                           Orientation="Horizontal" CornerRadius="5" ThumbCornerRadius="5" Foreground="Green" ViewportSize="1" Value="0.2"
-                           ValueChanged="GlassScrollBar2_ValueChanged"/>
+        <fc:GlassScrollBar x:Name="gsb1"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="20,0,0,0"
+                           Height="200"
+                           Width="10"
+                           Padding="0,3,0,3"
+                           Orientation="Vertical"
+                           CornerRadius="5"
+                           ThumbCornerRadius="5"
+                           Foreground="Red"
+                           ViewportSize="0.7"
+                           Value="0.4"
+                           ValueChanged="GlassScrollBar1_ValueChanged" />
+        <fc:GlassScrollBar x:Name="gsb2"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Margin="0,260,0,0"
+                           Height="10"
+                           Width="300"
+                           Padding="3,0,3,0"
+                           Orientation="Horizontal"
+                           CornerRadius="5"
+                           ThumbCornerRadius="5"
+                           Foreground="Green"
+                           ViewportSize="1"
+                           Value="0.2"
+                           ValueChanged="GlassScrollBar2_ValueChanged" />
 
-        <TextBlock x:Name="v1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,28,347,0" Text="0" Foreground="Gray" TextAlignment="Center"/>
-        <TextBlock x:Name="v2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="360,256,0,0" Text="0" Foreground="Gray" TextAlignment="Center"/>
+        <TextBlock x:Name="v1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Margin="0,28,347,0"
+                   Text="0"
+                   Foreground="Gray"
+                   TextAlignment="Center" />
+        <TextBlock x:Name="v2"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="360,256,0,0"
+                   Text="0"
+                   Foreground="Gray"
+                   TextAlignment="Center" />
     </Grid>
 </fc:AvalonWindow>

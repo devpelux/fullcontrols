@@ -1,9 +1,9 @@
-﻿using System;
+﻿using FullControls.Core;
+using FullControls.Extra.Extensions;
+using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using FullControls.Core;
-using FullControls.Extra.Extensions;
 
 namespace FullControls.SystemComponents
 {

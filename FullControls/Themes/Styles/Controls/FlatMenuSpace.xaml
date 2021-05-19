@@ -3,18 +3,24 @@
                     xmlns:local="clr-namespace:FullControls.Controls">
 
     <Style TargetType="{x:Type local:FlatMenuSpace}">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Focusable" Value="False"/>
-        <Setter Property="IsHitTestVisible" Value="False"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="Focusable"
+                Value="False" />
+        <Setter Property="IsHitTestVisible"
+                Value="False" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:FlatMenuSpace}">
-                    <Grid Background="{TemplateBinding Background}"/>
+                    <Grid Background="{TemplateBinding Background}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
     </Style>
-    
+
 </ResourceDictionary>

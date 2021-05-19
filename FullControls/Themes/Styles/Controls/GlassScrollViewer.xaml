@@ -2,84 +2,155 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls.Controls">
 
-    <Style TargetType="{x:Type local:GlassScrollViewer}" BasedOn="{StaticResource {x:Type ScrollViewer}}">
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="Background" Value="{x:Null}"/>
-        <Setter Property="BorderBrush" Value="{x:Null}"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{x:Null}"/>
-        <Setter Property="InsideBorderBrush" Value="{x:Null}"/>
-        <Setter Property="InsideBorderThickness" Value="0"/>
-        <Setter Property="PlaceScrollBarsInside" Value="False"/>
-        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-        <Setter Property="EnableButtons" Value="False"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+    <Style TargetType="{x:Type local:GlassScrollViewer}"
+           BasedOn="{StaticResource {x:Type ScrollViewer}}">
+
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="Background"
+                Value="{x:Null}" />
+        <Setter Property="BorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="Foreground"
+                Value="{x:Null}" />
+        <Setter Property="InsideBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="InsideBorderThickness"
+                Value="0" />
+        <Setter Property="PlaceScrollBarsInside"
+                Value="False" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="EnableButtons"
+                Value="False" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="Stylus.IsFlicksEnabled"
+                Value="False" />
 
         <!--#region Horizontal ScrollBar-->
 
-        <Setter Property="HorizontalScrollBarThickness" Value="10"/>
-        <Setter Property="HorizontalScrollBarAreaPadding" Value="0"/>
-        <Setter Property="HorizontalScrollBarPadding" Value="0"/>
-        <Setter Property="HorizontalScrollBarCornerRadius" Value="0"/>
-        <Setter Property="HorizontalScrollBarBorderThickness" Value="0"/>
-        <Setter Property="HorizontalScrollBarBackground" Value="Transparent"/>
-        <Setter Property="HorizontalScrollBarBorderBrush" Value="{x:Null}"/>
-        <Setter Property="HorizontalScrollBarForeground" Value="LightSlateGray"/>
-        <Setter Property="HorizontalScrollBarForegroundOnDisabled" Value="Gray"/>
-        <Setter Property="HorizontalScrollBarThumbPadding" Value="0"/>
-        <Setter Property="HorizontalScrollBarThumbCornerRadius" Value="5"/>
-        <Setter Property="HorizontalScrollBarThumbBorderThickness" Value="0"/>
-        <Setter Property="HorizontalScrollBarThumbBorderBrush" Value="{x:Null}"/>
-        <Setter Property="HorizontalScrollBarOpacityNormal" Value="0.6"/>
-        <Setter Property="HorizontalScrollBarOpacityOnMouseOver" Value="0.8"/>
-        <Setter Property="HorizontalScrollBarOpacityOnMouseDown" Value="0.7"/>
-        <Setter Property="HorizontalScrollBarButtonsSize" Value="10"/>
-        <Setter Property="HorizontalScrollBarButtonsFont" Value="Segoe MDL2 Assets"/>
-        <Setter Property="HorizontalScrollBarButtonsFontSize" Value="10"/>
-        <Setter Property="HorizontalScrollBarButtonsCornerRadius" Value="0"/>
-        <Setter Property="HorizontalScrollBarButtonsBackground" Value="Transparent"/>
-        <Setter Property="HorizontalScrollBarButtonsBorderBrush" Value="{x:Null}"/>
-        <Setter Property="HorizontalScrollBarButtonsBorderThickness" Value="0"/>
-        <Setter Property="HorizontalScrollBarButtonsForeground" Value="Black"/>
-        <Setter Property="HorizontalScrollBarButtonsForegroundOnDisabled" Value="Black"/>
-        <Setter Property="LeftButtonContent" Value="&#xEDD9;"/>
-        <Setter Property="RightButtonContent" Value="&#xEDDA;"/>
-        <Setter Property="HorizontalScrollBarContextMenu" Value="{x:Null}"/>
+        <Setter Property="HorizontalScrollBarThickness"
+                Value="10" />
+        <Setter Property="HorizontalScrollBarAreaPadding"
+                Value="0" />
+        <Setter Property="HorizontalScrollBarPadding"
+                Value="0" />
+        <Setter Property="HorizontalScrollBarCornerRadius"
+                Value="0" />
+        <Setter Property="HorizontalScrollBarBorderThickness"
+                Value="0" />
+        <Setter Property="HorizontalScrollBarBackground"
+                Value="Transparent" />
+        <Setter Property="HorizontalScrollBarBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="HorizontalScrollBarForeground"
+                Value="LightSlateGray" />
+        <Setter Property="HorizontalScrollBarForegroundOnDisabled"
+                Value="Gray" />
+        <Setter Property="HorizontalScrollBarThumbPadding"
+                Value="0" />
+        <Setter Property="HorizontalScrollBarThumbCornerRadius"
+                Value="5" />
+        <Setter Property="HorizontalScrollBarThumbBorderThickness"
+                Value="0" />
+        <Setter Property="HorizontalScrollBarThumbBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="HorizontalScrollBarOpacityNormal"
+                Value="0.6" />
+        <Setter Property="HorizontalScrollBarOpacityOnMouseOver"
+                Value="0.8" />
+        <Setter Property="HorizontalScrollBarOpacityOnMouseDown"
+                Value="0.7" />
+        <Setter Property="HorizontalScrollBarButtonsSize"
+                Value="10" />
+        <Setter Property="HorizontalScrollBarButtonsFont"
+                Value="Segoe MDL2 Assets" />
+        <Setter Property="HorizontalScrollBarButtonsFontSize"
+                Value="10" />
+        <Setter Property="HorizontalScrollBarButtonsCornerRadius"
+                Value="0" />
+        <Setter Property="HorizontalScrollBarButtonsBackground"
+                Value="Transparent" />
+        <Setter Property="HorizontalScrollBarButtonsBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="HorizontalScrollBarButtonsBorderThickness"
+                Value="0" />
+        <Setter Property="HorizontalScrollBarButtonsForeground"
+                Value="Black" />
+        <Setter Property="HorizontalScrollBarButtonsForegroundOnDisabled"
+                Value="Black" />
+        <Setter Property="LeftButtonContent"
+                Value="&#xEDD9;" />
+        <Setter Property="RightButtonContent"
+                Value="&#xEDDA;" />
+        <Setter Property="HorizontalScrollBarContextMenu"
+                Value="{x:Null}" />
 
         <!--#endregion-->
 
         <!--#region Vertical ScrollBar-->
 
-        <Setter Property="VerticalScrollBarThickness" Value="10"/>
-        <Setter Property="VerticalScrollBarAreaPadding" Value="0"/>
-        <Setter Property="VerticalScrollBarPadding" Value="0"/>
-        <Setter Property="VerticalScrollBarCornerRadius" Value="0"/>
-        <Setter Property="VerticalScrollBarBorderThickness" Value="0"/>
-        <Setter Property="VerticalScrollBarBackground" Value="Transparent"/>
-        <Setter Property="VerticalScrollBarBorderBrush" Value="{x:Null}"/>
-        <Setter Property="VerticalScrollBarForeground" Value="LightSlateGray"/>
-        <Setter Property="VerticalScrollBarForegroundOnDisabled" Value="Gray"/>
-        <Setter Property="VerticalScrollBarThumbPadding" Value="0"/>
-        <Setter Property="VerticalScrollBarThumbCornerRadius" Value="5"/>
-        <Setter Property="VerticalScrollBarThumbBorderThickness" Value="0"/>
-        <Setter Property="VerticalScrollBarThumbBorderBrush" Value="{x:Null}"/>
-        <Setter Property="VerticalScrollBarOpacityNormal" Value="0.6"/>
-        <Setter Property="VerticalScrollBarOpacityOnMouseOver" Value="0.8"/>
-        <Setter Property="VerticalScrollBarOpacityOnMouseDown" Value="0.7"/>
-        <Setter Property="VerticalScrollBarButtonsSize" Value="10"/>
-        <Setter Property="VerticalScrollBarButtonsFont" Value="Segoe MDL2 Assets"/>
-        <Setter Property="VerticalScrollBarButtonsFontSize" Value="10"/>
-        <Setter Property="VerticalScrollBarButtonsCornerRadius" Value="0"/>
-        <Setter Property="VerticalScrollBarButtonsBackground" Value="Transparent"/>
-        <Setter Property="VerticalScrollBarButtonsBorderBrush" Value="{x:Null}"/>
-        <Setter Property="VerticalScrollBarButtonsBorderThickness" Value="0"/>
-        <Setter Property="VerticalScrollBarButtonsForeground" Value="Black"/>
-        <Setter Property="VerticalScrollBarButtonsForegroundOnDisabled" Value="Black"/>
-        <Setter Property="UpButtonContent" Value="&#xEDDB;"/>
-        <Setter Property="DownButtonContent" Value="&#xEDDC;"/>
-        <Setter Property="VerticalScrollBarContextMenu" Value="{x:Null}"/>
+        <Setter Property="VerticalScrollBarThickness"
+                Value="10" />
+        <Setter Property="VerticalScrollBarAreaPadding"
+                Value="0" />
+        <Setter Property="VerticalScrollBarPadding"
+                Value="0" />
+        <Setter Property="VerticalScrollBarCornerRadius"
+                Value="0" />
+        <Setter Property="VerticalScrollBarBorderThickness"
+                Value="0" />
+        <Setter Property="VerticalScrollBarBackground"
+                Value="Transparent" />
+        <Setter Property="VerticalScrollBarBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="VerticalScrollBarForeground"
+                Value="LightSlateGray" />
+        <Setter Property="VerticalScrollBarForegroundOnDisabled"
+                Value="Gray" />
+        <Setter Property="VerticalScrollBarThumbPadding"
+                Value="0" />
+        <Setter Property="VerticalScrollBarThumbCornerRadius"
+                Value="5" />
+        <Setter Property="VerticalScrollBarThumbBorderThickness"
+                Value="0" />
+        <Setter Property="VerticalScrollBarThumbBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="VerticalScrollBarOpacityNormal"
+                Value="0.6" />
+        <Setter Property="VerticalScrollBarOpacityOnMouseOver"
+                Value="0.8" />
+        <Setter Property="VerticalScrollBarOpacityOnMouseDown"
+                Value="0.7" />
+        <Setter Property="VerticalScrollBarButtonsSize"
+                Value="10" />
+        <Setter Property="VerticalScrollBarButtonsFont"
+                Value="Segoe MDL2 Assets" />
+        <Setter Property="VerticalScrollBarButtonsFontSize"
+                Value="10" />
+        <Setter Property="VerticalScrollBarButtonsCornerRadius"
+                Value="0" />
+        <Setter Property="VerticalScrollBarButtonsBackground"
+                Value="Transparent" />
+        <Setter Property="VerticalScrollBarButtonsBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="VerticalScrollBarButtonsBorderThickness"
+                Value="0" />
+        <Setter Property="VerticalScrollBarButtonsForeground"
+                Value="Black" />
+        <Setter Property="VerticalScrollBarButtonsForegroundOnDisabled"
+                Value="Black" />
+        <Setter Property="UpButtonContent"
+                Value="&#xEDDB;" />
+        <Setter Property="DownButtonContent"
+                Value="&#xEDDC;" />
+        <Setter Property="VerticalScrollBarContextMenu"
+                Value="{x:Null}" />
 
         <!--#endregion-->
 
@@ -91,12 +162,12 @@
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Border x:Name="PART_Border"
                                     Grid.Row="0"
@@ -111,7 +182,7 @@
                                                         VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                         CanContentScroll="{TemplateBinding CanContentScroll}"
                                                         Margin="{TemplateBinding Padding}"
-                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                             </Border>
                             <local:GlassScrollBar x:Name="PART_HorizontalScrollBar"
                                                   Grid.Row="1"
@@ -153,7 +224,7 @@
                                                   Value="{TemplateBinding HorizontalOffset}"
                                                   ViewportSize="{TemplateBinding ViewportWidth}"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                  Orientation="Horizontal"/>
+                                                  Orientation="Horizontal" />
                             <local:GlassScrollBar x:Name="PART_VerticalScrollBar"
                                                   Grid.Row="0"
                                                   Grid.Column="1"
@@ -194,19 +265,26 @@
                                                   Value="{TemplateBinding VerticalOffset}"
                                                   ViewportSize="{TemplateBinding ViewportHeight}"
                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                  Orientation="Vertical"/>
+                                                  Orientation="Vertical" />
                         </Grid>
                     </Border>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="PlaceScrollBarsInside" Value="True">
-                            <Setter TargetName="PART_Border" Property="Grid.RowSpan" Value="2"/>
-                            <Setter TargetName="PART_Border" Property="Grid.ColumnSpan" Value="2"/>
+                        <Trigger Property="PlaceScrollBarsInside"
+                                 Value="True">
+                            <Setter TargetName="PART_Border"
+                                    Property="Grid.RowSpan"
+                                    Value="2" />
+                            <Setter TargetName="PART_Border"
+                                    Property="Grid.ColumnSpan"
+                                    Value="2" />
                         </Trigger>
                     </ControlTemplate.Triggers>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
     </Style>
 
 </ResourceDictionary>

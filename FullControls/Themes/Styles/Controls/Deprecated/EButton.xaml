@@ -2,26 +2,46 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls.Controls">
 
-    <Style TargetType="{x:Type local:EButton}" BasedOn="{StaticResource {x:Type Button}}">
-        <Setter Property="Background" Value="#d9d9d9"/>
-        <Setter Property="BackgroundOnMouseOver" Value="#cccccc"/>
-        <Setter Property="BackgroundOnPressed" Value="#bfbfbf"/>
-        <Setter Property="BackgroundOnDisabled" Value="#d9d9d9"/>
-        <Setter Property="BorderBrush" Value="#a6a6a6"/>
-        <Setter Property="BorderBrushOnMouseOver" Value="#a6a6a6"/>
-        <Setter Property="BorderBrushOnPressed" Value="#a6a6a6"/>
-        <Setter Property="BorderBrushOnDisabled" Value="#bfbfbf"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="ForegroundOnMouseOver" Value="Black"/>
-        <Setter Property="ForegroundOnPressed" Value="Black"/>
-        <Setter Property="ForegroundOnDisabled" Value="#808080"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="CornerRadius" Value="0"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="2"/>
-        <Setter Property="AnimationTime" Value="0:0:0.2"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+    <Style TargetType="{x:Type local:EButton}"
+           BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Background"
+                Value="#d9d9d9" />
+        <Setter Property="BackgroundOnMouseOver"
+                Value="#cccccc" />
+        <Setter Property="BackgroundOnPressed"
+                Value="#bfbfbf" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#d9d9d9" />
+        <Setter Property="BorderBrush"
+                Value="#a6a6a6" />
+        <Setter Property="BorderBrushOnMouseOver"
+                Value="#a6a6a6" />
+        <Setter Property="BorderBrushOnPressed"
+                Value="#a6a6a6" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="#bfbfbf" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="ForegroundOnMouseOver"
+                Value="Black" />
+        <Setter Property="ForegroundOnPressed"
+                Value="Black" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="#808080" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="CornerRadius"
+                Value="0" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Center" />
+        <Setter Property="Padding"
+                Value="2" />
+        <Setter Property="AnimationTime"
+                Value="0:0:0.2" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -40,11 +60,11 @@
                                           RecognizesAccessKey="True"
                                           Content="{TemplateBinding Content}"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                          Focusable="False"/>
+                                          Focusable="False" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    
+
 </ResourceDictionary>

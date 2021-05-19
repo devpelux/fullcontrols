@@ -3,8 +3,9 @@
                     xmlns:local="clr-namespace:FullControls.Controls">
 
     <!--#region Templates -->
-    
-    <ControlTemplate x:Key="EComboBoxTemplate" TargetType="{x:Type local:EComboBox}">
+
+    <ControlTemplate x:Key="EComboBoxTemplate"
+                     TargetType="{x:Type local:EComboBox}">
         <Grid>
             <local:EToggleButton x:Name="PART_ToggleButton"
                                  Width="Auto"
@@ -38,8 +39,8 @@
                                  IsTabStop="{TemplateBinding IsTabStop}"
                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                  ClickMode="Press"
-                                 Focusable="False"/>
-            
+                                 Focusable="False" />
+
             <Grid Margin="{TemplateBinding BorderThickness}">
                 <Grid Margin="{TemplateBinding Padding}"
                       Background="{TemplateBinding TextBackground}">
@@ -53,10 +54,10 @@
                                       IsEnabled="{TemplateBinding IsEnabled}"
                                       SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                       IsHitTestVisible="False"
-                                      Focusable="False"/>
+                                      Focusable="False" />
                 </Grid>
             </Grid>
-            
+
             <Popup x:Name="PART_Popup"
                    PopupAnimation="{TemplateBinding PopupAnimation}"
                    IsOpen="{TemplateBinding IsDropDownOpen}"
@@ -74,7 +75,7 @@
                                               BlurRadius="5"
                                               Color="Black"
                                               Opacity="0.5"
-                                              ShadowDepth="2.5"/>
+                                              ShadowDepth="2.5" />
                         </Border.Effect>
                     </Border>
                     <Border x:Name="PART_PopupBorder"
@@ -91,28 +92,39 @@
                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                             <ItemsPresenter x:Name="PART_PopupItemsPresenter"
                                             KeyboardNavigation.DirectionalNavigation="Contained"
-                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </local:GlassScrollViewer>
                     </Border>
                 </Grid>
             </Popup>
         </Grid>
-        
+
         <ControlTemplate.Triggers>
-            <Trigger Property="HasItems" Value="False">
-                <Setter TargetName="PART_PopupBorder" Property="MinHeight" Value="100"/>
+            <Trigger Property="HasItems"
+                     Value="False">
+                <Setter TargetName="PART_PopupBorder"
+                        Property="MinHeight"
+                        Value="100" />
             </Trigger>
-            <Trigger Property="IsGrouping" Value="True">
-                <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
+            <Trigger Property="IsGrouping"
+                     Value="True">
+                <Setter Property="ScrollViewer.CanContentScroll"
+                        Value="False" />
             </Trigger>
-            <Trigger Property="EnablePopupShadow" Value="False">
-                <Setter TargetName="PART_ShadowBorder" Property="Visibility" Value="Collapsed"/>
-                <Setter TargetName="PART_PopupBorder" Property="Margin" Value="0"/>
+            <Trigger Property="EnablePopupShadow"
+                     Value="False">
+                <Setter TargetName="PART_ShadowBorder"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="PART_PopupBorder"
+                        Property="Margin"
+                        Value="0" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="EComboBoxEditableTemplate" TargetType="{x:Type local:EComboBox}">
+    <ControlTemplate x:Key="EComboBoxEditableTemplate"
+                     TargetType="{x:Type local:EComboBox}">
         <Grid>
             <local:EToggleButton x:Name="PART_ToggleButton"
                                  Width="Auto"
@@ -146,8 +158,8 @@
                                  IsTabStop="{TemplateBinding IsTabStop}"
                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                  ClickMode="Press"
-                                 Focusable="False"/>
-            
+                                 Focusable="False" />
+
             <Grid Margin="{TemplateBinding BorderThickness}">
                 <Grid Margin="{TemplateBinding Padding}"
                       Background="{TemplateBinding TextBackground}">
@@ -171,14 +183,14 @@
                                     <ScrollViewer x:Name="PART_ContentHost"
                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                  Focusable="False"/>
+                                                  Focusable="False" />
                                 </Border>
                             </ControlTemplate>
                         </TextBox.Template>
                     </TextBox>
                 </Grid>
             </Grid>
-            
+
             <Popup x:Name="PART_Popup"
                    PopupAnimation="{TemplateBinding PopupAnimation}"
                    IsOpen="{TemplateBinding IsDropDownOpen}"
@@ -196,7 +208,7 @@
                                               BlurRadius="5"
                                               Color="Black"
                                               Opacity="0.5"
-                                              ShadowDepth="2.5"/>
+                                              ShadowDepth="2.5" />
                         </Border.Effect>
                     </Border>
                     <Border x:Name="PART_PopupBorder"
@@ -213,92 +225,161 @@
                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                             <ItemsPresenter x:Name="PART_PopupItemsPresenter"
                                             KeyboardNavigation.DirectionalNavigation="Contained"
-                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         </local:GlassScrollViewer>
                     </Border>
                 </Grid>
             </Popup>
         </Grid>
-        
+
         <ControlTemplate.Triggers>
-            <Trigger Property="HasItems" Value="False">
-                <Setter TargetName="PART_PopupBorder" Property="MinHeight" Value="100"/>
+            <Trigger Property="HasItems"
+                     Value="False">
+                <Setter TargetName="PART_PopupBorder"
+                        Property="MinHeight"
+                        Value="100" />
             </Trigger>
-            <Trigger Property="IsGrouping" Value="True">
-                <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
+            <Trigger Property="IsGrouping"
+                     Value="True">
+                <Setter Property="ScrollViewer.CanContentScroll"
+                        Value="False" />
             </Trigger>
-            <Trigger Property="EnablePopupShadow" Value="False">
-                <Setter TargetName="PART_ShadowBorder" Property="Visibility" Value="Collapsed"/>
-                <Setter TargetName="PART_PopupBorder" Property="Margin" Value="0"/>
+            <Trigger Property="EnablePopupShadow"
+                     Value="False">
+                <Setter TargetName="PART_ShadowBorder"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="PART_PopupBorder"
+                        Property="Margin"
+                        Value="0" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-    
+
     <!--#endregion-->
 
-    <Style TargetType="{x:Type local:EComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
-        <Setter Property="MinWidth" Value="150"/>
-        <Setter Property="MinHeight" Value="30"/>
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="BackgroundOnMouseOver" Value="#cccccc"/>
-        <Setter Property="BackgroundOnMouseOverOnChecked" Value="#f2f2f2"/>
-        <Setter Property="BackgroundOnChecked" Value="#f2f2f2"/>
-        <Setter Property="BackgroundOnDisabled" Value="#f2f2f2"/>
-        <Setter Property="BorderBrush" Value="#a6a6a6"/>
-        <Setter Property="BorderBrushOnMouseOver" Value="#a6a6a6"/>
-        <Setter Property="BorderBrushOnMouseOverOnChecked" Value="#a6a6a6"/>
-        <Setter Property="BorderBrushOnChecked" Value="#a6a6a6"/>
-        <Setter Property="BorderBrushOnDisabled" Value="#bfbfbf"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="ForeColor" Value="Black"/>
-        <Setter Property="ForeColorOnMouseOver" Value="Black"/>
-        <Setter Property="ForeColorOnMouseOverOnChecked" Value="Black"/>
-        <Setter Property="ForeColorOnChecked" Value="Black"/>
-        <Setter Property="ForeColorOnDisabled" Value="#666666"/>
-        <Setter Property="CaretBrush" Value="Black"/>
-        <Setter Property="SelectionBrush" Value="#67a9db"/>
-        <Setter Property="SelectionTextBrush" Value="Black"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="CornerRadius" Value="0"/>
-        <Setter Property="AdaptForegroundAutomatically" Value="False"/>
-        <Setter Property="AdaptCaretBrushAutomatically" Value="False"/>
-        <Setter Property="SelectionOpacity" Value="0.4"/>
-        <Setter Property="TextAlignment" Value="Left"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="ToggleVerticalContentAlignment" Value="Center"/>
-        <Setter Property="ToggleHorizontalContentAlignment" Value="Right"/>
-        <Setter Property="Padding" Value="0,0,29,0"/>
-        <Setter Property="TextPadding" Value="5,2,5,2"/>
-        <Setter Property="TogglePadding" Value="0,0,10,0"/>
-        <Setter Property="Arrow" Value="&#xEDDC;"/>
-        <Setter Property="ArrowSize" Value="9"/>
-        <Setter Property="ArrowFont" Value="Segoe MDL2 Assets"/>
-        <Setter Property="PopupBackground" Value="#f2f2f2"/>
-        <Setter Property="PopupBorderBrush" Value="#a6a6a6"/>
-        <Setter Property="PopupBorderThickness" Value="1"/>
-        <Setter Property="PopupPadding" Value="0"/>
-        <Setter Property="PopupAnimation" Value="Slide"/>
-        <Setter Property="EnablePopupShadow" Value="True"/>
-        <Setter Property="MaxDropDownHeight" Value="152"/>
-        <Setter Property="AnimationTime" Value="0:0:0.2"/>
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-        <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
-        <Setter Property="IsTabStop" Value="True"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+    <Style TargetType="{x:Type local:EComboBox}"
+           BasedOn="{StaticResource {x:Type ComboBox}}">
+        <Setter Property="MinWidth"
+                Value="150" />
+        <Setter Property="MinHeight"
+                Value="30" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="BackgroundOnMouseOver"
+                Value="#cccccc" />
+        <Setter Property="BackgroundOnMouseOverOnChecked"
+                Value="#f2f2f2" />
+        <Setter Property="BackgroundOnChecked"
+                Value="#f2f2f2" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#f2f2f2" />
+        <Setter Property="BorderBrush"
+                Value="#a6a6a6" />
+        <Setter Property="BorderBrushOnMouseOver"
+                Value="#a6a6a6" />
+        <Setter Property="BorderBrushOnMouseOverOnChecked"
+                Value="#a6a6a6" />
+        <Setter Property="BorderBrushOnChecked"
+                Value="#a6a6a6" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="#bfbfbf" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="ForeColor"
+                Value="Black" />
+        <Setter Property="ForeColorOnMouseOver"
+                Value="Black" />
+        <Setter Property="ForeColorOnMouseOverOnChecked"
+                Value="Black" />
+        <Setter Property="ForeColorOnChecked"
+                Value="Black" />
+        <Setter Property="ForeColorOnDisabled"
+                Value="#666666" />
+        <Setter Property="CaretBrush"
+                Value="Black" />
+        <Setter Property="SelectionBrush"
+                Value="#67a9db" />
+        <Setter Property="SelectionTextBrush"
+                Value="Black" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="CornerRadius"
+                Value="0" />
+        <Setter Property="AdaptForegroundAutomatically"
+                Value="False" />
+        <Setter Property="AdaptCaretBrushAutomatically"
+                Value="False" />
+        <Setter Property="SelectionOpacity"
+                Value="0.4" />
+        <Setter Property="TextAlignment"
+                Value="Left" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left" />
+        <Setter Property="ToggleVerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="ToggleHorizontalContentAlignment"
+                Value="Right" />
+        <Setter Property="Padding"
+                Value="0,0,29,0" />
+        <Setter Property="TextPadding"
+                Value="5,2,5,2" />
+        <Setter Property="TogglePadding"
+                Value="0,0,10,0" />
+        <Setter Property="Arrow"
+                Value="&#xEDDC;" />
+        <Setter Property="ArrowSize"
+                Value="9" />
+        <Setter Property="ArrowFont"
+                Value="Segoe MDL2 Assets" />
+        <Setter Property="PopupBackground"
+                Value="#f2f2f2" />
+        <Setter Property="PopupBorderBrush"
+                Value="#a6a6a6" />
+        <Setter Property="PopupBorderThickness"
+                Value="1" />
+        <Setter Property="PopupPadding"
+                Value="0" />
+        <Setter Property="PopupAnimation"
+                Value="Slide" />
+        <Setter Property="EnablePopupShadow"
+                Value="True" />
+        <Setter Property="MaxDropDownHeight"
+                Value="152" />
+        <Setter Property="AnimationTime"
+                Value="0:0:0.2" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
+                Value="Hidden" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility"
+                Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll"
+                Value="False" />
+        <Setter Property="IsTabStop"
+                Value="True" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
 
         <Setter Property="ScrollViewerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type local:GlassScrollViewer}">
-                    <Setter Property="VerticalScrollBarAreaPadding" Value="1,0,1,0"/>
-                    <Setter Property="VerticalScrollBarThickness" Value="5"/>
-                    <Setter Property="VerticalScrollBarCornerRadius" Value="0"/>
-                    <Setter Property="VerticalScrollBarThumbCornerRadius" Value="2"/>
-                    <Setter Property="HorizontalScrollBarAreaPadding" Value="0,1,0,1"/>
-                    <Setter Property="HorizontalScrollBarThickness" Value="5"/>
-                    <Setter Property="HorizontalScrollBarCornerRadius" Value="0"/>
-                    <Setter Property="HorizontalScrollBarThumbCornerRadius" Value="2"/>
+                    <Setter Property="VerticalScrollBarAreaPadding"
+                            Value="1,0,1,0" />
+                    <Setter Property="VerticalScrollBarThickness"
+                            Value="5" />
+                    <Setter Property="VerticalScrollBarCornerRadius"
+                            Value="0" />
+                    <Setter Property="VerticalScrollBarThumbCornerRadius"
+                            Value="2" />
+                    <Setter Property="HorizontalScrollBarAreaPadding"
+                            Value="0,1,0,1" />
+                    <Setter Property="HorizontalScrollBarThickness"
+                            Value="5" />
+                    <Setter Property="HorizontalScrollBarCornerRadius"
+                            Value="0" />
+                    <Setter Property="HorizontalScrollBarThumbCornerRadius"
+                            Value="2" />
                 </Style>
             </Setter.Value>
         </Setter>
@@ -306,24 +387,33 @@
         <Setter Property="TextContextMenu">
             <Setter.Value>
                 <local:FlatContextMenu>
-                    <local:FlatMenuItem Command="ApplicationCommands.Cut"/>
-                    <local:FlatMenuItem Command="ApplicationCommands.Copy"/>
-                    <local:FlatMenuItem Command="ApplicationCommands.Paste"/>
+                    <local:FlatMenuItem Command="ApplicationCommands.Cut" />
+                    <local:FlatMenuItem Command="ApplicationCommands.Copy" />
+                    <local:FlatMenuItem Command="ApplicationCommands.Paste" />
                 </local:FlatContextMenu>
             </Setter.Value>
         </Setter>
 
-        <Setter Property="Template" Value="{StaticResource EComboBoxTemplate}"/>
-        
+        <Setter Property="Template"
+                Value="{StaticResource EComboBoxTemplate}" />
+
         <Style.Triggers>
-            <Trigger Property="IsEditable" Value="True">
-                <Setter Property="IsTabStop" Value="False"/>
-                <Setter Property="Padding" Value="0,0,29,0"/>
-                <Setter Property="TextPadding" Value="5,2,5,2"/>
-                <Setter Property="TextBackground" Value="Transparent"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                <Setter Property="Template" Value="{StaticResource EComboBoxEditableTemplate}"/>
+            <Trigger Property="IsEditable"
+                     Value="True">
+                <Setter Property="IsTabStop"
+                        Value="False" />
+                <Setter Property="Padding"
+                        Value="0,0,29,0" />
+                <Setter Property="TextPadding"
+                        Value="5,2,5,2" />
+                <Setter Property="TextBackground"
+                        Value="Transparent" />
+                <Setter Property="VerticalContentAlignment"
+                        Value="Center" />
+                <Setter Property="HorizontalContentAlignment"
+                        Value="Stretch" />
+                <Setter Property="Template"
+                        Value="{StaticResource EComboBoxEditableTemplate}" />
             </Trigger>
         </Style.Triggers>
     </Style>

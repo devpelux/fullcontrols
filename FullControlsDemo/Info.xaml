@@ -9,7 +9,7 @@
                  Height="190"
                  Width="200">
     <Grid ClipToBounds="True">
-        
+
         <!--#region Background part-->
 
         <Ellipse Fill="WhiteSmoke"
@@ -19,36 +19,102 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="70" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" VerticalAlignment="Center">
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0" Text="FullControlsDemo" FontSize="18"
-                           Foreground="DodgerBlue" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,25,0,0" Text="by devpelux" Foreground="Gray" FontSize="10"/>
+            <Grid Grid.Row="0"
+                  VerticalAlignment="Center">
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Margin="0,0,0,0"
+                           Text="FullControlsDemo"
+                           FontSize="18"
+                           Foreground="DodgerBlue"
+                           FontWeight="Bold" />
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Top"
+                           Margin="0,25,0,0"
+                           Text="by devpelux"
+                           Foreground="Gray"
+                           FontSize="10" />
             </Grid>
-            <Border Grid.Row="1" BorderBrush="LightGray" BorderThickness="0,1,0,1">
-                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <TextBlock HorizontalAlignment="Left" Text="FullControls version:" FontSize="12"/>
-                    <TextBlock x:Name="VersionCode" HorizontalAlignment="Left" Margin="115,0,0,0" Text="N/A"
-                               FontSize="12" Foreground="DodgerBlue" MouseLeftButtonDown="R_MouseLeftButtonDown" Cursor="Hand"/>
+            <Border Grid.Row="1"
+                    BorderBrush="LightGray"
+                    BorderThickness="0,1,0,1">
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Left"
+                               Text="FullControls version:"
+                               FontSize="12" />
+                    <TextBlock x:Name="VersionCode"
+                               HorizontalAlignment="Left"
+                               Margin="115,0,0,0"
+                               Text="N/A"
+                               FontSize="12"
+                               Foreground="DodgerBlue"
+                               MouseLeftButtonDown="R_MouseLeftButtonDown"
+                               Cursor="Hand" />
                 </Grid>
             </Border>
-            <Grid Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <Image HorizontalAlignment="Left" Width="24" Height="24" Margin="0,0,0,0" ToolTip="Get from NuGet" Cursor="Hand"
-                       Source="/Icons/NuGet.png" RenderOptions.BitmapScalingMode="Fant" SnapsToDevicePixels="True" MouseLeftButtonDown="NG_MouseLeftButtonDown"/>
-                <Image HorizontalAlignment="Left" Width="24" Height="24" Margin="40,0,0,0" ToolTip="View on Github" Cursor="Hand"
-                       Source="/Icons/GitHub.png" RenderOptions.BitmapScalingMode="Fant" SnapsToDevicePixels="True" MouseLeftButtonDown="GH_MouseLeftButtonDown"/>
-                <Image HorizontalAlignment="Left" Width="24" Height="24" Margin="80,0,0,0" ToolTip="View full documentation" Cursor="Hand"
-                       Source="/Icons/Help.png" RenderOptions.BitmapScalingMode="Fant" SnapsToDevicePixels="True" MouseLeftButtonDown="DOC_MouseLeftButtonDown"/>
+            <Grid Grid.Row="2"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center">
+                <Image HorizontalAlignment="Left"
+                       Width="24"
+                       Height="24"
+                       Margin="0,0,0,0"
+                       ToolTip="Get from NuGet"
+                       Cursor="Hand"
+                       Source="/Icons/NuGet.png"
+                       RenderOptions.BitmapScalingMode="Fant"
+                       SnapsToDevicePixels="True"
+                       MouseLeftButtonDown="NG_MouseLeftButtonDown" />
+                <Image HorizontalAlignment="Left"
+                       Width="24"
+                       Height="24"
+                       Margin="40,0,0,0"
+                       ToolTip="View on Github"
+                       Cursor="Hand"
+                       Source="/Icons/GitHub.png"
+                       RenderOptions.BitmapScalingMode="Fant"
+                       SnapsToDevicePixels="True"
+                       MouseLeftButtonDown="GH_MouseLeftButtonDown" />
+                <Image HorizontalAlignment="Left"
+                       Width="24"
+                       Height="24"
+                       Margin="80,0,0,0"
+                       ToolTip="View full documentation"
+                       Cursor="Hand"
+                       Source="/Icons/Help.png"
+                       RenderOptions.BitmapScalingMode="Fant"
+                       SnapsToDevicePixels="True"
+                       MouseLeftButtonDown="DOC_MouseLeftButtonDown" />
             </Grid>
-            <Grid Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,2,2" Height="10" Width="10" Background="Transparent"
-                  MouseLeftButtonDown="FullW_MouseLeftButtonDown"/>
-            <Grid Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,14,2" Height="10" Width="10" Background="Transparent"
-                  MouseLeftButtonDown="FlexW_MouseLeftButtonDown"/>
-            <Grid Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,26,2" Height="10" Width="10" Background="Transparent"
-                  MouseLeftButtonDown="AvalonW_MouseLeftButtonDown"/>
+            <Grid Grid.Row="2"
+                  VerticalAlignment="Bottom"
+                  HorizontalAlignment="Right"
+                  Margin="0,0,2,2"
+                  Height="10"
+                  Width="10"
+                  Background="Transparent"
+                  MouseLeftButtonDown="FullW_MouseLeftButtonDown" />
+            <Grid Grid.Row="2"
+                  VerticalAlignment="Bottom"
+                  HorizontalAlignment="Right"
+                  Margin="0,0,14,2"
+                  Height="10"
+                  Width="10"
+                  Background="Transparent"
+                  MouseLeftButtonDown="FlexW_MouseLeftButtonDown" />
+            <Grid Grid.Row="2"
+                  VerticalAlignment="Bottom"
+                  HorizontalAlignment="Right"
+                  Margin="0,0,26,2"
+                  Height="10"
+                  Width="10"
+                  Background="Transparent"
+                  MouseLeftButtonDown="AvalonW_MouseLeftButtonDown" />
         </Grid>
     </Grid>
 </fc:AvalonWindow>

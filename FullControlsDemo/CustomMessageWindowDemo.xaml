@@ -12,12 +12,46 @@
                  Closed="EWindow_Closed"
                  Loaded="EWindow_Loaded">
     <Grid>
-        <TextBlock Text="Did you know that... ?" TextAlignment="Center" Margin="0,60,0,0" VerticalAlignment="Top" Height="30"/>
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30">
-            <fc:ButtonPlus x:Name="Yes" Content="Yes" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="30" Width="50" Click="Yes_Click"/>
-            <fc:ButtonPlus x:Name="No" Content="No" HorizontalAlignment="Left" Margin="55,0,0,0" VerticalAlignment="Top" Height="30" Width="50" Click="No_Click"/>
-            <fc:ButtonPlus x:Name="Maybe" Content="Maybe" HorizontalAlignment="Left" Margin="110,0,0,0" VerticalAlignment="Top" Height="30" Width="50" Click="Maybe_Click"/>
-            <fc:ButtonPlus x:Name="What" Content="What?" HorizontalAlignment="Left" Margin="165,0,0,0" VerticalAlignment="Top" Height="30" Width="50" Click="What_Click"/>
+        <TextBlock Text="Did you know that... ?"
+                   TextAlignment="Center"
+                   Margin="0,60,0,0"
+                   VerticalAlignment="Top"
+                   Height="30" />
+        <Grid HorizontalAlignment="Center"
+              VerticalAlignment="Bottom"
+              Margin="0,0,0,30">
+            <fc:ButtonPlus x:Name="Yes"
+                           Content="Yes"
+                           HorizontalAlignment="Left"
+                           Margin="0,0,0,0"
+                           VerticalAlignment="Top"
+                           Height="30"
+                           Width="50"
+                           Click="Yes_Click" />
+            <fc:ButtonPlus x:Name="No"
+                           Content="No"
+                           HorizontalAlignment="Left"
+                           Margin="55,0,0,0"
+                           VerticalAlignment="Top"
+                           Height="30"
+                           Width="50"
+                           Click="No_Click" />
+            <fc:ButtonPlus x:Name="Maybe"
+                           Content="Maybe"
+                           HorizontalAlignment="Left"
+                           Margin="110,0,0,0"
+                           VerticalAlignment="Top"
+                           Height="30"
+                           Width="50"
+                           Click="Maybe_Click" />
+            <fc:ButtonPlus x:Name="What"
+                           Content="What?"
+                           HorizontalAlignment="Left"
+                           Margin="165,0,0,0"
+                           VerticalAlignment="Top"
+                           Height="30"
+                           Width="50"
+                           Click="What_Click" />
         </Grid>
     </Grid>
 </fc:AvalonWindow>

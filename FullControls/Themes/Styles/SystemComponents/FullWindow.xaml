@@ -2,42 +2,68 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls.SystemComponents"
                     xmlns:extra="clr-namespace:FullControls.Extra">
+
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml" />
         <ResourceDictionary Source="/FullControls;component/Resources/Styles.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <extra:ClipConverter x:Key="ClipConverter" />
 
-    <Style TargetType="{x:Type local:FullWindow}" BasedOn="{StaticResource {x:Type Window}}">
-        <Setter Property="CornerRadius" Value="8"/>
-        <Setter Property="ShadowRadius" Value="10"/>
-        <Setter Property="ShadowOpacity" Value="0.8"/>
-        <Setter Property="ShadowDepth" Value="0.5"/>
-        <Setter Property="ShadowColor" Value="Black"/>
-        <Setter Property="ResizeThickness" Value="8"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Gray10}"/>
-        <Setter Property="BorderBrushOnActive" Value="{StaticResource Blue7}"/>
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="ForegroundOnActive" Value="Black"/>
-        <Setter Property="TitlebarBackground" Value="White"/>
-        <Setter Property="TitlebarBackgroundOnActive" Value="White"/>
-        <Setter Property="IconBackground" Value="Transparent"/>
-        <Setter Property="ButtonsAreaBackground" Value="Transparent"/>
-        <Setter Property="AnimationTime" Value="0:0:0.2"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+    <Style TargetType="{x:Type local:FullWindow}"
+           BasedOn="{StaticResource {x:Type Window}}">
 
-        <Setter Property="MinimizeButtonStyle" Value="{StaticResource CaptionButtonStyle}" />
-        <Setter Property="MaximizeButtonStyle" Value="{StaticResource CaptionButtonStyle}" />
-        <Setter Property="RestoreButtonStyle" Value="{StaticResource CaptionButtonStyle}" />
-        <Setter Property="CloseButtonStyle" Value="{StaticResource CaptionCloseButtonStyle}" />
+        <Setter Property="CornerRadius"
+                Value="8" />
+        <Setter Property="ShadowRadius"
+                Value="10" />
+        <Setter Property="ShadowOpacity"
+                Value="0.8" />
+        <Setter Property="ShadowDepth"
+                Value="0.5" />
+        <Setter Property="ShadowColor"
+                Value="Black" />
+        <Setter Property="ResizeThickness"
+                Value="8" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="BorderBrush"
+                Value="{StaticResource Gray10}" />
+        <Setter Property="BorderBrushOnActive"
+                Value="{StaticResource Blue7}" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="ForegroundOnActive"
+                Value="Black" />
+        <Setter Property="TitlebarBackground"
+                Value="White" />
+        <Setter Property="TitlebarBackgroundOnActive"
+                Value="White" />
+        <Setter Property="IconBackground"
+                Value="Transparent" />
+        <Setter Property="ButtonsAreaBackground"
+                Value="Transparent" />
+        <Setter Property="AnimationTime"
+                Value="0:0:0.2" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+
+        <Setter Property="MinimizeButtonStyle"
+                Value="{StaticResource CaptionButtonStyle}" />
+        <Setter Property="MaximizeButtonStyle"
+                Value="{StaticResource CaptionButtonStyle}" />
+        <Setter Property="RestoreButtonStyle"
+                Value="{StaticResource CaptionButtonStyle}" />
+        <Setter Property="CloseButtonStyle"
+                Value="{StaticResource CaptionCloseButtonStyle}" />
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:FullWindow}">
-                    <Grid x:Name="PART_Window" Opacity="{TemplateBinding ContentOpacity}">
+                    <Grid x:Name="PART_Window"
+                          Opacity="{TemplateBinding ContentOpacity}">
                         <Border x:Name="PART_ShadowBorder"
                                 BorderThickness="1"
                                 Margin="{TemplateBinding OutsideMargin}"
@@ -51,7 +77,7 @@
                                                   Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"
                                                   Opacity="{Binding ShadowOpacity, RelativeSource={RelativeSource TemplatedParent}}"
                                                   BlurRadius="{Binding ShadowRadius, RelativeSource={RelativeSource TemplatedParent}}"
-                                                  ShadowDepth="{Binding ShadowDepth, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                  ShadowDepth="{Binding ShadowDepth, RelativeSource={RelativeSource TemplatedParent}}" />
                             </Border.Effect>
                         </Border>
                         <Border x:Name="PART_Border"
@@ -111,39 +137,78 @@
                     </Grid>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsDocked" Value="True">
-                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="0" />
-                            <Setter TargetName="PART_ShadowBorder" Property="Visibility" Value="Collapsed" />
+                        <Trigger Property="IsDocked"
+                                 Value="True">
+                            <Setter TargetName="PART_Border"
+                                    Property="CornerRadius"
+                                    Value="0" />
+                            <Setter TargetName="PART_ShadowBorder"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="WindowState" Value="Normal">
-                            <Setter TargetName="PART_TitleBar" Property="EnableRestoreButton" Value="False" />
+                        <Trigger Property="WindowState"
+                                 Value="Normal">
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="EnableRestoreButton"
+                                    Value="False" />
                         </Trigger>
-                        <Trigger Property="WindowState" Value="Maximized">
-                            <Setter TargetName="PART_TitleBar" Property="EnableMaximizeButton" Value="False" />
-                            <Setter TargetName="PART_Border" Property="BorderThickness" Value="0" />
-                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="0" />
-                            <Setter TargetName="PART_ShadowBorder" Property="Visibility" Value="Collapsed" />
+                        <Trigger Property="WindowState"
+                                 Value="Maximized">
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="EnableMaximizeButton"
+                                    Value="False" />
+                            <Setter TargetName="PART_Border"
+                                    Property="BorderThickness"
+                                    Value="0" />
+                            <Setter TargetName="PART_Border"
+                                    Property="CornerRadius"
+                                    Value="0" />
+                            <Setter TargetName="PART_ShadowBorder"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="ResizeMode" Value="CanMinimize">
-                            <Setter TargetName="PART_TitleBar" Property="EnableMaximizeButton" Value="False" />
-                            <Setter TargetName="PART_TitleBar" Property="EnableRestoreButton" Value="False" />
+                        <Trigger Property="ResizeMode"
+                                 Value="CanMinimize">
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="EnableMaximizeButton"
+                                    Value="False" />
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="EnableRestoreButton"
+                                    Value="False" />
                         </Trigger>
-                        <Trigger Property="ResizeMode" Value="NoResize">
-                            <Setter TargetName="PART_TitleBar" Property="EnableMinimizeButton" Value="False" />
-                            <Setter TargetName="PART_TitleBar" Property="EnableMaximizeButton" Value="False" />
-                            <Setter TargetName="PART_TitleBar" Property="EnableRestoreButton" Value="False" />
+                        <Trigger Property="ResizeMode"
+                                 Value="NoResize">
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="EnableMinimizeButton"
+                                    Value="False" />
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="EnableMaximizeButton"
+                                    Value="False" />
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="EnableRestoreButton"
+                                    Value="False" />
                         </Trigger>
-                        <Trigger Property="MergeTitlebarAndContent" Value="True">
-                            <Setter TargetName="PART_Content" Property="Margin" Value="0" />
-                            <Setter TargetName="PART_TitleBar" Property="Background" Value="Transparent" />
+                        <Trigger Property="MergeTitlebarAndContent"
+                                 Value="True">
+                            <Setter TargetName="PART_Content"
+                                    Property="Margin"
+                                    Value="0" />
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="Background"
+                                    Value="Transparent" />
                         </Trigger>
-                        <Trigger Property="EnableTitlebar" Value="False">
-                            <Setter TargetName="PART_TitleBar" Property="Visibility" Value="Collapsed" />
+                        <Trigger Property="EnableTitlebar"
+                                 Value="False">
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
     </Style>
-    
+
 </ResourceDictionary>

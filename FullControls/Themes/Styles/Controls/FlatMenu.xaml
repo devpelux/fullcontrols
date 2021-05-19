@@ -1,28 +1,47 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls.Controls">
+
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
-    <Style TargetType="{x:Type local:FlatMenu}" BasedOn="{StaticResource {x:Type Menu}}">
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="Foreground" Value="{StaticResource Gray17}"/>
-        <Setter Property="ForegroundOnHighlight" Value="{StaticResource Gray17}"/>
-        <Setter Property="ForegroundOnOpen" Value="{StaticResource Gray17}"/>
-        <Setter Property="ForegroundOnDisabled" Value="{StaticResource Gray9}"/>
-        <Setter Property="CheckBrush" Value="{StaticResource Gray17}"/>
-        <Setter Property="CheckBrushOnHighlight" Value="{StaticResource Gray17}"/>
-        <Setter Property="CheckBrushOnOpen" Value="{StaticResource Gray17}"/>
-        <Setter Property="CheckBrushOnDisabled" Value="{StaticResource Gray9}"/>
-        <Setter Property="PopupCornerRadius" Value="0"/>
-        <Setter Property="PopupPadding" Value="0"/>
-        <Setter Property="TopLevelPopupVerticalOffset" Value="0"/>
-        <Setter Property="TopLevelPopupHorizontalOffset" Value="-6"/>
-        <Setter Property="PopupVerticalOffset" Value="0"/>
-        <Setter Property="PopupHorizontalOffset" Value="0"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+
+    <Style TargetType="{x:Type local:FlatMenu}"
+           BasedOn="{StaticResource {x:Type Menu}}">
+
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="Foreground"
+                Value="{StaticResource Gray17}" />
+        <Setter Property="ForegroundOnHighlight"
+                Value="{StaticResource Gray17}" />
+        <Setter Property="ForegroundOnOpen"
+                Value="{StaticResource Gray17}" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="{StaticResource Gray9}" />
+        <Setter Property="CheckBrush"
+                Value="{StaticResource Gray17}" />
+        <Setter Property="CheckBrushOnHighlight"
+                Value="{StaticResource Gray17}" />
+        <Setter Property="CheckBrushOnOpen"
+                Value="{StaticResource Gray17}" />
+        <Setter Property="CheckBrushOnDisabled"
+                Value="{StaticResource Gray9}" />
+        <Setter Property="PopupCornerRadius"
+                Value="0" />
+        <Setter Property="PopupPadding"
+                Value="0" />
+        <Setter Property="TopLevelPopupVerticalOffset"
+                Value="0" />
+        <Setter Property="TopLevelPopupHorizontalOffset"
+                Value="-6" />
+        <Setter Property="PopupVerticalOffset"
+                Value="0" />
+        <Setter Property="PopupHorizontalOffset"
+                Value="0" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
 
     </Style>
-    
+
 </ResourceDictionary>

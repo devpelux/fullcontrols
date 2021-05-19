@@ -1,65 +1,118 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls.Controls">
+
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type local:TextBoxPlus}" BasedOn="{StaticResource {x:Type TextBox}}">
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="BackgroundOnSelected" Value="White"/>
-        <Setter Property="BackgroundOnDisabled" Value="{StaticResource Gray1}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Gray7}"/>
-        <Setter Property="BorderBrushOnSelected" Value="{StaticResource Blue2}"/>
-        <Setter Property="BorderBrushOnDisabled" Value="{StaticResource Gray5}"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="CaretBrush" Value="Black"/>
-        <Setter Property="SelectionBrush" Value="{StaticResource Blue4}"/>
-        <Setter Property="SelectionTextBrush" Value="Black"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="CornerRadius" Value="0"/>
-        <Setter Property="Padding" Value="5"/>
-        <Setter Property="AdaptForegroundAutomatically" Value="True"/>
-        <Setter Property="AdaptCaretBrushAutomatically" Value="True"/>
-        <Setter Property="SelectionOpacity" Value="0.4"/>
-        <Setter Property="HintForeground" Value="Black"/>
-        <Setter Property="HintOpacity" Value="0.6"/>
-        <Setter Property="AdaptHintForegroundAutomatically" Value="True"/>
-        <Setter Property="Hint" Value="{x:Null}"/>
-        <Setter Property="Label" Value="{x:Null}"/>
-        <Setter Property="Icon" Value="{x:Null}"/>
-        <Setter Property="LabelPlacement" Value="Top"/>
-        <Setter Property="LabelVerticalAlignment" Value="Center"/>
-        <Setter Property="LabelHorizontalAlignment" Value="Left"/>
-        <Setter Property="LabelForeground" Value="{StaticResource Gray10}"/>
-        <Setter Property="LabelFontSize" Value="12"/>
-        <Setter Property="LabelFontFamily" Value="Segoe UI"/>
-        <Setter Property="LabelFontStretch" Value="Normal"/>
-        <Setter Property="LabelFontStyle" Value="Normal"/>
-        <Setter Property="LabelFontWeight" Value="Normal"/>
-        <Setter Property="TextAlignment" Value="Left"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="TextType" Value="Text"/>
-        <Setter Property="ExternalBackground" Value="{x:Null}"/>
-        <Setter Property="ExternalBorderBrush" Value="{x:Null}"/>
-        <Setter Property="ExternalBorderThickness" Value="0"/>
-        <Setter Property="ExternalPadding" Value="0"/>
-        <Setter Property="ExternalCornerRadius" Value="0"/>
-        <Setter Property="AnimationTime" Value="0:0:0.2"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+    <Style TargetType="{x:Type local:TextBoxPlus}"
+           BasedOn="{StaticResource {x:Type TextBox}}">
+
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="BackgroundOnSelected"
+                Value="White" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="{StaticResource Gray1}" />
+        <Setter Property="BorderBrush"
+                Value="{StaticResource Gray7}" />
+        <Setter Property="BorderBrushOnSelected"
+                Value="{StaticResource Blue2}" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="{StaticResource Gray5}" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="CaretBrush"
+                Value="Black" />
+        <Setter Property="SelectionBrush"
+                Value="{StaticResource Blue4}" />
+        <Setter Property="SelectionTextBrush"
+                Value="Black" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="CornerRadius"
+                Value="0" />
+        <Setter Property="Padding"
+                Value="5" />
+        <Setter Property="AdaptForegroundAutomatically"
+                Value="True" />
+        <Setter Property="AdaptCaretBrushAutomatically"
+                Value="True" />
+        <Setter Property="SelectionOpacity"
+                Value="0.4" />
+        <Setter Property="HintForeground"
+                Value="Black" />
+        <Setter Property="HintOpacity"
+                Value="0.6" />
+        <Setter Property="AdaptHintForegroundAutomatically"
+                Value="True" />
+        <Setter Property="Hint"
+                Value="{x:Null}" />
+        <Setter Property="Label"
+                Value="{x:Null}" />
+        <Setter Property="Icon"
+                Value="{x:Null}" />
+        <Setter Property="LabelPlacement"
+                Value="Top" />
+        <Setter Property="LabelVerticalAlignment"
+                Value="Center" />
+        <Setter Property="LabelHorizontalAlignment"
+                Value="Left" />
+        <Setter Property="LabelForeground"
+                Value="{StaticResource Gray10}" />
+        <Setter Property="LabelFontSize"
+                Value="12" />
+        <Setter Property="LabelFontFamily"
+                Value="Segoe UI" />
+        <Setter Property="LabelFontStretch"
+                Value="Normal" />
+        <Setter Property="LabelFontStyle"
+                Value="Normal" />
+        <Setter Property="LabelFontWeight"
+                Value="Normal" />
+        <Setter Property="TextAlignment"
+                Value="Left" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Center" />
+        <Setter Property="TextType"
+                Value="Text" />
+        <Setter Property="ExternalBackground"
+                Value="{x:Null}" />
+        <Setter Property="ExternalBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="ExternalBorderThickness"
+                Value="0" />
+        <Setter Property="ExternalPadding"
+                Value="0" />
+        <Setter Property="ExternalCornerRadius"
+                Value="0" />
+        <Setter Property="AnimationTime"
+                Value="0:0:0.2" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
 
         <Setter Property="ScrollViewerStyle">
             <Setter.Value>
                 <Style TargetType="{x:Type local:GlassScrollViewer}">
-                    <Setter Property="VerticalScrollBarAreaPadding" Value="1,0,1,0"/>
-                    <Setter Property="VerticalScrollBarThickness" Value="5"/>
-                    <Setter Property="VerticalScrollBarCornerRadius" Value="0"/>
-                    <Setter Property="VerticalScrollBarThumbCornerRadius" Value="2"/>
-                    <Setter Property="HorizontalScrollBarAreaPadding" Value="0,1,0,1"/>
-                    <Setter Property="HorizontalScrollBarThickness" Value="5"/>
-                    <Setter Property="HorizontalScrollBarCornerRadius" Value="0"/>
-                    <Setter Property="HorizontalScrollBarThumbCornerRadius" Value="2"/>
+                    <Setter Property="VerticalScrollBarAreaPadding"
+                            Value="1,0,1,0" />
+                    <Setter Property="VerticalScrollBarThickness"
+                            Value="5" />
+                    <Setter Property="VerticalScrollBarCornerRadius"
+                            Value="0" />
+                    <Setter Property="VerticalScrollBarThumbCornerRadius"
+                            Value="2" />
+                    <Setter Property="HorizontalScrollBarAreaPadding"
+                            Value="0,1,0,1" />
+                    <Setter Property="HorizontalScrollBarThickness"
+                            Value="5" />
+                    <Setter Property="HorizontalScrollBarCornerRadius"
+                            Value="0" />
+                    <Setter Property="HorizontalScrollBarThumbCornerRadius"
+                            Value="2" />
                 </Style>
             </Setter.Value>
         </Setter>
@@ -67,9 +120,9 @@
         <Setter Property="ContextMenu">
             <Setter.Value>
                 <local:FlatContextMenu>
-                    <local:FlatMenuItem Command="ApplicationCommands.Cut"/>
-                    <local:FlatMenuItem Command="ApplicationCommands.Copy"/>
-                    <local:FlatMenuItem Command="ApplicationCommands.Paste"/>
+                    <local:FlatMenuItem Command="ApplicationCommands.Cut" />
+                    <local:FlatMenuItem Command="ApplicationCommands.Copy" />
+                    <local:FlatMenuItem Command="ApplicationCommands.Paste" />
                 </local:FlatContextMenu>
             </Setter.Value>
         </Setter>
@@ -152,19 +205,30 @@
                     </Border>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="LabelType" Value="Icon">
-                            <Setter TargetName="PART_LabelIcon" Property="Visibility" Value="Visible"/>
+                        <Trigger Property="LabelType"
+                                 Value="Icon">
+                            <Setter TargetName="PART_LabelIcon"
+                                    Property="Visibility"
+                                    Value="Visible" />
                         </Trigger>
-                        <Trigger Property="LabelType" Value="Content">
-                            <Setter TargetName="PART_LabelContent" Property="Visibility" Value="Visible"/>
+                        <Trigger Property="LabelType"
+                                 Value="Content">
+                            <Setter TargetName="PART_LabelContent"
+                                    Property="Visibility"
+                                    Value="Visible" />
                         </Trigger>
-                        <Trigger Property="IsHintDisplayed" Value="True">
-                            <Setter TargetName="PART_Hint" Property="Visibility" Value="Visible"/>
+                        <Trigger Property="IsHintDisplayed"
+                                 Value="True">
+                            <Setter TargetName="PART_Hint"
+                                    Property="Visibility"
+                                    Value="Visible" />
                         </Trigger>
                     </ControlTemplate.Triggers>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
     </Style>
-    
+
 </ResourceDictionary>

@@ -24,7 +24,7 @@ namespace FullControls.SystemComponents
         /// </summary>
         public static readonly DependencyProperty TitleMarginProperty =
             DependencyProperty.Register(nameof(TitleMargin), typeof(Thickness), typeof(WindowTitleBar),
-                new FrameworkPropertyMetadata(new Thickness(5,0,5,0)));
+                new FrameworkPropertyMetadata(new Thickness(5, 0, 5, 0)));
 
         /// <summary>
         /// Gets or sets the icon.

@@ -10,17 +10,48 @@
                  Height="302"
                  Width="402">
     <Grid>
-        <fc:Collapsible x:Name="collapsible" Margin="60,60,60,60" ExpandingAnimationTime="0:0:2" WidthAnimation="True" HeightAnimation="True"
-                        AnimationStarted="Collapsible_AnimationStarted" AnimationEnded="Collapsible_AnimationEnded"
+        <fc:Collapsible x:Name="collapsible"
+                        Margin="60,60,60,60"
+                        ExpandingAnimationTime="0:0:2"
+                        WidthAnimation="True"
+                        HeightAnimation="True"
+                        AnimationStarted="Collapsible_AnimationStarted"
+                        AnimationEnded="Collapsible_AnimationEnded"
                         IsExpandedChanged="Collapsible_IsExpandedChanged">
-            <Grid Background="WhiteSmoke" Width="280" Height="180" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Rectangle Fill="Red" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,47,0,0" Height="60" Width="60"/>
-                <Rectangle Fill="Green" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="172,33,0,0" Height="50" Width="50"/>
-                <Rectangle Fill="Blue" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="158,122,0,0" Height="40" Width="40"/>
+            <Grid Background="WhiteSmoke"
+                  Width="280"
+                  Height="180"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center">
+                <Rectangle Fill="Red"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Margin="50,47,0,0"
+                           Height="60"
+                           Width="60" />
+                <Rectangle Fill="Green"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Margin="172,33,0,0"
+                           Height="50"
+                           Width="50" />
+                <Rectangle Fill="Blue"
+                           VerticalAlignment="Top"
+                           HorizontalAlignment="Left"
+                           Margin="158,122,0,0"
+                           Height="40"
+                           Width="40" />
             </Grid>
         </fc:Collapsible>
-        <fc:ToggleButtonPlus x:Name="toggle" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,15"
-                             Width="70" Height="30" Content="Collapse" IsChecked="True"
-                             Checked="Toggle_Checked" Unchecked="Toggle_Unchecked"/>
+        <fc:ToggleButtonPlus x:Name="toggle"
+                             VerticalAlignment="Bottom"
+                             HorizontalAlignment="Center"
+                             Margin="0,0,0,15"
+                             Width="70"
+                             Height="30"
+                             Content="Collapse"
+                             IsChecked="True"
+                             Checked="Toggle_Checked"
+                             Unchecked="Toggle_Unchecked" />
     </Grid>
 </fc:AvalonWindow>

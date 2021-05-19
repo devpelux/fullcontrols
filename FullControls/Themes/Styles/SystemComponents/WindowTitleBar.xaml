@@ -2,18 +2,26 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls.SystemComponents"
                     xmlns:controls="clr-namespace:FullControls.Controls">
+
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/FullControls;component/Resources/Styles.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type local:WindowTitleBar}">
-        <Setter Property="IconBackground" Value="Transparent" />
-        <Setter Property="SnapsToDevicePixels" Value="True" />
-        
-        <Setter Property="MinimizeButtonStyle" Value="{StaticResource CaptionButtonStyle}" />
-        <Setter Property="MaximizeButtonStyle" Value="{StaticResource CaptionButtonStyle}" />
-        <Setter Property="RestoreButtonStyle" Value="{StaticResource CaptionButtonStyle}" />
-        <Setter Property="CloseButtonStyle" Value="{StaticResource CaptionCloseButtonStyle}" />
+
+        <Setter Property="IconBackground"
+                Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+
+        <Setter Property="MinimizeButtonStyle"
+                Value="{StaticResource CaptionButtonStyle}" />
+        <Setter Property="MaximizeButtonStyle"
+                Value="{StaticResource CaptionButtonStyle}" />
+        <Setter Property="RestoreButtonStyle"
+                Value="{StaticResource CaptionButtonStyle}" />
+        <Setter Property="CloseButtonStyle"
+                Value="{StaticResource CaptionCloseButtonStyle}" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -124,25 +132,42 @@
                     </Border>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="Icon" Value="{x:Null}">
-                            <Setter TargetName="PART_Icon" Property="Visibility" Value="Collapsed" />
+                        <Trigger Property="Icon"
+                                 Value="{x:Null}">
+                            <Setter TargetName="PART_Icon"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="EnableMinimizeButton" Value="False">
-                            <Setter TargetName="PART_MinimizeButton" Property="Visibility" Value="Collapsed" />
+                        <Trigger Property="EnableMinimizeButton"
+                                 Value="False">
+                            <Setter TargetName="PART_MinimizeButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="EnableMaximizeButton" Value="False">
-                            <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed" />
+                        <Trigger Property="EnableMaximizeButton"
+                                 Value="False">
+                            <Setter TargetName="PART_MaximizeButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="EnableRestoreButton" Value="False">
-                            <Setter TargetName="PART_RestoreButton" Property="Visibility" Value="Collapsed" />
+                        <Trigger Property="EnableRestoreButton"
+                                 Value="False">
+                            <Setter TargetName="PART_RestoreButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="EnableCloseButton" Value="False">
-                            <Setter TargetName="PART_CloseButton" Property="Visibility" Value="Collapsed" />
+                        <Trigger Property="EnableCloseButton"
+                                 Value="False">
+                            <Setter TargetName="PART_CloseButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
     </Style>
 
 </ResourceDictionary>

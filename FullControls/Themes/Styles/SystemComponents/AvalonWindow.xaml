@@ -2,31 +2,50 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls.SystemComponents"
                     xmlns:extra="clr-namespace:FullControls.Extra">
+
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml" />
         <ResourceDictionary Source="/FullControls;component/Resources/Styles.xaml" />
     </ResourceDictionary.MergedDictionaries>
-    
+
     <extra:ClipConverter x:Key="ClipConverter" />
 
-    <Style TargetType="{x:Type local:AvalonWindow}" BasedOn="{StaticResource {x:Type Window}}">
-        <Setter Property="ResizeThickness" Value="4"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="{StaticResource Gray10}"/>
-        <Setter Property="BorderBrushOnActive" Value="{StaticResource Blue7}"/>
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="ForegroundOnActive" Value="Black"/>
-        <Setter Property="TitlebarBackground" Value="White"/>
-        <Setter Property="TitlebarBackgroundOnActive" Value="White"/>
-        <Setter Property="IconBackground" Value="Transparent"/>
-        <Setter Property="ButtonsAreaBackground" Value="Transparent"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
+    <Style TargetType="{x:Type local:AvalonWindow}"
+           BasedOn="{StaticResource {x:Type Window}}">
 
-        <Setter Property="MinimizeButtonStyle" Value="{StaticResource CaptionButtonStyle}" />
-        <Setter Property="MaximizeButtonStyle" Value="{StaticResource CaptionButtonStyle}" />
-        <Setter Property="RestoreButtonStyle" Value="{StaticResource CaptionButtonStyle}" />
-        <Setter Property="CloseButtonStyle" Value="{StaticResource CaptionCloseButtonStyle}" />
+        <Setter Property="ResizeThickness"
+                Value="4" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="BorderBrush"
+                Value="{StaticResource Gray10}" />
+        <Setter Property="BorderBrushOnActive"
+                Value="{StaticResource Blue7}" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="ForegroundOnActive"
+                Value="Black" />
+        <Setter Property="TitlebarBackground"
+                Value="White" />
+        <Setter Property="TitlebarBackgroundOnActive"
+                Value="White" />
+        <Setter Property="IconBackground"
+                Value="Transparent" />
+        <Setter Property="ButtonsAreaBackground"
+                Value="Transparent" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+
+        <Setter Property="MinimizeButtonStyle"
+                Value="{StaticResource CaptionButtonStyle}" />
+        <Setter Property="MaximizeButtonStyle"
+                Value="{StaticResource CaptionButtonStyle}" />
+        <Setter Property="RestoreButtonStyle"
+                Value="{StaticResource CaptionButtonStyle}" />
+        <Setter Property="CloseButtonStyle"
+                Value="{StaticResource CaptionCloseButtonStyle}" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -89,33 +108,63 @@
                     </Grid>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="WindowState" Value="Normal">
-                            <Setter TargetName="PART_TitleBar" Property="EnableRestoreButton" Value="False" />
+                        <Trigger Property="WindowState"
+                                 Value="Normal">
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="EnableRestoreButton"
+                                    Value="False" />
                         </Trigger>
-                        <Trigger Property="WindowState" Value="Maximized">
-                            <Setter TargetName="PART_TitleBar" Property="EnableMaximizeButton" Value="False" />
-                            <Setter TargetName="PART_Border" Property="BorderThickness" Value="0" />
+                        <Trigger Property="WindowState"
+                                 Value="Maximized">
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="EnableMaximizeButton"
+                                    Value="False" />
+                            <Setter TargetName="PART_Border"
+                                    Property="BorderThickness"
+                                    Value="0" />
                         </Trigger>
-                        <Trigger Property="ResizeMode" Value="CanMinimize">
-                            <Setter TargetName="PART_TitleBar" Property="EnableMaximizeButton" Value="False" />
-                            <Setter TargetName="PART_TitleBar" Property="EnableRestoreButton" Value="False" />
+                        <Trigger Property="ResizeMode"
+                                 Value="CanMinimize">
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="EnableMaximizeButton"
+                                    Value="False" />
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="EnableRestoreButton"
+                                    Value="False" />
                         </Trigger>
-                        <Trigger Property="ResizeMode" Value="NoResize">
-                            <Setter TargetName="PART_TitleBar" Property="EnableMinimizeButton" Value="False" />
-                            <Setter TargetName="PART_TitleBar" Property="EnableMaximizeButton" Value="False" />
-                            <Setter TargetName="PART_TitleBar" Property="EnableRestoreButton" Value="False" />
+                        <Trigger Property="ResizeMode"
+                                 Value="NoResize">
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="EnableMinimizeButton"
+                                    Value="False" />
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="EnableMaximizeButton"
+                                    Value="False" />
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="EnableRestoreButton"
+                                    Value="False" />
                         </Trigger>
-                        <Trigger Property="MergeTitlebarAndContent" Value="True">
-                            <Setter TargetName="PART_Content" Property="Margin" Value="0" />
-                            <Setter TargetName="PART_TitleBar" Property="Background" Value="Transparent" />
+                        <Trigger Property="MergeTitlebarAndContent"
+                                 Value="True">
+                            <Setter TargetName="PART_Content"
+                                    Property="Margin"
+                                    Value="0" />
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="Background"
+                                    Value="Transparent" />
                         </Trigger>
-                        <Trigger Property="EnableTitlebar" Value="False">
-                            <Setter TargetName="PART_TitleBar" Property="Visibility" Value="Collapsed" />
+                        <Trigger Property="EnableTitlebar"
+                                 Value="False">
+                            <Setter TargetName="PART_TitleBar"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
                     </ControlTemplate.Triggers>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
     </Style>
-    
+
 </ResourceDictionary>

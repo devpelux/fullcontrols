@@ -2,360 +2,652 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:fc="http://devpelux.github.io/fullcontrols">
 
-    <Style x:Key="TextBoxPlusDark" TargetType="{x:Type fc:TextBoxPlus}">
-        <Setter Property="Background" Value="#FF333337"/>
-        <Setter Property="BackgroundOnSelected" Value="#FF333337"/>
-        <Setter Property="BackgroundOnDisabled" Value="#FF333337"/>
-        <Setter Property="BorderBrush" Value="#FF434346"/>
-        <Setter Property="BorderBrushOnSelected" Value="#FF0099FF"/>
-        <Setter Property="BorderBrushOnDisabled" Value="#FF434346"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="CaretBrush" Value="WhiteSmoke"/>
-        <Setter Property="SelectionBrush" Value="#FF0099FF"/>
-        <Setter Property="SelectionTextBrush" Value="WhiteSmoke"/>
-        <Setter Property="HintForeground" Value="WhiteSmoke"/>
+    <Style x:Key="TextBoxPlusDark"
+           TargetType="{x:Type fc:TextBoxPlus}">
+        <Setter Property="Background"
+                Value="#FF333337" />
+        <Setter Property="BackgroundOnSelected"
+                Value="#FF333337" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#FF333337" />
+        <Setter Property="BorderBrush"
+                Value="#FF434346" />
+        <Setter Property="BorderBrushOnSelected"
+                Value="#FF0099FF" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="#FF434346" />
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="CaretBrush"
+                Value="WhiteSmoke" />
+        <Setter Property="SelectionBrush"
+                Value="#FF0099FF" />
+        <Setter Property="SelectionTextBrush"
+                Value="WhiteSmoke" />
+        <Setter Property="HintForeground"
+                Value="WhiteSmoke" />
 
         <Setter Property="ContextMenu">
             <Setter.Value>
                 <fc:FlatContextMenu Style="{DynamicResource FlatContextMenuDark}">
-                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Command="ApplicationCommands.Cut"/>
-                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Command="ApplicationCommands.Copy"/>
-                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Command="ApplicationCommands.Paste"/>
+                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                                     Command="ApplicationCommands.Cut" />
+                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                                     Command="ApplicationCommands.Copy" />
+                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                                     Command="ApplicationCommands.Paste" />
                 </fc:FlatContextMenu>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="PasswordBoxPlusDark" TargetType="{x:Type fc:PasswordBoxPlus}">
-        <Setter Property="Background" Value="#FF333337"/>
-        <Setter Property="BackgroundOnSelected" Value="#FF333337"/>
-        <Setter Property="BackgroundOnDisabled" Value="#FF333337"/>
-        <Setter Property="BorderBrush" Value="#FF434346"/>
-        <Setter Property="BorderBrushOnSelected" Value="#FF0099FF"/>
-        <Setter Property="BorderBrushOnDisabled" Value="#FF434346"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="CaretBrush" Value="WhiteSmoke"/>
-        <Setter Property="SelectionBrush" Value="#FF0099FF"/>
-        <Setter Property="SelectionTextBrush" Value="WhiteSmoke"/>
-        <Setter Property="HintForeground" Value="WhiteSmoke"/>
+    <Style x:Key="PasswordBoxPlusDark"
+           TargetType="{x:Type fc:PasswordBoxPlus}">
+        <Setter Property="Background"
+                Value="#FF333337" />
+        <Setter Property="BackgroundOnSelected"
+                Value="#FF333337" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#FF333337" />
+        <Setter Property="BorderBrush"
+                Value="#FF434346" />
+        <Setter Property="BorderBrushOnSelected"
+                Value="#FF0099FF" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="#FF434346" />
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="CaretBrush"
+                Value="WhiteSmoke" />
+        <Setter Property="SelectionBrush"
+                Value="#FF0099FF" />
+        <Setter Property="SelectionTextBrush"
+                Value="WhiteSmoke" />
+        <Setter Property="HintForeground"
+                Value="WhiteSmoke" />
 
         <Setter Property="ContextMenu">
             <Setter.Value>
                 <fc:FlatContextMenu Style="{DynamicResource FlatContextMenuDark}">
-                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Command="ApplicationCommands.Paste"/>
+                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                                     Command="ApplicationCommands.Paste" />
                 </fc:FlatContextMenu>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="ButtonPlusDark" TargetType="{x:Type fc:ButtonPlus}">
-        <Setter Property="Background" Value="#FF3F3F46"/>
-        <Setter Property="BackgroundOnMouseOver" Value="#FF575759"/>
-        <Setter Property="BackgroundOnPressed" Value="#FF2D2D30"/>
-        <Setter Property="BackgroundOnDisabled" Value="#FF3F3F46"/>
-        <Setter Property="BorderBrush" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnMouseOver" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnPressed" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnDisabled" Value="#FF575759"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnPressed" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
+    <Style x:Key="ButtonPlusDark"
+           TargetType="{x:Type fc:ButtonPlus}">
+        <Setter Property="Background"
+                Value="#FF3F3F46" />
+        <Setter Property="BackgroundOnMouseOver"
+                Value="#FF575759" />
+        <Setter Property="BackgroundOnPressed"
+                Value="#FF2D2D30" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#FF3F3F46" />
+        <Setter Property="BorderBrush"
+                Value="#FF575759" />
+        <Setter Property="BorderBrushOnMouseOver"
+                Value="#FF575759" />
+        <Setter Property="BorderBrushOnPressed"
+                Value="#FF575759" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="#FF575759" />
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnMouseOver"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnPressed"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="Gray" />
     </Style>
 
-    <Style x:Key="RepeatButtonPlusDark" TargetType="{x:Type fc:RepeatButtonPlus}">
-        <Setter Property="Background" Value="#FF3F3F46"/>
-        <Setter Property="BackgroundOnMouseOver" Value="#FF575759"/>
-        <Setter Property="BackgroundOnPressed" Value="#FF2D2D30"/>
-        <Setter Property="BackgroundOnDisabled" Value="#FF3F3F46"/>
-        <Setter Property="BorderBrush" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnMouseOver" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnPressed" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnDisabled" Value="#FF575759"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnPressed" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
+    <Style x:Key="RepeatButtonPlusDark"
+           TargetType="{x:Type fc:RepeatButtonPlus}">
+        <Setter Property="Background"
+                Value="#FF3F3F46" />
+        <Setter Property="BackgroundOnMouseOver"
+                Value="#FF575759" />
+        <Setter Property="BackgroundOnPressed"
+                Value="#FF2D2D30" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#FF3F3F46" />
+        <Setter Property="BorderBrush"
+                Value="#FF575759" />
+        <Setter Property="BorderBrushOnMouseOver"
+                Value="#FF575759" />
+        <Setter Property="BorderBrushOnPressed"
+                Value="#FF575759" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="#FF575759" />
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnMouseOver"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnPressed"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="Gray" />
     </Style>
 
-    <Style x:Key="SwitcherDark" TargetType="{x:Type fc:Switcher}">
-        <Setter Property="Background" Value="#FF3F3F46"/>
-        <Setter Property="BackgroundOnMouseOver" Value="#FF575759"/>
-        <Setter Property="BackgroundOnChecked" Value="#FF19478B"/>
-        <Setter Property="BackgroundOnMouseOverOnChecked" Value="#FF1B54A8"/>
-        <Setter Property="BackgroundOnDisabled" Value="#FF3F3F46"/>
-        <Setter Property="BorderBrush" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnMouseOver" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnChecked" Value="#FF1C5EBF"/>
-        <Setter Property="BorderBrushOnMouseOverOnChecked" Value="#FF1C5EBF"/>
-        <Setter Property="BorderBrushOnDisabled" Value="#FF575759"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOverOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
+    <Style x:Key="SwitcherDark"
+           TargetType="{x:Type fc:Switcher}">
+        <Setter Property="Background"
+                Value="#FF3F3F46" />
+        <Setter Property="BackgroundOnMouseOver"
+                Value="#FF575759" />
+        <Setter Property="BackgroundOnChecked"
+                Value="#FF19478B" />
+        <Setter Property="BackgroundOnMouseOverOnChecked"
+                Value="#FF1B54A8" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#FF3F3F46" />
+        <Setter Property="BorderBrush"
+                Value="#FF575759" />
+        <Setter Property="BorderBrushOnMouseOver"
+                Value="#FF575759" />
+        <Setter Property="BorderBrushOnChecked"
+                Value="#FF1C5EBF" />
+        <Setter Property="BorderBrushOnMouseOverOnChecked"
+                Value="#FF1C5EBF" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="#FF575759" />
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnMouseOver"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnMouseOverOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="Gray" />
     </Style>
 
-    <Style x:Key="ToggleButtonPlusDark" TargetType="{x:Type fc:ToggleButtonPlus}">
-        <Setter Property="Background" Value="#FF3F3F46"/>
-        <Setter Property="BackgroundOnMouseOver" Value="#FF575759"/>
-        <Setter Property="BackgroundOnChecked" Value="#FF19478B"/>
-        <Setter Property="BackgroundOnMouseOverOnChecked" Value="#FF1B54A8"/>
-        <Setter Property="BackgroundOnDisabled" Value="#FF3F3F46"/>
-        <Setter Property="BorderBrush" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnMouseOver" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnChecked" Value="#FF1C5EBF"/>
-        <Setter Property="BorderBrushOnMouseOverOnChecked" Value="#FF1C5EBF"/>
-        <Setter Property="BorderBrushOnDisabled" Value="#FF575759"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOverOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
+    <Style x:Key="ToggleButtonPlusDark"
+           TargetType="{x:Type fc:ToggleButtonPlus}">
+        <Setter Property="Background"
+                Value="#FF3F3F46" />
+        <Setter Property="BackgroundOnMouseOver"
+                Value="#FF575759" />
+        <Setter Property="BackgroundOnChecked"
+                Value="#FF19478B" />
+        <Setter Property="BackgroundOnMouseOverOnChecked"
+                Value="#FF1B54A8" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#FF3F3F46" />
+        <Setter Property="BorderBrush"
+                Value="#FF575759" />
+        <Setter Property="BorderBrushOnMouseOver"
+                Value="#FF575759" />
+        <Setter Property="BorderBrushOnChecked"
+                Value="#FF1C5EBF" />
+        <Setter Property="BorderBrushOnMouseOverOnChecked"
+                Value="#FF1C5EBF" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="#FF575759" />
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnMouseOver"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnMouseOverOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="Gray" />
     </Style>
 
-    <Style x:Key="CheckBoxPlusDark" TargetType="{x:Type fc:CheckBoxPlus}">
-        <Setter Property="Background" Value="#FF262626"/>
-        <Setter Property="BackgroundOnMouseOver" Value="#FF343434"/>
-        <Setter Property="BackgroundOnChecked" Value="#FF262626"/>
-        <Setter Property="BackgroundOnMouseOverOnChecked" Value="#FF343434"/>
-        <Setter Property="BackgroundOnDisabled" Value="#FF343434"/>
-        <Setter Property="BorderBrush" Value="WhiteSmoke"/>
-        <Setter Property="BorderBrushOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="BorderBrushOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="BorderBrushOnMouseOverOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="BorderBrushOnDisabled" Value="Gray"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOverOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
-        <Setter Property="ForeColor" Value="WhiteSmoke"/>
-        <Setter Property="ForeColorOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="ForeColorOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="ForeColorOnMouseOverOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="ForeColorOnDisabled" Value="Gray"/>
+    <Style x:Key="CheckBoxPlusDark"
+           TargetType="{x:Type fc:CheckBoxPlus}">
+        <Setter Property="Background"
+                Value="#FF262626" />
+        <Setter Property="BackgroundOnMouseOver"
+                Value="#FF343434" />
+        <Setter Property="BackgroundOnChecked"
+                Value="#FF262626" />
+        <Setter Property="BackgroundOnMouseOverOnChecked"
+                Value="#FF343434" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#FF343434" />
+        <Setter Property="BorderBrush"
+                Value="WhiteSmoke" />
+        <Setter Property="BorderBrushOnMouseOver"
+                Value="WhiteSmoke" />
+        <Setter Property="BorderBrushOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="BorderBrushOnMouseOverOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="Gray" />
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnMouseOver"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnMouseOverOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="Gray" />
+        <Setter Property="ForeColor"
+                Value="WhiteSmoke" />
+        <Setter Property="ForeColorOnMouseOver"
+                Value="WhiteSmoke" />
+        <Setter Property="ForeColorOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="ForeColorOnMouseOverOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="ForeColorOnDisabled"
+                Value="Gray" />
     </Style>
 
-    <Style x:Key="RadioButtonPlusDark" TargetType="{x:Type fc:RadioButtonPlus}">
-        <Setter Property="Background" Value="#FF262626"/>
-        <Setter Property="BackgroundOnMouseOver" Value="#FF343434"/>
-        <Setter Property="BackgroundOnChecked" Value="#FF262626"/>
-        <Setter Property="BackgroundOnMouseOverOnChecked" Value="#FF343434"/>
-        <Setter Property="BackgroundOnDisabled" Value="#FF343434"/>
-        <Setter Property="BorderBrush" Value="WhiteSmoke"/>
-        <Setter Property="BorderBrushOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="BorderBrushOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="BorderBrushOnMouseOverOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="BorderBrushOnDisabled" Value="Gray"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOverOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
-        <Setter Property="ForeColor" Value="WhiteSmoke"/>
-        <Setter Property="ForeColorOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="ForeColorOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="ForeColorOnMouseOverOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="ForeColorOnDisabled" Value="Gray"/>
+    <Style x:Key="RadioButtonPlusDark"
+           TargetType="{x:Type fc:RadioButtonPlus}">
+        <Setter Property="Background"
+                Value="#FF262626" />
+        <Setter Property="BackgroundOnMouseOver"
+                Value="#FF343434" />
+        <Setter Property="BackgroundOnChecked"
+                Value="#FF262626" />
+        <Setter Property="BackgroundOnMouseOverOnChecked"
+                Value="#FF343434" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#FF343434" />
+        <Setter Property="BorderBrush"
+                Value="WhiteSmoke" />
+        <Setter Property="BorderBrushOnMouseOver"
+                Value="WhiteSmoke" />
+        <Setter Property="BorderBrushOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="BorderBrushOnMouseOverOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="Gray" />
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnMouseOver"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnMouseOverOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="Gray" />
+        <Setter Property="ForeColor"
+                Value="WhiteSmoke" />
+        <Setter Property="ForeColorOnMouseOver"
+                Value="WhiteSmoke" />
+        <Setter Property="ForeColorOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="ForeColorOnMouseOverOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="ForeColorOnDisabled"
+                Value="Gray" />
     </Style>
 
-    <Style x:Key="ComboBoxPlusDark" TargetType="{x:Type fc:ComboBoxPlus}">
-        <Setter Property="Background" Value="#FF3F3F46"/>
-        <Setter Property="BackgroundOnMouseOver" Value="#FF575759"/>
-        <Setter Property="BackgroundOnMouseOverOnChecked" Value="#FF2D2D30"/>
-        <Setter Property="BackgroundOnChecked" Value="#FF2D2D30"/>
-        <Setter Property="BackgroundOnDisabled" Value="#FF3F3F46"/>
-        <Setter Property="BorderBrush" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnMouseOver" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnMouseOverOnChecked" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnChecked" Value="#FF575759"/>
-        <Setter Property="BorderBrushOnDisabled" Value="#FF575759"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForeColor" Value="WhiteSmoke"/>
-        <Setter Property="ForeColorOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="ForeColorOnMouseOverOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="ForeColorOnChecked" Value="WhiteSmoke"/>
-        <Setter Property="ForeColorOnDisabled" Value="Gray"/>
-        <Setter Property="CaretBrush" Value="WhiteSmoke"/>
-        <Setter Property="SelectionBrush" Value="#FF0099FF"/>
-        <Setter Property="SelectionTextBrush" Value="WhiteSmoke"/>
-        <Setter Property="PopupBackground" Value="#FF2D2D30"/>
-        <Setter Property="PopupBorderBrush" Value="#FF575759"/>
+    <Style x:Key="ComboBoxPlusDark"
+           TargetType="{x:Type fc:ComboBoxPlus}">
+        <Setter Property="Background"
+                Value="#FF3F3F46" />
+        <Setter Property="BackgroundOnMouseOver"
+                Value="#FF575759" />
+        <Setter Property="BackgroundOnMouseOverOnChecked"
+                Value="#FF2D2D30" />
+        <Setter Property="BackgroundOnChecked"
+                Value="#FF2D2D30" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#FF3F3F46" />
+        <Setter Property="BorderBrush"
+                Value="#FF575759" />
+        <Setter Property="BorderBrushOnMouseOver"
+                Value="#FF575759" />
+        <Setter Property="BorderBrushOnMouseOverOnChecked"
+                Value="#FF575759" />
+        <Setter Property="BorderBrushOnChecked"
+                Value="#FF575759" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="#FF575759" />
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="ForeColor"
+                Value="WhiteSmoke" />
+        <Setter Property="ForeColorOnMouseOver"
+                Value="WhiteSmoke" />
+        <Setter Property="ForeColorOnMouseOverOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="ForeColorOnChecked"
+                Value="WhiteSmoke" />
+        <Setter Property="ForeColorOnDisabled"
+                Value="Gray" />
+        <Setter Property="CaretBrush"
+                Value="WhiteSmoke" />
+        <Setter Property="SelectionBrush"
+                Value="#FF0099FF" />
+        <Setter Property="SelectionTextBrush"
+                Value="WhiteSmoke" />
+        <Setter Property="PopupBackground"
+                Value="#FF2D2D30" />
+        <Setter Property="PopupBorderBrush"
+                Value="#FF575759" />
 
         <Setter Property="TextContextMenu">
             <Setter.Value>
                 <fc:FlatContextMenu Style="{DynamicResource FlatContextMenuDark}">
-                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Command="ApplicationCommands.Cut"/>
-                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Command="ApplicationCommands.Copy"/>
-                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}" Command="ApplicationCommands.Paste"/>
+                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                                     Command="ApplicationCommands.Cut" />
+                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                                     Command="ApplicationCommands.Copy" />
+                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                                     Command="ApplicationCommands.Paste" />
                 </fc:FlatContextMenu>
             </Setter.Value>
         </Setter>
     </Style>
 
-    <Style x:Key="ComboBoxItemPlusDark" TargetType="{x:Type fc:ComboBoxItemPlus}">
-        <Setter Property="Background" Value="#FF2D2D30"/>
-        <Setter Property="BackgroundOnMouseOver" Value="#FF575759"/>
-        <Setter Property="BackgroundOnSelected" Value="#FF0099FF"/>
-        <Setter Property="BackgroundOnMouseOverOnSelected" Value="#FF0089E4"/>
-        <Setter Property="BackgroundOnFocused" Value="#FF575759"/>
-        <Setter Property="BackgroundOnFocusedOnSelected" Value="#FF0099FF"/>
-        <Setter Property="BackgroundOnDisabled" Value="#FF2D2D30"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnSelected" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnMouseOverOnSelected" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnFocused" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnFocusedOnSelected" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
+    <Style x:Key="ComboBoxItemPlusDark"
+           TargetType="{x:Type fc:ComboBoxItemPlus}">
+        <Setter Property="Background"
+                Value="#FF2D2D30" />
+        <Setter Property="BackgroundOnMouseOver"
+                Value="#FF575759" />
+        <Setter Property="BackgroundOnSelected"
+                Value="#FF0099FF" />
+        <Setter Property="BackgroundOnMouseOverOnSelected"
+                Value="#FF0089E4" />
+        <Setter Property="BackgroundOnFocused"
+                Value="#FF575759" />
+        <Setter Property="BackgroundOnFocusedOnSelected"
+                Value="#FF0099FF" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#FF2D2D30" />
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnMouseOver"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnSelected"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnMouseOverOnSelected"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnFocused"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnFocusedOnSelected"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="Gray" />
     </Style>
 
-    <Style x:Key="FlatMenuItemDark" TargetType="{x:Type fc:FlatMenuItem}">
-        <Setter Property="Background" Value="#FF2D2D30"/>
-        <Setter Property="BackgroundOnHighlight" Value="#FF404043"/>
-        <Setter Property="BackgroundOnOpen" Value="#FF48484B"/>
-        <Setter Property="BackgroundOnDisabled" Value="#FF2D2D30"/>
-        <Setter Property="BorderBrush" Value="#FF404043"/>
-        <Setter Property="BorderBrushOnHighlight" Value="#FF404043"/>
-        <Setter Property="BorderBrushOnOpen" Value="#FF404043"/>
-        <Setter Property="BorderBrushOnDisabled" Value="#FF404043"/>
-        <Setter Property="PopupBackground" Value="#FF2D2D30"/>
-        <Setter Property="PopupBorderBrush" Value="#FF404043"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnHighlight" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnOpen" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
-        <Setter Property="CheckBrush" Value="WhiteSmoke"/>
-        <Setter Property="CheckBrushOnHighlight" Value="WhiteSmoke"/>
-        <Setter Property="CheckBrushOnOpen" Value="WhiteSmoke"/>
-        <Setter Property="CheckBrushOnDisabled" Value="Gray"/>
-        <Setter Property="ShadowColor" Value="Black"/>
+    <Style x:Key="FlatMenuItemDark"
+           TargetType="{x:Type fc:FlatMenuItem}">
+        <Setter Property="Background"
+                Value="#FF2D2D30" />
+        <Setter Property="BackgroundOnHighlight"
+                Value="#FF404043" />
+        <Setter Property="BackgroundOnOpen"
+                Value="#FF48484B" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#FF2D2D30" />
+        <Setter Property="BorderBrush"
+                Value="#FF404043" />
+        <Setter Property="BorderBrushOnHighlight"
+                Value="#FF404043" />
+        <Setter Property="BorderBrushOnOpen"
+                Value="#FF404043" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="#FF404043" />
+        <Setter Property="PopupBackground"
+                Value="#FF2D2D30" />
+        <Setter Property="PopupBorderBrush"
+                Value="#FF404043" />
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnHighlight"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnOpen"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="Gray" />
+        <Setter Property="CheckBrush"
+                Value="WhiteSmoke" />
+        <Setter Property="CheckBrushOnHighlight"
+                Value="WhiteSmoke" />
+        <Setter Property="CheckBrushOnOpen"
+                Value="WhiteSmoke" />
+        <Setter Property="CheckBrushOnDisabled"
+                Value="Gray" />
+        <Setter Property="ShadowColor"
+                Value="Black" />
 
         <Style.Triggers>
-            <Trigger Property="Role" Value="TopLevelHeader">
-                <Setter Property="Background" Value="Black"/>
+            <Trigger Property="Role"
+                     Value="TopLevelHeader">
+                <Setter Property="Background"
+                        Value="Black" />
             </Trigger>
-            <Trigger Property="Role" Value="TopLevelItem">
-                <Setter Property="Background" Value="Black"/>
+            <Trigger Property="Role"
+                     Value="TopLevelItem">
+                <Setter Property="Background"
+                        Value="Black" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="FlatContextMenuDark" TargetType="{x:Type fc:FlatContextMenu}">
-        <Setter Property="Background" Value="#FF2D2D30"/>
-        <Setter Property="BorderBrush" Value="#FF404043"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnHighlight" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnOpen" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
-        <Setter Property="CheckBrush" Value="WhiteSmoke"/>
-        <Setter Property="CheckBrushOnHighlight" Value="WhiteSmoke"/>
-        <Setter Property="CheckBrushOnOpen" Value="WhiteSmoke"/>
-        <Setter Property="CheckBrushOnDisabled" Value="Gray"/>
-        <Setter Property="ShadowColor" Value="Black"/>
+    <Style x:Key="FlatContextMenuDark"
+           TargetType="{x:Type fc:FlatContextMenu}">
+        <Setter Property="Background"
+                Value="#FF2D2D30" />
+        <Setter Property="BorderBrush"
+                Value="#FF404043" />
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnHighlight"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnOpen"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="Gray" />
+        <Setter Property="CheckBrush"
+                Value="WhiteSmoke" />
+        <Setter Property="CheckBrushOnHighlight"
+                Value="WhiteSmoke" />
+        <Setter Property="CheckBrushOnOpen"
+                Value="WhiteSmoke" />
+        <Setter Property="CheckBrushOnDisabled"
+                Value="Gray" />
+        <Setter Property="ShadowColor"
+                Value="Black" />
     </Style>
 
-    <Style x:Key="FlatMenuDark" TargetType="{x:Type fc:FlatMenu}">
-        <Setter Property="Background" Value="Black"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnHighlight" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnOpen" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
-        <Setter Property="CheckBrush" Value="WhiteSmoke"/>
-        <Setter Property="CheckBrushOnHighlight" Value="WhiteSmoke"/>
-        <Setter Property="CheckBrushOnOpen" Value="WhiteSmoke"/>
-        <Setter Property="CheckBrushOnDisabled" Value="Gray"/>
+    <Style x:Key="FlatMenuDark"
+           TargetType="{x:Type fc:FlatMenu}">
+        <Setter Property="Background"
+                Value="Black" />
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnHighlight"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnOpen"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="Gray" />
+        <Setter Property="CheckBrush"
+                Value="WhiteSmoke" />
+        <Setter Property="CheckBrushOnHighlight"
+                Value="WhiteSmoke" />
+        <Setter Property="CheckBrushOnOpen"
+                Value="WhiteSmoke" />
+        <Setter Property="CheckBrushOnDisabled"
+                Value="Gray" />
     </Style>
 
-    <Style x:Key="SimpleAccordionItemDark" TargetType="{x:Type fc:SimpleAccordionItem}">
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnExpanded" Value="#67a9db"/>
-        <Setter Property="ForegroundOnMouseOver" Value="#b3b3b3"/>
-        <Setter Property="ForegroundOnMouseOverOnExpanded" Value="#4c8bba"/>
-        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
-        <Setter Property="ArrowForeground" Value="WhiteSmoke"/>
-        <Setter Property="ArrowForegroundOnExpanded" Value="#67a9db"/>
-        <Setter Property="ArrowForegroundOnMouseOver" Value="#b3b3b3"/>
-        <Setter Property="ArrowForegroundOnMouseOverOnExpanded" Value="#4c8bba"/>
-        <Setter Property="ArrowForegroundOnDisabled" Value="Gray"/>
+    <Style x:Key="SimpleAccordionItemDark"
+           TargetType="{x:Type fc:SimpleAccordionItem}">
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnExpanded"
+                Value="#67a9db" />
+        <Setter Property="ForegroundOnMouseOver"
+                Value="#b3b3b3" />
+        <Setter Property="ForegroundOnMouseOverOnExpanded"
+                Value="#4c8bba" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="Gray" />
+        <Setter Property="ArrowForeground"
+                Value="WhiteSmoke" />
+        <Setter Property="ArrowForegroundOnExpanded"
+                Value="#67a9db" />
+        <Setter Property="ArrowForegroundOnMouseOver"
+                Value="#b3b3b3" />
+        <Setter Property="ArrowForegroundOnMouseOverOnExpanded"
+                Value="#4c8bba" />
+        <Setter Property="ArrowForegroundOnDisabled"
+                Value="Gray" />
     </Style>
 
-    <Style x:Key="ItemsControlAccordionItemDark" TargetType="{x:Type fc:ItemsControlAccordionItem}">
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnExpanded" Value="#67a9db"/>
-        <Setter Property="ForegroundOnMouseOver" Value="#b3b3b3"/>
-        <Setter Property="ForegroundOnMouseOverOnExpanded" Value="#4c8bba"/>
-        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
-        <Setter Property="ArrowForeground" Value="WhiteSmoke"/>
-        <Setter Property="ArrowForegroundOnExpanded" Value="#67a9db"/>
-        <Setter Property="ArrowForegroundOnMouseOver" Value="#b3b3b3"/>
-        <Setter Property="ArrowForegroundOnMouseOverOnExpanded" Value="#4c8bba"/>
-        <Setter Property="ArrowForegroundOnDisabled" Value="Gray"/>
+    <Style x:Key="ItemsControlAccordionItemDark"
+           TargetType="{x:Type fc:ItemsControlAccordionItem}">
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnExpanded"
+                Value="#67a9db" />
+        <Setter Property="ForegroundOnMouseOver"
+                Value="#b3b3b3" />
+        <Setter Property="ForegroundOnMouseOverOnExpanded"
+                Value="#4c8bba" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="Gray" />
+        <Setter Property="ArrowForeground"
+                Value="WhiteSmoke" />
+        <Setter Property="ArrowForegroundOnExpanded"
+                Value="#67a9db" />
+        <Setter Property="ArrowForegroundOnMouseOver"
+                Value="#b3b3b3" />
+        <Setter Property="ArrowForegroundOnMouseOverOnExpanded"
+                Value="#4c8bba" />
+        <Setter Property="ArrowForegroundOnDisabled"
+                Value="Gray" />
     </Style>
 
-    <Style x:Key="GlassScrollBarDark" TargetType="{x:Type fc:GlassScrollBar}">
-        <Setter Property="Background" Value="#33ffffff"/>
-        <Setter Property="Foreground" Value="WhiteSmoke"/>
-        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
-        <Setter Property="ButtonsBackground" Value="Transparent"/>
-        <Setter Property="ButtonsForeground" Value="WhiteSmoke"/>
-        <Setter Property="ButtonsForegroundOnDisabled" Value="WhiteSmoke"/>
+    <Style x:Key="GlassScrollBarDark"
+           TargetType="{x:Type fc:GlassScrollBar}">
+        <Setter Property="Background"
+                Value="#33ffffff" />
+        <Setter Property="Foreground"
+                Value="WhiteSmoke" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="Gray" />
+        <Setter Property="ButtonsBackground"
+                Value="Transparent" />
+        <Setter Property="ButtonsForeground"
+                Value="WhiteSmoke" />
+        <Setter Property="ButtonsForegroundOnDisabled"
+                Value="WhiteSmoke" />
     </Style>
 
-    <Style x:Key="GlassScrollViewerDark" TargetType="{x:Type fc:GlassScrollViewer}">
-        <Setter Property="HorizontalScrollBarBackground" Value="Transparent"/>
-        <Setter Property="HorizontalScrollBarForeground" Value="LightSlateGray"/>
-        <Setter Property="HorizontalScrollBarForegroundOnDisabled" Value="Gray"/>
-        <Setter Property="HorizontalScrollBarButtonsBackground" Value="Transparent"/>
-        <Setter Property="HorizontalScrollBarButtonsForeground" Value="Black"/>
-        <Setter Property="HorizontalScrollBarButtonsForegroundOnDisabled" Value="Black"/>
-        <Setter Property="VerticalScrollBarBackground" Value="Transparent"/>
-        <Setter Property="VerticalScrollBarForeground" Value="LightSlateGray"/>
-        <Setter Property="VerticalScrollBarForegroundOnDisabled" Value="Gray"/>
-        <Setter Property="VerticalScrollBarButtonsBackground" Value="Transparent"/>
-        <Setter Property="VerticalScrollBarButtonsForeground" Value="Black"/>
-        <Setter Property="VerticalScrollBarButtonsForegroundOnDisabled" Value="Black"/>
+    <Style x:Key="GlassScrollViewerDark"
+           TargetType="{x:Type fc:GlassScrollViewer}">
+        <Setter Property="HorizontalScrollBarBackground"
+                Value="Transparent" />
+        <Setter Property="HorizontalScrollBarForeground"
+                Value="LightSlateGray" />
+        <Setter Property="HorizontalScrollBarForegroundOnDisabled"
+                Value="Gray" />
+        <Setter Property="HorizontalScrollBarButtonsBackground"
+                Value="Transparent" />
+        <Setter Property="HorizontalScrollBarButtonsForeground"
+                Value="Black" />
+        <Setter Property="HorizontalScrollBarButtonsForegroundOnDisabled"
+                Value="Black" />
+        <Setter Property="VerticalScrollBarBackground"
+                Value="Transparent" />
+        <Setter Property="VerticalScrollBarForeground"
+                Value="LightSlateGray" />
+        <Setter Property="VerticalScrollBarForegroundOnDisabled"
+                Value="Gray" />
+        <Setter Property="VerticalScrollBarButtonsBackground"
+                Value="Transparent" />
+        <Setter Property="VerticalScrollBarButtonsForeground"
+                Value="Black" />
+        <Setter Property="VerticalScrollBarButtonsForegroundOnDisabled"
+                Value="Black" />
     </Style>
 
-    <Style x:Key="CaptionButtonStyleDark" TargetType="{x:Type fc:ButtonPlus}">
-        <Setter Property="Height" Value="32"/>
-        <Setter Property="Width" Value="46"/>
-        <Setter Property="FontSize" Value="10"/>
-        <Setter Property="Background" Value="#00000000"/>
-        <Setter Property="BackgroundOnMouseOver" Value="#FF333333"/>
-        <Setter Property="BackgroundOnPressed" Value="#FF404040"/>
-        <Setter Property="BackgroundOnDisabled" Value="#00000000"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="BorderBrush" Value="#00000000"/>
-        <Setter Property="BorderBrushOnMouseOver" Value="#FF333333"/>
-        <Setter Property="BorderBrushOnPressed" Value="#FF404040"/>
-        <Setter Property="BorderBrushOnDisabled" Value="#00000000"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="ForegroundOnMouseOver" Value="White"/>
-        <Setter Property="ForegroundOnPressed" Value="White"/>
-        <Setter Property="ForegroundOnDisabled" Value="DimGray"/>
-        <Setter Property="AnimationTime" Value="0:0:0.07"/>
+    <Style x:Key="CaptionButtonStyleDark"
+           TargetType="{x:Type fc:ButtonPlus}">
+        <Setter Property="Height"
+                Value="32" />
+        <Setter Property="Width"
+                Value="46" />
+        <Setter Property="FontSize"
+                Value="10" />
+        <Setter Property="Background"
+                Value="#00000000" />
+        <Setter Property="BackgroundOnMouseOver"
+                Value="#FF333333" />
+        <Setter Property="BackgroundOnPressed"
+                Value="#FF404040" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#00000000" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="BorderBrush"
+                Value="#00000000" />
+        <Setter Property="BorderBrushOnMouseOver"
+                Value="#FF333333" />
+        <Setter Property="BorderBrushOnPressed"
+                Value="#FF404040" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="#00000000" />
+        <Setter Property="Foreground"
+                Value="White" />
+        <Setter Property="ForegroundOnMouseOver"
+                Value="White" />
+        <Setter Property="ForegroundOnPressed"
+                Value="White" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="DimGray" />
+        <Setter Property="AnimationTime"
+                Value="0:0:0.07" />
     </Style>
 
-    <Style x:Key="CaptionCloseButtonStyleDark" TargetType="{x:Type fc:ButtonPlus}">
-        <Setter Property="Height" Value="32"/>
-        <Setter Property="Width" Value="46"/>
-        <Setter Property="FontSize" Value="10"/>
-        <Setter Property="Background" Value="#00000000"/>
-        <Setter Property="BackgroundOnMouseOver" Value="Red"/>
-        <Setter Property="BackgroundOnPressed" Value="Firebrick"/>
-        <Setter Property="BackgroundOnDisabled" Value="#00000000"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="BorderBrush" Value="#00000000"/>
-        <Setter Property="BorderBrushOnMouseOver" Value="Red"/>
-        <Setter Property="BorderBrushOnPressed" Value="Firebrick"/>
-        <Setter Property="BorderBrushOnDisabled" Value="#00000000"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="ForegroundOnMouseOver" Value="White"/>
-        <Setter Property="ForegroundOnPressed" Value="White"/>
-        <Setter Property="ForegroundOnDisabled" Value="DimGray"/>
-        <Setter Property="AnimationTime" Value="0:0:0.07"/>
+    <Style x:Key="CaptionCloseButtonStyleDark"
+           TargetType="{x:Type fc:ButtonPlus}">
+        <Setter Property="Height"
+                Value="32" />
+        <Setter Property="Width"
+                Value="46" />
+        <Setter Property="FontSize"
+                Value="10" />
+        <Setter Property="Background"
+                Value="#00000000" />
+        <Setter Property="BackgroundOnMouseOver"
+                Value="Red" />
+        <Setter Property="BackgroundOnPressed"
+                Value="Firebrick" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="#00000000" />
+        <Setter Property="BorderThickness"
+                Value="0" />
+        <Setter Property="BorderBrush"
+                Value="#00000000" />
+        <Setter Property="BorderBrushOnMouseOver"
+                Value="Red" />
+        <Setter Property="BorderBrushOnPressed"
+                Value="Firebrick" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="#00000000" />
+        <Setter Property="Foreground"
+                Value="White" />
+        <Setter Property="ForegroundOnMouseOver"
+                Value="White" />
+        <Setter Property="ForegroundOnPressed"
+                Value="White" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="DimGray" />
+        <Setter Property="AnimationTime"
+                Value="0:0:0.07" />
     </Style>
 
 </ResourceDictionary>

@@ -15,31 +15,52 @@
                  Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Background="White">
-            <fc:ComboBoxPlus HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" SelectedIndex="0" IsEditable="True"
-                             MinWidth="120" Width="120" Height="30">
-                <fc:ComboBoxItemPlus Content="Item1"/>
-                <fc:ComboBoxItemPlus Content="Item2"/>
-                <fc:ComboBoxItemPlus Content="Item3"/>
-                <fc:ComboBoxItemPlus Content="Item4"/>
-                <fc:ComboBoxItemPlus Content="Item5"/>
-                <fc:ComboBoxItemPlus Content="Item6"/>
-                <fc:ComboBoxItemPlus Content="Item7"/>
+        <Grid Grid.Column="0"
+              Background="White">
+            <fc:ComboBoxPlus HorizontalAlignment="Center"
+                             VerticalAlignment="Top"
+                             Margin="0,50,0,0"
+                             SelectedIndex="0"
+                             IsEditable="True"
+                             MinWidth="120"
+                             Width="120"
+                             Height="30">
+                <fc:ComboBoxItemPlus Content="Item1" />
+                <fc:ComboBoxItemPlus Content="Item2" />
+                <fc:ComboBoxItemPlus Content="Item3" />
+                <fc:ComboBoxItemPlus Content="Item4" />
+                <fc:ComboBoxItemPlus Content="Item5" />
+                <fc:ComboBoxItemPlus Content="Item6" />
+                <fc:ComboBoxItemPlus Content="Item7" />
             </fc:ComboBoxPlus>
         </Grid>
-        <Grid Grid.Column="1" Background="Black">
-            <fc:ComboBoxPlus Style="{DynamicResource ComboBoxPlusDark}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" SelectedIndex="3"
-                             MinWidth="120" Width="120" Height="30">
-                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}" Content="Item1"/>
-                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}" Content="Item2"/>
-                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}" Content="Item3"/>
-                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}" Content="Item4"/>
-                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}" Content="Item5"/>
-                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}" Content="Item6"/>
-                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}" Content="Item7"/>
+        <Grid Grid.Column="1"
+              Background="Black">
+            <fc:ComboBoxPlus Style="{DynamicResource ComboBoxPlusDark}"
+                             HorizontalAlignment="Center"
+                             VerticalAlignment="Top"
+                             Margin="0,50,0,0"
+                             SelectedIndex="3"
+                             MinWidth="120"
+                             Width="120"
+                             Height="30">
+                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}"
+                                     Content="Item1" />
+                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}"
+                                     Content="Item2" />
+                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}"
+                                     Content="Item3" />
+                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}"
+                                     Content="Item4" />
+                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}"
+                                     Content="Item5" />
+                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}"
+                                     Content="Item6" />
+                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}"
+                                     Content="Item7" />
             </fc:ComboBoxPlus>
         </Grid>
     </Grid>

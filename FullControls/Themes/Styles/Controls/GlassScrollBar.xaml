@@ -4,13 +4,14 @@
                     xmlns:comp="clr-namespace:FullControls.Controls.Components">
 
     <!--#region Templates -->
-    
-    <ControlTemplate x:Key="GlassScrollbarVertical" TargetType="{x:Type local:GlassScrollBar}">
+
+    <ControlTemplate x:Key="GlassScrollbarVertical"
+                     TargetType="{x:Type local:GlassScrollBar}">
         <Grid x:Name="PART_ScrollBar">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <comp:GlassRepeatButton x:Name="PART_DecreaseButton"
                                     Grid.Row="0"
@@ -29,7 +30,7 @@
                                     ContentOpacity="{TemplateBinding OpacityNormal}"
                                     Delay="{TemplateBinding ScrollDelay}"
                                     Interval="{TemplateBinding ScrollInterval}"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
             <Border x:Name="PART_Border"
                     Grid.Row="1"
                     Margin="{TemplateBinding Padding}"
@@ -50,7 +51,7 @@
                                          BorderThickness="{TemplateBinding ThumbBorderThickness}"
                                          CornerRadius="{TemplateBinding ThumbCornerRadius}"
                                          Opacity="{TemplateBinding OpacityNormal}"
-                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Track.Thumb>
                     <Track.DecreaseRepeatButton>
                         <RepeatButton x:Name="PART_TrackDecreaseButton"
@@ -58,7 +59,7 @@
                                       Opacity="0"
                                       Delay="{TemplateBinding ScrollDelay}"
                                       Interval="{TemplateBinding ScrollInterval}"
-                                      Focusable="False"/>
+                                      Focusable="False" />
                     </Track.DecreaseRepeatButton>
                     <Track.IncreaseRepeatButton>
                         <RepeatButton x:Name="PART_TrackIncreaseButton"
@@ -66,7 +67,7 @@
                                       Opacity="0"
                                       Delay="{TemplateBinding ScrollDelay}"
                                       Interval="{TemplateBinding ScrollInterval}"
-                                      Focusable="False"/>
+                                      Focusable="False" />
                     </Track.IncreaseRepeatButton>
                 </Track>
             </Border>
@@ -87,46 +88,84 @@
                                     ContentOpacity="{TemplateBinding OpacityNormal}"
                                     Delay="{TemplateBinding ScrollDelay}"
                                     Interval="{TemplateBinding ScrollInterval}"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
         </Grid>
 
         <ControlTemplate.Triggers>
-            <Trigger SourceName="PART_Thumb" Property="IsMouseOver" Value="true">
-                <Setter TargetName="PART_Thumb" Property="Opacity" Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Trigger SourceName="PART_Thumb"
+                     Property="IsMouseOver"
+                     Value="true">
+                <Setter TargetName="PART_Thumb"
+                        Property="Opacity"
+                        Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}" />
             </Trigger>
-            <Trigger SourceName="PART_Thumb" Property="IsDragging" Value="true">
-                <Setter TargetName="PART_Thumb" Property="Opacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Trigger SourceName="PART_Thumb"
+                     Property="IsDragging"
+                     Value="true">
+                <Setter TargetName="PART_Thumb"
+                        Property="Opacity"
+                        Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}" />
             </Trigger>
-            <Trigger SourceName="PART_DecreaseButton" Property="IsMouseOver" Value="true">
-                <Setter TargetName="PART_DecreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Trigger SourceName="PART_DecreaseButton"
+                     Property="IsMouseOver"
+                     Value="true">
+                <Setter TargetName="PART_DecreaseButton"
+                        Property="ContentOpacity"
+                        Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}" />
             </Trigger>
-            <Trigger SourceName="PART_DecreaseButton" Property="IsPressed" Value="true">
-                <Setter TargetName="PART_DecreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Trigger SourceName="PART_DecreaseButton"
+                     Property="IsPressed"
+                     Value="true">
+                <Setter TargetName="PART_DecreaseButton"
+                        Property="ContentOpacity"
+                        Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}" />
             </Trigger>
-            <Trigger SourceName="PART_IncreaseButton" Property="IsMouseOver" Value="true">
-                <Setter TargetName="PART_IncreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Trigger SourceName="PART_IncreaseButton"
+                     Property="IsMouseOver"
+                     Value="true">
+                <Setter TargetName="PART_IncreaseButton"
+                        Property="ContentOpacity"
+                        Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}" />
             </Trigger>
-            <Trigger SourceName="PART_IncreaseButton" Property="IsPressed" Value="true">
-                <Setter TargetName="PART_IncreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Trigger SourceName="PART_IncreaseButton"
+                     Property="IsPressed"
+                     Value="true">
+                <Setter TargetName="PART_IncreaseButton"
+                        Property="ContentOpacity"
+                        Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}" />
             </Trigger>
-            <Trigger Property="EnableButtons" Value="False">
-                <Setter TargetName="PART_DecreaseButton" Property="Visibility" Value="Collapsed"/>
-                <Setter TargetName="PART_IncreaseButton" Property="Visibility" Value="Collapsed"/>
+            <Trigger Property="EnableButtons"
+                     Value="False">
+                <Setter TargetName="PART_DecreaseButton"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="PART_IncreaseButton"
+                        Property="Visibility"
+                        Value="Collapsed" />
             </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter TargetName="PART_Thumb" Property="Background" Value="{Binding ForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}"/>
-                <Setter TargetName="PART_DecreaseButton" Property="Foreground" Value="{Binding ButtonsForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}"/>
-                <Setter TargetName="PART_IncreaseButton" Property="Foreground" Value="{Binding ButtonsForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter TargetName="PART_Thumb"
+                        Property="Background"
+                        Value="{Binding ForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter TargetName="PART_DecreaseButton"
+                        Property="Foreground"
+                        Value="{Binding ButtonsForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter TargetName="PART_IncreaseButton"
+                        Property="Foreground"
+                        Value="{Binding ButtonsForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}" />
             </Trigger>
         </ControlTemplate.Triggers>
+
     </ControlTemplate>
 
-    <ControlTemplate x:Key="GlassScrollbarHorizontal" TargetType="{x:Type local:GlassScrollBar}">
+    <ControlTemplate x:Key="GlassScrollbarHorizontal"
+                     TargetType="{x:Type local:GlassScrollBar}">
         <Grid x:Name="PART_ScrollBar">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <comp:GlassRepeatButton x:Name="PART_DecreaseButton"
                                     Grid.Column="0"
@@ -145,7 +184,7 @@
                                     ContentOpacity="{TemplateBinding OpacityNormal}"
                                     Delay="{TemplateBinding ScrollDelay}"
                                     Interval="{TemplateBinding ScrollInterval}"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
             <Border x:Name="PART_Border"
                     Grid.Column="1"
                     Margin="{TemplateBinding Padding}"
@@ -166,7 +205,7 @@
                                          BorderThickness="{TemplateBinding ThumbBorderThickness}"
                                          CornerRadius="{TemplateBinding ThumbCornerRadius}"
                                          Opacity="{TemplateBinding OpacityNormal}"
-                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                     </Track.Thumb>
                     <Track.DecreaseRepeatButton>
                         <RepeatButton x:Name="PART_TrackDecreaseButton"
@@ -174,7 +213,7 @@
                                       Opacity="0"
                                       Delay="{TemplateBinding ScrollDelay}"
                                       Interval="{TemplateBinding ScrollInterval}"
-                                      Focusable="False"/>
+                                      Focusable="False" />
                     </Track.DecreaseRepeatButton>
                     <Track.IncreaseRepeatButton>
                         <RepeatButton x:Name="PART_TrackIncreaseButton"
@@ -182,7 +221,7 @@
                                       Opacity="0"
                                       Delay="{TemplateBinding ScrollDelay}"
                                       Interval="{TemplateBinding ScrollInterval}"
-                                      Focusable="False"/>
+                                      Focusable="False" />
                     </Track.IncreaseRepeatButton>
                 </Track>
             </Border>
@@ -203,86 +242,164 @@
                                     ContentOpacity="{TemplateBinding OpacityNormal}"
                                     Delay="{TemplateBinding ScrollDelay}"
                                     Interval="{TemplateBinding ScrollInterval}"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
         </Grid>
 
         <ControlTemplate.Triggers>
-            <Trigger SourceName="PART_Thumb" Property="IsMouseOver" Value="true">
-                <Setter TargetName="PART_Thumb" Property="Opacity" Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Trigger SourceName="PART_Thumb"
+                     Property="IsMouseOver"
+                     Value="true">
+                <Setter TargetName="PART_Thumb"
+                        Property="Opacity"
+                        Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}" />
             </Trigger>
-            <Trigger SourceName="PART_Thumb" Property="IsDragging" Value="true">
-                <Setter TargetName="PART_Thumb" Property="Opacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Trigger SourceName="PART_Thumb"
+                     Property="IsDragging"
+                     Value="true">
+                <Setter TargetName="PART_Thumb"
+                        Property="Opacity"
+                        Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}" />
             </Trigger>
-            <Trigger SourceName="PART_DecreaseButton" Property="IsMouseOver" Value="true">
-                <Setter TargetName="PART_DecreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Trigger SourceName="PART_DecreaseButton"
+                     Property="IsMouseOver"
+                     Value="true">
+                <Setter TargetName="PART_DecreaseButton"
+                        Property="ContentOpacity"
+                        Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}" />
             </Trigger>
-            <Trigger SourceName="PART_DecreaseButton" Property="IsPressed" Value="true">
-                <Setter TargetName="PART_DecreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Trigger SourceName="PART_DecreaseButton"
+                     Property="IsPressed"
+                     Value="true">
+                <Setter TargetName="PART_DecreaseButton"
+                        Property="ContentOpacity"
+                        Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}" />
             </Trigger>
-            <Trigger SourceName="PART_IncreaseButton" Property="IsMouseOver" Value="true">
-                <Setter TargetName="PART_IncreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Trigger SourceName="PART_IncreaseButton"
+                     Property="IsMouseOver"
+                     Value="true">
+                <Setter TargetName="PART_IncreaseButton"
+                        Property="ContentOpacity"
+                        Value="{Binding OpacityOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}" />
             </Trigger>
-            <Trigger SourceName="PART_IncreaseButton" Property="IsPressed" Value="true">
-                <Setter TargetName="PART_IncreaseButton" Property="ContentOpacity" Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Trigger SourceName="PART_IncreaseButton"
+                     Property="IsPressed"
+                     Value="true">
+                <Setter TargetName="PART_IncreaseButton"
+                        Property="ContentOpacity"
+                        Value="{Binding OpacityOnMouseDown, RelativeSource={RelativeSource TemplatedParent}}" />
             </Trigger>
-            <Trigger Property="EnableButtons" Value="False">
-                <Setter TargetName="PART_DecreaseButton" Property="Visibility" Value="Collapsed"/>
-                <Setter TargetName="PART_IncreaseButton" Property="Visibility" Value="Collapsed"/>
+            <Trigger Property="EnableButtons"
+                     Value="False">
+                <Setter TargetName="PART_DecreaseButton"
+                        Property="Visibility"
+                        Value="Collapsed" />
+                <Setter TargetName="PART_IncreaseButton"
+                        Property="Visibility"
+                        Value="Collapsed" />
             </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter TargetName="PART_Thumb" Property="Background" Value="{Binding ForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}"/>
-                <Setter TargetName="PART_DecreaseButton" Property="Foreground" Value="{Binding ButtonsForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}"/>
-                <Setter TargetName="PART_IncreaseButton" Property="Foreground" Value="{Binding ButtonsForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}"/>
+            <Trigger Property="IsEnabled"
+                     Value="False">
+                <Setter TargetName="PART_Thumb"
+                        Property="Background"
+                        Value="{Binding ForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter TargetName="PART_DecreaseButton"
+                        Property="Foreground"
+                        Value="{Binding ButtonsForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter TargetName="PART_IncreaseButton"
+                        Property="Foreground"
+                        Value="{Binding ButtonsForegroundOnDisabled, RelativeSource={RelativeSource TemplatedParent}}" />
             </Trigger>
         </ControlTemplate.Triggers>
+
     </ControlTemplate>
-    
+
     <!--#endregion-->
 
-    <Style TargetType="{x:Type local:GlassScrollBar}" BasedOn="{StaticResource {x:Type ScrollBar}}">
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="CornerRadius" Value="0"/>
-        <Setter Property="Background" Value="#22000000"/>
-        <Setter Property="BorderBrush" Value="{x:Null}"/>
-        <Setter Property="Foreground" Value="LightSlateGray"/>
-        <Setter Property="ForegroundOnDisabled" Value="Gray"/>
-        <Setter Property="ThumbPadding" Value="0"/>
-        <Setter Property="ThumbCornerRadius" Value="0"/>
-        <Setter Property="ThumbBorderThickness" Value="0"/>
-        <Setter Property="ThumbBorderBrush" Value="{x:Null}"/>
-        <Setter Property="OpacityNormal" Value="0.6"/>
-        <Setter Property="OpacityOnMouseOver" Value="0.8"/>
-        <Setter Property="OpacityOnMouseDown" Value="0.7"/>
-        <Setter Property="EnableButtons" Value="True"/>
-        <Setter Property="ButtonsSize" Value="10"/>
-        <Setter Property="ButtonsFont" Value="Segoe MDL2 Assets"/>
-        <Setter Property="ButtonsFontSize" Value="10"/>
-        <Setter Property="ButtonsCornerRadius" Value="0"/>
-        <Setter Property="ButtonsBackground" Value="Transparent"/>
-        <Setter Property="ButtonsBorderBrush" Value="{x:Null}"/>
-        <Setter Property="ButtonsBorderThickness" Value="0"/>
-        <Setter Property="ButtonsForeground" Value="Black"/>
-        <Setter Property="ButtonsForegroundOnDisabled" Value="Black"/>
-        <Setter Property="ContextMenu" Value="{x:Null}"/>
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+    <Style TargetType="{x:Type local:GlassScrollBar}"
+           BasedOn="{StaticResource {x:Type ScrollBar}}">
+
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="CornerRadius"
+                Value="0" />
+        <Setter Property="Background"
+                Value="#22000000" />
+        <Setter Property="BorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="Foreground"
+                Value="LightSlateGray" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="Gray" />
+        <Setter Property="ThumbPadding"
+                Value="0" />
+        <Setter Property="ThumbCornerRadius"
+                Value="0" />
+        <Setter Property="ThumbBorderThickness"
+                Value="0" />
+        <Setter Property="ThumbBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="OpacityNormal"
+                Value="0.6" />
+        <Setter Property="OpacityOnMouseOver"
+                Value="0.8" />
+        <Setter Property="OpacityOnMouseDown"
+                Value="0.7" />
+        <Setter Property="EnableButtons"
+                Value="True" />
+        <Setter Property="ButtonsSize"
+                Value="10" />
+        <Setter Property="ButtonsFont"
+                Value="Segoe MDL2 Assets" />
+        <Setter Property="ButtonsFontSize"
+                Value="10" />
+        <Setter Property="ButtonsCornerRadius"
+                Value="0" />
+        <Setter Property="ButtonsBackground"
+                Value="Transparent" />
+        <Setter Property="ButtonsBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="ButtonsBorderThickness"
+                Value="0" />
+        <Setter Property="ButtonsForeground"
+                Value="Black" />
+        <Setter Property="ButtonsForegroundOnDisabled"
+                Value="Black" />
+        <Setter Property="ContextMenu"
+                Value="{x:Null}" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
+        <Setter Property="Stylus.IsFlicksEnabled"
+                Value="False" />
 
         <Style.Triggers>
-            <Trigger Property="Orientation" Value="Vertical">
-                <Setter Property="MinWidth" Value="0"/>
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="DecreaseButtonContent" Value="&#xEDDB;"/>
-                <Setter Property="IncreaseButtonContent" Value="&#xEDDC;"/>
-                <Setter Property="Template" Value="{StaticResource GlassScrollbarVertical}"/>
+            <Trigger Property="Orientation"
+                     Value="Vertical">
+                <Setter Property="MinWidth"
+                        Value="0" />
+                <Setter Property="BorderThickness"
+                        Value="0" />
+                <Setter Property="DecreaseButtonContent"
+                        Value="&#xEDDB;" />
+                <Setter Property="IncreaseButtonContent"
+                        Value="&#xEDDC;" />
+                <Setter Property="Template"
+                        Value="{StaticResource GlassScrollbarVertical}" />
             </Trigger>
-            <Trigger Property="Orientation" Value="Horizontal">
-                <Setter Property="MinHeight" Value="0"/>
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="DecreaseButtonContent" Value="&#xEDD9;"/>
-                <Setter Property="IncreaseButtonContent" Value="&#xEDDA;"/>
-                <Setter Property="Template" Value="{StaticResource GlassScrollbarHorizontal}"/>
+            <Trigger Property="Orientation"
+                     Value="Horizontal">
+                <Setter Property="MinHeight"
+                        Value="0" />
+                <Setter Property="BorderThickness"
+                        Value="0" />
+                <Setter Property="DecreaseButtonContent"
+                        Value="&#xEDD9;" />
+                <Setter Property="IncreaseButtonContent"
+                        Value="&#xEDDA;" />
+                <Setter Property="Template"
+                        Value="{StaticResource GlassScrollbarHorizontal}" />
             </Trigger>
         </Style.Triggers>
+
     </Style>
 
 </ResourceDictionary>

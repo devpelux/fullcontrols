@@ -3,56 +3,95 @@
                     xmlns:local="clr-namespace:FullControls.SystemComponents"
                     xmlns:controls="clr-namespace:FullControls.Controls"
                     xmlns:extra="clr-namespace:FullControls.Extra">
-    
-    <extra:ClipConverter x:Key="ClipConverter"/>
 
-    <Style TargetType="{x:Type local:EWindow}" BasedOn="{StaticResource {x:Type Window}}">
-        <Setter Property="WindowStyle" Value="None"/>
-        <Setter Property="AllowsTransparency" Value="True"/>
-        <Setter Property="ResizeThickness" Value="11"/>
-        <Setter Property="Opacity" Value="1"/>
-        <Setter Property="ShadowRadius" Value="10"/>
-        <Setter Property="ShadowOpacity" Value="0.8"/>
-        <Setter Property="ShadowDepth" Value="0.5"/>
-        <Setter Property="ShadowColor" Value="Black"/>
-        <Setter Property="CornerRadius" Value="0"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="BorderBrush" Value="#808080"/>
-        <Setter Property="Background" Value="White"/>
-        <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="ToolbarHitZoneMargin" Value="0"/>
-        <Setter Property="ToolbarHitZoneBackground" Value="Transparent"/>
-        <Setter Property="ToolbarBackground" Value="White"/>
-        <Setter Property="ToolbarMenu" Value="{x:Null}"/>
-        <Setter Property="AnimationTime" Value="0:0:0.2"/>
-        <Setter Property="SnapsToDevicePixels" Value="true"/>
-        
+    <extra:ClipConverter x:Key="ClipConverter" />
+
+    <Style TargetType="{x:Type local:EWindow}"
+           BasedOn="{StaticResource {x:Type Window}}">
+
+        <Setter Property="WindowStyle"
+                Value="None" />
+        <Setter Property="AllowsTransparency"
+                Value="True" />
+        <Setter Property="ResizeThickness"
+                Value="11" />
+        <Setter Property="Opacity"
+                Value="1" />
+        <Setter Property="ShadowRadius"
+                Value="10" />
+        <Setter Property="ShadowOpacity"
+                Value="0.8" />
+        <Setter Property="ShadowDepth"
+                Value="0.5" />
+        <Setter Property="ShadowColor"
+                Value="Black" />
+        <Setter Property="CornerRadius"
+                Value="0" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="BorderBrush"
+                Value="#808080" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="ToolbarHitZoneMargin"
+                Value="0" />
+        <Setter Property="ToolbarHitZoneBackground"
+                Value="Transparent" />
+        <Setter Property="ToolbarBackground"
+                Value="White" />
+        <Setter Property="ToolbarMenu"
+                Value="{x:Null}" />
+        <Setter Property="AnimationTime"
+                Value="0:0:0.2" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="true" />
+
         <!--#region CaptionButtons properties-->
-        
-        <Setter Property="CaptionButtonsBackground" Value="White"/>
-        <Setter Property="CaptionButtonsBackgroundOnMouseOver" Value="#cccccc"/>
-        <Setter Property="CaptionButtonsBackgroundOnPressed" Value="#bfbfbf"/>
-        <Setter Property="CaptionButtonsBorderBrush" Value="White"/>
-        <Setter Property="CaptionButtonsBorderBrushOnMouseOver" Value="#cccccc"/>
-        <Setter Property="CaptionButtonsBorderBrushOnPressed" Value="#bfbfbf"/>
-        <Setter Property="CaptionButtonsForeground" Value="Black"/>
-        <Setter Property="CaptionButtonsForegroundOnMouseOver" Value="Black"/>
-        <Setter Property="CaptionButtonsForegroundOnPressed" Value="White"/>
-        
+
+        <Setter Property="CaptionButtonsBackground"
+                Value="White" />
+        <Setter Property="CaptionButtonsBackgroundOnMouseOver"
+                Value="#cccccc" />
+        <Setter Property="CaptionButtonsBackgroundOnPressed"
+                Value="#bfbfbf" />
+        <Setter Property="CaptionButtonsBorderBrush"
+                Value="White" />
+        <Setter Property="CaptionButtonsBorderBrushOnMouseOver"
+                Value="#cccccc" />
+        <Setter Property="CaptionButtonsBorderBrushOnPressed"
+                Value="#bfbfbf" />
+        <Setter Property="CaptionButtonsForeground"
+                Value="Black" />
+        <Setter Property="CaptionButtonsForegroundOnMouseOver"
+                Value="Black" />
+        <Setter Property="CaptionButtonsForegroundOnPressed"
+                Value="White" />
+
         <!--#endregion-->
-        
+
         <!--#region CloseButton properties-->
-        
-        <Setter Property="CloseButtonBackground" Value="White"/>
-        <Setter Property="CloseButtonBackgroundOnMouseOver" Value="#cccccc"/>
-        <Setter Property="CloseButtonBackgroundOnPressed" Value="Red"/>
-        <Setter Property="CloseButtonBorderBrush" Value="WhiteSmoke"/>
-        <Setter Property="CloseButtonBorderBrushOnMouseOver" Value="WhiteSmoke"/>
-        <Setter Property="CloseButtonBorderBrushOnPressed" Value="Firebrick"/>
-        <Setter Property="CloseButtonForeground" Value="Black"/>
-        <Setter Property="CloseButtonForegroundOnMouseOver" Value="Black"/>
-        <Setter Property="CloseButtonForegroundOnPressed" Value="White"/>
-        
+
+        <Setter Property="CloseButtonBackground"
+                Value="White" />
+        <Setter Property="CloseButtonBackgroundOnMouseOver"
+                Value="#cccccc" />
+        <Setter Property="CloseButtonBackgroundOnPressed"
+                Value="Red" />
+        <Setter Property="CloseButtonBorderBrush"
+                Value="WhiteSmoke" />
+        <Setter Property="CloseButtonBorderBrushOnMouseOver"
+                Value="WhiteSmoke" />
+        <Setter Property="CloseButtonBorderBrushOnPressed"
+                Value="Firebrick" />
+        <Setter Property="CloseButtonForeground"
+                Value="Black" />
+        <Setter Property="CloseButtonForegroundOnMouseOver"
+                Value="Black" />
+        <Setter Property="CloseButtonForegroundOnPressed"
+                Value="White" />
+
         <!--#endregion-->
 
         <Setter Property="Template">
@@ -72,7 +111,7 @@
                                                   Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"
                                                   Opacity="{Binding ShadowOpacity, RelativeSource={RelativeSource TemplatedParent}}"
                                                   BlurRadius="{Binding ShadowRadius, RelativeSource={RelativeSource TemplatedParent}}"
-                                                  ShadowDepth="{Binding ShadowDepth, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                  ShadowDepth="{Binding ShadowDepth, RelativeSource={RelativeSource TemplatedParent}}" />
                             </Border.Effect>
                         </Border>
                         <Border x:Name="PART_Border"
@@ -86,19 +125,19 @@
                                 <Grid.Clip>
                                     <MultiBinding Converter="{StaticResource ClipConverter}">
                                         <Binding Path="ActualWidth"
-                                                 RelativeSource="{RelativeSource Self}"/>
+                                                 RelativeSource="{RelativeSource Self}" />
                                         <Binding Path="ActualHeight"
-                                                 RelativeSource="{RelativeSource Self}"/>
+                                                 RelativeSource="{RelativeSource Self}" />
                                         <Binding Path="CornerRadius"
-                                                 RelativeSource="{RelativeSource FindAncestor, AncestorType=Border}"/>
+                                                 RelativeSource="{RelativeSource FindAncestor, AncestorType=Border}" />
                                         <Binding Path="BorderThickness"
-                                                 RelativeSource="{RelativeSource FindAncestor, AncestorType=Border}"/>
+                                                 RelativeSource="{RelativeSource FindAncestor, AncestorType=Border}" />
                                     </MultiBinding>
                                 </Grid.Clip>
                                 <Grid x:Name="PART_Content"
                                       Margin="0,32,0,0">
                                     <AdornerDecorator>
-                                        <ContentPresenter/>
+                                        <ContentPresenter />
                                     </AdornerDecorator>
                                 </Grid>
                                 <Grid x:Name="PART_Toolbar"
@@ -107,14 +146,14 @@
                                       Margin="{TemplateBinding ToolbarMargin}"
                                       Background="{TemplateBinding ToolbarBackground}">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Grid x:Name="PART_Brand"
                                           Grid.Column="0">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Grid x:Name="PART_Icon"
                                               Width="32"
@@ -129,7 +168,7 @@
                                                    Stretch="Uniform"
                                                    RenderOptions.BitmapScalingMode="Fant"
                                                    IsHitTestVisible="False"
-                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                                         </Grid>
                                         <TextBlock x:Name="PART_Title"
                                                    Grid.Column="1"
@@ -139,21 +178,21 @@
                                                    TextWrapping="NoWrap"
                                                    IsHitTestVisible="False"
                                                    Text="{TemplateBinding Title}"
-                                                   Foreground="{TemplateBinding Foreground}"/>
+                                                   Foreground="{TemplateBinding Foreground}" />
                                         <Grid x:Name="PART_ToolbarHitZone"
                                               Grid.Column="1"
                                               Margin="{TemplateBinding ToolbarHitZoneMargin}"
                                               Background="{TemplateBinding ToolbarHitZoneBackground}"
-                                              Visibility="Visible"/>
+                                              Visibility="Visible" />
                                     </Grid>
                                     <Grid x:Name="PART_Buttons"
                                           Grid.Column="1"
                                           HorizontalAlignment="Right">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
                                         <controls:EButton x:Name="PART_MinimizeButton"
                                                           Grid.Column="0"
@@ -176,7 +215,7 @@
                                                           FontSize="{TemplateBinding CaptionButtonsFontSize}"
                                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                                           FontFamily="Segoe MDL2 Assets"
-                                                          Content="&#xE949;"/>
+                                                          Content="&#xE949;" />
                                         <controls:EButton x:Name="PART_MaximizeButton"
                                                           Grid.Column="1"
                                                           VerticalAlignment="Top"
@@ -199,7 +238,7 @@
                                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                                           FontFamily="Segoe MDL2 Assets"
                                                           Content="&#xE739;"
-                                                          Visibility="Visible"/>
+                                                          Visibility="Visible" />
                                         <controls:EButton x:Name="PART_RestoreButton"
                                                           Grid.Column="2"
                                                           VerticalAlignment="Top"
@@ -222,7 +261,7 @@
                                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                                           FontFamily="Segoe MDL2 Assets"
                                                           Content="&#xE923;"
-                                                          Visibility="Collapsed"/>
+                                                          Visibility="Collapsed" />
                                         <controls:EButton x:Name="PART_CloseButton"
                                                           Grid.Column="3"
                                                           VerticalAlignment="Top"
@@ -244,7 +283,7 @@
                                                           FontSize="{TemplateBinding CloseButtonFontSize}"
                                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                                           FontFamily="Segoe MDL2 Assets"
-                                                          Content="&#xE106;"/>
+                                                          Content="&#xE106;" />
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -252,51 +291,105 @@
                     </Grid>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsDocked" Value="True">
-                            <Setter TargetName="PART_ShadowBorder" Property="Visibility" Value="Collapsed"/>
-                            <Setter TargetName="PART_Border" Property="Margin" Value="0"/>
-                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="0"/>
+                        <Trigger Property="IsDocked"
+                                 Value="True">
+                            <Setter TargetName="PART_ShadowBorder"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="PART_Border"
+                                    Property="Margin"
+                                    Value="0" />
+                            <Setter TargetName="PART_Border"
+                                    Property="CornerRadius"
+                                    Value="0" />
                         </Trigger>
-                        <Trigger Property="WindowState" Value="Maximized">
-                            <Setter TargetName="PART_ShadowBorder" Property="Visibility" Value="Collapsed"/>
-                            <Setter TargetName="PART_Border" Property="Margin" Value="0"/>
-                            <Setter TargetName="PART_Border" Property="CornerRadius" Value="0"/>
-                            <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed"/>
-                            <Setter TargetName="PART_RestoreButton" Property="Visibility" Value="Visible"/>
+                        <Trigger Property="WindowState"
+                                 Value="Maximized">
+                            <Setter TargetName="PART_ShadowBorder"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="PART_Border"
+                                    Property="Margin"
+                                    Value="0" />
+                            <Setter TargetName="PART_Border"
+                                    Property="CornerRadius"
+                                    Value="0" />
+                            <Setter TargetName="PART_MaximizeButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="PART_RestoreButton"
+                                    Property="Visibility"
+                                    Value="Visible" />
                         </Trigger>
-                        <Trigger Property="ResizeMode" Value="NoResize">
-                            <Setter TargetName="PART_MinimizeButton" Property="Visibility" Value="Collapsed"/>
-                            <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed"/>
-                            <Setter TargetName="PART_RestoreButton" Property="Visibility" Value="Collapsed"/>
+                        <Trigger Property="ResizeMode"
+                                 Value="NoResize">
+                            <Setter TargetName="PART_MinimizeButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="PART_MaximizeButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="PART_RestoreButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="ResizeMode" Value="CanMinimize">
-                            <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed"/>
-                            <Setter TargetName="PART_RestoreButton" Property="Visibility" Value="Collapsed"/>
+                        <Trigger Property="ResizeMode"
+                                 Value="CanMinimize">
+                            <Setter TargetName="PART_MaximizeButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="PART_RestoreButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="EnableMinimizeButton" Value="False">
-                            <Setter TargetName="PART_MinimizeButton" Property="Visibility" Value="Collapsed"/>
+                        <Trigger Property="EnableMinimizeButton"
+                                 Value="False">
+                            <Setter TargetName="PART_MinimizeButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="EnableMaximizeRestoreButton" Value="False">
-                            <Setter TargetName="PART_MaximizeButton" Property="Visibility" Value="Collapsed"/>
-                            <Setter TargetName="PART_RestoreButton" Property="Visibility" Value="Collapsed"/>
+                        <Trigger Property="EnableMaximizeRestoreButton"
+                                 Value="False">
+                            <Setter TargetName="PART_MaximizeButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                            <Setter TargetName="PART_RestoreButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="EnableCloseButton" Value="False">
-                            <Setter TargetName="PART_CloseButton" Property="Visibility" Value="Collapsed"/>
+                        <Trigger Property="EnableCloseButton"
+                                 Value="False">
+                            <Setter TargetName="PART_CloseButton"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="EnableToolbarHitZone" Value="False">
-                            <Setter TargetName="PART_ToolbarHitZone" Property="Visibility" Value="Collapsed"/>
+                        <Trigger Property="EnableToolbarHitZone"
+                                 Value="False">
+                            <Setter TargetName="PART_ToolbarHitZone"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="Icon" Value="{x:Null}">
-                            <Setter TargetName="PART_Icon" Property="Visibility" Value="Collapsed"/>
+                        <Trigger Property="Icon"
+                                 Value="{x:Null}">
+                            <Setter TargetName="PART_Icon"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
-                        <Trigger Property="MergeToolbarAndContent" Value="True">
-                            <Setter TargetName="PART_Content" Property="Margin" Value="0"/>
-                            <Setter TargetName="PART_Toolbar" Property="Background" Value="Transparent"/>
+                        <Trigger Property="MergeToolbarAndContent"
+                                 Value="True">
+                            <Setter TargetName="PART_Content"
+                                    Property="Margin"
+                                    Value="0" />
+                            <Setter TargetName="PART_Toolbar"
+                                    Property="Background"
+                                    Value="Transparent" />
                         </Trigger>
                     </ControlTemplate.Triggers>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
     </Style>
-    
+
 </ResourceDictionary>
