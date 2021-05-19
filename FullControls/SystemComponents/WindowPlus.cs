@@ -650,8 +650,8 @@ namespace FullControls.SystemComponents
         {
             base.OnApplyTemplate();
             UpdateOutsideMargin();
-            OnVStateChanged(VStateOverride());
             loaded = true;
+            OnVStateChanged(VStateOverride(), true);
         }
 
         /// <inheritdoc/>
@@ -752,11 +752,12 @@ namespace FullControls.SystemComponents
         }
 
         /// <summary>
-        /// Called when the <b>v-state</b> of the control changed.
+        /// Called when the <b>v-state</b> of the control changed, is used to execute custom animations on certain contitions changing.
         /// </summary>
         /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
         /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
-        protected virtual void OnVStateChanged(string vstate)
+        /// <param name="initial">Specifies if this is the first <b>v-state</b> applied to the control.</param>
+        protected virtual void OnVStateChanged(string vstate, bool initial = false)
         {
             switch (vstate)
             {
@@ -776,9 +777,6 @@ namespace FullControls.SystemComponents
                     Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
                     break;
                 default:
-                    Util.AnimateBrush(this, ActualTitlebarBackgroundPropertyProxy, TitlebarBackgroundOnActive, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnActive, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnActive, TimeSpan.Zero);
                     break;
             }
         }

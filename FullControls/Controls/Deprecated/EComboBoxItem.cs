@@ -431,8 +431,8 @@ namespace FullControls.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            OnVStateChanged(VStateOverride());
             loaded = true;
+            OnVStateChanged(VStateOverride(), true);
         }
 
         /// <summary>
@@ -503,11 +503,12 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Called when the <b>v-state</b> of the control changed.
+        /// Called when the <b>v-state</b> of the control changed, is used to execute custom animations on certain contitions changing.
         /// </summary>
         /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
         /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
-        protected virtual void OnVStateChanged(string vstate)
+        /// <param name="initial">Specifies if this is the first <b>v-state</b> applied to the control.</param>
+        protected virtual void OnVStateChanged(string vstate, bool initial = false)
         {
             switch (vstate)
             {
@@ -517,29 +518,29 @@ namespace FullControls.Controls
                     Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
                     break;
                 case "Selected":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, AnimationTime);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnSelected, AnimationTime);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                     break;
                 case "Focused":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnFocused, AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnFocused, AnimationTime);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnFocused, AnimationTime);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnFocused, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnFocused, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnFocused, initial ? TimeSpan.Zero : AnimationTime);
                     break;
                 case "FocusedOnSelected":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnFocusedOnSelected, AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnFocusedOnSelected, AnimationTime);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnFocusedOnSelected, AnimationTime);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnFocusedOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnFocusedOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnFocusedOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                     break;
                 case "MouseOver":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOver, AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOver, AnimationTime);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOver, AnimationTime);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
                     break;
                 case "MouseOverOnSelected":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOverOnSelected, AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOverOnSelected, AnimationTime);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOverOnSelected, AnimationTime);
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOverOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOverOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOverOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                     break;
                 case "Disabled":
                     Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
@@ -547,9 +548,6 @@ namespace FullControls.Controls
                     Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, TimeSpan.Zero);
                     break;
                 default:
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
                     break;
             }
         }

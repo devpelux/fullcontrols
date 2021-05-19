@@ -500,28 +500,28 @@ namespace FullControls.Controls
         }
 
         /// <inheritdoc/>
-        protected override void OnVStateChanged(string vstate)
+        protected override void OnVStateChanged(string vstate, bool initial = false)
         {
             switch (vstate)
             {
                 case "Normal":
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, AnimationTime);
-                    Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForeground, AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForeground, initial ? TimeSpan.Zero : AnimationTime);
                     SetValue(ActualFontWeightPropertyKey, FontWeight);
                     break;
                 case "Expanded":
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnExpanded, AnimationTime);
-                    Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnExpanded, AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnExpanded, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnExpanded, initial ? TimeSpan.Zero : AnimationTime);
                     SetValue(ActualFontWeightPropertyKey, FontWeightOnExpanded);
                     break;
                 case "MouseOverHeader":
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOver, AnimationTime);
-                    Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnMouseOver, AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
                     SetValue(ActualFontWeightPropertyKey, FontWeightOnMouseOver);
                     break;
                 case "MouseOverHeaderOnExpanded":
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOverOnExpanded, AnimationTime);
-                    Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnMouseOverOnExpanded, AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOverOnExpanded, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, ArrowForegroundOnMouseOverOnExpanded, initial ? TimeSpan.Zero : AnimationTime);
                     SetValue(ActualFontWeightPropertyKey, FontWeightOnMouseOverOnExpanded);
                     break;
                 case "Disabled":
@@ -530,9 +530,6 @@ namespace FullControls.Controls
                     SetValue(ActualFontWeightPropertyKey, FontWeightOnDisabled);
                     break;
                 default:
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualArrowForegroundPropertyProxy, Foreground, TimeSpan.Zero);
-                    SetValue(ActualFontWeightPropertyKey, FontWeight);
                     break;
             }
         }

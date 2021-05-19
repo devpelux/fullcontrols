@@ -162,8 +162,8 @@ namespace FullControls.Controls
                 header.MouseLeave += (o, e) => OnHeaderMouseLeave(e);
             }
             UpdateExpandState();
-            OnVStateChanged(VStateOverride());
             loaded = true;
+            OnVStateChanged(VStateOverride(), true);
         }
 
         /// <summary>
@@ -224,11 +224,12 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Called when the <b>v-state</b> of the control changed.
+        /// Called when the <b>v-state</b> of the control changed, is used to execute custom animations on certain contitions changing.
         /// </summary>
         /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
         /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
-        protected virtual void OnVStateChanged(string vstate) { }
+        /// <param name="initial">Specifies if this is the first <b>v-state</b> applied to the control.</param>
+        protected virtual void OnVStateChanged(string vstate, bool initial = false) { }
 
         /// <summary>
         /// Returns the string representation of a <see cref="AccordionItem"/> object.
