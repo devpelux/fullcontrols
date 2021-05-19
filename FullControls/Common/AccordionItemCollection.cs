@@ -15,6 +15,23 @@ namespace FullControls.Common
         /// </summary>
         public AccordionItemCollection() : base() { }
 
+        /// <summary>
+        /// Copies the items to a new <see cref="AccordionItemCollection"/> instance.
+        /// </summary>
+        /// <remarks>The new <see cref="AccordionItemCollection"/> returned will contain the same items references of the old one,
+        /// so changing an item in the old one will result in changing the same item in the new one.</remarks>
+        /// <returns><see cref="AccordionItemCollection"/> instance with the same items contained in the cloned instance.</returns>
+        public AccordionItemCollection ShallowClone()
+        {
+            AccordionItemCollection collection = new();
+            foreach (AccordionItem item in this)
+            {
+                collection.Add(item);
+            }
+
+            return collection;
+        }
+
         /// <inheritdoc/>
         protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
         {

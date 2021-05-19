@@ -78,6 +78,21 @@ namespace FullControls.Controls
             Items = new();
         }
 
+        /// <summary>
+        /// Reset the <see cref="Accordion"/> by setting <see cref="Items"/> to a new instance.
+        /// </summary>
+        public void Reset() => Items = new();
+
+        /// <summary>
+        /// Clear the <see cref="Accordion"/> by removing all the <see cref="AccordionItem"/> from <see cref="Items"/>,
+        /// and setting <see cref="Items"/> to a new instance.
+        /// </summary>
+        public void Clear()
+        {
+            Items.Clear();
+            Reset();
+        }
+
         /// <inheritdoc/>
         public override void OnApplyTemplate()
         {
