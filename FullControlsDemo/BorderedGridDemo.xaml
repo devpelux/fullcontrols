@@ -9,10 +9,11 @@
                  WindowStartupLocation="CenterOwner"
                  MinHeight="80"
                  MinWidth="270"
-                 Height="350"
-                 Width="450">
+                 Height="250"
+                 Width="400">
     <Grid>
         <fc:BorderedGrid Margin="40"
+                         GridLineBrush="{DynamicResource GrayDashed}"
                          GridLinesVisibility="All"
                          GridBorderVisibility="True"
                          GridLineThickness="1">
@@ -23,7 +24,6 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>

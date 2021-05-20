@@ -91,6 +91,8 @@ namespace FullControls.Controls
         /// <inheritdoc/>
         protected override void OnRender(DrawingContext dc)
         {
+            base.OnRender(dc);
+
             switch (GridLinesVisibility)
             {
                 case DataGridGridLinesVisibility.All:
@@ -110,8 +112,6 @@ namespace FullControls.Controls
             }
 
             if (GridBorderVisibility) DrawBorder(dc);
-
-            base.OnRender(dc);
         }
 
         #region Lines drawing
@@ -119,51 +119,56 @@ namespace FullControls.Controls
         private void DrawHorizontalLines(DrawingContext dc)
         {
             Pen pen = new(GridLineBrush, GridLineThickness);
-            double halfPenWidth = pen.Thickness / 2;
+            double halfPT = pen.Thickness / 2;
 
             for (int i = 1; i < RowDefinitions.Count; i++)
             {
-                RowDefinition rowDefinition = RowDefinitions[i];
-                GuidelineSet guidelines = new();
-                guidelines.GuidelinesX.Add(0 + halfPenWidth);
-                guidelines.GuidelinesX.Add(ActualWidth + halfPenWidth);
-                guidelines.GuidelinesY.Add(rowDefinition.Offset + halfPenWidth);
-                guidelines.GuidelinesY.Add(rowDefinition.Offset + halfPenWidth);
-                dc.PushGuidelineSet(guidelines);
-                dc.DrawLine(pen, new Point(0, rowDefinition.Offset), new Point(ActualWidth, rowDefinition.Offset));
+                RowDefinition row = RowDefinitions[i];
+
+                dc.PushGuidelineSet(GetGuidelineSet(new Point(0 - halfPT, row.Offset - halfPT),
+                                                    new Point(ActualWidth - halfPT, row.Offset - halfPT)));
+
+                dc.DrawLine(pen, new Point(0, row.Offset), new Point(ActualWidth, row.Offset));
             }
         }
 
         private void DrawVerticalLines(DrawingContext dc)
         {
             Pen pen = new(GridLineBrush, GridLineThickness);
-            double halfPenWidth = pen.Thickness / 2;
+            double halfPT = pen.Thickness / 2;
 
             for (int i = 1; i < ColumnDefinitions.Count; i++)
             {
-                ColumnDefinition columnDefinition = ColumnDefinitions[i];
-                GuidelineSet guidelines = new();
-                guidelines.GuidelinesX.Add(columnDefinition.Offset + halfPenWidth);
-                guidelines.GuidelinesX.Add(columnDefinition.Offset + halfPenWidth);
-                guidelines.GuidelinesY.Add(0 + halfPenWidth);
-                guidelines.GuidelinesY.Add(ActualHeight + halfPenWidth);
-                dc.PushGuidelineSet(guidelines);
-                dc.DrawLine(pen, new Point(columnDefinition.Offset, 0), new Point(columnDefinition.Offset, ActualHeight));
+                ColumnDefinition column = ColumnDefinitions[i];
+
+                dc.PushGuidelineSet(GetGuidelineSet(new Point(column.Offset - halfPT, 0 - halfPT),
+                                                    new Point(column.Offset - halfPT, ActualHeight - halfPT)));
+
+                dc.DrawLine(pen, new Point(column.Offset, 0), new Point(column.Offset, ActualHeight));
             }
         }
 
         private void DrawBorder(DrawingContext dc)
         {
             Pen pen = new(GridLineBrush, GridLineThickness);
-            double halfPenWidth = pen.Thickness / 2;
+            double halfPT = pen.Thickness / 2;
 
-            GuidelineSet guidelines2 = new();
-            guidelines2.GuidelinesX.Add(0 + halfPenWidth);
-            guidelines2.GuidelinesX.Add(ActualWidth + halfPenWidth);
-            guidelines2.GuidelinesY.Add(0 + halfPenWidth);
-            guidelines2.GuidelinesY.Add(ActualHeight + halfPenWidth);
-            dc.PushGuidelineSet(guidelines2);
+            dc.PushGuidelineSet(GetGuidelineSet(new Point(0 - halfPT, 0 - halfPT),
+                                                new Point(ActualWidth - halfPT, ActualWidth - halfPT)));
+
             dc.DrawRectangle(null, pen, new Rect(0, 0, ActualWidth, ActualHeight));
+        }
+
+        private static GuidelineSet GetGuidelineSet(Point a, Point b)
+        {
+            GuidelineSet guideline = new();
+
+            guideline.GuidelinesX.Add(a.X);
+            guideline.GuidelinesX.Add(b.X);
+            guideline.GuidelinesY.Add(a.Y);
+            guideline.GuidelinesY.Add(b.Y);
+
+            return guideline;
         }
 
         #endregion
