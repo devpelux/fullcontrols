@@ -39,6 +39,7 @@ Text type.
 [ToggleType](https://github.com/devpelux/fullcontrols/wiki/ToggleType-Enum)  
 Toggle type.
 
+<br>
 
 ## FullControls.Controls Namespace
 _Provides a set of fully customizable standard controls, plus new special controls and extra functionality._
@@ -144,6 +145,7 @@ Represents a control that can be used to display or edit unformatted text.
 [EToggleButton](https://github.com/devpelux/fullcontrols/wiki/ToggleButtonPlus-Class)  
 Represents a control that can switch states, such as CheckBox.
 
+<br>
 
 ## FullControls.SystemComponents Namespace
 _Provides a set of fully customizable system controls, and extra functionality._
