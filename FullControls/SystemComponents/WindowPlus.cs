@@ -542,6 +542,8 @@ namespace FullControls.SystemComponents
 
         #endregion
 
+        #region Preview events
+
         /// <summary>
         /// Occurs immediately before <see cref="Close"/> is executed.
         /// </summary>
@@ -551,6 +553,40 @@ namespace FullControls.SystemComponents
         /// Occurs immediately before <see cref="Minimize"/> is executed.
         /// </summary>
         public event EventHandler<CancelEventArgs> PreviewMinimize;
+
+        #endregion
+
+        #region Commands events
+
+        /// <summary>
+        /// <para>Occurs when the <see cref="WindowCommands.Close"/> command is sended to the window.</para>
+        /// <para>It occurs immediately after the user clicks the close button,
+        /// allowing to distinguish between clicking the button and close the window via code behind.</para>
+        /// </summary>
+        public event EventHandler<EventArgs> CloseCommandExecuting;
+
+        /// <summary>
+        /// <para>Occurs when the <see cref="WindowCommands.Minimize"/> command is sended to the window.</para>
+        /// <para>It occurs immediately after the user clicks the minimize button,
+        /// allowing to distinguish between clicking the button and close the window via code behind.</para>
+        /// </summary>
+        public event EventHandler<EventArgs> MinimizeCommandExecuting;
+
+        /// <summary>
+        /// <para>Occurs when the <see cref="WindowCommands.Maximize"/> command is sended to the window.</para>
+        /// <para>It occurs immediately after the user clicks the maximize button,
+        /// allowing to distinguish between clicking the button and close the window via code behind.</para>
+        /// </summary>
+        public event EventHandler<EventArgs> MaximizeCommandExecuting;
+
+        /// <summary>
+        /// <para>Occurs when the <see cref="WindowCommands.Restore"/> command is sended to the window.</para>
+        /// <para>It occurs immediately after the user clicks the restore button,
+        /// allowing to distinguish between clicking the button and close the window via code behind.</para>
+        /// </summary>
+        public event EventHandler<EventArgs> RestoreCommandExecuting;
+
+        #endregion
 
         /// <summary>
         /// Occurs when an <see cref="IAction"/> is executed.
@@ -952,13 +988,29 @@ namespace FullControls.SystemComponents
         private void Action_CanExecute(object sender, CanExecuteRoutedEventArgs e)
             => e.CanExecute = true;
 
-        private void Close_Executed(object sender, ExecutedRoutedEventArgs e) => Close();
+        private void Close_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            CloseCommandExecuting?.Invoke(this, EventArgs.Empty);
+            Close();
+        }
 
-        private void Minimize_Executed(object sender, ExecutedRoutedEventArgs e) => Minimize();
+        private void Minimize_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MinimizeCommandExecuting?.Invoke(this, EventArgs.Empty);
+            Minimize();
+        }
 
-        private void Maximize_Executed(object sender, ExecutedRoutedEventArgs e) => Maximize();
+        private void Maximize_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            MaximizeCommandExecuting?.Invoke(this, EventArgs.Empty);
+            Maximize();
+        }
 
-        private void Restore_Executed(object sender, ExecutedRoutedEventArgs e) => Restore();
+        private void Restore_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            RestoreCommandExecuting?.Invoke(this, EventArgs.Empty);
+            Restore();
+        }
 
         private void Hide_Executed(object sender, ExecutedRoutedEventArgs e) => Hide();
 
