@@ -41,20 +41,13 @@ TextBoxPlus
 ToggleButtonPlus
 WindowTitleBar</Description>
     <PackageTags>controls csharp net5 wpf wpfui flat-design dark-theme accordion button passwordbox textbox scrollviewer menu contextmenu collapsible drawer window</PackageTags>
-    <PackageReleaseNotes>Added BorderedGrid.
-Added ShallowClone to AccordionItemCollection, added Reset and Clear to Accordion.
-Added GetExecutingFile in Tools that uses the native method GetModuleFileName to get the executing file.
-Updated GetExecutingDirectory to use GetExecutingFile to get the executing directory.
-Renamed E...Controls in Controls...Plus to better highlight their original name (the old controls are still available but deprecated).
-Optimized OnVStateChanged to set the correct initial v-state.
-Fixed a problem preventing some WindowCommands to be executed at window state changing.
-General optimizations.</PackageReleaseNotes>
+    <PackageReleaseNotes>Added commands events to WindowPlus.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <Copyright>Copyright (C) 2020-2021 devpelux (Salvatore Peluso)</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>FullControls.png</PackageIcon>
-    <Version>1.5.0</Version>
+    <Version>1.5.1</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
