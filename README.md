@@ -28,8 +28,8 @@
   </a>
 </p>
 <p align="center">
-  <img alt="Code release" src="https://img.shields.io/badge/code:release-v1.5.1-blue"></img>
-  <img alt="Code status" src="https://img.shields.io/badge/code:status-stable-blue"></img>
+  <img alt="Code release" src="https://img.shields.io/badge/code:release-v1.6.0-orange"></img>
+  <img alt="Code status" src="https://img.shields.io/badge/code:status-beta-orange"></img>
 </p>
 
 <!-- description -->

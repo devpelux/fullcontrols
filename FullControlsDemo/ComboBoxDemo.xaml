@@ -19,13 +19,14 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0"
-              Background="White">
+              Background="#fbfbfb">
             <fc:ComboBoxPlus HorizontalAlignment="Center"
                              VerticalAlignment="Top"
                              Margin="0,50,0,0"
                              SelectedIndex="0"
                              IsEditable="True"
                              MinWidth="120"
+                             MaxDropDownHeight="Infinity"
                              Width="120"
                              Height="30">
                 <fc:ComboBoxItemPlus Content="Item1" />
@@ -45,6 +46,7 @@
                              Margin="0,50,0,0"
                              SelectedIndex="3"
                              MinWidth="120"
+                             MaxDropDownHeight="Infinity"
                              Width="120"
                              Height="30">
                 <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}"

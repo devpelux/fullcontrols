@@ -6,6 +6,21 @@
     <SolidColorBrush x:Key="BlackTransparent"
                      Color="#00000000" />
 
+    <SolidColorBrush x:Key="LightBackground"
+                     Color="#fefefe" />
+    <SolidColorBrush x:Key="LightBackground1"
+                     Color="#f3f3f3" />
+    <SolidColorBrush x:Key="LightBackground2"
+                     Color="#f9f9f9" />
+
+    <SolidColorBrush x:Key="LightOverlay"
+                     Color="#f0f0f0" />
+    <SolidColorBrush x:Key="LightOverlayHover"
+                     Color="#f3f3f3" />
+
+    <SolidColorBrush x:Key="LightBorder"
+                     Color="#ececec" />
+
     <SolidColorBrush x:Key="Gray1"
                      Color="#f2f2f2" />
     <SolidColorBrush x:Key="Gray2"

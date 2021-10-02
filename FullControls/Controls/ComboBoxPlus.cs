@@ -434,6 +434,66 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PopupPadding), typeof(Thickness), typeof(ComboBoxPlus));
 
         /// <summary>
+        /// Gets or sets the corner radius of the popup.
+        /// </summary>
+        public CornerRadius PopupCornerRadius
+        {
+            get => (CornerRadius)GetValue(PopupCornerRadiusProperty);
+            set => SetValue(PopupCornerRadiusProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupCornerRadius"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PopupCornerRadiusProperty =
+            DependencyProperty.Register(nameof(PopupCornerRadius), typeof(CornerRadius), typeof(ComboBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the placement of the popup.
+        /// </summary>
+        public PlacementMode PopupPlacement
+        {
+            get => (PlacementMode)GetValue(PopupPlacementProperty);
+            set => SetValue(PopupPlacementProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupPlacement"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PopupPlacementProperty =
+            DependencyProperty.Register(nameof(PopupPlacement), typeof(PlacementMode), typeof(ComboBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the vertical offset of the popup.
+        /// </summary>
+        public double PopupVerticalOffset
+        {
+            get => (double)GetValue(PopupVerticalOffsetProperty);
+            set => SetValue(PopupVerticalOffsetProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupVerticalOffset"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PopupVerticalOffsetProperty =
+            DependencyProperty.Register(nameof(PopupVerticalOffset), typeof(double), typeof(ComboBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the horizontal offset of the popup.
+        /// </summary>
+        public double PopupHorizontalOffset
+        {
+            get => (double)GetValue(PopupHorizontalOffsetProperty);
+            set => SetValue(PopupHorizontalOffsetProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="PopupHorizontalOffset"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty PopupHorizontalOffsetProperty =
+            DependencyProperty.Register(nameof(PopupHorizontalOffset), typeof(double), typeof(ComboBoxPlus));
+
+        /// <summary>
         /// Gets or sets the animation type of the popup.
         /// </summary>
         public PopupAnimation PopupAnimation
