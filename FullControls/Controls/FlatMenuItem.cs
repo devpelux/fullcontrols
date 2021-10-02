@@ -1243,6 +1243,21 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ScrollViewerStyle), typeof(Style), typeof(FlatMenuItem));
 
         /// <summary>
+        /// Gets or sets the corner radius of the control.
+        /// </summary>
+        public CornerRadius CornerRadius
+        {
+            get => (CornerRadius)GetValue(CornerRadiusProperty);
+            set => SetValue(CornerRadiusProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CornerRadius"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(FlatMenuItem));
+
+        /// <summary>
         /// Gets or sets the duration of the item animation when it changes state.
         /// </summary>
         public TimeSpan AnimationTime

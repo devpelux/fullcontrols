@@ -10,7 +10,9 @@
            BasedOn="{StaticResource {x:Type Menu}}">
 
         <Setter Property="Background"
-                Value="White" />
+                Value="{x:Null}" />
+        <Setter Property="BorderBrush"
+                Value="{x:Null}" />
         <Setter Property="Foreground"
                 Value="{StaticResource Gray17}" />
         <Setter Property="ForegroundOnHighlight"
@@ -18,7 +20,7 @@
         <Setter Property="ForegroundOnOpen"
                 Value="{StaticResource Gray17}" />
         <Setter Property="ForegroundOnDisabled"
-                Value="{StaticResource Gray9}" />
+                Value="{StaticResource Gray10}" />
         <Setter Property="CheckBrush"
                 Value="{StaticResource Gray17}" />
         <Setter Property="CheckBrushOnHighlight"
@@ -26,11 +28,11 @@
         <Setter Property="CheckBrushOnOpen"
                 Value="{StaticResource Gray17}" />
         <Setter Property="CheckBrushOnDisabled"
-                Value="{StaticResource Gray9}" />
+                Value="{StaticResource Gray10}" />
         <Setter Property="PopupCornerRadius"
-                Value="0" />
+                Value="8" />
         <Setter Property="PopupPadding"
-                Value="0" />
+                Value="3" />
         <Setter Property="TopLevelPopupVerticalOffset"
                 Value="0" />
         <Setter Property="TopLevelPopupHorizontalOffset"

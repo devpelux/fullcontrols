@@ -110,9 +110,9 @@
            BasedOn="{StaticResource {x:Type ContextMenu}}">
 
         <Setter Property="Background"
-                Value="{StaticResource Gray1}" />
+                Value="{StaticResource LightBackground2}" />
         <Setter Property="BorderBrush"
-                Value="{StaticResource Gray5}" />
+                Value="{StaticResource LightBorder}" />
         <Setter Property="Foreground"
                 Value="{StaticResource Gray17}" />
         <Setter Property="ForegroundOnHighlight"
@@ -120,7 +120,7 @@
         <Setter Property="ForegroundOnOpen"
                 Value="{StaticResource Gray17}" />
         <Setter Property="ForegroundOnDisabled"
-                Value="{StaticResource Gray9}" />
+                Value="{StaticResource Gray10}" />
         <Setter Property="CheckBrush"
                 Value="{StaticResource Gray17}" />
         <Setter Property="CheckBrushOnHighlight"
@@ -128,19 +128,19 @@
         <Setter Property="CheckBrushOnOpen"
                 Value="{StaticResource Gray17}" />
         <Setter Property="CheckBrushOnDisabled"
-                Value="{StaticResource Gray9}" />
+                Value="{StaticResource Gray10}" />
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="PopupCornerRadius"
-                Value="4" />
+                Value="8" />
         <Setter Property="PopupPadding"
-                Value="0,4,0,4" />
+                Value="3" />
         <Setter Property="PopupVerticalOffset"
                 Value="-5" />
         <Setter Property="PopupHorizontalOffset"
                 Value="0" />
         <Setter Property="HasDropShadow"
-                Value="True" />
+                Value="False" />
         <Setter Property="ShadowRadius"
                 Value="8" />
         <Setter Property="ShadowOpacity"
