@@ -19,7 +19,7 @@
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="Foreground"
-                Value="{StaticResource Gray11}" />
+                Value="{StaticResource LightMenuTitleColor}" />
         <Setter Property="Focusable"
                 Value="False" />
         <Setter Property="UseLayoutRounding"

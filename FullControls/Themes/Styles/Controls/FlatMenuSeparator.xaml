@@ -15,7 +15,7 @@
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="Foreground"
-                Value="{StaticResource Gray2}" />
+                Value="{StaticResource LightMenuBorder}" />
         <Setter Property="BorderBrush"
                 Value="{x:Null}" />
         <Setter Property="BorderThickness"
