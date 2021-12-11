@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFrameworks>net5.0-windows; net6.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Authors>Salvatore Peluso</Authors>
@@ -40,7 +40,7 @@ Switcher
 TextBoxPlus
 ToggleButtonPlus
 WindowTitleBar</Description>
-    <PackageTags>controls csharp net5 wpf wpfui flat-design dark-theme accordion button passwordbox textbox scrollviewer menu contextmenu collapsible drawer window</PackageTags>
+    <PackageTags>controls csharp net5 net6 wpf wpfui flat-design dark-theme accordion button passwordbox textbox scrollviewer menu contextmenu collapsible drawer window</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
