@@ -17,6 +17,9 @@ Steps to reproduce the behavior:
 3. Build '....'
 4. See error
 
+**Example code**
+Add some example code to reproduce the bug, if possible.
+
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
