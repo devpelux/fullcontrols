@@ -40,15 +40,19 @@ Switcher
 TextBoxPlus
 ToggleButtonPlus
 WindowTitleBar</Description>
-    <PackageTags>controls csharp net5 net6 wpf wpfui flat-design dark-theme accordion button passwordbox textbox scrollviewer menu contextmenu collapsible drawer window</PackageTags>
+    <PackageTags>controls csharp net5 net6 wpf fluent accordion button passwordbox textbox scrollviewer menu contextmenu collapsible drawer window</PackageTags>
     <PackageReleaseNotes></PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
-    <Copyright>Copyright (C) 2020-2021 devpelux (Salvatore Peluso)</Copyright>
+    <Copyright>Copyright (C) 2020-2022 devpelux (Salvatore Peluso)</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>FullControls.png</PackageIcon>
-    <Version>1.6.0</Version>
+    <Version>2.0.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Nullable>enable</Nullable>
+    <SignAssembly>False</SignAssembly>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
 
   <ItemGroup>
@@ -83,9 +87,13 @@ WindowTitleBar</Description>
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="Resources\Icons\FullControls.png">
       <Pack>True</Pack>
-      <PackagePath></PackagePath>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 

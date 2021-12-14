@@ -23,13 +23,13 @@
   <a href="https://www.nuget.org/packages/FullControls" title="FullControls on NuGet">
     <img alt="Nuget downloads" src="https://img.shields.io/nuget/dt/fullcontrols"></img>
   </a>
-  <a href="https://github.com/devpelux/fullcontrols/blob/main/LICENSE" title="Licensed under MIT license">
+  <a href="https://github.com/devpelux/fullcontrols/blob/1.5.1/LICENSE" title="Licensed under MIT license">
     <img alt="License" src="https://img.shields.io/github/license/devpelux/fullcontrols"></img>
   </a>
 </p>
 <p align="center">
-  <img alt="Code release" src="https://img.shields.io/badge/code:release-v1.6.0-orange"></img>
-  <img alt="Code status" src="https://img.shields.io/badge/code:status-beta-orange"></img>
+  <img alt="Code release" src="https://img.shields.io/badge/code:release-v2.0.0-red"></img>
+  <img alt="Code status" src="https://img.shields.io/badge/code:status-alpha-red"></img>
 </p>
 
 <!-- description -->
@@ -61,6 +61,7 @@ Repository wiki: [https://github.com/devpelux/fullcontrols/wiki][wiki]
 ## Dependencies
 
 [<img alt=".NET 5" src="https://img.shields.io/badge/.NET-v5.0-blue"/>][net5]
+[<img alt=".NET 5" src="https://img.shields.io/badge/.NET-v6.0-blue"/>][net6]
 <br><br>
 
 # Overview
@@ -266,5 +267,6 @@ Licensed under MIT license.
 
 
 [wiki]: https://github.com/devpelux/fullcontrols/wiki "Documentation"
-[license]: https://github.com/devpelux/fullcontrols/blob/main/LICENSE "Licensed under MIT license"
-[net5]: https://docs.microsoft.com/dotnet/core/dotnet-five ".NET 5"
+[license]: https://github.com/devpelux/fullcontrols/blob/1.5.1/LICENSE "Licensed under MIT license"
+[net5]: https://docs.microsoft.com/dotnet ".NET 5"
+[net6]: https://docs.microsoft.com/dotnet ".NET 6"
