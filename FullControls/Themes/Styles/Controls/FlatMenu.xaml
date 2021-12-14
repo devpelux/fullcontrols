@@ -33,10 +33,6 @@
                 Value="8" />
         <Setter Property="PopupPadding"
                 Value="3" />
-        <Setter Property="TopLevelPopupVerticalOffset"
-                Value="0" />
-        <Setter Property="TopLevelPopupHorizontalOffset"
-                Value="-6" />
         <Setter Property="PopupVerticalOffset"
                 Value="0" />
         <Setter Property="PopupHorizontalOffset"

@@ -59,6 +59,22 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ShadowOpacity), typeof(double), typeof(FlatContextMenu));
 
         /// <summary>
+        /// Gets or sets the direction of the shadow.
+        /// </summary>
+        public double ShadowDirection
+        {
+            get => (double)GetValue(ShadowDirectionProperty);
+            set => SetValue(ShadowDirectionProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ShadowDirection"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ShadowDirectionProperty =
+            DependencyProperty.Register(nameof(ShadowDirection), typeof(double), typeof(FlatContextMenu),
+                new FrameworkPropertyMetadata(315d, new PropertyChangedCallback((d, e) => CalculateShadowOffsets(d))));
+
+        /// <summary>
         /// Gets or sets the radius of the menu popup shadow.
         /// </summary>
         public double ShadowRadius
@@ -72,7 +88,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ShadowRadiusProperty =
             DependencyProperty.Register(nameof(ShadowRadius), typeof(double), typeof(FlatContextMenu),
-                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateMarginForShadow(d))));
+                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateShadowOffsets(d))));
 
         /// <summary>
         /// Gets or sets the depth of the menu popup shadow.
@@ -88,42 +104,50 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ShadowDepthProperty =
             DependencyProperty.Register(nameof(ShadowDepth), typeof(double), typeof(FlatContextMenu),
-                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateMarginForShadow(d))));
+                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateShadowOffsets(d))));
 
-        #region MarginForShadow
-
-        /// <summary>
-        /// Gets the margin used to display the menu popup shadow.
-        /// </summary>
-        public Thickness MarginForShadow => (Thickness)GetValue(MarginForShadowProperty);
-
-        #region MarginForShadowProperty
+        #region ShadowSize
 
         /// <summary>
-        /// The <see cref="DependencyPropertyKey"/> for <see cref="MarginForShadow"/> dependency property.
+        /// Gets the size of the drop shadow.
+        /// <para>This property depends on <see cref="ShadowRadius"/> and <see cref="ShadowDepth"/>.</para>
         /// </summary>
-        private static readonly DependencyPropertyKey MarginForShadowPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(MarginForShadow), typeof(Thickness), typeof(FlatContextMenu),
+        public Thickness ShadowSize => (Thickness)GetValue(ShadowSizeProperty);
+
+        #region ShadowSizeProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ShadowSize"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ShadowSizePropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ShadowSize), typeof(Thickness), typeof(FlatContextMenu),
                 new FrameworkPropertyMetadata(default(Thickness)));
 
         /// <summary>
-        /// Identifies the <see cref="MarginForShadow"/> dependency property.
+        /// Identifies the <see cref="ShadowSize"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty MarginForShadowProperty = MarginForShadowPropertyKey.DependencyProperty;
+        public static readonly DependencyProperty ShadowSizeProperty = ShadowSizePropertyKey.DependencyProperty;
 
         #endregion
 
         /// <summary>
-        /// Calculates the margin used to display the shadow.
+        /// Calculates the drop shadow offsets.
         /// </summary>
-        private static void CalculateMarginForShadow(DependencyObject d)
+        private static void CalculateShadowOffsets(DependencyObject d)
         {
-            double margin = (double)d.GetValue(ShadowRadiusProperty) / 2;
-            double offset = (double)d.GetValue(ShadowDepthProperty);
-            d.SetValue(MarginForShadowPropertyKey, new Thickness(Math.Max(0, Math.Ceiling(margin - offset)),
-                                                                 Math.Max(0, Math.Ceiling(margin - offset)),
-                                                                 Math.Max(0, Math.Ceiling(margin + offset)),
-                                                                 Math.Max(0, Math.Ceiling(margin + offset))));
+            double direction = (double)d.GetValue(ShadowDirectionProperty);
+            double depth = (double)d.GetValue(ShadowDepthProperty);
+            double radius = (double)d.GetValue(ShadowRadiusProperty) / 2;
+
+            double horizontalOffset = Math.Cos(direction / 180 * Math.PI) * depth;
+            double verticalOffset = Math.Sin(direction / 180 * Math.PI) * depth;
+
+            double top = Math.Ceiling(Math.Max(radius + verticalOffset, 0));
+            double bottom = Math.Ceiling(Math.Max(radius - verticalOffset, 0));
+            double right = Math.Ceiling(Math.Max(radius + horizontalOffset, 0));
+            double left = Math.Ceiling(Math.Max(radius - horizontalOffset, 0));
+
+            d.SetValue(ShadowSizePropertyKey, new Thickness(left, top, right, bottom));
         }
 
         #endregion

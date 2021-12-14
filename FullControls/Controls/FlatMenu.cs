@@ -45,38 +45,6 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
-        /// Gets or sets the vertical offset of the items popup if their <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>.
-        /// </summary>
-        public double TopLevelPopupVerticalOffset
-        {
-            get => (double)GetValue(TopLevelPopupVerticalOffsetProperty);
-            set => SetValue(TopLevelPopupVerticalOffsetProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="TopLevelPopupVerticalOffset"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty TopLevelPopupVerticalOffsetProperty =
-            FlatMenuItem.TopLevelPopupVerticalOffsetProperty.AddOwner(typeof(FlatMenu),
-                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
-
-        /// <summary>
-        /// Gets or sets the horizontal offset of the items popup if their <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>.
-        /// </summary>
-        public double TopLevelPopupHorizontalOffset
-        {
-            get => (double)GetValue(TopLevelPopupHorizontalOffsetProperty);
-            set => SetValue(TopLevelPopupHorizontalOffsetProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="TopLevelPopupHorizontalOffset"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty TopLevelPopupHorizontalOffsetProperty =
-            FlatMenuItem.TopLevelPopupHorizontalOffsetProperty.AddOwner(typeof(FlatMenu),
-                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
-
-        /// <summary>
         /// Gets or sets the vertical offset of the items popup.
         /// </summary>
         public double PopupVerticalOffset

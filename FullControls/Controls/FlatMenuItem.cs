@@ -409,90 +409,6 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Gets or sets the vertical offset of the item popup if its <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>.
-        /// </summary>
-        public double TopLevelPopupVerticalOffset
-        {
-            get => (double)GetValue(TopLevelPopupVerticalOffsetProperty);
-            set => SetValue(TopLevelPopupVerticalOffsetProperty, value);
-        }
-
-        #region TopLevelPopupVerticalOffset attached property
-
-        /// <summary>
-        /// Gets the value of the <see cref="TopLevelPopupVerticalOffset"/> attached property from a given <see cref="ItemsControl"/>.
-        /// </summary>
-        /// <param name="element">The element from which to read the property value.</param>
-        /// <returns>The value of the <see cref="TopLevelPopupVerticalOffset"/> attached property.</returns>
-        public static double GetTopLevelPopupVerticalOffset(ItemsControl element)
-        {
-            if (element != null) return (double)element.GetValue(TopLevelPopupVerticalOffsetProperty);
-            else throw new ArgumentNullException(nameof(element));
-        }
-
-        /// <summary>
-        /// Sets the value of the <see cref="TopLevelPopupVerticalOffset"/> attached property to a given <see cref="ItemsControl"/>.
-        /// </summary>
-        /// <param name="element">The element on which to set the attached property.</param>
-        /// <param name="value">The property value to set.</param>
-        public static void SetTopLevelPopupVerticalOffset(ItemsControl element, double value)
-        {
-            if (element != null) element.SetValue(TopLevelPopupVerticalOffsetProperty, value);
-            else throw new ArgumentNullException(nameof(element));
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="TopLevelPopupVerticalOffset"/> attached dependency property.
-        /// </summary>
-        public static readonly DependencyProperty TopLevelPopupVerticalOffsetProperty =
-            DependencyProperty.RegisterAttached(nameof(TopLevelPopupVerticalOffset), typeof(double), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
-
-        #endregion
-
-        /// <summary>
-        /// Gets or sets the horizontal offset of the item popup if its <see cref="MenuItem.Role"/> is <see cref="MenuItemRole.TopLevelHeader"/>.
-        /// </summary>
-        public double TopLevelPopupHorizontalOffset
-        {
-            get => (double)GetValue(TopLevelPopupHorizontalOffsetProperty);
-            set => SetValue(TopLevelPopupHorizontalOffsetProperty, value);
-        }
-
-        #region TopLevelPopupHorizontalOffset attached property
-
-        /// <summary>
-        /// Gets the value of the <see cref="TopLevelPopupHorizontalOffset"/> attached property from a given <see cref="ItemsControl"/>.
-        /// </summary>
-        /// <param name="element">The element from which to read the property value.</param>
-        /// <returns>The value of the <see cref="TopLevelPopupHorizontalOffset"/> attached property.</returns>
-        public static double GetTopLevelPopupHorizontalOffset(ItemsControl element)
-        {
-            if (element != null) return (double)element.GetValue(TopLevelPopupHorizontalOffsetProperty);
-            else throw new ArgumentNullException(nameof(element));
-        }
-
-        /// <summary>
-        /// Sets the value of the <see cref="TopLevelPopupHorizontalOffset"/> attached property to a given <see cref="ItemsControl"/>.
-        /// </summary>
-        /// <param name="element">The element on which to set the attached property.</param>
-        /// <param name="value">The property value to set.</param>
-        public static void SetTopLevelPopupHorizontalOffset(ItemsControl element, double value)
-        {
-            if (element != null) element.SetValue(TopLevelPopupHorizontalOffsetProperty, value);
-            else throw new ArgumentNullException(nameof(element));
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="TopLevelPopupHorizontalOffset"/> attached dependency property.
-        /// </summary>
-        public static readonly DependencyProperty TopLevelPopupHorizontalOffsetProperty =
-            DependencyProperty.RegisterAttached(nameof(TopLevelPopupHorizontalOffset), typeof(double), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
-
-        #endregion
-
-        /// <summary>
         /// Gets or sets the vertical offset of the popup.
         /// </summary>
         public double PopupVerticalOffset
@@ -530,7 +446,29 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty PopupVerticalOffsetProperty =
             DependencyProperty.RegisterAttached(nameof(PopupVerticalOffset), typeof(double), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits,
+                    new PropertyChangedCallback((d, e) => CalculateShadowOffsets(d))));
+
+        #endregion
+
+        /// <summary>
+        /// Gets the actual vertical offset of the popup.
+        /// </summary>
+        public double ActualPopupVerticalOffset => (double)GetValue(ActualPopupVerticalOffsetProperty);
+
+        #region ActualPopupVerticalOffsetProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualPopupVerticalOffset"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualPopupVerticalOffsetPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualPopupVerticalOffset), typeof(double), typeof(FlatMenuItem),
+                new FrameworkPropertyMetadata(default(double)));
+
+        /// <summary>
+        /// Identifies the <see cref="ActualPopupVerticalOffset"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ActualPopupVerticalOffsetProperty = ActualPopupVerticalOffsetPropertyKey.DependencyProperty;
 
         #endregion
 
@@ -572,7 +510,29 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty PopupHorizontalOffsetProperty =
             DependencyProperty.RegisterAttached(nameof(PopupHorizontalOffset), typeof(double), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(0d, FrameworkPropertyMetadataOptions.Inherits,
+                    new PropertyChangedCallback((d, e) => CalculateShadowOffsets(d))));
+
+        #endregion
+
+        /// <summary>
+        /// Gets the actual horizontal offset of the popup.
+        /// </summary>
+        public double ActualPopupHorizontalOffset => (double)GetValue(ActualPopupHorizontalOffsetProperty);
+
+        #region ActualPopupHorizontalOffsetProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualPopupHorizontalOffset"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualPopupHorizontalOffsetPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualPopupHorizontalOffset), typeof(double), typeof(FlatMenuItem),
+                new FrameworkPropertyMetadata(default(double)));
+
+        /// <summary>
+        /// Identifies the <see cref="ActualPopupHorizontalOffset"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ActualPopupHorizontalOffsetProperty = ActualPopupHorizontalOffsetPropertyKey.DependencyProperty;
 
         #endregion
 
@@ -702,6 +662,22 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ShadowOpacity), typeof(double), typeof(FlatMenuItem));
 
         /// <summary>
+        /// Gets or sets the direction of the shadow.
+        /// </summary>
+        public double ShadowDirection
+        {
+            get => (double)GetValue(ShadowDirectionProperty);
+            set => SetValue(ShadowDirectionProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ShadowDirection"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ShadowDirectionProperty =
+            DependencyProperty.Register(nameof(ShadowDirection), typeof(double), typeof(FlatMenuItem),
+                new FrameworkPropertyMetadata(315d, new PropertyChangedCallback((d, e) => CalculateShadowOffsets(d))));
+
+        /// <summary>
         /// Gets or sets the radius of the shadow.
         /// </summary>
         public double ShadowRadius
@@ -715,7 +691,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ShadowRadiusProperty =
             DependencyProperty.Register(nameof(ShadowRadius), typeof(double), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateMarginForShadow(d))));
+                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateShadowOffsets(d))));
 
         /// <summary>
         /// Gets or sets the depth of the shadow.
@@ -731,84 +707,56 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ShadowDepthProperty =
             DependencyProperty.Register(nameof(ShadowDepth), typeof(double), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateMarginForShadow(d))));
+                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateShadowOffsets(d))));
+
+        #region ShadowSize
 
         /// <summary>
-        /// Gets or sets a value inditating if maintain the top and left margin to zero even if the shadow properties are changed.
+        /// Gets the size of the drop shadow.
+        /// <para>This property depends on <see cref="ShadowRadius"/> and <see cref="ShadowDepth"/>.</para>
         /// </summary>
-        public bool PreserveTopLeft
-        {
-            get => (bool)GetValue(PreserveTopLeftProperty);
-            set => SetValue(PreserveTopLeftProperty, BoolBox.Box(value));
-        }
+        public Thickness ShadowSize => (Thickness)GetValue(ShadowSizeProperty);
+
+        #region ShadowSizeProperty
 
         /// <summary>
-        /// Identifies the <see cref="PreserveTopLeft"/> dependency property.
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ShadowSize"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty PreserveTopLeftProperty =
-            DependencyProperty.Register(nameof(PreserveTopLeft), typeof(bool), typeof(FlatMenuItem),
-                new PropertyMetadata(BoolBox.True, new PropertyChangedCallback((d, e) => CalculateMarginForShadow(d))));
-
-        #region MarginForShadow
-
-        /// <summary>
-        /// Gets the back margin used to display the shadow.
-        /// </summary>
-        public Thickness BackMarginForShadow => (Thickness)GetValue(BackMarginForShadowProperty);
-
-        #region BackMarginForShadowProperty
-
-        /// <summary>
-        /// The <see cref="DependencyPropertyKey"/> for <see cref="BackMarginForShadow"/> dependency property.
-        /// </summary>
-        private static readonly DependencyPropertyKey BackMarginForShadowPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(BackMarginForShadow), typeof(Thickness), typeof(FlatMenuItem),
+        private static readonly DependencyPropertyKey ShadowSizePropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ShadowSize), typeof(Thickness), typeof(FlatMenuItem),
                 new FrameworkPropertyMetadata(default(Thickness)));
 
         /// <summary>
-        /// Identifies the <see cref="BackMarginForShadow"/> dependency property.
+        /// Identifies the <see cref="ShadowSize"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty BackMarginForShadowProperty = BackMarginForShadowPropertyKey.DependencyProperty;
+        public static readonly DependencyProperty ShadowSizeProperty = ShadowSizePropertyKey.DependencyProperty;
 
         #endregion
 
         /// <summary>
-        /// Gets the front margin used to display the shadow.
+        /// Calculates the drop shadow offsets.
         /// </summary>
-        public Thickness FrontMarginForShadow => (Thickness)GetValue(FrontMarginForShadowProperty);
-
-        #region FrontMarginForShadowProperty
-
-        /// <summary>
-        /// The <see cref="DependencyPropertyKey"/> for <see cref="FrontMarginForShadow"/> dependency property.
-        /// </summary>
-        private static readonly DependencyPropertyKey FrontMarginForShadowPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(FrontMarginForShadow), typeof(Thickness), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(default(Thickness)));
-
-        /// <summary>
-        /// Identifies the <see cref="FrontMarginForShadow"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty FrontMarginForShadowProperty = FrontMarginForShadowPropertyKey.DependencyProperty;
-
-        #endregion
-
-        /// <summary>
-        /// Calculates the margin used to display the shadow.
-        /// </summary>
-        private static void CalculateMarginForShadow(DependencyObject d)
+        private static void CalculateShadowOffsets(DependencyObject d)
         {
-            double margin = (double)d.GetValue(ShadowRadiusProperty) / 2;
-            double offset = (double)d.GetValue(ShadowDepthProperty);
-            bool preserveTopLeft = (bool)d.GetValue(PreserveTopLeftProperty);
-            d.SetValue(BackMarginForShadowPropertyKey, new Thickness(Math.Max(0, Math.Ceiling(margin - offset)),
-                                                                     Math.Max(0, Math.Ceiling(margin - offset)),
-                                                                     Math.Max(0, Math.Ceiling(margin + offset)),
-                                                                     Math.Max(0, Math.Ceiling(margin + offset))));
-            d.SetValue(FrontMarginForShadowPropertyKey, new Thickness(preserveTopLeft ? 0 : Math.Max(0, Math.Ceiling(margin - offset)),
-                                                                      preserveTopLeft ? 0 : Math.Max(0, Math.Ceiling(margin - offset)),
-                                                                      Math.Max(0, Math.Ceiling(margin + offset)),
-                                                                      Math.Max(0, Math.Ceiling(margin + offset))));
+            double popupHorizontalOffset = (double)d.GetValue(PopupHorizontalOffsetProperty);
+            double popupVerticalOffset = (double)d.GetValue(PopupVerticalOffsetProperty);
+
+            double direction = (double)d.GetValue(ShadowDirectionProperty);
+            double depth = (double)d.GetValue(ShadowDepthProperty);
+            double radius = (double)d.GetValue(ShadowRadiusProperty) / 2;
+
+            double horizontalOffset = Math.Cos(direction / 180 * Math.PI) * depth;
+            double verticalOffset = Math.Sin(direction / 180 * Math.PI) * depth;
+
+            double top = Math.Ceiling(Math.Max(radius + verticalOffset, 0));
+            double bottom = Math.Ceiling(Math.Max(radius - verticalOffset, 0));
+            double right = Math.Ceiling(Math.Max(radius + horizontalOffset, 0));
+            double left = Math.Ceiling(Math.Max(radius - horizontalOffset, 0));
+
+            d.SetValue(ShadowSizePropertyKey, new Thickness(left, top, right, bottom));
+
+            d.SetValue(ActualPopupHorizontalOffsetPropertyKey, popupHorizontalOffset - left);
+            d.SetValue(ActualPopupVerticalOffsetPropertyKey, popupVerticalOffset - top);
         }
 
         #endregion

@@ -34,17 +34,5 @@
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/FullWindow.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/WindowTitleBar.xaml" />
 
-        <!-- Deprecated -->
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/EButton.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/ECheckBox.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/EComboBox.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/EComboBoxItem.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/EPasswordBox.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/ERadioButton.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/ERepeatButton.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/ETextBox.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Deprecated/EToggleButton.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/Deprecated/EWindow.xaml" />
-
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

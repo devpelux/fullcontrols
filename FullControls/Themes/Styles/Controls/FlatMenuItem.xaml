@@ -17,13 +17,15 @@
                 CornerRadius="{TemplateBinding CornerRadius}"
                 UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-            <Grid Margin="{TemplateBinding Padding}">
+            <Grid>
                 <ContentPresenter x:Name="HeaderHost"
+                                  Margin="{TemplateBinding Padding}"
                                   VerticalAlignment="Center"
                                   HorizontalAlignment="Center"
                                   ContentSource="Header"
                                   RecognizesAccessKey="True"
                                   TextBlock.Foreground="{TemplateBinding ActualForeground}" />
+                
                 <Popup x:Name="Popup"
                        Placement="Bottom"
                        IsOpen="{TemplateBinding IsSubmenuOpen}"
@@ -31,12 +33,12 @@
                        AllowsTransparency="True"
                        Focusable="False"
                        PopupAnimation="{TemplateBinding PopupAnimation}"
-                       VerticalOffset="{TemplateBinding TopLevelPopupVerticalOffset}"
-                       HorizontalOffset="{TemplateBinding TopLevelPopupHorizontalOffset}"
+                       VerticalOffset="{TemplateBinding ActualPopupVerticalOffset}"
+                       HorizontalOffset="{TemplateBinding ActualPopupHorizontalOffset}"
                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                     <Grid>
                         <Border x:Name="ShadowBorder"
-                                Margin="{TemplateBinding BackMarginForShadow}"
+                                Margin="{TemplateBinding ShadowSize}"
                                 BorderThickness="1"
                                 CornerRadius="{TemplateBinding PopupCornerRadius}"
                                 Background="{TemplateBinding PopupBackground}"
@@ -45,6 +47,7 @@
                                 Focusable="False">
                             <Border.Effect>
                                 <DropShadowEffect x:Name="PART_Shadow"
+                                                  Direction="{Binding ShadowDirection, RelativeSource={RelativeSource TemplatedParent}}"
                                                   Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"
                                                   Opacity="{Binding ShadowOpacity, RelativeSource={RelativeSource TemplatedParent}}"
                                                   BlurRadius="{Binding ShadowRadius, RelativeSource={RelativeSource TemplatedParent}}"
@@ -52,7 +55,7 @@
                             </Border.Effect>
                         </Border>
                         <Border x:Name="SubmenuBorder"
-                                Margin="{TemplateBinding FrontMarginForShadow}"
+                                Margin="{TemplateBinding ShadowSize}"
                                 Background="{TemplateBinding PopupBackground}"
                                 BorderBrush="{TemplateBinding PopupBorderBrush}"
                                 BorderThickness="{TemplateBinding PopupBorderThickness}"
@@ -100,14 +103,13 @@
                 CornerRadius="{TemplateBinding CornerRadius}"
                 UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-            <Grid Margin="{TemplateBinding Padding}">
-                <ContentPresenter x:Name="HeaderHost"
-                                  VerticalAlignment="Center"
-                                  HorizontalAlignment="Center"
-                                  ContentSource="Header"
-                                  RecognizesAccessKey="True"
-                                  TextBlock.Foreground="{TemplateBinding ActualForeground}" />
-            </Grid>
+            <ContentPresenter x:Name="HeaderHost"
+                              Margin="{TemplateBinding Padding}"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Center"
+                              ContentSource="Header"
+                              RecognizesAccessKey="True"
+                              TextBlock.Foreground="{TemplateBinding ActualForeground}" />
         </Border>
     </ControlTemplate>
 
@@ -120,92 +122,95 @@
                 CornerRadius="{TemplateBinding CornerRadius}"
                 UseLayoutRounding="{TemplateBinding UseLayoutRounding}"
                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-            <Grid Margin="{TemplateBinding Padding}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto">
-                        <ColumnDefinition.Style>
-                            <Style>
-                                <Setter Property="ColumnDefinition.SharedSizeGroup"
-                                        Value="MenuItemColumnGroupIcon" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding AlignWithOthers, RelativeSource={RelativeSource TemplatedParent}}"
-                                                 Value="False">
-                                        <Setter Property="ColumnDefinition.SharedSizeGroup"
-                                                Value="{x:Null}" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ColumnDefinition.Style>
-                    </ColumnDefinition>
-                    <!-- Main column -->
-                    <ColumnDefinition Width="*" />
-                    <!-- Main column -->
-                    <ColumnDefinition Width="Auto">
-                        <ColumnDefinition.Style>
-                            <Style>
-                                <Setter Property="ColumnDefinition.SharedSizeGroup"
-                                        Value="MenuItemColumnGroupShortcut" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding AlignWithOthers, RelativeSource={RelativeSource TemplatedParent}}"
-                                                 Value="False">
-                                        <Setter Property="ColumnDefinition.SharedSizeGroup"
-                                                Value="{x:Null}" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ColumnDefinition.Style>
-                    </ColumnDefinition>
-                    <ColumnDefinition Width="Auto">
-                        <ColumnDefinition.Style>
-                            <Style>
-                                <Setter Property="ColumnDefinition.SharedSizeGroup"
-                                        Value="MenuItemColumnGroupArrow" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding AlignWithOthers, RelativeSource={RelativeSource TemplatedParent}}"
-                                                 Value="False">
-                                        <Setter Property="ColumnDefinition.SharedSizeGroup"
-                                                Value="{x:Null}" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ColumnDefinition.Style>
-                    </ColumnDefinition>
-                </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid Margin="{TemplateBinding Padding}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto">
+                            <ColumnDefinition.Style>
+                                <Style>
+                                    <Setter Property="ColumnDefinition.SharedSizeGroup"
+                                            Value="MenuItemColumnGroupIcon" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding AlignWithOthers, RelativeSource={RelativeSource TemplatedParent}}"
+                                                     Value="False">
+                                            <Setter Property="ColumnDefinition.SharedSizeGroup"
+                                                    Value="{x:Null}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ColumnDefinition.Style>
+                        </ColumnDefinition>
+                        
+                        <!-- Main column -->
+                        <ColumnDefinition Width="*" />
+                        
+                        <ColumnDefinition Width="Auto">
+                            <ColumnDefinition.Style>
+                                <Style>
+                                    <Setter Property="ColumnDefinition.SharedSizeGroup"
+                                            Value="MenuItemColumnGroupShortcut" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding AlignWithOthers, RelativeSource={RelativeSource TemplatedParent}}"
+                                                     Value="False">
+                                            <Setter Property="ColumnDefinition.SharedSizeGroup"
+                                                    Value="{x:Null}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ColumnDefinition.Style>
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="Auto">
+                            <ColumnDefinition.Style>
+                                <Style>
+                                    <Setter Property="ColumnDefinition.SharedSizeGroup"
+                                            Value="MenuItemColumnGroupArrow" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding AlignWithOthers, RelativeSource={RelativeSource TemplatedParent}}"
+                                                     Value="False">
+                                            <Setter Property="ColumnDefinition.SharedSizeGroup"
+                                                    Value="{x:Null}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ColumnDefinition.Style>
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-                <ContentPresenter x:Name="Icon"
-                                  Grid.Column="0"
-                                  Margin="{TemplateBinding IconMargin}"
-                                  VerticalAlignment="Center"
-                                  ContentSource="Icon"
-                                  Visibility="Visible" />
+                    <ContentPresenter x:Name="Icon"
+                                      Grid.Column="0"
+                                      Margin="{TemplateBinding IconMargin}"
+                                      VerticalAlignment="Center"
+                                      ContentSource="Icon"
+                                      Visibility="Visible" />
 
-                <ContentPresenter x:Name="HeaderHost"
-                                  Grid.Column="1"
-                                  Margin="{TemplateBinding HeaderMargin}"
-                                  VerticalAlignment="Center"
-                                  ContentSource="Header"
-                                  RecognizesAccessKey="True"
-                                  TextBlock.Foreground="{TemplateBinding ActualForeground}" />
+                    <ContentPresenter x:Name="HeaderHost"
+                                      Grid.Column="1"
+                                      Margin="{TemplateBinding HeaderMargin}"
+                                      VerticalAlignment="Center"
+                                      ContentSource="Header"
+                                      RecognizesAccessKey="True"
+                                      TextBlock.Foreground="{TemplateBinding ActualForeground}" />
 
-                <TextBlock x:Name="InputGestureText"
-                           Grid.Column="2"
-                           Margin="{TemplateBinding InputGestureMargin}"
-                           VerticalAlignment="Center"
-                           Foreground="{TemplateBinding ActualForeground}"
-                           Text="{TemplateBinding InputGestureText}"
-                           DockPanel.Dock="Right" />
+                    <TextBlock x:Name="InputGestureText"
+                               Grid.Column="2"
+                               Margin="{TemplateBinding InputGestureMargin}"
+                               VerticalAlignment="Center"
+                               Foreground="{TemplateBinding ActualForeground}"
+                               Text="{TemplateBinding InputGestureText}"
+                               DockPanel.Dock="Right" />
 
-                <ContentPresenter x:Name="Arrow"
-                                  Grid.Column="3"
-                                  Margin="{TemplateBinding ArrowMargin}"
-                                  VerticalAlignment="Center"
-                                  Width="{TemplateBinding ArrowSize}"
-                                  Height="{TemplateBinding ArrowSize}"
-                                  TextBlock.Foreground="{TemplateBinding ActualForeground}"
-                                  TextBlock.FontSize="{TemplateBinding ArrowSize}"
-                                  TextBlock.FontFamily="{TemplateBinding ArrowFont}"
-                                  ContentSource="Arrow" />
-
+                    <ContentPresenter x:Name="Arrow"
+                                      Grid.Column="3"
+                                      Margin="{TemplateBinding ArrowMargin}"
+                                      VerticalAlignment="Center"
+                                      Width="{TemplateBinding ArrowSize}"
+                                      Height="{TemplateBinding ArrowSize}"
+                                      TextBlock.Foreground="{TemplateBinding ActualForeground}"
+                                      TextBlock.FontSize="{TemplateBinding ArrowSize}"
+                                      TextBlock.FontFamily="{TemplateBinding ArrowFont}"
+                                      ContentSource="Arrow" />
+                </Grid>
+                
                 <Popup x:Name="Popup"
                        Placement="Right"
                        IsOpen="{TemplateBinding IsSubmenuOpen}"
@@ -213,12 +218,12 @@
                        AllowsTransparency="True"
                        Focusable="False"
                        PopupAnimation="{TemplateBinding PopupAnimation}"
-                       VerticalOffset="{TemplateBinding PopupVerticalOffset}"
-                       HorizontalOffset="{TemplateBinding PopupHorizontalOffset}"
+                       VerticalOffset="{TemplateBinding ActualPopupVerticalOffset}"
+                       HorizontalOffset="{TemplateBinding ActualPopupHorizontalOffset}"
                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                     <Grid>
                         <Border x:Name="ShadowBorder"
-                                Margin="{TemplateBinding BackMarginForShadow}"
+                                Margin="{TemplateBinding ShadowSize}"
                                 BorderThickness="1"
                                 CornerRadius="{TemplateBinding PopupCornerRadius}"
                                 Background="{TemplateBinding PopupBackground}"
@@ -227,6 +232,7 @@
                                 Focusable="False">
                             <Border.Effect>
                                 <DropShadowEffect x:Name="PART_Shadow"
+                                                  Direction="{Binding ShadowDirection, RelativeSource={RelativeSource TemplatedParent}}"
                                                   Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"
                                                   Opacity="{Binding ShadowOpacity, RelativeSource={RelativeSource TemplatedParent}}"
                                                   BlurRadius="{Binding ShadowRadius, RelativeSource={RelativeSource TemplatedParent}}"
@@ -234,7 +240,7 @@
                             </Border.Effect>
                         </Border>
                         <Border x:Name="SubmenuBorder"
-                                Margin="{TemplateBinding FrontMarginForShadow}"
+                                Margin="{TemplateBinding ShadowSize}"
                                 Background="{TemplateBinding PopupBackground}"
                                 BorderBrush="{TemplateBinding PopupBorderBrush}"
                                 BorderThickness="{TemplateBinding PopupBorderThickness}"
@@ -305,9 +311,10 @@
                             </Style>
                         </ColumnDefinition.Style>
                     </ColumnDefinition>
+                    
                     <!-- Main column -->
                     <ColumnDefinition Width="*" />
-                    <!-- Main column -->
+                    
                     <ColumnDefinition Width="Auto">
                         <ColumnDefinition.Style>
                             <Style>
@@ -474,12 +481,14 @@
                 Value="Fade" />
         <Setter Property="HasDropShadow"
                 Value="True" />
+        <Setter Property="ShadowDirection"
+                Value="270" />
         <Setter Property="ShadowRadius"
-                Value="8" />
+                Value="10" />
         <Setter Property="ShadowOpacity"
-                Value="0.5" />
+                Value="0.1" />
         <Setter Property="ShadowDepth"
-                Value="2" />
+                Value="10" />
         <Setter Property="ShadowColor"
                 Value="Black" />
         <Setter Property="FontSize"
@@ -499,7 +508,7 @@
         <Setter Property="MaxDropDownHeight"
                 Value="Infinity" />
         <Setter Property="AnimationTime"
-                Value="0:0:0.2" />
+                Value="0" />
         <Setter Property="UseLayoutRounding"
                 Value="True" />
         <Setter Property="SnapsToDevicePixels"
