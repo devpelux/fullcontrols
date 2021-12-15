@@ -15,7 +15,7 @@ namespace FullControlsDemo
         public const string WHAT = "CustomMessageWindowDemo.WHAT";
         public const string ABORT = "CustomMessageWindowDemo.ABORT";
 
-        private string result;
+        private string? result;
 
 
         public CustomMessageWindowDemo()
@@ -57,6 +57,6 @@ namespace FullControlsDemo
             Close();
         }
 
-        public object GetResult() => result;
+        public object? GetResult() => result;
     }
 }

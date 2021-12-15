@@ -55,7 +55,7 @@ namespace FullControls.Controls
         /// <summary>
         /// Occurs when in an item <see cref="AccordionItem.IsExpanded"/> is changed.
         /// </summary>
-        public event EventHandler<ItemExpandedChangedEventArgs> ItemIsExpandedChanged;
+        public event EventHandler<ItemExpandedChangedEventArgs>? ItemIsExpandedChanged;
 
 
         static Accordion()
@@ -230,9 +230,9 @@ namespace FullControls.Controls
 
         #region EventHandlers
 
-        private void OnItemsChanged(object s, NotifyCollectionChangedEventArgs e) => OnItemsChanged(e);
+        private void OnItemsChanged(object? s, NotifyCollectionChangedEventArgs e) => OnItemsChanged(e);
 
-        private void OnItemExpandedChanged(object s, ItemExpandedChangedEventArgs e) => OnItemExpandedChanged(e);
+        private void OnItemExpandedChanged(object? s, ItemExpandedChangedEventArgs e) => OnItemExpandedChanged(e);
 
         #endregion
     }

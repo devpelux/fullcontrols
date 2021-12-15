@@ -28,7 +28,7 @@ namespace FullControls.SystemComponents
         /// Displays the dialog and, in the end, return an <see cref="object"/> as result.
         /// </summary>
         /// <returns>Result object.</returns>
-        public object Show()
+        public object? Show()
         {
             _ = window.ShowDialog();
             return ((IDialog)window).GetResult();

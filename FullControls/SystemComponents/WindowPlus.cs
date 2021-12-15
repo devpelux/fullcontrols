@@ -547,12 +547,12 @@ namespace FullControls.SystemComponents
         /// <summary>
         /// Occurs immediately before <see cref="Close"/> is executed.
         /// </summary>
-        public event EventHandler<CancelEventArgs> PreviewClose;
+        public event EventHandler<CancelEventArgs>? PreviewClose;
 
         /// <summary>
         /// Occurs immediately before <see cref="Minimize"/> is executed.
         /// </summary>
-        public event EventHandler<CancelEventArgs> PreviewMinimize;
+        public event EventHandler<CancelEventArgs>? PreviewMinimize;
 
         #endregion
 
@@ -563,35 +563,35 @@ namespace FullControls.SystemComponents
         /// <para>It occurs immediately after the user clicks the close button,
         /// allowing to distinguish between clicking the button and close the window via code behind.</para>
         /// </summary>
-        public event EventHandler<EventArgs> CloseCommandExecuting;
+        public event EventHandler<EventArgs>? CloseCommandExecuting;
 
         /// <summary>
         /// <para>Occurs when the <see cref="WindowCommands.Minimize"/> command is sended to the window.</para>
         /// <para>It occurs immediately after the user clicks the minimize button,
         /// allowing to distinguish between clicking the button and close the window via code behind.</para>
         /// </summary>
-        public event EventHandler<EventArgs> MinimizeCommandExecuting;
+        public event EventHandler<EventArgs>? MinimizeCommandExecuting;
 
         /// <summary>
         /// <para>Occurs when the <see cref="WindowCommands.Maximize"/> command is sended to the window.</para>
         /// <para>It occurs immediately after the user clicks the maximize button,
         /// allowing to distinguish between clicking the button and close the window via code behind.</para>
         /// </summary>
-        public event EventHandler<EventArgs> MaximizeCommandExecuting;
+        public event EventHandler<EventArgs>? MaximizeCommandExecuting;
 
         /// <summary>
         /// <para>Occurs when the <see cref="WindowCommands.Restore"/> command is sended to the window.</para>
         /// <para>It occurs immediately after the user clicks the restore button,
         /// allowing to distinguish between clicking the button and close the window via code behind.</para>
         /// </summary>
-        public event EventHandler<EventArgs> RestoreCommandExecuting;
+        public event EventHandler<EventArgs>? RestoreCommandExecuting;
 
         #endregion
 
         /// <summary>
         /// Occurs when an <see cref="IAction"/> is executed.
         /// </summary>
-        public event EventHandler<ActionEventArgs> ActionExecuted;
+        public event EventHandler<ActionEventArgs>? ActionExecuted;
 
 
         static WindowPlus()

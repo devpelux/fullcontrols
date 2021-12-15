@@ -24,7 +24,7 @@ namespace FullControls.Extra
         /// Gets the current active window.
         /// </summary>
         /// <returns>Current active window.</returns>
-        public static Window GetActiveWindow() => Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
+        public static Window? GetActiveWindow() => Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive);
 
         /// <summary>
         /// Gets the current application executing file.
@@ -36,6 +36,6 @@ namespace FullControls.Extra
         /// Gets the current application executing directory.
         /// </summary>
         /// <returns>Current application executing directory.</returns>
-        public static DirectoryInfo GetExecutingDirectory() => GetExecutingFile().Directory;
+        public static DirectoryInfo? GetExecutingDirectory() => GetExecutingFile().Directory;
     }
 }

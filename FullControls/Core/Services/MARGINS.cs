@@ -6,11 +6,15 @@ namespace FullControls.Core.Services
     [StructLayout(LayoutKind.Sequential)]
     internal struct MARGINS
     {
+        public static MARGINS Empty;
+
         public int LeftWidth;
         public int RightWidth;
         public int TopHeight;
         public int BottomHeight;
 
+
+        static MARGINS() => Empty = new MARGINS();
 
         public MARGINS(int leftWidth, int rightWidth, int topHeight, int bottomHeight)
         {

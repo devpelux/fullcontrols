@@ -18,7 +18,7 @@ namespace FullControls.Controls
     public abstract class AccordionItem : Control
     {
         private bool loaded = false;
-        private UIElement header;
+        private UIElement? header;
 
         /// <summary>
         /// Header template part.
@@ -473,17 +473,17 @@ namespace FullControls.Controls
         /// <summary>
         /// Occurs when <see cref="IsExpanded"/> is changed.
         /// </summary>
-        public event EventHandler<ItemExpandedChangedEventArgs> IsExpandedChanged;
+        public event EventHandler<ItemExpandedChangedEventArgs>? IsExpandedChanged;
 
         /// <summary>
         /// Occurs when the collapsing or expanding animation started.
         /// </summary>
-        public event EventHandler AnimationStarted;
+        public event EventHandler? AnimationStarted;
 
         /// <summary>
         /// Occurs when the collapsing or expanding animation ended.
         /// </summary>
-        public event EventHandler AnimationEnded;
+        public event EventHandler? AnimationEnded;
 
 
         static AccordionItem()

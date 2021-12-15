@@ -899,7 +899,7 @@ namespace FullControls.Controls
         /// </summary>
         /// <param name="str">String to correct.</param>
         /// <returns>Corrected string.</returns>
-        private string CoerceText(string str) => str is "" or null ? str
+        private string? CoerceText(string str) => str is "" or null ? str
             : (TextType switch
             {
                 TextType.DoubleOnly => str is "+" or "-" ? str : str.IsDouble() ? str.NormalizeForDouble(false) : Text,

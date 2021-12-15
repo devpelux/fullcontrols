@@ -19,7 +19,7 @@ namespace FullControls.Extra.Extensions
             if (storyboard == null) task.SetException(new ArgumentNullException(nameof(storyboard), "Storyboard is null."));
             else
             {
-                void onCurrentStateInvalidated(object s, EventArgs e)
+                void onCurrentStateInvalidated(object? s, EventArgs e)
                 {
                     if (storyboard.GetCurrentState() != ClockState.Active) task.SetResult(true);
                 }

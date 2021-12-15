@@ -54,7 +54,7 @@ namespace FullControlsDemo
 
         private static string GetVersionCode()
         {
-            Version v = Assembly.GetExecutingAssembly().GetName().Version;
+            Version? v = Assembly.GetExecutingAssembly().GetName().Version;
             return v != null ? $"{v.Major}.{v.Minor}.{v.Build}" : "N/A";
         }
     }

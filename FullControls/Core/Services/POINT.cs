@@ -6,9 +6,13 @@ namespace FullControls.Core.Services
     [StructLayout(LayoutKind.Sequential)]
     internal struct POINT
     {
+        public static POINT Empty;
+
         public int X;
         public int Y;
 
+
+        static POINT() => Empty = new POINT();
 
         public POINT(int x, int y)
         {

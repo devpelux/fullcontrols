@@ -133,17 +133,17 @@ namespace FullControls.Controls
         /// <summary>
         /// Occurs when <see cref="IsExpanded"/> is changed.
         /// </summary>
-        public event EventHandler<ExpandedChangedEventArgs> IsExpandedChanged;
+        public event EventHandler<ExpandedChangedEventArgs>? IsExpandedChanged;
 
         /// <summary>
         /// Occurs when the collapsing or expanding animation started.
         /// </summary>
-        public event EventHandler AnimationStarted;
+        public event EventHandler? AnimationStarted;
 
         /// <summary>
         /// Occurs when the collapsing or expanding animation ended.
         /// </summary>
-        public event EventHandler AnimationEnded;
+        public event EventHandler? AnimationEnded;
 
 
         /// <summary>

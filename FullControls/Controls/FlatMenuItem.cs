@@ -1266,20 +1266,20 @@ namespace FullControls.Controls
         protected override DependencyObject GetContainerForItemOverride() => new FlatMenuItemContainer();
 
         /// <inheritdoc/>
-        protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
+        protected override void PrepareContainerForItemOverride(DependencyObject container, object item)
         {
-            base.PrepareContainerForItemOverride(element, item);
-            if (item is FlatMenuSeparator) FlatMenuSeparator.PrepareContainer(element as FlatMenuItemContainer, item as FlatMenuSeparator);
-            else if (item is FlatMenuSpace) FlatMenuSpace.PrepareContainer(element as FlatMenuItemContainer, item as FlatMenuSpace);
-            else if (item is FlatMenuTitle) FlatMenuTitle.PrepareContainer(element as FlatMenuItemContainer, item as FlatMenuTitle);
-            else PrepareContainer(element as FlatMenuItemContainer);
+            base.PrepareContainerForItemOverride(container, item);
+            if (item is FlatMenuSeparator) FlatMenuSeparator.PrepareContainer(container as FlatMenuItemContainer, item as FlatMenuSeparator);
+            else if (item is FlatMenuSpace) FlatMenuSpace.PrepareContainer(container as FlatMenuItemContainer, item as FlatMenuSpace);
+            else if (item is FlatMenuTitle) FlatMenuTitle.PrepareContainer(container as FlatMenuItemContainer, item as FlatMenuTitle);
+            else PrepareContainer(container as FlatMenuItemContainer);
         }
 
         /// <summary>
         /// Prepares the container for the item.
         /// </summary>
         /// <param name="container">Container to prepare.</param>
-        internal static void PrepareContainer(FlatMenuItemContainer container)
+        internal static void PrepareContainer(FlatMenuItemContainer? container)
         {
             if (container != null)
             {
@@ -1317,7 +1317,7 @@ namespace FullControls.Controls
         /// </summary>
         private void UncheckOtherItems()
         {
-            IEnumerable<FlatMenuItem> radioItems = GetCheckableRadioItems();
+            IEnumerable<FlatMenuItem>? radioItems = GetCheckableRadioItems();
             if (radioItems != null)
             {
                 foreach (FlatMenuItem item in radioItems)
@@ -1330,8 +1330,6 @@ namespace FullControls.Controls
             }
         }
 
-#nullable enable
-
         /// <summary>
         /// Returns all the checkable <see cref="FlatMenuItem"/> of <see cref="FrameworkElement.Parent"/>
         /// that have <see cref="CheckType"/> setted to <see cref="CheckType.Radio"/>.
@@ -1342,8 +1340,6 @@ namespace FullControls.Controls
         protected IEnumerable<FlatMenuItem>? GetCheckableRadioItems()
             => Parent is ItemsControl parent ? parent.Items.OfType<FlatMenuItem>()
             .Where((item) => item.IsCheckable && item.CheckType == CheckType.Radio && (item.DataContext == parent.DataContext || item.DataContext != DataContext)) : null;
-
-#nullable disable
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.

@@ -10,7 +10,7 @@ namespace FullControls.Common
         /// <summary>
         /// Gets a value indicating the <see cref="IAction"/> executed.
         /// </summary>
-        public IAction Action { get; }
+        public IAction? Action { get; }
 
 
         /// <summary>
@@ -22,6 +22,6 @@ namespace FullControls.Common
         /// Initializes a new instance of <see cref="ActionEventArgs"/> specifying the <see cref="IAction"/> executed.
         /// </summary>
         /// <param name="action">Specifies the <see cref="IAction"/> executed.</param>
-        public ActionEventArgs(IAction action) : base() => Action = action;
+        public ActionEventArgs(IAction? action) : base() => Action = action;
     }
 }

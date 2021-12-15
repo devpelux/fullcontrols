@@ -47,7 +47,7 @@ namespace FullControls.Core
         /// <param name="brushProperty"><see cref="Brush"/> property to animate.</param>
         /// <param name="to">New value of the <see cref="Brush"/>.</param>
         /// <param name="animationTime">Animation time.</param>
-        internal static void AnimateBrush(UIElement uiElement, DependencyProperty brushProperty, Brush to, TimeSpan animationTime)
+        internal static void AnimateBrush(UIElement uiElement, DependencyProperty brushProperty, Brush? to, TimeSpan animationTime)
         {
             if (animationTime > TimeSpan.Zero && !uiElement.IsNull(brushProperty) && to != null)
             {

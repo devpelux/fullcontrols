@@ -359,13 +359,13 @@ namespace FullControls.Controls
         protected override DependencyObject GetContainerForItemOverride() => new FlatMenuItemContainer();
 
         /// <inheritdoc/>
-        protected override void PrepareContainerForItemOverride(DependencyObject element, object item)
+        protected override void PrepareContainerForItemOverride(DependencyObject container, object item)
         {
-            base.PrepareContainerForItemOverride(element, item);
-            if (item is FlatMenuSeparator) FlatMenuSeparator.PrepareContainer(element as FlatMenuItemContainer, item as FlatMenuSeparator);
-            else if (item is FlatMenuSpace) FlatMenuSpace.PrepareContainer(element as FlatMenuItemContainer, item as FlatMenuSpace);
-            else if (item is FlatMenuTitle) FlatMenuTitle.PrepareContainer(element as FlatMenuItemContainer, item as FlatMenuTitle);
-            else FlatMenuItem.PrepareContainer(element as FlatMenuItemContainer);
+            base.PrepareContainerForItemOverride(container, item);
+            if (item is FlatMenuSeparator) FlatMenuSeparator.PrepareContainer(container as FlatMenuItemContainer, item as FlatMenuSeparator);
+            else if (item is FlatMenuSpace) FlatMenuSpace.PrepareContainer(container as FlatMenuItemContainer, item as FlatMenuSpace);
+            else if (item is FlatMenuTitle) FlatMenuTitle.PrepareContainer(container as FlatMenuItemContainer, item as FlatMenuTitle);
+            else FlatMenuItem.PrepareContainer(container as FlatMenuItemContainer);
         }
     }
 }

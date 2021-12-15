@@ -16,7 +16,7 @@ namespace FullControls.Core.Services
         private const int MAX_UNICODESTRING_LEN = short.MaxValue;
         private const int INSUFFICIENT_BUFFER_ERROR = 0x007A;
 
-        private static string _moduleFileNameLongPath = null;
+        private static string? _moduleFileNameLongPath = null;
 
 
         internal static IntPtr GetDC(HandleRef hWnd)
@@ -78,7 +78,11 @@ namespace FullControls.Core.Services
         internal static string GetExecutablePath()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) return GetModuleFileNameLongPath();
-            else return Path.GetFullPath(Process.GetCurrentProcess().MainModule.FileName);
+            else
+            {
+                ProcessModule? main = Process.GetCurrentProcess().MainModule;
+                return main != null ? main.FileName ?? string.Empty : string.Empty;
+            }
         }
     }
 }

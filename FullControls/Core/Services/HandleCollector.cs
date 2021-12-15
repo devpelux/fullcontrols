@@ -10,7 +10,7 @@ namespace FullControls.Core.Services
 {
     internal static class HandleCollector
     {
-        private static HandleType[] handleTypes;
+        private static HandleType[] handleTypes = new HandleType[10];
         private static int handleTypeCount = 0;
 
         private static readonly object handleMutex = new();

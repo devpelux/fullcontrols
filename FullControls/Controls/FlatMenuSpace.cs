@@ -34,7 +34,7 @@ namespace FullControls.Controls
         /// </summary>
         /// <param name="container">Container to prepare.</param>
         /// <param name="item">Item contained.</param>
-        internal static void PrepareContainer(FlatMenuItemContainer container, FlatMenuSpace item)
+        internal static void PrepareContainer(FlatMenuItemContainer? container, FlatMenuSpace? item)
         {
             if (container != null && item != null)
             {

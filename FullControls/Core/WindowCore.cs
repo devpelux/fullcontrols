@@ -45,7 +45,8 @@ namespace FullControls.Core
         /// </summary>
         internal static IntPtr WmNcCalcSize(IntPtr wParam, IntPtr lParam)
         {
-            RECT rcClientArea = (RECT)Marshal.PtrToStructure(lParam, typeof(RECT));
+            object? res = Marshal.PtrToStructure(lParam, typeof(RECT));
+            RECT rcClientArea = res != null ? (RECT)res : RECT.Empty;
             rcClientArea.Bottom += (int)(SysParams.WindowResizeBorderThickness.Bottom / 2);
             Marshal.StructureToPtr(rcClientArea, lParam, false);
 
@@ -83,7 +84,8 @@ namespace FullControls.Core
 
             IntPtr lCurrentScreen = NativeMethods.MonitorFromPoint(lMousePosition, MonitorOptions.MONITOR_DEFAULTTONEAREST);
 
-            MINMAXINFO lMmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
+            object? res = Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
+            MINMAXINFO lMmi = res != null ? (MINMAXINFO)res : MINMAXINFO.Empty;
 
             if (lPrimaryScreen.Equals(lCurrentScreen) == true)
             {
