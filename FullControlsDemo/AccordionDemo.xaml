@@ -64,17 +64,15 @@
         <Grid Grid.Column="0"
               Background="White">
             <fc:GlassScrollViewer Margin="40,60,40,40"
-                                  PlaceScrollBarsInside="True">
-                <fc:Accordion x:Name="accordion"
-                              Background="WhiteSmoke" />
+                                  Padding="2,0,2,0">
+                <fc:Accordion x:Name="accordion" />
             </fc:GlassScrollViewer>
         </Grid>
         <Grid Grid.Column="1"
               Background="Black">
             <fc:GlassScrollViewer Margin="40,60,40,40"
-                                  PlaceScrollBarsInside="True">
-                <fc:Accordion x:Name="accordionDark"
-                              Background="#FF171717" />
+                                  Padding="2,0,2,0">
+                <fc:Accordion x:Name="accordionDark" />
             </fc:GlassScrollViewer>
         </Grid>
     </Grid>

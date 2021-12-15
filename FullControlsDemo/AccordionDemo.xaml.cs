@@ -49,7 +49,8 @@ namespace FullControlsDemo
                 ItemTemplate = (DataTemplate)FindResource("ShapeItemTemplate"),
                 ItemsSource = Clone(shapes),
                 Header = "SHAPES",
-                IsExpanded = true
+                IsExpanded = true,
+                Margin = new Thickness(0, 2, 0, 2)
             };
 
             ItemsControlAccordionItem accordionItem2 = new()
@@ -57,7 +58,8 @@ namespace FullControlsDemo
                 ItemTemplate = (DataTemplate)FindResource("ShapeItemTemplate"),
                 ItemsSource = Clone(roundShapes),
                 Header = "CIRCULAR SHAPES",
-                IsExpanded = true
+                IsExpanded = true,
+                Margin = new Thickness(0, 2, 0, 2)
             };
 
             accordionItems.Add(accordionItem);
@@ -74,7 +76,8 @@ namespace FullControlsDemo
                 ItemTemplate = (DataTemplate)FindResource("ShapeItemTemplateDark"),
                 ItemsSource = Clone(shapes),
                 Header = "SHAPES",
-                IsExpanded = false
+                IsExpanded = false,
+                Margin = new Thickness(0, 2, 0, 2)
             };
 
             ItemsControlAccordionItem accordionDarkItem2 = new()
@@ -83,7 +86,8 @@ namespace FullControlsDemo
                 ItemTemplate = (DataTemplate)FindResource("ShapeItemTemplateDark"),
                 ItemsSource = Clone(roundShapes),
                 Header = "CIRCULAR SHAPES",
-                IsExpanded = false
+                IsExpanded = false,
+                Margin = new Thickness(0, 2, 0, 2)
             };
 
             accordionDarkItems.Add(accordionDarkItem);

@@ -9,25 +9,53 @@
     <Style TargetType="{x:Type local:SimpleAccordionItem}">
 
         <Setter Property="Foreground"
-                Value="Black" />
+                Value="{StaticResource LightTextColor}" />
         <Setter Property="ForegroundOnExpanded"
-                Value="{StaticResource Blue7}" />
+                Value="{StaticResource LightTextColor}" />
         <Setter Property="ForegroundOnMouseOver"
-                Value="{StaticResource Gray15}" />
+                Value="{StaticResource LightTextColorHover}" />
         <Setter Property="ForegroundOnMouseOverOnExpanded"
-                Value="{StaticResource Blue10}" />
+                Value="{StaticResource LightTextColorHover}" />
         <Setter Property="ForegroundOnDisabled"
-                Value="DimGray" />
+                Value="{StaticResource LightTextColorDisabled}" />
+        <Setter Property="Background"
+                Value="{StaticResource LightAccordionBackground}" />
+        <Setter Property="HeaderBackground"
+                Value="{StaticResource LightAccordionBackground}" />
+        <Setter Property="HeaderBackgroundOnExpanded"
+                Value="{StaticResource LightAccordionBackground}" />
+        <Setter Property="HeaderBackgroundOnMouseOver"
+                Value="{StaticResource LightAccordionBackgroundHover}" />
+        <Setter Property="HeaderBackgroundOnMouseOverOnExpanded"
+                Value="{StaticResource LightAccordionBackgroundHover}" />
+        <Setter Property="HeaderBackgroundOnDisabled"
+                Value="{StaticResource LightAccordionBackground}" />
+        <Setter Property="HeaderBorderBrush"
+                Value="{StaticResource LightAccordionBorder}" />
+        <Setter Property="HeaderBorderBrushOnExpanded"
+                Value="{StaticResource LightAccordionBorder}" />
+        <Setter Property="HeaderBorderBrushOnMouseOver"
+                Value="{StaticResource LightAccordionBorder}" />
+        <Setter Property="HeaderBorderBrushOnMouseOverOnExpanded"
+                Value="{StaticResource LightAccordionBorder}" />
+        <Setter Property="HeaderBorderBrushOnDisabled"
+                Value="{StaticResource LightAccordionBorder}" />
         <Setter Property="ArrowForeground"
-                Value="Black" />
+                Value="{StaticResource LightTextColor}" />
         <Setter Property="ArrowForegroundOnExpanded"
-                Value="{StaticResource Blue7}" />
+                Value="{StaticResource LightTextColor}" />
         <Setter Property="ArrowForegroundOnMouseOver"
-                Value="{StaticResource Gray15}" />
+                Value="{StaticResource LightTextColorHover}" />
         <Setter Property="ArrowForegroundOnMouseOverOnExpanded"
-                Value="{StaticResource Blue10}" />
+                Value="{StaticResource LightTextColorHover}" />
         <Setter Property="ArrowForegroundOnDisabled"
-                Value="DimGray" />
+                Value="{StaticResource LightTextColorDisabled}" />
+        <Setter Property="BorderBrush"
+                Value="{StaticResource LightAccordionBorder}" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="CornerRadius"
+                Value="4" />
         <Setter Property="FontWeight"
                 Value="Bold" />
         <Setter Property="FontWeightOnExpanded"
@@ -39,17 +67,17 @@
         <Setter Property="FontWeightOnDisabled"
                 Value="Bold" />
         <Setter Property="ArrowMargin"
-                Value="4,0,0,0" />
+                Value="0,0,6,0" />
         <Setter Property="Arrow"
-                Value="&#xEDDA;" />
+                Value="&#xE76C;" />
         <Setter Property="ArrowSize"
-                Value="12" />
+                Value="11" />
         <Setter Property="ArrowFont"
                 Value="Segoe MDL2 Assets" />
         <Setter Property="ArrowCollapsedRotation"
-                Value="0" />
-        <Setter Property="ArrowExpandedRotation"
                 Value="90" />
+        <Setter Property="ArrowExpandedRotation"
+                Value="-90" />
         <Setter Property="HorizontalHeaderAlignment"
                 Value="Left" />
         <Setter Property="VerticalHeaderAlignment"
@@ -59,13 +87,15 @@
         <Setter Property="VerticalContentAlignment"
                 Value="Stretch" />
         <Setter Property="HeaderHeight"
-                Value="24" />
-        <Setter Property="HeaderMargin"
+                Value="32" />
+        <Setter Property="Padding"
                 Value="6,0,6,0" />
         <Setter Property="AnimationTime"
                 Value="0:0:0.2" />
         <Setter Property="ExpandingAnimationTime"
                 Value="0:0:0.4" />
+        <Setter Property="SnapsToDevicePixels"
+                Value="True" />
 
         <Setter Property="Template">
             <Setter.Value>
@@ -76,53 +106,70 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
-                        <Grid x:Name="PART_Header"
-                              Grid.Row="0"
-                              Height="{TemplateBinding HeaderHeight}"
-                              Background="Transparent">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <ContentPresenter x:Name="Arrow"
-                                              Grid.Column="0"
-                                              Margin="{TemplateBinding ArrowMargin}"
-                                              VerticalAlignment="Center"
-                                              Width="{TemplateBinding ArrowSize}"
-                                              Height="{TemplateBinding ArrowSize}"
-                                              TextBlock.Foreground="{TemplateBinding ActualArrowForeground}"
-                                              TextBlock.FontSize="{TemplateBinding ArrowSize}"
-                                              TextBlock.FontFamily="{TemplateBinding ArrowFont}"
-                                              ContentSource="Arrow"
-                                              RenderTransformOrigin="0.5,0.5"
-                                              Visibility="Visible">
-                                <ContentPresenter.RenderTransform>
-                                    <RotateTransform x:Name="ArrowRotation"
-                                                     Angle="{Binding ArrowRotation, RelativeSource={RelativeSource TemplatedParent}}" />
-                                </ContentPresenter.RenderTransform>
-                            </ContentPresenter>
-                            <TextBlock Grid.Column="1"
-                                       HorizontalAlignment="{TemplateBinding HorizontalHeaderAlignment}"
-                                       VerticalAlignment="{TemplateBinding VerticalHeaderAlignment}"
-                                       Margin="{TemplateBinding HeaderMargin}"
-                                       Foreground="{TemplateBinding ActualForeground}"
-                                       FontFamily="{TemplateBinding FontFamily}"
-                                       FontSize="{TemplateBinding FontSize}"
-                                       FontStretch="{TemplateBinding FontStretch}"
-                                       FontStyle="{TemplateBinding FontStyle}"
-                                       FontWeight="{TemplateBinding ActualFontWeight}"
-                                       Text="{TemplateBinding Header}" />
-                        </Grid>
-                        <local:Collapsible x:Name="PART_Collapsible"
-                                           Grid.Row="1"
-                                           ExpandingAnimationTime="{TemplateBinding ExpandingAnimationTime}"
-                                           IsExpanded="{TemplateBinding IsExpanded}">
-                            <ContentPresenter x:Name="PART_ContentHost"
-                                              Margin="{TemplateBinding Padding}"
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              ContentSource="Content" />
-                        </local:Collapsible>
+                        <Border x:Name="PART_HeaderBorder"
+                                Grid.Row="0"
+                                Height="{TemplateBinding HeaderHeight}"
+                                Background="{TemplateBinding ActualHeaderBackground}"
+                                BorderBrush="{TemplateBinding ActualHeaderBorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding HeaderCornerRadius}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                            <Grid x:Name="PART_Header"
+                                  Background="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                
+                                <TextBlock Grid.Column="0"
+                                           HorizontalAlignment="{TemplateBinding HorizontalHeaderAlignment}"
+                                           VerticalAlignment="{TemplateBinding VerticalHeaderAlignment}"
+                                           Margin="{TemplateBinding Padding}"
+                                           Foreground="{TemplateBinding ActualForeground}"
+                                           FontFamily="{TemplateBinding FontFamily}"
+                                           FontSize="{TemplateBinding FontSize}"
+                                           FontStretch="{TemplateBinding FontStretch}"
+                                           FontStyle="{TemplateBinding FontStyle}"
+                                           FontWeight="{TemplateBinding ActualFontWeight}"
+                                           Text="{TemplateBinding Header}" />
+
+                                <ContentPresenter x:Name="Arrow"
+                                                  Grid.Column="1"
+                                                  Margin="{TemplateBinding ArrowMargin}"
+                                                  VerticalAlignment="Center"
+                                                  Width="{TemplateBinding ArrowSize}"
+                                                  Height="{TemplateBinding ArrowSize}"
+                                                  TextBlock.Foreground="{TemplateBinding ActualArrowForeground}"
+                                                  TextBlock.FontSize="{TemplateBinding ArrowSize}"
+                                                  TextBlock.FontFamily="{TemplateBinding ArrowFont}"
+                                                  ContentSource="Arrow"
+                                                  RenderTransformOrigin="0.5,0.5"
+                                                  Visibility="Visible">
+                                    <ContentPresenter.RenderTransform>
+                                        <RotateTransform x:Name="ArrowRotation"
+                                                         Angle="{Binding ArrowRotation, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    </ContentPresenter.RenderTransform>
+                                </ContentPresenter>
+                            </Grid>
+                        </Border>
+                        
+                        <Border x:Name="PART_CollapsibleBorder"
+                                Grid.Row="1"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding ContentBorderThickness}"
+                                CornerRadius="{TemplateBinding ContentCornerRadius}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                            <local:Collapsible x:Name="PART_Collapsible"
+                                               ExpandingAnimationTime="{TemplateBinding ExpandingAnimationTime}"
+                                               IsExpanded="{TemplateBinding IsExpanded}">
+                                <ContentPresenter x:Name="PART_ContentHost"
+                                                  Margin="{TemplateBinding ContentPadding}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  ContentSource="Content" />
+                            </local:Collapsible>
+                        </Border>
                     </Grid>
 
                     <ControlTemplate.Triggers>
@@ -132,6 +179,20 @@
                                     Property="Visibility"
                                     Value="Collapsed" />
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsExpanded"
+                                           Value="False" />
+                                <Condition Property="IsAnimating"
+                                           Value="False" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="PART_HeaderBorder"
+                                    Property="CornerRadius"
+                                    Value="{Binding CornerRadius, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="PART_CollapsibleBorder"
+                                    Property="BorderThickness"
+                                    Value="0" />
+                        </MultiTrigger>
                     </ControlTemplate.Triggers>
 
                 </ControlTemplate>
