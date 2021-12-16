@@ -8,16 +8,12 @@
     <ControlTemplate x:Key="GlassScrollbarVertical"
                      TargetType="{x:Type local:GlassScrollBar}">
         <Grid x:Name="PART_ScrollBar">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
             <comp:GlassRepeatButton x:Name="PART_DecreaseButton"
-                                    Grid.Row="0"
+                                    VerticalAlignment="Top"
                                     Command="ScrollBar.LineUpCommand"
                                     HorizontalContentAlignment="Center"
                                     VerticalContentAlignment="Center"
+                                    Margin="{TemplateBinding DecreaseButtonPadding}"
                                     Height="{TemplateBinding ButtonsSize}"
                                     Background="{TemplateBinding ButtonsBackground}"
                                     BorderBrush="{TemplateBinding ButtonsBorderBrush}"
@@ -32,7 +28,6 @@
                                     Interval="{TemplateBinding ScrollInterval}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
             <Border x:Name="PART_Border"
-                    Grid.Row="1"
                     Margin="{TemplateBinding Padding}"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
@@ -72,10 +67,11 @@
                 </Track>
             </Border>
             <comp:GlassRepeatButton x:Name="PART_IncreaseButton"
-                                    Grid.Row="2"
+                                    VerticalAlignment="Bottom"
                                     Command="ScrollBar.LineDownCommand"
                                     HorizontalContentAlignment="Center"
                                     VerticalContentAlignment="Center"
+                                    Margin="{TemplateBinding IncreaseButtonPadding}"
                                     Height="{TemplateBinding ButtonsSize}"
                                     Background="{TemplateBinding ButtonsBackground}"
                                     BorderBrush="{TemplateBinding ButtonsBorderBrush}"
@@ -162,16 +158,12 @@
     <ControlTemplate x:Key="GlassScrollbarHorizontal"
                      TargetType="{x:Type local:GlassScrollBar}">
         <Grid x:Name="PART_ScrollBar">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
             <comp:GlassRepeatButton x:Name="PART_DecreaseButton"
-                                    Grid.Column="0"
+                                    HorizontalAlignment="Left"
                                     Command="ScrollBar.LineLeftCommand"
                                     HorizontalContentAlignment="Center"
                                     VerticalContentAlignment="Center"
+                                    Margin="{TemplateBinding DecreaseButtonPadding}"
                                     Width="{TemplateBinding ButtonsSize}"
                                     Background="{TemplateBinding ButtonsBackground}"
                                     BorderBrush="{TemplateBinding ButtonsBorderBrush}"
@@ -186,7 +178,6 @@
                                     Interval="{TemplateBinding ScrollInterval}"
                                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
             <Border x:Name="PART_Border"
-                    Grid.Column="1"
                     Margin="{TemplateBinding Padding}"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
@@ -226,10 +217,11 @@
                 </Track>
             </Border>
             <comp:GlassRepeatButton x:Name="PART_IncreaseButton"
-                                    Grid.Column="2"
+                                    HorizontalAlignment="Right"
                                     Command="ScrollBar.LineRightCommand"
                                     HorizontalContentAlignment="Center"
                                     VerticalContentAlignment="Center"
+                                    Margin="{TemplateBinding IncreaseButtonPadding}"
                                     Width="{TemplateBinding ButtonsSize}"
                                     Background="{TemplateBinding ButtonsBackground}"
                                     BorderBrush="{TemplateBinding ButtonsBorderBrush}"
@@ -321,7 +313,7 @@
         <Setter Property="Padding"
                 Value="0" />
         <Setter Property="CornerRadius"
-                Value="0" />
+                Value="6" />
         <Setter Property="Background"
                 Value="#22000000" />
         <Setter Property="BorderBrush"
@@ -330,10 +322,8 @@
                 Value="LightSlateGray" />
         <Setter Property="ForegroundOnDisabled"
                 Value="Gray" />
-        <Setter Property="ThumbPadding"
-                Value="0" />
         <Setter Property="ThumbCornerRadius"
-                Value="0" />
+                Value="3" />
         <Setter Property="ThumbBorderThickness"
                 Value="0" />
         <Setter Property="ThumbBorderBrush"
@@ -351,7 +341,7 @@
         <Setter Property="ButtonsFont"
                 Value="Segoe MDL2 Assets" />
         <Setter Property="ButtonsFontSize"
-                Value="10" />
+                Value="8" />
         <Setter Property="ButtonsCornerRadius"
                 Value="0" />
         <Setter Property="ButtonsBackground"
@@ -378,10 +368,24 @@
                         Value="0" />
                 <Setter Property="BorderThickness"
                         Value="0" />
-                <Setter Property="DecreaseButtonContent"
-                        Value="&#xEDDB;" />
-                <Setter Property="IncreaseButtonContent"
-                        Value="&#xEDDC;" />
+                <Setter Property="ThumbPadding"
+                        Value="3,14,3,14" />
+                <Setter Property="DecreaseButtonPadding"
+                        Value="0,2,0,0" />
+                <Setter Property="IncreaseButtonPadding"
+                        Value="0,0,0,2" />
+                <Setter Property="DecreaseButtonContent">
+                    <Setter.Value>
+                        <Path Data="M 0 6 L 8 6 L 4 0 Z"
+                              Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type RepeatButton}}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="IncreaseButtonContent">
+                    <Setter.Value>
+                        <Path Data="M 0 0 L 4 6 L 8 0 Z"
+                              Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type RepeatButton}}}" />
+                    </Setter.Value>
+                </Setter>
                 <Setter Property="Template"
                         Value="{StaticResource GlassScrollbarVertical}" />
             </Trigger>
@@ -391,10 +395,24 @@
                         Value="0" />
                 <Setter Property="BorderThickness"
                         Value="0" />
-                <Setter Property="DecreaseButtonContent"
-                        Value="&#xEDD9;" />
-                <Setter Property="IncreaseButtonContent"
-                        Value="&#xEDDA;" />
+                <Setter Property="ThumbPadding"
+                        Value="14,3,14,3" />
+                <Setter Property="DecreaseButtonPadding"
+                        Value="2,0,0,0" />
+                <Setter Property="IncreaseButtonPadding"
+                        Value="0,0,2,0" />
+                <Setter Property="DecreaseButtonContent">
+                    <Setter.Value>
+                        <Path Data="M 6 0 L 6 8 L 0 4 Z"
+                              Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type RepeatButton}}}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="IncreaseButtonContent">
+                    <Setter.Value>
+                        <Path Data="M 0 0 L 6 4 L 0 8 Z"
+                              Fill="{Binding Foreground, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type RepeatButton}}}" />
+                    </Setter.Value>
+                </Setter>
                 <Setter Property="Template"
                         Value="{StaticResource GlassScrollbarHorizontal}" />
             </Trigger>

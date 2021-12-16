@@ -388,6 +388,36 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarButtonsForegroundOnDisabled), typeof(Brush), typeof(GlassScrollViewer));
 
         /// <summary>
+        /// Gets or sets the padding of the horizontal scrollbar left button.
+        /// </summary>
+        public Thickness LeftButtonPadding
+        {
+            get => (Thickness)GetValue(LeftButtonPaddingProperty);
+            set => SetValue(LeftButtonPaddingProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="LeftButtonPadding"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty LeftButtonPaddingProperty =
+            DependencyProperty.Register(nameof(LeftButtonPadding), typeof(Thickness), typeof(GlassScrollViewer));
+
+        /// <summary>
+        /// Gets or sets the padding of the horizontal scrollbar right button.
+        /// </summary>
+        public Thickness RightButtonPadding
+        {
+            get => (Thickness)GetValue(RightButtonPaddingProperty);
+            set => SetValue(RightButtonPaddingProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="RightButtonPadding"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty RightButtonPaddingProperty =
+            DependencyProperty.Register(nameof(RightButtonPadding), typeof(Thickness), typeof(GlassScrollViewer));
+
+        /// <summary>
         /// Gets or sets the content of the horizontal scrollbar left button.
         /// </summary>
         public object LeftButtonContent
@@ -810,6 +840,36 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty VerticalScrollBarButtonsForegroundOnDisabledProperty =
             DependencyProperty.Register(nameof(VerticalScrollBarButtonsForegroundOnDisabled), typeof(Brush), typeof(GlassScrollViewer));
+
+        /// <summary>
+        /// Gets or sets the padding of the vertical scrollbar up button.
+        /// </summary>
+        public Thickness UpButtonPadding
+        {
+            get => (Thickness)GetValue(UpButtonPaddingProperty);
+            set => SetValue(UpButtonPaddingProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="UpButtonPadding"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty UpButtonPaddingProperty =
+            DependencyProperty.Register(nameof(UpButtonPadding), typeof(Thickness), typeof(GlassScrollViewer));
+
+        /// <summary>
+        /// Gets or sets the padding of the vertical scrollbar down button.
+        /// </summary>
+        public Thickness DownButtonPadding
+        {
+            get => (Thickness)GetValue(DownButtonPaddingProperty);
+            set => SetValue(DownButtonPaddingProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="DownButtonPadding"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty DownButtonPaddingProperty =
+            DependencyProperty.Register(nameof(DownButtonPadding), typeof(Thickness), typeof(GlassScrollViewer));
 
         /// <summary>
         /// Gets or sets the content of the vertical scrollbar up button.

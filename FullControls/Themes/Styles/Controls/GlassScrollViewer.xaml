@@ -53,9 +53,9 @@
         <Setter Property="HorizontalScrollBarForegroundOnDisabled"
                 Value="Gray" />
         <Setter Property="HorizontalScrollBarThumbPadding"
-                Value="0" />
+                Value="2" />
         <Setter Property="HorizontalScrollBarThumbCornerRadius"
-                Value="5" />
+                Value="3" />
         <Setter Property="HorizontalScrollBarThumbBorderThickness"
                 Value="0" />
         <Setter Property="HorizontalScrollBarThumbBorderBrush"
@@ -84,6 +84,10 @@
                 Value="Black" />
         <Setter Property="HorizontalScrollBarButtonsForegroundOnDisabled"
                 Value="Black" />
+        <Setter Property="LeftButtonPadding"
+                Value="0" />
+        <Setter Property="RightButtonPadding"
+                Value="0" />
         <Setter Property="LeftButtonContent"
                 Value="&#xEDD9;" />
         <Setter Property="RightButtonContent"
@@ -114,9 +118,9 @@
         <Setter Property="VerticalScrollBarForegroundOnDisabled"
                 Value="Gray" />
         <Setter Property="VerticalScrollBarThumbPadding"
-                Value="0" />
+                Value="2" />
         <Setter Property="VerticalScrollBarThumbCornerRadius"
-                Value="5" />
+                Value="3" />
         <Setter Property="VerticalScrollBarThumbBorderThickness"
                 Value="0" />
         <Setter Property="VerticalScrollBarThumbBorderBrush"
@@ -145,6 +149,10 @@
                 Value="Black" />
         <Setter Property="VerticalScrollBarButtonsForegroundOnDisabled"
                 Value="Black" />
+        <Setter Property="UpButtonPadding"
+                Value="0" />
+        <Setter Property="DownButtonPadding"
+                Value="0" />
         <Setter Property="UpButtonContent"
                 Value="&#xEDDB;" />
         <Setter Property="DownButtonContent"
@@ -190,6 +198,8 @@
                                                   Margin="{TemplateBinding HorizontalScrollBarAreaPadding}"
                                                   Height="{TemplateBinding HorizontalScrollBarThickness}"
                                                   Padding="{TemplateBinding HorizontalScrollBarPadding}"
+                                                  DecreaseButtonPadding="{TemplateBinding LeftButtonPadding}"
+                                                  IncreaseButtonPadding="{TemplateBinding RightButtonPadding}"
                                                   CornerRadius="{TemplateBinding HorizontalScrollBarCornerRadius}"
                                                   BorderThickness="{TemplateBinding HorizontalScrollBarBorderThickness}"
                                                   Background="{TemplateBinding HorizontalScrollBarBackground}"
@@ -231,6 +241,8 @@
                                                   Margin="{TemplateBinding VerticalScrollBarAreaPadding}"
                                                   Width="{TemplateBinding VerticalScrollBarThickness}"
                                                   Padding="{TemplateBinding VerticalScrollBarPadding}"
+                                                  DecreaseButtonPadding="{TemplateBinding UpButtonPadding}"
+                                                  IncreaseButtonPadding="{TemplateBinding DownButtonPadding}"
                                                   CornerRadius="{TemplateBinding VerticalScrollBarCornerRadius}"
                                                   BorderThickness="{TemplateBinding VerticalScrollBarBorderThickness}"
                                                   Background="{TemplateBinding VerticalScrollBarBackground}"

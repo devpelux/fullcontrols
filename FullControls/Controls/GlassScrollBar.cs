@@ -337,6 +337,36 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ButtonsForegroundOnDisabled), typeof(Brush), typeof(GlassScrollBar));
 
         /// <summary>
+        /// Gets or sets the padding of the increase button.
+        /// </summary>
+        public Thickness IncreaseButtonPadding
+        {
+            get => (Thickness)GetValue(IncreaseButtonPaddingProperty);
+            set => SetValue(IncreaseButtonPaddingProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="IncreaseButtonPadding"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IncreaseButtonPaddingProperty =
+            DependencyProperty.Register(nameof(IncreaseButtonPadding), typeof(Thickness), typeof(GlassScrollBar));
+
+        /// <summary>
+        /// Gets or sets the padding of the decrease button.
+        /// </summary>
+        public Thickness DecreaseButtonPadding
+        {
+            get => (Thickness)GetValue(DecreaseButtonPaddingProperty);
+            set => SetValue(DecreaseButtonPaddingProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="DecreaseButtonPadding"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty DecreaseButtonPaddingProperty =
+            DependencyProperty.Register(nameof(DecreaseButtonPadding), typeof(Thickness), typeof(GlassScrollBar));
+
+        /// <summary>
         /// Gets or sets the content of the increase button.
         /// </summary>
         public object IncreaseButtonContent

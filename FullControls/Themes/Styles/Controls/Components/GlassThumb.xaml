@@ -12,7 +12,7 @@
         <Setter Property="BorderThickness"
                 Value="0" />
         <Setter Property="CornerRadius"
-                Value="0" />
+                Value="3" />
         <Setter Property="SnapsToDevicePixels"
                 Value="True" />
 
