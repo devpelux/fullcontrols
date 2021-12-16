@@ -47,6 +47,36 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BackgroundOnMouseOverOnChecked), typeof(Brush), typeof(ToggleButtonPlus));
 
         /// <summary>
+        /// Gets or sets the background brush when the control is pressed.
+        /// </summary>
+        public Brush BackgroundOnPressed
+        {
+            get => (Brush)GetValue(BackgroundOnPressedProperty);
+            set => SetValue(BackgroundOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BackgroundOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BackgroundOnPressedProperty =
+            DependencyProperty.Register(nameof(BackgroundOnPressed), typeof(Brush), typeof(ToggleButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the background brush when the control is checked and is pressed.
+        /// </summary>
+        public Brush BackgroundOnPressedOnChecked
+        {
+            get => (Brush)GetValue(BackgroundOnPressedOnCheckedProperty);
+            set => SetValue(BackgroundOnPressedOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BackgroundOnPressedOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BackgroundOnPressedOnCheckedProperty =
+            DependencyProperty.Register(nameof(BackgroundOnPressedOnChecked), typeof(Brush), typeof(ToggleButtonPlus));
+
+        /// <summary>
         /// Gets or sets the background brush when the control is checked.
         /// </summary>
         public Brush BackgroundOnChecked
@@ -75,6 +105,21 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty BackgroundOnDisabledProperty =
             DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(ToggleButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the background brush when the control is checked and is disabled.
+        /// </summary>
+        public Brush BackgroundOnDisabledOnChecked
+        {
+            get => (Brush)GetValue(BackgroundOnDisabledOnCheckedProperty);
+            set => SetValue(BackgroundOnDisabledOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BackgroundOnDisabledOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BackgroundOnDisabledOnCheckedProperty =
+            DependencyProperty.Register(nameof(BackgroundOnDisabledOnChecked), typeof(Brush), typeof(ToggleButtonPlus));
 
         /// <summary>
         /// Gets the actual background brush of the control.
@@ -136,6 +181,36 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BorderBrushOnMouseOverOnChecked), typeof(Brush), typeof(ToggleButtonPlus));
 
         /// <summary>
+        /// Gets or sets the border brush when the control is pressed.
+        /// </summary>
+        public Brush BorderBrushOnPressed
+        {
+            get => (Brush)GetValue(BorderBrushOnPressedProperty);
+            set => SetValue(BorderBrushOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BorderBrushOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BorderBrushOnPressedProperty =
+            DependencyProperty.Register(nameof(BorderBrushOnPressed), typeof(Brush), typeof(ToggleButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the border brush when the control is checked and is pressed.
+        /// </summary>
+        public Brush BorderBrushOnPressedOnChecked
+        {
+            get => (Brush)GetValue(BorderBrushOnPressedOnCheckedProperty);
+            set => SetValue(BorderBrushOnPressedOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BorderBrushOnPressedOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BorderBrushOnPressedOnCheckedProperty =
+            DependencyProperty.Register(nameof(BorderBrushOnPressedOnChecked), typeof(Brush), typeof(ToggleButtonPlus));
+
+        /// <summary>
         /// Gets or sets the border brush when the control is checked.
         /// </summary>
         public Brush BorderBrushOnChecked
@@ -164,6 +239,21 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnDisabledProperty =
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(ToggleButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the border brush when the control is checked and is disabled.
+        /// </summary>
+        public Brush BorderBrushOnDisabledOnChecked
+        {
+            get => (Brush)GetValue(BorderBrushOnDisabledOnCheckedProperty);
+            set => SetValue(BorderBrushOnDisabledOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BorderBrushOnDisabledOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BorderBrushOnDisabledOnCheckedProperty =
+            DependencyProperty.Register(nameof(BorderBrushOnDisabledOnChecked), typeof(Brush), typeof(ToggleButtonPlus));
 
         /// <summary>
         /// Gets the actual border brush of the control.
@@ -225,6 +315,36 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForegroundOnMouseOverOnChecked), typeof(Brush), typeof(ToggleButtonPlus));
 
         /// <summary>
+        /// Gets or sets the foreground brush when the control is pressed.
+        /// </summary>
+        public Brush ForegroundOnPressed
+        {
+            get => (Brush)GetValue(ForegroundOnPressedProperty);
+            set => SetValue(ForegroundOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForegroundOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForegroundOnPressedProperty =
+            DependencyProperty.Register(nameof(ForegroundOnPressed), typeof(Brush), typeof(ToggleButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the foreground brush when the control is checked and is pressed.
+        /// </summary>
+        public Brush ForegroundOnPressedOnChecked
+        {
+            get => (Brush)GetValue(ForegroundOnPressedOnCheckedProperty);
+            set => SetValue(ForegroundOnPressedOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForegroundOnPressedOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForegroundOnPressedOnCheckedProperty =
+            DependencyProperty.Register(nameof(ForegroundOnPressedOnChecked), typeof(Brush), typeof(ToggleButtonPlus));
+
+        /// <summary>
         /// Gets or sets the foreground brush when the control is checked.
         /// </summary>
         public Brush ForegroundOnChecked
@@ -253,6 +373,21 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ForegroundOnDisabledProperty =
             DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(ToggleButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the foreground brush when the control is checked and is disabled.
+        /// </summary>
+        public Brush ForegroundOnDisabledOnChecked
+        {
+            get => (Brush)GetValue(ForegroundOnDisabledOnCheckedProperty);
+            set => SetValue(ForegroundOnDisabledOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForegroundOnDisabledOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForegroundOnDisabledOnCheckedProperty =
+            DependencyProperty.Register(nameof(ForegroundOnDisabledOnChecked), typeof(Brush), typeof(ToggleButtonPlus));
 
         /// <summary>
         /// Gets the actual foreground brush of the control.
@@ -417,7 +552,16 @@ namespace FullControls.Controls
         protected virtual string VStateOverride()
         {
             if (!loaded) return "Undefined";
-            if (!IsEnabled) return "Disabled";
+            if (!IsEnabled)
+            {
+                if (IsChecked == true) return "DisabledOnChecked";
+                else return "Disabled";
+            }
+            else if (IsPressed)
+            {
+                if (IsChecked == true) return "PressedOnChecked";
+                else return "Pressed";
+            }
             else if (IsMouseOver)
             {
                 if (IsChecked == true) return "MouseOverOnChecked";
@@ -457,10 +601,25 @@ namespace FullControls.Controls
                     Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOverOnChecked, initial ? TimeSpan.Zero : AnimationTime);
                     Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOverOnChecked, TimeSpan.Zero);
                     break;
+                case "Pressed":
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnPressed, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnPressed, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnPressed, TimeSpan.Zero);
+                    break;
+                case "PressedOnChecked":
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnPressedOnChecked, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnPressedOnChecked, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnPressedOnChecked, TimeSpan.Zero);
+                    break;
                 case "Disabled":
                     Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
                     Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
                     Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, TimeSpan.Zero);
+                    break;
+                case "DisabledOnChecked":
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabledOnChecked, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabledOnChecked, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabledOnChecked, TimeSpan.Zero);
                     break;
                 default:
                     break;

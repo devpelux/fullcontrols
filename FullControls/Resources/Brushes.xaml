@@ -15,6 +15,50 @@
     <SolidColorBrush x:Key="LightMenuTitleColor"
                      Color="#737373" />
 
+    <SolidColorBrush x:Key="LightButtonBackground"
+                     Color="#fbfbfb" />
+    <SolidColorBrush x:Key="LightButtonBackgroundHover"
+                     Color="#f5f5f5" />
+    <SolidColorBrush x:Key="LightButtonBackgroundClicked"
+                     Color="#f6f6f6" />
+    <SolidColorBrush x:Key="LightButtonBackgroundDisabled"
+                     Color="#f5f5f5" />
+    <SolidColorBrush x:Key="LightButtonText"
+                     Color="#1b1b1b" />
+    <SolidColorBrush x:Key="LightButtonTextHover"
+                     Color="#1a1a1a" />
+    <SolidColorBrush x:Key="LightButtonTextClicked"
+                     Color="#5d5d5d" />
+    <SolidColorBrush x:Key="LightButtonTextDisabled"
+                     Color="#9d9d9d" />
+    <SolidColorBrush x:Key="LightButtonBorder"
+                     Color="#e5e5e5" />
+
+
+    <SolidColorBrush x:Key="LightButtonBackgroundChecked"
+                     Color="#0067c0" />
+    <SolidColorBrush x:Key="LightButtonBackgroundCheckedHover"
+                     Color="#1975c5" />
+    <SolidColorBrush x:Key="LightButtonBackgroundCheckedClicked"
+                     Color="#3183ca" />
+    <SolidColorBrush x:Key="LightButtonBackgroundCheckedDisabled"
+                     Color="#bfbfbf" />
+    <SolidColorBrush x:Key="LightButtonTextChecked"
+                     Color="#ffffff" />
+    <SolidColorBrush x:Key="LightButtonTextCheckedClicked"
+                     Color="#c2daef" />
+    <SolidColorBrush x:Key="LightButtonBorderChecked"
+                     Color="#1473c5" />
+    <SolidColorBrush x:Key="LightButtonBorderCheckedClicked"
+                     Color="#3183ca" />
+    <SolidColorBrush x:Key="LightButtonBorderCheckedHover"
+                     Color="#2b80ca" />
+    <SolidColorBrush x:Key="LightButtonBorderCheckedDisabled"
+                     Color="#bfbfbf" />
+
+
+
+
     <SolidColorBrush x:Key="LightTextColor"
                      Color="#262626" />
     <SolidColorBrush x:Key="LightTextColorHover"
@@ -28,6 +72,9 @@
                      Color="#fbfbfb" />
     <SolidColorBrush x:Key="LightAccordionBackgroundHover"
                      Color="#f6f6f6" />
+    
+    
+    
 
 
     <SolidColorBrush x:Key="WhiteTransparent"

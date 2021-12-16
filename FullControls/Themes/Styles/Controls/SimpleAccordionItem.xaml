@@ -91,7 +91,7 @@
         <Setter Property="Padding"
                 Value="6,0,6,0" />
         <Setter Property="AnimationTime"
-                Value="0:0:0.2" />
+                Value="0" />
         <Setter Property="ExpandingAnimationTime"
                 Value="0:0:0.4" />
         <Setter Property="SnapsToDevicePixels"
