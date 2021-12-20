@@ -89,6 +89,35 @@
                      Color="#bbbbbb" />
 
 
+    <SolidColorBrush x:Key="LightRadioButtonBakground"
+                     Color="#ededed" />
+    <SolidColorBrush x:Key="LightRadioButtonBakgroundHover"
+                     Color="#e5e5e5" />
+    <SolidColorBrush x:Key="LightRadioButtonBakgroundPressed"
+                     Color="#dcdcdc" />
+    <SolidColorBrush x:Key="LightRadioButtonBakgroundChecked"
+                     Color="#0067c0" />
+    <SolidColorBrush x:Key="LightRadioButtonBakgroundCheckedHover"
+                     Color="#3183ca" />
+    <SolidColorBrush x:Key="LightRadioButtonBakgroundDisabled"
+                     Color="#ededed" />
+    <SolidColorBrush x:Key="LightRadioButtonBakgroundCheckedDisabled"
+                     Color="#c4c4c4" />
+
+    <SolidColorBrush x:Key="LightRadioButtonBorder"
+                     Color="#858585" />
+    <SolidColorBrush x:Key="LightRadioButtonBorderHover"
+                     Color="#828282" />
+    <SolidColorBrush x:Key="LightRadioButtonBorderPressed"
+                     Color="#b6b6b6" />
+    <SolidColorBrush x:Key="LightRadioButtonBorderCheckedHover"
+                     Color="#1d77c5" />
+    <SolidColorBrush x:Key="LightRadioButtonBorderDisabled"
+                     Color="#b6b6b6" />
+    <SolidColorBrush x:Key="LightRadioButtonBorderCheckedDisabled"
+                     Color="#949494" />
+
+
 
     <SolidColorBrush x:Key="WhiteTransparent"
                      Color="#00ffffff" />

@@ -47,6 +47,36 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BackgroundOnMouseOverOnChecked), typeof(Brush), typeof(RadioButtonPlus));
 
         /// <summary>
+        /// Gets or sets the background brush when the control is pressed.
+        /// </summary>
+        public Brush BackgroundOnPressed
+        {
+            get => (Brush)GetValue(BackgroundOnPressedProperty);
+            set => SetValue(BackgroundOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BackgroundOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BackgroundOnPressedProperty =
+            DependencyProperty.Register(nameof(BackgroundOnPressed), typeof(Brush), typeof(RadioButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the background brush when the control is checked and is pressed.
+        /// </summary>
+        public Brush BackgroundOnPressedOnChecked
+        {
+            get => (Brush)GetValue(BackgroundOnPressedOnCheckedProperty);
+            set => SetValue(BackgroundOnPressedOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BackgroundOnPressedOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BackgroundOnPressedOnCheckedProperty =
+            DependencyProperty.Register(nameof(BackgroundOnPressedOnChecked), typeof(Brush), typeof(RadioButtonPlus));
+
+        /// <summary>
         /// Gets or sets the background brush when the control is checked.
         /// </summary>
         public Brush BackgroundOnChecked
@@ -75,6 +105,21 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty BackgroundOnDisabledProperty =
             DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(RadioButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the background brush when the control is checked and is disabled.
+        /// </summary>
+        public Brush BackgroundOnDisabledOnChecked
+        {
+            get => (Brush)GetValue(BackgroundOnDisabledOnCheckedProperty);
+            set => SetValue(BackgroundOnDisabledOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BackgroundOnDisabledOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BackgroundOnDisabledOnCheckedProperty =
+            DependencyProperty.Register(nameof(BackgroundOnDisabledOnChecked), typeof(Brush), typeof(RadioButtonPlus));
 
         /// <summary>
         /// Gets the actual background brush of the control.
@@ -136,6 +181,36 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BorderBrushOnMouseOverOnChecked), typeof(Brush), typeof(RadioButtonPlus));
 
         /// <summary>
+        /// Gets or sets the border brush when the control is pressed.
+        /// </summary>
+        public Brush BorderBrushOnPressed
+        {
+            get => (Brush)GetValue(BorderBrushOnPressedProperty);
+            set => SetValue(BorderBrushOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BorderBrushOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BorderBrushOnPressedProperty =
+            DependencyProperty.Register(nameof(BorderBrushOnPressed), typeof(Brush), typeof(RadioButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the border brush when the control is checked and is pressed.
+        /// </summary>
+        public Brush BorderBrushOnPressedOnChecked
+        {
+            get => (Brush)GetValue(BorderBrushOnPressedOnCheckedProperty);
+            set => SetValue(BorderBrushOnPressedOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BorderBrushOnPressedOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BorderBrushOnPressedOnCheckedProperty =
+            DependencyProperty.Register(nameof(BorderBrushOnPressedOnChecked), typeof(Brush), typeof(RadioButtonPlus));
+
+        /// <summary>
         /// Gets or sets the border brush when the control is checked.
         /// </summary>
         public Brush BorderBrushOnChecked
@@ -164,6 +239,21 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnDisabledProperty =
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(RadioButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the border brush when the control is checked and is disabled.
+        /// </summary>
+        public Brush BorderBrushOnDisabledOnChecked
+        {
+            get => (Brush)GetValue(BorderBrushOnDisabledOnCheckedProperty);
+            set => SetValue(BorderBrushOnDisabledOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BorderBrushOnDisabledOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BorderBrushOnDisabledOnCheckedProperty =
+            DependencyProperty.Register(nameof(BorderBrushOnDisabledOnChecked), typeof(Brush), typeof(RadioButtonPlus));
 
         /// <summary>
         /// Gets the actual border brush of the control.
@@ -225,6 +315,36 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForegroundOnMouseOverOnChecked), typeof(Brush), typeof(RadioButtonPlus));
 
         /// <summary>
+        /// Gets or sets the foreground brush when the control is pressed.
+        /// </summary>
+        public Brush ForegroundOnPressed
+        {
+            get => (Brush)GetValue(ForegroundOnPressedProperty);
+            set => SetValue(ForegroundOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForegroundOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForegroundOnPressedProperty =
+            DependencyProperty.Register(nameof(ForegroundOnPressed), typeof(Brush), typeof(RadioButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the foreground brush when the control is checked and is pressed.
+        /// </summary>
+        public Brush ForegroundOnPressedOnChecked
+        {
+            get => (Brush)GetValue(ForegroundOnPressedOnCheckedProperty);
+            set => SetValue(ForegroundOnPressedOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForegroundOnPressedOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForegroundOnPressedOnCheckedProperty =
+            DependencyProperty.Register(nameof(ForegroundOnPressedOnChecked), typeof(Brush), typeof(RadioButtonPlus));
+
+        /// <summary>
         /// Gets or sets the foreground brush when the control is checked.
         /// </summary>
         public Brush ForegroundOnChecked
@@ -253,6 +373,21 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ForegroundOnDisabledProperty =
             DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(RadioButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the foreground brush when the control is checked and is disabled.
+        /// </summary>
+        public Brush ForegroundOnDisabledOnChecked
+        {
+            get => (Brush)GetValue(ForegroundOnDisabledOnCheckedProperty);
+            set => SetValue(ForegroundOnDisabledOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForegroundOnDisabledOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForegroundOnDisabledOnCheckedProperty =
+            DependencyProperty.Register(nameof(ForegroundOnDisabledOnChecked), typeof(Brush), typeof(RadioButtonPlus));
 
         /// <summary>
         /// Gets the actual foreground brush of the control.
@@ -329,6 +464,36 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForeColorOnMouseOverOnChecked), typeof(Brush), typeof(RadioButtonPlus));
 
         /// <summary>
+        /// Gets or sets the forecolor brush when the control is pressed.
+        /// </summary>
+        public Brush ForeColorOnPressed
+        {
+            get => (Brush)GetValue(ForeColorOnPressedProperty);
+            set => SetValue(ForeColorOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForeColorOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForeColorOnPressedProperty =
+            DependencyProperty.Register(nameof(ForeColorOnPressed), typeof(Brush), typeof(RadioButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the forecolor brush when the control is checked and is pressed.
+        /// </summary>
+        public Brush ForeColorOnPressedOnChecked
+        {
+            get => (Brush)GetValue(ForeColorOnPressedOnCheckedProperty);
+            set => SetValue(ForeColorOnPressedOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForeColorOnPressedOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForeColorOnPressedOnCheckedProperty =
+            DependencyProperty.Register(nameof(ForeColorOnPressedOnChecked), typeof(Brush), typeof(RadioButtonPlus));
+
+        /// <summary>
         /// Gets or sets the forecolor brush when the control is checked.
         /// </summary>
         public Brush ForeColorOnChecked
@@ -357,6 +522,21 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ForeColorOnDisabledProperty =
             DependencyProperty.Register(nameof(ForeColorOnDisabled), typeof(Brush), typeof(RadioButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the forecolor brush when the control is checked and is disabled.
+        /// </summary>
+        public Brush ForeColorOnDisabledOnChecked
+        {
+            get => (Brush)GetValue(ForeColorOnDisabledOnCheckedProperty);
+            set => SetValue(ForeColorOnDisabledOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForeColorOnDisabledOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForeColorOnDisabledOnCheckedProperty =
+            DependencyProperty.Register(nameof(ForeColorOnDisabledOnChecked), typeof(Brush), typeof(RadioButtonPlus));
 
         /// <summary>
         /// Gets the actual forecolor brush of the control.
@@ -449,32 +629,156 @@ namespace FullControls.Controls
         public static readonly DependencyProperty CheckWeightProperty =
             DependencyProperty.Register(nameof(CheckWeight), typeof(FontWeight), typeof(RadioButtonPlus));
 
-        /// <summary>
-        /// Gets the scale of the check mark.
-        /// </summary>
-        public double CheckScale => (double)GetValue(CheckScaleProperty);
-
-        #region CheckScaleProperty
+        #region CheckScale
 
         /// <summary>
-        /// The <see cref="DependencyPropertyKey"/> for <see cref="CheckScale"/> dependency property.
+        /// Gets or sets the scale of the check mark of the control.
         /// </summary>
-        private static readonly DependencyPropertyKey CheckScalePropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(CheckScale), typeof(double), typeof(RadioButtonPlus),
-                new FrameworkPropertyMetadata(0d));
+        public double CheckScale
+        {
+            get => (double)GetValue(CheckScaleProperty);
+            set => SetValue(CheckScaleProperty, value);
+        }
 
         /// <summary>
         /// Identifies the <see cref="CheckScale"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty CheckScaleProperty = CheckScalePropertyKey.DependencyProperty;
+        public static readonly DependencyProperty CheckScaleProperty =
+            DependencyProperty.Register(nameof(CheckScale), typeof(double), typeof(RadioButtonPlus));
 
         /// <summary>
-        /// Proxy for <see cref="CheckScale"/> dependency property.
+        /// Gets or sets the scale of the check mark when the mouse is over the control.
         /// </summary>
-        private static readonly DependencyProperty CheckScalePropertyProxy =
-            DependencyProperty.Register("CheckScaleProxy", typeof(double), typeof(RadioButtonPlus),
+        public double CheckScaleOnMouseOver
+        {
+            get => (double)GetValue(CheckScaleOnMouseOverProperty);
+            set => SetValue(CheckScaleOnMouseOverProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CheckScaleOnMouseOver"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CheckScaleOnMouseOverProperty =
+            DependencyProperty.Register(nameof(CheckScaleOnMouseOver), typeof(double), typeof(RadioButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the scale of the check mark when the control is checked and the mouse is over the control.
+        /// </summary>
+        public double CheckScaleOnMouseOverOnChecked
+        {
+            get => (double)GetValue(CheckScaleOnMouseOverOnCheckedProperty);
+            set => SetValue(CheckScaleOnMouseOverOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CheckScaleOnMouseOverOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CheckScaleOnMouseOverOnCheckedProperty =
+            DependencyProperty.Register(nameof(CheckScaleOnMouseOverOnChecked), typeof(double), typeof(RadioButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the scale of the check mark when the control is pressed.
+        /// </summary>
+        public double CheckScaleOnPressed
+        {
+            get => (double)GetValue(CheckScaleOnPressedProperty);
+            set => SetValue(CheckScaleOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CheckScaleOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CheckScaleOnPressedProperty =
+            DependencyProperty.Register(nameof(CheckScaleOnPressed), typeof(double), typeof(RadioButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the scale of the check mark when the control is checked and is pressed.
+        /// </summary>
+        public double CheckScaleOnPressedOnChecked
+        {
+            get => (double)GetValue(CheckScaleOnPressedOnCheckedProperty);
+            set => SetValue(CheckScaleOnPressedOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CheckScaleOnPressedOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CheckScaleOnPressedOnCheckedProperty =
+            DependencyProperty.Register(nameof(CheckScaleOnPressedOnChecked), typeof(double), typeof(RadioButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the scale of the check mark when the control is checked.
+        /// </summary>
+        public double CheckScaleOnChecked
+        {
+            get => (double)GetValue(CheckScaleOnCheckedProperty);
+            set => SetValue(CheckScaleOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CheckScaleOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CheckScaleOnCheckedProperty =
+            DependencyProperty.Register(nameof(CheckScaleOnChecked), typeof(double), typeof(RadioButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the scale of the check mark when the control is disabled.
+        /// </summary>
+        public double CheckScaleOnDisabled
+        {
+            get => (double)GetValue(CheckScaleOnDisabledProperty);
+            set => SetValue(CheckScaleOnDisabledProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CheckScaleOnDisabled"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CheckScaleOnDisabledProperty =
+            DependencyProperty.Register(nameof(CheckScaleOnDisabled), typeof(double), typeof(RadioButtonPlus));
+
+        /// <summary>
+        /// Gets or sets the scale of the check mark when the control is checked and is disabled.
+        /// </summary>
+        public double CheckScaleOnDisabledOnChecked
+        {
+            get => (double)GetValue(CheckScaleOnDisabledOnCheckedProperty);
+            set => SetValue(CheckScaleOnDisabledOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="CheckScaleOnDisabledOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CheckScaleOnDisabledOnCheckedProperty =
+            DependencyProperty.Register(nameof(CheckScaleOnDisabledOnChecked), typeof(double), typeof(RadioButtonPlus));
+
+        /// <summary>
+        /// Gets the actual scale of the check mark.
+        /// </summary>
+        public double ActualCheckScale => (double)GetValue(ActualCheckScaleProperty);
+
+        #region ActualCheckScaleProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualCheckScale"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualCheckScalePropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualCheckScale), typeof(double), typeof(RadioButtonPlus),
+                new FrameworkPropertyMetadata(0d));
+
+        /// <summary>
+        /// Identifies the <see cref="ActualCheckScale"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ActualCheckScaleProperty = ActualCheckScalePropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualCheckScale"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualCheckScalePropertyProxy =
+            DependencyProperty.Register("ActualCheckScaleProxy", typeof(double), typeof(RadioButtonPlus),
                 new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e)
-                    => d.SetValue(CheckScalePropertyKey, e.NewValue))));
+                    => d.SetValue(ActualCheckScalePropertyKey, e.NewValue))));
+
+        #endregion
 
         #endregion
 
@@ -581,7 +885,6 @@ namespace FullControls.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            Util.AnimateDouble(this, CheckScalePropertyProxy, IsChecked == true ? 1 : 0, TimeSpan.Zero);
             loaded = true;
             OnVStateChanged(VStateOverride(), true);
         }
@@ -598,6 +901,13 @@ namespace FullControls.Controls
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
         protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(VStateOverride());
 
+        /// <inheritdoc/>
+        protected override void OnIsPressedChanged(DependencyPropertyChangedEventArgs e)
+        {
+            base.OnIsPressedChanged(e);
+            OnVStateChanged(VStateOverride());
+        }
+
         /// <summary>
         /// Called when the <see cref="ToggleButton.IsChecked"/> is changed.
         /// </summary>
@@ -605,7 +915,6 @@ namespace FullControls.Controls
         protected virtual void OnCheckedChanged(bool? checkedState)
         {
             OnVStateChanged(VStateOverride());
-            if (loaded) Util.AnimateDouble(this, CheckScalePropertyProxy, IsChecked == true ? 1 : 0, CheckAnimationTime);
         }
 
         /// <inheritdoc/>
@@ -628,7 +937,16 @@ namespace FullControls.Controls
         protected virtual string VStateOverride()
         {
             if (!loaded) return "Undefined";
-            if (!IsEnabled) return "Disabled";
+            if (!IsEnabled)
+            {
+                if (IsChecked == true) return "DisabledOnChecked";
+                else return "Disabled";
+            }
+            else if (IsPressed)
+            {
+                if (IsChecked == true) return "PressedOnChecked";
+                else return "Pressed";
+            }
             else if (IsMouseOver)
             {
                 if (IsChecked == true) return "MouseOverOnChecked";
@@ -653,30 +971,56 @@ namespace FullControls.Controls
                     Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
                     Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
                     Util.AnimateBrush(this, ActualForeColorPropertyProxy, ForeColor, TimeSpan.Zero);
+                    Util.AnimateDouble(this, ActualCheckScalePropertyProxy, CheckScale, initial ? TimeSpan.Zero : CheckAnimationTime);
                     break;
                 case "Checked":
                     Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnChecked, initial ? TimeSpan.Zero : AnimationTime);
                     Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnChecked, initial ? TimeSpan.Zero : AnimationTime);
                     Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnChecked, TimeSpan.Zero);
                     Util.AnimateBrush(this, ActualForeColorPropertyProxy, ForeColorOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateDouble(this, ActualCheckScalePropertyProxy, CheckScaleOnChecked, initial ? TimeSpan.Zero : CheckAnimationTime);
                     break;
                 case "MouseOver":
                     Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
                     Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
                     Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOver, TimeSpan.Zero);
                     Util.AnimateBrush(this, ActualForeColorPropertyProxy, ForeColorOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateDouble(this, ActualCheckScalePropertyProxy, CheckScaleOnMouseOver, initial ? TimeSpan.Zero : CheckAnimationTime);
                     break;
                 case "MouseOverOnChecked":
                     Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOverOnChecked, initial ? TimeSpan.Zero : AnimationTime);
                     Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOverOnChecked, initial ? TimeSpan.Zero : AnimationTime);
                     Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOverOnChecked, TimeSpan.Zero);
                     Util.AnimateBrush(this, ActualForeColorPropertyProxy, ForeColorOnMouseOverOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateDouble(this, ActualCheckScalePropertyProxy, CheckScaleOnMouseOverOnChecked, initial ? TimeSpan.Zero : CheckAnimationTime);
+                    break;
+                case "Pressed":
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnPressed, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnPressed, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnPressed, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualForeColorPropertyProxy, ForeColorOnPressed, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateDouble(this, ActualCheckScalePropertyProxy, CheckScaleOnPressed, initial ? TimeSpan.Zero : CheckAnimationTime);
+                    break;
+                case "PressedOnChecked":
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnPressedOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnPressedOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnPressedOnChecked, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualForeColorPropertyProxy, ForeColorOnPressedOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+                    Util.AnimateDouble(this, ActualCheckScalePropertyProxy, CheckScaleOnPressedOnChecked, initial ? TimeSpan.Zero : CheckAnimationTime);
                     break;
                 case "Disabled":
                     Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
                     Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
                     Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, TimeSpan.Zero);
                     Util.AnimateBrush(this, ActualForeColorPropertyProxy, ForeColorOnDisabled, TimeSpan.Zero);
+                    Util.AnimateDouble(this, ActualCheckScalePropertyProxy, CheckScaleOnDisabled, TimeSpan.Zero);
+                    break;
+                case "DisabledOnChecked":
+                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabledOnChecked, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabledOnChecked, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabledOnChecked, TimeSpan.Zero);
+                    Util.AnimateBrush(this, ActualForeColorPropertyProxy, ForeColorOnDisabledOnChecked, TimeSpan.Zero);
+                    Util.AnimateDouble(this, ActualCheckScalePropertyProxy, CheckScaleOnDisabledOnChecked, TimeSpan.Zero);
                     break;
                 default:
                     break;

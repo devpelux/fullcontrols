@@ -33,7 +33,7 @@ namespace FullControls.Core
             }
             else
             {
-                uiElement.SetValue(doubleProperty, to);
+                uiElement.SetCurrentValue(doubleProperty, to);
             }
         }
 
