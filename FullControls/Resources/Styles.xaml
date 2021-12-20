@@ -17,20 +17,10 @@
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="BackgroundOnMouseOver"
-                Value="{StaticResource Gray4}" />
+                Value="{StaticResource LightButtonBackgroundHover}" />
         <Setter Property="BackgroundOnPressed"
-                Value="{StaticResource Gray5}" />
+                Value="{StaticResource LightButtonBackgroundClicked}" />
         <Setter Property="BackgroundOnDisabled"
-                Value="Transparent" />
-        <Setter Property="BorderThickness"
-                Value="0" />
-        <Setter Property="BorderBrush"
-                Value="Transparent" />
-        <Setter Property="BorderBrushOnMouseOver"
-                Value="{StaticResource Gray4}" />
-        <Setter Property="BorderBrushOnPressed"
-                Value="{StaticResource Gray5}" />
-        <Setter Property="BorderBrushOnDisabled"
                 Value="Transparent" />
         <Setter Property="Foreground"
                 Value="Black" />
@@ -39,7 +29,11 @@
         <Setter Property="ForegroundOnPressed"
                 Value="Black" />
         <Setter Property="ForegroundOnDisabled"
-                Value="DimGray" />
+                Value="{StaticResource LightButtonTextDisabled}" />
+        <Setter Property="CornerRadius"
+                Value="0" />
+        <Setter Property="BorderThickness"
+                Value="0" />
         <Setter Property="AnimationTime"
                 Value="0:0:0.07" />
     </Style>
@@ -60,16 +54,6 @@
                 Value="Firebrick" />
         <Setter Property="BackgroundOnDisabled"
                 Value="Transparent" />
-        <Setter Property="BorderThickness"
-                Value="0" />
-        <Setter Property="BorderBrush"
-                Value="Transparent" />
-        <Setter Property="BorderBrushOnMouseOver"
-                Value="Red" />
-        <Setter Property="BorderBrushOnPressed"
-                Value="Firebrick" />
-        <Setter Property="BorderBrushOnDisabled"
-                Value="Transparent" />
         <Setter Property="Foreground"
                 Value="Black" />
         <Setter Property="ForegroundOnMouseOver"
@@ -77,7 +61,11 @@
         <Setter Property="ForegroundOnPressed"
                 Value="White" />
         <Setter Property="ForegroundOnDisabled"
-                Value="DimGray" />
+                Value="{StaticResource LightButtonTextDisabled}" />
+        <Setter Property="CornerRadius"
+                Value="0" />
+        <Setter Property="BorderThickness"
+                Value="0" />
         <Setter Property="AnimationTime"
                 Value="0:0:0.07" />
     </Style>

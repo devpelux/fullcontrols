@@ -28,9 +28,9 @@
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="BorderBrush"
-                Value="{StaticResource Gray10}" />
+                Value="{StaticResource LightWindowBorder}" />
         <Setter Property="BorderBrushOnActive"
-                Value="{StaticResource Blue7}" />
+                Value="{StaticResource LightWindowBorder}" />
         <Setter Property="Background"
                 Value="White" />
         <Setter Property="Foreground"

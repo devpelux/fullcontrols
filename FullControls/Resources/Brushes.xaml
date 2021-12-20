@@ -72,9 +72,10 @@
                      Color="#fbfbfb" />
     <SolidColorBrush x:Key="LightAccordionBackgroundHover"
                      Color="#f6f6f6" />
-    
-    
-    
+
+    <SolidColorBrush x:Key="LightWindowBorder"
+                     Color="#bbbbbb" />
+
 
 
     <SolidColorBrush x:Key="WhiteTransparent"
