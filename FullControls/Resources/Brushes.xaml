@@ -59,6 +59,18 @@
 
 
 
+    <SolidColorBrush x:Key="LightTextColorMenu"
+                     Color="#1a1a1a" />
+    <SolidColorBrush x:Key="LightTextColorMenuSelected"
+                     Color="#191919" />
+    <SolidColorBrush x:Key="LightTextColorMenuClicked"
+                     Color="#5c5c5c" />
+
+    <SolidColorBrush x:Key="LightSelectionColor"
+                     Color="#0078d4" />
+    <SolidColorBrush x:Key="LightSelectedTextColor"
+                     Color="#ffffff" />
+
     <SolidColorBrush x:Key="LightTextColor"
                      Color="#262626" />
     <SolidColorBrush x:Key="LightTextColorHover"

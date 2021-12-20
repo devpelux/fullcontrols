@@ -28,19 +28,19 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HorizontalScrollBarThickness), typeof(double), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Gets or sets the padding of the area that contains the horizontal scrollbar.
+        /// Gets or sets the margin of the horizontal scrollbar.
         /// </summary>
-        public Thickness HorizontalScrollBarAreaPadding
+        public Thickness HorizontalScrollBarMargin
         {
-            get => (Thickness)GetValue(HorizontalScrollBarAreaPaddingProperty);
-            set => SetValue(HorizontalScrollBarAreaPaddingProperty, value);
+            get => (Thickness)GetValue(HorizontalScrollBarMarginProperty);
+            set => SetValue(HorizontalScrollBarMarginProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="HorizontalScrollBarAreaPadding"/> dependency property.
+        /// Identifies the <see cref="HorizontalScrollBarMargin"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty HorizontalScrollBarAreaPaddingProperty =
-            DependencyProperty.Register(nameof(HorizontalScrollBarAreaPadding), typeof(Thickness), typeof(GlassScrollViewer));
+        public static readonly DependencyProperty HorizontalScrollBarMarginProperty =
+            DependencyProperty.Register(nameof(HorizontalScrollBarMargin), typeof(Thickness), typeof(GlassScrollViewer));
 
         /// <summary>
         /// Gets or sets the padding of the horizontal scrollbar.
@@ -482,19 +482,19 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(VerticalScrollBarThickness), typeof(double), typeof(GlassScrollViewer));
 
         /// <summary>
-        /// Gets or sets the padding of the area that contains the vertical scrollbar.
+        /// Gets or sets the margin of the vertical scrollbar.
         /// </summary>
-        public Thickness VerticalScrollBarAreaPadding
+        public Thickness VerticalScrollBarMargin
         {
-            get => (Thickness)GetValue(VerticalScrollBarAreaPaddingProperty);
-            set => SetValue(VerticalScrollBarAreaPaddingProperty, value);
+            get => (Thickness)GetValue(VerticalScrollBarMarginProperty);
+            set => SetValue(VerticalScrollBarMarginProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="VerticalScrollBarAreaPadding"/> dependency property.
+        /// Identifies the <see cref="VerticalScrollBarMargin"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty VerticalScrollBarAreaPaddingProperty =
-            DependencyProperty.Register(nameof(VerticalScrollBarAreaPadding), typeof(Thickness), typeof(GlassScrollViewer));
+        public static readonly DependencyProperty VerticalScrollBarMarginProperty =
+            DependencyProperty.Register(nameof(VerticalScrollBarMargin), typeof(Thickness), typeof(GlassScrollViewer));
 
         /// <summary>
         /// Gets or sets the padding of the vertical scrollbar.

@@ -51,6 +51,36 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BackgroundOnMouseOverOnChecked), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
+        /// Gets or sets the background brush when the control is pressed.
+        /// </summary>
+        public Brush BackgroundOnPressed
+        {
+            get => (Brush)GetValue(BackgroundOnPressedProperty);
+            set => SetValue(BackgroundOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BackgroundOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BackgroundOnPressedProperty =
+            DependencyProperty.Register(nameof(BackgroundOnPressed), typeof(Brush), typeof(ComboBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the background brush when the control is checked and is pressed.
+        /// </summary>
+        public Brush BackgroundOnPressedOnChecked
+        {
+            get => (Brush)GetValue(BackgroundOnPressedOnCheckedProperty);
+            set => SetValue(BackgroundOnPressedOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BackgroundOnPressedOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BackgroundOnPressedOnCheckedProperty =
+            DependencyProperty.Register(nameof(BackgroundOnPressedOnChecked), typeof(Brush), typeof(ComboBoxPlus));
+
+        /// <summary>
         /// Gets or sets the background brush when the control is checked.
         /// </summary>
         public Brush BackgroundOnChecked
@@ -79,6 +109,21 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty BackgroundOnDisabledProperty =
             DependencyProperty.Register(nameof(BackgroundOnDisabled), typeof(Brush), typeof(ComboBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the background brush when the control is checked and is disabled.
+        /// </summary>
+        public Brush BackgroundOnDisabledOnChecked
+        {
+            get => (Brush)GetValue(BackgroundOnDisabledOnCheckedProperty);
+            set => SetValue(BackgroundOnDisabledOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BackgroundOnDisabledOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BackgroundOnDisabledOnCheckedProperty =
+            DependencyProperty.Register(nameof(BackgroundOnDisabledOnChecked), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
         /// Gets the actual background brush of the control.
@@ -133,6 +178,36 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BorderBrushOnMouseOverOnChecked), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
+        /// Gets or sets the border brush when the control is pressed.
+        /// </summary>
+        public Brush BorderBrushOnPressed
+        {
+            get => (Brush)GetValue(BorderBrushOnPressedProperty);
+            set => SetValue(BorderBrushOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BorderBrushOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BorderBrushOnPressedProperty =
+            DependencyProperty.Register(nameof(BorderBrushOnPressed), typeof(Brush), typeof(ComboBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the border brush when the control is checked and is pressed.
+        /// </summary>
+        public Brush BorderBrushOnPressedOnChecked
+        {
+            get => (Brush)GetValue(BorderBrushOnPressedOnCheckedProperty);
+            set => SetValue(BorderBrushOnPressedOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BorderBrushOnPressedOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BorderBrushOnPressedOnCheckedProperty =
+            DependencyProperty.Register(nameof(BorderBrushOnPressedOnChecked), typeof(Brush), typeof(ComboBoxPlus));
+
+        /// <summary>
         /// Gets or sets the border brush when the control is checked.
         /// </summary>
         public Brush BorderBrushOnChecked
@@ -161,6 +236,42 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty BorderBrushOnDisabledProperty =
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(ComboBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the border brush when the control is checked and is disabled.
+        /// </summary>
+        public Brush BorderBrushOnDisabledOnChecked
+        {
+            get => (Brush)GetValue(BorderBrushOnDisabledOnCheckedProperty);
+            set => SetValue(BorderBrushOnDisabledOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="BorderBrushOnDisabledOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty BorderBrushOnDisabledOnCheckedProperty =
+            DependencyProperty.Register(nameof(BorderBrushOnDisabledOnChecked), typeof(Brush), typeof(ComboBoxPlus));
+
+        /// <summary>
+        /// Gets the actual border brush of the control.
+        /// </summary>
+        public Brush ActualBorderBrush => (Brush)GetValue(ActualBorderBrushProperty);
+
+        #region ActualBorderBrushProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualBorderBrush"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualBorderBrushPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualBorderBrush), typeof(Brush), typeof(ComboBoxPlus),
+                new FrameworkPropertyMetadata(default(Brush)));
+
+        /// <summary>
+        /// Identifies the <see cref="ActualBorderBrush"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ActualBorderBrushProperty = ActualBorderBrushPropertyKey.DependencyProperty;
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the forecolor brush of the control.
@@ -208,6 +319,36 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForeColorOnMouseOverOnChecked), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
+        /// Gets or sets the forecolor brush when the control is pressed.
+        /// </summary>
+        public Brush ForeColorOnPressed
+        {
+            get => (Brush)GetValue(ForeColorOnPressedProperty);
+            set => SetValue(ForeColorOnPressedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForeColorOnPressed"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForeColorOnPressedProperty =
+            DependencyProperty.Register(nameof(ForeColorOnPressed), typeof(Brush), typeof(ComboBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the forecolor brush when the control is checked and is pressed.
+        /// </summary>
+        public Brush ForeColorOnPressedOnChecked
+        {
+            get => (Brush)GetValue(ForeColorOnPressedOnCheckedProperty);
+            set => SetValue(ForeColorOnPressedOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForeColorOnPressedOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForeColorOnPressedOnCheckedProperty =
+            DependencyProperty.Register(nameof(ForeColorOnPressedOnChecked), typeof(Brush), typeof(ComboBoxPlus));
+
+        /// <summary>
         /// Gets or sets the forecolor brush when the control is checked.
         /// </summary>
         public Brush ForeColorOnChecked
@@ -236,6 +377,21 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ForeColorOnDisabledProperty =
             DependencyProperty.Register(nameof(ForeColorOnDisabled), typeof(Brush), typeof(ComboBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the forecolor brush when the control is checked and is disabled.
+        /// </summary>
+        public Brush ForeColorOnDisabledOnChecked
+        {
+            get => (Brush)GetValue(ForeColorOnDisabledOnCheckedProperty);
+            set => SetValue(ForeColorOnDisabledOnCheckedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForeColorOnDisabledOnChecked"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForeColorOnDisabledOnCheckedProperty =
+            DependencyProperty.Register(nameof(ForeColorOnDisabledOnChecked), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
         /// Gets the actual forecolor brush of the control.
@@ -739,21 +895,22 @@ namespace FullControls.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            ToggleButtonPlus toggleButton = (ToggleButtonPlus)Template.FindName(PartToggleButton, this);
-            if (toggleButton != null)
+
+            object toggleButton = Template.FindName(PartToggleButton, this);
+            if (toggleButton is ToggleButtonPlus toggleButtonPlus)
             {
                 DependencyPropertyDescriptor.FromProperty(ToggleButtonPlus.ActualBackgroundProperty, typeof(ToggleButtonPlus))
-                    ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualBackgroundPropertyKey, toggleButton.ActualBackground));
+                    ?.AddValueChanged(toggleButtonPlus, (s, e) => SetValue(ActualBackgroundPropertyKey, toggleButtonPlus.ActualBackground));
+                DependencyPropertyDescriptor.FromProperty(ToggleButtonPlus.ActualBorderBrushProperty, typeof(ToggleButtonPlus))
+                    ?.AddValueChanged(toggleButtonPlus, (s, e) => SetValue(ActualBorderBrushPropertyKey, toggleButtonPlus.ActualBorderBrush));
                 DependencyPropertyDescriptor.FromProperty(ToggleButtonPlus.ActualForegroundProperty, typeof(ToggleButtonPlus))
-                    ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualForeColorPropertyKey, toggleButton.ActualForeground));
-                SetValue(ActualBackgroundPropertyKey, IsEnabled ? IsDropDownOpen ? BackgroundOnChecked : Background : BackgroundOnDisabled);
-                SetValue(ActualForeColorPropertyKey, IsEnabled ? IsDropDownOpen ? ForeColorOnChecked : ForeColor : ForeColorOnDisabled);
+                    ?.AddValueChanged(toggleButtonPlus, (s, e) => SetValue(ActualForeColorPropertyKey, toggleButtonPlus.ActualForeground));
+                
             }
-            else
-            {
-                SetValue(ActualBackgroundPropertyKey, IsEnabled ? Background : BackgroundOnDisabled);
-                SetValue(ActualForeColorPropertyKey, IsEnabled ? ForeColor : ForeColorOnDisabled);
-            }
+
+            SetValue(ActualBackgroundPropertyKey, IsEnabled ? IsDropDownOpen ? BackgroundOnChecked : Background : BackgroundOnDisabled);
+            SetValue(ActualBorderBrushPropertyKey, IsEnabled ? IsDropDownOpen ? BorderBrushOnChecked : BorderBrush : BorderBrushOnDisabled);
+            SetValue(ActualForeColorPropertyKey, IsEnabled ? IsDropDownOpen ? ForeColorOnChecked : ForeColor : ForeColorOnDisabled);
         }
 
         /// <summary>

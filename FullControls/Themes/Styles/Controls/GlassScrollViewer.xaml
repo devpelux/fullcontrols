@@ -36,7 +36,7 @@
 
         <Setter Property="HorizontalScrollBarThickness"
                 Value="10" />
-        <Setter Property="HorizontalScrollBarAreaPadding"
+        <Setter Property="HorizontalScrollBarMargin"
                 Value="0" />
         <Setter Property="HorizontalScrollBarPadding"
                 Value="0" />
@@ -101,7 +101,7 @@
 
         <Setter Property="VerticalScrollBarThickness"
                 Value="10" />
-        <Setter Property="VerticalScrollBarAreaPadding"
+        <Setter Property="VerticalScrollBarMargin"
                 Value="0" />
         <Setter Property="VerticalScrollBarPadding"
                 Value="0" />
@@ -195,7 +195,7 @@
                             <local:GlassScrollBar x:Name="PART_HorizontalScrollBar"
                                                   Grid.Row="1"
                                                   Grid.Column="0"
-                                                  Margin="{TemplateBinding HorizontalScrollBarAreaPadding}"
+                                                  Margin="{TemplateBinding HorizontalScrollBarMargin}"
                                                   Height="{TemplateBinding HorizontalScrollBarThickness}"
                                                   Padding="{TemplateBinding HorizontalScrollBarPadding}"
                                                   DecreaseButtonPadding="{TemplateBinding LeftButtonPadding}"
@@ -238,7 +238,7 @@
                             <local:GlassScrollBar x:Name="PART_VerticalScrollBar"
                                                   Grid.Row="0"
                                                   Grid.Column="1"
-                                                  Margin="{TemplateBinding VerticalScrollBarAreaPadding}"
+                                                  Margin="{TemplateBinding VerticalScrollBarMargin}"
                                                   Width="{TemplateBinding VerticalScrollBarThickness}"
                                                   Padding="{TemplateBinding VerticalScrollBarPadding}"
                                                   DecreaseButtonPadding="{TemplateBinding UpButtonPadding}"
