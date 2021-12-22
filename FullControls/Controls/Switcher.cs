@@ -1,4 +1,5 @@
-﻿using FullControls.Core;
+﻿using FullControls.Common;
+using FullControls.Core;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,7 +13,7 @@ namespace FullControls.Controls
     /// <para>Represents a button that can be selected, but not cleared, by a user.</para>
     /// <para>The <see cref="ToggleButton.IsChecked"/> property of a <see cref="Switcher"/> can be set by clicking it, but it can only be cleared programmatically.</para>
     /// </summary>
-    public class Switcher : RadioButton
+    public class Switcher : RadioButton, IVState
     {
         private bool loaded = false;
 
@@ -476,119 +477,173 @@ namespace FullControls.Controls
         {
             base.OnApplyTemplate();
             loaded = true;
-            OnVStateChanged(VStateOverride(), true);
+            OnVStateChanged(GetCurrentVState(), true);
         }
 
         /// <summary>
         /// Called when the element is laid out, rendered, and ready for interaction.
         /// </summary>
         /// <param name="e">Event data.</param>
-        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(VStateOverride());
+        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(GetCurrentVState());
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
-        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(VStateOverride());
+        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(GetCurrentVState());
+
+        /// <inheritdoc/>
+        protected override void OnIsPressedChanged(DependencyPropertyChangedEventArgs e)
+        {
+            base.OnIsPressedChanged(e);
+            OnVStateChanged(GetCurrentVState());
+        }
 
         /// <summary>
         /// Called when the <see cref="ToggleButton.IsChecked"/> is changed.
         /// </summary>
         /// <param name="checkedState">Actual state of <see cref="ToggleButton.IsChecked"/>.</param>
-        protected virtual void OnCheckedChanged(bool? checkedState) => OnVStateChanged(VStateOverride());
+        protected virtual void OnCheckedChanged(bool? checkedState) => OnVStateChanged(GetCurrentVState());
 
         /// <inheritdoc/>
         protected override void OnMouseEnter(MouseEventArgs e)
         {
             base.OnMouseEnter(e);
-            OnVStateChanged(VStateOverride());
+            OnVStateChanged(GetCurrentVState());
         }
 
         /// <inheritdoc/>
         protected override void OnMouseLeave(MouseEventArgs e)
         {
             base.OnMouseLeave(e);
-            OnVStateChanged(VStateOverride());
+            OnVStateChanged(GetCurrentVState());
         }
 
-        /// <summary>
-        /// Called to calculate the <b>v-state</b> of the control.
-        /// </summary>
-        protected virtual string VStateOverride()
+        /// <inheritdoc/>
+        public VState GetCurrentVState()
         {
-            if (!loaded) return "Undefined";
+            if (!loaded) return VState.UNSET;
             if (!IsEnabled)
             {
-                if (IsChecked == true) return "DisabledOnChecked";
-                else return "Disabled";
+                if (IsChecked == true) return VStates.DISABLED_ON_CHECKED;
+                else return VStates.DISABLED;
             }
             else if (IsPressed)
             {
-                if (IsChecked == true) return "PressedOnChecked";
-                else return "Pressed";
+                if (IsChecked == true) return VStates.PRESSED_ON_CHECKED;
+                else return VStates.PRESSED;
             }
             else if (IsMouseOver)
             {
-                if (IsChecked == true) return "MouseOverOnChecked";
-                else return "MouseOver";
+                if (IsChecked == true) return VStates.MOUSE_OVER_ON_CHECKED;
+                else return VStates.MOUSE_OVER;
             }
-            else if (IsChecked == true) return "Checked";
-            else return "Normal";
+            else if (IsChecked == true) return VStates.CHECKED;
+            else return VStates.DEFAULT;
         }
 
         /// <summary>
-        /// Called when the <b>v-state</b> of the control changed, is used to execute custom animations on certain contitions changing.
+        /// Called when the current <see cref="VState"/> is changed.
         /// </summary>
-        /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
-        /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
-        /// <param name="initial">Specifies if this is the first <b>v-state</b> applied to the control.</param>
-        protected virtual void OnVStateChanged(string vstate, bool initial = false)
+        /// <param name="vstate">Current <see cref="VState"/>.</param>
+        /// <param name="initial">Specifies if this is the initial <see cref="VState"/>.</param>
+        protected virtual void OnVStateChanged(VState vstate, bool initial = false)
         {
-            switch (vstate)
+            if (vstate == VStates.DEFAULT)
             {
-                case "Normal":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
-                    break;
-                case "Checked":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnChecked, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnChecked, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnChecked, TimeSpan.Zero);
-                    break;
-                case "MouseOver":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOver, TimeSpan.Zero);
-                    break;
-                case "MouseOverOnChecked":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOverOnChecked, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOverOnChecked, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOverOnChecked, TimeSpan.Zero);
-                    break;
-                case "Pressed":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnPressed, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnPressed, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnPressed, TimeSpan.Zero);
-                    break;
-                case "PressedOnChecked":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnPressedOnChecked, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnPressedOnChecked, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnPressedOnChecked, TimeSpan.Zero);
-                    break;
-                case "Disabled":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, TimeSpan.Zero);
-                    break;
-                case "DisabledOnChecked":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabledOnChecked, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabledOnChecked, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabledOnChecked, TimeSpan.Zero);
-                    break;
-                default:
-                    break;
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, initial ? TimeSpan.Zero : AnimationTime);
             }
+            else if (vstate == VStates.CHECKED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.MOUSE_OVER)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.MOUSE_OVER_ON_CHECKED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOverOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOverOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOverOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.PRESSED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnPressed, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnPressed, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnPressed, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.PRESSED_ON_CHECKED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnPressedOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnPressedOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnPressedOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.DISABLED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.DISABLED_ON_CHECKED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabledOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabledOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabledOnChecked, initial ? TimeSpan.Zero : AnimationTime);
+            }
+        }
+
+
+        /// <summary>
+        /// Control v-states.
+        /// </summary>
+        public static class VStates
+        {
+            /// <summary>
+            /// Default state.
+            /// </summary>
+            public static readonly VState DEFAULT = new(nameof(DEFAULT), typeof(Switcher));
+
+            /// <summary>
+            /// The control is checked.
+            /// </summary>
+            public static readonly VState CHECKED = new(nameof(CHECKED), typeof(Switcher));
+
+            /// <summary>
+            /// The mouse is over the control.
+            /// </summary>
+            public static readonly VState MOUSE_OVER = new(nameof(MOUSE_OVER), typeof(Switcher));
+
+            /// <summary>
+            /// The mouse is over the control while the control is checked.
+            /// </summary>
+            public static readonly VState MOUSE_OVER_ON_CHECKED = new(nameof(MOUSE_OVER_ON_CHECKED), typeof(Switcher));
+
+            /// <summary>
+            /// The control is pressed.
+            /// </summary>
+            public static readonly VState PRESSED = new(nameof(PRESSED), typeof(Switcher));
+
+            /// <summary>
+            /// The control is pressed while is checked.
+            /// </summary>
+            public static readonly VState PRESSED_ON_CHECKED = new(nameof(PRESSED_ON_CHECKED), typeof(Switcher));
+
+            /// <summary>
+            /// The control is disabled.
+            /// </summary>
+            public static readonly VState DISABLED = new(nameof(DISABLED), typeof(Switcher));
+
+            /// <summary>
+            /// The control is disabled while is checked.
+            /// </summary>
+            public static readonly VState DISABLED_ON_CHECKED = new(nameof(DISABLED_ON_CHECKED), typeof(Switcher));
         }
     }
 }

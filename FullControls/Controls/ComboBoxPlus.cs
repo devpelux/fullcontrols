@@ -905,12 +905,11 @@ namespace FullControls.Controls
                     ?.AddValueChanged(toggleButtonPlus, (s, e) => SetValue(ActualBorderBrushPropertyKey, toggleButtonPlus.ActualBorderBrush));
                 DependencyPropertyDescriptor.FromProperty(ToggleButtonPlus.ActualForegroundProperty, typeof(ToggleButtonPlus))
                     ?.AddValueChanged(toggleButtonPlus, (s, e) => SetValue(ActualForeColorPropertyKey, toggleButtonPlus.ActualForeground));
-                
             }
 
-            SetValue(ActualBackgroundPropertyKey, IsEnabled ? IsDropDownOpen ? BackgroundOnChecked : Background : BackgroundOnDisabled);
-            SetValue(ActualBorderBrushPropertyKey, IsEnabled ? IsDropDownOpen ? BorderBrushOnChecked : BorderBrush : BorderBrushOnDisabled);
-            SetValue(ActualForeColorPropertyKey, IsEnabled ? IsDropDownOpen ? ForeColorOnChecked : ForeColor : ForeColorOnDisabled);
+            SetValue(ActualBackgroundPropertyKey, Background);
+            SetValue(ActualBorderBrushPropertyKey, BorderBrush);
+            SetValue(ActualForeColorPropertyKey, ForeColor);
         }
 
         /// <summary>

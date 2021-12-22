@@ -1,4 +1,5 @@
-﻿using FullControls.Core;
+﻿using FullControls.Common;
+using FullControls.Core;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,7 +11,7 @@ namespace FullControls.Controls
     /// <summary>
     /// Implements a selectable item inside a <see cref="ComboBox"/>.
     /// </summary>
-    public class ComboBoxItemPlus : ComboBoxItem
+    public class ComboBoxItemPlus : ComboBoxItem, IVState
     {
         private bool loaded = false;
 
@@ -429,124 +430,165 @@ namespace FullControls.Controls
         {
             base.OnApplyTemplate();
             loaded = true;
-            OnVStateChanged(VStateOverride(), true);
+            OnVStateChanged(GetCurrentVState(), true);
         }
 
         /// <summary>
         /// Called when the element is laid out, rendered, and ready for interaction.
         /// </summary>
         /// <param name="e">Event data.</param>
-        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(VStateOverride());
+        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(GetCurrentVState());
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
-        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(VStateOverride());
+        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(GetCurrentVState());
 
         /// <inheritdoc/>
         protected override void OnGotFocus(RoutedEventArgs e)
         {
             base.OnGotFocus(e);
-            OnVStateChanged(VStateOverride());
+            OnVStateChanged(GetCurrentVState());
         }
 
         /// <inheritdoc/>
         protected override void OnLostFocus(RoutedEventArgs e)
         {
             base.OnLostFocus(e);
-            OnVStateChanged(VStateOverride());
+            OnVStateChanged(GetCurrentVState());
         }
 
         /// <inheritdoc/>
         protected override void OnMouseEnter(MouseEventArgs e)
         {
             base.OnMouseEnter(e);
-            OnVStateChanged(VStateOverride());
+            OnVStateChanged(GetCurrentVState());
         }
 
         /// <inheritdoc/>
         protected override void OnMouseLeave(MouseEventArgs e)
         {
             base.OnMouseLeave(e);
-            OnVStateChanged(VStateOverride());
+            OnVStateChanged(GetCurrentVState());
         }
 
         /// <summary>
         /// Called when the <see cref="ListBoxItem.IsSelected"/> is changed.
         /// </summary>
         /// <param name="selectedState">Actual state of <see cref="ListBoxItem.IsSelected"/>.</param>
-        protected virtual void OnSelectedChanged(bool selectedState) => OnVStateChanged(VStateOverride());
+        protected virtual void OnSelectedChanged(bool selectedState) => OnVStateChanged(GetCurrentVState());
 
-        /// <summary>
-        /// Called to calculate the <b>v-state</b> of the control.
-        /// </summary>
-        protected virtual string VStateOverride()
+        /// <inheritdoc/>
+        public VState GetCurrentVState()
         {
-            if (!loaded) return "Undefined";
-            if (!IsEnabled) return "Disabled";
+            if (!loaded) return VState.UNSET;
+            if (!IsEnabled) return VStates.DISABLED;
             else if (IsMouseOver)
             {
-                if (IsSelected) return "MouseOverOnSelected";
-                else return "MouseOver";
+                if (IsSelected) return VStates.MOUSE_OVER_ON_SELECTED;
+                else return VStates.MOUSE_OVER;
             }
             else if (IsFocused)
             {
-                if (IsSelected) return "FocusedOnSelected";
-                else return "Focused";
+                if (IsSelected) return VStates.FOCUSED_ON_SELECTED;
+                else return VStates.FOCUSED;
             }
-            else if (IsSelected) return "Selected";
-            else return "Normal";
+            else if (IsSelected) return VStates.SELECTED;
+            else return VStates.DEFAULT;
         }
 
         /// <summary>
-        /// Called when the <b>v-state</b> of the control changed, is used to execute custom animations on certain contitions changing.
+        /// Called when the current <see cref="VState"/> is changed.
         /// </summary>
-        /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
-        /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
-        /// <param name="initial">Specifies if this is the first <b>v-state</b> applied to the control.</param>
-        protected virtual void OnVStateChanged(string vstate, bool initial = false)
+        /// <param name="vstate">Current <see cref="VState"/>.</param>
+        /// <param name="initial">Specifies if this is the initial <see cref="VState"/>.</param>
+        protected virtual void OnVStateChanged(VState vstate, bool initial = false)
         {
-            switch (vstate)
+            if (vstate == VStates.DEFAULT)
             {
-                case "Normal":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
-                    break;
-                case "Selected":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    break;
-                case "Focused":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnFocused, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnFocused, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnFocused, initial ? TimeSpan.Zero : AnimationTime);
-                    break;
-                case "FocusedOnSelected":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnFocusedOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnFocusedOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnFocusedOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    break;
-                case "MouseOver":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
-                    break;
-                case "MouseOverOnSelected":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOverOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOverOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOverOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    break;
-                case "Disabled":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, TimeSpan.Zero);
-                    break;
-                default:
-                    break;
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, initial ? TimeSpan.Zero : AnimationTime);
             }
+            else if (vstate == VStates.SELECTED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.FOCUSED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnFocused, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnFocused, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnFocused, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.FOCUSED_ON_SELECTED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnFocusedOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnFocusedOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnFocusedOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.MOUSE_OVER)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.MOUSE_OVER_ON_SELECTED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnMouseOverOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnMouseOverOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnMouseOverOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.DISABLED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+            }
+        }
+
+
+        /// <summary>
+        /// Control v-states.
+        /// </summary>
+        public static class VStates
+        {
+            /// <summary>
+            /// Default state.
+            /// </summary>
+            public static readonly VState DEFAULT = new(nameof(DEFAULT), typeof(ComboBoxItemPlus));
+
+            /// <summary>
+            /// The control is selected.
+            /// </summary>
+            public static readonly VState SELECTED = new(nameof(SELECTED), typeof(ComboBoxItemPlus));
+
+            /// <summary>
+            /// The control is focused.
+            /// </summary>
+            public static readonly VState FOCUSED = new(nameof(FOCUSED), typeof(ComboBoxItemPlus));
+
+            /// <summary>
+            /// The control is focused while is selected.
+            /// </summary>
+            public static readonly VState FOCUSED_ON_SELECTED = new(nameof(FOCUSED_ON_SELECTED), typeof(ComboBoxItemPlus));
+
+            /// <summary>
+            /// The mouse is over the control.
+            /// </summary>
+            public static readonly VState MOUSE_OVER = new(nameof(MOUSE_OVER), typeof(ComboBoxItemPlus));
+
+            /// <summary>
+            /// The mouse is over the control while is selected.
+            /// </summary>
+            public static readonly VState MOUSE_OVER_ON_SELECTED = new(nameof(MOUSE_OVER_ON_SELECTED), typeof(ComboBoxItemPlus));
+
+            /// <summary>
+            /// The control is disabled.
+            /// </summary>
+            public static readonly VState DISABLED = new(nameof(DISABLED), typeof(ComboBoxItemPlus));
         }
     }
 }

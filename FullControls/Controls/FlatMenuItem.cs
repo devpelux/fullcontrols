@@ -14,7 +14,7 @@ namespace FullControls.Controls
     /// <summary>
     /// Represents a selectable item inside a <see cref="Menu"/>.
     /// </summary>
-    public class FlatMenuItem : MenuItem
+    public class FlatMenuItem : MenuItem, IVState
     {
         private bool loaded = false;
         private bool abortCheckChange = false;
@@ -1253,14 +1253,14 @@ namespace FullControls.Controls
         {
             base.OnApplyTemplate();
             loaded = true;
-            OnVStateChanged(VStateOverride(), true);
+            OnVStateChanged(GetCurrentVState(), true);
         }
 
         /// <summary>
         /// Called when the element is laid out, rendered, and ready for interaction.
         /// </summary>
         /// <param name="e">Event data.</param>
-        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(VStateOverride());
+        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(GetCurrentVState());
 
         /// <inheritdoc/>
         protected override DependencyObject GetContainerForItemOverride() => new FlatMenuItemContainer();
@@ -1345,69 +1345,92 @@ namespace FullControls.Controls
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
-        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(VStateOverride());
+        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(GetCurrentVState());
 
         /// <summary>
         /// Called when the <see cref="MenuItem.IsSubmenuOpen"/> is changed.
         /// </summary>
         /// <param name="isSubmenuOpen">Actual state of <see cref="MenuItem.IsSubmenuOpen"/>.</param>
-        protected virtual void OnSubmenuOpenChanged(bool isSubmenuOpen) => OnVStateChanged(VStateOverride());
+        protected virtual void OnSubmenuOpenChanged(bool isSubmenuOpen) => OnVStateChanged(GetCurrentVState());
 
         /// <summary>
         /// Called when the <see cref="MenuItem.IsHighlighted"/> is changed.
         /// </summary>
         /// <param name="isHighlighted">Actual state of <see cref="MenuItem.IsHighlighted"/>.</param>
-        protected virtual void OnHighlightChanged(bool isHighlighted) => OnVStateChanged(VStateOverride());
+        protected virtual void OnHighlightChanged(bool isHighlighted) => OnVStateChanged(GetCurrentVState());
 
-        /// <summary>
-        /// Called to calculate the <b>v-state</b> of the control.
-        /// </summary>
-        protected virtual string VStateOverride()
+        /// <inheritdoc/>
+        public VState GetCurrentVState()
         {
-            if (!loaded) return "Undefined";
-            if (!IsEnabled) return "Disabled";
-            else if (IsSubmenuOpen) return "SubmenuOpen";
-            else if (IsHighlighted) return "Highlighted";
-            else return "Normal";
+            if (!loaded) return VState.UNSET;
+            if (!IsEnabled) return VStates.DISABLED;
+            else if (IsSubmenuOpen) return VStates.SUBMENU_OPEN;
+            else if (IsHighlighted) return VStates.HIGHLIGHTED;
+            else return VStates.DEFAULT;
         }
 
         /// <summary>
-        /// Called when the <b>v-state</b> of the control changed, is used to execute custom animations on certain contitions changing.
+        /// Called when the current <see cref="VState"/> is changed.
         /// </summary>
-        /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
-        /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
-        /// <param name="initial">Specifies if this is the first <b>v-state</b> applied to the control.</param>
-        protected virtual void OnVStateChanged(string vstate, bool initial = false)
+        /// <param name="vstate">Current <see cref="VState"/>.</param>
+        /// <param name="initial">Specifies if this is the initial <see cref="VState"/>.</param>
+        protected virtual void OnVStateChanged(VState vstate, bool initial = false)
         {
-            switch (vstate)
+            if (vstate == VStates.DEFAULT)
             {
-                case "Normal":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrush, TimeSpan.Zero);
-                    break;
-                case "Highlighted":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnHighlight, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnHighlight, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnHighlight, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrushOnHighlight, initial ? TimeSpan.Zero : AnimationTime);
-                    break;
-                case "SubmenuOpen":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnOpen, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnOpen, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnOpen, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrushOnOpen, initial ? TimeSpan.Zero : AnimationTime);
-                    break;
-                case "Disabled":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrushOnDisabled, TimeSpan.Zero);
-                    break;
-                default:
-                    break;
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrush, initial ? TimeSpan.Zero : AnimationTime);
             }
+            else if (vstate == VStates.HIGHLIGHTED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnHighlight, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnHighlight, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnHighlight, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrushOnHighlight, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.SUBMENU_OPEN)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnOpen, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnOpen, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnOpen, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrushOnOpen, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.DISABLED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualCheckBrushPropertyProxy, CheckBrushOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+            }
+        }
+
+
+        /// <summary>
+        /// Control v-states.
+        /// </summary>
+        public static class VStates
+        {
+            /// <summary>
+            /// Default state.
+            /// </summary>
+            public static readonly VState DEFAULT = new(nameof(DEFAULT), typeof(FlatMenuItem));
+
+            /// <summary>
+            /// The control is highlighted.
+            /// </summary>
+            public static readonly VState HIGHLIGHTED = new(nameof(HIGHLIGHTED), typeof(FlatMenuItem));
+
+            /// <summary>
+            /// The control has a submenu opened.
+            /// </summary>
+            public static readonly VState SUBMENU_OPEN = new(nameof(SUBMENU_OPEN), typeof(FlatMenuItem));
+
+            /// <summary>
+            /// The control is disabled.
+            /// </summary>
+            public static readonly VState DISABLED = new(nameof(DISABLED), typeof(FlatMenuItem));
         }
     }
 }

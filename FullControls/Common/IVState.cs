@@ -1,7 +1,7 @@
 ﻿namespace FullControls.Common
 {
     /// <summary>
-    /// Represents an object that can change <see cref="VState"/>.
+    /// Represents an object with a <see cref="VState"/>.
     /// </summary>
     public interface IVState
     {

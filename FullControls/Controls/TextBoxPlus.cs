@@ -13,7 +13,7 @@ namespace FullControls.Controls
     /// <summary>
     /// Represents a control that can be used to display or edit unformatted text.
     /// </summary>
-    public class TextBoxPlus : TextBox
+    public class TextBoxPlus : TextBox, IVState
     {
         private bool loaded = false;
 
@@ -789,7 +789,7 @@ namespace FullControls.Controls
             base.OnApplyTemplate();
             UpdateHintState();
             loaded = true;
-            OnVStateChanged(VStateOverride(), true);
+            OnVStateChanged(GetCurrentVState(), true);
         }
 
         /// <summary>
@@ -799,7 +799,7 @@ namespace FullControls.Controls
         protected virtual void OnLoaded(RoutedEventArgs e)
         {
             AdaptForeColors(ActualBackground);
-            OnVStateChanged(VStateOverride());
+            OnVStateChanged(GetCurrentVState());
         }
 
         /// <summary>
@@ -812,7 +812,7 @@ namespace FullControls.Controls
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
-        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(VStateOverride());
+        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(GetCurrentVState());
 
         /// <inheritdoc/>
         protected override void OnTextChanged(TextChangedEventArgs e)
@@ -826,7 +826,7 @@ namespace FullControls.Controls
         {
             base.OnGotFocus(e);
             UpdateHintState();
-            OnVStateChanged(VStateOverride());
+            OnVStateChanged(GetCurrentVState());
         }
 
         /// <inheritdoc/>
@@ -834,63 +834,59 @@ namespace FullControls.Controls
         {
             base.OnLostFocus(e);
             UpdateHintState();
-            OnVStateChanged(VStateOverride());
+            OnVStateChanged(GetCurrentVState());
         }
 
         /// <inheritdoc/>
         protected override void OnMouseEnter(MouseEventArgs e)
         {
             base.OnMouseEnter(e);
-            OnVStateChanged(VStateOverride());
+            OnVStateChanged(GetCurrentVState());
         }
 
         /// <inheritdoc/>
         protected override void OnMouseLeave(MouseEventArgs e)
         {
             base.OnMouseLeave(e);
-            OnVStateChanged(VStateOverride());
+            OnVStateChanged(GetCurrentVState());
+        }
+
+        /// <inheritdoc/>
+        public VState GetCurrentVState()
+        {
+            if (!loaded) return VState.UNSET;
+            if (!IsEnabled) return VStates.DISABLED;
+            else if (IsFocused) return VStates.FOCUSED;
+            else if (IsMouseOver) return VStates.MOUSE_OVER;
+            else return VStates.DEFAULT;
         }
 
         /// <summary>
-        /// Called to calculate the <b>v-state</b> of the control.
+        /// Called when the current <see cref="VState"/> is changed.
         /// </summary>
-        protected virtual string VStateOverride()
+        /// <param name="vstate">Current <see cref="VState"/>.</param>
+        /// <param name="initial">Specifies if this is the initial <see cref="VState"/>.</param>
+        protected virtual void OnVStateChanged(VState vstate, bool initial = false)
         {
-            if (!loaded) return "Undefined";
-            if (!IsEnabled) return "Disabled";
-            else if (IsFocused) return "Focused";
-            else if (IsMouseOver) return "MouseOver";
-            else return "Normal";
-        }
-
-        /// <summary>
-        /// Called when the <b>v-state</b> of the control changed, is used to execute custom animations on certain contitions changing.
-        /// </summary>
-        /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
-        /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
-        /// <param name="initial">Specifies if this is the first <b>v-state</b> applied to the control.</param>
-        protected virtual void OnVStateChanged(string vstate, bool initial = false)
-        {
-            switch (vstate)
+            if (vstate == VStates.DEFAULT)
             {
-                case "Normal":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
-                    break;
-                case "MouseOver":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    break;
-                case "Focused":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    break;
-                case "Disabled":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
-                    break;
-                default:
-                    break;
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.MOUSE_OVER)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.FOCUSED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.DISABLED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
             }
         }
 
@@ -956,6 +952,33 @@ namespace FullControls.Controls
                 if (AdaptHintForegroundAutomatically) HintForeground = inverseBrush;
                 if (AdaptCaretBrushAutomatically) CaretBrush = inverseBrush;
             }
+        }
+
+
+        /// <summary>
+        /// Control v-states.
+        /// </summary>
+        public static class VStates
+        {
+            /// <summary>
+            /// Default state.
+            /// </summary>
+            public static readonly VState DEFAULT = new(nameof(DEFAULT), typeof(TextBoxPlus));
+
+            /// <summary>
+            /// The mouse is over the control.
+            /// </summary>
+            public static readonly VState MOUSE_OVER = new(nameof(MOUSE_OVER), typeof(TextBoxPlus));
+
+            /// <summary>
+            /// The control is focused.
+            /// </summary>
+            public static readonly VState FOCUSED = new(nameof(FOCUSED), typeof(TextBoxPlus));
+
+            /// <summary>
+            /// The control is disabled.
+            /// </summary>
+            public static readonly VState DISABLED = new(nameof(DISABLED), typeof(TextBoxPlus));
         }
     }
 }

@@ -15,7 +15,7 @@ namespace FullControls.Controls
     [TemplatePart(Name = PartHeader, Type = typeof(UIElement))]
     [TemplatePart(Name = PartCollapsible, Type = typeof(Collapsible))]
     [DefaultEvent(nameof(IsExpandedChanged))]
-    public abstract class AccordionItem : Control
+    public abstract class AccordionItem : Control, IVState
     {
         private bool loaded = false;
         private UIElement? header;
@@ -527,7 +527,7 @@ namespace FullControls.Controls
             }
             UpdateExpandState();
             loaded = true;
-            OnVStateChanged(VStateOverride(), true);
+            OnVStateChanged(GetCurrentVState(), true);
         }
 
         /// <summary>
@@ -554,13 +554,13 @@ namespace FullControls.Controls
         /// Called when the element is laid out, rendered, and ready for interaction.
         /// </summary>
         /// <param name="e">Event data.</param>
-        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(VStateOverride());
+        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(GetCurrentVState());
 
         /// <summary>
         /// Called when <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
-        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(VStateOverride());
+        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(GetCurrentVState());
 
         /// <summary>
         /// Called when <see cref="IsExpanded"/> is changed.
@@ -569,7 +569,7 @@ namespace FullControls.Controls
         protected virtual void OnExpandedChanged(bool isExpanded)
         {
             UpdateExpandState();
-            OnVStateChanged(VStateOverride());
+            OnVStateChanged(GetCurrentVState());
             IsExpandedChanged?.Invoke(this, new ItemExpandedChangedEventArgs(Index, isExpanded));
         }
 
@@ -583,62 +583,59 @@ namespace FullControls.Controls
         /// Called when the mouse enters the header control.
         /// </summary>
         /// <param name="e">Event data.</param>
-        protected virtual void OnHeaderMouseEnter(MouseEventArgs e) => OnVStateChanged(VStateOverride());
+        protected virtual void OnHeaderMouseEnter(MouseEventArgs e) => OnVStateChanged(GetCurrentVState());
 
         /// <summary>
         /// Called when the mouse leaves the header control.
         /// </summary>
         /// <param name="e">Event data.</param>
-        protected virtual void OnHeaderMouseLeave(MouseEventArgs e) => OnVStateChanged(VStateOverride());
+        protected virtual void OnHeaderMouseLeave(MouseEventArgs e) => OnVStateChanged(GetCurrentVState());
 
-        /// <summary>
-        /// Called to calculate the <b>v-state</b> of the control.
-        /// </summary>
-        protected virtual string VStateOverride()
+        /// <inheritdoc/>
+        public VState GetCurrentVState()
         {
-            if (!loaded) return "Undefined";
-            if (!IsEnabled) return "Disabled";
+            if (!loaded) return VState.UNSET;
+            if (!IsEnabled) return VStates.DISABLED;
             else if (IsMouseOverHeader)
             {
-                if (IsExpanded == true) return "MouseOverHeaderOnExpanded";
-                else return "MouseOverHeader";
+                if (IsExpanded == true) return VStates.MOUSE_OVER_HEADER_ON_EXPANDED;
+                else return VStates.MOUSE_OVER_HEADER;
             }
-            else if (IsExpanded == true) return "Expanded";
-            else return "Normal";
+            else if (IsExpanded == true) return VStates.EXPANDED;
+            else return VStates.DEFAULT;
         }
 
         /// <summary>
-        /// Called when the <b>v-state</b> of the control changed, is used to execute custom animations on certain contitions changing.
+        /// Called when the current <see cref="VState"/> is changed.
         /// </summary>
-        /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
-        /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
-        /// <param name="initial">Specifies if this is the first <b>v-state</b> applied to the control.</param>
-        protected virtual void OnVStateChanged(string vstate, bool initial = false)
+        /// <param name="vstate">Current <see cref="VState"/>.</param>
+        /// <param name="initial">Specifies if this is the initial <see cref="VState"/>.</param>
+        protected virtual void OnVStateChanged(VState vstate, bool initial = false)
         {
-            switch (vstate)
+            if (vstate == VStates.DEFAULT)
             {
-                case "Normal":
-                    Util.AnimateBrush(this, ActualHeaderBackgroundPropertyProxy, HeaderBackground, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualHeaderBorderBrushPropertyProxy, HeaderBorderBrush, initial ? TimeSpan.Zero : AnimationTime);
-                    break;
-                case "Expanded":
-                    Util.AnimateBrush(this, ActualHeaderBackgroundPropertyProxy, HeaderBackgroundOnExpanded, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualHeaderBorderBrushPropertyProxy, HeaderBorderBrushOnExpanded, initial ? TimeSpan.Zero : AnimationTime);
-                    break;
-                case "MouseOverHeader":
-                    Util.AnimateBrush(this, ActualHeaderBackgroundPropertyProxy, HeaderBackgroundOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualHeaderBorderBrushPropertyProxy, HeaderBorderBrushOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
-                    break;
-                case "MouseOverHeaderOnExpanded":
-                    Util.AnimateBrush(this, ActualHeaderBackgroundPropertyProxy, HeaderBackgroundOnMouseOverOnExpanded, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualHeaderBorderBrushPropertyProxy, HeaderBorderBrushOnMouseOverOnExpanded, initial ? TimeSpan.Zero : AnimationTime);
-                    break;
-                case "Disabled":
-                    Util.AnimateBrush(this, ActualHeaderBackgroundPropertyProxy, HeaderBackgroundOnDisabled, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualHeaderBorderBrushPropertyProxy, HeaderBorderBrushOnDisabled, TimeSpan.Zero);
-                    break;
-                default:
-                    break;
+                Util.AnimateBrush(this, ActualHeaderBackgroundPropertyProxy, HeaderBackground, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualHeaderBorderBrushPropertyProxy, HeaderBorderBrush, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.EXPANDED)
+            {
+                Util.AnimateBrush(this, ActualHeaderBackgroundPropertyProxy, HeaderBackgroundOnExpanded, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualHeaderBorderBrushPropertyProxy, HeaderBorderBrushOnExpanded, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.MOUSE_OVER_HEADER)
+            {
+                Util.AnimateBrush(this, ActualHeaderBackgroundPropertyProxy, HeaderBackgroundOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualHeaderBorderBrushPropertyProxy, HeaderBorderBrushOnMouseOver, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.MOUSE_OVER_HEADER_ON_EXPANDED)
+            {
+                Util.AnimateBrush(this, ActualHeaderBackgroundPropertyProxy, HeaderBackgroundOnMouseOverOnExpanded, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualHeaderBorderBrushPropertyProxy, HeaderBorderBrushOnMouseOverOnExpanded, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.DISABLED)
+            {
+                Util.AnimateBrush(this, ActualHeaderBackgroundPropertyProxy, HeaderBackgroundOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualHeaderBorderBrushPropertyProxy, HeaderBorderBrushOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
             }
         }
 
@@ -657,5 +654,37 @@ namespace FullControls.Controls
         /// Update the visualstate to <see langword="Expanded"/> or <see langword="Collapsed"/> if the control is expanded or collapsed.
         /// </summary>
         private void UpdateExpandState() => _ = VisualStateManager.GoToState(this, IsExpanded ? "Expanded" : "Collapsed", true);
+
+
+        /// <summary>
+        /// Control v-states.
+        /// </summary>
+        public static class VStates
+        {
+            /// <summary>
+            /// Default state.
+            /// </summary>
+            public static readonly VState DEFAULT = new(nameof(DEFAULT), typeof(AccordionItem));
+
+            /// <summary>
+            /// The control is expanded.
+            /// </summary>
+            public static readonly VState EXPANDED = new(nameof(EXPANDED), typeof(AccordionItem));
+
+            /// <summary>
+            /// The mouse is over the header.
+            /// </summary>
+            public static readonly VState MOUSE_OVER_HEADER = new(nameof(MOUSE_OVER_HEADER), typeof(AccordionItem));
+
+            /// <summary>
+            /// The mouse is over the header while the control is expanded.
+            /// </summary>
+            public static readonly VState MOUSE_OVER_HEADER_ON_EXPANDED = new(nameof(MOUSE_OVER_HEADER_ON_EXPANDED), typeof(AccordionItem));
+
+            /// <summary>
+            /// The control is disabled.
+            /// </summary>
+            public static readonly VState DISABLED = new(nameof(DISABLED), typeof(AccordionItem));
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace FullControls.SystemComponents
     /// <summary>
     /// Provides the ability to create, configure, show, and manage the lifetime of windows and dialog boxes.
     /// </summary>
-    public abstract class WindowPlus : Window
+    public abstract class WindowPlus : Window, IVState
     {
         private bool loaded = false;
         private WindowState previousState = WindowState.Normal;
@@ -687,7 +687,7 @@ namespace FullControls.SystemComponents
             base.OnApplyTemplate();
             UpdateOutsideMargin();
             loaded = true;
-            OnVStateChanged(VStateOverride(), true);
+            OnVStateChanged(GetCurrentVState(), true);
         }
 
         /// <inheritdoc/>
@@ -702,19 +702,19 @@ namespace FullControls.SystemComponents
         /// Called when the window is loaded.
         /// </summary>
         /// <param name="e">Event data.</param>
-        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(VStateOverride());
+        protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(GetCurrentVState());
 
         /// <summary>
         /// Called when <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
-        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(VStateOverride());
+        protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(GetCurrentVState());
 
         /// <summary>
         /// Called when <see cref="Window.IsActive"/> is changed.
         /// </summary>
         /// <param name="activeState">Actual state of <see cref="Window.IsActive"/>.</param>
-        protected virtual void OnActiveChanged(bool activeState) => OnVStateChanged(VStateOverride());
+        protected virtual void OnActiveChanged(bool activeState) => OnVStateChanged(GetCurrentVState());
 
         /// <inheritdoc/>
         protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
@@ -776,44 +776,39 @@ namespace FullControls.SystemComponents
         protected virtual void OnActionExecuted(IAction action)
             => ActionExecuted?.Invoke(this, new ActionEventArgs(action));
 
-        /// <summary>
-        /// Called to calculate the <b>v-state</b> of the control.
-        /// </summary>
-        protected virtual string VStateOverride()
+        /// <inheritdoc/>
+        public VState GetCurrentVState()
         {
-            if (!loaded) return "Undefined";
-            if (!IsEnabled) return "Disabled";
-            else if (!IsActive) return "Inactive";
-            else return "Active";
+            if (!loaded) return VState.UNSET;
+            if (!IsEnabled) return VStates.DISABLED;
+            else if (!IsActive) return VStates.INACTIVE;
+            else return VStates.ACTIVE;
         }
 
         /// <summary>
-        /// Called when the <b>v-state</b> of the control changed, is used to execute custom animations on certain contitions changing.
+        /// Called when the current <see cref="VState"/> is changed.
         /// </summary>
-        /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
-        /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
-        /// <param name="initial">Specifies if this is the first <b>v-state</b> applied to the control.</param>
-        protected virtual void OnVStateChanged(string vstate, bool initial = false)
+        /// <param name="vstate">Current <see cref="VState"/>.</param>
+        /// <param name="initial">Specifies if this is the initial <see cref="VState"/>.</param>
+        protected virtual void OnVStateChanged(VState vstate, bool initial = false)
         {
-            switch (vstate)
+            if (vstate == VStates.ACTIVE)
             {
-                case "Active":
-                    Util.AnimateBrush(this, ActualTitlebarBackgroundPropertyProxy, TitlebarBackgroundOnActive, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnActive, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnActive, TimeSpan.Zero);
-                    break;
-                case "Inactive":
-                    Util.AnimateBrush(this, ActualTitlebarBackgroundPropertyProxy, TitlebarBackground, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
-                    break;
-                case "Disabled":
-                    Util.AnimateBrush(this, ActualTitlebarBackgroundPropertyProxy, TitlebarBackground, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
-                    break;
-                default:
-                    break;
+                Util.AnimateBrush(this, ActualTitlebarBackgroundPropertyProxy, TitlebarBackgroundOnActive, TimeSpan.Zero);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnActive, TimeSpan.Zero);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnActive, TimeSpan.Zero);
+            }
+            else if (vstate == VStates.INACTIVE)
+            {
+                Util.AnimateBrush(this, ActualTitlebarBackgroundPropertyProxy, TitlebarBackground, TimeSpan.Zero);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
+            }
+            else if (vstate == VStates.DISABLED)
+            {
+                Util.AnimateBrush(this, ActualTitlebarBackgroundPropertyProxy, TitlebarBackground, TimeSpan.Zero);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, TimeSpan.Zero);
             }
         }
 
@@ -1058,5 +1053,27 @@ namespace FullControls.SystemComponents
         #endregion
 
         #endregion
+
+
+        /// <summary>
+        /// Window v-states.
+        /// </summary>
+        public static class VStates
+        {
+            /// <summary>
+            /// The window is active.
+            /// </summary>
+            public static readonly VState ACTIVE = new(nameof(ACTIVE), typeof(WindowPlus));
+
+            /// <summary>
+            /// The window is inactive.
+            /// </summary>
+            public static readonly VState INACTIVE = new(nameof(INACTIVE), typeof(WindowPlus));
+
+            /// <summary>
+            /// The window is disabled.
+            /// </summary>
+            public static readonly VState DISABLED = new(nameof(DISABLED), typeof(WindowPlus));
+        }
     }
 }

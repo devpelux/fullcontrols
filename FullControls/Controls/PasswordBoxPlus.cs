@@ -18,7 +18,7 @@ namespace FullControls.Controls
     /// </summary>
     [TemplatePart(Name = PartContentHost, Type = typeof(ContentPresenter))]
     [TemplatePart(Name = PartPeekButton, Type = typeof(UIElement))]
-    public sealed class PasswordBoxPlus : Control
+    public sealed class PasswordBoxPlus : Control, IVState
     {
         private bool loaded = false;
         private readonly PasswordBox passwordBox;
@@ -1160,7 +1160,7 @@ namespace FullControls.Controls
             }
             UpdateHintState();
             loaded = true;
-            OnVStateChanged(VStateOverride(), true);
+            OnVStateChanged(GetCurrentVState(), true);
         }
 
         /// <summary>
@@ -1169,7 +1169,7 @@ namespace FullControls.Controls
         private void OnLoaded()
         {
             AdaptForeColors(ActualBackground);
-            OnVStateChanged(VStateOverride());
+            OnVStateChanged(GetCurrentVState());
         }
 
         /// <summary>
@@ -1181,7 +1181,7 @@ namespace FullControls.Controls
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
-        private void OnEnabledChanged() => OnVStateChanged(VStateOverride());
+        private void OnEnabledChanged() => OnVStateChanged(GetCurrentVState());
 
         /// <inheritdoc/>
         protected override void OnGotFocus(RoutedEventArgs e)
@@ -1197,7 +1197,7 @@ namespace FullControls.Controls
             if (!IsFocused)
             {
                 _ = VisualStateManager.GoToState(this, "MouseOver", true);
-                OnVStateChanged(VStateOverride());
+                OnVStateChanged(GetCurrentVState());
             }
         }
 
@@ -1208,50 +1208,46 @@ namespace FullControls.Controls
             if (!IsFocused)
             {
                 _ = VisualStateManager.GoToState(this, "Normal", true);
-                OnVStateChanged(VStateOverride());
+                OnVStateChanged(GetCurrentVState());
             }
         }
 
-        /// <summary>
-        /// Called to calculate the <b>v-state</b> of the control.
-        /// </summary>
-        private string VStateOverride()
+        /// <inheritdoc/>
+        public VState GetCurrentVState()
         {
-            if (!loaded) return "Undefined";
-            if (!IsEnabled) return "Disabled";
-            else if (IsFocused) return "Focused";
-            else if (IsMouseOver) return "MouseOver";
-            else return "Normal";
+            if (!loaded) return VState.UNSET;
+            if (!IsEnabled) return VStates.DISABLED;
+            else if (IsFocused) return VStates.FOCUSED;
+            else if (IsMouseOver) return VStates.MOUSE_OVER;
+            else return VStates.DEFAULT;
         }
 
         /// <summary>
-        /// Called when the <b>v-state</b> of the control changed, is used to execute custom animations on certain contitions changing.
+        /// Called when the current <see cref="VState"/> is changed.
         /// </summary>
-        /// <remarks>Is called <b>v-state</b> because is not related to the VisualState of the control.</remarks>
-        /// <param name="vstate">Actual <b>v-state</b> of the control.</param>
-        /// <param name="initial">Specifies if this is the first <b>v-state</b> applied to the control.</param>
-        private void OnVStateChanged(string vstate, bool initial = false)
+        /// <param name="vstate">Current <see cref="VState"/>.</param>
+        /// <param name="initial">Specifies if this is the initial <see cref="VState"/>.</param>
+        private void OnVStateChanged(VState vstate, bool initial = false)
         {
-            switch (vstate)
+            if (vstate == VStates.DEFAULT)
             {
-                case "Normal":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, TimeSpan.Zero);
-                    break;
-                case "MouseOver":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    break;
-                case "Focused":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
-                    break;
-                case "Disabled":
-                    Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, TimeSpan.Zero);
-                    Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, TimeSpan.Zero);
-                    break;
-                default:
-                    break;
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.MOUSE_OVER)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.FOCUSED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+            }
+            else if (vstate == VStates.DISABLED)
+            {
+                Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
             }
         }
 
@@ -1311,7 +1307,7 @@ namespace FullControls.Controls
         {
             UpdateHintState();
             _ = VisualStateManager.GoToState(this, "Focused", true);
-            OnVStateChanged(VStateOverride());
+            OnVStateChanged(GetCurrentVState());
         }
 
         /// <summary>
@@ -1321,7 +1317,7 @@ namespace FullControls.Controls
         {
             UpdateHintState();
             _ = VisualStateManager.GoToState(this, IsMouseOver ? "MouseOver" : "Normal", true);
-            OnVStateChanged(VStateOverride());
+            OnVStateChanged(GetCurrentVState());
         }
 
         #endregion
@@ -1381,6 +1377,33 @@ namespace FullControls.Controls
             passwordBox.SetBinding(PasswordBox.IsInactiveSelectionHighlightEnabledProperty, new Binding(nameof(IsInactiveSelectionHighlightEnabled)) { Source = this });
             passwordBox.SetBinding(PasswordBox.IsEnabledProperty, new Binding(nameof(IsEnabled)) { Source = this });
             passwordBox.SetBinding(PasswordBox.SnapsToDevicePixelsProperty, new Binding(nameof(SnapsToDevicePixels)) { Source = this });
+        }
+
+
+        /// <summary>
+        /// Control v-states.
+        /// </summary>
+        public static class VStates
+        {
+            /// <summary>
+            /// Default state.
+            /// </summary>
+            public static readonly VState DEFAULT = new(nameof(DEFAULT), typeof(PasswordBoxPlus));
+
+            /// <summary>
+            /// The mouse is over the control.
+            /// </summary>
+            public static readonly VState MOUSE_OVER = new(nameof(MOUSE_OVER), typeof(PasswordBoxPlus));
+
+            /// <summary>
+            /// The control is focused.
+            /// </summary>
+            public static readonly VState FOCUSED = new(nameof(FOCUSED), typeof(PasswordBoxPlus));
+
+            /// <summary>
+            /// The control is disabled.
+            /// </summary>
+            public static readonly VState DISABLED = new(nameof(DISABLED), typeof(PasswordBoxPlus));
         }
     }
 }
