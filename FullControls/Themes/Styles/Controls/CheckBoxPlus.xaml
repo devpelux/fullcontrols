@@ -10,45 +10,85 @@
            BasedOn="{StaticResource {x:Type CheckBox}}">
 
         <Setter Property="Background"
-                Value="{StaticResource Gray1}" />
+                Value="{StaticResource LightRadioButtonBakground}" />
         <Setter Property="BackgroundOnMouseOver"
-                Value="{StaticResource Gray3}" />
-        <Setter Property="BackgroundOnChecked"
-                Value="{StaticResource Gray1}" />
+                Value="{StaticResource LightRadioButtonBakgroundHover}" />
         <Setter Property="BackgroundOnMouseOverOnChecked"
-                Value="{StaticResource Gray3}" />
+                Value="{StaticResource LightRadioButtonBakgroundCheckedHover}" />
+        <Setter Property="BackgroundOnPressed"
+                Value="{StaticResource LightRadioButtonBakgroundPressed}" />
+        <Setter Property="BackgroundOnPressedOnChecked"
+                Value="{StaticResource LightRadioButtonBakgroundCheckedHover}" />
+        <Setter Property="BackgroundOnChecked"
+                Value="{StaticResource LightRadioButtonBakgroundChecked}" />
         <Setter Property="BackgroundOnDisabled"
-                Value="{StaticResource Gray3}" />
+                Value="{StaticResource LightRadioButtonBakgroundDisabled}" />
+        <Setter Property="BackgroundOnDisabledOnChecked"
+                Value="{StaticResource LightRadioButtonBakgroundCheckedDisabled}" />
         <Setter Property="BorderBrush"
-                Value="{StaticResource Gray15}" />
+                Value="{StaticResource LightRadioButtonBorder}" />
         <Setter Property="BorderBrushOnMouseOver"
-                Value="{StaticResource Gray15}" />
-        <Setter Property="BorderBrushOnChecked"
-                Value="{StaticResource Gray15}" />
+                Value="{StaticResource LightRadioButtonBorderHover}" />
         <Setter Property="BorderBrushOnMouseOverOnChecked"
-                Value="{StaticResource Gray15}" />
+                Value="{StaticResource LightRadioButtonBorderCheckedHover}" />
+        <Setter Property="BorderBrushOnPressed"
+                Value="{StaticResource LightRadioButtonBorderPressed}" />
+        <Setter Property="BorderBrushOnPressedOnChecked"
+                Value="{StaticResource LightRadioButtonBorderCheckedHover}" />
+        <Setter Property="BorderBrushOnChecked"
+                Value="{StaticResource LightRadioButtonBakgroundChecked}" />
         <Setter Property="BorderBrushOnDisabled"
-                Value="{StaticResource Gray11}" />
+                Value="{StaticResource LightRadioButtonBorderDisabled}" />
+        <Setter Property="BorderBrushOnDisabledOnChecked"
+                Value="{StaticResource LightRadioButtonBorderCheckedDisabled}" />
         <Setter Property="Foreground"
-                Value="Black" />
+                Value="{StaticResource LightTextColor}" />
         <Setter Property="ForegroundOnMouseOver"
-                Value="Black" />
-        <Setter Property="ForegroundOnChecked"
-                Value="Black" />
+                Value="{StaticResource LightTextColor}" />
         <Setter Property="ForegroundOnMouseOverOnChecked"
-                Value="Black" />
+                Value="{StaticResource LightTextColor}" />
+        <Setter Property="ForegroundOnPressed"
+                Value="{StaticResource LightTextColor}" />
+        <Setter Property="ForegroundOnPressedOnChecked"
+                Value="{StaticResource LightTextColor}" />
+        <Setter Property="ForegroundOnChecked"
+                Value="{StaticResource LightTextColor}" />
         <Setter Property="ForegroundOnDisabled"
-                Value="{StaticResource Gray12}" />
+                Value="{StaticResource LightTextColorDisabled}" />
+        <Setter Property="ForegroundOnDisabledOnChecked"
+                Value="{StaticResource LightTextColorDisabled}" />
         <Setter Property="ForeColor"
-                Value="{StaticResource Gray15}" />
+                Value="White" />
         <Setter Property="ForeColorOnMouseOver"
-                Value="{StaticResource Gray15}" />
-        <Setter Property="ForeColorOnChecked"
-                Value="{StaticResource Gray15}" />
+                Value="White" />
         <Setter Property="ForeColorOnMouseOverOnChecked"
-                Value="{StaticResource Gray15}" />
+                Value="White" />
+        <Setter Property="ForeColorOnPressed"
+                Value="White" />
+        <Setter Property="ForeColorOnPressedOnChecked"
+                Value="White" />
+        <Setter Property="ForeColorOnChecked"
+                Value="White" />
         <Setter Property="ForeColorOnDisabled"
-                Value="{StaticResource Gray11}" />
+                Value="White" />
+        <Setter Property="ForeColorOnDisabledOnChecked"
+                Value="White" />
+        <Setter Property="CheckScale"
+                Value="0" />
+        <Setter Property="CheckScaleOnMouseOver"
+                Value="0" />
+        <Setter Property="CheckScaleOnMouseOverOnChecked"
+                Value="1" />
+        <Setter Property="CheckScaleOnPressed"
+                Value="0.7" />
+        <Setter Property="CheckScaleOnPressedOnChecked"
+                Value="0.7" />
+        <Setter Property="CheckScaleOnChecked"
+                Value="0.8" />
+        <Setter Property="CheckScaleOnDisabled"
+                Value="0" />
+        <Setter Property="CheckScaleOnDisabledOnChecked"
+                Value="0.8" />
         <Setter Property="CheckMark"
                 Value="{x:Null}" />
         <Setter Property="CheckSize"
@@ -58,7 +98,7 @@
         <Setter Property="CheckWeight"
                 Value="Bold" />
         <Setter Property="BorderThickness"
-                Value="2" />
+                Value="1" />
         <Setter Property="CornerRadius"
                 Value="0" />
         <Setter Property="InsideCornerRadius"
@@ -74,11 +114,11 @@
         <Setter Property="IsChecked"
                 Value="False" />
         <Setter Property="ClickMode"
-                Value="Press" />
+                Value="Release" />
         <Setter Property="AnimationTime"
                 Value="0:0:0.2" />
         <Setter Property="CheckAnimationTime"
-                Value="0:0:0.04" />
+                Value="0:0:0.08" />
         <Setter Property="SnapsToDevicePixels"
                 Value="True" />
 
@@ -90,43 +130,47 @@
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Border x:Name="PART_Border"
+                        <Border x:Name="PART_ExternalBorder"
                                 Grid.Column="0"
                                 Width="{TemplateBinding ActualHeight}"
-                                Background="{TemplateBinding ActualBackground}"
-                                BorderBrush="{TemplateBinding ActualBorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding ActualBorderBrush}"
                                 CornerRadius="{TemplateBinding CornerRadius}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
-                            <Grid x:Name="PART_Check"
-                                  Margin="{TemplateBinding InsideMargin}"
-                                  Visibility="Visible">
-                                <Border x:Name="PART_CheckBackground"
-                                        CornerRadius="{TemplateBinding InsideCornerRadius}"
-                                        Background="{TemplateBinding ActualForeColor}"
-                                        BorderThickness="0"
-                                        RenderTransformOrigin="0.5, 0.5"
-                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                        Visibility="Collapsed">
-                                    <Border.RenderTransform>
-                                        <ScaleTransform x:Name="PART_CheckBackgroundScale"
-                                                        ScaleX="{Binding CheckScale, RelativeSource={RelativeSource TemplatedParent}}"
-                                                        ScaleY="{Binding CheckScale, RelativeSource={RelativeSource TemplatedParent}}" />
-                                    </Border.RenderTransform>
-                                </Border>
-                                <ContentPresenter x:Name="PART_CheckMark"
-                                                  HorizontalAlignment="Center"
-                                                  VerticalAlignment="Center"
-                                                  TextBlock.Foreground="{TemplateBinding ActualForeColor}"
-                                                  TextBlock.FontSize="{TemplateBinding CheckSize}"
-                                                  TextBlock.FontFamily="{TemplateBinding CheckFont}"
-                                                  TextBlock.FontWeight="{TemplateBinding CheckWeight}"
-                                                  RecognizesAccessKey="True"
-                                                  ContentSource="CheckMark"
-                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                  Visibility="Visible"
-                                                  Focusable="False" />
-                            </Grid>
+                            <Border x:Name="PART_Border"
+                                    Background="{TemplateBinding ActualBackground}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="{TemplateBinding CornerRadius}"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                                <Grid x:Name="PART_Check"
+                                      Margin="{TemplateBinding InsideMargin}"
+                                      Visibility="Visible">
+                                    <Border x:Name="PART_CheckForeground"
+                                            CornerRadius="{TemplateBinding InsideCornerRadius}"
+                                            Background="{TemplateBinding ActualForeColor}"
+                                            BorderThickness="0"
+                                            RenderTransformOrigin="0.5, 0.5"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                            Visibility="Collapsed">
+                                        <Border.RenderTransform>
+                                            <ScaleTransform x:Name="PART_CheckBackgroundScale"
+                                                            ScaleX="{Binding ActualCheckScale, RelativeSource={RelativeSource TemplatedParent}}"
+                                                            ScaleY="{Binding ActualCheckScale, RelativeSource={RelativeSource TemplatedParent}}" />
+                                        </Border.RenderTransform>
+                                    </Border>
+                                    <ContentPresenter x:Name="PART_CheckMark"
+                                                      HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"
+                                                      TextBlock.Foreground="{TemplateBinding ActualForeColor}"
+                                                      TextBlock.FontSize="{TemplateBinding CheckSize}"
+                                                      TextBlock.FontFamily="{TemplateBinding CheckFont}"
+                                                      TextBlock.FontWeight="{TemplateBinding CheckWeight}"
+                                                      RecognizesAccessKey="True"
+                                                      ContentSource="CheckMark"
+                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                      Visibility="Visible"
+                                                      Focusable="False" />
+                                </Grid>
+                            </Border>
                         </Border>
                         <ContentPresenter x:Name="PART_ContentPresenter"
                                           Grid.Column="1"
@@ -142,7 +186,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="CheckMark"
                                  Value="{x:Null}">
-                            <Setter TargetName="PART_CheckBackground"
+                            <Setter TargetName="PART_CheckForeground"
                                     Property="Visibility"
                                     Value="Visible" />
                             <Setter TargetName="PART_CheckMark"
