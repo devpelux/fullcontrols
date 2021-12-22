@@ -74,7 +74,7 @@ namespace FullControls.Controls
         public Accordion() : base()
         {
             Loaded += (o, e) => OnLoaded(e);
-            itemsControl = new ItemsControl();
+            itemsControl = new();
             Items = new();
         }
 
@@ -97,8 +97,7 @@ namespace FullControls.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            Decorator contentHost = (Decorator)Template.FindName(PartContentHost, this);
-            if (contentHost != null) contentHost.Child = itemsControl;
+            if (Template.FindName(PartContentHost, this) is Decorator contentHost) contentHost.Child = itemsControl;
         }
 
         /// <summary>

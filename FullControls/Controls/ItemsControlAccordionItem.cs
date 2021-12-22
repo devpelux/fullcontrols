@@ -99,12 +99,11 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Attach the <see cref="ItemsControl"/> to the <see cref="Collapsible"/> part.
+        /// Attaches the <see cref="ItemsControl"/> to the <see cref="Collapsible"/> part.
         /// </summary>
         private void AttachItemsControl()
         {
-            ContentPresenter contentHost = (ContentPresenter)Template.FindName(PartContentHost, this);
-            if (contentHost != null) contentHost.Content = itemsControl;
+            if (Template.FindName(PartContentHost, this) is ContentPresenter contentHost) contentHost.Content = itemsControl;
         }
 
         /// <summary>

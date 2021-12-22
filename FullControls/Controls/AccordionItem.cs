@@ -512,13 +512,12 @@ namespace FullControls.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            Collapsible collapsible = (Collapsible)Template.FindName(PartCollapsible, this);
-            if (collapsible != null)
+            if (Template.FindName(PartCollapsible, this) is Collapsible collapsible)
             {
                 collapsible.AnimationStarted += (o, e) => OnAnimationStarted(e);
                 collapsible.AnimationEnded += (o, e) => OnAnimationEnded(e);
             }
-            header = (UIElement)Template.FindName(PartHeader, this);
+            header = Template.FindName(PartHeader, this) as UIElement;
             if (header != null)
             {
                 header.MouseLeftButtonDown += (o, e) => OnHeaderMouseLeftButtonDown(e);

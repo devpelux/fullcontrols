@@ -1122,8 +1122,7 @@ namespace FullControls.Controls
         public PasswordBoxPlus() : base()
         {
             Loaded += (o, e) => OnLoaded();
-            passwordBox = new PasswordBox();
-            PreparPasswordBoxPlus();
+            passwordBox = PreparePasswordBoxChild();
         }
 
         /// <summary>
@@ -1150,9 +1149,8 @@ namespace FullControls.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            AttachPasswordBox();
-            UIElement peekButton = (UIElement)Template.FindName(PartPeekButton, this);
-            if (peekButton != null)
+            AttachPasswordBoxChild();
+            if (Template.FindName(PartPeekButton, this) is UIElement peekButton)
             {
                 peekButton.PreviewMouseLeftButtonDown += PeekButton_MouseLeftButtonDown;
                 peekButton.PreviewMouseLeftButtonUp += PeekButton_MouseLeftButtonUp;
@@ -1342,19 +1340,12 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Attach the <see cref="PasswordBox"/> control to the <see cref="ContentPresenter"/> content host part.
+        /// Prepares the <see cref="PasswordBox"/> child control.
         /// </summary>
-        private void AttachPasswordBox()
+        private PasswordBox PreparePasswordBoxChild()
         {
-            ContentPresenter contentHost = (ContentPresenter)Template.FindName(PartContentHost, this);
-            if (contentHost != null) contentHost.Content = passwordBox;
-        }
+            PasswordBox passwordBox = new();
 
-        /// <summary>
-        /// Prepare the <see cref="PasswordBox"/> part.
-        /// </summary>
-        private void PreparPasswordBoxPlus()
-        {
             //Setting events
             passwordBox.PasswordChanged += PasswordBox_PasswordChanged;
             passwordBox.GotFocus += PasswordBox_GotFocus;
@@ -1377,6 +1368,16 @@ namespace FullControls.Controls
             passwordBox.SetBinding(PasswordBox.IsInactiveSelectionHighlightEnabledProperty, new Binding(nameof(IsInactiveSelectionHighlightEnabled)) { Source = this });
             passwordBox.SetBinding(PasswordBox.IsEnabledProperty, new Binding(nameof(IsEnabled)) { Source = this });
             passwordBox.SetBinding(PasswordBox.SnapsToDevicePixelsProperty, new Binding(nameof(SnapsToDevicePixels)) { Source = this });
+
+            return passwordBox;
+        }
+
+        /// <summary>
+        /// Attaches the <see cref="PasswordBox"/> child control to the <see cref="ContentPresenter"/> content host part.
+        /// </summary>
+        private void AttachPasswordBoxChild()
+        {
+            if (Template.FindName(PartContentHost, this) is ContentPresenter contentHost) contentHost.Content = passwordBox;
         }
 
 

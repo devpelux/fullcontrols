@@ -896,15 +896,14 @@ namespace FullControls.Controls
         {
             base.OnApplyTemplate();
 
-            object toggleButton = Template.FindName(PartToggleButton, this);
-            if (toggleButton is ToggleButtonPlus toggleButtonPlus)
+            if (Template.FindName(PartToggleButton, this) is ToggleButtonPlus toggleButton)
             {
                 DependencyPropertyDescriptor.FromProperty(ToggleButtonPlus.ActualBackgroundProperty, typeof(ToggleButtonPlus))
-                    ?.AddValueChanged(toggleButtonPlus, (s, e) => SetValue(ActualBackgroundPropertyKey, toggleButtonPlus.ActualBackground));
+                    ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualBackgroundPropertyKey, toggleButton.ActualBackground));
                 DependencyPropertyDescriptor.FromProperty(ToggleButtonPlus.ActualBorderBrushProperty, typeof(ToggleButtonPlus))
-                    ?.AddValueChanged(toggleButtonPlus, (s, e) => SetValue(ActualBorderBrushPropertyKey, toggleButtonPlus.ActualBorderBrush));
+                    ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualBorderBrushPropertyKey, toggleButton.ActualBorderBrush));
                 DependencyPropertyDescriptor.FromProperty(ToggleButtonPlus.ActualForegroundProperty, typeof(ToggleButtonPlus))
-                    ?.AddValueChanged(toggleButtonPlus, (s, e) => SetValue(ActualForeColorPropertyKey, toggleButtonPlus.ActualForeground));
+                    ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualForeColorPropertyKey, toggleButton.ActualForeground));
             }
 
             SetValue(ActualBackgroundPropertyKey, Background);
