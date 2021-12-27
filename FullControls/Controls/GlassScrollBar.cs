@@ -1,7 +1,9 @@
 ﻿using FullControls.Core;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace FullControls.Controls
 {
@@ -10,6 +12,30 @@ namespace FullControls.Controls
     /// </summary>
     public class GlassScrollBar : ScrollBar
     {
+        #region Default arrows
+
+        /// <summary>
+        /// Default up arrow.
+        /// </summary>
+        public Path UpArrow { get; } = new Path() { Data = Geometry.Parse("M 0 6 L 8 6 L 4 0 Z") };
+
+        /// <summary>
+        /// Default down arrow.
+        /// </summary>
+        public Path DownArrow { get; } = new Path() { Data = Geometry.Parse("M 0 0 L 4 6 L 8 0 Z") };
+
+        /// <summary>
+        /// Default left arrow.
+        /// </summary>
+        public Path LeftArrow { get; } = new Path() { Data = Geometry.Parse("M 6 0 L 6 8 L 0 4 Z") };
+
+        /// <summary>
+        /// Default right arrow.
+        /// </summary>
+        public Path RightArrow { get; } = new Path() { Data = Geometry.Parse("M 0 0 L 6 4 L 0 8 Z") };
+
+        #endregion
+
         /// <summary>
         /// Gets or sets the corner radius of the control.
         /// </summary>
@@ -410,6 +436,7 @@ namespace FullControls.Controls
         /// </summary>
         public GlassScrollBar() : base()
         {
+            PrepareDefaultArrows();
             Loaded += (o, e) => OnLoaded(e);
         }
 
@@ -432,5 +459,16 @@ namespace FullControls.Controls
         /// <param name="value">Value to validate.</param>
         /// <returns><see langword="true"/> if the interval is valid, <see langword="false"/> otherwise.</returns>
         internal static bool IsScrollIntervalValid(object value) { return ((int)value) > 0; }
+
+        /// <summary>
+        /// Prepares the default arrows.
+        /// </summary>
+        private void PrepareDefaultArrows()
+        {
+            UpArrow.SetBinding(Shape.FillProperty, new Binding(nameof(ButtonsForeground)) { Source = this });
+            DownArrow.SetBinding(Shape.FillProperty, new Binding(nameof(ButtonsForeground)) { Source = this });
+            LeftArrow.SetBinding(Shape.FillProperty, new Binding(nameof(ButtonsForeground)) { Source = this });
+            RightArrow.SetBinding(Shape.FillProperty, new Binding(nameof(ButtonsForeground)) { Source = this });
+        }
     }
 }

@@ -89,9 +89,9 @@
         <Setter Property="RightButtonPadding"
                 Value="0" />
         <Setter Property="LeftButtonContent"
-                Value="&#xEDD9;" />
+                Value="{x:Null}" />
         <Setter Property="RightButtonContent"
-                Value="&#xEDDA;" />
+                Value="{x:Null}" />
         <Setter Property="HorizontalScrollBarContextMenu"
                 Value="{x:Null}" />
 
@@ -154,9 +154,9 @@
         <Setter Property="DownButtonPadding"
                 Value="0" />
         <Setter Property="UpButtonContent"
-                Value="&#xEDDB;" />
+                Value="{x:Null}" />
         <Setter Property="DownButtonContent"
-                Value="&#xEDDC;" />
+                Value="{x:Null}" />
         <Setter Property="VerticalScrollBarContextMenu"
                 Value="{x:Null}" />
 
