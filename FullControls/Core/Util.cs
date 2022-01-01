@@ -1,8 +1,8 @@
-﻿using FullControls.Extra.Extensions;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using WpfCoreTools.Extensions;
 
 namespace FullControls.Core
 {

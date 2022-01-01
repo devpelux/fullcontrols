@@ -1,11 +1,11 @@
 ﻿using FullControls.Core.Services;
-using FullControls.Extra.Extensions;
 using FullControls.SystemComponents;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Shell;
+using WpfCoreTools.Extensions;
 
 namespace FullControls.Core
 {

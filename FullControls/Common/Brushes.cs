@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace FullControls.Extra
+namespace FullControls.Common
 {
     /// <summary>
     /// Contains a set of <see cref="SolidColorBrush"/>.

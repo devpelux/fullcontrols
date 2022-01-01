@@ -3,13 +3,13 @@
 // See the LICENSE file in the project root for more information.
 // LICENSE: https://github.com/dotnet/wpf/blob/main/LICENSE.TXT
 
-using FullControls.Extra.Extensions;
 using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Shell;
+using WpfCoreTools.Extensions;
 
 namespace FullControls.Core.Services
 {

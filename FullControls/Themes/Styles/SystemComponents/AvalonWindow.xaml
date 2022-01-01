@@ -1,14 +1,14 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls.SystemComponents"
-                    xmlns:extra="clr-namespace:FullControls.Extra">
+                    xmlns:wct="http://devpelux.github.io/wpfcoretools">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml" />
         <ResourceDictionary Source="/FullControls;component/Resources/Styles.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <extra:ClipConverter x:Key="ClipConverter" />
+    <wct:ClipConverter x:Key="ClipConverter" />
 
     <Style TargetType="{x:Type local:AvalonWindow}"
            BasedOn="{StaticResource {x:Type Window}}">

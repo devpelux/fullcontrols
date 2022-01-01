@@ -1,11 +1,11 @@
 ﻿using FullControls.Core;
-using FullControls.Extra.Extensions;
 using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
+using WpfCoreTools.Extensions;
 
 namespace FullControls.Controls
 {

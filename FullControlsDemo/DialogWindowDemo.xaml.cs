@@ -1,5 +1,6 @@
 ﻿using FullControls.SystemComponents;
 using System.Windows;
+using WpfCoreTools;
 
 namespace FullControlsDemo
 {

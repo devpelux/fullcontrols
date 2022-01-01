@@ -1,6 +1,5 @@
 ﻿using FullControls.Common;
 using FullControls.Core;
-using FullControls.Extra.Extensions;
 using System;
 using System.ComponentModel;
 using System.Security;
@@ -10,6 +9,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
+using WpfCoreTools.Extensions;
 
 namespace FullControls.Controls
 {
@@ -1351,7 +1351,7 @@ namespace FullControls.Controls
             passwordBox.GotFocus += PasswordBox_GotFocus;
             passwordBox.LostFocus += PasswordBox_LostFocus;
             //Setting properties
-            passwordBox.Background = Extra.Brushes.WhiteTransparent;
+            passwordBox.Background = Common.Brushes.WhiteTransparent;
             passwordBox.BorderThickness = new Thickness(0);
             passwordBox.Focusable = true;
             //Setting bindings

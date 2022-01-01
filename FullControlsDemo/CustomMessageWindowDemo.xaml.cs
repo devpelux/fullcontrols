@@ -1,13 +1,14 @@
 ﻿using FullControls.SystemComponents;
 using System.Media;
 using System.Windows;
+using WpfCoreTools;
 
 namespace FullControlsDemo
 {
     /// <summary>
     /// Logica di interazione per CustomMessageWindowDemo.xaml
     /// </summary>
-    public partial class CustomMessageWindowDemo : AvalonWindow, FullControls.Common.IDialog
+    public partial class CustomMessageWindowDemo : AvalonWindow, IDialog
     {
         public const string YES = "CustomMessageWindowDemo.YES";
         public const string NO = "CustomMessageWindowDemo.NO";

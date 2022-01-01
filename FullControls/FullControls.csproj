@@ -97,4 +97,8 @@ WindowTitleBar</Description>
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="WpfCoreTools" Version="1.0.0" />
+  </ItemGroup>
+
 </Project>

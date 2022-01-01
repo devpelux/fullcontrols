@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace FullControls.Core.Services
 {
@@ -32,15 +32,14 @@ namespace FullControls.Core.Services
         internal static extern bool GetMonitorInfo(IntPtr hMonitor, MONITORINFO lpmi);
 
         [DllImport("kernel32.dll", SetLastError = true, ExactSpelling = true, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        [SuppressMessage("Globalization", "CA2101: Specify marshaling for P/Invoke string arguments.", Justification = "GetProcAddress must use CharSet.Ansi.")]
         internal static extern IntPtr GetProcAddress(IntPtr hModule, string procName);
 
         [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Ansi, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        [SuppressMessage("Globalization", "CA2101: Specify marshaling for P/Invoke string arguments.", Justification = "GetProcAddress must use CharSet.Ansi.")]
         internal static extern IntPtr LoadLibrary(string lpFileName);
 
         [DllImport("dwmapi.dll", PreserveSig = false)]
         internal static extern bool DwmIsCompositionEnabled();
-
-        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto, BestFitMapping = false, ThrowOnUnmappableChar = true)]
-        internal static extern int GetModuleFileName(IntPtr hModule, StringBuilder buffer, int length);
     }
 }
