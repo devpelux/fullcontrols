@@ -4,7 +4,7 @@
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  MergeTitlebarAndContent="True"
                  Title="GlassScrollViewer"
-                 Icon="/Icons/FullControlsSimple.ico"
+                 Icon="/Icons/Icon.ico"
                  ResizeMode="CanMinimize"
                  WindowStartupLocation="CenterOwner"
                  Height="300"

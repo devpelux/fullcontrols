@@ -12,12 +12,11 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
 	<PackageReleaseNotes>Updated for the new release of FullControls.</PackageReleaseNotes>
-    <ApplicationIcon>Icons\FullControlsSimple.ico</ApplicationIcon>
+    <ApplicationIcon>Icons\Icon.ico</ApplicationIcon>
     <StartupObject>FullControlsDemo.App</StartupObject>
     <Version>2.0.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Nullable>enable</Nullable>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,26 +24,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Icons\FullControlsMenuIcon.png" />
-    <None Remove="Icons\FullControlsSimple.ico" />
     <None Remove="Icons\GitHub.png" />
+    <None Remove="Icons\Heart.png" />
     <None Remove="Icons\Help.png" />
+    <None Remove="Icons\Icon.ico" />
     <None Remove="Icons\NuGet.png" />
     <None Include="..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Icons\FullControlsMenuIcon.png" />
-    <Resource Include="Icons\FullControlsSimple.ico" />
     <Resource Include="Icons\GitHub.png" />
+    <Resource Include="Icons\Heart.png" />
     <Resource Include="Icons\Help.png" />
+    <Resource Include="Icons\Icon.ico" />
     <Resource Include="Icons\NuGet.png" />
   </ItemGroup>
 

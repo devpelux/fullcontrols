@@ -8,7 +8,7 @@
                  RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
                  CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
                  Title="Menu"
-                 Icon="/Icons/FullControlsSimple.ico"
+                 Icon="/Icons/Icon.ico"
                  ResizeMode="CanMinimize"
                  WindowStartupLocation="CenterOwner"
                  Height="500"
@@ -74,7 +74,7 @@
                             <fc:FlatMenuItem Header="Example SubItem 4" />
                             <fc:FlatMenuItem Header="Example Iconed Item">
                                 <fc:FlatMenuItem.Icon>
-                                    <Image Source="/Icons/FullControlsMenuIcon.png"
+                                    <Image Source="/Icons/Heart.png"
                                            RenderOptions.BitmapScalingMode="Fant"
                                            SnapsToDevicePixels="True"
                                            Width="14"
@@ -266,7 +266,7 @@
                             <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
                                              Header="Example Iconed Item">
                                 <fc:FlatMenuItem.Icon>
-                                    <Image Source="/Icons/FullControlsMenuIcon.png"
+                                    <Image Source="/Icons/Heart.png"
                                            RenderOptions.BitmapScalingMode="Fant"
                                            SnapsToDevicePixels="True"
                                            Width="18"

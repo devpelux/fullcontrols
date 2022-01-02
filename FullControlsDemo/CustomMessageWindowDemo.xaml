@@ -4,7 +4,7 @@
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  MergeTitlebarAndContent="True"
                  Title="Message"
-                 Icon="/Icons/FullControlsSimple.ico"
+                 Icon="/Icons/Icon.ico"
                  ResizeMode="NoResize"
                  WindowStartupLocation="CenterOwner"
                  Height="180"

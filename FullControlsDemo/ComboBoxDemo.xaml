@@ -8,7 +8,7 @@
                  RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
                  CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
                  Title="ComboBox"
-                 Icon="/Icons/FullControlsSimple.ico"
+                 Icon="/Icons/Icon.ico"
                  ResizeMode="CanMinimize"
                  WindowStartupLocation="CenterOwner"
                  Height="267"

@@ -7,7 +7,7 @@
                  mc:Ignorable="d"
                  MergeTitlebarAndContent="True"
                  Title="FullControls"
-                 Icon="/Icons/FullControlsSimple.ico"
+                 Icon="/Icons/Icon.ico"
                  ResizeMode="CanMinimize"
                  WindowStartupLocation="CenterScreen"
                  Height="500"
