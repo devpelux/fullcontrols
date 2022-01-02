@@ -8,5 +8,7 @@ A clear and concise description of the solution (if this is a bug solution) or t
 ## Screenshots
 If applicable, add screenshots to help explain your changes.
 
-## Additional details
-Add any other details here.
+## Code of Conduct & guidelines
+By submitting this pull request, you agree to follow
+the [Code of Conduct](https://github.com/devpelux/fullcontrols/blob/main/CODE_OF_CONDUCT.md)
+and the [Contributing](https://github.com/devpelux/fullcontrols/blob/main/CONTRIBUTING.md) guidelines.
