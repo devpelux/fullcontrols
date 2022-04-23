@@ -73,5 +73,10 @@ namespace FullControlsDemo
         {
             new BorderedGridDemo() { Owner = this }.Show();
         }
+
+        private void Kaleidoborder_Click(object sender, RoutedEventArgs e)
+        {
+            new KaleidoborderDemo() { Owner = this }.Show();
+        }
     }
 }

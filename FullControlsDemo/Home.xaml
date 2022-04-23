@@ -43,12 +43,6 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Grid x:Name="filling"
-                      Grid.Column="2"
-                      Grid.Row="3"
-                      Grid.ColumnSpan="1"
-                      Background="{DynamicResource HatchBrush}" />
-
                 <fc:ButtonPlus x:Name="accordion"
                                Grid.Column="0"
                                Grid.Row="0"
@@ -154,6 +148,16 @@
                                Grid.Row="3"
                                Content="BorderedGrid"
                                Click="BorderedGrid_Click"
+                               BorderThickness="0,0,1,0"
+                               Background="#0C646464"
+                               BackgroundOnDisabled="#0C646464"
+                               BackgroundOnMouseOver="#7F2191C5"
+                               BackgroundOnPressed="#B22191C5" />
+                <fc:ButtonPlus x:Name="kaleidoborder"
+                               Grid.Column="2"
+                               Grid.Row="3"
+                               Content="Kaleidoborder"
+                               Click="Kaleidoborder_Click"
                                BorderThickness="0,0,1,0"
                                Background="#0C646464"
                                BackgroundOnDisabled="#0C646464"

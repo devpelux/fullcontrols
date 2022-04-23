@@ -17,6 +17,11 @@ namespace FullControls.Core.Services
     {
         private static readonly BitArray _cacheValid = new((int)CacheSlot.NumSlots);
 
+        /// <summary>
+        /// Default PPI value used in WPF and Windows.
+        /// </summary>
+        internal const float DefaultPixelsPerInch = 96.0f;
+
         #region DpiX
 
         private static int _dpiX;
@@ -158,6 +163,11 @@ namespace FullControls.Core.Services
         /// Gets the number of physical pixels per DIP. For example, if the DPI of the rendering surface is 96 this 
         /// value is 1.0f. If the DPI is 120, this value is 120.0f/96.
         /// </summary>
-        internal static float ConvertInPixelsPerDip(int dpi) => ((float)dpi) / 96;
+        internal static float ConvertInPixelsPerDip(int dpi) => dpi / DefaultPixelsPerInch;
+
+        /// <summary>
+        /// Gets the number of physical pixels per DIP for X and Y values.
+        /// </summary>
+        internal static DpiScale GetDpiScale() => new(ConvertInPixelsPerDip(DpiX), ConvertInPixelsPerDip(DpiY));
     }
 }
