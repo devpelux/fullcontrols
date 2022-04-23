@@ -10,6 +10,28 @@ namespace FullControls.SystemComponents
     /// </summary>
     public class AvalonWindow : WindowPlus
     {
+        /// <summary>
+        /// Gets the corner radius of the control.
+        /// </summary>
+        public CornerRadius CornerRadius => (CornerRadius)GetValue(CornerRadiusProperty);
+
+        #region CornerRadiusProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="CornerRadius"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey CornerRadiusPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(CornerRadius), typeof(CornerRadius), typeof(AvalonWindow),
+                new FrameworkPropertyMetadata(default(CornerRadius)));
+
+        /// <summary>
+        /// Identifies the <see cref="CornerRadius"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty CornerRadiusProperty = CornerRadiusPropertyKey.DependencyProperty;
+
+        #endregion
+
+
         static AvalonWindow()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(AvalonWindow),
@@ -35,6 +57,12 @@ namespace FullControls.SystemComponents
                 CornerRadius = new CornerRadius()
             };
             WindowChrome.SetWindowChrome(this, wc);
+
+            //Sets round corners for Windows 11.
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT && Environment.OSVersion.Version.Build >= 22000)
+            {
+                SetValue(CornerRadiusPropertyKey, WIN11_CORNER_RADIUS);
+            }
         }
 
         /// <inheritdoc/>

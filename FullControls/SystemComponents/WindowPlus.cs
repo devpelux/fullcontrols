@@ -18,6 +18,11 @@ namespace FullControls.SystemComponents
         private WindowState previousState = WindowState.Normal;
 
         /// <summary>
+        /// <see cref="CornerRadius"/> used in Windows 11.
+        /// </summary>
+        public static readonly CornerRadius WIN11_CORNER_RADIUS = new(8);
+
+        /// <summary>
         /// Height of the titlebar.
         /// </summary>
         public const double TITLEBAR_HEIGHT = 32;

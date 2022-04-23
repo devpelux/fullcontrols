@@ -57,6 +57,7 @@
                                 Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding ActualBorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="{TemplateBinding CornerRadius}"
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                             <Grid x:Name="PART_WindowParts">
                                 <Grid.Clip>
