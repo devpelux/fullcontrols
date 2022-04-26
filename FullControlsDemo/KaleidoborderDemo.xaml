@@ -27,6 +27,7 @@
                           Border1Thickness="0,0,8,8"
                           CornerRadius="16"
                           BorderBrush="White"
+                          Background="#FF303030"
                           Border1Brush="Red"
                           Margin="58,82,0,0" />
 
@@ -47,5 +48,9 @@
                 Width="100"
                 Height="100"
                 Margin="232,82,0,0" />
+        <Border BorderBrush="White"
+                CornerRadius="1000,2000,0,0"
+                BorderThickness="1"
+                Margin="121,200,200,55" />
     </Grid>
 </fc:AvalonWindow>

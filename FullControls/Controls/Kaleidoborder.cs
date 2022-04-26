@@ -9,7 +9,7 @@ using WpfCoreTools.Extensions;
 namespace FullControls.Controls
 {
     /// <summary>
-    /// The Kaleidoborder decorator is used to draw a multicolored border with a background around another element.
+    /// Draws a multicolored border with a background around another element.
     /// </summary>
     public class Kaleidoborder : Decorator
     {
@@ -20,7 +20,7 @@ namespace FullControls.Controls
         private Geometry BackgroundGeometry = Geometry.Empty;
 
         /// <summary>
-        /// The Background property defines the brush used to fill the area within the border.
+        /// Gets or sets the background brush used to fill the area within the borders.
         /// </summary>
         public Brush Background
         {
@@ -37,7 +37,7 @@ namespace FullControls.Controls
                     | FrameworkPropertyMetadataOptions.SubPropertiesDoNotAffectRender));
 
         /// <summary>
-        /// The brush for the border.
+        /// Gets or sets the brush used to draw main border.
         /// </summary>
         public Brush BorderBrush
         {
@@ -53,7 +53,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.AffectsRender));
 
         /// <summary>
-        /// The brush for the border 1.
+        /// Gets or sets the brush used to draw second border.
         /// </summary>
         public Brush Border1Brush
         {
@@ -69,7 +69,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.AffectsRender));
 
         /// <summary>
-        /// The brush for the border 2.
+        /// Gets or sets the brush used to draw third border.
         /// </summary>
         public Brush Border2Brush
         {
@@ -85,7 +85,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.AffectsRender));
 
         /// <summary>
-        /// The brush for the border 3.
+        /// Gets or sets the brush used to draw fourth border.
         /// </summary>
         public Brush Border3Brush
         {
@@ -101,9 +101,7 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.AffectsRender));
 
         /// <summary>
-        /// The BorderThickness property defined how thick a border to draw.  The property's value is a
-        /// <see cref="Thickness" /> containing values for each of the Left, Top, Right,
-        /// and Bottom sides.  Values of Auto are interpreted as zero.
+        /// Gets or sets the thickness of the main border.
         /// </summary>
         public Thickness BorderThickness
         {
@@ -120,9 +118,7 @@ namespace FullControls.Controls
                     | FrameworkPropertyMetadataOptions.AffectsRender));
 
         /// <summary>
-        /// The BorderThickness property defined how thick a border to draw.  The property's value is a
-        /// <see cref="Thickness" /> containing values for each of the Left, Top, Right,
-        /// and Bottom sides.  Values of Auto are interpreted as zero.
+        /// Gets or sets the thickness of the second border.
         /// </summary>
         public Thickness Border1Thickness
         {
@@ -139,9 +135,7 @@ namespace FullControls.Controls
                     | FrameworkPropertyMetadataOptions.AffectsRender));
 
         /// <summary>
-        /// The BorderThickness property defined how thick a border to draw.  The property's value is a
-        /// <see cref="Thickness" /> containing values for each of the Left, Top, Right,
-        /// and Bottom sides.  Values of Auto are interpreted as zero.
+        /// Gets or sets the thickness of the third border.
         /// </summary>
         public Thickness Border2Thickness
         {
@@ -158,9 +152,7 @@ namespace FullControls.Controls
                     | FrameworkPropertyMetadataOptions.AffectsRender));
 
         /// <summary>
-        /// The BorderThickness property defined how thick a border to draw.  The property's value is a
-        /// <see cref="Thickness" /> containing values for each of the Left, Top, Right,
-        /// and Bottom sides.  Values of Auto are interpreted as zero.
+        /// Gets or sets the thickness of the fourth border.
         /// </summary>
         public Thickness Border3Thickness
         {
@@ -177,33 +169,37 @@ namespace FullControls.Controls
                     | FrameworkPropertyMetadataOptions.AffectsRender));
 
         /// <summary>
-        /// Gets the max border thickness taken by all the borders.
+        /// Gets the maximum thickness taken by all the borders.
         /// </summary>
         public Thickness MaxBorderThickness { get; private set; }
 
+        #region ActualBorderThicknesses
+
         /// <summary>
-        /// Gets the actual border thickness.
+        /// Gets the actual thickness taken by the main border.
         /// </summary>
         internal Thickness ActualBorderThickness { get; private set; }
 
         /// <summary>
-        /// Gets the actual border 1 thickness.
+        /// Gets the actual thickness taken by the second border.
         /// </summary>
         internal Thickness ActualBorder1Thickness { get; private set; }
 
         /// <summary>
-        /// Gets the actual border 2 thickness.
+        /// Gets the actual thickness taken by the third border.
         /// </summary>
         internal Thickness ActualBorder2Thickness { get; private set; }
 
         /// <summary>
-        /// Gets the actual border 3 thickness.
+        /// Gets the actual thickness taken by the fourth border.
         /// </summary>
         internal Thickness ActualBorder3Thickness { get; private set; }
 
+        #endregion
+
         /// <summary>
-        /// The Padding property inflates the effective size of the child by the specified thickness.  This
-        /// achieves the same effect as adding margin on the child, but is present here for convenience.
+        /// Gets or sets the padding that inflates the effective size of the child by the specified thickness.<br/>
+        /// This achieves the same effect as adding margin on the child.
         /// </summary>
         public Thickness Padding
         {
@@ -220,9 +216,8 @@ namespace FullControls.Controls
                     | FrameworkPropertyMetadataOptions.AffectsRender));
 
         /// <summary>
-        /// The CornerRadius property allows users to control the roundness of the corners independently by
-        /// setting a radius value for each corner.  Radius values that are too large are scaled so that they
-        /// smoothly blend from corner to corner.
+        /// Gets or sets the corner radius to set the roundness of the corners.<br/>
+        /// Radius values that are too large are scaled so that they smoothly blend from corner to corner.
         /// </summary>
         public CornerRadius CornerRadius
         {
@@ -247,14 +242,14 @@ namespace FullControls.Controls
         public Kaleidoborder() : base() { }
 
         /// <summary>
-        /// Updates DesiredSize of the Kaleidoborder.  Called by parent UIElement.  This is the first pass of layout.
+        /// Updates the DesiredSize of Kaleidoborder.
         /// </summary>
         /// <remarks>
-        /// Kaleidoborder determines its desired size it needs from the specified border the child: its sizing
-        /// properties, margin, and requested size.
+        /// Kaleidoborder determines its desired size by adding the maximum space taken by all the borders to the child desired size.<br/>
+        /// If there is no child, the desired size will be the maximum space taken by all the borders themselves.
         /// </remarks>
         /// <param name="constraint">Constraint size is an "upper limit" that the return value should not exceed.</param>
-        /// <returns>The Decorator's desired size.</returns>
+        /// <returns>The desired size of Kaleidoborder.</returns>
         protected override Size MeasureOverride(Size constraint)
         {
             //Calculates the correct border thickness for the 4 borders, by rounding it, if UseLayoutRounding is true.
@@ -275,11 +270,11 @@ namespace FullControls.Controls
             }
 
             //Calculates the max thickness taken by all the borders (the max for every edge).
+            double left = Max(ActualBorderThickness.Left, ActualBorder1Thickness.Left, ActualBorder2Thickness.Left, ActualBorder3Thickness.Left);
             double top = Max(ActualBorderThickness.Top, ActualBorder1Thickness.Top, ActualBorder2Thickness.Top, ActualBorder3Thickness.Top);
             double right = Max(ActualBorderThickness.Right, ActualBorder1Thickness.Right, ActualBorder2Thickness.Right, ActualBorder3Thickness.Right);
             double bottom = Max(ActualBorderThickness.Bottom, ActualBorder1Thickness.Bottom, ActualBorder2Thickness.Bottom, ActualBorder3Thickness.Bottom);
-            double left = Max(ActualBorderThickness.Left, ActualBorder1Thickness.Left, ActualBorder2Thickness.Left, ActualBorder3Thickness.Left);
-            MaxBorderThickness = new(top, right, bottom, left);
+            MaxBorderThickness = new(left, top, right, bottom);
 
             //Basic size without any child (the size of the "decoration" parts: border and padding).
             Size border = MaxBorderThickness.Collapse();
@@ -305,22 +300,24 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Kaleidoborder computes the position of its single child and applies its child's alignments to the child.
+        /// Places the child element inside all the borders (if there is a child),
+        /// and generates the geometries of the borders to draw.
         /// </summary>
-        /// <param name="finalSize">The size reserved for this element by the parent</param>
-        /// <returns>The actual ink area of the element, typically the same as finalSize</returns>
+        /// <param name="finalSize">The size reserved for this element by the parent.</param>
+        /// <returns>The actual size of Kaleidoborder, typically the same as <paramref name="finalSize"/>.</returns>
         protected override Size ArrangeOverride(Size finalSize)
         {
-            //Main properties.
+            //The whole control.
             Rect externalRect = new(finalSize);
 
-            //Arranges the child with his available space.
+            //Gets the maximum border thickness and calculates the space inside all the borders (the space of the background).
             Thickness maxThickness = MaxBorderThickness;
             Rect backgroundRect = externalRect.Deflate(maxThickness);
 
+            //Arranges the child with his available space (the space of the background minus the padding).
             Child?.Arrange(backgroundRect.Deflate(Padding));
 
-            //Generates the geometries.
+            //Generates the geometries of the borders and the background if there is space to draw.
             if (externalRect.HasArea())
             {
                 //Get the thickness to avoid unboxing again.
@@ -364,7 +361,7 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// In addition to the child, Kaleidoborder renders a background + border.
+        /// Draws the 4 borders and the background.
         /// </summary>
         protected override void OnRender(DrawingContext dc)
         {
@@ -376,9 +373,9 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Generates a border geometry with the specified parameters for the external and internal rect.<para/>
-        /// The two rects are drawn one inside the other.<para/>
-        /// The internal rect will clear the external rect area to draw a border.<para/>
+        /// Generates a border geometry with the specified parameters for the external and internal rect.<br/>
+        /// The two rects are drawn one inside the other.<br/>
+        /// The second rect will clear the first rect overlapped area to draw a border.<br/>
         /// If the two rects are the same, nothing is drawn.
         /// </summary>
         private static Geometry GenerateBorderGeometry(Radii externalRadii, Radii internalRadii)
@@ -398,7 +395,7 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Draw a rect geometry on the specified context, with the specified radii.
+        /// Draws a rect geometry using the specified <see cref="StreamGeometryContext"/>, with the specified <see cref="Radii"/>.
         /// </summary>
         private static void DrawRect(StreamGeometryContext context, Radii radii)
         {
@@ -430,7 +427,7 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Round the <see cref="Thickness"/> with the specified <see cref="DpiScale"/>.
+        /// Rounds the <see cref="Thickness"/> with the specified <see cref="DpiScale"/>.
         /// </summary>
         private static Thickness RoundThickness(Thickness thickness, DpiScale dpi)
         {
@@ -446,7 +443,7 @@ namespace FullControls.Controls
         private static double Max(double d1, double d2, double d3, double d4) => Math.Max(Math.Max(Math.Max(d1, d2), d3), d4);
 
         /// <summary>
-        /// Reduces the corner radius by removing the angle thickness.
+        /// Reduces the <see cref="System.Windows.CornerRadius"/> by removing the thickness of the angle's border.
         /// </summary>
         private static CornerRadius ReduceRadiusByThickness(CornerRadius radius, Thickness thickness)
         {
