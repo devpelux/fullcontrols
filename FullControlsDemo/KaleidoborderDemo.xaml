@@ -25,24 +25,23 @@
                           Height="100"
                           BorderThickness="8"
                           Border1Thickness="0,0,8,8"
-                          CornerRadius="8"
+                          CornerRadius="16"
                           BorderBrush="White"
                           Border1Brush="Red"
-                          Margin="58,82,0,0">
-        </fc:Kaleidoborder>
+                          Margin="58,82,0,0" />
 
         <Border BorderBrush="White"
                 Background="Transparent"
                 BorderThickness="8"
-                CornerRadius="8"
+                CornerRadius="12"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Width="100"
                 Height="100"
                 Margin="232,82,0,0" />
         <Border BorderBrush="Red"
-                BorderThickness="0,0,0,8"
-                CornerRadius="8"
+                BorderThickness="0,0,8,8"
+                CornerRadius="12"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Width="100"

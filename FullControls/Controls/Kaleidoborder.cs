@@ -13,6 +13,12 @@ namespace FullControls.Controls
     /// </summary>
     public class Kaleidoborder : Decorator
     {
+        private Geometry Border0Geometry = Geometry.Empty;
+        private Geometry Border1Geometry = Geometry.Empty;
+        private Geometry Border2Geometry = Geometry.Empty;
+        private Geometry Border3Geometry = Geometry.Empty;
+        private Geometry BackgroundGeometry = Geometry.Empty;
+
         /// <summary>
         /// The Background property defines the brush used to fill the area within the border.
         /// </summary>
@@ -298,12 +304,6 @@ namespace FullControls.Controls
             return decorSize;
         }
 
-        private StreamGeometry? Border0Geometry { get; set; } = null;
-        private StreamGeometry? Border1Geometry { get; set; } = null;
-        private StreamGeometry? Border2Geometry { get; set; } = null;
-        private StreamGeometry? Border3Geometry { get; set; } = null;
-        private StreamGeometry? BackgroundGeometry { get; set; } = null;
-
         /// <summary>
         /// Kaleidoborder computes the position of its single child and applies its child's alignments to the child.
         /// </summary>
@@ -311,56 +311,90 @@ namespace FullControls.Controls
         /// <returns>The actual ink area of the element, typically the same as finalSize</returns>
         protected override Size ArrangeOverride(Size finalSize)
         {
-            //Calculates the rects of the borders.
+            //Main properties.
             Rect externalRect = new(finalSize);
-            Rect internal0Rect = externalRect.Deflate(ActualBorderThickness);
-            Rect internal1Rect = externalRect.Deflate(ActualBorder1Thickness);
-            Rect internal2Rect = externalRect.Deflate(ActualBorder2Thickness);
-            Rect internal3Rect = externalRect.Deflate(ActualBorder3Thickness);
-            Rect backgroundRect = externalRect.Deflate(MaxBorderThickness);
 
             //Arranges the child with his available space.
-            UIElement child = Child;
-            if (child != null)
-            {
-                Rect childRect = backgroundRect.Deflate(Padding);
-                child.Arrange(childRect);
-            }
+            Thickness maxThickness = MaxBorderThickness;
+            Rect backgroundRect = externalRect.Deflate(maxThickness);
 
-            CornerRadius radius = CornerRadius;
+            Child?.Arrange(backgroundRect.Deflate(Padding));
 
-            ResetGeometries();
+            //Generates the geometries.
             if (externalRect.HasArea())
             {
-                Border0Geometry = DrawBorderGeometry(new Radii(externalRect, radius), internal0Rect.HasArea() ? new Radii(internal0Rect, radius) : null);
-                Border1Geometry = DrawBorderGeometry(new Radii(externalRect, radius), internal1Rect.HasArea() ? new Radii(internal1Rect, radius) : null);
-                Border2Geometry = DrawBorderGeometry(new Radii(externalRect, radius), internal2Rect.HasArea() ? new Radii(internal2Rect, radius) : null);
-                Border3Geometry = DrawBorderGeometry(new Radii(externalRect, radius), internal3Rect.HasArea() ? new Radii(internal3Rect, radius) : null);
-                BackgroundGeometry = DrawBorderGeometry(new Radii(backgroundRect, radius), null);
+                //Get the thickness to avoid unboxing again.
+                Thickness thickness0 = ActualBorderThickness;
+                Thickness thickness1 = ActualBorder1Thickness;
+                Thickness thickness2 = ActualBorder2Thickness;
+                Thickness thickness3 = ActualBorder3Thickness;
+
+                //Calculates the rects of the borders.
+                Rect internal0Rect = externalRect.Deflate(thickness0);
+                Rect internal1Rect = externalRect.Deflate(thickness1);
+                Rect internal2Rect = externalRect.Deflate(thickness2);
+                Rect internal3Rect = externalRect.Deflate(thickness3);
+
+                //Calculates the corner radiuses of the rects.
+                CornerRadius externalRadius = CornerRadius;
+                CornerRadius radius0 = ReduceRadiusByThickness(externalRadius, thickness0);
+                CornerRadius radius1 = ReduceRadiusByThickness(externalRadius, thickness1);
+                CornerRadius radius2 = ReduceRadiusByThickness(externalRadius, thickness2);
+                CornerRadius radius3 = ReduceRadiusByThickness(externalRadius, thickness3);
+                CornerRadius backgroundRadius = ReduceRadiusByThickness(externalRadius, maxThickness);
+
+                //Generates the geometries for the 4 borders and the background.
+                Border0Geometry = GenerateBorderGeometry(new Radii(externalRect, externalRadius), new Radii(internal0Rect, radius0));
+                Border1Geometry = GenerateBorderGeometry(new Radii(externalRect, externalRadius), new Radii(internal1Rect, radius1));
+                Border2Geometry = GenerateBorderGeometry(new Radii(externalRect, externalRadius), new Radii(internal2Rect, radius2));
+                Border3Geometry = GenerateBorderGeometry(new Radii(externalRect, externalRadius), new Radii(internal3Rect, radius3));
+                BackgroundGeometry = GenerateBorderGeometry(new Radii(backgroundRect, backgroundRadius), Radii.Empty);
+            }
+            else
+            {
+                //If there is no space to draw, nothing is drawn and the geometries are cleared.
+                Border0Geometry = Geometry.Empty;
+                Border1Geometry = Geometry.Empty;
+                Border2Geometry = Geometry.Empty;
+                Border3Geometry = Geometry.Empty;
+                BackgroundGeometry = Geometry.Empty;
             }
 
             return finalSize;
         }
 
-        private void ResetGeometries()
+        /// <summary>
+        /// In addition to the child, Kaleidoborder renders a background + border.
+        /// </summary>
+        protected override void OnRender(DrawingContext dc)
         {
-            Border0Geometry = null;
-            Border1Geometry = null;
-            Border2Geometry = null;
-            Border3Geometry = null;
-            BackgroundGeometry = null;
+            dc.DrawGeometry(BorderBrush, null, Border0Geometry);
+            dc.DrawGeometry(Border1Brush, null, Border1Geometry);
+            dc.DrawGeometry(Border2Brush, null, Border2Geometry);
+            dc.DrawGeometry(Border3Brush, null, Border3Geometry);
+            dc.DrawGeometry(Background, null, BackgroundGeometry);
         }
 
-        private StreamGeometry DrawBorderGeometry(Radii externalRadii, Radii? internalRadii)
+        /// <summary>
+        /// Generates a border geometry with the specified parameters for the external and internal rect.<para/>
+        /// The two rects are drawn one inside the other.<para/>
+        /// The internal rect will clear the external rect area to draw a border.<para/>
+        /// If the two rects are the same, nothing is drawn.
+        /// </summary>
+        private static Geometry GenerateBorderGeometry(Radii externalRadii, Radii internalRadii)
         {
-            StreamGeometry geometry = new();
-            using (StreamGeometryContext context = geometry.Open())
+            if (!externalRadii.Equals(internalRadii))
             {
-                DrawRect(context, externalRadii);
-                if (internalRadii.HasValue) DrawRect(context, internalRadii.Value);
+                StreamGeometry geometry = new();
+                using (StreamGeometryContext context = geometry.Open())
+                {
+                    DrawRect(context, externalRadii);
+                    DrawRect(context, internalRadii);
+                }
+                geometry.Freeze();
+                return geometry;
             }
-            geometry.Freeze();
-            return geometry;
+            return Geometry.Empty;
         }
 
         /// <summary>
@@ -380,27 +414,19 @@ namespace FullControls.Controls
                     BottomLeft      BottomRight
             */
 
-            context.BeginFigure(radii.TopLeft, true, true);
-            context.LineTo(radii.TopRight, true, false);
-            context.ArcTo(radii.RightTop, radii.TopRightRadii, 0, false, SweepDirection.Clockwise, true, false);
-            context.LineTo(radii.RightBottom, true, false);
-            context.ArcTo(radii.BottomRight, radii.BottomRightRadii, 0, false, SweepDirection.Clockwise, true, false);
-            context.LineTo(radii.BottomLeft, true, false);
-            context.ArcTo(radii.LeftBottom, radii.BottomLeftRadii, 0, false, SweepDirection.Clockwise, true, false);
-            context.LineTo(radii.LeftTop, true, false);
-            context.ArcTo(radii.TopLeft, radii.TopLeftRadii, 0, false, SweepDirection.Clockwise, true, false);
-        }
-
-        /// <summary>
-        /// In addition to the child, Kaleidoborder renders a background + border.
-        /// </summary>
-        protected override void OnRender(DrawingContext dc)
-        {
-            if (this.IsNotNull(BorderBrushProperty)) dc.DrawGeometry(BorderBrush, null, Border0Geometry);
-            if (this.IsNotNull(Border1BrushProperty)) dc.DrawGeometry(Border1Brush, null, Border1Geometry);
-            if (this.IsNotNull(Border2BrushProperty)) dc.DrawGeometry(Border2Brush, null, Border2Geometry);
-            if (this.IsNotNull(Border3BrushProperty)) dc.DrawGeometry(Border3Brush, null, Border3Geometry);
-            if (this.IsNotNull(BackgroundProperty)) dc.DrawGeometry(Background, null, BackgroundGeometry);
+            //Check if the rect to draw has an area, otherwise there is nothing to draw.
+            if (radii.HasArea)
+            {
+                context.BeginFigure(radii.TopLeft, true, true);
+                context.LineTo(radii.TopRight, true, false);
+                context.ArcTo(radii.RightTop, radii.TopRightRadii, 0, false, SweepDirection.Clockwise, true, false);
+                context.LineTo(radii.RightBottom, true, false);
+                context.ArcTo(radii.BottomRight, radii.BottomRightRadii, 0, false, SweepDirection.Clockwise, true, false);
+                context.LineTo(radii.BottomLeft, true, false);
+                context.ArcTo(radii.LeftBottom, radii.BottomLeftRadii, 0, false, SweepDirection.Clockwise, true, false);
+                context.LineTo(radii.LeftTop, true, false);
+                context.ArcTo(radii.TopLeft, radii.TopLeftRadii, 0, false, SweepDirection.Clockwise, true, false);
+            }
         }
 
         /// <summary>
@@ -419,13 +445,26 @@ namespace FullControls.Controls
         /// </summary>
         private static double Max(double d1, double d2, double d3, double d4) => Math.Max(Math.Max(Math.Max(d1, d2), d3), d4);
 
+        /// <summary>
+        /// Reduces the corner radius by removing the angle thickness.
+        /// </summary>
+        private static CornerRadius ReduceRadiusByThickness(CornerRadius radius, Thickness thickness)
+        {
+            //The corner radius remains positive.
+            double topLeft = Math.Max(radius.TopLeft - Math.Max(thickness.Top, thickness.Left), 0.0);
+            double topRight = Math.Max(radius.TopRight - Math.Max(thickness.Top, thickness.Right), 0.0);
+            double bottomRight = Math.Max(radius.BottomRight - Math.Max(thickness.Bottom, thickness.Right), 0.0);
+            double bottomLeft = Math.Max(radius.BottomLeft - Math.Max(thickness.Bottom, thickness.Left), 0.0);
+            return new CornerRadius(topLeft, topRight, bottomRight, bottomLeft);
+        }
+
 
         #region Radii
 
         /// <summary>
         /// Handles the parameters to draw a rectangle with round corners.
         /// </summary>
-        private struct Radii
+        internal struct Radii : IEquatable<Radii>
         {
             /*
                           TopLeft      TopRight
@@ -439,11 +478,19 @@ namespace FullControls.Controls
                        BottomLeft      BottomRight
              */
 
+            /// <summary>
+            /// Empty <see cref="Radii"/> with no area.
+            /// </summary>
+            public static Radii Empty { get; }
+
+            #region Properties
+
             public Size TopLeftRadii { get; }
             public Size TopRightRadii { get; }
-            public Size BottomLeftRadii { get; }
             public Size BottomRightRadii { get; }
+            public Size BottomLeftRadii { get; }
 
+            public Point LeftTop { get; }
             public Point TopLeft { get; }
             public Point TopRight { get; }
             public Point RightTop { get; }
@@ -451,7 +498,10 @@ namespace FullControls.Controls
             public Point BottomRight { get; }
             public Point BottomLeft { get; }
             public Point LeftBottom { get; }
-            public Point LeftTop { get; }
+
+            public bool HasArea { get; }
+
+            #endregion
 
             /// <summary>
             /// Initializes a new <see cref="Radii"/> with a rectangle and the specified rounding corners size.
@@ -460,23 +510,56 @@ namespace FullControls.Controls
             /// <param name="radius">Rounding size of the rectangle corners.</param>
             public Radii(Rect rect, CornerRadius radius)
             {
-                TopLeftRadii = new Size(radius.TopLeft, radius.TopLeft);
-                TopRightRadii = new Size(radius.TopRight, radius.TopRight);
-                BottomLeftRadii = new Size(radius.BottomLeft, radius.BottomLeft);
-                BottomRightRadii = new Size(radius.BottomRight, radius.BottomRight);
+                //Calculates the 4 angles sizes, and fixes them to be adapted to the size of the rect.
 
-                TopLeft = new Point(rect.Left + radius.TopLeft, rect.Top);
-                TopRight = new Point(rect.Right - radius.TopRight, rect.Top);
+                double halfHeight = rect.Height / 2.0;
+                double halfWidth = rect.Width / 2.0;
 
-                RightTop = new Point(rect.Right, rect.Top + radius.TopRight);
-                RightBottom = new Point(rect.Right, rect.Bottom - radius.BottomRight);
+                TopLeftRadii = new Size(Math.Min(radius.TopLeft, halfWidth), Math.Min(radius.TopLeft, halfHeight));
+                TopRightRadii = new Size(Math.Min(radius.TopRight, halfWidth), Math.Min(radius.TopRight, halfHeight));
+                BottomRightRadii = new Size(Math.Min(radius.BottomRight, halfWidth), Math.Min(radius.BottomRight, halfHeight));
+                BottomLeftRadii = new Size(Math.Min(radius.BottomLeft, halfWidth), Math.Min(radius.BottomLeft, halfHeight));
 
-                BottomRight = new Point(rect.Right - radius.BottomRight, rect.Bottom);
-                BottomLeft = new Point(rect.Left + radius.BottomLeft, rect.Bottom);
+                //Calculates the angle points.
 
-                LeftBottom = new Point(rect.Left, rect.Bottom - radius.BottomLeft);
-                LeftTop = new Point(rect.Left, rect.Top + radius.TopLeft);
+                LeftTop = new Point(rect.Left, rect.Top + TopLeftRadii.Height);
+                TopLeft = new Point(rect.Left + TopLeftRadii.Width, rect.Top);
+
+                RightTop = new Point(rect.Right, rect.Top + TopRightRadii.Height);
+                TopRight = new Point(rect.Right - TopRightRadii.Width, rect.Top);
+
+                RightBottom = new Point(rect.Right, rect.Bottom - BottomRightRadii.Height);
+                BottomRight = new Point(rect.Right - BottomRightRadii.Width, rect.Bottom);
+
+                LeftBottom = new Point(rect.Left, rect.Bottom - BottomLeftRadii.Height);
+                BottomLeft = new Point(rect.Left + BottomLeftRadii.Width, rect.Bottom);
+
+                //Remembers if the rect has area or not.
+
+                HasArea = rect.HasArea();
             }
+
+            /// <summary>
+            /// Check if a <see cref="Radii"/> is equals to this <see cref="Radii"/>.
+            /// </summary>
+            /// <param name="radii"><see cref="Radii"/> to check for equality.</param>
+            public bool Equals(Radii radii)
+            {
+                return LeftTop.Equals(radii.LeftTop)
+                    && TopLeft.Equals(radii.TopLeft)
+                    && TopRight.Equals(radii.TopRight)
+                    && RightTop.Equals(radii.RightTop)
+                    && RightBottom.Equals(radii.RightBottom)
+                    && BottomRight.Equals(radii.BottomRight)
+                    && BottomLeft.Equals(radii.BottomLeft)
+                    && LeftBottom.Equals(radii.LeftBottom);
+            }
+
+            /// <inheritdoc/>
+            public override bool Equals(object? obj) => obj is Radii radii && Equals(radii);
+
+            /// <inheritdoc/>
+            public override int GetHashCode() => HashCode.Combine(LeftTop, TopLeft, TopRight, RightTop, RightBottom, BottomRight, BottomLeft, LeftBottom);
         }
 
         #endregion
