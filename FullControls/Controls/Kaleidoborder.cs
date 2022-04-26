@@ -176,24 +176,24 @@ namespace FullControls.Controls
         #region ActualBorderThicknesses
 
         /// <summary>
-        /// Gets the actual thickness taken by the main border.
+        /// Gets the scaled thickness taken by the main border.
         /// </summary>
-        internal Thickness ActualBorderThickness { get; private set; }
+        internal Thickness ScaledBorderThickness { get; private set; }
 
         /// <summary>
-        /// Gets the actual thickness taken by the second border.
+        /// Gets the scaled thickness taken by the second border.
         /// </summary>
-        internal Thickness ActualBorder1Thickness { get; private set; }
+        internal Thickness ScaledBorder1Thickness { get; private set; }
 
         /// <summary>
-        /// Gets the actual thickness taken by the third border.
+        /// Gets the scaled thickness taken by the third border.
         /// </summary>
-        internal Thickness ActualBorder2Thickness { get; private set; }
+        internal Thickness ScaledBorder2Thickness { get; private set; }
 
         /// <summary>
-        /// Gets the actual thickness taken by the fourth border.
+        /// Gets the scaled thickness taken by the fourth border.
         /// </summary>
-        internal Thickness ActualBorder3Thickness { get; private set; }
+        internal Thickness ScaledBorder3Thickness { get; private set; }
 
         #endregion
 
@@ -256,24 +256,24 @@ namespace FullControls.Controls
             if (UseLayoutRounding)
             {
                 DpiScale dpi = SysParams.GetDpiScale();
-                ActualBorderThickness = RoundThickness(BorderThickness, dpi);
-                ActualBorder1Thickness = RoundThickness(Border1Thickness, dpi);
-                ActualBorder2Thickness = RoundThickness(Border2Thickness, dpi);
-                ActualBorder3Thickness = RoundThickness(Border3Thickness, dpi);
+                ScaledBorderThickness = RoundThickness(BorderThickness, dpi);
+                ScaledBorder1Thickness = RoundThickness(Border1Thickness, dpi);
+                ScaledBorder2Thickness = RoundThickness(Border2Thickness, dpi);
+                ScaledBorder3Thickness = RoundThickness(Border3Thickness, dpi);
             }
             else
             {
-                ActualBorderThickness = BorderThickness;
-                ActualBorder1Thickness = Border1Thickness;
-                ActualBorder2Thickness = Border2Thickness;
-                ActualBorder3Thickness = Border3Thickness;
+                ScaledBorderThickness = BorderThickness;
+                ScaledBorder1Thickness = Border1Thickness;
+                ScaledBorder2Thickness = Border2Thickness;
+                ScaledBorder3Thickness = Border3Thickness;
             }
 
             //Calculates the max thickness taken by all the borders (the max for every edge).
-            double left = Max(ActualBorderThickness.Left, ActualBorder1Thickness.Left, ActualBorder2Thickness.Left, ActualBorder3Thickness.Left);
-            double top = Max(ActualBorderThickness.Top, ActualBorder1Thickness.Top, ActualBorder2Thickness.Top, ActualBorder3Thickness.Top);
-            double right = Max(ActualBorderThickness.Right, ActualBorder1Thickness.Right, ActualBorder2Thickness.Right, ActualBorder3Thickness.Right);
-            double bottom = Max(ActualBorderThickness.Bottom, ActualBorder1Thickness.Bottom, ActualBorder2Thickness.Bottom, ActualBorder3Thickness.Bottom);
+            double left = Max(ScaledBorderThickness.Left, ScaledBorder1Thickness.Left, ScaledBorder2Thickness.Left, ScaledBorder3Thickness.Left);
+            double top = Max(ScaledBorderThickness.Top, ScaledBorder1Thickness.Top, ScaledBorder2Thickness.Top, ScaledBorder3Thickness.Top);
+            double right = Max(ScaledBorderThickness.Right, ScaledBorder1Thickness.Right, ScaledBorder2Thickness.Right, ScaledBorder3Thickness.Right);
+            double bottom = Max(ScaledBorderThickness.Bottom, ScaledBorder1Thickness.Bottom, ScaledBorder2Thickness.Bottom, ScaledBorder3Thickness.Bottom);
             MaxBorderThickness = new(left, top, right, bottom);
 
             //Basic size without any child (the size of the "decoration" parts: border and padding).
@@ -321,10 +321,10 @@ namespace FullControls.Controls
             if (externalRect.HasArea())
             {
                 //Get the thickness to avoid unboxing again.
-                Thickness thickness0 = ActualBorderThickness;
-                Thickness thickness1 = ActualBorder1Thickness;
-                Thickness thickness2 = ActualBorder2Thickness;
-                Thickness thickness3 = ActualBorder3Thickness;
+                Thickness thickness0 = ScaledBorderThickness;
+                Thickness thickness1 = ScaledBorder1Thickness;
+                Thickness thickness2 = ScaledBorder2Thickness;
+                Thickness thickness3 = ScaledBorder3Thickness;
 
                 //Calculates the rects of the borders.
                 Rect internal0Rect = externalRect.Deflate(thickness0);
