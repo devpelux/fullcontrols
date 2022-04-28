@@ -186,5 +186,30 @@ namespace FullControls.Core
 
             return newValue;
         }
+
+        /// <summary>
+        /// Rounds the <see cref="Thickness"/> with the specified <see cref="DpiScale"/>.
+        /// </summary>
+        internal static Thickness RoundThickness(Thickness thickness, DpiScale dpi)
+        {
+            return new Thickness(RoundLayoutValue(thickness.Left, dpi.DpiScaleX),
+                                 RoundLayoutValue(thickness.Top, dpi.DpiScaleY),
+                                 RoundLayoutValue(thickness.Right, dpi.DpiScaleX),
+                                 RoundLayoutValue(thickness.Bottom, dpi.DpiScaleY));
+        }
+
+        /// <summary>
+        /// Adapt a value from a range to a new range (both starting from 0).
+        /// </summary>
+        /// <param name="val">Value to adapt to the new range.</param>
+        /// <param name="valRange">Old range of <paramref name="val"/>.</param>
+        /// <param name="newRange">New range of <paramref name="val"/>.</param>
+        /// <returns><paramref name="val"/> divided by <paramref name="valRange"/> and multiplied by <paramref name="newRange"/>.</returns>
+        internal static double Adapt(double val, double valRange, double newRange) => val / valRange * newRange;
+
+        /// <summary>
+        /// Returns the maximum between 4 doubles.
+        /// </summary>
+        internal static double Max(double d1, double d2, double d3, double d4) => Math.Max(Math.Max(Math.Max(d1, d2), d3), d4);
     }
 }

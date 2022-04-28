@@ -256,11 +256,11 @@ namespace FullControls.Controls
             if (UseLayoutRounding)
             {
                 DpiScale dpi = SysParams.GetDpiScale();
-                ScaledBorder0Thickness = RoundThickness(BorderThickness, dpi);
-                ScaledBorder1Thickness = RoundThickness(Border1Thickness, dpi);
-                ScaledBorder2Thickness = RoundThickness(Border2Thickness, dpi);
-                ScaledBorder3Thickness = RoundThickness(Border3Thickness, dpi);
-                ScaledMaxBorderThickness = RoundThickness(MaxBorderThickness, dpi);
+                ScaledBorder0Thickness = Util.RoundThickness(BorderThickness, dpi);
+                ScaledBorder1Thickness = Util.RoundThickness(Border1Thickness, dpi);
+                ScaledBorder2Thickness = Util.RoundThickness(Border2Thickness, dpi);
+                ScaledBorder3Thickness = Util.RoundThickness(Border3Thickness, dpi);
+                ScaledMaxBorderThickness = Util.RoundThickness(MaxBorderThickness, dpi);
             }
             else
             {
@@ -425,29 +425,13 @@ namespace FullControls.Controls
             Thickness thickness3 = Border3Thickness;
 
             //Calculates the max thickness taken by all the borders (the max for every edge).
-            double left = Max(thickness0.Left, thickness1.Left, thickness2.Left, thickness3.Left);
-            double top = Max(thickness0.Top, thickness1.Top, thickness2.Top, thickness3.Top);
-            double right = Max(thickness0.Right, thickness1.Right, thickness2.Right, thickness3.Right);
-            double bottom = Max(thickness0.Bottom, thickness1.Bottom, thickness2.Bottom, thickness3.Bottom);
+            double left = Util.Max(thickness0.Left, thickness1.Left, thickness2.Left, thickness3.Left);
+            double top = Util.Max(thickness0.Top, thickness1.Top, thickness2.Top, thickness3.Top);
+            double right = Util.Max(thickness0.Right, thickness1.Right, thickness2.Right, thickness3.Right);
+            double bottom = Util.Max(thickness0.Bottom, thickness1.Bottom, thickness2.Bottom, thickness3.Bottom);
 
             SetValue(MaxBorderThicknessPropertyKey, new Thickness(left, top, right, bottom));
         }
-
-        /// <summary>
-        /// Rounds the <see cref="Thickness"/> with the specified <see cref="DpiScale"/>.
-        /// </summary>
-        private static Thickness RoundThickness(Thickness thickness, DpiScale dpi)
-        {
-            return new Thickness(Util.RoundLayoutValue(thickness.Left, dpi.DpiScaleX),
-                                 Util.RoundLayoutValue(thickness.Top, dpi.DpiScaleY),
-                                 Util.RoundLayoutValue(thickness.Right, dpi.DpiScaleX),
-                                 Util.RoundLayoutValue(thickness.Bottom, dpi.DpiScaleY));
-        }
-
-        /// <summary>
-        /// Returns the maximum between 4 doubles.
-        /// </summary>
-        private static double Max(double d1, double d2, double d3, double d4) => Math.Max(Math.Max(Math.Max(d1, d2), d3), d4);
 
         /// <summary>
         /// Reduces the <see cref="System.Windows.CornerRadius"/> by removing the thickness of the angle's border.
@@ -516,13 +500,25 @@ namespace FullControls.Controls
             {
                 //Calculates the 4 angles sizes, and fixes them to be adapted to the size of the rect.
 
-                double halfHeight = rect.Height / 2.0;
-                double halfWidth = rect.Width / 2.0;
+                double topRadiuses = radius.TopLeft + radius.TopRight;
+                double rightRadiuses = radius.TopRight + radius.BottomRight;
+                double bottomRadiuses = radius.BottomRight + radius.BottomLeft;
+                double leftRadiuses = radius.BottomLeft + radius.TopLeft;
 
-                TopLeftRadii = new Size(Math.Min(radius.TopLeft, halfWidth), Math.Min(radius.TopLeft, halfHeight));
-                TopRightRadii = new Size(Math.Min(radius.TopRight, halfWidth), Math.Min(radius.TopRight, halfHeight));
-                BottomRightRadii = new Size(Math.Min(radius.BottomRight, halfWidth), Math.Min(radius.BottomRight, halfHeight));
-                BottomLeftRadii = new Size(Math.Min(radius.BottomLeft, halfWidth), Math.Min(radius.BottomLeft, halfHeight));
+                //Adjust the radius values to the rect sizes.
+                double topLeftRadiiWidth = topRadiuses > rect.Width ? Util.Adapt(radius.TopLeft, topRadiuses, rect.Width) : radius.TopLeft;
+                double topLeftRadiiHeight = leftRadiuses > rect.Height ? Util.Adapt(radius.TopLeft, leftRadiuses, rect.Height) : radius.TopLeft;
+                double topRightRadiiWidth = topRadiuses > rect.Width ? Util.Adapt(radius.TopRight, topRadiuses, rect.Width) : radius.TopRight;
+                double topRightRadiiHeight = rightRadiuses > rect.Height ? Util.Adapt(radius.TopRight, rightRadiuses, rect.Height) : radius.TopRight;
+                double bottomRightRadiiWidth = bottomRadiuses > rect.Width ? Util.Adapt(radius.BottomRight, bottomRadiuses, rect.Width) : radius.BottomRight;
+                double bottomRightRadiiHeight = rightRadiuses > rect.Height ? Util.Adapt(radius.BottomRight, rightRadiuses, rect.Height) : radius.BottomRight;
+                double bottomLeftRadiiWidth = bottomRadiuses > rect.Width ? Util.Adapt(radius.BottomLeft, bottomRadiuses, rect.Width) : radius.BottomLeft;
+                double bottomLeftRadiiHeight = leftRadiuses > rect.Height ? Util.Adapt(radius.BottomLeft, leftRadiuses, rect.Height) : radius.BottomLeft;
+
+                TopLeftRadii = new Size(topLeftRadiiWidth, topLeftRadiiHeight);
+                TopRightRadii = new Size(topRightRadiiWidth, topRightRadiiHeight);
+                BottomRightRadii = new Size(bottomRightRadiiWidth, bottomRightRadiiHeight);
+                BottomLeftRadii = new Size(bottomLeftRadiiWidth, bottomLeftRadiiHeight);
 
                 //Calculates the angle points.
 
