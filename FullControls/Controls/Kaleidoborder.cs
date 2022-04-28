@@ -313,6 +313,10 @@ namespace FullControls.Controls
                 decorSize.Add(childSize);
             }
 
+            //Fixes the final size to not exceed the constraint size.
+            decorSize.Width = Math.Min(decorSize.Width, constraint.Width);
+            decorSize.Height = Math.Min(decorSize.Height, constraint.Height);
+
             return decorSize;
         }
 
@@ -327,23 +331,36 @@ namespace FullControls.Controls
             //The whole control.
             Rect externalRect = new(finalSize);
 
-            //Arranges the child with his available space (the space of the background minus the padding).
-            Child?.Arrange(externalRect.Deflate(ScaledMaxBorderThickness).Deflate(Padding));
+            //Calculates the child's available space (the external rect minus the borders and the padding).
+            Rect childRect = externalRect.Clone();
+            childRect.Inflate(ScaledMaxBorderThickness.Add(Padding).Invert());
+
+            //If the child rect is empty, then create a zero-area rect to avoid errors arranging the child.
+            if (childRect.IsEmpty) childRect = new Rect(0, 0, 0, 0);
+            Child?.Arrange(childRect);
 
             //Generates the geometries of the borders and the background if there is space to draw.
             if (externalRect.HasArea())
             {
-                //Calculates the rects of the borders.
-                Rect internal0Rect = externalRect.Deflate(ScaledBorder0Thickness);
-                Rect internal1Rect = externalRect.Deflate(ScaledBorder1Thickness);
-                Rect internal2Rect = externalRect.Deflate(ScaledBorder2Thickness);
-                Rect internal3Rect = externalRect.Deflate(ScaledBorder3Thickness);
-                Rect backgroundRect = internal0Rect;
+                //Calculates the internal rects of the 4 borders by deflating the external rect.
+                Rect internal0Rect = externalRect.Clone();
+                Rect internal1Rect = externalRect.Clone();
+                Rect internal2Rect = externalRect.Clone();
+                Rect internal3Rect = externalRect.Clone();
+
+                //Deflates the rects with the border thicknesses.
+                internal0Rect.Inflate(ScaledBorder0Thickness.Invert());
+                internal1Rect.Inflate(ScaledBorder1Thickness.Invert());
+                internal2Rect.Inflate(ScaledBorder2Thickness.Invert());
+                internal3Rect.Inflate(ScaledBorder3Thickness.Invert());
+
+                //The background rect is the minimum rect, then, eventually, will be overlapped by other borders.
+                Rect backgroundRect = internal0Rect.Clone();
 
                 //Inflates the backgroundRect with an uniform thickness to fix the wpf corners issue.
-                if (AllowBackgroundOverlapping)
+                if (AllowBackgroundOverlapping && backgroundRect.HasArea())
                 {
-                    backgroundRect = backgroundRect.Inflate(FIX_THICKNESS);
+                    backgroundRect.Inflate(FIX_THICKNESS);
                     backgroundRect.Intersect(externalRect);
                 }
 

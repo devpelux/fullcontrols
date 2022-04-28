@@ -23,12 +23,15 @@
                           VerticalAlignment="Top"
                           Width="100"
                           Height="100"
+                          Padding="10"
                           BorderThickness="8"
                           CornerRadius="16"
                           BorderBrush="White"
                           Background="White"
                           AllowBackgroundOverlapping="True"
-                          Margin="58,82,0,0" />
+                          Margin="58,82,0,0">
+            <Grid Background="Red" />
+        </fc:Kaleidoborder>
 
         <Border BorderBrush="White"
                 Background="White"
