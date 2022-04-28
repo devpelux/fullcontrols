@@ -28,6 +28,11 @@ namespace FullControls.Controls
         private Thickness ScaledMaxBorderThickness;
 
         /// <summary>
+        /// Thickness used to slightly overlap the background to fix the wpf corners issue. (This is an uniform thickness of 0.5)
+        /// </summary>
+        private static readonly Thickness FIX_THICKNESS = new(0.5);
+
+        /// <summary>
         /// Gets or sets the background brush used to fill the area within the borders.
         /// </summary>
         public Brush Background
@@ -233,6 +238,23 @@ namespace FullControls.Controls
                 new FrameworkPropertyMetadata(default(CornerRadius), FrameworkPropertyMetadataOptions.AffectsArrange
                     | FrameworkPropertyMetadataOptions.AffectsRender));
 
+        /// <summary>
+        /// Gets or sets a value indicating if allow to slightly overlap the background to fix the wpf corner angles issue.
+        /// </summary>
+        public bool AllowBackgroundOverlapping
+        {
+            get => (bool)GetValue(AllowOverlapBackgroundProperty);
+            set => SetValue(AllowOverlapBackgroundProperty, BoolBox.Box(value));
+        }
+
+        /// <summary>
+        /// DependencyProperty for <see cref="AllowBackgroundOverlapping" /> property.
+        /// </summary>
+        public static readonly DependencyProperty AllowOverlapBackgroundProperty
+            = DependencyProperty.Register(nameof(AllowBackgroundOverlapping), typeof(bool), typeof(Kaleidoborder),
+                new FrameworkPropertyMetadata(BoolBox.False, FrameworkPropertyMetadataOptions.AffectsArrange
+                    | FrameworkPropertyMetadataOptions.AffectsRender));
+
 
         static Kaleidoborder() { }
 
@@ -305,11 +327,8 @@ namespace FullControls.Controls
             //The whole control.
             Rect externalRect = new(finalSize);
 
-            //Gets the maximum border thickness and calculates the space inside all the borders (the space of the background).
-            Rect backgroundRect = externalRect.Deflate(ScaledMaxBorderThickness);
-
             //Arranges the child with his available space (the space of the background minus the padding).
-            Child?.Arrange(backgroundRect.Deflate(Padding));
+            Child?.Arrange(externalRect.Deflate(ScaledMaxBorderThickness).Deflate(Padding));
 
             //Generates the geometries of the borders and the background if there is space to draw.
             if (externalRect.HasArea())
@@ -319,6 +338,14 @@ namespace FullControls.Controls
                 Rect internal1Rect = externalRect.Deflate(ScaledBorder1Thickness);
                 Rect internal2Rect = externalRect.Deflate(ScaledBorder2Thickness);
                 Rect internal3Rect = externalRect.Deflate(ScaledBorder3Thickness);
+                Rect backgroundRect = internal0Rect;
+
+                //Inflates the backgroundRect with an uniform thickness to fix the wpf corners issue.
+                if (AllowBackgroundOverlapping)
+                {
+                    backgroundRect = backgroundRect.Inflate(FIX_THICKNESS);
+                    backgroundRect.Intersect(externalRect);
+                }
 
                 //Calculates the corner radiuses of the rects.
                 CornerRadius externalRadius = CornerRadius;
@@ -326,14 +353,13 @@ namespace FullControls.Controls
                 CornerRadius radius1 = ReduceRadiusByThickness(externalRadius, ScaledBorder1Thickness);
                 CornerRadius radius2 = ReduceRadiusByThickness(externalRadius, ScaledBorder2Thickness);
                 CornerRadius radius3 = ReduceRadiusByThickness(externalRadius, ScaledBorder3Thickness);
-                CornerRadius backgroundRadius = ReduceRadiusByThickness(externalRadius, ScaledMaxBorderThickness);
 
                 //Generates the geometries for the 4 borders and the background.
                 Border0Geometry = GenerateBorderGeometry(new Radii(externalRect, externalRadius), new Radii(internal0Rect, radius0));
                 Border1Geometry = GenerateBorderGeometry(new Radii(externalRect, externalRadius), new Radii(internal1Rect, radius1));
                 Border2Geometry = GenerateBorderGeometry(new Radii(externalRect, externalRadius), new Radii(internal2Rect, radius2));
                 Border3Geometry = GenerateBorderGeometry(new Radii(externalRect, externalRadius), new Radii(internal3Rect, radius3));
-                BackgroundGeometry = GenerateBorderGeometry(new Radii(backgroundRect, backgroundRadius), Radii.Empty);
+                BackgroundGeometry = GenerateBorderGeometry(new Radii(backgroundRect, radius0), Radii.Empty);
             }
             else
             {
@@ -353,11 +379,11 @@ namespace FullControls.Controls
         /// </summary>
         protected override void OnRender(DrawingContext dc)
         {
+            dc.DrawGeometry(Background, null, BackgroundGeometry);
             dc.DrawGeometry(BorderBrush, null, Border0Geometry);
             dc.DrawGeometry(Border1Brush, null, Border1Geometry);
             dc.DrawGeometry(Border2Brush, null, Border2Geometry);
             dc.DrawGeometry(Border3Brush, null, Border3Geometry);
-            dc.DrawGeometry(Background, null, BackgroundGeometry);
         }
 
         /// <summary>

@@ -24,15 +24,14 @@
                           Width="100"
                           Height="100"
                           BorderThickness="8"
-                          Border1Thickness="0,0,8,8"
                           CornerRadius="16"
                           BorderBrush="White"
-                          Background="#FF303030"
-                          Border1Brush="Red"
+                          Background="White"
+                          AllowBackgroundOverlapping="True"
                           Margin="58,82,0,0" />
 
         <Border BorderBrush="White"
-                Background="Transparent"
+                Background="White"
                 BorderThickness="8"
                 CornerRadius="12"
                 HorizontalAlignment="Left"
@@ -40,22 +39,5 @@
                 Width="100"
                 Height="100"
                 Margin="232,82,0,0" />
-        <Border BorderBrush="Red"
-                BorderThickness="0,0,8,8"
-                CornerRadius="12"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Width="100"
-                Height="100"
-                Margin="232,82,0,0" />
-        
-        <Border BorderBrush="White"
-                CornerRadius="1000,2000,0,0"
-                BorderThickness="1"
-                Margin="121,200,200,55" />
-        <fc:Kaleidoborder BorderBrush="White"
-                          CornerRadius="1000,2000,0,0"
-                          BorderThickness="1"
-                          Margin="216,200,105,55" />
     </Grid>
 </fc:AvalonWindow>
