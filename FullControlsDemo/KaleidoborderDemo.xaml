@@ -48,9 +48,14 @@
                 Width="100"
                 Height="100"
                 Margin="232,82,0,0" />
+        
         <Border BorderBrush="White"
                 CornerRadius="1000,2000,0,0"
                 BorderThickness="1"
                 Margin="121,200,200,55" />
+        <fc:Kaleidoborder BorderBrush="White"
+                          CornerRadius="1000,2000,0,0"
+                          BorderThickness="1"
+                          Margin="216,200,105,55" />
     </Grid>
 </fc:AvalonWindow>

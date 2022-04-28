@@ -13,11 +13,19 @@ namespace FullControls.Controls
     /// </summary>
     public class Kaleidoborder : Decorator
     {
+        //The geometries used to draw the borders and the background.
         private Geometry Border0Geometry = Geometry.Empty;
         private Geometry Border1Geometry = Geometry.Empty;
         private Geometry Border2Geometry = Geometry.Empty;
         private Geometry Border3Geometry = Geometry.Empty;
         private Geometry BackgroundGeometry = Geometry.Empty;
+
+        //The scaled border thicknesses (rounded to the current dpi scale if UseLayoutRounding is true).
+        private Thickness ScaledBorder0Thickness;
+        private Thickness ScaledBorder1Thickness;
+        private Thickness ScaledBorder2Thickness;
+        private Thickness ScaledBorder3Thickness;
+        private Thickness ScaledMaxBorderThickness;
 
         /// <summary>
         /// Gets or sets the background brush used to fill the area within the borders.
@@ -115,7 +123,7 @@ namespace FullControls.Controls
         public static readonly DependencyProperty BorderThicknessProperty
             = DependencyProperty.Register(nameof(BorderThickness), typeof(Thickness), typeof(Kaleidoborder),
                 new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.AffectsMeasure
-                    | FrameworkPropertyMetadataOptions.AffectsRender));
+                    | FrameworkPropertyMetadataOptions.AffectsRender, (d, e) => ((Kaleidoborder)d).UpdateMaxBorderThickness()));
 
         /// <summary>
         /// Gets or sets the thickness of the second border.
@@ -132,7 +140,7 @@ namespace FullControls.Controls
         public static readonly DependencyProperty Border2ThicknessProperty
             = DependencyProperty.Register(nameof(Border1Thickness), typeof(Thickness), typeof(Kaleidoborder),
                 new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.AffectsMeasure
-                    | FrameworkPropertyMetadataOptions.AffectsRender));
+                    | FrameworkPropertyMetadataOptions.AffectsRender, (d, e) => ((Kaleidoborder)d).UpdateMaxBorderThickness()));
 
         /// <summary>
         /// Gets or sets the thickness of the third border.
@@ -149,7 +157,7 @@ namespace FullControls.Controls
         public static readonly DependencyProperty Border3ThicknessProperty
             = DependencyProperty.Register(nameof(Border2Thickness), typeof(Thickness), typeof(Kaleidoborder),
                 new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.AffectsMeasure
-                    | FrameworkPropertyMetadataOptions.AffectsRender));
+                    | FrameworkPropertyMetadataOptions.AffectsRender, (d, e) => ((Kaleidoborder)d).UpdateMaxBorderThickness()));
 
         /// <summary>
         /// Gets or sets the thickness of the fourth border.
@@ -166,34 +174,26 @@ namespace FullControls.Controls
         public static readonly DependencyProperty Border4ThicknessProperty
             = DependencyProperty.Register(nameof(Border3Thickness), typeof(Thickness), typeof(Kaleidoborder),
                 new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.AffectsMeasure
-                    | FrameworkPropertyMetadataOptions.AffectsRender));
+                    | FrameworkPropertyMetadataOptions.AffectsRender, (d, e) => ((Kaleidoborder)d).UpdateMaxBorderThickness()));
 
         /// <summary>
         /// Gets the maximum thickness taken by all the borders.
         /// </summary>
-        public Thickness MaxBorderThickness { get; private set; }
+        public Thickness MaxBorderThickness => (Thickness)GetValue(MaxBorderThicknessProperty);
 
-        #region ActualBorderThicknesses
-
-        /// <summary>
-        /// Gets the scaled thickness taken by the main border.
-        /// </summary>
-        internal Thickness ScaledBorderThickness { get; private set; }
+        #region MaxBorderThicknessProperty
 
         /// <summary>
-        /// Gets the scaled thickness taken by the second border.
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="MaxBorderThickness"/> dependency property.
         /// </summary>
-        internal Thickness ScaledBorder1Thickness { get; private set; }
+        private static readonly DependencyPropertyKey MaxBorderThicknessPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(MaxBorderThickness), typeof(Thickness), typeof(Kaleidoborder),
+                new FrameworkPropertyMetadata(default(Thickness)));
 
         /// <summary>
-        /// Gets the scaled thickness taken by the third border.
+        /// Identifies the <see cref="MaxBorderThickness"/> dependency property.
         /// </summary>
-        internal Thickness ScaledBorder2Thickness { get; private set; }
-
-        /// <summary>
-        /// Gets the scaled thickness taken by the fourth border.
-        /// </summary>
-        internal Thickness ScaledBorder3Thickness { get; private set; }
+        public static readonly DependencyProperty MaxBorderThicknessProperty = MaxBorderThicknessPropertyKey.DependencyProperty;
 
         #endregion
 
@@ -256,28 +256,23 @@ namespace FullControls.Controls
             if (UseLayoutRounding)
             {
                 DpiScale dpi = SysParams.GetDpiScale();
-                ScaledBorderThickness = RoundThickness(BorderThickness, dpi);
+                ScaledBorder0Thickness = RoundThickness(BorderThickness, dpi);
                 ScaledBorder1Thickness = RoundThickness(Border1Thickness, dpi);
                 ScaledBorder2Thickness = RoundThickness(Border2Thickness, dpi);
                 ScaledBorder3Thickness = RoundThickness(Border3Thickness, dpi);
+                ScaledMaxBorderThickness = RoundThickness(MaxBorderThickness, dpi);
             }
             else
             {
-                ScaledBorderThickness = BorderThickness;
+                ScaledBorder0Thickness = BorderThickness;
                 ScaledBorder1Thickness = Border1Thickness;
                 ScaledBorder2Thickness = Border2Thickness;
                 ScaledBorder3Thickness = Border3Thickness;
+                ScaledMaxBorderThickness = MaxBorderThickness;
             }
 
-            //Calculates the max thickness taken by all the borders (the max for every edge).
-            double left = Max(ScaledBorderThickness.Left, ScaledBorder1Thickness.Left, ScaledBorder2Thickness.Left, ScaledBorder3Thickness.Left);
-            double top = Max(ScaledBorderThickness.Top, ScaledBorder1Thickness.Top, ScaledBorder2Thickness.Top, ScaledBorder3Thickness.Top);
-            double right = Max(ScaledBorderThickness.Right, ScaledBorder1Thickness.Right, ScaledBorder2Thickness.Right, ScaledBorder3Thickness.Right);
-            double bottom = Max(ScaledBorderThickness.Bottom, ScaledBorder1Thickness.Bottom, ScaledBorder2Thickness.Bottom, ScaledBorder3Thickness.Bottom);
-            MaxBorderThickness = new(left, top, right, bottom);
-
             //Basic size without any child (the size of the "decoration" parts: border and padding).
-            Size border = MaxBorderThickness.Collapse();
+            Size border = ScaledMaxBorderThickness.Collapse();
             Size padding = Padding.Collapse();
             Size decorSize = border.Add(padding);
 
@@ -311,8 +306,7 @@ namespace FullControls.Controls
             Rect externalRect = new(finalSize);
 
             //Gets the maximum border thickness and calculates the space inside all the borders (the space of the background).
-            Thickness maxThickness = MaxBorderThickness;
-            Rect backgroundRect = externalRect.Deflate(maxThickness);
+            Rect backgroundRect = externalRect.Deflate(ScaledMaxBorderThickness);
 
             //Arranges the child with his available space (the space of the background minus the padding).
             Child?.Arrange(backgroundRect.Deflate(Padding));
@@ -320,25 +314,19 @@ namespace FullControls.Controls
             //Generates the geometries of the borders and the background if there is space to draw.
             if (externalRect.HasArea())
             {
-                //Get the thickness to avoid unboxing again.
-                Thickness thickness0 = ScaledBorderThickness;
-                Thickness thickness1 = ScaledBorder1Thickness;
-                Thickness thickness2 = ScaledBorder2Thickness;
-                Thickness thickness3 = ScaledBorder3Thickness;
-
                 //Calculates the rects of the borders.
-                Rect internal0Rect = externalRect.Deflate(thickness0);
-                Rect internal1Rect = externalRect.Deflate(thickness1);
-                Rect internal2Rect = externalRect.Deflate(thickness2);
-                Rect internal3Rect = externalRect.Deflate(thickness3);
+                Rect internal0Rect = externalRect.Deflate(ScaledBorder0Thickness);
+                Rect internal1Rect = externalRect.Deflate(ScaledBorder1Thickness);
+                Rect internal2Rect = externalRect.Deflate(ScaledBorder2Thickness);
+                Rect internal3Rect = externalRect.Deflate(ScaledBorder3Thickness);
 
                 //Calculates the corner radiuses of the rects.
                 CornerRadius externalRadius = CornerRadius;
-                CornerRadius radius0 = ReduceRadiusByThickness(externalRadius, thickness0);
-                CornerRadius radius1 = ReduceRadiusByThickness(externalRadius, thickness1);
-                CornerRadius radius2 = ReduceRadiusByThickness(externalRadius, thickness2);
-                CornerRadius radius3 = ReduceRadiusByThickness(externalRadius, thickness3);
-                CornerRadius backgroundRadius = ReduceRadiusByThickness(externalRadius, maxThickness);
+                CornerRadius radius0 = ReduceRadiusByThickness(externalRadius, ScaledBorder0Thickness);
+                CornerRadius radius1 = ReduceRadiusByThickness(externalRadius, ScaledBorder1Thickness);
+                CornerRadius radius2 = ReduceRadiusByThickness(externalRadius, ScaledBorder2Thickness);
+                CornerRadius radius3 = ReduceRadiusByThickness(externalRadius, ScaledBorder3Thickness);
+                CornerRadius backgroundRadius = ReduceRadiusByThickness(externalRadius, ScaledMaxBorderThickness);
 
                 //Generates the geometries for the 4 borders and the background.
                 Border0Geometry = GenerateBorderGeometry(new Radii(externalRect, externalRadius), new Radii(internal0Rect, radius0));
@@ -424,6 +412,25 @@ namespace FullControls.Controls
                 context.LineTo(radii.LeftTop, true, false);
                 context.ArcTo(radii.TopLeft, radii.TopLeftRadii, 0, false, SweepDirection.Clockwise, true, false);
             }
+        }
+
+        /// <summary>
+        /// Updates the <see cref="MaxBorderThickness"/> property.
+        /// </summary>
+        private void UpdateMaxBorderThickness()
+        {
+            Thickness thickness0 = BorderThickness;
+            Thickness thickness1 = Border1Thickness;
+            Thickness thickness2 = Border2Thickness;
+            Thickness thickness3 = Border3Thickness;
+
+            //Calculates the max thickness taken by all the borders (the max for every edge).
+            double left = Max(thickness0.Left, thickness1.Left, thickness2.Left, thickness3.Left);
+            double top = Max(thickness0.Top, thickness1.Top, thickness2.Top, thickness3.Top);
+            double right = Max(thickness0.Right, thickness1.Right, thickness2.Right, thickness3.Right);
+            double bottom = Max(thickness0.Bottom, thickness1.Bottom, thickness2.Bottom, thickness3.Bottom);
+
+            SetValue(MaxBorderThicknessPropertyKey, new Thickness(left, top, right, bottom));
         }
 
         /// <summary>
