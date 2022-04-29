@@ -57,11 +57,23 @@ namespace FullControls.SystemComponents
                 CornerRadius = new CornerRadius()
             };
             WindowChrome.SetWindowChrome(this, wc);
+        }
 
-            //Sets round corners for Windows 11.
+        /// <inheritdoc/>
+        protected override void OnLoaded(RoutedEventArgs e)
+        {
+            base.OnLoaded(e);
             if (Environment.OSVersion.Platform == PlatformID.Win32NT && Environment.OSVersion.Version.Build >= 22000)
             {
+                //Sets round corners for Windows 11.
                 SetValue(CornerRadiusPropertyKey, WIN11_CORNER_RADIUS);
+
+                //Removes the border thickness, if less than or equal to 1, because Windows 11 uses a default border thickness.
+                Thickness border = (Thickness)GetValue(BorderThicknessProperty);
+                if (border.Left <= 1 && border.Top <= 1 && border.Right <= 1 && border.Bottom <= 1)
+                {
+                    SetValue(BorderThicknessProperty, default(Thickness));
+                }
             }
         }
 
