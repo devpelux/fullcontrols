@@ -8,10 +8,20 @@ using WpfCoreTools.Extensions;
 namespace FullControls.Core
 {
     /// <summary>
-    /// Some utility methods.
+    /// Some utility methods and values.
     /// </summary>
     internal static class Util
     {
+        /// <summary>
+        /// <see cref="SolidColorBrush"/> with value of <c>#00FFFFFF</c>.
+        /// </summary>
+        internal static SolidColorBrush WhiteTransparentBrush { get; } = new(Color.FromArgb(0, 255, 255, 255));
+
+        /// <summary>
+        /// <see cref="SolidColorBrush"/> with value of <c>#00000000</c>.
+        /// </summary>
+        internal static SolidColorBrush BlackTransparentBrush { get; } = new(Color.FromArgb(0, 0, 0, 0));
+
         /// <summary>
         /// Animate a <see cref="double"/> of an <see cref="UIElement"/> with a specified time.
         /// </summary>

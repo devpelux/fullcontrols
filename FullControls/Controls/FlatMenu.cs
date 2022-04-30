@@ -90,7 +90,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ForegroundOnHighlightProperty =
             FlatMenuItem.ForegroundOnHighlightProperty.AddOwner(typeof(FlatMenu),
-                new FrameworkPropertyMetadata(Common.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
         /// Gets or sets the foreground brush of the items when have subitems and the popup is open.
@@ -106,7 +106,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ForegroundOnOpenProperty =
             FlatMenuItem.ForegroundOnOpenProperty.AddOwner(typeof(FlatMenu),
-                new FrameworkPropertyMetadata(Common.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
         /// Gets or sets the foreground brush of the items when are disabled.
@@ -122,7 +122,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ForegroundOnDisabledProperty =
             FlatMenuItem.ForegroundOnDisabledProperty.AddOwner(typeof(FlatMenu),
-                new FrameworkPropertyMetadata(Common.Brushes.Gray9, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
         /// Gets or sets the brush of the items check icons.
@@ -138,7 +138,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty CheckBrushProperty =
             FlatMenuItem.CheckBrushProperty.AddOwner(typeof(FlatMenu),
-                new FrameworkPropertyMetadata(Common.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
         /// Gets or sets the brush of the items check icons when are highlighted.
@@ -154,7 +154,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty CheckBrushOnHighlightProperty =
             FlatMenuItem.CheckBrushOnHighlightProperty.AddOwner(typeof(FlatMenu),
-                new FrameworkPropertyMetadata(Common.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
         /// Gets or sets the brush of the items check icons when have subitems and the popup is open.
@@ -170,7 +170,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty CheckBrushOnOpenProperty =
             FlatMenuItem.CheckBrushOnOpenProperty.AddOwner(typeof(FlatMenu),
-                new FrameworkPropertyMetadata(Common.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits));
 
         /// <summary>
         /// Gets or sets the brush of the items check icons when are disabled.
@@ -186,7 +186,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty CheckBrushOnDisabledProperty =
             FlatMenuItem.CheckBrushOnDisabledProperty.AddOwner(typeof(FlatMenu),
-                new FrameworkPropertyMetadata(Common.Brushes.Gray9, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits));
 
         #endregion
 

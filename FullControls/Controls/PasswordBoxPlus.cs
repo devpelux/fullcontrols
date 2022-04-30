@@ -1499,8 +1499,8 @@ namespace FullControls.Controls
             passwordBox.GotFocus += PasswordBox_GotFocus;
             passwordBox.LostFocus += PasswordBox_LostFocus;
             //Setting properties
-            passwordBox.Background = Common.Brushes.WhiteTransparent;
-            passwordBox.BorderThickness = new Thickness(0);
+            passwordBox.Background = Brushes.Transparent;
+            passwordBox.BorderThickness = new(0);
             passwordBox.Focusable = true;
             //Setting bindings
             passwordBox.SetBinding(PasswordBox.HorizontalContentAlignmentProperty, new Binding(nameof(HorizontalContentAlignment)) { Source = this });

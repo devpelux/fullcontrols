@@ -179,7 +179,7 @@ namespace FullControls.SystemComponents
         /// </summary>
         public static readonly DependencyProperty TitlebarMarginProperty =
             DependencyProperty.Register(nameof(TitlebarMargin), typeof(Thickness), typeof(WindowPlus),
-                new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.AffectsMeasure));
+                new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.AffectsMeasure));
 
         /// <summary>
         /// Gets or sets the background brush of the titlebar.
@@ -494,7 +494,7 @@ namespace FullControls.SystemComponents
         /// </summary>
         private static readonly DependencyPropertyKey OutsideMarginPropertyKey =
             DependencyProperty.RegisterReadOnly(nameof(OutsideMargin), typeof(Thickness), typeof(WindowPlus),
-                new FrameworkPropertyMetadata(new Thickness(), FrameworkPropertyMetadataOptions.AffectsMeasure,
+                new FrameworkPropertyMetadata(default(Thickness), FrameworkPropertyMetadataOptions.AffectsMeasure,
                     new PropertyChangedCallback((d, e) => ((WindowPlus)d).OnOutsideMarginChanged((Thickness)e.NewValue))));
 
         /// <summary>

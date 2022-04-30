@@ -205,7 +205,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ForegroundOnHighlightProperty =
             DependencyProperty.RegisterAttached(nameof(ForegroundOnHighlight), typeof(Brush), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(Common.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits));
 
         #endregion
 
@@ -247,7 +247,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ForegroundOnOpenProperty =
             DependencyProperty.RegisterAttached(nameof(ForegroundOnOpen), typeof(Brush), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(Common.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits));
 
         #endregion
 
@@ -289,7 +289,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ForegroundOnDisabledProperty =
             DependencyProperty.RegisterAttached(nameof(ForegroundOnDisabled), typeof(Brush), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(Common.Brushes.Gray9, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits));
 
         #endregion
 
@@ -803,7 +803,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty CheckBrushProperty =
             DependencyProperty.RegisterAttached(nameof(CheckBrush), typeof(Brush), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(Common.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits));
 
         #endregion
 
@@ -845,7 +845,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty CheckBrushOnHighlightProperty =
             DependencyProperty.RegisterAttached(nameof(CheckBrushOnHighlight), typeof(Brush), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(Common.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits));
 
         #endregion
 
@@ -887,7 +887,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty CheckBrushOnOpenProperty =
             DependencyProperty.RegisterAttached(nameof(CheckBrushOnOpen), typeof(Brush), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(Common.Brushes.Gray17, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits));
 
         #endregion
 
@@ -929,7 +929,7 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty CheckBrushOnDisabledProperty =
             DependencyProperty.RegisterAttached(nameof(CheckBrushOnDisabled), typeof(Brush), typeof(FlatMenuItem),
-                new FrameworkPropertyMetadata(Common.Brushes.Gray9, FrameworkPropertyMetadataOptions.Inherits));
+                new FrameworkPropertyMetadata(default(Brush), FrameworkPropertyMetadataOptions.Inherits));
 
         #endregion
 
