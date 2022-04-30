@@ -57,6 +57,13 @@
                      Color="#bfbfbf" />
 
 
+    <SolidColorBrush x:Key="UnderlineBrush"
+                     Color="#868686" />
+    <SolidColorBrush x:Key="UnderlineBrushSelected"
+                     Color="#0067c0" />
+    <SolidColorBrush x:Key="UnderlineBrushDisabled"
+                     Color="#868686" />
+
 
 
     <SolidColorBrush x:Key="LightTextColorMenu"

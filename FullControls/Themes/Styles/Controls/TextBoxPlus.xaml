@@ -21,6 +21,12 @@
                 Value="{StaticResource LightButtonBorder}" />
         <Setter Property="BorderBrushOnDisabled"
                 Value="{StaticResource LightButtonBorder}" />
+        <Setter Property="UnderlineBrush"
+                Value="{StaticResource UnderlineBrush}" />
+        <Setter Property="UnderlineBrushOnSelected"
+                Value="{StaticResource UnderlineBrushSelected}" />
+        <Setter Property="UnderlineBrushOnDisabled"
+                Value="{StaticResource UnderlineBrushDisabled}" />
         <Setter Property="Foreground"
                 Value="{StaticResource LightButtonText}" />
         <Setter Property="CaretBrush"
@@ -31,6 +37,12 @@
                 Value="{StaticResource LightSelectedTextColor}" />
         <Setter Property="BorderThickness"
                 Value="1" />
+        <Setter Property="UnderlineThickness"
+                Value="0,0,0,1" />
+        <Setter Property="UnderlineThicknessOnSelected"
+                Value="0,0,0,2" />
+        <Setter Property="UnderlineThicknessOnDisabled"
+                Value="0,0,0,1" />
         <Setter Property="CornerRadius"
                 Value="4" />
         <Setter Property="Padding"
@@ -172,12 +184,15 @@
                                        Focusable="False" />
                             </Grid>
 
-                            <Border x:Name="PART_TextArea"
-                                    Background="{TemplateBinding ActualBackground}"
-                                    BorderBrush="{TemplateBinding ActualBorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    CornerRadius="{TemplateBinding CornerRadius}"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                            <local:Kaleidoborder x:Name="PART_TextArea"
+                                                 Background="{TemplateBinding ActualBackground}"
+                                                 BorderBrush="{TemplateBinding ActualBorderBrush}"
+                                                 Border1Brush="{TemplateBinding ActualUnderlineBrush}"
+                                                 BorderThickness="{TemplateBinding BorderThickness}"
+                                                 Border1Thickness="{TemplateBinding ActualUnderlineThickness}"
+                                                 CornerRadius="{TemplateBinding CornerRadius}"
+                                                 ChildArrangingMode="MainBorderSpace"
+                                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
                                 <Grid x:Name="PART_TextBoxGrid">
                                     <local:GlassScrollViewer x:Name="PART_ContentHost"
                                                              Style="{TemplateBinding ScrollViewerStyle}"
@@ -199,7 +214,7 @@
                                                IsHitTestVisible="False"
                                                Focusable="False" />
                                 </Grid>
-                            </Border>
+                            </local:Kaleidoborder>
 
                         </DockPanel>
                     </Border>

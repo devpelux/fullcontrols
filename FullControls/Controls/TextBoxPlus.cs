@@ -138,6 +138,146 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
+        /// Gets or sets the underline brush when the control is selected.
+        /// </summary>
+        public Brush UnderlineBrush
+        {
+            get => (Brush)GetValue(UnderlineBrushProperty);
+            set => SetValue(UnderlineBrushProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="UnderlineBrush"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty UnderlineBrushProperty =
+            DependencyProperty.Register(nameof(UnderlineBrush), typeof(Brush), typeof(TextBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the underline brush when the control is selected.
+        /// </summary>
+        public Brush UnderlineBrushOnSelected
+        {
+            get => (Brush)GetValue(UnderlineBrushOnSelectedProperty);
+            set => SetValue(UnderlineBrushOnSelectedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="UnderlineBrushOnSelected"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty UnderlineBrushOnSelectedProperty =
+            DependencyProperty.Register(nameof(UnderlineBrushOnSelected), typeof(Brush), typeof(TextBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the underline brush when the control is disabled.
+        /// </summary>
+        public Brush UnderlineBrushOnDisabled
+        {
+            get => (Brush)GetValue(UnderlineBrushOnDisabledProperty);
+            set => SetValue(UnderlineBrushOnDisabledProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="UnderlineBrushOnDisabled"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty UnderlineBrushOnDisabledProperty =
+            DependencyProperty.Register(nameof(UnderlineBrushOnDisabled), typeof(Brush), typeof(TextBoxPlus));
+
+        /// <summary>
+        /// Gets the actual underline brush of the control.
+        /// </summary>
+        public Brush ActualUnderlineBrush => (Brush)GetValue(ActualUnderlineBrushProperty);
+
+        #region ActualUnderlineBrushProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualUnderlineBrush"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualUnderlineBrushPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualUnderlineBrush), typeof(Brush), typeof(TextBoxPlus),
+                new FrameworkPropertyMetadata(default(Brush)));
+
+        /// <summary>
+        /// Identifies the <see cref="ActualUnderlineBrush"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ActualUnderlineBrushProperty = ActualUnderlineBrushPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualUnderlineBrush"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualUnderlineBrushPropertyProxy =
+            DependencyProperty.Register("ActualUnderlineBrushProxy", typeof(Brush), typeof(TextBoxPlus),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualUnderlineBrushPropertyKey, e.NewValue))));
+
+        #endregion
+
+        /// <summary>
+        /// Gets or sets the underline thickness when the control is selected.
+        /// </summary>
+        public Thickness UnderlineThickness
+        {
+            get => (Thickness)GetValue(UnderlineThicknessProperty);
+            set => SetValue(UnderlineThicknessProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="UnderlineThickness"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty UnderlineThicknessProperty =
+            DependencyProperty.Register(nameof(UnderlineThickness), typeof(Thickness), typeof(TextBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the underline thickness when the control is selected.
+        /// </summary>
+        public Thickness UnderlineThicknessOnSelected
+        {
+            get => (Thickness)GetValue(UnderlineThicknessOnSelectedProperty);
+            set => SetValue(UnderlineThicknessOnSelectedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="UnderlineThicknessOnSelected"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty UnderlineThicknessOnSelectedProperty =
+            DependencyProperty.Register(nameof(UnderlineThicknessOnSelected), typeof(Thickness), typeof(TextBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the underline thickness when the control is disabled.
+        /// </summary>
+        public Thickness UnderlineThicknessOnDisabled
+        {
+            get => (Thickness)GetValue(UnderlineThicknessOnDisabledProperty);
+            set => SetValue(UnderlineThicknessOnDisabledProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="UnderlineThicknessOnDisabled"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty UnderlineThicknessOnDisabledProperty =
+            DependencyProperty.Register(nameof(UnderlineThicknessOnDisabled), typeof(Thickness), typeof(TextBoxPlus));
+
+        /// <summary>
+        /// Gets the actual underline thickness of the control.
+        /// </summary>
+        public Thickness ActualUnderlineThickness => (Thickness)GetValue(ActualUnderlineThicknessProperty);
+
+        #region ActualUnderlineThicknessProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualUnderlineThickness"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualUnderlineThicknessPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualUnderlineThickness), typeof(Thickness), typeof(TextBoxPlus),
+                new FrameworkPropertyMetadata(default(Thickness)));
+
+        /// <summary>
+        /// Identifies the <see cref="ActualUnderlineThickness"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ActualUnderlineThicknessProperty = ActualUnderlineThicknessPropertyKey.DependencyProperty;
+
+        #endregion
+
+        /// <summary>
         /// Gets or sets a value indicating if adapt automatically the foreground brush to the actual background brush of the control.
         /// </summary>
         public bool AdaptForegroundAutomatically
@@ -873,21 +1013,29 @@ namespace FullControls.Controls
             {
                 Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualUnderlineBrushPropertyProxy, UnderlineBrush, initial ? TimeSpan.Zero : AnimationTime);
+                SetValue(ActualUnderlineThicknessPropertyKey, UnderlineThickness);
             }
             else if (vstate == VStates.MOUSE_OVER)
             {
                 Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualUnderlineBrushPropertyProxy, UnderlineBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                SetValue(ActualUnderlineThicknessPropertyKey, UnderlineThicknessOnSelected);
             }
             else if (vstate == VStates.FOCUSED)
             {
                 Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualUnderlineBrushPropertyProxy, UnderlineBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                SetValue(ActualUnderlineThicknessPropertyKey, UnderlineThicknessOnSelected);
             }
             else if (vstate == VStates.DISABLED)
             {
                 Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualUnderlineBrushPropertyProxy, UnderlineBrushOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                SetValue(ActualUnderlineThicknessPropertyKey, UnderlineThicknessOnDisabled);
             }
         }
 

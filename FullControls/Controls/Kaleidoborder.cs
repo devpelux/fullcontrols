@@ -1,4 +1,5 @@
-﻿using FullControls.Core;
+﻿using FullControls.Common;
+using FullControls.Core;
 using FullControls.Core.Services;
 using System;
 using System.Windows;
@@ -239,6 +240,22 @@ namespace FullControls.Controls
                     | FrameworkPropertyMetadataOptions.AffectsRender));
 
         /// <summary>
+        /// Gets or sets a value indicating the child's arranging mode.
+        /// </summary>
+        public ChildArrangingMode ChildArrangingMode
+        {
+            get => (ChildArrangingMode)GetValue(ChildArrangingModeProperty);
+            set => SetValue(ChildArrangingModeProperty, value);
+        }
+
+        /// <summary>
+        /// DependencyProperty for <see cref="ChildArrangingMode" /> property.
+        /// </summary>
+        public static readonly DependencyProperty ChildArrangingModeProperty
+            = DependencyProperty.Register(nameof(ChildArrangingMode), typeof(ChildArrangingMode), typeof(Kaleidoborder),
+                new FrameworkPropertyMetadata(ChildArrangingMode.MinimumSpace, FrameworkPropertyMetadataOptions.AffectsArrange));
+
+        /// <summary>
         /// Gets or sets a value indicating if allow to slightly overlap the background to fix the wpf corner angles issue.
         /// </summary>
         public bool AllowBackgroundOverlapping
@@ -331,13 +348,8 @@ namespace FullControls.Controls
             //The whole control.
             Rect externalRect = new(finalSize);
 
-            //Calculates the child's available space (the external rect minus the borders and the padding).
-            Rect childRect = externalRect.Clone();
-            childRect.Inflate(ScaledMaxBorderThickness.Add(Padding).Invert());
-
-            //If the child rect is empty, then create a zero-area rect to avoid errors arranging the child.
-            if (childRect.IsEmpty) childRect = new Rect(0, 0, 0, 0);
-            Child?.Arrange(childRect);
+            //Calculate the correct child's available space and arrange the child with this space.
+            Child?.Arrange(CalculateChildRect(externalRect));
 
             //Generates the geometries of the borders and the background if there is space to draw.
             if (externalRect.HasArea())
@@ -455,6 +467,31 @@ namespace FullControls.Controls
                 context.LineTo(radii.LeftTop, true, false);
                 context.ArcTo(radii.TopLeft, radii.TopLeftRadii, 0, false, SweepDirection.Clockwise, true, false);
             }
+        }
+
+        /// <summary>
+        /// Calculate the child available space basing on the requested arranging way.
+        /// </summary>
+        private Rect CalculateChildRect(Rect maxChildSpace)
+        {
+            //Calculates the child's available space.
+            Rect childRect = maxChildSpace.Clone();
+
+            //Inflates childRect basing on the requested arranging way.
+            switch (ChildArrangingMode)
+            {
+                case ChildArrangingMode.MinimumSpace:
+                    //For the minimum space, the space will be the space remaining considering all the borders and the padding.
+                    childRect.Inflate(ScaledMaxBorderThickness.Add(Padding).Invert());
+                    break;
+                case ChildArrangingMode.MainBorderSpace:
+                    //For the minimum space, the space will be the background space of the main border minus the padding.
+                    childRect.Inflate(ScaledBorder0Thickness.Add(Padding).Invert());
+                    break;
+            }
+
+            //If the child rect is empty, then create a zero-area rect to avoid errors arranging the child.
+            return childRect.IsEmpty ? new Rect(0, 0, 0, 0) : childRect;
         }
 
         /// <summary>
