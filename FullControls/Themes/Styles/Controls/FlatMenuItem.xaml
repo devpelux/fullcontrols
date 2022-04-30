@@ -456,9 +456,9 @@
         <Setter Property="Background"
                 Value="{StaticResource LightMenuBackground}" />
         <Setter Property="BackgroundOnHighlight"
-                Value="{StaticResource LightMenuHover}" />
+                Value="{StaticResource LightMenuItemHover}" />
         <Setter Property="BackgroundOnOpen"
-                Value="{StaticResource LightMenuHover}" />
+                Value="{StaticResource LightMenuItemHover}" />
         <Setter Property="BackgroundOnDisabled"
                 Value="{StaticResource LightMenuBackground}" />
         <Setter Property="BorderThickness"

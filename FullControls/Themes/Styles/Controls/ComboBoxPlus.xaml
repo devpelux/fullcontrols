@@ -350,9 +350,9 @@
         <Setter Property="CaretBrush"
                 Value="{StaticResource LightButtonText}" />
         <Setter Property="SelectionBrush"
-                Value="{StaticResource LightSelectionColor}" />
+                Value="{StaticResource LightTextBoxSelection}" />
         <Setter Property="SelectionTextBrush"
-                Value="{StaticResource LightSelectedTextColor}" />
+                Value="{StaticResource LightTextBoxSelectedText}" />
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="CornerRadius"
