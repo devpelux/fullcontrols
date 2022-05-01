@@ -4,8 +4,8 @@
                     xmlns:wct="http://devpelux.github.io/wpfcoretools">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Resources/Styles.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Resources/LightBrushes.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Resources/LightStyles.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <wct:ClipConverter x:Key="ClipConverter" />
@@ -39,13 +39,13 @@
                 Value="True" />
 
         <Setter Property="MinimizeButtonStyle"
-                Value="{StaticResource CaptionButtonStyle}" />
+                Value="{StaticResource LightCaptionButton}" />
         <Setter Property="MaximizeButtonStyle"
-                Value="{StaticResource CaptionButtonStyle}" />
+                Value="{StaticResource LightCaptionButton}" />
         <Setter Property="RestoreButtonStyle"
-                Value="{StaticResource CaptionButtonStyle}" />
+                Value="{StaticResource LightCaptionButton}" />
         <Setter Property="CloseButtonStyle"
-                Value="{StaticResource CaptionCloseButtonStyle}" />
+                Value="{StaticResource LightCaptionCloseButton}" />
 
         <Setter Property="Template">
             <Setter.Value>

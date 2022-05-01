@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:FullControls.Controls">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/FullControls;component/Resources/Brushes.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Resources/LightBrushes.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type local:SimpleAccordionItem}">

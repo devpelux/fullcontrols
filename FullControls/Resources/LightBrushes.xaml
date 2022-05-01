@@ -143,4 +143,11 @@
     <SolidColorBrush x:Key="LightWindowBorder"
                      Color="#bbbbbb" />
     
+    <!-- Others -->
+
+    <SolidColorBrush x:Key="WhiteTransparent"
+                     Color="#00FFFFFF" />
+    <SolidColorBrush x:Key="BlackTransparent"
+                     Color="#00000000" />
+
 </ResourceDictionary>

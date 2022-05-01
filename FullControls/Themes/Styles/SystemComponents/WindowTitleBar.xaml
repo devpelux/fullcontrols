@@ -4,7 +4,7 @@
                     xmlns:controls="clr-namespace:FullControls.Controls">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/FullControls;component/Resources/Styles.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Resources/LightStyles.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type local:WindowTitleBar}">
@@ -15,13 +15,13 @@
                 Value="True" />
 
         <Setter Property="MinimizeButtonStyle"
-                Value="{StaticResource CaptionButtonStyle}" />
+                Value="{StaticResource LightCaptionButton}" />
         <Setter Property="MaximizeButtonStyle"
-                Value="{StaticResource CaptionButtonStyle}" />
+                Value="{StaticResource LightCaptionButton}" />
         <Setter Property="RestoreButtonStyle"
-                Value="{StaticResource CaptionButtonStyle}" />
+                Value="{StaticResource LightCaptionButton}" />
         <Setter Property="CloseButtonStyle"
-                Value="{StaticResource CaptionCloseButtonStyle}" />
+                Value="{StaticResource LightCaptionCloseButton}" />
 
         <Setter Property="Template">
             <Setter.Value>
