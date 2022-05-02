@@ -54,9 +54,11 @@
                                     ClickMode="Press"
                                     Focusable="False" />
 
-            <Grid Margin="{TemplateBinding BorderThickness}">
+            <Grid Margin="{TemplateBinding BorderThickness}"
+                  IsHitTestVisible="False">
                 <Grid Margin="{TemplateBinding Padding}"
-                      Background="Transparent">
+                      Background="Transparent"
+                      IsHitTestVisible="False">
                     <ContentPresenter x:Name="PART_ContentSite"
                                       Margin="{TemplateBinding TextPadding}"
                                       VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
