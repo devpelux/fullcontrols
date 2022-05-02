@@ -9,8 +9,6 @@
     <Style TargetType="{x:Type local:ComboBoxItemPlus}"
            BasedOn="{StaticResource {x:Type ComboBoxItem}}">
 
-        <Setter Property="Height"
-                Value="33" />
         <Setter Property="Background"
                 Value="{StaticResource LightMenuItemBackground}" />
         <Setter Property="BackgroundOnSelected"
@@ -53,6 +51,8 @@
                 Value="{StaticResource LightMenuItemTextHoverSelected}" />
         <Setter Property="ForegroundOnDisabled"
                 Value="{StaticResource LightMenuItemTextDisabled}" />
+        <Setter Property="Height"
+                Value="33" />
         <Setter Property="BorderThickness"
                 Value="0" />
         <Setter Property="CornerRadius"

@@ -107,6 +107,10 @@
                      Color="#1b1b1b" />
     <SolidColorBrush x:Key="LightTextBoxHint"
                      Color="#5e5e5e" />
+    <SolidColorBrush x:Key="LightTextBoxHintSelected"
+                     Color="#5e5e5e" />
+    <SolidColorBrush x:Key="LightTextBoxHintDisabled"
+                     Color="#5e5e5e" />
     <SolidColorBrush x:Key="LightTextBoxUnderline"
                      Color="#868686" />
     <SolidColorBrush x:Key="LightTextBoxUnderlineSelected"
@@ -115,7 +119,7 @@
                      Color="#868686" />
     <SolidColorBrush x:Key="LightTextBoxSelection"
                      Color="#0078d4" />
-    <SolidColorBrush x:Key="LightTextBoxSelectedText"
+    <SolidColorBrush x:Key="LightTextBoxSelectionText"
                      Color="#ffffff" />
     
     <!-- Accordion items -->

@@ -131,6 +131,8 @@
                 Value="{StaticResource LightMenuItemTextOpen}" />
         <Setter Property="CheckBrushOnDisabled"
                 Value="{StaticResource LightMenuItemTextDisabled}" />
+        <Setter Property="ShadowColor"
+                Value="Black" />
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="PopupCornerRadius"
@@ -151,8 +153,6 @@
                 Value="0.1" />
         <Setter Property="ShadowDepth"
                 Value="10" />
-        <Setter Property="ShadowColor"
-                Value="Black" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility"
                 Value="Hidden" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility"

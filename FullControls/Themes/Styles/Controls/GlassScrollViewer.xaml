@@ -5,18 +5,18 @@
     <Style TargetType="{x:Type local:GlassScrollViewer}"
            BasedOn="{StaticResource {x:Type ScrollViewer}}">
 
-        <Setter Property="Padding"
-                Value="0" />
         <Setter Property="Background"
                 Value="{x:Null}" />
         <Setter Property="BorderBrush"
                 Value="{x:Null}" />
-        <Setter Property="BorderThickness"
-                Value="0" />
         <Setter Property="Foreground"
                 Value="{x:Null}" />
         <Setter Property="InsideBorderBrush"
                 Value="{x:Null}" />
+        <Setter Property="Padding"
+                Value="0" />
+        <Setter Property="BorderThickness"
+                Value="0" />
         <Setter Property="InsideBorderThickness"
                 Value="0" />
         <Setter Property="PlaceScrollBarsInside"
@@ -33,7 +33,25 @@
                 Value="False" />
 
         <!--#region Horizontal ScrollBar-->
-
+        
+        <Setter Property="HorizontalScrollBarBackground"
+                Value="Transparent" />
+        <Setter Property="HorizontalScrollBarBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="HorizontalScrollBarForeground"
+                Value="LightSlateGray" />
+        <Setter Property="HorizontalScrollBarForegroundOnDisabled"
+                Value="Gray" />
+        <Setter Property="HorizontalScrollBarThumbBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="HorizontalScrollBarButtonsBackground"
+                Value="Transparent" />
+        <Setter Property="HorizontalScrollBarButtonsBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="HorizontalScrollBarButtonsForeground"
+                Value="Black" />
+        <Setter Property="HorizontalScrollBarButtonsForegroundOnDisabled"
+                Value="Black" />
         <Setter Property="HorizontalScrollBarThickness"
                 Value="10" />
         <Setter Property="HorizontalScrollBarMargin"
@@ -44,22 +62,12 @@
                 Value="0" />
         <Setter Property="HorizontalScrollBarBorderThickness"
                 Value="0" />
-        <Setter Property="HorizontalScrollBarBackground"
-                Value="Transparent" />
-        <Setter Property="HorizontalScrollBarBorderBrush"
-                Value="{x:Null}" />
-        <Setter Property="HorizontalScrollBarForeground"
-                Value="LightSlateGray" />
-        <Setter Property="HorizontalScrollBarForegroundOnDisabled"
-                Value="Gray" />
         <Setter Property="HorizontalScrollBarThumbPadding"
                 Value="2" />
         <Setter Property="HorizontalScrollBarThumbCornerRadius"
                 Value="3" />
         <Setter Property="HorizontalScrollBarThumbBorderThickness"
                 Value="0" />
-        <Setter Property="HorizontalScrollBarThumbBorderBrush"
-                Value="{x:Null}" />
         <Setter Property="HorizontalScrollBarOpacityNormal"
                 Value="0.6" />
         <Setter Property="HorizontalScrollBarOpacityOnMouseOver"
@@ -74,16 +82,8 @@
                 Value="10" />
         <Setter Property="HorizontalScrollBarButtonsCornerRadius"
                 Value="0" />
-        <Setter Property="HorizontalScrollBarButtonsBackground"
-                Value="Transparent" />
-        <Setter Property="HorizontalScrollBarButtonsBorderBrush"
-                Value="{x:Null}" />
         <Setter Property="HorizontalScrollBarButtonsBorderThickness"
                 Value="0" />
-        <Setter Property="HorizontalScrollBarButtonsForeground"
-                Value="Black" />
-        <Setter Property="HorizontalScrollBarButtonsForegroundOnDisabled"
-                Value="Black" />
         <Setter Property="LeftButtonPadding"
                 Value="0" />
         <Setter Property="RightButtonPadding"
@@ -99,6 +99,24 @@
 
         <!--#region Vertical ScrollBar-->
 
+        <Setter Property="VerticalScrollBarBackground"
+                Value="Transparent" />
+        <Setter Property="VerticalScrollBarBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="VerticalScrollBarForeground"
+                Value="LightSlateGray" />
+        <Setter Property="VerticalScrollBarForegroundOnDisabled"
+                Value="Gray" />
+        <Setter Property="VerticalScrollBarThumbBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="VerticalScrollBarButtonsBackground"
+                Value="Transparent" />
+        <Setter Property="VerticalScrollBarButtonsBorderBrush"
+                Value="{x:Null}" />
+        <Setter Property="VerticalScrollBarButtonsForeground"
+                Value="Black" />
+        <Setter Property="VerticalScrollBarButtonsForegroundOnDisabled"
+                Value="Black" />
         <Setter Property="VerticalScrollBarThickness"
                 Value="10" />
         <Setter Property="VerticalScrollBarMargin"
@@ -109,22 +127,12 @@
                 Value="0" />
         <Setter Property="VerticalScrollBarBorderThickness"
                 Value="0" />
-        <Setter Property="VerticalScrollBarBackground"
-                Value="Transparent" />
-        <Setter Property="VerticalScrollBarBorderBrush"
-                Value="{x:Null}" />
-        <Setter Property="VerticalScrollBarForeground"
-                Value="LightSlateGray" />
-        <Setter Property="VerticalScrollBarForegroundOnDisabled"
-                Value="Gray" />
         <Setter Property="VerticalScrollBarThumbPadding"
                 Value="2" />
         <Setter Property="VerticalScrollBarThumbCornerRadius"
                 Value="3" />
         <Setter Property="VerticalScrollBarThumbBorderThickness"
                 Value="0" />
-        <Setter Property="VerticalScrollBarThumbBorderBrush"
-                Value="{x:Null}" />
         <Setter Property="VerticalScrollBarOpacityNormal"
                 Value="0.6" />
         <Setter Property="VerticalScrollBarOpacityOnMouseOver"
@@ -139,16 +147,8 @@
                 Value="10" />
         <Setter Property="VerticalScrollBarButtonsCornerRadius"
                 Value="0" />
-        <Setter Property="VerticalScrollBarButtonsBackground"
-                Value="Transparent" />
-        <Setter Property="VerticalScrollBarButtonsBorderBrush"
-                Value="{x:Null}" />
         <Setter Property="VerticalScrollBarButtonsBorderThickness"
                 Value="0" />
-        <Setter Property="VerticalScrollBarButtonsForeground"
-                Value="Black" />
-        <Setter Property="VerticalScrollBarButtonsForegroundOnDisabled"
-                Value="Black" />
         <Setter Property="UpButtonPadding"
                 Value="0" />
         <Setter Property="DownButtonPadding"

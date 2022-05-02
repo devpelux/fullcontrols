@@ -153,7 +153,66 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Gets or sets the underline brush when the control is selected.
+        /// Gets or sets the foreground brush when the control is selected.
+        /// </summary>
+        public Brush ForegroundOnSelected
+        {
+            get => (Brush)GetValue(ForegroundOnSelectedProperty);
+            set => SetValue(ForegroundOnSelectedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForegroundOnSelected"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForegroundOnSelectedProperty =
+            DependencyProperty.Register(nameof(ForegroundOnSelected), typeof(Brush), typeof(PasswordBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the foreground brush when the control is disabled.
+        /// </summary>
+        public Brush ForegroundOnDisabled
+        {
+            get => (Brush)GetValue(ForegroundOnDisabledProperty);
+            set => SetValue(ForegroundOnDisabledProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForegroundOnDisabled"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForegroundOnDisabledProperty =
+            DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(PasswordBoxPlus));
+
+        /// <summary>
+        /// Gets the actual foreground brush of the control.
+        /// </summary>
+        public Brush ActualForeground => (Brush)GetValue(ActualForegroundProperty);
+
+        #region ActualForegroundProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualForeground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualForegroundPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualForeground), typeof(Brush), typeof(PasswordBoxPlus),
+                new FrameworkPropertyMetadata(default(Brush)));
+
+        /// <summary>
+        /// Identifies the <see cref="ActualForeground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ActualForegroundProperty = ActualForegroundPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualForeground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualForegroundPropertyProxy =
+            DependencyProperty.Register("ActualForegroundProxy", typeof(Brush), typeof(PasswordBoxPlus),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualForegroundPropertyKey, e.NewValue))));
+
+        #endregion
+
+        /// <summary>
+        /// Gets or sets the underline brush.
         /// </summary>
         public Brush UnderlineBrush
         {
@@ -227,7 +286,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Gets or sets the underline thickness when the control is selected.
+        /// Gets or sets the underline thickness.
         /// </summary>
         public Thickness UnderlineThickness
         {
@@ -353,22 +412,6 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(SelectionOpacity), typeof(double), typeof(PasswordBoxPlus));
 
         /// <summary>
-        /// Gets or sets a value indicating if adapt automatically the foreground brush to the actual background brush of the control.
-        /// </summary>
-        public bool AdaptForegroundAutomatically
-        {
-            get => (bool)GetValue(AdaptForegroundAutomaticallyProperty);
-            set => SetValue(AdaptForegroundAutomaticallyProperty, BoolBox.Box(value));
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="AdaptForegroundAutomatically"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty AdaptForegroundAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptForegroundAutomatically), typeof(bool), typeof(PasswordBoxPlus),
-                new PropertyMetadata(BoolBox.True));
-
-        /// <summary>
         /// Gets or sets a value indicating if adapt automatically the caret brush to the actual background brush of the control.
         /// </summary>
         public bool AdaptCaretBrushAutomatically
@@ -383,7 +426,7 @@ namespace FullControls.Controls
         public static readonly DependencyProperty AdaptCaretBrushAutomaticallyProperty =
             DependencyProperty.Register(nameof(AdaptCaretBrushAutomatically), typeof(bool), typeof(PasswordBoxPlus),
                 new PropertyMetadata(BoolBox.True));
-
+        
         #region Hint
 
         /// <summary>
@@ -440,35 +483,63 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HintForeground), typeof(Brush), typeof(PasswordBoxPlus));
 
         /// <summary>
-        /// Gets or sets the opacity of the hint.
+        /// Gets or sets the foreground brush of the hint when the control is selected.
         /// </summary>
-        public double HintOpacity
+        public Brush HintForegroundOnSelected
         {
-            get => (double)GetValue(HintOpacityProperty);
-            set => SetValue(HintOpacityProperty, value);
+            get => (Brush)GetValue(HintForegroundOnSelectedProperty);
+            set => SetValue(HintForegroundOnSelectedProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="HintOpacity"/> dependency property.
+        /// Identifies the <see cref="HintForegroundOnSelected"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty HintOpacityProperty =
-            DependencyProperty.Register(nameof(HintOpacity), typeof(double), typeof(PasswordBoxPlus));
+        public static readonly DependencyProperty HintForegroundOnSelectedProperty =
+            DependencyProperty.Register(nameof(HintForegroundOnSelected), typeof(Brush), typeof(PasswordBoxPlus));
 
         /// <summary>
-        /// Gets or sets a value indicating if adapt automatically the hint foreground brush to the actual background brush of the control.
+        /// Gets or sets the foreground brush of the hint when the control is disabled.
         /// </summary>
-        public bool AdaptHintForegroundAutomatically
+        public Brush HintForegroundOnDisabled
         {
-            get => (bool)GetValue(AdaptHintForegroundAutomaticallyProperty);
-            set => SetValue(AdaptHintForegroundAutomaticallyProperty, BoolBox.Box(value));
+            get => (Brush)GetValue(HintForegroundOnDisabledProperty);
+            set => SetValue(HintForegroundOnDisabledProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="AdaptHintForegroundAutomatically"/> dependency property.
+        /// Identifies the <see cref="HintForegroundOnDisabled"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty AdaptHintForegroundAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptHintForegroundAutomatically), typeof(bool), typeof(PasswordBoxPlus),
-                new PropertyMetadata(BoolBox.True));
+        public static readonly DependencyProperty HintForegroundOnDisabledProperty =
+            DependencyProperty.Register(nameof(HintForegroundOnDisabled), typeof(Brush), typeof(PasswordBoxPlus));
+
+        /// <summary>
+        /// Gets the actual foreground brush of the hint.
+        /// </summary>
+        public Brush ActualHintForeground => (Brush)GetValue(ActualHintForegroundProperty);
+
+        #region ActualHintForegroundProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualHintForeground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualHintForegroundPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualHintForeground), typeof(Brush), typeof(PasswordBoxPlus),
+                new FrameworkPropertyMetadata(default(Brush)));
+
+        /// <summary>
+        /// Identifies the <see cref="ActualHintForeground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ActualHintForegroundProperty = ActualHintForegroundPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualHintForeground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualHintForegroundPropertyProxy =
+            DependencyProperty.Register("ActualHintForegroundProxy", typeof(Brush), typeof(PasswordBoxPlus),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualHintForegroundPropertyKey, e.NewValue))));
+
+        #endregion
 
         #endregion
 
@@ -531,68 +602,6 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty EnablePeekButtonProperty =
             DependencyProperty.Register(nameof(EnablePeekButton), typeof(bool), typeof(PasswordBoxPlus),
-                new PropertyMetadata(BoolBox.True));
-
-        /// <summary>
-        /// Gets or sets the foreground of the text showing the password.
-        /// </summary>
-        public Brush PeekForeground
-        {
-            get => (Brush)GetValue(PeekForegroundProperty);
-            set => SetValue(PeekForegroundProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="PeekForeground"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty PeekForegroundProperty =
-            DependencyProperty.Register(nameof(PeekForeground), typeof(Brush), typeof(PasswordBoxPlus));
-
-        /// <summary>
-        /// Gets or sets the foreground of the peek button.
-        /// </summary>
-        public Brush PeekButtonForeground
-        {
-            get => (Brush)GetValue(PeekButtonForegroundProperty);
-            set => SetValue(PeekButtonForegroundProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="PeekButtonForeground"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty PeekButtonForegroundProperty =
-            DependencyProperty.Register(nameof(PeekButtonForeground), typeof(Brush), typeof(PasswordBoxPlus));
-
-        /// <summary>
-        /// Gets or sets a value indicating if adapt automatically the peek foreground to the actual background of the control.
-        /// </summary>
-        public bool AdaptPeekForegroundAutomatically
-        {
-            get => (bool)GetValue(AdaptPeekForegroundAutomaticallyProperty);
-            set => SetValue(AdaptPeekForegroundAutomaticallyProperty, BoolBox.Box(value));
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="AdaptPeekForegroundAutomatically"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty AdaptPeekForegroundAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptPeekForegroundAutomatically), typeof(bool), typeof(PasswordBoxPlus),
-                new PropertyMetadata(BoolBox.True));
-
-        /// <summary>
-        /// Gets or sets a value indicating if adapt automatically the peek button foreground to the actual background of the control.
-        /// </summary>
-        public bool AdaptPeekButtonForegroundAutomatically
-        {
-            get => (bool)GetValue(AdaptPeekButtonForegroundAutomaticallyProperty);
-            set => SetValue(AdaptPeekButtonForegroundAutomaticallyProperty, BoolBox.Box(value));
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="AdaptPeekButtonForegroundAutomatically"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty AdaptPeekButtonForegroundAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptPeekButtonForegroundAutomatically), typeof(bool), typeof(PasswordBoxPlus),
                 new PropertyMetadata(BoolBox.True));
 
         /// <summary>
@@ -1306,7 +1315,7 @@ namespace FullControls.Controls
         /// </summary>
         private void OnLoaded()
         {
-            AdaptForeColors(ActualBackground);
+            OnActualBackgroundChanged(ActualBackground);
             OnVStateChanged(GetCurrentVState());
         }
 
@@ -1314,7 +1323,14 @@ namespace FullControls.Controls
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
         /// <param name="actualBackground">Actual background brush.</param>
-        private void OnActualBackgroundChanged(Brush actualBackground) => AdaptForeColors(actualBackground);
+        private void OnActualBackgroundChanged(Brush actualBackground)
+        {
+            if (actualBackground is SolidColorBrush brush)
+            {
+                SolidColorBrush inverseBrush = new(brush.Color.Invert());
+                if (AdaptCaretBrushAutomatically) CaretBrush = inverseBrush;
+            }
+        }
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
@@ -1371,6 +1387,8 @@ namespace FullControls.Controls
             {
                 Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, Foreground, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualHintForegroundPropertyProxy, HintForeground, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualUnderlineBrushPropertyProxy, UnderlineBrush, initial ? TimeSpan.Zero : AnimationTime);
                 SetValue(ActualUnderlineThicknessPropertyKey, UnderlineThickness);
             }
@@ -1378,6 +1396,8 @@ namespace FullControls.Controls
             {
                 Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualHintForegroundPropertyProxy, HintForegroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualUnderlineBrushPropertyProxy, UnderlineBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                 SetValue(ActualUnderlineThicknessPropertyKey, UnderlineThicknessOnSelected);
             }
@@ -1385,6 +1405,8 @@ namespace FullControls.Controls
             {
                 Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualHintForegroundPropertyProxy, HintForegroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualUnderlineBrushPropertyProxy, UnderlineBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                 SetValue(ActualUnderlineThicknessPropertyKey, UnderlineThicknessOnSelected);
             }
@@ -1392,6 +1414,8 @@ namespace FullControls.Controls
             {
                 Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualForegroundPropertyProxy, ForegroundOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualHintForegroundPropertyProxy, HintForegroundOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualUnderlineBrushPropertyProxy, UnderlineBrushOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
                 SetValue(ActualUnderlineThicknessPropertyKey, UnderlineThicknessOnDisabled);
             }
@@ -1415,23 +1439,6 @@ namespace FullControls.Controls
             bool peeked = !string.IsNullOrEmpty(Peek);
             SetValue(IsPeekDisplayedPropertyKey, BoolBox.Box(peeked));
             _ = VisualStateManager.GoToState(this, peeked ? "Peeked" : "Unpeeked", true);
-        }
-
-        /// <summary>
-        /// Adapt some brushes to the actual background of the control.
-        /// </summary>
-        /// <param name="backgroundBrush">Actual background of the control.</param>
-        private void AdaptForeColors(Brush backgroundBrush)
-        {
-            if (backgroundBrush is SolidColorBrush brush)
-            {
-                SolidColorBrush inverseBrush = new(brush.Color.Invert());
-                if (AdaptForegroundAutomatically) Foreground = inverseBrush;
-                if (AdaptHintForegroundAutomatically) HintForeground = inverseBrush;
-                if (AdaptPeekForegroundAutomatically) PeekForeground = inverseBrush;
-                if (AdaptPeekButtonForegroundAutomatically) PeekButtonForeground = inverseBrush;
-                if (AdaptCaretBrushAutomatically) CaretBrush = inverseBrush;
-            }
         }
 
         #region PasswordBox events
@@ -1505,7 +1512,7 @@ namespace FullControls.Controls
             //Setting bindings
             passwordBox.SetBinding(PasswordBox.HorizontalContentAlignmentProperty, new Binding(nameof(HorizontalContentAlignment)) { Source = this });
             passwordBox.SetBinding(PasswordBox.VerticalContentAlignmentProperty, new Binding(nameof(VerticalContentAlignment)) { Source = this });
-            passwordBox.SetBinding(PasswordBox.ForegroundProperty, new Binding(nameof(Foreground)) { Source = this });
+            passwordBox.SetBinding(PasswordBox.ForegroundProperty, new Binding(nameof(ActualForeground)) { Source = this });
             passwordBox.SetBinding(PasswordBox.CaretBrushProperty, new Binding(nameof(CaretBrush)) { Source = this });
             passwordBox.SetBinding(PasswordBox.SelectionBrushProperty, new Binding(nameof(SelectionBrush)) { Source = this });
             passwordBox.SetBinding(PasswordBox.SelectionTextBrushProperty, new Binding(nameof(SelectionTextBrush)) { Source = this });

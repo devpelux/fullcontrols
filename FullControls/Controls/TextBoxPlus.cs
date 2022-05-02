@@ -138,7 +138,52 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Gets or sets the underline brush when the control is selected.
+        /// Gets or sets the foreground brush.
+        /// </summary>
+        public Brush ForegroundBrush
+        {
+            get => (Brush)GetValue(ForegroundBrushProperty);
+            set => SetValue(ForegroundBrushProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForegroundBrush"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForegroundBrushProperty =
+            DependencyProperty.Register(nameof(ForegroundBrush), typeof(Brush), typeof(TextBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the foreground brush when the control is selected.
+        /// </summary>
+        public Brush ForegroundBrushOnSelected
+        {
+            get => (Brush)GetValue(ForegroundBrushOnSelectedProperty);
+            set => SetValue(ForegroundBrushOnSelectedProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForegroundBrushOnSelected"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForegroundBrushOnSelectedProperty =
+            DependencyProperty.Register(nameof(ForegroundBrushOnSelected), typeof(Brush), typeof(TextBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the foreground brush when the control is disabled.
+        /// </summary>
+        public Brush ForegroundBrushOnDisabled
+        {
+            get => (Brush)GetValue(ForegroundBrushOnDisabledProperty);
+            set => SetValue(ForegroundBrushOnDisabledProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ForegroundBrushOnDisabled"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ForegroundBrushOnDisabledProperty =
+            DependencyProperty.Register(nameof(ForegroundBrushOnDisabled), typeof(Brush), typeof(TextBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the underline brush.
         /// </summary>
         public Brush UnderlineBrush
         {
@@ -212,7 +257,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Gets or sets the underline thickness when the control is selected.
+        /// Gets or sets the underline thickness.
         /// </summary>
         public Thickness UnderlineThickness
         {
@@ -278,22 +323,6 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Gets or sets a value indicating if adapt automatically the foreground brush to the actual background brush of the control.
-        /// </summary>
-        public bool AdaptForegroundAutomatically
-        {
-            get => (bool)GetValue(AdaptForegroundAutomaticallyProperty);
-            set => SetValue(AdaptForegroundAutomaticallyProperty, BoolBox.Box(value));
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="AdaptForegroundAutomatically"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty AdaptForegroundAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptForegroundAutomatically), typeof(bool), typeof(TextBoxPlus),
-                new PropertyMetadata(BoolBox.True));
-
-        /// <summary>
         /// Gets or sets a value indicating if adapt automatically the caret brush to the actual background brush of the control.
         /// </summary>
         public bool AdaptCaretBrushAutomatically
@@ -308,7 +337,7 @@ namespace FullControls.Controls
         public static readonly DependencyProperty AdaptCaretBrushAutomaticallyProperty =
             DependencyProperty.Register(nameof(AdaptCaretBrushAutomatically), typeof(bool), typeof(TextBoxPlus),
                 new PropertyMetadata(BoolBox.True));
-
+        
         #region Hint
 
         /// <summary>
@@ -365,35 +394,63 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(HintForeground), typeof(Brush), typeof(TextBoxPlus));
 
         /// <summary>
-        /// Gets or sets the opacity of the hint.
+        /// Gets or sets the foreground brush of the hint when the control is selected.
         /// </summary>
-        public double HintOpacity
+        public Brush HintForegroundOnSelected
         {
-            get => (double)GetValue(HintOpacityProperty);
-            set => SetValue(HintOpacityProperty, value);
+            get => (Brush)GetValue(HintForegroundOnSelectedProperty);
+            set => SetValue(HintForegroundOnSelectedProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="HintOpacity"/> dependency property.
+        /// Identifies the <see cref="HintForegroundOnSelected"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty HintOpacityProperty =
-            DependencyProperty.Register(nameof(HintOpacity), typeof(double), typeof(TextBoxPlus));
+        public static readonly DependencyProperty HintForegroundOnSelectedProperty =
+            DependencyProperty.Register(nameof(HintForegroundOnSelected), typeof(Brush), typeof(TextBoxPlus));
 
         /// <summary>
-        /// Gets or sets a value indicating if adapt automatically the hint foreground brush to the actual background brush of the control.
+        /// Gets or sets the foreground brush of the hint when the control is disabled.
         /// </summary>
-        public bool AdaptHintForegroundAutomatically
+        public Brush HintForegroundOnDisabled
         {
-            get => (bool)GetValue(AdaptHintForegroundAutomaticallyProperty);
-            set => SetValue(AdaptHintForegroundAutomaticallyProperty, BoolBox.Box(value));
+            get => (Brush)GetValue(HintForegroundOnDisabledProperty);
+            set => SetValue(HintForegroundOnDisabledProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="AdaptHintForegroundAutomatically"/> dependency property.
+        /// Identifies the <see cref="HintForegroundOnDisabled"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty AdaptHintForegroundAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptHintForegroundAutomatically), typeof(bool), typeof(TextBoxPlus),
-                new PropertyMetadata(BoolBox.True));
+        public static readonly DependencyProperty HintForegroundOnDisabledProperty =
+            DependencyProperty.Register(nameof(HintForegroundOnDisabled), typeof(Brush), typeof(TextBoxPlus));
+
+        /// <summary>
+        /// Gets the actual foreground brush of the hint.
+        /// </summary>
+        public Brush ActualHintForeground => (Brush)GetValue(ActualHintForegroundProperty);
+
+        #region ActualHintForegroundProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualHintForeground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualHintForegroundPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualHintForeground), typeof(Brush), typeof(TextBoxPlus),
+                new FrameworkPropertyMetadata(default(Brush)));
+
+        /// <summary>
+        /// Identifies the <see cref="ActualHintForeground"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ActualHintForegroundProperty = ActualHintForegroundPropertyKey.DependencyProperty;
+
+        /// <summary>
+        /// Proxy for <see cref="ActualHintForeground"/> dependency property.
+        /// </summary>
+        private static readonly DependencyProperty ActualHintForegroundPropertyProxy =
+            DependencyProperty.Register("ActualHintForegroundProxy", typeof(Brush), typeof(TextBoxPlus),
+                new FrameworkPropertyMetadata(default(Brush), new PropertyChangedCallback((d, e)
+                    => d.SetValue(ActualHintForegroundPropertyKey, e.NewValue))));
+
+        #endregion
 
         #endregion
 
@@ -939,7 +996,7 @@ namespace FullControls.Controls
         /// <param name="e">Event data.</param>
         protected virtual void OnLoaded(RoutedEventArgs e)
         {
-            AdaptForeColors(ActualBackground);
+            OnActualBackgroundChanged(ActualBackground);
             OnVStateChanged(GetCurrentVState());
         }
 
@@ -947,7 +1004,14 @@ namespace FullControls.Controls
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
         /// <param name="actualBackground">Actual background brush.</param>
-        private void OnActualBackgroundChanged(Brush actualBackground) => AdaptForeColors(actualBackground);
+        private void OnActualBackgroundChanged(Brush actualBackground)
+        {
+            if (actualBackground is SolidColorBrush brush)
+            {
+                SolidColorBrush inverseBrush = new(brush.Color.Invert());
+                if (AdaptCaretBrushAutomatically) CaretBrush = inverseBrush;
+            }
+        }
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
@@ -1013,6 +1077,8 @@ namespace FullControls.Controls
             {
                 Util.AnimateBrush(this, ActualBackgroundPropertyProxy, Background, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrush, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ForegroundProperty, ForegroundBrush, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualHintForegroundPropertyProxy, HintForeground, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualUnderlineBrushPropertyProxy, UnderlineBrush, initial ? TimeSpan.Zero : AnimationTime);
                 SetValue(ActualUnderlineThicknessPropertyKey, UnderlineThickness);
             }
@@ -1020,6 +1086,8 @@ namespace FullControls.Controls
             {
                 Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ForegroundProperty, ForegroundBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualHintForegroundPropertyProxy, HintForegroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualUnderlineBrushPropertyProxy, UnderlineBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                 SetValue(ActualUnderlineThicknessPropertyKey, UnderlineThicknessOnSelected);
             }
@@ -1027,6 +1095,8 @@ namespace FullControls.Controls
             {
                 Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ForegroundProperty, ForegroundBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualHintForegroundPropertyProxy, HintForegroundOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualUnderlineBrushPropertyProxy, UnderlineBrushOnSelected, initial ? TimeSpan.Zero : AnimationTime);
                 SetValue(ActualUnderlineThicknessPropertyKey, UnderlineThicknessOnSelected);
             }
@@ -1034,6 +1104,8 @@ namespace FullControls.Controls
             {
                 Util.AnimateBrush(this, ActualBackgroundPropertyProxy, BackgroundOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualBorderBrushPropertyProxy, BorderBrushOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ForegroundProperty, ForegroundBrushOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
+                Util.AnimateBrush(this, ActualHintForegroundPropertyProxy, HintForegroundOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
                 Util.AnimateBrush(this, ActualUnderlineBrushPropertyProxy, UnderlineBrushOnDisabled, initial ? TimeSpan.Zero : AnimationTime);
                 SetValue(ActualUnderlineThicknessPropertyKey, UnderlineThicknessOnDisabled);
             }
@@ -1086,21 +1158,6 @@ namespace FullControls.Controls
             bool hinted = TextLength == 0 && !IsFocused && !string.IsNullOrEmpty(Hint);
             SetValue(IsHintDisplayedPropertyKey, BoolBox.Box(hinted));
             _ = VisualStateManager.GoToState(this, hinted ? "Hinted" : "Unhinted", true);
-        }
-
-        /// <summary>
-        /// Adapt some brushes to the actual background of the control.
-        /// </summary>
-        /// <param name="backgroundBrush">Actual background of the control.</param>
-        private void AdaptForeColors(Brush backgroundBrush)
-        {
-            if (backgroundBrush is SolidColorBrush brush)
-            {
-                SolidColorBrush inverseBrush = new(brush.Color.Invert());
-                if (AdaptForegroundAutomatically) Foreground = inverseBrush;
-                if (AdaptHintForegroundAutomatically) HintForeground = inverseBrush;
-                if (AdaptCaretBrushAutomatically) CaretBrush = inverseBrush;
-            }
         }
 
 

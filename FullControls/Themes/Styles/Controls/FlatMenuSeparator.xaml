@@ -8,16 +8,16 @@
 
     <Style TargetType="{x:Type local:FlatMenuSeparator}">
 
-        <Setter Property="AlignWithOthers"
-                Value="False" />
-        <Setter Property="Padding"
-                Value="5,4,5,4" />
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="Foreground"
                 Value="{StaticResource LightMenuBorder}" />
         <Setter Property="BorderBrush"
                 Value="{x:Null}" />
+        <Setter Property="AlignWithOthers"
+                Value="False" />
+        <Setter Property="Padding"
+                Value="5,4,5,4" />
         <Setter Property="BorderThickness"
                 Value="0" />
         <Setter Property="SeparatorCornerRadius"

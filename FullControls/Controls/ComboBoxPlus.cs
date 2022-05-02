@@ -274,143 +274,128 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Gets or sets the forecolor brush of the control.
-        /// </summary>
-        public Brush ForeColor
-        {
-            get => (Brush)GetValue(ForeColorProperty);
-            set => SetValue(ForeColorProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="ForeColor"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ForeColorProperty =
-            DependencyProperty.Register(nameof(ForeColor), typeof(Brush), typeof(ComboBoxPlus));
-
-        /// <summary>
         /// Gets or sets the forecolor brush when the mouse is over the control.
         /// </summary>
-        public Brush ForeColorOnMouseOver
+        public Brush ForegroundOnMouseOver
         {
-            get => (Brush)GetValue(ForeColorOnMouseOverProperty);
-            set => SetValue(ForeColorOnMouseOverProperty, value);
+            get => (Brush)GetValue(ForegroundOnMouseOverProperty);
+            set => SetValue(ForegroundOnMouseOverProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ForeColorOnMouseOver"/> dependency property.
+        /// Identifies the <see cref="ForegroundOnMouseOver"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ForeColorOnMouseOverProperty =
-            DependencyProperty.Register(nameof(ForeColorOnMouseOver), typeof(Brush), typeof(ComboBoxPlus));
+        public static readonly DependencyProperty ForegroundOnMouseOverProperty =
+            DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
         /// Gets or sets the forecolor brush when the control is checked and the mouse is over the control.
         /// </summary>
-        public Brush ForeColorOnMouseOverOnChecked
+        public Brush ForegroundOnMouseOverOnChecked
         {
-            get => (Brush)GetValue(ForeColorOnMouseOverOnCheckedProperty);
-            set => SetValue(ForeColorOnMouseOverOnCheckedProperty, value);
+            get => (Brush)GetValue(ForegroundOnMouseOverOnCheckedProperty);
+            set => SetValue(ForegroundOnMouseOverOnCheckedProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ForeColorOnMouseOverOnChecked"/> dependency property.
+        /// Identifies the <see cref="ForegroundOnMouseOverOnChecked"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ForeColorOnMouseOverOnCheckedProperty =
-            DependencyProperty.Register(nameof(ForeColorOnMouseOverOnChecked), typeof(Brush), typeof(ComboBoxPlus));
+        public static readonly DependencyProperty ForegroundOnMouseOverOnCheckedProperty =
+            DependencyProperty.Register(nameof(ForegroundOnMouseOverOnChecked), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
         /// Gets or sets the forecolor brush when the control is pressed.
         /// </summary>
-        public Brush ForeColorOnPressed
+        public Brush ForegroundOnPressed
         {
-            get => (Brush)GetValue(ForeColorOnPressedProperty);
-            set => SetValue(ForeColorOnPressedProperty, value);
+            get => (Brush)GetValue(ForegroundOnPressedProperty);
+            set => SetValue(ForegroundOnPressedProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ForeColorOnPressed"/> dependency property.
+        /// Identifies the <see cref="ForegroundOnPressed"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ForeColorOnPressedProperty =
-            DependencyProperty.Register(nameof(ForeColorOnPressed), typeof(Brush), typeof(ComboBoxPlus));
+        public static readonly DependencyProperty ForegroundOnPressedProperty =
+            DependencyProperty.Register(nameof(ForegroundOnPressed), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
         /// Gets or sets the forecolor brush when the control is checked and is pressed.
         /// </summary>
-        public Brush ForeColorOnPressedOnChecked
+        public Brush ForegroundOnPressedOnChecked
         {
-            get => (Brush)GetValue(ForeColorOnPressedOnCheckedProperty);
-            set => SetValue(ForeColorOnPressedOnCheckedProperty, value);
+            get => (Brush)GetValue(ForegroundOnPressedOnCheckedProperty);
+            set => SetValue(ForegroundOnPressedOnCheckedProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ForeColorOnPressedOnChecked"/> dependency property.
+        /// Identifies the <see cref="ForegroundOnPressedOnChecked"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ForeColorOnPressedOnCheckedProperty =
-            DependencyProperty.Register(nameof(ForeColorOnPressedOnChecked), typeof(Brush), typeof(ComboBoxPlus));
+        public static readonly DependencyProperty ForegroundOnPressedOnCheckedProperty =
+            DependencyProperty.Register(nameof(ForegroundOnPressedOnChecked), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
         /// Gets or sets the forecolor brush when the control is checked.
         /// </summary>
-        public Brush ForeColorOnChecked
+        public Brush ForegroundOnChecked
         {
-            get => (Brush)GetValue(ForeColorOnCheckedProperty);
-            set => SetValue(ForeColorOnCheckedProperty, value);
+            get => (Brush)GetValue(ForegroundOnCheckedProperty);
+            set => SetValue(ForegroundOnCheckedProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ForeColorOnChecked"/> dependency property.
+        /// Identifies the <see cref="ForegroundOnChecked"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ForeColorOnCheckedProperty =
-            DependencyProperty.Register(nameof(ForeColorOnChecked), typeof(Brush), typeof(ComboBoxPlus));
+        public static readonly DependencyProperty ForegroundOnCheckedProperty =
+            DependencyProperty.Register(nameof(ForegroundOnChecked), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
         /// Gets or sets the forecolor brush when the control is disabled.
         /// </summary>
-        public Brush ForeColorOnDisabled
+        public Brush ForegroundOnDisabled
         {
-            get => (Brush)GetValue(ForeColorOnDisabledProperty);
-            set => SetValue(ForeColorOnDisabledProperty, value);
+            get => (Brush)GetValue(ForegroundOnDisabledProperty);
+            set => SetValue(ForegroundOnDisabledProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ForeColorOnDisabled"/> dependency property.
+        /// Identifies the <see cref="ForegroundOnDisabled"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ForeColorOnDisabledProperty =
-            DependencyProperty.Register(nameof(ForeColorOnDisabled), typeof(Brush), typeof(ComboBoxPlus));
+        public static readonly DependencyProperty ForegroundOnDisabledProperty =
+            DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
         /// Gets or sets the forecolor brush when the control is checked and is disabled.
         /// </summary>
-        public Brush ForeColorOnDisabledOnChecked
+        public Brush ForegroundOnDisabledOnChecked
         {
-            get => (Brush)GetValue(ForeColorOnDisabledOnCheckedProperty);
-            set => SetValue(ForeColorOnDisabledOnCheckedProperty, value);
+            get => (Brush)GetValue(ForegroundOnDisabledOnCheckedProperty);
+            set => SetValue(ForegroundOnDisabledOnCheckedProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ForeColorOnDisabledOnChecked"/> dependency property.
+        /// Identifies the <see cref="ForegroundOnDisabledOnChecked"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ForeColorOnDisabledOnCheckedProperty =
-            DependencyProperty.Register(nameof(ForeColorOnDisabledOnChecked), typeof(Brush), typeof(ComboBoxPlus));
+        public static readonly DependencyProperty ForegroundOnDisabledOnCheckedProperty =
+            DependencyProperty.Register(nameof(ForegroundOnDisabledOnChecked), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
         /// Gets the actual forecolor brush of the control.
         /// </summary>
-        public Brush ActualForeColor => (Brush)GetValue(ActualForeColorProperty);
+        public Brush ActualForeground => (Brush)GetValue(ActualForegroundProperty);
 
-        #region ActualForeColorProperty
+        #region ActualForegroundProperty
 
         /// <summary>
-        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualForeColor"/> dependency property.
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualForeground"/> dependency property.
         /// </summary>
-        private static readonly DependencyPropertyKey ActualForeColorPropertyKey =
-            DependencyProperty.RegisterReadOnly(nameof(ActualForeColor), typeof(Brush), typeof(ComboBoxPlus),
+        private static readonly DependencyPropertyKey ActualForegroundPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualForeground), typeof(Brush), typeof(ComboBoxPlus),
                 new FrameworkPropertyMetadata(default(Brush)));
 
         /// <summary>
-        /// Identifies the <see cref="ActualForeColor"/> dependency property.
+        /// Identifies the <see cref="ActualForeground"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ActualForeColorProperty = ActualForeColorPropertyKey.DependencyProperty;
+        public static readonly DependencyProperty ActualForegroundProperty = ActualForegroundPropertyKey.DependencyProperty;
 
         #endregion
 
@@ -714,22 +699,6 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(TextAlignment), typeof(TextAlignment), typeof(ComboBoxPlus));
 
         /// <summary>
-        /// Gets or sets a value indicating if adapt automatically the foreground to the actual background of the control.
-        /// </summary>
-        public bool AdaptForegroundAutomatically
-        {
-            get => (bool)GetValue(AdaptForegroundAutomaticallyProperty);
-            set => SetValue(AdaptForegroundAutomaticallyProperty, BoolBox.Box(value));
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="AdaptForegroundAutomatically"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty AdaptForegroundAutomaticallyProperty =
-            DependencyProperty.Register(nameof(AdaptForegroundAutomatically), typeof(bool), typeof(ComboBoxPlus),
-                new PropertyMetadata(BoolBox.True));
-
-        /// <summary>
         /// Gets or sets a value indicating if adapt automatically the caret brush to the actual background of the control.
         /// </summary>
         public bool AdaptCaretBrushAutomatically
@@ -836,25 +805,6 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(TextContextMenu), typeof(ContextMenu), typeof(ComboBoxPlus),
                 new PropertyMetadata(null));
 
-        /// <summary>
-        /// Gets or sets the background brush of the text area.
-        /// </summary>
-        /// <remarks>
-        /// After setting this value, may be useful disable <see cref="AdaptCaretBrushAutomatically"/> and <see cref="AdaptForegroundAutomatically"/>,
-        /// and set <see cref="CaretBrush"/> and <see cref="Control.Foreground"/> properties.
-        /// </remarks>
-        public Brush TextBackground
-        {
-            get => (Brush)GetValue(TextBackgroundProperty);
-            set => SetValue(TextBackgroundProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="TextBackground"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty TextBackgroundProperty =
-            DependencyProperty.Register(nameof(TextBackground), typeof(Brush), typeof(ComboBoxPlus));
-
         #endregion
 
         /// <summary>
@@ -903,44 +853,37 @@ namespace FullControls.Controls
                 DependencyPropertyDescriptor.FromProperty(ToggleButtonPlus.ActualBorderBrushProperty, typeof(ToggleButtonPlus))
                     ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualBorderBrushPropertyKey, toggleButton.ActualBorderBrush));
                 DependencyPropertyDescriptor.FromProperty(ToggleButtonPlus.ActualForegroundProperty, typeof(ToggleButtonPlus))
-                    ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualForeColorPropertyKey, toggleButton.ActualForeground));
+                    ?.AddValueChanged(toggleButton, (s, e) => SetValue(ActualForegroundPropertyKey, toggleButton.ActualForeground));
             }
 
             SetValue(ActualBackgroundPropertyKey, Background);
             SetValue(ActualBorderBrushPropertyKey, BorderBrush);
-            SetValue(ActualForeColorPropertyKey, ForeColor);
+            SetValue(ActualForegroundPropertyKey, Foreground);
         }
 
         /// <summary>
         /// Called when the element is laid out, rendered, and ready for interaction.
         /// </summary>
         /// <param name="e">Event data.</param>
-        protected virtual void OnLoaded(RoutedEventArgs e) => AdaptForeColors(ActualBackground);
+        protected virtual void OnLoaded(RoutedEventArgs e) => OnActualBackgroundChanged(ActualBackground);
 
         /// <summary>
         /// Called when the <see cref="ActualBackground"/> is changed.
         /// </summary>
         /// <param name="actualBackground">Actual background brush.</param>
-        private void OnActualBackgroundChanged(Brush actualBackground) => AdaptForeColors(actualBackground);
+        private void OnActualBackgroundChanged(Brush actualBackground)
+        {
+            if (actualBackground is SolidColorBrush brush)
+            {
+                SolidColorBrush inverseBrush = new(brush.Color.Invert());
+                if (AdaptCaretBrushAutomatically) CaretBrush = inverseBrush;
+            }
+        }
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
         protected virtual void OnEnabledChanged(bool enabledState) { }
-
-        /// <summary>
-        /// Adapt some brushes to the actual background of the control.
-        /// </summary>
-        /// <param name="backgroundBrush">Actual background of the control.</param>
-        private void AdaptForeColors(Brush backgroundBrush)
-        {
-            if (backgroundBrush is SolidColorBrush brush)
-            {
-                SolidColorBrush inverseBrush = new(brush.Color.Invert());
-                if (AdaptForegroundAutomatically) Foreground = inverseBrush;
-                if (AdaptCaretBrushAutomatically) CaretBrush = inverseBrush;
-            }
-        }
     }
 }
