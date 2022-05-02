@@ -454,13 +454,13 @@
         <Setter Property="AlignWithOthers"
                 Value="True" />
         <Setter Property="Background"
-                Value="{StaticResource LightMenuBackground}" />
+                Value="{StaticResource LightMenuItemBackground}" />
         <Setter Property="BackgroundOnHighlight"
-                Value="{StaticResource LightMenuItemHover}" />
+                Value="{StaticResource LightMenuItemBackgroundHover}" />
         <Setter Property="BackgroundOnOpen"
-                Value="{StaticResource LightMenuItemHover}" />
+                Value="{StaticResource LightMenuItemBackgroundOpen}" />
         <Setter Property="BackgroundOnDisabled"
-                Value="{StaticResource LightMenuBackground}" />
+                Value="{StaticResource LightMenuItemBackgroundDisabled}" />
         <Setter Property="BorderThickness"
                 Value="0" />
         <Setter Property="BorderBrush"

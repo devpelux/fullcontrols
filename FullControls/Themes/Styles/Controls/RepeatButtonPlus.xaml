@@ -20,11 +20,11 @@
         <Setter Property="BorderBrush"
                 Value="{StaticResource LightButtonBorder}" />
         <Setter Property="BorderBrushOnMouseOver"
-                Value="{StaticResource LightButtonBorder}" />
+                Value="{StaticResource LightButtonBorderHover}" />
         <Setter Property="BorderBrushOnPressed"
-                Value="{StaticResource LightButtonBorder}" />
+                Value="{StaticResource LightButtonBorderClicked}" />
         <Setter Property="BorderBrushOnDisabled"
-                Value="{StaticResource LightButtonBorder}" />
+                Value="{StaticResource LightButtonBorderDisabled}" />
         <Setter Property="Foreground"
                 Value="{StaticResource LightButtonText}" />
         <Setter Property="ForegroundOnMouseOver"
