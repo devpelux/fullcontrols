@@ -6,7 +6,7 @@
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  mc:Ignorable="d"
                  MergeTitlebarAndContent="True"
-                 Title="FullControls"
+                 Title="FullControls Demo"
                  Icon="/Icons/Icon.ico"
                  ResizeMode="CanMinimize"
                  WindowStartupLocation="CenterScreen"
@@ -16,14 +16,10 @@
 
         <!--#region Background part-->
 
-        <Ellipse Fill="WhiteSmoke"
+        <Ellipse Fill="#2AB5B5B5"
                  Width="1150"
                  Height="650"
-                 Margin="160,-330,-700,100" />
-        <Ellipse Fill="WhiteSmoke"
-                 Width="600"
-                 Height="75"
-                 Margin="-240,460,240,-40" />
+                 Margin="-672,-234,122,68" />
 
         <!--#endregion-->
 
@@ -50,10 +46,11 @@
                                Click="Accordion_Click"
                                BorderThickness="0,0,1,1"
                                CornerRadius="0"
-                               Background="#0C646464"
-                               BackgroundOnDisabled="#0C646464"
-                               BackgroundOnMouseOver="#7F2191C5"
-                               BackgroundOnPressed="#B22191C5" />
+                               AnimationTime="00:00:00.3000000"
+                               Background="#0F2D4E63"
+                               BackgroundOnDisabled="#0F2D4E63"
+                               BackgroundOnMouseOver="#5F2D4E63"
+                               BackgroundOnPressed="#7F2D4E63" />
                 <fc:ButtonPlus x:Name="collapsible"
                                Grid.Column="1"
                                Grid.Row="0"
@@ -61,10 +58,11 @@
                                Click="Collapsible_Click"
                                BorderThickness="0,0,1,1"
                                CornerRadius="0"
-                               Background="#0C646464"
-                               BackgroundOnDisabled="#0C646464"
-                               BackgroundOnMouseOver="#7F2191C5"
-                               BackgroundOnPressed="#B22191C5" />
+                               AnimationTime="00:00:00.3000000"
+                               Background="#0F2D4E63"
+                               BackgroundOnDisabled="#0F2D4E63"
+                               BackgroundOnMouseOver="#5F2D4E63"
+                               BackgroundOnPressed="#7F2D4E63" />
                 <fc:ButtonPlus x:Name="buttons"
                                Grid.Column="2"
                                Grid.Row="0"
@@ -72,10 +70,11 @@
                                Click="Buttons_Click"
                                BorderThickness="0,0,0,1"
                                CornerRadius="0"
-                               Background="#0C646464"
-                               BackgroundOnDisabled="#0C646464"
-                               BackgroundOnMouseOver="#7F2191C5"
-                               BackgroundOnPressed="#B22191C5" />
+                               AnimationTime="00:00:00.3000000"
+                               Background="#0F2D4E63"
+                               BackgroundOnDisabled="#0F2D4E63"
+                               BackgroundOnMouseOver="#5F2D4E63"
+                               BackgroundOnPressed="#7F2D4E63" />
                 <fc:ButtonPlus x:Name="switcher"
                                Grid.Column="0"
                                Grid.Row="1"
@@ -83,10 +82,11 @@
                                Click="Switcher_Click"
                                BorderThickness="0,0,1,1"
                                CornerRadius="0"
-                               Background="#0C646464"
-                               BackgroundOnDisabled="#0C646464"
-                               BackgroundOnMouseOver="#7F2191C5"
-                               BackgroundOnPressed="#B22191C5" />
+                               AnimationTime="00:00:00.3000000"
+                               Background="#0F2D4E63"
+                               BackgroundOnDisabled="#0F2D4E63"
+                               BackgroundOnMouseOver="#5F2D4E63"
+                               BackgroundOnPressed="#7F2D4E63" />
                 <fc:ButtonPlus x:Name="checkboxes"
                                Grid.Column="1"
                                Grid.Row="1"
@@ -94,10 +94,11 @@
                                Click="CheckBoxes_Click"
                                BorderThickness="0,0,1,1"
                                CornerRadius="0"
-                               Background="#0C646464"
-                               BackgroundOnDisabled="#0C646464"
-                               BackgroundOnMouseOver="#7F2191C5"
-                               BackgroundOnPressed="#B22191C5" />
+                               AnimationTime="00:00:00.3000000"
+                               Background="#0F2D4E63"
+                               BackgroundOnDisabled="#0F2D4E63"
+                               BackgroundOnMouseOver="#5F2D4E63"
+                               BackgroundOnPressed="#7F2D4E63" />
                 <fc:ButtonPlus x:Name="combobox"
                                Grid.Column="2"
                                Grid.Row="1"
@@ -105,10 +106,11 @@
                                Click="ComboBox_Click"
                                BorderThickness="0,0,0,1"
                                CornerRadius="0"
-                               Background="#0C646464"
-                               BackgroundOnDisabled="#0C646464"
-                               BackgroundOnMouseOver="#7F2191C5"
-                               BackgroundOnPressed="#B22191C5" />
+                               AnimationTime="00:00:00.3000000"
+                               Background="#0F2D4E63"
+                               BackgroundOnDisabled="#0F2D4E63"
+                               BackgroundOnMouseOver="#5F2D4E63"
+                               BackgroundOnPressed="#7F2D4E63" />
                 <fc:ButtonPlus x:Name="textboxes"
                                Grid.Column="0"
                                Grid.Row="2"
@@ -116,10 +118,11 @@
                                Click="TextBoxes_Click"
                                BorderThickness="0,0,1,1"
                                CornerRadius="0"
-                               Background="#0C646464"
-                               BackgroundOnDisabled="#0C646464"
-                               BackgroundOnMouseOver="#7F2191C5"
-                               BackgroundOnPressed="#B22191C5" />
+                               AnimationTime="00:00:00.3000000"
+                               Background="#0F2D4E63"
+                               BackgroundOnDisabled="#0F2D4E63"
+                               BackgroundOnMouseOver="#5F2D4E63"
+                               BackgroundOnPressed="#7F2D4E63" />
                 <fc:ButtonPlus x:Name="flatmenu"
                                Grid.Column="1"
                                Grid.Row="2"
@@ -127,10 +130,11 @@
                                Click="FlatMenu_Click"
                                BorderThickness="0,0,1,1"
                                CornerRadius="0"
-                               Background="#0C646464"
-                               BackgroundOnDisabled="#0C646464"
-                               BackgroundOnMouseOver="#7F2191C5"
-                               BackgroundOnPressed="#B22191C5" />
+                               AnimationTime="00:00:00.3000000"
+                               Background="#0F2D4E63"
+                               BackgroundOnDisabled="#0F2D4E63"
+                               BackgroundOnMouseOver="#5F2D4E63"
+                               BackgroundOnPressed="#7F2D4E63" />
                 <fc:ButtonPlus x:Name="scrollviewer"
                                Grid.Column="2"
                                Grid.Row="2"
@@ -138,10 +142,11 @@
                                Click="ScrollViewer_Click"
                                BorderThickness="0,0,0,1"
                                CornerRadius="0"
-                               Background="#0C646464"
-                               BackgroundOnDisabled="#0C646464"
-                               BackgroundOnMouseOver="#7F2191C5"
-                               BackgroundOnPressed="#B22191C5" />
+                               AnimationTime="00:00:00.3000000"
+                               Background="#0F2D4E63"
+                               BackgroundOnDisabled="#0F2D4E63"
+                               BackgroundOnMouseOver="#5F2D4E63"
+                               BackgroundOnPressed="#7F2D4E63" />
                 <fc:ButtonPlus x:Name="dialogwindow"
                                Grid.Column="0"
                                Grid.Row="3"
@@ -149,10 +154,11 @@
                                Click="DialogWindow_Click"
                                BorderThickness="0,0,1,0"
                                CornerRadius="0"
-                               Background="#0C646464"
-                               BackgroundOnDisabled="#0C646464"
-                               BackgroundOnMouseOver="#7F2191C5"
-                               BackgroundOnPressed="#B22191C5" />
+                               AnimationTime="00:00:00.3000000"
+                               Background="#0F2D4E63"
+                               BackgroundOnDisabled="#0F2D4E63"
+                               BackgroundOnMouseOver="#5F2D4E63"
+                               BackgroundOnPressed="#7F2D4E63" />
                 <fc:ButtonPlus x:Name="borderedgrid"
                                Grid.Column="1"
                                Grid.Row="3"
@@ -160,10 +166,11 @@
                                Click="BorderedGrid_Click"
                                BorderThickness="0,0,1,0"
                                CornerRadius="0"
-                               Background="#0C646464"
-                               BackgroundOnDisabled="#0C646464"
-                               BackgroundOnMouseOver="#7F2191C5"
-                               BackgroundOnPressed="#B22191C5" />
+                               AnimationTime="00:00:00.3000000"
+                               Background="#0F2D4E63"
+                               BackgroundOnDisabled="#0F2D4E63"
+                               BackgroundOnMouseOver="#5F2D4E63"
+                               BackgroundOnPressed="#7F2D4E63" />
                 <fc:ButtonPlus x:Name="kaleidoborder"
                                Grid.Column="2"
                                Grid.Row="3"
@@ -171,25 +178,16 @@
                                Click="Kaleidoborder_Click"
                                BorderThickness="0,0,1,0"
                                CornerRadius="0"
-                               Background="#0C646464"
-                               BackgroundOnDisabled="#0C646464"
-                               BackgroundOnMouseOver="#7F2191C5"
-                               BackgroundOnPressed="#B22191C5" />
+                               AnimationTime="00:00:00.3000000"
+                               Background="#0F2D4E63"
+                               BackgroundOnDisabled="#0F2D4E63"
+                               BackgroundOnMouseOver="#5F2D4E63"
+                               BackgroundOnPressed="#7F2D4E63" />
             </Grid>
         </Border>
 
         <Grid Height="32"
               VerticalAlignment="Bottom">
-            <TextBlock HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="10,0,0,0"
-                       FontSize="20"
-                       Text="FullControls demo project" />
-            <TextBlock HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="244,5,0,0"
-                       Foreground="Gray"
-                       Text="by devpelux" />
             <TextBlock HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Margin="0,5,10,0"

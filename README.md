@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/devpelux/fullcontrols" title="FullControls">
-    <img width="90px" align="center" alt="FullControls" src="https://raw.githubusercontent.com/devpelux/fullcontrols/1.5.1/Assets/FullControlsSimple.svg"></img>
+    <img width="90px" align="center" alt="FullControls" src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.0-rc.1/Assets/FullControlsSimple.svg"></img>
   </a>
 </p>
 <h2 align="center">FullControls</h2>
@@ -23,13 +23,13 @@
   <a href="https://www.nuget.org/packages/FullControls" title="FullControls on NuGet">
     <img alt="Nuget downloads" src="https://img.shields.io/nuget/dt/fullcontrols"></img>
   </a>
-  <a href="https://github.com/devpelux/fullcontrols/blob/1.5.1/LICENSE" title="Licensed under MIT license">
+  <a href="https://github.com/devpelux/fullcontrols/blob/2.0.0-rc.1/LICENSE" title="Licensed under MIT license">
     <img alt="License" src="https://img.shields.io/github/license/devpelux/fullcontrols"></img>
   </a>
 </p>
 <p align="center">
-  <img alt="Code release" src="https://img.shields.io/badge/code:release-v2.0.0-orange"></img>
-  <img alt="Code status" src="https://img.shields.io/badge/code:status-beta-orange"></img>
+  <img alt="Code release" src="https://img.shields.io/badge/code:release-v2.0.0--rc.1-yellowgreen"></img>
+  <img alt="Code status" src="https://img.shields.io/badge/code:status-rc-yellowgreen"></img>
 </p>
 
 <!-- description -->
@@ -267,6 +267,6 @@ Licensed under MIT license.
 
 
 [wiki]: https://github.com/devpelux/fullcontrols/wiki "Documentation"
-[license]: https://github.com/devpelux/fullcontrols/blob/1.5.1/LICENSE "Licensed under MIT license"
+[license]: https://github.com/devpelux/fullcontrols/blob/2.0.0-rc.1/LICENSE "Licensed under MIT license"
 [net5]: https://docs.microsoft.com/dotnet ".NET 5"
 [net6]: https://docs.microsoft.com/dotnet ".NET 6"

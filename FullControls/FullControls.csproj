@@ -5,54 +5,65 @@
     <UseWPF>true</UseWPF>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Authors>Salvatore Peluso</Authors>
-    <Description>Reworked version of the most commonly used controls, plus some new special controls and extra functionality.
+    <Description>
+		Reworked version of the most commonly used controls, plus some new special controls and extra functionality.
+		
+		The fully overview, and examples, can be found here: https://github.com/devpelux/fullcontrols
+		The complete documentation can be found here: https://github.com/devpelux/fullcontrols/wiki
+	</Description>
+    <PackageTags>controls wpf fluent windows11 accordion button passwordbox textbox border menu contextmenu collapsible window</PackageTags>
+    <PackageReleaseNotes>
+		Updated all controls styles to the new Windows 11 fluent design principles.
 
-The fully overview, and examples, can be found here: https://github.com/devpelux/fullcontrols
-The complete documentation can be found here: https://github.com/devpelux/fullcontrols/wiki
+		Added Kaleidoborder, a decorator that works similar to Border, but allows multicolored borders.
 
+		Updated TextBoxPlus and PasswordBoxPlus to use Kaleidoborder instead of Border.
+		Added Foreground and HintForeground variants in PasswordBoxPlus.
+		Removed HintOpacity, PeekForeground, PeekButtonForeground from PasswordBoxPlus.
+		Added ForegroundBrush with his variants in TextBoxPlus to customize the text in all the states.
+		Removed HintOpacity from TextBoxPlus.
 
-&gt;&gt; Controls &lt;&lt;
+		Reworked ComboBoxPlus to use Foreground instead of ForeColor.
+		Added popup and shadow properties to ComboBoxPlus, added drop shadow to the popup of ComboBoxPlus.
+		Added ...OnPressed, ...OnPressedOnChecked, ...OnDisabledOnChecked, and ActualBorderBrush properties to ComboBoxPlus.
+		Removed TextBackground from ComboBoxPlus.
+		Removed all the Adapt...Automatically properties except AdaptCaretBrushAutomatically from ComboBoxPlus, TextBoxPlus, and PasswordBoxPlus.
 
-Accordion
-AvalonWindow
-BorderedGrid
-ButtonPlus
-CheckBoxPlus
-Collapsible
-ComboBoxItemPlus
-ComboBoxPlus
-FlatContextMenu
-FlatMenu
-FlatMenuItem
-FlatMenuSeparator
-FlatMenuSpace
-FlatMenuTitle
-FlexWindow
-FullWindow
-GlassScrollBar
-GlassScrollViewer
-ItemsControlAccordionItem
-PasswordBoxPlus
-RadioButtonPlus
-RepeatButtonPlus
-SimpleAccordionItem
-Switcher
-TextBoxPlus
-ToggleButtonPlus
-WindowTitleBar</Description>
-    <PackageTags>controls csharp net5 net6 wpf fluent accordion button passwordbox textbox scrollviewer menu contextmenu collapsible drawer window</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
+		Added CornerRadius and ShadowDirection property in the menu items and improved the shadow.
+
+		Added properties for the header background, border and corner radius in AccordionItem, renamed HeaderMargin into ContentPadding.
+		Added AnimationStarted and AnimationEnded events in AccordionItem.
+
+		Added missing v-states and relative properties to Switcher and ToggleButtonPlus.
+
+		Added more properties to customize more states of RadioButtonPlus, now the check size can be setted for each state.
+		Added more properties to customize more states of CheckBoxPlus, now the check size can be setted for each state.
+
+		Added repeat button padding properties in GlassScrollBar and GlassScrollViewer.
+		Renamed ...AreaPadding properties into ...Margin in GlassScrollViewer.
+
+		Added a readonly CornerRadius property to AvalonWindow to support correctly the round corners on Windows 11.
+
+		Reimplemented the v-state mechanism with a new VState class and IVState interface, the behaviour remains the same.
+
+		Moved FullControls.Extra and FullControls.Extra.Extensions, with all Tools and extensions, into CoreTools and WpfCoreTools packages.
+		Moved IDialog and DialogWindow into WpfCoreTools package.
+		Removed Brushes and Colors of FullControls.Common.
+
+		Fixed arrow bug in GlassScrollBar causing arrows not displaying at certain situations.
+		Fixed potentials ClassCastException.
+	</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <Copyright>Copyright (C) 2020-2022 devpelux (Salvatore Peluso)</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>Icon.png</PackageIcon>
-    <Version>2.0.0</Version>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Version>2.0.0-rc.1</Version>
     <Nullable>enable</Nullable>
+	<AnalysisLevel>latest</AnalysisLevel>
     <SignAssembly>False</SignAssembly>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <AnalysisLevel>latest</AnalysisLevel>
+    <PackageReadmeFile>NUGET_README.md</PackageReadmeFile>
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -71,7 +82,8 @@ WindowTitleBar</Description>
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.FlatMenuTitle.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.GlassScrollBar.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.GlassScrollViewer.icon.bmp" />
-    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.ItemsControlAccordionItem.icon.bmp" />
+	<EmbeddedResource Include="Resources\Icons\FullControls.Controls.ItemsControlAccordionItem.icon.bmp" />
+    <EmbeddedResource Include="Resources\Icons\FullControls.Controls.Kaleidoborder.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.PasswordBoxPlus.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.RadioButtonPlus.icon.bmp" />
     <EmbeddedResource Include="Resources\Icons\FullControls.Controls.RepeatButtonPlus.icon.bmp" />
@@ -87,7 +99,7 @@ WindowTitleBar</Description>
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="..\README.md">
+    <None Include="..\Assets\NUGET_README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
