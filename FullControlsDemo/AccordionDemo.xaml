@@ -3,10 +3,10 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  MergeTitlebarAndContent="True"
-                 MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
+                 MinimizeButtonStyle="{StaticResource DarkCaptionButton}"
+                 MaximizeButtonStyle="{StaticResource DarkCaptionButton}"
+                 RestoreButtonStyle="{StaticResource DarkCaptionButton}"
+                 CloseButtonStyle="{StaticResource DarkCaptionCloseButton}"
                  Title="Accordion"
                  Icon="/Icons/Icon.ico"
                  ResizeMode="CanMinimize"
@@ -20,14 +20,14 @@
             <DataTemplate x:Key="ShapeItemTemplate">
                 <Grid Height="60">
                     <TextBlock Text="{Binding Name}"
-                               Margin="5"
-                               FontSize="30"
+                               Margin="8"
+                               FontSize="20"
                                Foreground="DimGray"
                                FontWeight="Normal"
                                VerticalAlignment="Top"
                                HorizontalAlignment="Left" />
                     <TextBlock Text="{Binding Details}"
-                               Margin="5"
+                               Margin="8"
                                FontSize="10"
                                Foreground="Gray"
                                FontWeight="Normal"
@@ -35,17 +35,17 @@
                                HorizontalAlignment="Left" />
                 </Grid>
             </DataTemplate>
-            <DataTemplate x:Key="ShapeItemTemplateDark">
+            <DataTemplate x:Key="DarkShapeItemTemplate">
                 <Grid Height="60">
                     <TextBlock Text="{Binding Name}"
-                               Margin="5"
-                               FontSize="30"
+                               Margin="8"
+                               FontSize="20"
                                Foreground="WhiteSmoke"
                                FontWeight="Normal"
                                VerticalAlignment="Top"
                                HorizontalAlignment="Left" />
                     <TextBlock Text="{Binding Details}"
-                               Margin="5"
+                               Margin="8"
                                FontSize="10"
                                Foreground="Gray"
                                FontWeight="Normal"
@@ -61,15 +61,14 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0"
-              Background="White">
+        <Grid Grid.Column="0">
             <fc:GlassScrollViewer Margin="40,60,40,40"
                                   Padding="2,0,2,0">
                 <fc:Accordion x:Name="accordion" />
             </fc:GlassScrollViewer>
         </Grid>
         <Grid Grid.Column="1"
-              Background="Black">
+              Background="{StaticResource DarkWindowPrimaryColor}">
             <fc:GlassScrollViewer Margin="40,60,40,40"
                                   Padding="2,0,2,0">
                 <fc:Accordion x:Name="accordionDark" />

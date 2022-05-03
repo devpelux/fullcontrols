@@ -3,10 +3,10 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  MergeTitlebarAndContent="True"
-                 MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
+                 MinimizeButtonStyle="{StaticResource DarkCaptionButton}"
+                 MaximizeButtonStyle="{StaticResource DarkCaptionButton}"
+                 RestoreButtonStyle="{StaticResource DarkCaptionButton}"
+                 CloseButtonStyle="{StaticResource DarkCaptionCloseButton}"
                  Title="ComboBox"
                  Icon="/Icons/Icon.ico"
                  ResizeMode="CanMinimize"
@@ -18,8 +18,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0"
-              Background="#fbfbfb">
+        <Grid Grid.Column="0">
             <fc:ComboBoxPlus HorizontalAlignment="Center"
                              VerticalAlignment="Top"
                              Margin="0,50,0,0"
@@ -33,14 +32,11 @@
                 <fc:ComboBoxItemPlus Content="Item2" />
                 <fc:ComboBoxItemPlus Content="Item3" />
                 <fc:ComboBoxItemPlus Content="Item4" />
-                <fc:ComboBoxItemPlus Content="Item5" />
-                <fc:ComboBoxItemPlus Content="Item6" />
-                <fc:ComboBoxItemPlus Content="Item7" />
             </fc:ComboBoxPlus>
         </Grid>
         <Grid Grid.Column="1"
-              Background="Black">
-            <fc:ComboBoxPlus Style="{DynamicResource ComboBoxPlusDark}"
+              Background="{StaticResource DarkWindowPrimaryColor}">
+            <fc:ComboBoxPlus Style="{StaticResource DarkComboBoxPlus}"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Top"
                              Margin="0,50,0,0"
@@ -49,20 +45,14 @@
                              MaxDropDownHeight="Infinity"
                              Width="120"
                              Height="30">
-                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}"
+                <fc:ComboBoxItemPlus Style="{StaticResource DarkComboBoxItemPlus}"
                                      Content="Item1" />
-                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}"
+                <fc:ComboBoxItemPlus Style="{StaticResource DarkComboBoxItemPlus}"
                                      Content="Item2" />
-                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}"
+                <fc:ComboBoxItemPlus Style="{StaticResource DarkComboBoxItemPlus}"
                                      Content="Item3" />
-                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}"
+                <fc:ComboBoxItemPlus Style="{StaticResource DarkComboBoxItemPlus}"
                                      Content="Item4" />
-                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}"
-                                     Content="Item5" />
-                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}"
-                                     Content="Item6" />
-                <fc:ComboBoxItemPlus Style="{DynamicResource ComboBoxItemPlusDark}"
-                                     Content="Item7" />
             </fc:ComboBoxPlus>
         </Grid>
     </Grid>

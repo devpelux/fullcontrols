@@ -2,14 +2,13 @@
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
-                 MergeTitlebarAndContent="True"
                  Title="BorderedGrid"
                  Icon="/Icons/Icon.ico"
                  ResizeMode="CanResize"
                  WindowStartupLocation="CenterOwner"
-                 MinHeight="80"
+                 MinHeight="100"
                  MinWidth="270"
-                 Height="250"
+                 Height="280"
                  Width="400">
     <Grid>
         <fc:BorderedGrid Margin="40"

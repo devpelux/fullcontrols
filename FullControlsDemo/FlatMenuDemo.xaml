@@ -3,10 +3,10 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  MergeTitlebarAndContent="True"
-                 MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
+                 MinimizeButtonStyle="{StaticResource DarkCaptionButton}"
+                 MaximizeButtonStyle="{StaticResource DarkCaptionButton}"
+                 RestoreButtonStyle="{StaticResource DarkCaptionButton}"
+                 CloseButtonStyle="{StaticResource DarkCaptionCloseButton}"
                  Title="Menu"
                  Icon="/Icons/Icon.ico"
                  ResizeMode="CanMinimize"
@@ -20,12 +20,10 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0"
-              Background="#f3f3f3">
+        <Grid Grid.Column="0">
             <fc:FlatMenu VerticalAlignment="Top"
                          Margin="0,32,0,0">
                 <fc:FlatMenuItem Header="Commands"
-                                 Background="Transparent"
                                  Margin="10,0,0,0">
                     <fc:FlatMenuItem Header="Close"
                                      InputGestureText="ESC"
@@ -42,12 +40,10 @@
                 </fc:FlatMenuItem>
                 <fc:FlatMenuSeparator Orientation="Vertical" />
                 <fc:FlatMenuItem Header="Reset"
-                                 Background="Transparent"
                                  Click="ResetLight_Click"
                                  ToolTip="Reset all light menus" />
                 <fc:FlatMenuSpace Width="5" />
-                <fc:FlatMenuItem Header="Help"
-                                 Background="Transparent">
+                <fc:FlatMenuItem Header="Help">
                     <fc:FlatMenuItem Header="Github Wiki"
                                      Click="Gwiki_Click" />
                     <fc:FlatMenuItem Header="Info"
@@ -61,7 +57,7 @@
                     Height="70"
                     Width="70"
                     BorderThickness="1"
-                    BorderBrush="{DynamicResource GrayDashed}"
+                    BorderBrush="{StaticResource GrayDashed}"
                     Background="Transparent">
                 <Border.ContextMenu>
                     <fc:FlatContextMenu>
@@ -99,7 +95,7 @@
                     Height="70"
                     Width="70"
                     BorderThickness="1"
-                    BorderBrush="{DynamicResource GrayDashed}"
+                    BorderBrush="{StaticResource GrayDashed}"
                     Background="Transparent">
                 <Border.ContextMenu>
                     <fc:FlatContextMenu>
@@ -162,7 +158,7 @@
                     Height="70"
                     Width="70"
                     BorderThickness="1"
-                    BorderBrush="{DynamicResource GrayDashed}"
+                    BorderBrush="{StaticResource GrayDashed}"
                     Background="Transparent">
                 <Border.ContextMenu>
                     <fc:FlatContextMenu>
@@ -196,44 +192,44 @@
         </Grid>
 
         <Grid Grid.Column="1"
-              Background="Black">
-            <fc:FlatMenu Style="{DynamicResource FlatMenuDark}"
+              Background="{StaticResource DarkWindowPrimaryColor}">
+            <fc:FlatMenu Style="{StaticResource DarkFlatMenu}"
                          VerticalAlignment="Top"
                          Margin="0,32,0,0">
-                <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                  Header="Commands"
                                  Margin="10,0,0,0">
-                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                    <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                      Header="Close"
                                      InputGestureText="ESC"
                                      Click="Close_Click" />
-                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                    <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                      Header="Minimize"
                                      Click="Minimize_Click" />
-                    <fc:FlatMenuSeparator Foreground="DimGray" />
-                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                    <fc:FlatMenuSeparator Style="{StaticResource DarkFlatMenuSeparator}" />
+                    <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                      Header="Duplicate">
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                        <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                          Header="As dialog"
                                          Click="DuplicateAsDialog_Click" />
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                        <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                          Header="As window"
                                          Click="DuplicateAsWindow_Click" />
                     </fc:FlatMenuItem>
                 </fc:FlatMenuItem>
-                <fc:FlatMenuSeparator Orientation="Vertical"
-                                      Foreground="DimGray" />
-                <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                <fc:FlatMenuSeparator Style="{StaticResource DarkFlatMenuSeparator}"
+                                      Orientation="Vertical" />
+                <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                  Header="Reset"
                                  Click="ResetDark_Click"
                                  ToolTip="Reset all dark menus" />
                 <fc:FlatMenuSpace Width="5" />
-                <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                  Header="Help">
-                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                    <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                      Header="Github Wiki"
                                      Click="Gwiki_Click" />
-                    <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                    <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                      Header="Info"
                                      Click="Info_Click" />
                 </fc:FlatMenuItem>
@@ -245,25 +241,25 @@
                     Height="70"
                     Width="70"
                     BorderThickness="1"
-                    BorderBrush="{DynamicResource WhiteSmokeDashed}"
+                    BorderBrush="{StaticResource WhiteSmokeDashed}"
                     Background="Transparent">
                 <Border.ContextMenu>
-                    <fc:FlatContextMenu Style="{DynamicResource FlatContextMenuDark}">
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                    <fc:FlatContextMenu Style="{StaticResource DarkFlatContextMenu}">
+                        <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                          Header="Example Item 1" />
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                        <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                          Header="Example Item 2" />
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                        <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                          Header="Example Item 3">
-                            <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                            <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                              Header="Example SubItem 1" />
-                            <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                            <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                              Header="Example SubItem 2" />
-                            <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                            <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                              Header="Example SubItem 3" />
-                            <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                            <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                              Header="Example SubItem 4" />
-                            <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                            <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                              Header="Example Iconed Item">
                                 <fc:FlatMenuItem.Icon>
                                     <Image Source="/Icons/Heart.png"
@@ -291,53 +287,53 @@
                     Height="70"
                     Width="70"
                     BorderThickness="1"
-                    BorderBrush="{DynamicResource WhiteSmokeDashed}"
+                    BorderBrush="{StaticResource WhiteSmokeDashed}"
                     Background="Transparent">
                 <Border.ContextMenu>
-                    <fc:FlatContextMenu Style="{DynamicResource FlatContextMenuDark}">
+                    <fc:FlatContextMenu Style="{StaticResource DarkFlatContextMenu}">
                         <fc:FlatMenuSpace Height="3" />
-                        <fc:FlatMenuTitle Foreground="Gray"
+                        <fc:FlatMenuTitle Style="{StaticResource DarkFlatMenuTitle}"
                                           Header="Group 1" />
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                        <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                          x:Name="drcm1"
                                          Header="Example Radio Item 1"
                                          IsCheckable="True"
                                          CheckType="Radio"
                                          IsChecked="True"
                                          GroupName="Group1" />
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                        <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                          x:Name="drcm2"
                                          Header="Example Radio Item 2"
                                          IsCheckable="True"
                                          CheckType="Radio"
                                          IsChecked="False"
                                          GroupName="Group1" />
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                        <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                          x:Name="drcm3"
                                          Header="Example Radio Item 3"
                                          IsCheckable="True"
                                          CheckType="Radio"
                                          IsChecked="False"
                                          GroupName="Group1" />
-                        <fc:FlatMenuSeparator Foreground="DimGray" />
+                        <fc:FlatMenuSeparator Style="{StaticResource DarkFlatMenuSeparator}" />
                         <fc:FlatMenuSpace Height="3" />
-                        <fc:FlatMenuTitle Foreground="Gray"
+                        <fc:FlatMenuTitle Style="{StaticResource DarkFlatMenuTitle}"
                                           Header="Group 2" />
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                        <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                          x:Name="drcm4"
                                          Header="Example Radio Item 4"
                                          IsCheckable="True"
                                          CheckType="Radio"
                                          IsChecked="False"
                                          GroupName="Group2" />
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                        <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                          x:Name="drcm5"
                                          Header="Example Radio Item 5"
                                          IsCheckable="True"
                                          CheckType="Radio"
                                          IsChecked="False"
                                          GroupName="Group2" />
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                        <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                          x:Name="drcm6"
                                          Header="Example Radio Item 6"
                                          IsCheckable="True"
@@ -362,26 +358,26 @@
                     Height="70"
                     Width="70"
                     BorderThickness="1"
-                    BorderBrush="{DynamicResource WhiteSmokeDashed}"
+                    BorderBrush="{StaticResource WhiteSmokeDashed}"
                     Background="Transparent">
                 <Border.ContextMenu>
-                    <fc:FlatContextMenu Style="{DynamicResource FlatContextMenuDark}">
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                    <fc:FlatContextMenu Style="{StaticResource DarkFlatContextMenu}">
+                        <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                          x:Name="dccm1"
                                          Header="Example Check Item 1"
                                          IsCheckable="True"
                                          IsChecked="False" />
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                        <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                          x:Name="dccm2"
                                          Header="Example Check Item 2"
                                          IsCheckable="True"
                                          IsChecked="True" />
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                        <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                          x:Name="dccm3"
                                          Header="Example Check Item 3"
                                          IsCheckable="True"
                                          IsChecked="True" />
-                        <fc:FlatMenuItem Style="{DynamicResource FlatMenuItemDark}"
+                        <fc:FlatMenuItem Style="{StaticResource DarkFlatMenuItem}"
                                          x:Name="dccm4"
                                          Header="Example Check Item 4"
                                          IsCheckable="True"

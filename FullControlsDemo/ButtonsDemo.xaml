@@ -3,23 +3,22 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  MergeTitlebarAndContent="True"
-                 MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
+                 MinimizeButtonStyle="{StaticResource DarkCaptionButton}"
+                 MaximizeButtonStyle="{StaticResource DarkCaptionButton}"
+                 RestoreButtonStyle="{StaticResource DarkCaptionButton}"
+                 CloseButtonStyle="{StaticResource DarkCaptionCloseButton}"
                  Title="Buttons"
                  Icon="/Icons/Icon.ico"
                  ResizeMode="CanMinimize"
                  WindowStartupLocation="CenterOwner"
-                 Height="260"
+                 Height="250"
                  Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0"
-              Background="White">
+        <Grid Grid.Column="0">
             <fc:ButtonPlus Content="Button"
                            HorizontalAlignment="Center"
                            Margin="0,50,0,0"
@@ -40,22 +39,22 @@
                                  Width="90" />
         </Grid>
         <Grid Grid.Column="1"
-              Background="Black">
-            <fc:ButtonPlus Style="{DynamicResource ButtonPlusDark}"
+              Background="{StaticResource DarkWindowPrimaryColor}">
+            <fc:ButtonPlus Style="{StaticResource DarkButtonPlus}"
                            Content="Button"
                            HorizontalAlignment="Center"
                            Margin="0,50,0,0"
                            VerticalAlignment="Top"
                            Height="30"
                            Width="90" />
-            <fc:ToggleButtonPlus Style="{DynamicResource ToggleButtonPlusDark}"
+            <fc:ToggleButtonPlus Style="{StaticResource DarkToggleButtonPlus}"
                                  Content="ToggleButton"
                                  HorizontalAlignment="Center"
                                  Margin="0,110,0,0"
                                  VerticalAlignment="Top"
                                  Height="30"
                                  Width="90" />
-            <fc:RepeatButtonPlus Style="{DynamicResource RepeatButtonPlusDark}"
+            <fc:RepeatButtonPlus Style="{StaticResource DarkRepeatButtonPlus}"
                                  Content="RepeatButton"
                                  HorizontalAlignment="Center"
                                  Margin="0,170,0,0"

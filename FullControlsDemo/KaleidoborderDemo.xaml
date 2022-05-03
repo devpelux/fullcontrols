@@ -5,15 +5,12 @@
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  mc:Ignorable="d"
-                 TitlebarBackground="White"
-                 TitlebarBackgroundOnActive="White"
                  Title="Kaleidoborder"
                  Icon="/Icons/Icon.ico"
                  ResizeMode="CanMinimize"
                  WindowStartupLocation="CenterOwner"
                  Height="300"
-                 Width="300"
-                 Background="White">
+                 Width="300">
     <Grid>
         <fc:Kaleidoborder HorizontalAlignment="Left"
                           VerticalAlignment="Top"

@@ -72,8 +72,8 @@ namespace FullControlsDemo
         {
             ItemsControlAccordionItem accordionDarkItem = new()
             {
-                Style = (Style)FindResource("ItemsControlAccordionItemDark"),
-                ItemTemplate = (DataTemplate)FindResource("ShapeItemTemplateDark"),
+                Style = (Style)FindResource("DarkItemsControlAccordionItem"),
+                ItemTemplate = (DataTemplate)FindResource("DarkShapeItemTemplate"),
                 ItemsSource = Clone(shapes),
                 Header = "SHAPES",
                 IsExpanded = false,
@@ -82,8 +82,8 @@ namespace FullControlsDemo
 
             ItemsControlAccordionItem accordionDarkItem2 = new()
             {
-                Style = (Style)FindResource("ItemsControlAccordionItemDark"),
-                ItemTemplate = (DataTemplate)FindResource("ShapeItemTemplateDark"),
+                Style = (Style)FindResource("DarkItemsControlAccordionItem"),
+                ItemTemplate = (DataTemplate)FindResource("DarkShapeItemTemplate"),
                 ItemsSource = Clone(roundShapes),
                 Header = "CIRCULAR SHAPES",
                 IsExpanded = false,

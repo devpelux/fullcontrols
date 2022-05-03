@@ -3,10 +3,10 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  MergeTitlebarAndContent="True"
-                 MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
+                 MinimizeButtonStyle="{StaticResource DarkCaptionButton}"
+                 MaximizeButtonStyle="{StaticResource DarkCaptionButton}"
+                 RestoreButtonStyle="{StaticResource DarkCaptionButton}"
+                 CloseButtonStyle="{StaticResource DarkCaptionCloseButton}"
                  Title="Switcher"
                  Icon="/Icons/Icon.ico"
                  ResizeMode="CanMinimize"
@@ -18,8 +18,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0"
-              Background="White">
+        <Grid Grid.Column="0">
             <fc:Switcher Content="Switcher 1"
                          GroupName="G1"
                          HorizontalAlignment="Center"
@@ -51,8 +50,8 @@
                          Width="90" />
         </Grid>
         <Grid Grid.Column="1"
-              Background="Black">
-            <fc:Switcher Style="{DynamicResource SwitcherDark}"
+              Background="{StaticResource DarkWindowPrimaryColor}">
+            <fc:Switcher Style="{StaticResource DarkSwitcher}"
                          GroupName="G2"
                          Content="Switcher 1"
                          HorizontalAlignment="Center"
@@ -60,7 +59,7 @@
                          VerticalAlignment="Top"
                          Height="30"
                          Width="90" />
-            <fc:Switcher Style="{DynamicResource SwitcherDark}"
+            <fc:Switcher Style="{StaticResource DarkSwitcher}"
                          GroupName="G2"
                          Content="Switcher 2"
                          HorizontalAlignment="Center"
@@ -68,7 +67,7 @@
                          VerticalAlignment="Top"
                          Height="30"
                          Width="90" />
-            <fc:Switcher Style="{DynamicResource SwitcherDark}"
+            <fc:Switcher Style="{StaticResource DarkSwitcher}"
                          GroupName="G2"
                          Content="Switcher 3"
                          HorizontalAlignment="Center"
@@ -77,7 +76,7 @@
                          Height="30"
                          Width="90"
                          IsChecked="True" />
-            <fc:Switcher Style="{DynamicResource SwitcherDark}"
+            <fc:Switcher Style="{StaticResource DarkSwitcher}"
                          GroupName="G2"
                          Content="Switcher 4"
                          HorizontalAlignment="Center"

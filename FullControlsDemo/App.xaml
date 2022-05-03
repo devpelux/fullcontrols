@@ -5,9 +5,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/FullControls;component/Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/FullControls;component/Dark.xaml" />
                 <ResourceDictionary Source="/FullControlsDemo;component/Resources/Brushes.xaml" />
                 <ResourceDictionary Source="/FullControlsDemo;component/Resources/ContextMenus.xaml" />
-                <ResourceDictionary Source="/FullControlsDemo;component/Resources/DarkStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

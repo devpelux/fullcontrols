@@ -7,7 +7,7 @@
                Icon="/Icons/Icon.ico"
                ResizeMode="CanResize"
                WindowStartupLocation="CenterOwner"
-               TitlebarContextMenu="{DynamicResource WindowContextMenu}"
+               TitlebarContextMenu="{StaticResource WindowContextMenu}"
                MinHeight="200"
                MinWidth="300"
                Height="300"

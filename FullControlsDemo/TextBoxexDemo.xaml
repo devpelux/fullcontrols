@@ -3,10 +3,10 @@
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                  xmlns:fc="http://devpelux.github.io/fullcontrols"
                  MergeTitlebarAndContent="True"
-                 MinimizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 MaximizeButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 RestoreButtonStyle="{DynamicResource CaptionButtonStyleDark}"
-                 CloseButtonStyle="{DynamicResource CaptionCloseButtonStyleDark}"
+                 MinimizeButtonStyle="{StaticResource DarkCaptionButton}"
+                 MaximizeButtonStyle="{StaticResource DarkCaptionButton}"
+                 RestoreButtonStyle="{StaticResource DarkCaptionButton}"
+                 CloseButtonStyle="{StaticResource DarkCaptionCloseButton}"
                  Title="TextBoxes"
                  Icon="/Icons/Icon.ico"
                  ResizeMode="CanMinimize"
@@ -18,8 +18,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0"
-              Background="White">
+        <Grid Grid.Column="0">
             <Grid HorizontalAlignment="Center"
                   VerticalAlignment="Top"
                   Margin="0,40,0,0">
@@ -75,7 +74,8 @@
                                         Label="TextBoxPlus DoubleOnly"
                                         LabelMargin="0,0,0,2"
                                         Height="55"
-                                        Width="150" />
+                                        Width="150"
+                                        IsEnabled="False" />
                         <fc:TextBoxPlus HorizontalAlignment="Center"
                                         VerticalAlignment="Top"
                                         Margin="0,120,0,0"
@@ -110,7 +110,7 @@
             </Grid>
         </Grid>
         <Grid Grid.Column="1"
-              Background="Black">
+              Background="{StaticResource DarkWindowPrimaryColor}">
             <Grid HorizontalAlignment="Center"
                   VerticalAlignment="Top"
                   Margin="0,40,0,0">
@@ -124,7 +124,7 @@
                         BorderThickness="1"
                         Margin="0,25,0,0">
                     <Grid Margin="10">
-                        <fc:PasswordBoxPlus Style="{DynamicResource PasswordBoxPlusDark}"
+                        <fc:PasswordBoxPlus Style="{StaticResource DarkPasswordBoxPlus}"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Top"
                                             Margin="0,0,0,0"
@@ -150,7 +150,7 @@
                         BorderThickness="1"
                         Margin="0,25,0,0">
                     <Grid Margin="10">
-                        <fc:TextBoxPlus Style="{DynamicResource TextBoxPlusDark}"
+                        <fc:TextBoxPlus Style="{StaticResource DarkTextBoxPlus}"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Top"
                                         Margin="0,0,0,0"
@@ -161,7 +161,7 @@
                                         LabelMargin="0,0,0,2"
                                         Height="55"
                                         Width="150" />
-                        <fc:TextBoxPlus Style="{DynamicResource TextBoxPlusDark}"
+                        <fc:TextBoxPlus Style="{StaticResource DarkTextBoxPlus}"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Top"
                                         Margin="0,60,0,0"
@@ -171,8 +171,9 @@
                                         Label="TextBoxPlus DoubleOnly"
                                         LabelMargin="0,0,0,2"
                                         Height="55"
-                                        Width="150" />
-                        <fc:TextBoxPlus Style="{DynamicResource TextBoxPlusDark}"
+                                        Width="150"
+                                        IsEnabled="False" />
+                        <fc:TextBoxPlus Style="{StaticResource DarkTextBoxPlus}"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Top"
                                         Margin="0,120,0,0"
@@ -183,7 +184,7 @@
                                         LabelMargin="0,0,0,2"
                                         Height="55"
                                         Width="150" />
-                        <fc:TextBoxPlus Style="{DynamicResource TextBoxPlusDark}"
+                        <fc:TextBoxPlus Style="{StaticResource DarkTextBoxPlus}"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Top"
                                         Margin="0,180,0,0"
@@ -192,7 +193,7 @@
                                         LabelMargin="0,0,0,2"
                                         Height="55"
                                         Width="150" />
-                        <fc:TextBoxPlus Style="{DynamicResource TextBoxPlusDark}"
+                        <fc:TextBoxPlus Style="{StaticResource DarkTextBoxPlus}"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Top"
                                         Margin="0,240,0,0"
