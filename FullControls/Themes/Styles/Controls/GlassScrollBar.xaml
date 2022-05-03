@@ -335,13 +335,13 @@
            BasedOn="{StaticResource {x:Type ScrollBar}}">
 
         <Setter Property="Background"
-                Value="#22000000" />
+                Value="#55808080" />
         <Setter Property="BorderBrush"
                 Value="{x:Null}" />
         <Setter Property="Foreground"
-                Value="LightSlateGray" />
+                Value="#808080" />
         <Setter Property="ForegroundOnDisabled"
-                Value="Gray" />
+                Value="#808080" />
         <Setter Property="ThumbBorderBrush"
                 Value="{x:Null}" />
         <Setter Property="ButtonsBackground"
@@ -349,9 +349,9 @@
         <Setter Property="ButtonsBorderBrush"
                 Value="{x:Null}" />
         <Setter Property="ButtonsForeground"
-                Value="Black" />
+                Value="#808080" />
         <Setter Property="ButtonsForegroundOnDisabled"
-                Value="Black" />
+                Value="#808080" />
         <Setter Property="Padding"
                 Value="0" />
         <Setter Property="CornerRadius"
@@ -361,11 +361,11 @@
         <Setter Property="ThumbBorderThickness"
                 Value="0" />
         <Setter Property="OpacityNormal"
-                Value="0.6" />
-        <Setter Property="OpacityOnMouseOver"
-                Value="0.8" />
-        <Setter Property="OpacityOnMouseDown"
                 Value="0.7" />
+        <Setter Property="OpacityOnMouseOver"
+                Value="0.9" />
+        <Setter Property="OpacityOnMouseDown"
+                Value="0.8" />
         <Setter Property="EnableButtons"
                 Value="True" />
         <Setter Property="ButtonsSize"

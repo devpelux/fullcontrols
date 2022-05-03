@@ -456,7 +456,7 @@
         <Setter Property="PopupBorderBrush"
                 Value="{StaticResource LightMenuBorder}" />
         <Setter Property="ShadowColor"
-                Value="Black" />
+                Value="{StaticResource LightMenuShadow}" />
         <Setter Property="Height"
                 Value="28" />
         <Setter Property="Padding"
@@ -556,7 +556,7 @@
                 <Setter Property="Height"
                         Value="25" />
                 <Setter Property="Background"
-                        Value="{StaticResource WhiteTransparent}" />
+                        Value="{StaticResource LightMenuTopLevelItemBackground}" />
                 <Setter Property="Template"
                         Value="{StaticResource FlatMenuItemTopLevelHeaderTemplateKey}" />
             </Trigger>
@@ -565,7 +565,7 @@
                 <Setter Property="Height"
                         Value="25" />
                 <Setter Property="Background"
-                        Value="{StaticResource WhiteTransparent}" />
+                        Value="{StaticResource LightMenuTopLevelItemBackground}" />
                 <Setter Property="Template"
                         Value="{StaticResource FlatMenuItemTopLevelItemTemplateKey}" />
             </Trigger>

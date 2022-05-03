@@ -132,7 +132,7 @@
         <Setter Property="CheckBrushOnDisabled"
                 Value="{StaticResource LightMenuItemTextDisabled}" />
         <Setter Property="ShadowColor"
-                Value="Black" />
+                Value="{StaticResource LightMenuShadow}" />
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="PopupCornerRadius"

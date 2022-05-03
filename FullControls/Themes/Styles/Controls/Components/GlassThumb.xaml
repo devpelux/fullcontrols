@@ -6,7 +6,7 @@
            BasedOn="{StaticResource {x:Type Thumb}}">
 
         <Setter Property="Background"
-                Value="LightSlateGray" />
+                Value="Transparent" />
         <Setter Property="BorderBrush"
                 Value="{x:Null}" />
         <Setter Property="BorderThickness"

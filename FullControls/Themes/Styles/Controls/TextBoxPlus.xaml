@@ -202,8 +202,20 @@
                                                              VerticalContentAlignment="Stretch"
                                                              HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}"
                                                              VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
+                                                             Visibility="Visible"
                                                              Focusable="False"
                                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    <TextBlock x:Name="PART_ReadonlyContentHost"
+                                               Margin="{TemplateBinding Padding}"
+                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                               TextAlignment="{TemplateBinding TextAlignment}"
+                                               Foreground="{TemplateBinding Foreground}"
+                                               Text="{TemplateBinding Text}"
+                                               Visibility="Hidden"
+                                               Cursor="IBeam"
+                                               IsHitTestVisible="False"
+                                               Focusable="False" />
                                     <TextBlock x:Name="PART_Hint"
                                                Margin="{TemplateBinding Padding}"
                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -237,6 +249,15 @@
                         <Trigger Property="IsHintDisplayed"
                                  Value="True">
                             <Setter TargetName="PART_Hint"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter TargetName="PART_ContentHost"
+                                    Property="Visibility"
+                                    Value="Hidden" />
+                            <Setter TargetName="PART_ReadonlyContentHost"
                                     Property="Visibility"
                                     Value="Visible" />
                         </Trigger>
