@@ -617,7 +617,29 @@ namespace FullControls.Controls
         /// Identifies the <see cref="PopupVerticalOffset"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty PopupVerticalOffsetProperty =
-            DependencyProperty.Register(nameof(PopupVerticalOffset), typeof(double), typeof(ComboBoxPlus));
+            DependencyProperty.Register(nameof(PopupVerticalOffset), typeof(double), typeof(ComboBoxPlus),
+                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateShadowOffsets(d))));
+
+        /// <summary>
+        /// Gets the actual vertical offset of the popup.
+        /// </summary>
+        public double ActualPopupVerticalOffset => (double)GetValue(ActualPopupVerticalOffsetProperty);
+
+        #region ActualPopupVerticalOffsetProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualPopupVerticalOffset"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualPopupVerticalOffsetPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualPopupVerticalOffset), typeof(double), typeof(ComboBoxPlus),
+                new FrameworkPropertyMetadata(default(double)));
+
+        /// <summary>
+        /// Identifies the <see cref="ActualPopupVerticalOffset"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ActualPopupVerticalOffsetProperty = ActualPopupVerticalOffsetPropertyKey.DependencyProperty;
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the horizontal offset of the popup.
@@ -632,7 +654,29 @@ namespace FullControls.Controls
         /// Identifies the <see cref="PopupHorizontalOffset"/> dependency property.
         /// </summary>
         public static readonly DependencyProperty PopupHorizontalOffsetProperty =
-            DependencyProperty.Register(nameof(PopupHorizontalOffset), typeof(double), typeof(ComboBoxPlus));
+            DependencyProperty.Register(nameof(PopupHorizontalOffset), typeof(double), typeof(ComboBoxPlus),
+                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateShadowOffsets(d))));
+
+        /// <summary>
+        /// Gets the actual horizontal offset of the popup.
+        /// </summary>
+        public double ActualPopupHorizontalOffset => (double)GetValue(ActualPopupHorizontalOffsetProperty);
+
+        #region ActualPopupHorizontalOffsetProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ActualPopupHorizontalOffset"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ActualPopupHorizontalOffsetPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ActualPopupHorizontalOffset), typeof(double), typeof(ComboBoxPlus),
+                new FrameworkPropertyMetadata(default(double)));
+
+        /// <summary>
+        /// Identifies the <see cref="ActualPopupHorizontalOffset"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ActualPopupHorizontalOffsetProperty = ActualPopupHorizontalOffsetPropertyKey.DependencyProperty;
+
+        #endregion
 
         /// <summary>
         /// Gets or sets the animation type of the popup.
@@ -650,21 +694,6 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(PopupAnimation), typeof(PopupAnimation), typeof(ComboBoxPlus));
 
         /// <summary>
-        /// Gets or sets a value indicating if the shadow of the popup is enabled.
-        /// </summary>
-        public bool EnablePopupShadow
-        {
-            get => (bool)GetValue(EnablePopupShadowProperty);
-            set => SetValue(EnablePopupShadowProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="EnablePopupShadow"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty EnablePopupShadowProperty =
-            DependencyProperty.Register(nameof(EnablePopupShadow), typeof(bool), typeof(ComboBoxPlus));
-
-        /// <summary>
         /// Gets or sets the style of the scroll viewer used if there are too many items.
         /// </summary>
         public Style ScrollViewerStyle
@@ -678,6 +707,155 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty ScrollViewerStyleProperty =
             DependencyProperty.Register(nameof(ScrollViewerStyle), typeof(Style), typeof(ComboBoxPlus));
+
+        #endregion
+
+        #region Shadow
+
+        /// <summary>
+        /// Gets or sets a value that indicates whether the popup appears with a dropped shadow.
+        /// </summary>
+        public bool HasDropShadow
+        {
+            get => (bool)GetValue(HasDropShadowProperty);
+            set => SetValue(HasDropShadowProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="HasDropShadow"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty HasDropShadowProperty =
+            DependencyProperty.Register(nameof(HasDropShadow), typeof(bool), typeof(ComboBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the color of the menu popup shadow.
+        /// </summary>
+        public Color ShadowColor
+        {
+            get => (Color)GetValue(ShadowColorProperty);
+            set => SetValue(ShadowColorProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ShadowColor"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ShadowColorProperty =
+            DependencyProperty.Register(nameof(ShadowColor), typeof(Color), typeof(ComboBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the opacity of the menu popup shadow.
+        /// </summary>
+        public double ShadowOpacity
+        {
+            get => (double)GetValue(ShadowOpacityProperty);
+            set => SetValue(ShadowOpacityProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ShadowOpacity"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ShadowOpacityProperty =
+            DependencyProperty.Register(nameof(ShadowOpacity), typeof(double), typeof(ComboBoxPlus));
+
+        /// <summary>
+        /// Gets or sets the direction of the shadow.
+        /// </summary>
+        public double ShadowDirection
+        {
+            get => (double)GetValue(ShadowDirectionProperty);
+            set => SetValue(ShadowDirectionProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ShadowDirection"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ShadowDirectionProperty =
+            DependencyProperty.Register(nameof(ShadowDirection), typeof(double), typeof(ComboBoxPlus),
+                new FrameworkPropertyMetadata(315d, new PropertyChangedCallback((d, e) => CalculateShadowOffsets(d))));
+
+        /// <summary>
+        /// Gets or sets the radius of the menu popup shadow.
+        /// </summary>
+        public double ShadowRadius
+        {
+            get => (double)GetValue(ShadowRadiusProperty);
+            set => SetValue(ShadowRadiusProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ShadowRadius"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ShadowRadiusProperty =
+            DependencyProperty.Register(nameof(ShadowRadius), typeof(double), typeof(ComboBoxPlus),
+                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateShadowOffsets(d))));
+
+        /// <summary>
+        /// Gets or sets the depth of the menu popup shadow.
+        /// </summary>
+        public double ShadowDepth
+        {
+            get => (double)GetValue(ShadowDepthProperty);
+            set => SetValue(ShadowDepthProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ShadowDepth"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ShadowDepthProperty =
+            DependencyProperty.Register(nameof(ShadowDepth), typeof(double), typeof(ComboBoxPlus),
+                new FrameworkPropertyMetadata(0d, new PropertyChangedCallback((d, e) => CalculateShadowOffsets(d))));
+
+        #region ShadowSize
+
+        /// <summary>
+        /// Gets the size of the drop shadow.
+        /// <para>This property depends on <see cref="ShadowRadius"/> and <see cref="ShadowDepth"/>.</para>
+        /// </summary>
+        public Thickness ShadowSize => (Thickness)GetValue(ShadowSizeProperty);
+
+        #region ShadowSizeProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="ShadowSize"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey ShadowSizePropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(ShadowSize), typeof(Thickness), typeof(ComboBoxPlus),
+                new FrameworkPropertyMetadata(default(Thickness)));
+
+        /// <summary>
+        /// Identifies the <see cref="ShadowSize"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ShadowSizeProperty = ShadowSizePropertyKey.DependencyProperty;
+
+        #endregion
+
+        /// <summary>
+        /// Calculates the drop shadow offsets.
+        /// </summary>
+        private static void CalculateShadowOffsets(DependencyObject d)
+        {
+            double popupHorizontalOffset = (double)d.GetValue(PopupHorizontalOffsetProperty);
+            double popupVerticalOffset = (double)d.GetValue(PopupVerticalOffsetProperty);
+
+            double direction = (double)d.GetValue(ShadowDirectionProperty);
+            double depth = (double)d.GetValue(ShadowDepthProperty);
+            double radius = (double)d.GetValue(ShadowRadiusProperty) / 2;
+
+            double horizontalOffset = Math.Cos(direction / 180 * Math.PI) * depth;
+            double verticalOffset = Math.Sin(direction / 180 * Math.PI) * depth;
+
+            double top = Math.Ceiling(Math.Max(radius + verticalOffset, 0));
+            double bottom = Math.Ceiling(Math.Max(radius - verticalOffset, 0));
+            double right = Math.Ceiling(Math.Max(radius + horizontalOffset, 0));
+            double left = Math.Ceiling(Math.Max(radius - horizontalOffset, 0));
+
+            d.SetValue(ShadowSizePropertyKey, new Thickness(left, top, right, bottom));
+
+            d.SetValue(ActualPopupHorizontalOffsetPropertyKey, popupHorizontalOffset - left);
+            d.SetValue(ActualPopupVerticalOffsetPropertyKey, popupVerticalOffset - top);
+        }
+
+        #endregion
 
         #endregion
 

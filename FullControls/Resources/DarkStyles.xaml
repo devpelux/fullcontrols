@@ -325,6 +325,8 @@
                 Value="{StaticResource DarkMenuBackground}" />
         <Setter Property="PopupBorderBrush"
                 Value="{StaticResource DarkMenuBorder}" />
+        <Setter Property="ShadowColor"
+                Value="{StaticResource DarkMenuShadow}" />
 
         <Setter Property="TextContextMenu">
             <Setter.Value>

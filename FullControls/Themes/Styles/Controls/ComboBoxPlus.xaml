@@ -3,6 +3,7 @@
                     xmlns:local="clr-namespace:FullControls.Controls">
 
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/FullControls;component/Resources/LightColors.xaml" />
         <ResourceDictionary Source="/FullControls;component/Resources/LightBrushes.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
@@ -77,27 +78,30 @@
                    PopupAnimation="{TemplateBinding PopupAnimation}"
                    IsOpen="{TemplateBinding IsDropDownOpen}"
                    Placement="{TemplateBinding PopupPlacement}"
-                   VerticalOffset="{TemplateBinding PopupVerticalOffset}"
-                   HorizontalOffset="{TemplateBinding PopupHorizontalOffset}"
+                   VerticalOffset="{TemplateBinding ActualPopupVerticalOffset}"
+                   HorizontalOffset="{TemplateBinding ActualPopupHorizontalOffset}"
                    AllowsTransparency="True"
                    Focusable="False">
                 <Grid>
                     <Border x:Name="PART_ShadowBorder"
-                            Margin="1,1,5,5"
+                            Margin="{TemplateBinding ShadowSize}"
                             BorderThickness="1"
                             CornerRadius="{TemplateBinding PopupCornerRadius}"
                             Background="{TemplateBinding PopupBackground}"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            IsHitTestVisible="False"
+                            Focusable="False">
                         <Border.Effect>
                             <DropShadowEffect x:Name="PART_Shadow"
-                                              BlurRadius="5"
-                                              Color="Black"
-                                              Opacity="0.5"
-                                              ShadowDepth="2.5" />
+                                              Direction="{Binding ShadowDirection, RelativeSource={RelativeSource TemplatedParent}}"
+                                              Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"
+                                              Opacity="{Binding ShadowOpacity, RelativeSource={RelativeSource TemplatedParent}}"
+                                              BlurRadius="{Binding ShadowRadius, RelativeSource={RelativeSource TemplatedParent}}"
+                                              ShadowDepth="{Binding ShadowDepth, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Border.Effect>
                     </Border>
                     <Border x:Name="PART_PopupBorder"
-                            Margin="0,0,5,5"
+                            Margin="{TemplateBinding ShadowSize}"
                             Background="{TemplateBinding PopupBackground}"
                             BorderBrush="{TemplateBinding PopupBorderBrush}"
                             BorderThickness="{TemplateBinding PopupBorderThickness}"
@@ -130,7 +134,7 @@
                 <Setter Property="ScrollViewer.CanContentScroll"
                         Value="False" />
             </Trigger>
-            <Trigger Property="EnablePopupShadow"
+            <Trigger Property="HasDropShadow"
                      Value="False">
                 <Setter TargetName="PART_ShadowBorder"
                         Property="Visibility"
@@ -224,27 +228,30 @@
                    PopupAnimation="{TemplateBinding PopupAnimation}"
                    IsOpen="{TemplateBinding IsDropDownOpen}"
                    Placement="{TemplateBinding PopupPlacement}"
-                   VerticalOffset="{TemplateBinding PopupVerticalOffset}"
-                   HorizontalOffset="{TemplateBinding PopupHorizontalOffset}"
+                   VerticalOffset="{TemplateBinding ActualPopupVerticalOffset}"
+                   HorizontalOffset="{TemplateBinding ActualPopupHorizontalOffset}"
                    AllowsTransparency="True"
                    Focusable="False">
                 <Grid>
                     <Border x:Name="PART_ShadowBorder"
-                            Margin="1,1,5,5"
+                            Margin="{TemplateBinding ShadowSize}"
                             BorderThickness="1"
                             CornerRadius="{TemplateBinding PopupCornerRadius}"
                             Background="{TemplateBinding PopupBackground}"
-                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            IsHitTestVisible="False"
+                            Focusable="False">
                         <Border.Effect>
                             <DropShadowEffect x:Name="PART_Shadow"
-                                              BlurRadius="5"
-                                              Color="Black"
-                                              Opacity="0.5"
-                                              ShadowDepth="2.5" />
+                                              Direction="{Binding ShadowDirection, RelativeSource={RelativeSource TemplatedParent}}"
+                                              Color="{Binding ShadowColor, RelativeSource={RelativeSource TemplatedParent}}"
+                                              Opacity="{Binding ShadowOpacity, RelativeSource={RelativeSource TemplatedParent}}"
+                                              BlurRadius="{Binding ShadowRadius, RelativeSource={RelativeSource TemplatedParent}}"
+                                              ShadowDepth="{Binding ShadowDepth, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Border.Effect>
                     </Border>
                     <Border x:Name="PART_PopupBorder"
-                            Margin="0,0,5,5"
+                            Margin="{TemplateBinding ShadowSize}"
                             Background="{TemplateBinding PopupBackground}"
                             BorderBrush="{TemplateBinding PopupBorderBrush}"
                             BorderThickness="{TemplateBinding PopupBorderThickness}"
@@ -277,7 +284,7 @@
                 <Setter Property="ScrollViewer.CanContentScroll"
                         Value="False" />
             </Trigger>
-            <Trigger Property="EnablePopupShadow"
+            <Trigger Property="HasDropShadow"
                      Value="False">
                 <Setter TargetName="PART_ShadowBorder"
                         Property="Visibility"
@@ -353,6 +360,8 @@
                 Value="{StaticResource LightMenuBackground}" />
         <Setter Property="PopupBorderBrush"
                 Value="{StaticResource LightMenuBorder}" />
+        <Setter Property="ShadowColor"
+                Value="{StaticResource LightMenuShadow}" />
         <Setter Property="MinWidth"
                 Value="130" />
         <Setter Property="MinHeight"
@@ -376,7 +385,7 @@
         <Setter Property="Padding"
                 Value="0,0,29,0" />
         <Setter Property="TextPadding"
-                Value="5,2,5,2" />
+                Value="10,2,10,2" />
         <Setter Property="TogglePadding"
                 Value="0,0,10,0" />
         <Setter Property="Arrow"
@@ -399,8 +408,16 @@
                 Value="-7" />
         <Setter Property="PopupHorizontalOffset"
                 Value="0" />
-        <Setter Property="EnablePopupShadow"
-                Value="False" />
+        <Setter Property="HasDropShadow"
+                Value="True" />
+        <Setter Property="ShadowDirection"
+                Value="270" />
+        <Setter Property="ShadowRadius"
+                Value="10" />
+        <Setter Property="ShadowOpacity"
+                Value="0.1" />
+        <Setter Property="ShadowDepth"
+                Value="10" />
         <Setter Property="MaxDropDownHeight"
                 Value="152" />
         <Setter Property="AnimationTime"
@@ -461,8 +478,6 @@
                         Value="False" />
                 <Setter Property="Padding"
                         Value="0,0,29,0" />
-                <Setter Property="TextPadding"
-                        Value="10,2,10,2" />
                 <Setter Property="VerticalContentAlignment"
                         Value="Center" />
                 <Setter Property="HorizontalContentAlignment"
