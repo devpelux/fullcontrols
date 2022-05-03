@@ -4,6 +4,7 @@
                     xmlns:wct="http://devpelux.github.io/wpfcoretools">
 
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/FullControls;component/Resources/LightColors.xaml" />
         <ResourceDictionary Source="/FullControls;component/Resources/LightBrushes.xaml" />
         <ResourceDictionary Source="/FullControls;component/Resources/LightStyles.xaml" />
     </ResourceDictionary.MergedDictionaries>

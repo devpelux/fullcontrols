@@ -4,6 +4,7 @@
                     xmlns:systemcomponents="clr-namespace:FullControls.SystemComponents">
 
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/FullControls;component/Resources/DarkColors.xaml" />
         <ResourceDictionary Source="/FullControls;component/Resources/DarkBrushes.xaml" />
     </ResourceDictionary.MergedDictionaries>
 

@@ -7,8 +7,6 @@
                      Color="#2c2c2c" />
     <SolidColorBrush x:Key="DarkMenuBorder"
                      Color="#3d3d3d" />
-    <SolidColorBrush x:Key="DarkMenuShadow"
-                     Color="#000000" />
     <SolidColorBrush x:Key="DarkMenuTitle"
                      Color="#c0c0c0" />
     <SolidColorBrush x:Key="DarkMenuItemBackground"
@@ -255,8 +253,6 @@
                      Color="#202020" />
     <SolidColorBrush x:Key="DarkWindowSecondaryColor"
                      Color="#272727" />
-    <SolidColorBrush x:Key="DarkWindowShadow"
-                     Color="#000000" />
     <SolidColorBrush x:Key="DarkWindowBorder"
                      Color="#3c3c3c" />
     <SolidColorBrush x:Key="DarkWindowBorderActive"

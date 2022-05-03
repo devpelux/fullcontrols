@@ -7,8 +7,6 @@
                      Color="#f9f9f9" />
     <SolidColorBrush x:Key="LightMenuBorder"
                      Color="#eaeaea" />
-    <SolidColorBrush x:Key="LightMenuShadow"
-                     Color="#000000" />
     <SolidColorBrush x:Key="LightMenuTitle"
                      Color="#737373" />
     <SolidColorBrush x:Key="LightMenuItemBackground"
@@ -255,8 +253,6 @@
                      Color="#f3f3f3" />
     <SolidColorBrush x:Key="LightWindowSecondaryColor"
                      Color="#f9f9f9" />
-    <SolidColorBrush x:Key="LightWindowShadow"
-                     Color="#000000" />
     <SolidColorBrush x:Key="LightWindowBorder"
                      Color="#b7b7b7" />
     <SolidColorBrush x:Key="LightWindowBorderActive"

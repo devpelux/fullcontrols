@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="DarkMenuShadow"
+           A="255"
+           R="0"
+           G="0"
+           B="0" />
+    <Color x:Key="DarkWindowShadow"
+           A="255"
+           R="0"
+           G="0"
+           B="0" />
+
+    <Color x:Key="WhiteTransparent"
+           A="0"
+           R="255"
+           G="255"
+           B="255" />
+    <Color x:Key="BlackTransparent"
+           A="0"
+           R="0"
+           G="0"
+           B="0" />
+
+</ResourceDictionary>

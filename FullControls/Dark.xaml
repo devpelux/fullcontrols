@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/FullControls;component/Resources/DarkColors.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Resources/DarkBrushes.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Resources/DarkStyles.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>
