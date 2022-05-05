@@ -33,19 +33,19 @@ Represents an object with a VState.
 
 ## Enums
 [CheckType](https://github.com/devpelux/fullcontrols/wiki/CheckType-Enum)  
-Check type.
+Specifies the check type of a checkable FlatMenuItem.
 
 [ChildArrangingMode](https://github.com/devpelux/fullcontrols/wiki/CheckType-Enum)  
-Defines the way of arranging a child in a Kaleidoborder.
+Specifies the way of arranging a child in a Kaleidoborder.
 
 [LabelType](https://github.com/devpelux/fullcontrols/wiki/LabelType-Enum)  
-Label type.
+Specifies the label type to use in a text box or password box.
 
 [TextType](https://github.com/devpelux/fullcontrols/wiki/TextType-Enum)  
-Text type.
+Specifies the text type allowed in a TextBoxPlus.
 
 [ToggleType](https://github.com/devpelux/fullcontrols/wiki/ToggleType-Enum)  
-Toggle type.
+Specifies the allowed toggle behaviours in a ToggleButtonPlus.
 
 
 # FullControls.Controls Namespace
