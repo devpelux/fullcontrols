@@ -265,8 +265,8 @@
                                     <Image Source="/Icons/Heart.png"
                                            RenderOptions.BitmapScalingMode="Fant"
                                            SnapsToDevicePixels="True"
-                                           Width="18"
-                                           Height="18" />
+                                           Width="14"
+                                           Height="14" />
                                 </fc:FlatMenuItem.Icon>
                             </fc:FlatMenuItem>
                         </fc:FlatMenuItem>
