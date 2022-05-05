@@ -1,11 +1,11 @@
 This uri maps the following namespaces:
 
 
-## FullControls.Controls.Components Namespace
+# FullControls.Controls.Components Namespace
 _Provides components used from other controls._
 
-### Components included
 
+## Classes
 [GlassRepeatButton](https://github.com/devpelux/fullcontrols/wiki/GlassRepeatButton-Class)  
 Represents a control that raises its Click event repeatedly from the time it is pressed until it is released.
 
