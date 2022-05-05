@@ -1,10 +1,11 @@
-![icon](https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.0-rc.1/Assets/FullControlsSimple.svg)
+![icon](https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.0-rc.2/Assets/IconSimple.png)
 
 
 # FullControls
-Reworked version of the most commonly used controls, plus some new special controls and extra functionality.
+Reworked version of the wpf controls, plus new controls and features.
 
 ![release](https://img.shields.io/github/v/release/devpelux/fullcontrols?sort=semver)
+![snapshot](https://img.shields.io/github/v/release/devpelux/fullcontrols?include_prereleases&label=snapshot&sort=semver)
 ![nuget](https://img.shields.io/nuget/v/fullcontrols)
 ![release_date](https://img.shields.io/github/release-date/devpelux/fullcontrols)
 ![downloads](https://img.shields.io/nuget/dt/fullcontrols)
@@ -26,7 +27,7 @@ Content of the package:
 
 
 ## Controls
-Reworked version of the most commonly used controls:
+Wpf user interface controls:
 
 ### Accordion
 Is a control that contains a stacked list of items.  
@@ -139,7 +140,7 @@ Is possible to add a label (or icon) and display an hint, add a button to copy t
 
 
 ## System components
-Reworked version of the most commonly used system controls:
+System controls and components:
 
 ### AvalonWindow
 Extended version of the classic window with possibility to customize the titlebar, fuse the titlebar with the content of the window, better handling of close, minimize, etc...
@@ -150,14 +151,16 @@ A fully customizable titlebar used in custom windows.
 ---
 
 ### FlexWindow
-Extended version of the classic window with the same features of AvalonWindow, but with support for round angles and custom shadow. (This window can only be minimized, is not resizable or maximizable)
+Extended version of the classic window with the same features of AvalonWindow, but with support for round angles and custom shadow.  
+(This window can only be minimized, is not resizable or maximizable)
 
 ### FullWindow
-Extended version of the classic window with the same features of FlexWindow but resizable. (This uses `AllowsTransparency=True`)
+Extended version of the classic window with the same features of FlexWindow but resizable.  
+(This uses `AllowsTransparency=True`)
 
 
 # License
 Copyright (C) 2020-2022 devpelux (Salvatore Peluso)  
 Licensed under MIT license.
 
-[![mit](https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.0-rc.1/Assets/Mit.png)](https://github.com/devpelux/fullcontrols/blob/2.0.0-rc.1/LICENSE)
+[![mit](https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.0-rc.2/Assets/Mit.png)](https://github.com/devpelux/fullcontrols/blob/2.0.0-rc.2/LICENSE)

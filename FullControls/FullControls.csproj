@@ -6,13 +6,19 @@
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Authors>Salvatore Peluso</Authors>
     <Description>
-		Reworked version of the most commonly used controls, plus some new special controls and extra functionality.
+		Reworked version of the wpf controls, plus new controls and features.
 		
-		The fully overview, and examples, can be found here: https://github.com/devpelux/fullcontrols
-		The complete documentation can be found here: https://github.com/devpelux/fullcontrols/wiki
+		Overview, and examples: https://github.com/devpelux/fullcontrols
+		Documentation: https://github.com/devpelux/fullcontrols/wiki
 	</Description>
     <PackageTags>controls wpf fluent windows11 accordion button passwordbox textbox border menu contextmenu collapsible window</PackageTags>
     <PackageReleaseNotes>
+		2.0.0 - RC2:
+
+		Updated readmes.
+
+		2.0.0 - RC1:
+
 		Updated all controls styles to the new Windows 11 fluent design principles.
 
 		Added Kaleidoborder, a decorator that works similar to Border, but allows multicolored borders.
@@ -58,7 +64,7 @@
     <Copyright>Copyright (C) 2020-2022 devpelux (Salvatore Peluso)</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>Icon.png</PackageIcon>
-    <Version>2.0.0-rc.1</Version>
+    <Version>2.0.0-rc.2</Version>
     <Nullable>enable</Nullable>
 	<AnalysisLevel>latest</AnalysisLevel>
     <SignAssembly>False</SignAssembly>
