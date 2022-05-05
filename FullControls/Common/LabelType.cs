@@ -1,7 +1,7 @@
 ﻿namespace FullControls.Common
 {
     /// <summary>
-    /// Label type.
+    /// Specifies the label type to use in a text box or password box.
     /// </summary>
     public enum LabelType
     {

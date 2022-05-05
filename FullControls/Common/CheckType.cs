@@ -1,17 +1,19 @@
-﻿namespace FullControls.Common
+﻿using FullControls.Controls;
+
+namespace FullControls.Common
 {
     /// <summary>
-    /// Check type.
+    /// Specifies the check type of a checkable <see cref="FlatMenuItem"/>.
     /// </summary>
     public enum CheckType
     {
         /// <summary>
-        /// Normal check.
+        /// Normal checking.
         /// </summary>
         Check,
 
         /// <summary>
-        /// Mutually exclusive check.
+        /// Mutually exclusive checking.
         /// </summary>
         Radio
     }

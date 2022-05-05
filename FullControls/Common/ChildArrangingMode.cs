@@ -3,7 +3,7 @@
 namespace FullControls.Common
 {
     /// <summary>
-    /// Defines the way of arranging a child in a <see cref="Kaleidoborder"/>.
+    /// Specifies the way of arranging a child in a <see cref="Kaleidoborder"/>.
     /// </summary>
     public enum ChildArrangingMode
     {

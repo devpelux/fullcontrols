@@ -1,7 +1,9 @@
-﻿namespace FullControls.Common
+﻿using FullControls.Controls;
+
+namespace FullControls.Common
 {
     /// <summary>
-    /// Text type.
+    /// Specifies the text type allowed in a <see cref="TextBoxPlus"/>.
     /// </summary>
     public enum TextType
     {

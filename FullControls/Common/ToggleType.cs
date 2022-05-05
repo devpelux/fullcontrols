@@ -1,27 +1,29 @@
-﻿namespace FullControls.Common
+﻿using FullControls.Controls;
+
+namespace FullControls.Common
 {
     /// <summary>
-    /// Toggle type.
+    /// Specifies the allowed toggle behaviours in a <see cref="ToggleButtonPlus"/>.
     /// </summary>
     public enum ToggleType
     {
         /// <summary>
-        /// Activate.
+        /// Can activate only.
         /// </summary>
         Activate,
 
         /// <summary>
-        /// Deactivate.
+        /// Can deactivate only.
         /// </summary>
         Deactivate,
 
         /// <summary>
-        /// Activate and deactivate.
+        /// Can activate and deactivate.
         /// </summary>
         Complete,
 
         /// <summary>
-        /// Neither activate or deactivate.
+        /// Cannot neither activate or deactivate.
         /// </summary>
         None
     }
