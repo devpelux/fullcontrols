@@ -1,4 +1,4 @@
-![icon](https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.0/Assets/IconSimple.png)
+![icon](https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/IconSimple.png)
 
 
 # FullControls
@@ -15,7 +15,7 @@ Reworked version of the wpf controls, plus new controls and features.
 # Dependencies
 [![net5](https://img.shields.io/badge/.NET-v5.0-blue)](https://docs.microsoft.com/dotnet)
 [![net6](https://img.shields.io/badge/.NET-v6.0-blue)](https://docs.microsoft.com/dotnet)
-[![wpfcoretools](https://img.shields.io/badge/WpfCoreTools-v1.3.0-blue)](https://www.nuget.org/packages/WpfCoreTools)
+[![wpfcoretools](https://img.shields.io/badge/WpfCoreTools-v1.4.0-blue)](https://www.nuget.org/packages/WpfCoreTools)
 
 
 # Full documentation
@@ -163,4 +163,4 @@ Extended version of the classic window with the same features of FlexWindow but 
 Copyright (C) 2020-2022 devpelux (Salvatore Peluso)  
 Licensed under MIT license.
 
-[![mit](https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.0/Assets/Mit.png)](https://github.com/devpelux/fullcontrols/blob/2.0.0/LICENSE)
+[![mit](https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Mit.png)](https://github.com/devpelux/fullcontrols/blob/2.0.1/LICENSE)
