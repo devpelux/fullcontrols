@@ -19,7 +19,7 @@
         <Setter Property="BorderBrushOnActive"
                 Value="{StaticResource LightWindowBorderActive}" />
         <Setter Property="Background"
-                Value="{StaticResource LightWindowPrimaryColor}" />
+                Value="{StaticResource LightWindowBackground}" />
         <Setter Property="Foreground"
                 Value="{StaticResource LightWindowForeground}" />
         <Setter Property="ForegroundOnActive"

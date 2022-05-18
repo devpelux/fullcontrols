@@ -1,7 +1,7 @@
 <!-- icon -->
 
 <p align="center">
-  <img width="90px" align="center" src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/IconSimple.svg"></img>
+  <img width="90px" align="center" src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/IconSimple.svg"></img>
 </p>
 <h1 align="center">FullControls</h1>
 <p align="center">Reworked version of the wpf controls, plus new controls and features.</p>
@@ -17,7 +17,7 @@
   <img src="https://img.shields.io/github/license/devpelux/fullcontrols"></img>
 </p>
 <p align="center">
-  <img src="https://img.shields.io/badge/code:release-v2.0.1-blue"></img>
+  <img src="https://img.shields.io/badge/code:release-v2.0.2-blue"></img>
   <img src="https://img.shields.io/badge/code:status-stable-blue"></img>
 </p>
 
@@ -59,14 +59,14 @@ This is a control that can be used within an Accordion.
 It can contain everything on its Content property.  
 It has an header and contains a Collapsible, to make the content collapsible by clicking the header.
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/accordion_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/accordion_dark.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/accordion_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/accordion_dark.png"/>
 
 ---
 
 ### BorderedGrid
 Similar to the normal Grid, but this draws a grid with bordered cells.
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/borderedgrid.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/borderedgrid.png"/>
 
 ---
 
@@ -83,9 +83,9 @@ If two switchers are in the same group, only one can be checked.
 ### ToggleButtonPlus
 Extended version of the classic toggle button with more customizations and features.
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/buttonsplus_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/buttonsplus_dark.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/buttonsplus_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/buttonsplus_dark.png"/>
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/switcher_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/switcher_dark.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/switcher_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/switcher_dark.png"/>
 
 ---
 
@@ -95,9 +95,9 @@ Extended version of the classic checkbox with more customizations.
 ### RadioButtonPlus
 Extended version of the classic radiobutton with more customizations.
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/checkboxplus_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/checkboxplus_dark.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/checkboxplus_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/checkboxplus_dark.png"/>
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/radiobuttonplus_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/radiobuttonplus_dark.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/radiobuttonplus_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/radiobuttonplus_dark.png"/>
 
 ---
 
@@ -107,7 +107,7 @@ For example you can specify a Grid as collapsible Child, so the content of this 
 The collapsible works with Width and Height, so expanding means *"go from zero to full size"*, and collapsing means *"go from full size to zero"*.  
 Is possible to collapse only width, only height, or both.
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/collapsible.gif"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/collapsible.gif"/>
 
 ---
 
@@ -117,7 +117,7 @@ Extended version of the classic combobox with more customizations and features.
 ### ComboBoxItemPlus
 Extended version of the classic combobox item with more customizations and features.
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/comboboxplus_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/comboboxplus_dark.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/comboboxplus_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/comboboxplus_dark.png"/>
 
 ---
 
@@ -142,13 +142,13 @@ This is a blank menu item: is made to add a blank space (without any separator l
 ### FlatMenuTitle
 This is an unclickable menu item that works only as SubmenuItem, it can be used to add an item that works as a title for a group of items.
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/flatmenu_light.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/flatmenu_light.png"/>
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/flatmenu_dark.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/flatmenu_dark.png"/>
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/flatmenu_selectable_light.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/flatmenu_selectable_light.png"/>
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/flatmenu_selectable_dark.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/flatmenu_selectable_dark.png"/>
 
 ---
 
@@ -158,9 +158,9 @@ Reworked version of the classic scrollbar adapted to be semi-transparent and col
 ### GlassScrollViewer
 This is a scroll viewer that uses the GlassScrollBars and with some new functionality, as draw the scrollbars inside the scroll viewer.
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/glassscrollviewer.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/glassscrollviewer.png"/>
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/glassscrollbar.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/glassscrollbar.png"/>
 
 ---
 
@@ -168,7 +168,7 @@ This is a scroll viewer that uses the GlassScrollBars and with some new function
 Draws a multicolored border with a background around another element.  
 This is similar to the standard border, but allows multicolored borders.
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/kaleidoborder.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/kaleidoborder.png"/>
 
 ---
 
@@ -181,11 +181,11 @@ It maintains the same security of the original password box.
 Extended version of the standard text box with more features and customizations.  
 Is possible to add a label (or icon) and display an hint, add a button to copy the text, choose if the textbox can contain only number, doubles…
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/textboxplus_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/textboxplus_dark.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/textboxplus_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/textboxplus_dark.png"/>
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/passwordboxplus_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/passwordboxplus_dark.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/passwordboxplus_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/passwordboxplus_dark.png"/>
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/passwordboxplus_peek_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/passwordboxplus_peek_dark.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/passwordboxplus_peek_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/passwordboxplus_peek_dark.png"/>
 
 
 ## System components
@@ -197,7 +197,7 @@ Extended version of the classic window with possibility to customize the titleba
 ### WindowTitleBar
 A fully customizable titlebar used in custom windows.
 
-<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Overview/avalonwindow.png"/>
+<img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Overview/avalonwindow.png"/>
 
 ---
 
@@ -216,4 +216,4 @@ Extended version of the classic window with the same features of FlexWindow but 
 Copyright (C) 2020-2022 devpelux (Salvatore Peluso)  
 Licensed under MIT license.
 
-[![mit](https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.1/Assets/Mit.png)](https://github.com/devpelux/fullcontrols/blob/2.0.1/LICENSE)
+[![mit](https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Mit.png)](https://github.com/devpelux/fullcontrols/blob/2.0.2/LICENSE)

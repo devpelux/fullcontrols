@@ -90,6 +90,8 @@
                 Value="32" />
         <Setter Property="Padding"
                 Value="6,0,6,0" />
+        <Setter Property="Margin"
+                Value="0,2,0,2" />
         <Setter Property="AnimationTime"
                 Value="0" />
         <Setter Property="ExpandingAnimationTime"

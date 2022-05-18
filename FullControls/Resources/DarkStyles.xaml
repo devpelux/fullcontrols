@@ -827,7 +827,7 @@
         <Setter Property="BorderBrushOnActive"
                 Value="{StaticResource DarkWindowBorderActive}" />
         <Setter Property="Background"
-                Value="{StaticResource DarkWindowPrimaryColor}" />
+                Value="{StaticResource DarkWindowBackground}" />
         <Setter Property="Foreground"
                 Value="{StaticResource DarkWindowForeground}" />
         <Setter Property="ForegroundOnActive"
@@ -858,7 +858,7 @@
         <Setter Property="BorderBrushOnActive"
                 Value="{StaticResource DarkWindowBorderActive}" />
         <Setter Property="Background"
-                Value="{StaticResource DarkWindowPrimaryColor}" />
+                Value="{StaticResource DarkWindowBackground}" />
         <Setter Property="Foreground"
                 Value="{StaticResource DarkWindowForeground}" />
         <Setter Property="ForegroundOnActive"
@@ -891,7 +891,7 @@
         <Setter Property="BorderBrushOnActive"
                 Value="{StaticResource DarkWindowBorderActive}" />
         <Setter Property="Background"
-                Value="{StaticResource DarkWindowPrimaryColor}" />
+                Value="{StaticResource DarkWindowBackground}" />
         <Setter Property="Foreground"
                 Value="{StaticResource DarkWindowForeground}" />
         <Setter Property="ForegroundOnActive"

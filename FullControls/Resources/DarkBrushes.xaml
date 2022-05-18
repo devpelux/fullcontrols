@@ -249,12 +249,14 @@
 
     <!-- Windows -->
 
-    <SolidColorBrush x:Key="DarkWindowPrimaryColor"
+    <SolidColorBrush x:Key="DarkWindowBackground"
                      Color="#202020" />
-    <SolidColorBrush x:Key="DarkWindowSecondaryColor"
+    <SolidColorBrush x:Key="DarkWindowSecondaryBackground"
                      Color="#272727" />
     <SolidColorBrush x:Key="DarkWindowBorder"
                      Color="#3c3c3c" />
+    <SolidColorBrush x:Key="DarkWindowSecondaryBorder"
+                     Color="#1d1d1d" />
     <SolidColorBrush x:Key="DarkWindowBorderActive"
                      Color="#3c3c3c" />
     <SolidColorBrush x:Key="DarkWindowForeground"
@@ -272,5 +274,12 @@
                      Color="#00FFFFFF" />
     <SolidColorBrush x:Key="BlackTransparent"
                      Color="#00000000" />
+
+    <!-- Keep for compatibility -->
+    
+    <SolidColorBrush x:Key="DarkWindowPrimaryColor"
+                     Color="#202020" />
+    <SolidColorBrush x:Key="DarkWindowSecondaryColor"
+                     Color="#272727" />
 
 </ResourceDictionary>

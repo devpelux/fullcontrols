@@ -249,12 +249,14 @@
 
     <!-- Windows -->
 
-    <SolidColorBrush x:Key="LightWindowPrimaryColor"
+    <SolidColorBrush x:Key="LightWindowBackground"
                      Color="#f3f3f3" />
-    <SolidColorBrush x:Key="LightWindowSecondaryColor"
+    <SolidColorBrush x:Key="LightWindowSecondaryBackground"
                      Color="#f9f9f9" />
     <SolidColorBrush x:Key="LightWindowBorder"
                      Color="#b7b7b7" />
+    <SolidColorBrush x:Key="LightWindowSecondaryBorder"
+                     Color="#e5e5e5" />
     <SolidColorBrush x:Key="LightWindowBorderActive"
                      Color="#b7b7b7" />
     <SolidColorBrush x:Key="LightWindowForeground"
@@ -272,5 +274,12 @@
                      Color="#00FFFFFF" />
     <SolidColorBrush x:Key="BlackTransparent"
                      Color="#00000000" />
+
+    <!-- Keep for compatibility -->
+    
+    <SolidColorBrush x:Key="LightWindowPrimaryColor"
+                     Color="#f3f3f3" />
+    <SolidColorBrush x:Key="LightWindowSecondaryColor"
+                     Color="#f9f9f9" />
 
 </ResourceDictionary>
