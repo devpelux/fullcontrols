@@ -15,6 +15,7 @@ Documentation: https://github.com/devpelux/fullcontrols/wiki
     <PackageReleaseNotes>
 		Added margins to the accordion items.
 		Added some window brushes.
+		Adjusted menu separator paddings.
 	</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>

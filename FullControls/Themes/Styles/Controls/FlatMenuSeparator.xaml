@@ -16,8 +16,6 @@
                 Value="{x:Null}" />
         <Setter Property="AlignWithOthers"
                 Value="False" />
-        <Setter Property="Padding"
-                Value="5,4,5,4" />
         <Setter Property="BorderThickness"
                 Value="0" />
         <Setter Property="SeparatorCornerRadius"
@@ -54,7 +52,7 @@
                             <Setter Property="Height"
                                     Value="5" />
                             <Setter Property="Padding"
-                                    Value="5,0,5,0" />
+                                    Value="-3,0,-3,0" />
                             <Setter TargetName="Border"
                                     Property="Width"
                                     Value="Auto" />
@@ -64,7 +62,7 @@
                             <Setter Property="Width"
                                     Value="3" />
                             <Setter Property="Padding"
-                                    Value="0,1,0,1" />
+                                    Value="2,2,0,2" />
                             <Setter TargetName="Border"
                                     Property="Height"
                                     Value="Auto" />
