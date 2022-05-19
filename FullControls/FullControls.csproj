@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0-windows; net6.0-windows</TargetFrameworks>
+    <TargetFrameworks>net6.0-windows; net5.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <Authors>Salvatore Peluso</Authors>
+    <Authors>devpelux</Authors>
     <Description>
 Reworked version of the wpf controls, plus new controls and features.
 

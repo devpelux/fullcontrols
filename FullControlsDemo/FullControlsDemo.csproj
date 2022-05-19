@@ -5,16 +5,15 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
 	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-    <Authors>Salvatore Peluso</Authors>
+    <Authors>devpelux</Authors>
     <Description>Demo project of FullControls library.</Description>
     <Copyright>Copyright (C) 2020-2022 devpelux (Salvatore Peluso)</Copyright>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
-	<PackageReleaseNotes>Updated for the new release of FullControls.</PackageReleaseNotes>
     <ApplicationIcon>Icons\Icon.ico</ApplicationIcon>
     <StartupObject>FullControlsDemo.App</StartupObject>
-    <Version>2.0.2</Version>
+    <Version>1.0.0</Version>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Nullable>enable</Nullable>
   </PropertyGroup>

@@ -52,10 +52,6 @@ namespace FullControlsDemo
             new AvalonWindowDemo() { Owner = this }.Show();
         }
 
-        private static string GetVersionCode()
-        {
-            Version? v = Assembly.GetExecutingAssembly().GetName().Version;
-            return v != null ? $"{v.Major}.{v.Minor}.{v.Build}" : "N/A";
-        }
+        private static string GetVersionCode() => FullControls.VersionInfo.VersionCode;
     }
 }
