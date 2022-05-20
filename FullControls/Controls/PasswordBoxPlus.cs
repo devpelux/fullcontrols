@@ -426,7 +426,7 @@ namespace FullControls.Controls
         public static readonly DependencyProperty AdaptCaretBrushAutomaticallyProperty =
             DependencyProperty.Register(nameof(AdaptCaretBrushAutomatically), typeof(bool), typeof(PasswordBoxPlus),
                 new PropertyMetadata(BoolBox.True));
-        
+
         #region Hint
 
         /// <summary>
