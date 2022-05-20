@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using WpfCoreTools;
 
 namespace FullControls.SystemComponents
 {
@@ -547,6 +548,27 @@ namespace FullControls.SystemComponents
 
         #endregion
 
+        /// <summary>
+        /// Gets a value indicating if the window is a dialog.
+        /// </summary>
+        public bool IsDialog => (bool)GetValue(IsDialogProperty);
+
+        #region IsDialogProperty
+
+        /// <summary>
+        /// The <see cref="DependencyPropertyKey"/> for <see cref="IsDialog"/> dependency property.
+        /// </summary>
+        private static readonly DependencyPropertyKey IsDialogPropertyKey =
+            DependencyProperty.RegisterReadOnly(nameof(IsDialog), typeof(bool), typeof(WindowPlus),
+                new PropertyMetadata(BoolBox.False));
+
+        /// <summary>
+        /// Identifies the <see cref="IsDialog"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty IsDialogProperty = IsDialogPropertyKey.DependencyProperty;
+
+        #endregion
+
         #region Preview events
 
         /// <summary>
@@ -866,6 +888,26 @@ namespace FullControls.SystemComponents
         /// <exception cref="InvalidOperationException"/>
         public new virtual bool? ShowDialog() => PerformShowDialog();
 
+        /// <summary>
+        /// Opens the window and returns only when the newly opened window is closed.<br/>
+        /// The window must implement <see cref="IDialog{T}"/> and, then, can return the specified type of result.
+        /// </summary>
+        /// <returns>A <see cref="Nullable{T}"/> value of the specified type as result.</returns>
+        /// <exception cref="InvalidOperationException"/>
+        /// <exception cref="InvalidCastException"/>
+        public virtual T? ShowDialogForResult<T>()
+        {
+            _ = ShowDialog();
+            if (this is IDialog<T> dialog)
+            {
+                return dialog.GetResult();
+            }
+            else
+            {
+                throw new InvalidCastException($"The window must implement {nameof(IDialog<T>)}<{typeof(T)}>.");
+            }
+        }
+
         #region Commands performers
 
         /// <summary>
@@ -922,7 +964,12 @@ namespace FullControls.SystemComponents
         protected bool? PerformShowDialog()
         {
             SetValue(IsHidedPropertyKey, BoolBox.False);
-            return base.ShowDialog();
+
+            SetValue(IsDialogPropertyKey, BoolBox.True);
+            bool? result = base.ShowDialog();
+            SetValue(IsDialogPropertyKey, BoolBox.False);
+
+            return result;
         }
 
         #endregion
