@@ -16,7 +16,7 @@ namespace FullControlsDemo
 
         private void Showdialog_Click(object sender, RoutedEventArgs e)
         {
-            string? res = (string?)new DialogWindow(new CustomMessageWindowDemo() { Owner = this }).Show();
+            string? res = new DialogWindow<string>(new CustomMessageWindowDemo() { Owner = this }).Show();
 
             switch (res)
             {

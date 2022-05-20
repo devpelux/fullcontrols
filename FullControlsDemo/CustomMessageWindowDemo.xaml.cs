@@ -8,7 +8,7 @@ namespace FullControlsDemo
     /// <summary>
     /// Logica di interazione per CustomMessageWindowDemo.xaml
     /// </summary>
-    public partial class CustomMessageWindowDemo : AvalonWindow, IDialog
+    public partial class CustomMessageWindowDemo : AvalonWindow, IDialog<string>
     {
         public const string YES = "CustomMessageWindowDemo.YES";
         public const string NO = "CustomMessageWindowDemo.NO";
@@ -58,6 +58,6 @@ namespace FullControlsDemo
             Close();
         }
 
-        public object? GetResult() => result;
+        public string? GetResult() => result;
     }
 }

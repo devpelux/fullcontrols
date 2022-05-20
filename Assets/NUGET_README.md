@@ -15,7 +15,7 @@ Reworked version of the wpf controls, plus new controls and features.
 # Dependencies
 [![net5](https://img.shields.io/badge/.NET-v5.0-blue)](https://docs.microsoft.com/dotnet)
 [![net6](https://img.shields.io/badge/.NET-v6.0-blue)](https://docs.microsoft.com/dotnet)
-[![wpfcoretools](https://img.shields.io/badge/WpfCoreTools-v1.4.0-blue)](https://www.nuget.org/packages/WpfCoreTools)
+[![wpfcoretools](https://img.shields.io/badge/WpfCoreTools-v1.5.0-blue)](https://www.nuget.org/packages/WpfCoreTools)
 
 
 # Full documentation

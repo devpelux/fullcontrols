@@ -13,16 +13,14 @@ Documentation: https://github.com/devpelux/fullcontrols/wiki
 	</Description>
     <PackageTags>wpf controls customizable fluent-design windows11 theme accordion kaleidoborder window</PackageTags>
     <PackageReleaseNotes>
-		Added margins to the accordion items.
-		Added some window brushes.
-		Adjusted menu separator paddings.
+		Updated WpfCoreTools to 1.5.0.
 	</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <Copyright>Copyright (C) 2020-2022 devpelux (Salvatore Peluso)</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>Icon.png</PackageIcon>
-    <Version>2.0.2</Version>
+    <Version>2.0.3</Version>
     <Nullable>enable</Nullable>
 	<AnalysisLevel>latest</AnalysisLevel>
     <SignAssembly>False</SignAssembly>
@@ -74,7 +72,7 @@ Documentation: https://github.com/devpelux/fullcontrols/wiki
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="WpfCoreTools" Version="1.4.0" />
+    <PackageReference Include="WpfCoreTools" Version="1.5.0" />
   </ItemGroup>
 
 </Project>
