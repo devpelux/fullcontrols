@@ -17,8 +17,8 @@
   <img src="https://img.shields.io/github/license/devpelux/fullcontrols"></img>
 </p>
 <p align="center">
-  <img src="https://img.shields.io/badge/code:release-v2.0.3-blue"></img>
-  <img src="https://img.shields.io/badge/code:status-beta-blue"></img>
+  <img src="https://img.shields.io/badge/code:release-v2.0.3-orange"></img>
+  <img src="https://img.shields.io/badge/code:status-beta-orange"></img>
 </p>
 
 
