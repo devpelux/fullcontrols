@@ -14,6 +14,7 @@ namespace FullControls.Core
     /// </summary>
     internal static class WindowCore
     {
+        internal const int WM_SETCURSOR = 0x20;
         internal const int WM_NCCALCSIZE = 0x83;
         internal const int WM_NCPAINT = 0x85;
         internal const int WM_SYSCOMMAND = 0x0112;
@@ -27,6 +28,8 @@ namespace FullControls.Core
         internal const int SC_MAXIMIZE = 0xF030;
         internal const int SC_MINIMIZE = 0xF020;
         internal const int SC_RESTORE = 0xF120;
+
+        internal const int MAXOWNERSATTACHED = 4;
 
         /// <summary>
         /// Frame thickness based on <see cref="SystemParameters.WindowResizeBorderThickness"/>

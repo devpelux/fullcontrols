@@ -17,6 +17,8 @@ namespace FullControls.SystemComponents
     {
         private bool loaded = false;
         private WindowState previousState = WindowState.Normal;
+        private int dialogCount = 0;
+        private bool handleDialogs = true;
 
         /// <summary>
         /// <see cref="CornerRadius"/> used in Windows 11.
@@ -723,6 +725,7 @@ namespace FullControls.SystemComponents
             base.OnSourceInitialized(e);
             this.AddHook(HandleMinimize);
             this.AddHook(HandleSystemMenu);
+            this.AddHook(HandleDialogWindowsRoutedEvents);
         }
 
         /// <summary>
@@ -964,12 +967,56 @@ namespace FullControls.SystemComponents
         protected bool? PerformShowDialog()
         {
             SetValue(IsHidedPropertyKey, BoolBox.False);
-
             SetValue(IsDialogPropertyKey, BoolBox.True);
+
+            AttachDialogToOwners();
+
             bool? result = base.ShowDialog();
+
+            DetachDialogToOwners();
+
             SetValue(IsDialogPropertyKey, BoolBox.False);
 
             return result;
+        }
+
+        /// <summary>
+        /// Advises the window owners that there is a new dialog opened.
+        /// </summary>
+        private void AttachDialogToOwners()
+        {
+            //Get the owner of this window.
+            WindowPlus? owner = Owner as WindowPlus;
+
+            //Continues until there is a valid owner, until the depth specified.
+            for (int i = 0; i < WindowCore.MAXOWNERSATTACHED && owner != null; i++)
+            {
+                //Increases the number of the dialogs of this owner.
+                owner.dialogCount++;
+
+                //Gets the next owner of the owner.
+                owner = owner.Owner as WindowPlus;
+            }
+        }
+
+        /// <summary>
+        /// Advises the window owners that an opened dialog is now closed.
+        /// </summary>
+        private void DetachDialogToOwners()
+        {
+            //Get the owner of this window.
+            WindowPlus? owner = Owner as WindowPlus;
+
+            //Continues until there is a valid owner, until the depth specified.
+            for (int i = 0; i < WindowCore.MAXOWNERSATTACHED && owner != null; i++)
+            {
+                //Decreases the number of the dialogs of this owner.
+                //Math.Max() just ensures to not cause unexpected glitches.
+                owner.dialogCount = Math.Max(owner.dialogCount - 1, 0);
+
+                //Gets the next owner of the owner.
+                owner = owner.Owner as WindowPlus;
+            }
         }
 
         #endregion
@@ -1097,6 +1144,26 @@ namespace FullControls.SystemComponents
             if ((long)wParam == WindowCore.WP_SYSTEMMENU && (msg == WindowCore.VK_LMENU || msg == WindowCore.VK_RMENU))
             {
                 handled = true;
+            }
+
+            return IntPtr.Zero;
+        }
+
+        /// <summary>
+        /// Captures and releases the mouse when is out of a dialog interface that is owned by this window.
+        /// This is necessary to force triggering mouse enter and mouse leave events on the borders of the window.
+        /// </summary>
+        private IntPtr HandleDialogWindowsRoutedEvents(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (dialogCount > 0 && handleDialogs && (msg == WindowCore.WM_SETCURSOR))
+            {
+                CaptureMouse();
+                ReleaseMouseCapture();
+                handleDialogs = false;
+            }
+            else
+            {
+                handleDialogs = true;
             }
 
             return IntPtr.Zero;
