@@ -1,4 +1,4 @@
-![icon](https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/IconSimple.png)
+![icon](https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.3/Assets/IconSimple.png)
 
 
 # FullControls
@@ -163,4 +163,4 @@ Extended version of the classic window with the same features of FlexWindow but 
 Copyright (C) 2020-2022 devpelux (Salvatore Peluso)  
 Licensed under MIT license.
 
-[![mit](https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.2/Assets/Mit.png)](https://github.com/devpelux/fullcontrols/blob/2.0.2/LICENSE)
+[![mit](https://raw.githubusercontent.com/devpelux/fullcontrols/2.0.3/Assets/Mit.png)](https://github.com/devpelux/fullcontrols/blob/2.0.3/LICENSE)
