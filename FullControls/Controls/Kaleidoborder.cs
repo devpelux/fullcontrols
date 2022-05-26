@@ -276,7 +276,7 @@ namespace FullControls.Controls
         static Kaleidoborder() { }
 
         /// <summary>
-        /// Initializes a new instance of <see cref="AccordionItem"/>.
+        /// Initializes a new instance of <see cref="Kaleidoborder"/>.
         /// </summary>
         public Kaleidoborder() : base() { }
 

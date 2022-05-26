@@ -13,16 +13,14 @@ Documentation: https://github.com/devpelux/fullcontrols/wiki
 	</Description>
     <PackageTags>wpf controls customizable fluent-design windows11 theme accordion kaleidoborder window</PackageTags>
     <PackageReleaseNotes>
-		Added IsDialog property and ShowDialogForResult() method to WindowPlus.
-		Updated WpfCoreTools to 1.5.0.
-		Added a workaround to mitigate a problem causing caption buttons remaining active when moving the mouse outside the window if the window is a dialog.
+		Updated docs and fixed wrong docs.
 	</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/devpelux/fullcontrols</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <Copyright>Copyright (C) 2020-2022 devpelux (Salvatore Peluso)</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>Icon.png</PackageIcon>
-    <Version>2.0.3</Version>
+    <Version>2.0.4</Version>
     <Nullable>enable</Nullable>
 	<AnalysisLevel>latest</AnalysisLevel>
     <SignAssembly>False</SignAssembly>

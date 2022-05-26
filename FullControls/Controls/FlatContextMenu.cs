@@ -59,7 +59,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ShadowOpacity), typeof(double), typeof(FlatContextMenu));
 
         /// <summary>
-        /// Gets or sets the direction of the shadow.
+        /// Gets or sets the direction of the menu popup shadow.
         /// </summary>
         public double ShadowDirection
         {
@@ -109,7 +109,7 @@ namespace FullControls.Controls
         #region ShadowSize
 
         /// <summary>
-        /// Gets the size of the drop shadow.
+        /// Gets the size of the menu popup shadow.
         /// <para>This property depends on <see cref="ShadowRadius"/> and <see cref="ShadowDepth"/>.</para>
         /// </summary>
         public Thickness ShadowSize => (Thickness)GetValue(ShadowSizeProperty);

@@ -274,7 +274,7 @@ namespace FullControls.Controls
         #endregion
 
         /// <summary>
-        /// Gets or sets the forecolor brush when the mouse is over the control.
+        /// Gets or sets the foreground brush when the mouse is over the control.
         /// </summary>
         public Brush ForegroundOnMouseOver
         {
@@ -289,7 +289,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForegroundOnMouseOver), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
-        /// Gets or sets the forecolor brush when the control is checked and the mouse is over the control.
+        /// Gets or sets the foreground brush when the control is checked and the mouse is over the control.
         /// </summary>
         public Brush ForegroundOnMouseOverOnChecked
         {
@@ -304,7 +304,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForegroundOnMouseOverOnChecked), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
-        /// Gets or sets the forecolor brush when the control is pressed.
+        /// Gets or sets the foreground brush when the control is pressed.
         /// </summary>
         public Brush ForegroundOnPressed
         {
@@ -319,7 +319,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForegroundOnPressed), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
-        /// Gets or sets the forecolor brush when the control is checked and is pressed.
+        /// Gets or sets the foreground brush when the control is checked and is pressed.
         /// </summary>
         public Brush ForegroundOnPressedOnChecked
         {
@@ -334,7 +334,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForegroundOnPressedOnChecked), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
-        /// Gets or sets the forecolor brush when the control is checked.
+        /// Gets or sets the foreground brush when the control is checked.
         /// </summary>
         public Brush ForegroundOnChecked
         {
@@ -349,7 +349,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForegroundOnChecked), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
-        /// Gets or sets the forecolor brush when the control is disabled.
+        /// Gets or sets the foreground brush when the control is disabled.
         /// </summary>
         public Brush ForegroundOnDisabled
         {
@@ -364,7 +364,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
-        /// Gets or sets the forecolor brush when the control is checked and is disabled.
+        /// Gets or sets the foreground brush when the control is checked and is disabled.
         /// </summary>
         public Brush ForegroundOnDisabledOnChecked
         {
@@ -379,7 +379,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ForegroundOnDisabledOnChecked), typeof(Brush), typeof(ComboBoxPlus));
 
         /// <summary>
-        /// Gets the actual forecolor brush of the control.
+        /// Gets the actual foreground brush of the control.
         /// </summary>
         public Brush ActualForeground => (Brush)GetValue(ActualForegroundProperty);
 

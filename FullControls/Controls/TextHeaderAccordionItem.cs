@@ -7,7 +7,7 @@ using System.Windows.Media;
 namespace FullControls.Controls
 {
     /// <summary>
-    /// Implements an <see cref="AccordionItem"/> with header and content.
+    /// Implements an <see cref="AccordionItem"/> with a header consisting of an arrow and a formattable content.
     /// </summary>
     public abstract class TextHeaderAccordionItem : AccordionItem
     {
@@ -259,7 +259,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ArrowSize), typeof(double), typeof(TextHeaderAccordionItem));
 
         /// <summary>
-        /// Gets or sets the font of the arrow (if used a character).
+        /// Gets or sets the font of the arrow.
         /// </summary>
         public FontFamily ArrowFont
         {

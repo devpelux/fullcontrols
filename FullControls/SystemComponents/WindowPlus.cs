@@ -597,21 +597,21 @@ namespace FullControls.SystemComponents
         /// <summary>
         /// <para>Occurs when the <see cref="WindowCommands.Minimize"/> command is sended to the window.</para>
         /// <para>It occurs immediately after the user clicks the minimize button,
-        /// allowing to distinguish between clicking the button and close the window via code behind.</para>
+        /// allowing to distinguish between clicking the button and minimize the window via code behind.</para>
         /// </summary>
         public event EventHandler<EventArgs>? MinimizeCommandExecuting;
 
         /// <summary>
         /// <para>Occurs when the <see cref="WindowCommands.Maximize"/> command is sended to the window.</para>
         /// <para>It occurs immediately after the user clicks the maximize button,
-        /// allowing to distinguish between clicking the button and close the window via code behind.</para>
+        /// allowing to distinguish between clicking the button and maximize the window via code behind.</para>
         /// </summary>
         public event EventHandler<EventArgs>? MaximizeCommandExecuting;
 
         /// <summary>
         /// <para>Occurs when the <see cref="WindowCommands.Restore"/> command is sended to the window.</para>
         /// <para>It occurs immediately after the user clicks the restore button,
-        /// allowing to distinguish between clicking the button and close the window via code behind.</para>
+        /// allowing to distinguish between clicking the button and restore the window via code behind.</para>
         /// </summary>
         public event EventHandler<EventArgs>? RestoreCommandExecuting;
 

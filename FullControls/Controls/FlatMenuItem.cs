@@ -1342,19 +1342,19 @@ namespace FullControls.Controls
             .Where((item) => item.IsCheckable && item.CheckType == CheckType.Radio && (item.DataContext == parent.DataContext || item.DataContext != DataContext)) : null;
 
         /// <summary>
-        /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
+        /// Called when <see cref="UIElement.IsEnabled"/> is changed.
         /// </summary>
         /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
         protected virtual void OnEnabledChanged(bool enabledState) => OnVStateChanged(GetCurrentVState());
 
         /// <summary>
-        /// Called when the <see cref="MenuItem.IsSubmenuOpen"/> is changed.
+        /// Called when <see cref="MenuItem.IsSubmenuOpen"/> is changed.
         /// </summary>
         /// <param name="isSubmenuOpen">Actual state of <see cref="MenuItem.IsSubmenuOpen"/>.</param>
         protected virtual void OnSubmenuOpenChanged(bool isSubmenuOpen) => OnVStateChanged(GetCurrentVState());
 
         /// <summary>
-        /// Called when the <see cref="MenuItem.IsHighlighted"/> is changed.
+        /// Called when <see cref="MenuItem.IsHighlighted"/> is changed.
         /// </summary>
         /// <param name="isHighlighted">Actual state of <see cref="MenuItem.IsHighlighted"/>.</param>
         protected virtual void OnHighlightChanged(bool isHighlighted) => OnVStateChanged(GetCurrentVState());
