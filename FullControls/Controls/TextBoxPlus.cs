@@ -1,5 +1,4 @@
-﻿using CoreTools.Extensions;
-using FullControls.Common;
+﻿using FullControls.Common;
 using FullControls.Core;
 using System;
 using System.ComponentModel;
