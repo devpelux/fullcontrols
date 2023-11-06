@@ -253,6 +253,8 @@
                      Color="#f3f3f3" />
     <SolidColorBrush x:Key="LightWindowSecondaryBackground"
                      Color="#f9f9f9" />
+    <SolidColorBrush x:Key="LightWindowTertiaryBackground"
+                     Color="#eeeeee" />
     <SolidColorBrush x:Key="LightWindowBorder"
                      Color="#b7b7b7" />
     <SolidColorBrush x:Key="LightWindowSecondaryBorder"

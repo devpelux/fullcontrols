@@ -38,6 +38,34 @@
                 Value="{StaticResource DarkButtonTextDisabled}" />
     </Style>
 
+    <Style x:Key="DarkButtonPlusActive"
+           TargetType="{x:Type controls:ButtonPlus}">
+        <Setter Property="Background"
+                Value="{StaticResource DarkButtonBackgroundChecked}" />
+        <Setter Property="BackgroundOnMouseOver"
+                Value="{StaticResource DarkButtonBackgroundCheckedHover}" />
+        <Setter Property="BackgroundOnPressed"
+                Value="{StaticResource DarkButtonBackgroundCheckedClicked}" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="{StaticResource DarkButtonBackgroundCheckedDisabled}" />
+        <Setter Property="BorderBrush"
+                Value="{StaticResource DarkButtonBorderChecked}" />
+        <Setter Property="BorderBrushOnMouseOver"
+                Value="{StaticResource DarkButtonBorderCheckedHover}" />
+        <Setter Property="BorderBrushOnPressed"
+                Value="{StaticResource DarkButtonBorderCheckedClicked}" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="{StaticResource DarkButtonBorderCheckedDisabled}" />
+        <Setter Property="Foreground"
+                Value="{StaticResource DarkButtonTextChecked}" />
+        <Setter Property="ForegroundOnMouseOver"
+                Value="{StaticResource DarkButtonTextCheckedHover}" />
+        <Setter Property="ForegroundOnPressed"
+                Value="{StaticResource DarkButtonTextCheckedClicked}" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="{StaticResource DarkButtonTextCheckedDisabled}" />
+    </Style>
+
     <Style x:Key="DarkCheckBoxPlus"
            TargetType="{x:Type controls:CheckBoxPlus}">
         <Setter Property="Background"

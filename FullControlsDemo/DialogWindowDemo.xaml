@@ -6,10 +6,10 @@
                  Icon="/Icons/Icon.ico"
                  ResizeMode="CanMinimize"
                  WindowStartupLocation="CenterOwner"
-                 Height="210"
+                 Height="270"
                  Width="340">
     <Grid>
-        <TextBlock Text="Click the button to show a custom demo message box."
+        <TextBlock Text="Click a button to show a custom demo message box."
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"
                    Margin="0,25,0,0" />
@@ -17,14 +17,31 @@
                        Content="Show Dialog"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Top"
-                       Margin="0,70,0,0"
+                       Margin="0,60,0,0"
                        Height="30"
                        Width="100"
                        Click="Showdialog_Click" />
+        <fc:ButtonPlus x:Name="showmessage"
+                       Content="Show Message"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Margin="0,100,0,0"
+                       Height="30"
+                       Width="100"
+                       Click="Showmessage_Click" />
+        <fc:ButtonPlus x:Name="showmessagedark"
+                       Content="Show Message (Dark)"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Margin="0,140,0,0"
+                       Height="30"
+                       Width="140"
+                       Click="Showmessagedark_Click" />
         <TextBlock x:Name="result"
                    Text=""
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"
-                   Margin="0,130,0,0" />
+                   Margin="0,200,0,0"
+                   MouseDown="Result_MouseDown" />
     </Grid>
 </fc:AvalonWindow>

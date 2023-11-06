@@ -1,0 +1,72 @@
+﻿<sc:AvalonWindow x:Class="FullControls.Windows.MessageWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:sc="clr-namespace:FullControls.SystemComponents"
+                 xmlns:c="clr-namespace:FullControls.Controls"
+                 mc:Ignorable="d"
+                 WindowStartupLocation="CenterOwner"
+                 ResizeMode="NoResize"
+                 TitleMargin="16,0,0,0"
+                 SizeToContent="Height"
+                 Width="270">
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="BackgroundLayer"
+              Grid.Row="1"
+              Grid.Column="0"
+              Grid.ColumnSpan="2"
+              Background="{StaticResource LightWindowTertiaryBackground}" />
+        <TextBlock x:Name="Image"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="24,24,8,0"
+                   Height="32"
+                   Width="32"
+                   FontSize="32"
+                   FontFamily="Segoe MDL2 Assets"
+                   Text="&#xE946;"
+                   UseLayoutRounding="True"
+                   SnapsToDevicePixels="True"/>
+        <TextBlock x:Name="Message"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Margin="24"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap"
+                   Text="Do not go gentle into that good night... old age should burn and rave at close of day... rage, rage against the dying of the light." />
+        <Grid Grid.Row="1"
+              Grid.Column="1"
+              HorizontalAlignment="Right"
+              Margin="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <c:ButtonPlus x:Name="Negative"
+                          Grid.Column="0"
+                          Margin="12"
+                          Height="36"
+                          Width="64"
+                          Content="NO" />
+            <c:ButtonPlus x:Name="Positive"
+                          Grid.Column="1"
+                          Style="{StaticResource LightButtonPlusActive}"
+                          BorderThickness="0"
+                          Margin="12"
+                          Height="36"
+                          Width="64"
+                          Content="YES" />
+        </Grid>
+    </Grid>
+</sc:AvalonWindow>

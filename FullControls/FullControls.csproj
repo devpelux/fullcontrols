@@ -5,24 +5,19 @@
     <UseWPF>true</UseWPF>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Authors>devpelux</Authors>
-    <Description>
-Reworked version of the wpf controls, plus new controls and features.
+    <Description>Reworked version of the wpf controls, plus new controls and features.
 
 Readme and examples: https://github.com/devpelux/fullcontrols
-Documentation: https://github.com/devpelux/fullcontrols/wiki
-	</Description>
+Documentation: https://github.com/devpelux/fullcontrols/wiki</Description>
     <PackageTags>wpf controls customizable fluent-design windows11 theme accordion kaleidoborder window</PackageTags>
-    <PackageReleaseNotes>
-		Added support for .NET 7.0.
-		Dropped support for .NET 5.0.
-		Updated dependencies.
-	</PackageReleaseNotes>
+    <PackageReleaseNotes>Added message window.
+Fixed corner radius in maximized avalon window.</PackageReleaseNotes>
     <PackageProjectUrl>https://www.nuget.org/packages/FullControls</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
     <Copyright>Copyright (C) 2020-2023 devpelux (Salvatore Peluso)</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>Icon.png</PackageIcon>
-    <Version>2.1.0</Version>
+    <Version>2.2.0</Version>
     <Nullable>enable</Nullable>
 	<AnalysisLevel>latest</AnalysisLevel>
     <SignAssembly>False</SignAssembly>

@@ -38,6 +38,34 @@
                 Value="{StaticResource LightButtonTextDisabled}" />
     </Style>
 
+    <Style x:Key="LightButtonPlusActive"
+           TargetType="{x:Type controls:ButtonPlus}">
+        <Setter Property="Background"
+                Value="{StaticResource LightButtonBackgroundChecked}" />
+        <Setter Property="BackgroundOnMouseOver"
+                Value="{StaticResource LightButtonBackgroundCheckedHover}" />
+        <Setter Property="BackgroundOnPressed"
+                Value="{StaticResource LightButtonBackgroundCheckedClicked}" />
+        <Setter Property="BackgroundOnDisabled"
+                Value="{StaticResource LightButtonBackgroundCheckedDisabled}" />
+        <Setter Property="BorderBrush"
+                Value="{StaticResource LightButtonBorderChecked}" />
+        <Setter Property="BorderBrushOnMouseOver"
+                Value="{StaticResource LightButtonBorderCheckedHover}" />
+        <Setter Property="BorderBrushOnPressed"
+                Value="{StaticResource LightButtonBorderCheckedClicked}" />
+        <Setter Property="BorderBrushOnDisabled"
+                Value="{StaticResource LightButtonBorderCheckedDisabled}" />
+        <Setter Property="Foreground"
+                Value="{StaticResource LightButtonTextChecked}" />
+        <Setter Property="ForegroundOnMouseOver"
+                Value="{StaticResource LightButtonTextCheckedHover}" />
+        <Setter Property="ForegroundOnPressed"
+                Value="{StaticResource LightButtonTextCheckedClicked}" />
+        <Setter Property="ForegroundOnDisabled"
+                Value="{StaticResource LightButtonTextCheckedDisabled}" />
+    </Style>
+
     <Style x:Key="LightCheckBoxPlus"
            TargetType="{x:Type controls:CheckBoxPlus}">
         <Setter Property="Background"
