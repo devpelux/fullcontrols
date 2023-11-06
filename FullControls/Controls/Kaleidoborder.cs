@@ -5,7 +5,6 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using WpfCoreTools.Extensions;
 
 namespace FullControls.Controls
 {
@@ -27,11 +26,6 @@ namespace FullControls.Controls
         private Thickness ScaledBorder2Thickness;
         private Thickness ScaledBorder3Thickness;
         private Thickness ScaledMaxBorderThickness;
-
-        /// <summary>
-        /// Thickness used to slightly overlap the background to fix the wpf corners issue. (This is an uniform thickness of 0.5)
-        /// </summary>
-        private static readonly Thickness FIX_THICKNESS = new(0.5);
 
         /// <summary>
         /// Gets or sets the background brush used to fill the area within the borders.
@@ -311,30 +305,29 @@ namespace FullControls.Controls
             }
 
             //Basic size without any child (the size of the "decoration" parts: border and padding).
-            Size border = ScaledMaxBorderThickness.Collapse();
-            Size padding = Padding.Collapse();
-            Size decorSize = border.Add(padding);
+            Thickness border = ScaledMaxBorderThickness;
+            Thickness padding = Padding;
+            double width = border.Left + padding.Left + border.Right + padding.Right;
+            double height = border.Top + padding.Top + border.Bottom + padding.Bottom;
 
             //If there is a child, then add the size of the child inside the decorator.
             UIElement child = Child;
             if (child != null)
             {
                 //Calculates the available size for the child by removing the decoration size.
-                Size internalSpace = constraint.Subtract(decorSize);
+                Size internalSpace = new(Math.Max(0.0, constraint.Width - width), Math.Max(0.0, constraint.Height - height));
 
                 //Calculates the child's desired size basing on the internal available space.
                 child.Measure(internalSpace);
                 Size childSize = child.DesiredSize;
 
                 //Adapts Kaleidoborder to the child's desired size.
-                decorSize.Add(childSize);
+                width += childSize.Width;
+                height += childSize.Height;
             }
 
-            //Fixes the final size to not exceed the constraint size.
-            decorSize.Width = Math.Min(decorSize.Width, constraint.Width);
-            decorSize.Height = Math.Min(decorSize.Height, constraint.Height);
-
-            return decorSize;
+            //Fixes and return the final size, that will not exceed the constraint size.
+            return new Size(Math.Min(width, constraint.Width), Math.Min(height, constraint.Height));
         }
 
         /// <summary>
@@ -352,27 +345,31 @@ namespace FullControls.Controls
             Child?.Arrange(CalculateChildRect(externalRect));
 
             //Generates the geometries of the borders and the background if there is space to draw.
-            if (externalRect.HasArea())
+            if (externalRect.Width > 0 && externalRect.Height > 0)
             {
-                //Calculates the internal rects of the 4 borders by deflating the external rect.
-                Rect internal0Rect = externalRect.Clone();
-                Rect internal1Rect = externalRect.Clone();
-                Rect internal2Rect = externalRect.Clone();
-                Rect internal3Rect = externalRect.Clone();
+                //Calculates the sizes of the internal rects of the 4 borders by deflating the external rect.
+                double w0 = Math.Max(0.0, externalRect.Width - ScaledBorder0Thickness.Left - ScaledBorder0Thickness.Right);
+                double w1 = Math.Max(0.0, externalRect.Width - ScaledBorder1Thickness.Left - ScaledBorder1Thickness.Right);
+                double w2 = Math.Max(0.0, externalRect.Width - ScaledBorder2Thickness.Left - ScaledBorder2Thickness.Right);
+                double w3 = Math.Max(0.0, externalRect.Width - ScaledBorder3Thickness.Left - ScaledBorder3Thickness.Right);
+                double h0 = Math.Max(0.0, externalRect.Height - ScaledBorder0Thickness.Top - ScaledBorder0Thickness.Bottom);
+                double h1 = Math.Max(0.0, externalRect.Height - ScaledBorder1Thickness.Top - ScaledBorder1Thickness.Bottom);
+                double h2 = Math.Max(0.0, externalRect.Height - ScaledBorder2Thickness.Top - ScaledBorder2Thickness.Bottom);
+                double h3 = Math.Max(0.0, externalRect.Height - ScaledBorder3Thickness.Top - ScaledBorder3Thickness.Bottom);
 
-                //Deflates the rects with the border thicknesses.
-                internal0Rect.Inflate(ScaledBorder0Thickness.Invert());
-                internal1Rect.Inflate(ScaledBorder1Thickness.Invert());
-                internal2Rect.Inflate(ScaledBorder2Thickness.Invert());
-                internal3Rect.Inflate(ScaledBorder3Thickness.Invert());
+                Rect internal0Rect = w0 > 0 && h0 > 0 ? new(ScaledBorder0Thickness.Left, ScaledBorder0Thickness.Top, w0, h0) : new(0, 0, 0, 0);
+                Rect internal1Rect = w1 > 0 && h1 > 0 ? new(ScaledBorder1Thickness.Left, ScaledBorder1Thickness.Top, w1, h1) : new(0, 0, 0, 0);
+                Rect internal2Rect = w2 > 0 && h2 > 0 ? new(ScaledBorder2Thickness.Left, ScaledBorder2Thickness.Top, w2, h2) : new(0, 0, 0, 0);
+                Rect internal3Rect = w3 > 0 && h3 > 0 ? new(ScaledBorder3Thickness.Left, ScaledBorder3Thickness.Top, w3, h3) : new(0, 0, 0, 0);
 
                 //The background rect is the minimum rect, then, eventually, will be overlapped by other borders.
-                Rect backgroundRect = internal0Rect.Clone();
+                Rect backgroundRect = new(internal0Rect.X, internal0Rect.Y, internal0Rect.Width, internal0Rect.Height);
 
                 //Inflates the backgroundRect with an uniform thickness to fix the wpf corners issue.
-                if (AllowBackgroundOverlapping && backgroundRect.HasArea())
+                if (AllowBackgroundOverlapping && backgroundRect.Width > 0 && backgroundRect.Height > 0)
                 {
-                    backgroundRect.Inflate(FIX_THICKNESS);
+                    //Slightly overlap the background to fix the wpf corners issue.
+                    backgroundRect.Inflate(0.25, 0.25);
                     backgroundRect.Intersect(externalRect);
                 }
 
@@ -474,24 +471,31 @@ namespace FullControls.Controls
         /// </summary>
         private Rect CalculateChildRect(Rect maxChildSpace)
         {
-            //Calculates the child's available space.
-            Rect childRect = maxChildSpace.Clone();
+            //Gets the border size and the padding.
+            Thickness border = ChildArrangingMode == ChildArrangingMode.MinimumSpace ? ScaledMaxBorderThickness : ScaledBorder0Thickness;
+            Thickness padding = Padding;
 
-            //Inflates childRect basing on the requested arranging way.
-            switch (ChildArrangingMode)
+            //Calculates the decoration margins (padding + border).
+            double decorLeft = border.Left + padding.Left;
+            double decorTop = border.Top + padding.Top;
+            double decorRight = border.Right + padding.Right;
+            double decorBottom = border.Bottom + padding.Bottom;
+
+            //Calculates the child height and width by removing the decoration margins.
+            double childWidth = maxChildSpace.Width - decorLeft - decorRight;
+            double childHeight = maxChildSpace.Height - decorTop - decorBottom;
+
+            //If the child has area, returns the child rect, otherwise returns an empty rect.
+            if (childWidth > 0 && childHeight > 0)
             {
-                case ChildArrangingMode.MinimumSpace:
-                    //For the minimum space, the space will be the space remaining considering all the borders and the padding.
-                    childRect.Inflate(ScaledMaxBorderThickness.Add(Padding).Invert());
-                    break;
-                case ChildArrangingMode.MainBorderSpace:
-                    //For the minimum space, the space will be the background space of the main border minus the padding.
-                    childRect.Inflate(ScaledBorder0Thickness.Add(Padding).Invert());
-                    break;
+                double childX = Math.Max(0.0, maxChildSpace.X - decorLeft);
+                double childY = Math.Max(0.0, maxChildSpace.Y - decorTop);
+                return new Rect(childX, childY, childWidth, childHeight);
             }
-
-            //If the child rect is empty, then create a zero-area rect to avoid errors arranging the child.
-            return childRect.IsEmpty ? new Rect(0, 0, 0, 0) : childRect;
+            else
+            {
+                return new Rect(0, 0, 0, 0);
+            }
         }
 
         /// <summary>
@@ -532,7 +536,7 @@ namespace FullControls.Controls
         /// <summary>
         /// Handles the parameters to draw a rectangle with round corners.
         /// </summary>
-        internal struct Radii : IEquatable<Radii>
+        internal readonly struct Radii : IEquatable<Radii>
         {
             /*
                           TopLeft      TopRight
@@ -549,7 +553,7 @@ namespace FullControls.Controls
             /// <summary>
             /// Empty <see cref="Radii"/> with no area.
             /// </summary>
-            public static Radii Empty { get; }
+            public static Radii Empty { get; } = new Radii();
 
             #region Properties
 
@@ -601,7 +605,6 @@ namespace FullControls.Controls
                 BottomLeftRadii = new Size(bottomLeftRadiiWidth, bottomLeftRadiiHeight);
 
                 //Calculates the angle points.
-
                 LeftTop = new Point(rect.Left, rect.Top + TopLeftRadii.Height);
                 TopLeft = new Point(rect.Left + TopLeftRadii.Width, rect.Top);
 
@@ -615,8 +618,7 @@ namespace FullControls.Controls
                 BottomLeft = new Point(rect.Left + BottomLeftRadii.Width, rect.Bottom);
 
                 //Remembers if the rect has area or not.
-
-                HasArea = rect.HasArea();
+                HasArea = rect.Width > 0 && rect.Height > 0;
             }
 
             /// <summary>

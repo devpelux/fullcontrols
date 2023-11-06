@@ -9,7 +9,6 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Shell;
-using WpfCoreTools.Extensions;
 
 namespace FullControls.Core.Services
 {
@@ -134,9 +133,10 @@ namespace FullControls.Core.Services
 
                             Size frameSize = new(NativeMethods.GetSystemMetrics(SM.CXSIZEFRAME), NativeMethods.GetSystemMetrics(SM.CYSIZEFRAME));
 
-                            // this adjustment is needed only since .NET 4.5 
-                            Size paddedBorder = SizeExtensions.UniformSize(NativeMethods.GetSystemMetrics(SM.CXPADDEDBORDER));
-                            frameSize = frameSize.Add(paddedBorder);
+                            //This adjustment is needed only since .NET 4.5.
+                            int cxPaddedBorder = NativeMethods.GetSystemMetrics(SM.CXPADDEDBORDER);
+                            Size paddedBorder = new(cxPaddedBorder, cxPaddedBorder);
+                            frameSize = new(frameSize.Width + paddedBorder.Width, frameSize.Height + paddedBorder.Height);
 
                             Size frameSizeInDips = DpiHelper.DeviceSizeToLogical(frameSize, dpix, dpiy);
 

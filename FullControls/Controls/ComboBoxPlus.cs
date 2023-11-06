@@ -5,7 +5,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
-using WpfCoreTools.Extensions;
 
 namespace FullControls.Controls
 {
@@ -1053,7 +1052,9 @@ namespace FullControls.Controls
         {
             if (actualBackground is SolidColorBrush brush)
             {
-                SolidColorBrush inverseBrush = new(brush.Color.Invert());
+                Color color = brush.Color;
+                Color inverseColor = Color.FromRgb((byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
+                SolidColorBrush inverseBrush = new(inverseColor);
                 if (AdaptCaretBrushAutomatically) CaretBrush = inverseBrush;
             }
         }

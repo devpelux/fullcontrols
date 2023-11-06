@@ -4,7 +4,6 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Shell;
-using WpfCoreTools.Extensions;
 
 namespace FullControls.Core
 {
@@ -130,7 +129,16 @@ namespace FullControls.Core
         /// <param name="windowState"><see cref="WindowState"/>.</param>
         /// <returns>Outside margin thickness.</returns>
         internal static Thickness CalcAvalonWindowOutsideMargin(WindowState windowState)
-            => windowState == WindowState.Maximized ? SysParams.WindowResizeBorderThickness.Add(SysParams.WindowFrameThickness)
-                                                    : SysParams.WindowFrameThickness;
+        {
+            Thickness frame = SysParams.WindowFrameThickness;
+            if (windowState == WindowState.Maximized)
+            {
+                //If the window is maximized, adds the resize border thickness.
+                Thickness rb = SysParams.WindowResizeBorderThickness;
+                frame = new(rb.Left + frame.Left, rb.Top + frame.Top, rb.Right + frame.Right, rb.Bottom + frame.Bottom);
+            }
+
+            return frame;
+        }
     }
 }

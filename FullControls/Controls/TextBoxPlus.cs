@@ -6,7 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using WpfCoreTools.Extensions;
 
 namespace FullControls.Controls
 {
@@ -514,8 +513,8 @@ namespace FullControls.Controls
         /// </summary>
         private static LabelType CurrentLabelType(DependencyObject d)
         {
-            bool label = d.IsNotNull(LabelProperty);
-            bool icon = d.IsNotNull(IconProperty);
+            bool label = d.GetValue(LabelProperty) != null;
+            bool icon = d.GetValue(IconProperty) != null;
 
             //Visualization predominance: Label -> Icon -> Nothing
             return label ? LabelType.Content : icon ? LabelType.Icon : LabelType.Undefined;
@@ -1007,7 +1006,9 @@ namespace FullControls.Controls
         {
             if (actualBackground is SolidColorBrush brush)
             {
-                SolidColorBrush inverseBrush = new(brush.Color.Invert());
+                Color color = brush.Color;
+                Color inverseColor = Color.FromRgb((byte)(255 - color.R), (byte)(255 - color.G), (byte)(255 - color.B));
+                SolidColorBrush inverseBrush = new(inverseColor);
                 if (AdaptCaretBrushAutomatically) CaretBrush = inverseBrush;
             }
         }

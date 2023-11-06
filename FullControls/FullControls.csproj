@@ -67,8 +67,4 @@ Documentation: https://github.com/devpelux/fullcontrols/wiki</Description>
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="WpfCoreTools" Version="1.6.0" />
-  </ItemGroup>
-
 </Project>

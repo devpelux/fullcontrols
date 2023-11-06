@@ -3,7 +3,6 @@ using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using WpfCoreTools.Extensions;
 
 namespace FullControls.SystemControls.Advanced
 {
@@ -194,7 +193,7 @@ namespace FullControls.SystemControls.Advanced
         {
             if (RequestClose())
             {
-                if (EnableEnterExitAnimations && GetExitAnimation() is Storyboard anim) await anim.BeginAsync();
+                if (EnableEnterExitAnimations && GetExitAnimation() is Storyboard anim) await Util.AnimateStoryboardAsync(anim);
                 PerformClose();
             }
         }
@@ -204,7 +203,7 @@ namespace FullControls.SystemControls.Advanced
         {
             if (RequestMinimize())
             {
-                if (EnableMinimizeRestoreAnimations && GetMinimizeAnimation() is Storyboard anim) await anim.BeginAsync();
+                if (EnableMinimizeRestoreAnimations && GetMinimizeAnimation() is Storyboard anim) await Util.AnimateStoryboardAsync(anim);
                 PerformMinimize();
             }
         }

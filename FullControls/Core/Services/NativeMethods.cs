@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace FullControls.Core.Services
 {
@@ -9,6 +10,9 @@ namespace FullControls.Core.Services
     /// </summary>
     internal static class NativeMethods
     {
+        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode, BestFitMapping = false, ThrowOnUnmappableChar = true)]
+        internal static extern int GetModuleFileName(IntPtr hModule, StringBuilder buffer, int length);
+
         [DllImport("user32.dll", SetLastError = true, ExactSpelling = true, EntryPoint = "GetDC", CharSet = CharSet.Auto)]
         internal static extern IntPtr IntGetDC(HandleRef hWnd);
 

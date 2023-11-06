@@ -1,9 +1,8 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using WpfCoreTools;
-using WpfCoreTools.Extensions;
 
 namespace FullControls.Core
 {
@@ -60,7 +59,7 @@ namespace FullControls.Core
         /// <param name="animationTime">Animation time.</param>
         internal static void AnimateBrush(UIElement uiElement, DependencyProperty brushProperty, Brush? to, TimeSpan animationTime)
         {
-            if (animationTime > TimeSpan.Zero && !uiElement.IsNull(brushProperty) && to != null)
+            if (animationTime > TimeSpan.Zero && uiElement.GetValue(brushProperty) != null && to != null)
             {
                 uiElement.SetValue(brushProperty, ((Brush)uiElement.GetValue(brushProperty)).CloneCurrentValue()); //Unfreeze the brush
                 Brush from = (Brush)uiElement.GetValue(brushProperty);
@@ -101,6 +100,27 @@ namespace FullControls.Core
             Storyboard.SetTarget(doubleAnimation, targetObject);
             Storyboard.SetTargetProperty(doubleAnimation, targetProperty);
             return doubleAnimation;
+        }
+
+        /// <summary>
+        /// Applies the animations associated with a <see cref="Storyboard"/> to their targets and initiates them asyncronously.
+        /// </summary>
+        /// <param name="storyboard">Storyboard to animate.</param>
+        internal static Task AnimateStoryboardAsync(Storyboard storyboard)
+        {
+            TaskCompletionSource<bool> task = new();
+            if (storyboard == null) task.SetException(new ArgumentNullException(nameof(storyboard), "Storyboard is null."));
+            else
+            {
+                void onCurrentStateInvalidated(object? s, EventArgs e)
+                {
+                    if (storyboard.GetCurrentState() != ClockState.Active) task.SetResult(true);
+                }
+
+                storyboard.CurrentStateInvalidated += onCurrentStateInvalidated;
+                storyboard.Begin();
+            }
+            return task.Task;
         }
 
         /// <summary>
@@ -180,11 +200,11 @@ namespace FullControls.Core
             double newValue;
 
             // If DPI == 1, don't use DPI-aware rounding.
-            if (!MathUtils.AreClose(dpiScale, 1.0))
+            if (!MathUtil.AreClose(dpiScale, 1.0))
             {
                 newValue = Math.Round(value * dpiScale) / dpiScale;
                 // If rounding produces a value unacceptable to layout (NaN, Infinity or MaxValue), use the original value.
-                if (double.IsNaN(newValue) || double.IsInfinity(newValue) || MathUtils.AreClose(newValue, double.MaxValue))
+                if (double.IsNaN(newValue) || double.IsInfinity(newValue) || MathUtil.AreClose(newValue, double.MaxValue))
                 {
                     newValue = value;
                 }

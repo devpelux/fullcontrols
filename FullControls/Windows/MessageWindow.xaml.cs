@@ -1,9 +1,9 @@
-﻿using FullControls.SystemControls;
+﻿using FullControls.Common;
+using FullControls.SystemControls;
 using System;
 using System.Media;
 using System.Windows;
 using System.Windows.Media;
-using WpfCoreTools;
 
 namespace FullControls.Windows
 {
