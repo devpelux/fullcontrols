@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:FullControls.SystemComponents"
+                    xmlns:local="clr-namespace:FullControls.SystemControls"
                     xmlns:wct="http://devpelux.github.io/wpfcoretools">
 
     <ResourceDictionary.MergedDictionaries>
@@ -80,29 +80,29 @@
                                     </AdornerDecorator>
                                 </Grid>
 
-                                <local:WindowTitleBar x:Name="PART_TitleBar"
-                                                      VerticalAlignment="Top"
-                                                      Height="32"
-                                                      Margin="{TemplateBinding TitlebarMargin}"
-                                                      Background="{TemplateBinding ActualTitlebarBackground}"
-                                                      Foreground="{TemplateBinding ActualForeground}"
-                                                      Title="{TemplateBinding Title}"
-                                                      TitleMargin="{TemplateBinding TitleMargin}"
-                                                      Icon="{TemplateBinding Icon}"
-                                                      IconMargin="{TemplateBinding IconMargin}"
-                                                      IconBackground="{TemplateBinding IconBackground}"
-                                                      ButtonsAreaMargin="{TemplateBinding ButtonsAreaMargin}"
-                                                      ButtonsAreaBackground="{TemplateBinding ButtonsAreaBackground}"
-                                                      MinimizeButtonStyle="{TemplateBinding MinimizeButtonStyle}"
-                                                      MaximizeButtonStyle="{TemplateBinding MaximizeButtonStyle}"
-                                                      RestoreButtonStyle="{TemplateBinding RestoreButtonStyle}"
-                                                      CloseButtonStyle="{TemplateBinding CloseButtonStyle}"
-                                                      EnableMinimizeButton="{TemplateBinding EnableMinimizeButton}"
-                                                      EnableMaximizeButton="{TemplateBinding EnableMaximizeButton}"
-                                                      EnableRestoreButton="{TemplateBinding EnableRestoreButton}"
-                                                      EnableCloseButton="{TemplateBinding EnableCloseButton}"
-                                                      TitlebarContextMenu="{TemplateBinding TitlebarContextMenu}"
-                                                      Visibility="Visible" />
+                                <local:TitleBar x:Name="PART_TitleBar"
+                                                VerticalAlignment="Top"
+                                                Height="32"
+                                                Margin="{TemplateBinding TitlebarMargin}"
+                                                Background="{TemplateBinding ActualTitlebarBackground}"
+                                                Foreground="{TemplateBinding ActualForeground}"
+                                                Title="{TemplateBinding Title}"
+                                                TitleMargin="{TemplateBinding TitleMargin}"
+                                                Icon="{TemplateBinding Icon}"
+                                                IconMargin="{TemplateBinding IconMargin}"
+                                                IconBackground="{TemplateBinding IconBackground}"
+                                                ButtonsAreaMargin="{TemplateBinding ButtonsAreaMargin}"
+                                                ButtonsAreaBackground="{TemplateBinding ButtonsAreaBackground}"
+                                                MinimizeButtonStyle="{TemplateBinding MinimizeButtonStyle}"
+                                                MaximizeButtonStyle="{TemplateBinding MaximizeButtonStyle}"
+                                                RestoreButtonStyle="{TemplateBinding RestoreButtonStyle}"
+                                                CloseButtonStyle="{TemplateBinding CloseButtonStyle}"
+                                                EnableMinimizeButton="{TemplateBinding EnableMinimizeButton}"
+                                                EnableMaximizeButton="{TemplateBinding EnableMaximizeButton}"
+                                                EnableRestoreButton="{TemplateBinding EnableRestoreButton}"
+                                                EnableCloseButton="{TemplateBinding EnableCloseButton}"
+                                                TitlebarContextMenu="{TemplateBinding TitlebarContextMenu}"
+                                                Visibility="Visible" />
 
                             </Grid>
                         </Border>

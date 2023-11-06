@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:FullControls.Controls"
-                    xmlns:systemcomponents="clr-namespace:FullControls.SystemComponents">
+                    xmlns:systemcontrols="clr-namespace:FullControls.SystemControls"
+                    xmlns:systemcontrolsx="clr-namespace:FullControls.SystemControls.Advanced">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/FullControls;component/Resources/LightColors.xaml" />
@@ -849,7 +850,7 @@
     <!-- System components -->
 
     <Style x:Key="LightAvalonWindow"
-           TargetType="{x:Type systemcomponents:AvalonWindow}">
+           TargetType="{x:Type systemcontrols:AvalonWindow}">
         <Setter Property="BorderBrush"
                 Value="{StaticResource LightWindowBorder}" />
         <Setter Property="BorderBrushOnActive"
@@ -880,7 +881,7 @@
     </Style>
 
     <Style x:Key="LightFlexWindow"
-           TargetType="{x:Type systemcomponents:FlexWindow}">
+           TargetType="{x:Type systemcontrolsx:FlexWindow}">
         <Setter Property="BorderBrush"
                 Value="{StaticResource LightWindowBorder}" />
         <Setter Property="BorderBrushOnActive"
@@ -913,7 +914,7 @@
     </Style>
 
     <Style x:Key="LightFullWindow"
-           TargetType="{x:Type systemcomponents:FullWindow}">
+           TargetType="{x:Type systemcontrolsx:FullWindow}">
         <Setter Property="BorderBrush"
                 Value="{StaticResource LightWindowBorder}" />
         <Setter Property="BorderBrushOnActive"

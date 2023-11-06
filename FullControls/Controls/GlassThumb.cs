@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls.Primitives;
 
-namespace FullControls.Controls.Components
+namespace FullControls.Controls
 {
     /// <inheritdoc/>
     [DesignTimeVisible(false)]

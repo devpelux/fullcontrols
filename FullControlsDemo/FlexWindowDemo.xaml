@@ -1,15 +1,15 @@
-﻿<fc:FlexWindow x:Class="FullControlsDemo.FlexWindowDemo"
-               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-               xmlns:fc="http://devpelux.github.io/fullcontrols"
-               MergeTitlebarAndContent="True"
-               Title="FlexWindow"
-               Icon="/Icons/Icon.ico"
-               ResizeMode="CanMinimize"
-               WindowStartupLocation="CenterOwner"
-               TitlebarContextMenu="{StaticResource WindowContextMenu}"
-               Height="300"
-               Width="500">
+﻿<fcx:FlexWindow x:Class="FullControlsDemo.FlexWindowDemo"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:fcx="http://devpelux.github.io/fullcontrols/advanced"
+                MergeTitlebarAndContent="True"
+                Title="FlexWindow"
+                Icon="/Icons/Icon.ico"
+                ResizeMode="CanMinimize"
+                WindowStartupLocation="CenterOwner"
+                TitlebarContextMenu="{StaticResource WindowContextMenu}"
+                Height="300"
+                Width="500">
     <Grid ClipToBounds="True">
         <Rectangle Fill="#FFC7D7E0"
                    Margin="-59,41,0,0"
@@ -76,4 +76,4 @@
             </Rectangle.RenderTransform>
         </Rectangle>
     </Grid>
-</fc:FlexWindow>
+</fcx:FlexWindow>

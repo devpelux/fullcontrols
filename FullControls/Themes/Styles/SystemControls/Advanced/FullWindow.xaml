@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:FullControls.SystemComponents"
+                    xmlns:local="clr-namespace:FullControls.SystemControls.Advanced"
+                    xmlns:systemcontrols="clr-namespace:FullControls.SystemControls"
                     xmlns:wct="http://devpelux.github.io/wpfcoretools">
 
     <ResourceDictionary.MergedDictionaries>
@@ -11,9 +12,9 @@
 
     <wct:ClipConverter x:Key="ClipConverter" />
 
-    <Style TargetType="{x:Type local:FlexWindow}"
+    <Style TargetType="{x:Type local:FullWindow}"
            BasedOn="{StaticResource {x:Type Window}}">
-        
+
         <Setter Property="BorderBrush"
                 Value="{StaticResource LightWindowBorder}" />
         <Setter Property="BorderBrushOnActive"
@@ -43,7 +44,7 @@
         <Setter Property="ShadowDepth"
                 Value="0.5" />
         <Setter Property="ResizeThickness"
-                Value="4" />
+                Value="8" />
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="AnimationTime"
@@ -62,7 +63,7 @@
 
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:FlexWindow}">
+                <ControlTemplate TargetType="{x:Type local:FullWindow}">
                     <Grid x:Name="PART_Window"
                           Opacity="{TemplateBinding ContentOpacity}">
                         <Border x:Name="PART_ShadowBorder"
@@ -109,35 +110,44 @@
                                     </AdornerDecorator>
                                 </Grid>
 
-                                <local:WindowTitleBar x:Name="PART_TitleBar"
-                                                      VerticalAlignment="Top"
-                                                      Height="32"
-                                                      Margin="{TemplateBinding TitlebarMargin}"
-                                                      Background="{TemplateBinding ActualTitlebarBackground}"
-                                                      Foreground="{TemplateBinding ActualForeground}"
-                                                      Title="{TemplateBinding Title}"
-                                                      TitleMargin="{TemplateBinding TitleMargin}"
-                                                      Icon="{TemplateBinding Icon}"
-                                                      IconMargin="{TemplateBinding IconMargin}"
-                                                      IconBackground="{TemplateBinding IconBackground}"
-                                                      ButtonsAreaMargin="{TemplateBinding ButtonsAreaMargin}"
-                                                      ButtonsAreaBackground="{TemplateBinding ButtonsAreaBackground}"
-                                                      MinimizeButtonStyle="{TemplateBinding MinimizeButtonStyle}"
-                                                      MaximizeButtonStyle="{TemplateBinding MaximizeButtonStyle}"
-                                                      RestoreButtonStyle="{TemplateBinding RestoreButtonStyle}"
-                                                      CloseButtonStyle="{TemplateBinding CloseButtonStyle}"
-                                                      EnableMinimizeButton="{TemplateBinding EnableMinimizeButton}"
-                                                      EnableMaximizeButton="{TemplateBinding EnableMaximizeButton}"
-                                                      EnableRestoreButton="{TemplateBinding EnableRestoreButton}"
-                                                      EnableCloseButton="{TemplateBinding EnableCloseButton}"
-                                                      TitlebarContextMenu="{TemplateBinding TitlebarContextMenu}"
-                                                      Visibility="Visible" />
+                                <systemcontrols:TitleBar x:Name="PART_TitleBar"
+                                                         VerticalAlignment="Top"
+                                                         Height="32"
+                                                         Margin="{TemplateBinding TitlebarMargin}"
+                                                         Background="{TemplateBinding ActualTitlebarBackground}"
+                                                         Foreground="{TemplateBinding ActualForeground}"
+                                                         Title="{TemplateBinding Title}"
+                                                         TitleMargin="{TemplateBinding TitleMargin}"
+                                                         Icon="{TemplateBinding Icon}"
+                                                         IconMargin="{TemplateBinding IconMargin}"
+                                                         IconBackground="{TemplateBinding IconBackground}"
+                                                         ButtonsAreaMargin="{TemplateBinding ButtonsAreaMargin}"
+                                                         ButtonsAreaBackground="{TemplateBinding ButtonsAreaBackground}"
+                                                         MinimizeButtonStyle="{TemplateBinding MinimizeButtonStyle}"
+                                                         MaximizeButtonStyle="{TemplateBinding MaximizeButtonStyle}"
+                                                         RestoreButtonStyle="{TemplateBinding RestoreButtonStyle}"
+                                                         CloseButtonStyle="{TemplateBinding CloseButtonStyle}"
+                                                         EnableMinimizeButton="{TemplateBinding EnableMinimizeButton}"
+                                                         EnableMaximizeButton="{TemplateBinding EnableMaximizeButton}"
+                                                         EnableRestoreButton="{TemplateBinding EnableRestoreButton}"
+                                                         EnableCloseButton="{TemplateBinding EnableCloseButton}"
+                                                         TitlebarContextMenu="{TemplateBinding TitlebarContextMenu}"
+                                                         Visibility="Visible" />
 
                             </Grid>
                         </Border>
                     </Grid>
 
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsDocked"
+                                 Value="True">
+                            <Setter TargetName="PART_Border"
+                                    Property="CornerRadius"
+                                    Value="0" />
+                            <Setter TargetName="PART_ShadowBorder"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
+                        </Trigger>
                         <Trigger Property="WindowState"
                                  Value="Normal">
                             <Setter TargetName="PART_TitleBar"
@@ -152,6 +162,12 @@
                             <Setter TargetName="PART_Border"
                                     Property="BorderThickness"
                                     Value="0" />
+                            <Setter TargetName="PART_Border"
+                                    Property="CornerRadius"
+                                    Value="0" />
+                            <Setter TargetName="PART_ShadowBorder"
+                                    Property="Visibility"
+                                    Value="Collapsed" />
                         </Trigger>
                         <Trigger Property="ResizeMode"
                                  Value="CanMinimize">

@@ -1,5 +1,4 @@
 ﻿using FullControls.Core.Services;
-using FullControls.SystemComponents;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -125,7 +124,7 @@ namespace FullControls.Core
             => HwndSource.FromHwnd(new WindowInteropHelper(window).EnsureHandle());
 
         /// <summary>
-        /// Calculates the outside margin of <see cref="AvalonWindow"/> based on its <see cref="WindowState"/>.
+        /// Calculates the outside margin of a window based on its <see cref="WindowState"/>.
         /// (The part of the window that is not visible)
         /// </summary>
         /// <param name="windowState"><see cref="WindowState"/>.</param>

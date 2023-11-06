@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace FullControls.SystemComponents
+namespace FullControls.SystemControls
 {
     /// <summary>
     /// Provides a list of commands to control a window.

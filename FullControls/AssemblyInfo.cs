@@ -6,13 +6,13 @@ using System.Windows.Markup;
 
 //Namespaces prefix
 [assembly: XmlnsPrefix("http://devpelux.github.io/fullcontrols", "fc")]
-[assembly: XmlnsPrefix("http://devpelux.github.io/fullcontrols/controls/components", "fcc")]
+[assembly: XmlnsPrefix("http://devpelux.github.io/fullcontrols/advanced", "fcx")]
 
 //Namespaces
 [assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols", "FullControls.Common")]
 [assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols", "FullControls.Controls")]
-[assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols", "FullControls.SystemComponents")]
-[assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols/controls/components", "FullControls.Controls.Components")]
+[assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols", "FullControls.SystemControls")]
+[assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols/advanced", "FullControls.SystemControls.Advanced")]
 
 //Theme
 [assembly: ThemeInfo(

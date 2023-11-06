@@ -13,8 +13,10 @@
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/FlatMenuSeparator.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/FlatMenuSpace.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/FlatMenuTitle.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/GlassRepeatButton.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/GlassScrollBar.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/GlassScrollViewer.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/GlassThumb.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/ItemsControlAccordionItem.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/PasswordBoxPlus.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/RadioButtonPlus.xaml" />
@@ -23,16 +25,14 @@
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Switcher.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/TextBoxPlus.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/ToggleButtonPlus.xaml" />
+        
+        <!-- SystemControls -->
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemControls/AvalonWindow.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemControls/TitleBar.xaml" />
 
-        <!-- Controls components -->
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Components/GlassRepeatButton.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Components/GlassThumb.xaml" />
-
-        <!-- SystemComponents -->
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/AvalonWindow.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/FlexWindow.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/FullWindow.xaml" />
-        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemComponents/WindowTitleBar.xaml" />
+        <!-- SystemControls.Advanced -->
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemControls/Advanced/FlexWindow.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/SystemControls/Advanced/FullWindow.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -3,7 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Shell;
 
-namespace FullControls.SystemComponents
+namespace FullControls.SystemControls
 {
     /// <summary>
     /// Provides the ability to create, configure, show, and manage the lifetime of windows and dialog boxes.

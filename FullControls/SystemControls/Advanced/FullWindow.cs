@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Shell;
 
-namespace FullControls.SystemComponents
+namespace FullControls.SystemControls.Advanced
 {
     /// <summary>
     /// <para>Provides the ability to create, configure, show, and manage the lifetime of windows and dialog boxes.</para>
