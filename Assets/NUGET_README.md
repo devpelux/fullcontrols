@@ -15,7 +15,6 @@ Reworked version of the wpf controls, plus new controls and features.
 # Dependencies
 [![net6](https://img.shields.io/badge/.NET-v6.0-blue)](https://docs.microsoft.com/dotnet)
 [![net7](https://img.shields.io/badge/.NET-v7.0-blue)](https://docs.microsoft.com/dotnet)
-[![wpfcoretools](https://img.shields.io/badge/WpfCoreTools-v1.6.0-blue)](https://www.nuget.org/packages/WpfCoreTools)
 
 
 # Full documentation
@@ -139,7 +138,7 @@ Is possible to add a label (or icon) and display an hint, add a button to copy t
 ---
 
 
-## System components
+## System controls
 System controls and components:
 
 ### AvalonWindow

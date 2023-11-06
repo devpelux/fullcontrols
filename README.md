@@ -17,8 +17,8 @@
   <img src="https://img.shields.io/github/license/devpelux/fullcontrols"></img>
 </p>
 <p align="center">
-  <img src="https://img.shields.io/badge/code:release-v2.2.0-blue"></img>
-  <img src="https://img.shields.io/badge/code:status-stable-blue"></img>
+  <img src="https://img.shields.io/badge/code:release-v3.0.0--beta1-red"></img>
+  <img src="https://img.shields.io/badge/code:status-beta-red"></img>
 </p>
 
 
@@ -31,7 +31,6 @@
 # Dependencies
 [![net6](https://img.shields.io/badge/.NET-v6.0-blue)](https://docs.microsoft.com/dotnet)
 [![net7](https://img.shields.io/badge/.NET-v7.0-blue)](https://docs.microsoft.com/dotnet)
-[![wpfcoretools](https://img.shields.io/badge/WpfCoreTools-v1.6.0-blue)](https://www.nuget.org/packages/WpfCoreTools)
 
 
 # Full documentation
@@ -164,7 +163,7 @@ This is a scroll viewer that uses the GlassScrollBars and with some new function
 
 ---
 
-### Kaleidoborder ![new](https://img.shields.io/badge/-NEW!-blue)
+### Kaleidoborder
 Draws a multicolored border with a background around another element.  
 This is similar to the standard border, but allows multicolored borders.
 
@@ -188,13 +187,13 @@ Is possible to add a label (or icon) and display an hint, add a button to copy t
 <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.2.0/Assets/Overview/passwordboxplus_peek_light.png"/> <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.2.0/Assets/Overview/passwordboxplus_peek_dark.png"/>
 
 
-## System components
+## System controls
 System controls and components:
 
 ### AvalonWindow
 Extended version of the classic window with possibility to customize the titlebar, fuse the titlebar with the content of the window, better handling of close, minimize, etc...
 
-### WindowTitleBar
+### TitleBar
 A fully customizable titlebar used in custom windows.
 
 <img src="https://raw.githubusercontent.com/devpelux/fullcontrols/2.2.0/Assets/Overview/avalonwindow.png"/>
