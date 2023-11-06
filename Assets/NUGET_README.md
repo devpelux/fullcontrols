@@ -1,4 +1,4 @@
-![icon](https://raw.githubusercontent.com/devpelux/fullcontrols/2.1.0/Assets/IconSimple.png)
+![icon](https://raw.githubusercontent.com/devpelux/fullcontrols/2.2.0/Assets/IconSimple.png)
 
 
 # FullControls
@@ -158,9 +158,19 @@ Extended version of the classic window with the same features of AvalonWindow, b
 Extended version of the classic window with the same features of FlexWindow but resizable.  
 (This uses `AllowsTransparency=True`)
 
+---
+---
+
+
+## Windows
+Some windows:
+
+### MessageWindow
+Standard window for messages with light and dark theme, similar to the message box.
+
 
 # License
 Copyright (C) 2020-2023 devpelux (Salvatore Peluso)  
 Licensed under MIT license.
 
-[![mit](https://raw.githubusercontent.com/devpelux/fullcontrols/2.1.0/Assets/Mit.png)](https://github.com/devpelux/fullcontrols/blob/2.1.0/LICENSE)
+[![mit](https://raw.githubusercontent.com/devpelux/fullcontrols/2.2.0/Assets/Mit.png)](https://github.com/devpelux/fullcontrols/blob/2.2.0/LICENSE)
