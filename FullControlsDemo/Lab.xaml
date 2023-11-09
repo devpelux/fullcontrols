@@ -1,0 +1,49 @@
+﻿<fc:AvalonWindow xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:local="clr-namespace:FullControlsDemo"
+                 xmlns:fc="http://devpelux.github.io/fullcontrols"
+                 x:Class="FullControlsDemo.Lab"
+                 mc:Ignorable="d"
+                 Title="Lab"
+                 Icon="/Icons/Icon.ico"
+                 WindowStartupLocation="CenterOwner"
+                 Height="450"
+                 Width="800">
+    <Grid>
+        <fc:SelectiveView x:Name="SV"
+                          Margin="0,0,243,0"
+                          SelectedView="0">
+            <Grid>
+                <TextBlock Text="View1"
+                           Margin="32,32,122,97" />
+            </Grid>
+            <Grid>
+                <TextBlock Text="View2" />
+                <fc:ButtonPlus HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="80,80,0,0"
+                        Content="Btn"
+                        Width="40"
+                        Height="30"></fc:ButtonPlus>
+            </Grid>
+        </fc:SelectiveView>
+        <fc:Switcher Content="T1"
+                     HorizontalAlignment="Left"
+                     Margin="651,114,0,0"
+                     VerticalAlignment="Top"
+                     IsChecked="True"
+                     Height="29"
+                     Width="76"
+                     Checked="Switcher1_Checked" />
+        <fc:Switcher Content="T2"
+                     HorizontalAlignment="Left"
+                     Margin="651,156,0,0"
+                     VerticalAlignment="Top"
+                     Height="31"
+                     Width="76"
+                     Checked="Switcher2_Checked" />
+
+    </Grid>
+</fc:AvalonWindow>

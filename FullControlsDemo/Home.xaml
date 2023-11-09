@@ -195,6 +195,13 @@
                        Text="Info"
                        Cursor="Hand"
                        MouseLeftButtonDown="Info_MouseLeftButtonDown" />
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="10,5,0,0"
+                       Foreground="Gray"
+                       Text="GG"
+                       Cursor="Hand"
+                       MouseLeftButtonDown="GG_MouseLeftButtonDown" />
         </Grid>
     </Grid>
 </fc:AvalonWindow>

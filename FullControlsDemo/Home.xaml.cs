@@ -14,6 +14,11 @@ namespace FullControlsDemo
             InitializeComponent();
         }
 
+        private void GG_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            new Lab() { Owner = this }.Show();
+        }
+
         private void Info_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             new Info() { Owner = this }.ShowDialog();

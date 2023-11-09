@@ -21,6 +21,7 @@
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/PasswordBoxPlus.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/RadioButtonPlus.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/RepeatButtonPlus.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/SelectiveView.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/SimpleAccordionItem.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Switcher.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/TextBoxPlus.xaml" />
