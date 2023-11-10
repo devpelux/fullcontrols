@@ -17,8 +17,8 @@ namespace FullControls.Controls
     [DefaultProperty(nameof(Items))]
     public class SelectiveView : SimpleItemsControl<ObservableCollection<UIElement>>
     {
-        //Container for the items.
-        private readonly Grid itemsContainer = new();
+        //Container for the visible item.
+        private Decorator? itemContainer;
 
         /// <summary>
         /// ContentHost template part.
@@ -26,27 +26,24 @@ namespace FullControls.Controls
         protected const string PartContentHost = "PART_ContentHost";
 
         /// <summary>
-        /// Gets or sets the current selected view.
+        /// Gets or sets the current visible item.
         /// </summary>
-        public int SelectedView
+        public int VisibleItem
         {
-            get => (int)GetValue(SelectedViewProperty);
-            set => SetValue(SelectedViewProperty, value);
+            get => (int)GetValue(VisibleItemProperty);
+            set => SetValue(VisibleItemProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="SelectedView"/> dependency property.
+        /// Identifies the <see cref="VisibleItem"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty SelectedViewProperty =
-            DependencyProperty.Register(nameof(SelectedView), typeof(int), typeof(SelectiveView), new PropertyMetadata(-2, SelectedViewChanged, SelectedViewCoerce));
+        public static readonly DependencyProperty VisibleItemProperty =
+            DependencyProperty.Register(nameof(VisibleItem), typeof(int), typeof(SelectiveView), new PropertyMetadata(0, VisibleItemChanged));
 
-        #region SelectedViewPropertyCallbacks
+        #region VisibleItemPropertyCallbacks
 
-        //Executed when the selected view is changed.
-        private static void SelectedViewChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => ((SelectiveView)d).OnSelectedViewChanged((int)e.NewValue);
-
-        //Adapt the index to avoid overflows.
-        private static object SelectedViewCoerce(DependencyObject d, object value) => Math.Max(-1, Math.Min((int)value, ((SelectiveView)d).ItemsCount - 1));
+        //Executed when the visible item is changed.
+        private static void VisibleItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => ((SelectiveView)d).OnVisibleItemChanged((int)e.NewValue);
 
         #endregion
 
@@ -59,39 +56,42 @@ namespace FullControls.Controls
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public SelectiveView() : base()
-        {
-            SelectedView = -1;
-        }
+        public SelectiveView() : base() { }
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
-            //Adds the items container.
-            if (Template.FindName(PartContentHost, this) is Decorator contentHost) contentHost.Child = itemsContainer;
+            //Finds the visible item container.
+            if (Template.FindName(PartContentHost, this) is Decorator contentHost)
+            {
+                itemContainer = contentHost;
+                ReloadVisibleItem();
+            }
         }
 
         /// <inheritdoc/>
         protected override void OnItemsChanged(NotifyCollectionChangedEventArgs e)
         {
             base.OnItemsChanged(e);
-            itemsContainer.Children.Clear();
-            if (Items != null)
-            {
-                foreach (UIElement item in Items) itemsContainer.Children.Add(item);
-            }
+            ReloadVisibleItem();
         }
 
         /// <summary>
         /// Executed when the selected view is changed.
         /// </summary>
-        public void OnSelectedViewChanged(int index)
+        protected virtual void OnVisibleItemChanged(int index)
         {
-            for (int i = 0; i < ItemsCount; i++)
+            ReloadVisibleItem();
+        }
+
+        //Sets the visible item as child of the container part.
+        private void ReloadVisibleItem()
+        {
+            if (itemContainer != null)
             {
-                Items[i].Visibility = index == i ? Visibility.Visible : Visibility.Collapsed;
+                itemContainer.Child = VisibleItem < ItemsCount && VisibleItem > -1 ? Items[VisibleItem] : null;
             }
         }
     }

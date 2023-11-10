@@ -14,7 +14,7 @@
     <Grid>
         <fc:SelectiveView x:Name="SV"
                           Margin="0,0,243,0"
-                          SelectedView="0">
+                          VisibleItem="0">
             <Grid>
                 <TextBlock Text="View1"
                            Margin="32,32,122,97" />

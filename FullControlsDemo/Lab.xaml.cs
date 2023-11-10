@@ -14,12 +14,12 @@ namespace FullControlsDemo
 
         private void Switcher1_Checked(object sender, System.Windows.RoutedEventArgs e)
         {
-            SV.SelectedView = 0;
+            SV.VisibleItem = 0;
         }
 
         private void Switcher2_Checked(object sender, System.Windows.RoutedEventArgs e)
         {
-            SV.SelectedView = 1;
+            SV.VisibleItem = 1;
         }
     }
 }
