@@ -4,7 +4,6 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Markup;
 
 namespace FullControls.Controls
 {
@@ -14,8 +13,6 @@ namespace FullControls.Controls
     /// </summary>
     [TemplatePart(Name = PartContentHost, Type = typeof(Decorator))]
     [DefaultEvent(nameof(ItemIsExpandedChanged))]
-    [ContentProperty(nameof(Items))]
-    [DefaultProperty(nameof(Items))]
     public class Accordion : SimpleItemsControl<AccordionItemCollection>
     {
         private readonly ItemsControl itemsControl;

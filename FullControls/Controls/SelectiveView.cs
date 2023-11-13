@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Markup;
 
 namespace FullControls.Controls
 {
@@ -13,8 +10,6 @@ namespace FullControls.Controls
     /// Control which view to display via code behind.
     /// </summary>
     [TemplatePart(Name = PartContentHost, Type = typeof(Decorator))]
-    [ContentProperty(nameof(Items))]
-    [DefaultProperty(nameof(Items))]
     public class SelectiveView : SimpleItemsControl<ObservableCollection<UIElement>>
     {
         //Container for the visible item.

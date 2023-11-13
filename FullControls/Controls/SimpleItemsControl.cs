@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 
 namespace FullControls.Controls
 {
     /// <summary>
     /// Represents a control similar to <see cref="ItemsControl"/>, but only with essential features, such as items changing events.
     /// </summary>
+    [ContentProperty(nameof(Items))]
+    [DefaultProperty(nameof(Items))]
     public abstract class SimpleItemsControl<T> : Control where T : INotifyCollectionChanged, IList, new()
     {
         /// <summary>
