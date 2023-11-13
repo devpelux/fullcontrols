@@ -16,7 +16,7 @@ Documentation: https://github.com/devpelux/fullcontrols/wiki</Description>
     <Copyright>Copyright (C) 2020-2023 devpelux (Salvatore Peluso)</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>Icon.png</PackageIcon>
-    <Version>3.0.0-beta.2</Version>
+    <Version>3.0.0-beta.3</Version>
     <Nullable>enable</Nullable>
 	<AnalysisLevel>latest</AnalysisLevel>
     <SignAssembly>False</SignAssembly>

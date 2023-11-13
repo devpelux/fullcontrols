@@ -16,7 +16,7 @@ namespace FullControls.Controls
     [DefaultEvent(nameof(ItemIsExpandedChanged))]
     [ContentProperty(nameof(Items))]
     [DefaultProperty(nameof(Items))]
-    public class Accordion : Control
+    public class Accordion : SimpleItemsControl<AccordionItemCollection>
     {
         private readonly ItemsControl itemsControl;
 
@@ -24,33 +24,6 @@ namespace FullControls.Controls
         /// ContentHost template part.
         /// </summary>
         protected const string PartContentHost = "PART_ContentHost";
-
-        /// <summary>
-        /// Gets or sets a collection of <see cref="AccordionItem"/> to display inside the <see cref="Accordion"/>.
-        /// </summary>
-        public AccordionItemCollection Items
-        {
-            get => (AccordionItemCollection)GetValue(ItemsProperty);
-            set => SetValue(ItemsProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="Items"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ItemsProperty =
-            DependencyProperty.Register(nameof(Items), typeof(AccordionItemCollection), typeof(Accordion),
-                new PropertyMetadata(null, new PropertyChangedCallback((d, e)
-                    => ((Accordion)d).OnItemsInstanceChanged((AccordionItemCollection)e.NewValue, (AccordionItemCollection)e.OldValue))));
-
-        /// <summary>
-        /// Gets the number of elements actually contained inside the <see cref="Accordion"/>.
-        /// </summary>
-        public int ItemsCount => Items != null ? Items.Count : 0;
-
-        /// <summary>
-        /// Gets a value indicating if the <see cref="Accordion"/> has items.
-        /// </summary>
-        public bool HasItems => ItemsCount > 0;
 
         /// <summary>
         /// Occurs when in an item <see cref="AccordionItem.IsExpanded"/> is changed.
@@ -75,22 +48,6 @@ namespace FullControls.Controls
         {
             Loaded += (o, e) => OnLoaded(e);
             itemsControl = new();
-            Items = new();
-        }
-
-        /// <summary>
-        /// Reset the <see cref="Accordion"/> by setting <see cref="Items"/> to a new instance.
-        /// </summary>
-        public void Reset() => Items = new();
-
-        /// <summary>
-        /// Clear the <see cref="Accordion"/> by removing all the <see cref="AccordionItem"/> from <see cref="Items"/>,
-        /// and setting <see cref="Items"/> to a new instance.
-        /// </summary>
-        public void Clear()
-        {
-            Items.Clear();
-            Reset();
         }
 
         /// <inheritdoc/>
@@ -101,41 +58,15 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Called when the element is laid out, rendered, and ready for interaction.
-        /// </summary>
-        /// <param name="e">Event data.</param>
-        protected virtual void OnLoaded(RoutedEventArgs e) { }
-
-        /// <summary>
-        /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
-        /// </summary>
-        /// <param name="enabledState">Actual state of <see cref="UIElement.IsEnabled"/>.</param>
-        protected virtual void OnEnabledChanged(bool enabledState) { }
-
-        /// <summary>
         /// Called when in an item <see cref="AccordionItem.IsExpanded"/> is changed.
         /// </summary>
         /// <param name="e">Event data.</param>
         protected virtual void OnItemExpandedChanged(ItemExpandedChangedEventArgs e) => ItemIsExpandedChanged?.Invoke(this, e);
 
-        /// <summary>
-        /// Called when the instance of the <see cref="Items"/> collection is changed.
-        /// </summary>
-        /// <param name="newItems">The new <see cref="Items"/> collection.</param>
-        /// <param name="oldItems">The old <see cref="Items"/> collection.</param>
-        protected virtual void OnItemsInstanceChanged(AccordionItemCollection newItems, AccordionItemCollection oldItems)
+        /// <inheritdoc/>
+        protected override void OnItemsChanged(NotifyCollectionChangedEventArgs e)
         {
-            if (oldItems != null) oldItems.CollectionChanged -= OnItemsChanged;
-            if (newItems != null) newItems.CollectionChanged += OnItemsChanged;
-            ReloadItems();
-        }
-
-        /// <summary>
-        /// Called when the <see cref="Items"/> collection is internally changed.
-        /// </summary>
-        /// <param name="e">Event data.</param>
-        protected virtual void OnItemsChanged(NotifyCollectionChangedEventArgs e)
-        {
+            base.OnItemsChanged(e);
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
@@ -165,7 +96,7 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Reloads all the <see cref="Items"/>.
+        /// Reloads all the items.
         /// </summary>
         private void ReloadItems()
         {
@@ -224,12 +155,6 @@ namespace FullControls.Controls
         {
             for (int i = startIndex; i <= endIndex; i++) RemoveExpandedChangedHandler(i);
         }
-
-        #endregion
-
-        #region EventHandlers
-
-        private void OnItemsChanged(object? s, NotifyCollectionChangedEventArgs e) => OnItemsChanged(e);
 
         private void OnItemExpandedChanged(object? s, ItemExpandedChangedEventArgs e) => OnItemExpandedChanged(e);
 

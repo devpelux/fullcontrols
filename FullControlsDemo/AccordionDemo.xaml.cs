@@ -60,10 +60,8 @@ namespace FullControlsDemo
                 IsExpanded = true
             };
 
-            accordionItems.Add(accordionItem);
-            accordionItems.Add(accordionItem2);
-
-            accordion.Items = accordionItems;
+            accordion.Items.Add(accordionItem);
+            accordion.Items.Add(accordionItem2);
         }
 
         private void LoadAccordionDarkItems()
@@ -86,10 +84,8 @@ namespace FullControlsDemo
                 IsExpanded = false
             };
 
-            accordionDarkItems.Add(accordionDarkItem);
-            accordionDarkItems.Add(accordionDarkItem2);
-
-            accordionDark.Items = accordionDarkItems;
+            accordionDark.Items.Add(accordionDarkItem);
+            accordionDark.Items.Add(accordionDarkItem2);
         }
 
         private static List<Shape> Clone(List<Shape> listToClone)

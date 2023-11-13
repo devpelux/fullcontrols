@@ -13,33 +13,7 @@ namespace FullControls.Controls
         /// <summary>
         /// Gets or sets the collection of items of the control.
         /// </summary>
-        public T Items
-        {
-            get => (T)GetValue(ItemsProperty);
-            set => SetValue(ItemsProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="Items"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ItemsProperty =
-            DependencyProperty.Register(nameof(Items), typeof(T), typeof(SimpleItemsControl<T>), new PropertyMetadata(new T(), ItemsInstanceChanged, CoerceItemsValue));
-
-        #region ItemsPropertyCallbacks
-
-        //Executed when items instance is changed.
-        private static void ItemsInstanceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            ((SimpleItemsControl<T>)d).OnItemsInstanceChanged((T)e.NewValue, (T)e.OldValue);
-        }
-
-        //Avoids null values to items instance.
-        private static object CoerceItemsValue(DependencyObject d, object baseValue)
-        {
-            return baseValue ?? new T();
-        }
-
-        #endregion
+        public T Items { get; } = new T();
 
         /// <summary>
         /// Gets the number of elements actually contained inside the control.
@@ -68,7 +42,7 @@ namespace FullControls.Controls
         public SimpleItemsControl() : base()
         {
             Loaded += (o, e) => OnLoaded(e);
-            Items = new T();
+            Items.CollectionChanged += (s, e) => OnItemsChanged(e);
         }
 
         /// <summary>
@@ -86,20 +60,9 @@ namespace FullControls.Controls
         /// </summary>
         protected virtual void OnEnabledChanged(bool enabledState) { }
 
-        //Called when items are internally changed.
-        private void OnItemsChanged(object? s, NotifyCollectionChangedEventArgs e) => OnItemsChanged(e);
-
         /// <summary>
         /// Called when the items collection is changed.
         /// </summary>
         protected virtual void OnItemsChanged(NotifyCollectionChangedEventArgs e) { }
-
-        //Called when the items instance is changed.
-        private void OnItemsInstanceChanged(T newItems, T oldItems)
-        {
-            oldItems.CollectionChanged -= OnItemsChanged;
-            newItems.CollectionChanged += OnItemsChanged;
-            OnItemsChanged(new(NotifyCollectionChangedAction.Reset));
-        }
     }
 }
