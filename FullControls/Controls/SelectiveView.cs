@@ -59,11 +59,8 @@ namespace FullControls.Controls
             base.OnApplyTemplate();
 
             //Finds the visible item container.
-            if (Template.FindName(PartContentHost, this) is Decorator contentHost)
-            {
-                itemContainer = contentHost;
-                ReloadVisibleItem();
-            }
+            itemContainer = Template.FindName(PartContentHost, this) as Decorator;
+            ReloadVisibleItem();
         }
 
         /// <inheritdoc/>
