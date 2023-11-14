@@ -1,4 +1,6 @@
-﻿using FullControls.SystemControls;
+﻿using FullControls.Common;
+using FullControls.SystemControls;
+using System;
 
 namespace FullControlsDemo
 {
@@ -12,14 +14,14 @@ namespace FullControlsDemo
             InitializeComponent();
         }
 
-        private void Switcher1_Checked(object sender, System.Windows.RoutedEventArgs e)
+        private void ButtonPlus_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            SV.VisibleItem = 0;
+            RawTime time = timebox.GetRawTimeDate();
         }
 
-        private void Switcher2_Checked(object sender, System.Windows.RoutedEventArgs e)
+        private void ButtonPlus2_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            SV.VisibleItem = 1;
+            RawTime time = timebox.GetRawTimeMinutes();
         }
     }
 }

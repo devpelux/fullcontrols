@@ -12,38 +12,27 @@
                  Height="450"
                  Width="800">
     <Grid>
-        <fc:SelectiveView x:Name="SV"
-                          Margin="0,0,243,0"
-                          VisibleItem="0">
-            <Grid>
-                <TextBlock Text="View1"
-                           Margin="32,32,122,97" />
-            </Grid>
-            <Grid>
-                <TextBlock Text="View2" />
-                <fc:ButtonPlus HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="80,80,0,0"
-                        Content="Btn"
-                        Width="40"
-                        Height="30"></fc:ButtonPlus>
-            </Grid>
-        </fc:SelectiveView>
-        <fc:Switcher Content="T1"
-                     HorizontalAlignment="Left"
-                     Margin="651,114,0,0"
-                     VerticalAlignment="Top"
-                     IsChecked="True"
-                     Height="29"
-                     Width="76"
-                     Checked="Switcher1_Checked" />
-        <fc:Switcher Content="T2"
-                     HorizontalAlignment="Left"
-                     Margin="651,156,0,0"
-                     VerticalAlignment="Top"
-                     Height="31"
-                     Width="76"
-                     Checked="Switcher2_Checked" />
+        <fc:TimeBox x:Name="timebox"
+                    HorizontalAlignment="Left"
+                    Margin="137,129,0,0"
+                    VerticalAlignment="Top"
+                    Width="193"
+                    Hint="Insert time"
+                    Label="Time" />
+        <fc:ButtonPlus Content="Date"
+                       HorizontalAlignment="Left"
+                       Margin="144,0,0,0"
+                       VerticalAlignment="Center"
+                       Height="32"
+                       Width="84"
+                       Click="ButtonPlus_Click" />
+        <fc:ButtonPlus Content="Hour"
+                       HorizontalAlignment="Left"
+                       Margin="238,0,0,0"
+                       VerticalAlignment="Center"
+                       Height="32"
+                       Width="84"
+                       Click="ButtonPlus2_Click" />
 
     </Grid>
 </fc:AvalonWindow>

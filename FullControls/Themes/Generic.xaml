@@ -25,6 +25,7 @@
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/SimpleAccordionItem.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/Switcher.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/TextBoxPlus.xaml" />
+        <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/TimeBox.xaml" />
         <ResourceDictionary Source="/FullControls;component/Themes/Styles/Controls/ToggleButtonPlus.xaml" />
         
         <!-- SystemControls -->
