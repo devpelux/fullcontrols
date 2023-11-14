@@ -7,11 +7,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:TimeBox}">
-                    <local:TextBoxPlus x:Name="PART_ContentHost"
-                                       LabelMargin="4,0,0,0"
-                                       LabelHeight="24"
-                                       Label="{TemplateBinding Label}"
-                                       Hint="{TemplateBinding Hint}" />
+                    <ContentPresenter x:Name="PART_ContentHost"
+                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                      Focusable="False" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

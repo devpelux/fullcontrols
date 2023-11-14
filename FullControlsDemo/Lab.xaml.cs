@@ -17,11 +17,13 @@ namespace FullControlsDemo
         private void ButtonPlus_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             RawTime time = timebox.GetRawTimeDate();
+            timebox.SetRawTimeDate(time);
         }
 
         private void ButtonPlus2_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             RawTime time = timebox.GetRawTimeMinutes();
+            timebox.SetRawTimeMinutes(time);
         }
     }
 }

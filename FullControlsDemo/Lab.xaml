@@ -18,7 +18,9 @@
                     VerticalAlignment="Top"
                     Width="193"
                     Hint="Insert time"
-                    Label="Time" />
+                    Label="Time"
+                    LabelMargin="4,0,0,0"
+                    LabelHeight="24" />
         <fc:ButtonPlus Content="Date"
                        HorizontalAlignment="Left"
                        Margin="144,0,0,0"
