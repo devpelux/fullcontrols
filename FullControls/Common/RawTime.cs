@@ -1,90 +1,118 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace FullControls.Common
 {
     /// <summary>
-    /// Manages raw date and time rappresentation, in a raw way, that is independent from time zone.
+    /// Manages raw time rappresentation independently from the time zone.
     /// </summary>
     public class RawTime
     {
+        #region Time properties
+
         /// <summary>
         /// Gets the year.
         /// </summary>
-        public int Year { get; private set; } = 1;
+        public int Year { get; } = 1;
 
         /// <summary>
         /// Gets the month.
         /// </summary>
-        public int Month { get; private set; } = 1;
+        public int Month { get; } = 1;
 
         /// <summary>
         /// Gets the day.
         /// </summary>
-        public int Day { get; private set; } = 1;
+        public int Day { get; } = 1;
 
         /// <summary>
         /// Gets the hour in 24 military format.
         /// </summary>
-        public int Hour { get; private set; } = 0;
+        public int Hour { get; } = 0;
 
         /// <summary>
         /// Gets the minute.
         /// </summary>
-        public int Minute { get; private set; } = 0;
+        public int Minute { get; } = 0;
 
         /// <summary>
         /// Gets the second.
         /// </summary>
-        public int Second { get; private set; } = 0;
+        public int Second { get; } = 0;
 
         /// <summary>
         /// Gets the millisecond.
         /// </summary>
-        public int Millisecond { get; private set; } = 0;
+        public int Millisecond { get; } = 0;
+
+        #endregion Time properties
+
+        #region Constructors
 
         /// <summary>
         /// Initializes a new instance.
         /// The date will be 01/Jan/0001.
         /// </summary>
-        public RawTime(int hour, int minute) => SetTime(1, 1, 1, hour, minute, 0, 0);
+        public RawTime(int hour, int minute) : this(1, 1, 1, hour, minute, 0, 0) { }
 
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public RawTime(int year, int month, int day) => SetTime(year, month, day, 0, 0, 0, 0);
+        public RawTime(int year, int month, int day) : this(year, month, day, 0, 0, 0, 0) { }
 
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public RawTime(int year, int month, int day, int hour, int minute) => SetTime(year, month, day, hour, minute, 0, 0);
+        public RawTime(int year, int month, int day, int hour, int minute) : this(year, month, day, hour, minute, 0, 0) { }
 
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public RawTime(int year, int month, int day, int hour, int minute, int second) => SetTime(year, month, day, hour, minute, second, 0);
+        public RawTime(int year, int month, int day, int hour, int minute, int second) : this(year, month, day, hour, minute, second, 0) { }
 
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        public RawTime(int year, int month, int day, int hour, int minute, int second, int millisecond) => SetTime(year, month, day, hour, minute, second, millisecond);
+        public RawTime(int year, int month, int day, int hour, int minute, int second, int millisecond)
+        {
+            if (year < 1 || year > 9999) throw new ArgumentOutOfRangeException(nameof(year));
+            if (month < 1 || month > 12) throw new ArgumentOutOfRangeException(nameof(month));
+            if (day < 1 || day > DateTime.DaysInMonth(year, month)) throw new ArgumentOutOfRangeException(nameof(day));
+            if (hour < 0 || hour > 23) throw new ArgumentOutOfRangeException(nameof(hour));
+            if (minute < 0 || minute > 59) throw new ArgumentOutOfRangeException(nameof(minute));
+            if (second < 0 || second > 59) throw new ArgumentOutOfRangeException(nameof(second));
+            if (millisecond < 0 || millisecond > 59) throw new ArgumentOutOfRangeException(nameof(millisecond));
+
+            Year = year;
+            Month = month;
+            Day = day;
+            Hour = hour;
+            Minute = minute;
+            Second = second;
+            Millisecond = millisecond;
+        }
+
+        #endregion Constructors
+
+        #region Converting from and to long
 
         /// <summary>
-        /// Gets a new instance from a raw long truncated to the day.
+        /// Gets a new instance converting a raw long truncated to the day.
         /// </summary>
         public static RawTime FromRawLongDay(long raw) => FromRawLong(raw * 1000000000);
 
         /// <summary>
-        /// Gets a new instance from a raw long truncated to the minute.
+        /// Gets a new instance converting a raw long truncated to the minute.
         /// </summary>
         public static RawTime FromRawLongMinute(long raw) => FromRawLong(raw * 100000);
 
         /// <summary>
-        /// Gets a new instance from a raw long truncated to the second.
+        /// Gets a new instance converting a raw long truncated to the second.
         /// </summary>
         public static RawTime FromRawLongSecond(long raw) => FromRawLong(raw * 1000);
 
         /// <summary>
-        /// Gets a new instance from a raw long.
+        /// Gets a new instance converting a raw long.
         /// </summary>
         public static RawTime FromRawLong(long raw)
         {
@@ -106,18 +134,21 @@ namespace FullControls.Common
         }
 
         /// <summary>
-        /// Gets a new instance from the current time on this computer.
+        /// <para>Encodes this instance into a long, copying the values positionally.</para>
+        /// <para>Format: yyyyMMddHHmmssfff</para>
         /// </summary>
-        public static RawTime GetCurrentTime()
-        {
-            DateTime time = DateTime.Now;
-            return new RawTime(time.Year, time.Month, time.Day, time.Hour, time.Minute, time.Second, time.Millisecond);
-        }
-
         public long EncodeToRawLong() => EncodeToRawLongSecond() * 1000 + Millisecond;
 
+        /// <summary>
+        /// <para>Encodes this instance into a long, copying the values positionally, truncated to the second.</para>
+        /// <para>Format: yyyyMMddHHmmss</para>
+        /// </summary>
         public long EncodeToRawLongSecond() => EncodeToRawLongMinute() * 100 + Second;
 
+        /// <summary>
+        /// <para>Encodes this instance into a long, copying the values positionally, truncated to the minute.</para>
+        /// <para>Format: yyyyMMddHHmm</para>
+        /// </summary>
         public long EncodeToRawLongMinute()
         {
             long encodedTime = EncodeToRawLongDay();
@@ -129,8 +160,8 @@ namespace FullControls.Common
         }
 
         /// <summary>
-        /// Codifica in formato long in modo posizionale troncando al giorno.
-        /// L'anno occuperà le prime cifre, poi saranno inseriti mese e giorno.
+        /// <para>Encodes this instance into a long, copying the values positionally, truncated to the day.</para>
+        /// <para>Format: yyyyMMdd</para>
         /// </summary>
         public long EncodeToRawLongDay()
         {
@@ -142,8 +173,26 @@ namespace FullControls.Common
             return encodedTime;
         }
 
+        #endregion Converting from and to long
+
+        #region Converting from and to DateTime
+
         /// <summary>
-        /// Gets a new instance by truncating the time to the day.
+        /// Gets a new instance converting from a <see cref="DateTime"/>.
+        /// </summary>
+        public static RawTime FromDateTime(DateTime time) => new(time.Year, time.Month, time.Day, time.Hour, time.Minute, time.Second, time.Millisecond);
+
+        /// <summary>
+        /// Converts this instance to a <see cref="DateTime"/>.
+        /// </summary>
+        public DateTime ToDateTime() => new(Year, Month, Day, Hour, Minute, Second, Millisecond);
+
+        #endregion Converting from and to DateTime
+
+        #region Truncations
+
+        /// <summary>
+        /// Gets a new instance truncated to the day.
         /// </summary>
         public RawTime Date() => new(Year, Month, Day);
 
@@ -157,69 +206,93 @@ namespace FullControls.Common
         /// </summary>
         public RawTime TimeOfDayMinutes() => new(Hour, Minute);
 
-        public RawTime AddHours(int hours)
-        {
-            DateTime time = new DateTime(Year, Month, Day, Hour, Minute, Second, Millisecond).AddHours(hours);
-            return new RawTime(time.Year, time.Month, time.Day, time.Hour, time.Minute, time.Second, time.Millisecond);
-        }
+        #endregion Truncations
+
+        #region Operations
 
         /// <summary>
-        /// Gets the current minute of the day.
+        /// Gets a new instance adding the specified amount of years to this instance.
+        /// </summary>
+        public RawTime AddYears(int years) => FromDateTime(ToDateTime().AddYears(years));
+
+        /// <summary>
+        /// Gets a new instance adding the specified amount of months to this instance.
+        /// </summary>
+        public RawTime AddMonths(int months) => FromDateTime(ToDateTime().AddMonths(months));
+
+        /// <summary>
+        /// Gets a new instance adding the specified amount of days to this instance.
+        /// </summary>
+        public RawTime AddDays(int days) => FromDateTime(ToDateTime().AddDays(days));
+
+        /// <summary>
+        /// Gets a new instance adding the specified amount of hours to this instance.
+        /// </summary>
+        public RawTime AddHours(int hours) => FromDateTime(ToDateTime().AddHours(hours));
+
+        /// <summary>
+        /// Gets a new instance adding the specified amount of minutes to this instance.
+        /// </summary>
+        public RawTime AddMinutes(int minutes) => FromDateTime(ToDateTime().AddMinutes(minutes));
+
+        /// <summary>
+        /// Gets a new instance adding the specified amount of seconds to this instance.
+        /// </summary>
+        public RawTime AddSeconds(int seconds) => FromDateTime(ToDateTime().AddSeconds(seconds));
+
+        /// <summary>
+        /// Gets a new instance adding the specified amount of milliseconds to this instance.
+        /// </summary>
+        public RawTime AddMilliseconds(int milliseconds) => FromDateTime(ToDateTime().AddMilliseconds(milliseconds));
+
+        /// <summary>
+        /// Gets the difference between two instances as a <see cref="TimeSpan"/>.
+        /// </summary>
+        public static TimeSpan Difference(RawTime left, RawTime right) => left.ToDateTime() - right.ToDateTime();
+
+        #endregion Operations
+
+        #region Utils
+
+        /// <summary>
+        /// Gets a new instance from the current time on this computer.
+        /// </summary>
+        public static RawTime GetCurrentTime() => FromDateTime(DateTime.Now);
+
+        /// <summary>
+        /// Gets the day of week of this instance.
+        /// </summary>
+        public DayOfWeek DayOfWeek() => ToDateTime().DayOfWeek;
+
+        /// <summary>
+        /// Gets the day of year of this instance.
+        /// </summary>
+        public int DayOfYear() => ToDateTime().DayOfYear;
+
+        /// <summary>
+        /// Gets the second of the day of this instance.
+        /// </summary>
+        public long SecondOfDay() => (MinuteOfDay() * 60) + Second;
+
+        /// <summary>
+        /// Gets the minute of the day of this instance.
         /// </summary>
         public long MinuteOfDay() => (Hour * 60) + Minute;
 
-        public DayOfWeek DayOfWeek() => new DateTime(Year, Month, Day).DayOfWeek;
+        #endregion Utils
 
-        public string ToString(string type)
-        {
-            return type switch
-            {
-                "d" => $"{Day}/{Month}/{Year}",
-                "t" => $"{TwoDigits(Hour)}:{TwoDigits(Minute)}",
-                _ => $"{TwoDigits(Day)}/{TwoDigits(Month)}/{FourDigits(Year)} - {TwoDigits(Hour)}:{TwoDigits(Minute)}",
-            };
-        }
-
-        public override string ToString() => ToString("dt");
+        #region ToString
 
         /// <summary>
-        /// Gets the difference between two times.
+        /// Converts this instance to a string with the specified format.
         /// </summary>
-        public static TimeSpan Difference(RawTime left, RawTime right)
-        {
-            DateTime leftTime = new(left.Year, left.Month, left.Day, left.Hour, left.Minute, left.Second, left.Millisecond);
-            DateTime rightTime = new(right.Year, right.Month, right.Day, right.Hour, right.Minute, right.Second, right.Millisecond);
-            return leftTime - rightTime;
-        }
+        public string ToString(string? format) => ToDateTime().ToString(format);
 
         /// <summary>
-        /// Gets the difference between two times in minutes.
+        /// Converts this instance to a string with the default format.
         /// </summary>
-        public static long DifferenceInMinutes(RawTime left, RawTime right) => (long)Difference(left, right).TotalMinutes;
+        public override string ToString() => ToString(null);
 
-        /// <summary>
-        /// Sets the specified time.
-        /// </summary>
-        private void SetTime(int year, int month, int day, int hour, int minute, int second, int millisecond)
-        {
-            if (year < 1 || year > 9999) throw new ArgumentOutOfRangeException(nameof(year));
-            if (month < 1 || month > 12) throw new ArgumentOutOfRangeException(nameof(month));
-            if (day < 1 || day > DateTime.DaysInMonth(year, month)) throw new ArgumentOutOfRangeException(nameof(day));
-            if (hour < 0 || hour > 23) throw new ArgumentOutOfRangeException(nameof(hour));
-            if (minute < 0 || minute > 59) throw new ArgumentOutOfRangeException(nameof(minute));
-            if (second < 0 || second > 59) throw new ArgumentOutOfRangeException(nameof(second));
-            if (millisecond < 0 || millisecond > 59) throw new ArgumentOutOfRangeException(nameof(millisecond));
-
-            Year = year;
-            Month = month;
-            Day = day;
-            Hour = hour;
-            Minute = minute;
-            Second = second;
-            Millisecond = millisecond;
-        }
-        
-        private static string TwoDigits(long number) => number.ToString().PadLeft(2, '0');
-        private static string FourDigits(long number) => number.ToString().PadLeft(4, '0');
+        #endregion ToString
     }
 }
