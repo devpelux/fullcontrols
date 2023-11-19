@@ -29,8 +29,9 @@
 
 
 # Dependencies
-[![net6](https://img.shields.io/badge/.NET-v6.0-blue)](https://docs.microsoft.com/dotnet)
+[![net7](https://img.shields.io/badge/.NET-v8.0-blue)](https://docs.microsoft.com/dotnet)
 [![net7](https://img.shields.io/badge/.NET-v7.0-blue)](https://docs.microsoft.com/dotnet)
+[![net6](https://img.shields.io/badge/.NET-v6.0-blue)](https://docs.microsoft.com/dotnet)
 
 
 # Full documentation
