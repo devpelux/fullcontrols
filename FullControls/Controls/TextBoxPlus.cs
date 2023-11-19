@@ -2,6 +2,7 @@
 using FullControls.Core;
 using System;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -893,48 +894,21 @@ namespace FullControls.Controls
                 new PropertyMetadata(TextType.Text, new PropertyChangedCallback((d, e) => ((TextBoxPlus)d).OnTextTypeChanged((TextType)e.NewValue))));
 
         /// <summary>
-        /// Gets a value indicating if <see cref="TextBox.Text"/> is a <see cref="double"/> value.
+        /// <para>Gets or sets a regular expression used to filter the text accepted.</para>
+        /// <para>This property is ignored if <see cref="TextType"/> is different than <see cref="TextType.Text"/>.</para>
         /// </summary>
-        public bool IsDouble => Text?.IsDouble() == true || Text == "";
-
-        /// <summary>
-        /// Gets a value indicating if <see cref="TextBox.Text"/> is an <see cref="int"/> value.
-        /// </summary>
-        public bool IsInt => Text?.IsInt() == true || Text == "";
-
-        /// <summary>
-        /// Gets a value indicating if <see cref="TextBox.Text"/> contains only numeric chars.
-        /// </summary>
-        public bool IsNumeric => Text?.IsNumeric() == true;
-
-        /// <summary>
-        /// Gets or sets the <see cref="TextBox.Text"/> as <see cref="double"/>.
-        /// </summary>
-        /// <exception cref="ArgumentNullException"/>
-        /// <exception cref="FormatException"/>
-        /// <exception cref="OverflowException"/>
-        public double TextDouble
+        public string? RegexFilter
         {
-            get => Text is not null and not "" and not "+" and not "-" ? double.Parse(Text) : 0d;
-            set => Text = value.ToString();
+            get => (string?)GetValue(RegexFilterProperty);
+            set => SetValue(RegexFilterProperty, value);
         }
 
         /// <summary>
-        /// Gets or sets the <see cref="TextBox.Text"/> as <see cref="int"/>.
+        /// Identifies the <see cref="RegexFilter"/> dependency property.
         /// </summary>
-        /// <exception cref="ArgumentNullException"/>
-        /// <exception cref="FormatException"/>
-        /// <exception cref="OverflowException"/>
-        public int TextInt
-        {
-            get => (int)TextDouble;
-            set => TextDouble = value;
-        }
-
-        /// <summary>
-        /// Gets the length of the text (Text.Length).
-        /// </summary>
-        public int TextLength => Text != null ? Text.Length : 0;
+        public static readonly DependencyProperty RegexFilterProperty =
+            DependencyProperty.Register(nameof(RegexFilter), typeof(string), typeof(TextBoxPlus),
+                new PropertyMetadata(null, new PropertyChangedCallback((d, e) => ((TextBoxPlus)d).OnRegexFilterChanged((string?)e.NewValue))));
 
         /// <summary>
         /// Gets or sets the duration of the control animation when it changes state.
@@ -950,6 +924,35 @@ namespace FullControls.Controls
         /// </summary>
         public static readonly DependencyProperty AnimationTimeProperty =
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(TextBoxPlus));
+
+        /// <summary>
+        /// Gets the length of the text (Text.Length).
+        /// </summary>
+        public int TextLength => Text != null ? Text.Length : 0;
+
+        /// <summary>
+        /// Gets or sets the <see cref="TextBox.Text"/> as <see cref="double"/>.
+        /// </summary>
+        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="FormatException"/>
+        /// <exception cref="OverflowException"/>
+        public double TextAsDouble
+        {
+            get => Text is not null and not "" and not "+" and not "-" ? double.Parse(Text) : 0D;
+            set => Text = value.ToString();
+        }
+
+        /// <summary>
+        /// Gets or sets the <see cref="TextBox.Text"/> as <see cref="long"/>.
+        /// </summary>
+        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="FormatException"/>
+        /// <exception cref="OverflowException"/>
+        public long TextAsIntegral
+        {
+            get => Text is not null and not "" and not "+" and not "-" ? long.Parse(Text) : 0L;
+            set => Text = value.ToString();
+        }
 
 
         static TextBoxPlus()
@@ -1112,19 +1115,21 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Correct the <see cref="TextBox.Text"/> string if should be numeric.
+        /// Correct the <see cref="TextBox.Text"/> string basing on the text type allowed and the regex filter.
         /// </summary>
         /// <param name="str">String to correct.</param>
         /// <returns>Corrected string.</returns>
-        private string? CoerceText(string str) => str is "" or null ? str
-            : (TextType switch
+        private string? CoerceText(string str)
+        {
+            return TextType switch
             {
-                TextType.DoubleOnly => str is "+" or "-" ? str : str.IsDouble() ? str.NormalizeForDouble(false) : Text,
-                TextType.IntOnly => str is "+" or "-" ? str : str.IsInt() ? str.NormalizeForInt() : Text,
-                TextType.NumericOnly => str.IsNumeric() ? str : Text,
-                TextType.Text => str,
+                TextType.DoubleOnly => str is null or "" or "+" or "-" ? str : str.IsDouble() ? str.NormalizeForDouble(false) : Text,
+                TextType.IntegralOnly => str is null or "" or "+" or "-" ? str : str.IsLong() ? str.NormalizeForLong() : Text,
+                TextType.NumericOnly => str is null or "" ? str : str.IsNumeric() ? str : Text,
+                TextType.Text => str is null or "" ? str : RegexFilter == null ? str : Regex.IsMatch(str, RegexFilter) ? str : Text,
                 _ => str,
-            });
+            };
+        }
 
         /// <summary>
         /// Called when <see cref="TextType"/> is changed.
@@ -1135,18 +1140,35 @@ namespace FullControls.Controls
             switch (textType)
             {
                 case TextType.DoubleOnly:
-                    if (!IsDouble) Clear();
+                    if (Text != "" && Text?.IsDouble() != true) Clear();
                     break;
-                case TextType.IntOnly:
-                    if (!IsInt) Clear();
+                case TextType.IntegralOnly:
+                    if (Text != "" && Text?.IsLong() != true) Clear();
                     break;
                 case TextType.NumericOnly:
-                    if (!IsNumeric) Clear();
+                    if (Text?.IsNumeric() != true) Clear();
                     break;
                 case TextType.Text:
+                    if (RegexFilter != null && !Regex.IsMatch(Text, RegexFilter)) Clear();
                     break;
                 default:
                     break;
+            }
+        }
+
+        /// <summary>
+        /// Called when <see cref="RegexFilter"/> is changed.
+        /// </summary>
+        /// <param name="regexFilter">Actual <see cref="RegexFilter"/> value.</param>
+        private void OnRegexFilterChanged(string? regexFilter)
+        {
+            //Validating the regex filter.
+            _ = Regex.IsMatch("", regexFilter ?? "");
+
+            //Applying the regex filter.
+            if (TextType == TextType.Text && regexFilter != null && !Regex.IsMatch(Text, regexFilter))
+            {
+                Clear();
             }
         }
 

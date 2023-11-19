@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Linq;
 
 namespace FullControls.Core
@@ -22,11 +21,11 @@ namespace FullControls.Core
         internal static bool IsDouble(this string str) => double.TryParse(str, out _);
 
         /// <summary>
-        /// Checks if the <see cref="string"/> is an <see cref="int"/>.
+        /// Checks if the <see cref="string"/> is an <see cref="long"/>.
         /// </summary>
         /// <param name="str">The <see cref="string"/> to check.</param>
-        /// <returns><see langword="true"/> if the <see cref="string"/> is an <see cref="int"/>, <see langword="false"/> otherwise.</returns>
-        internal static bool IsInt(this string str) => int.TryParse(str, out _);
+        /// <returns><see langword="true"/> if the <see cref="string"/> is an <see cref="long"/>, <see langword="false"/> otherwise.</returns>
+        internal static bool IsLong(this string str) => long.TryParse(str, out _);
 
         /// <summary>
         /// Checks if the <see cref="string"/> contains only numeric chars.
@@ -70,12 +69,12 @@ namespace FullControls.Core
         }
 
         /// <summary>
-        /// Normalizes the <see cref="string"/> for the type <see cref="int"/>.
+        /// Normalizes the <see cref="string"/> for the type <see cref="long"/>.
         /// </summary>
         /// <param name="str">The <see cref="string"/> to normalize.</param>
-        /// <returns>The <see cref="string"/> normalized for the type <see cref="int"/>.</returns>
+        /// <returns>The <see cref="string"/> normalized for the type <see cref="long"/>.</returns>
         /// <exception cref="FormatException"/>
-        internal static string NormalizeForInt(this string str) => str.IsInt() ? int.Parse(str).ToString() : throw new FormatException($"{str} is not a valid int.");
+        internal static string NormalizeForLong(this string str) => str.IsLong() ? long.Parse(str).ToString() : throw new FormatException($"{str} is not a valid long.");
 
         #endregion
 
@@ -90,14 +89,6 @@ namespace FullControls.Core
         internal static string Append(this string str, char c) => string.Concat(str, c);
 
         /// <summary>
-        /// Appends a <see cref="string"/> at the end of the <see cref="string"/>.
-        /// </summary>
-        /// <param name="str">Initial string.</param>
-        /// <param name="str2"><see cref="string"/> to append.</param>
-        /// <returns>A new <see cref="string"/> to which was added the <see cref="string"/> specified.</returns>
-        internal static string Append(this string str, string str2) => string.Concat(str, str2);
-
-        /// <summary>
         /// Cuts the <see cref="string"/> by removing a specified number of chars from the end of the <see cref="string"/>.
         /// </summary>
         /// <param name="str">Initial string.</param>
@@ -108,59 +99,6 @@ namespace FullControls.Core
             : count > 0 ? count <= str.Length ? str.Remove(str.Length - count)
             : throw new ArgumentOutOfRangeException(nameof(count), "Length must must be less than or equal to length of string.")
             : throw new ArgumentOutOfRangeException(nameof(count), "Length cannot be less than zero.");
-
-        /// <summary>
-        /// Returns a <see cref="string"/> by taking only the specified number of chars from the start of the <see cref="string"/>.
-        /// </summary>
-        /// <param name="str">Initial string.</param>
-        /// <param name="count">Number of chars to take from the start of the <see cref="string"/>.</param>
-        /// <returns>
-        /// A new <see cref="string"/> that contains only the specified number of chars from the start of the original <see cref="string"/>.<br/>
-        /// If the original <see cref="string"/> is shorter, returns only the original <see cref="string"/>.
-        /// </returns>
-        internal static string TakeStr(this string str, int count) => str.Length <= count ? str : str[..count];
-
-        #endregion
-
-        #region Converters
-
-        /// <summary>
-        /// Converts the string to an <see cref="int"/>.<br/>
-        /// In case of errors returns a specified default value.
-        /// </summary>
-        /// <param name="str">The <see cref="string"/> to convert.</param>
-        /// <param name="defaultValue">The default value used in case of errors.</param>
-        /// <returns>An <see cref="int"/> resulting from the conversion, or the default value in case of errors.</returns>
-        internal static int ToInt(this string str, int defaultValue = 0) => str.IsInt() ? int.Parse(str) : defaultValue;
-
-        /// <summary>
-        /// Converts the string to a <see cref="double"/>.<br/>
-        /// In case of errors returns a specified default value.
-        /// </summary>
-        /// <param name="str">The <see cref="string"/> to convert.</param>
-        /// <param name="defaultValue">The default value used in case of errors.</param>
-        /// <returns>A <see cref="double"/> resulting from the conversion, or the default value in case of errors.</returns>
-        internal static double ToDouble(this string str, double defaultValue = 0) => str.IsDouble() ? double.Parse(str) : defaultValue;
-
-        /// <summary>
-        /// Converts the string to the specific type using a <see cref="TypeDescriptor"/> converter.<br/>
-        /// In case of errors returns a specified default value.
-        /// </summary>
-        /// <typeparam name="T">The type of the result.</typeparam>
-        /// <param name="str">The <see cref="string"/> to convert.</param>
-        /// <param name="defaultValue">The default value used in case of errors.</param>
-        /// <returns>Object of the type specified resulting from the conversion, or the default value in case of errors.</returns>
-        internal static T? ParseTo<T>(this string str, T? defaultValue = default)
-        {
-            try
-            {
-                return (T?)TypeDescriptor.GetConverter(typeof(T)).ConvertFromString(str);
-            }
-            catch
-            {
-                return defaultValue;
-            }
-        }
 
         #endregion
     }

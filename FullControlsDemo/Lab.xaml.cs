@@ -1,6 +1,5 @@
 ﻿using FullControls.Common;
 using FullControls.SystemControls;
-using System;
 
 namespace FullControlsDemo
 {
@@ -16,14 +15,14 @@ namespace FullControlsDemo
 
         private void ButtonPlus_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            RawTime time = timebox.GetRawTimeDate();
-            timebox.SetRawTimeDate(time);
+            RawTime time = timebox.GetDate();
+            timebox.SetDate(time);
         }
 
         private void ButtonPlus2_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            RawTime time = timebox.GetRawTimeMinutes();
-            timebox.SetRawTimeMinutes(time);
+            RawTime time = timebox.GetTime();
+            timebox.SetTime(time);
         }
     }
 }

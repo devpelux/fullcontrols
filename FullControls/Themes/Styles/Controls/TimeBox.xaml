@@ -180,7 +180,8 @@
                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                        MaxLines="1"
                                        IsUndoEnabled="False"
-                                       UndoLimit="0" />
+                                       UndoLimit="0"
+                                       RegexFilter="^[\d\\/:]+$" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

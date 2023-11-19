@@ -18,9 +18,9 @@ namespace FullControls.Common
         DoubleOnly,
 
         /// <summary>
-        /// Only <see cref="int"/> values.
+        /// Only <see cref="long"/> values.
         /// </summary>
-        IntOnly,
+        IntegralOnly,
 
         /// <summary>
         /// Only numeric chars.

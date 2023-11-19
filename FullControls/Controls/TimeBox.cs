@@ -2,6 +2,7 @@
 using FullControls.Core;
 using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -21,6 +22,9 @@ namespace FullControls.Controls
         /// ContentHost template part.
         /// </summary>
         private const string PartContentHost = "PART_ContentHost";
+
+        private static readonly IFormatProvider EN_US_FORMAT = CultureInfo.CreateSpecificCulture("en-US");
+        private static readonly IFormatProvider IT_IT_FORMAT = CultureInfo.CreateSpecificCulture("it-IT");
 
         #region TextBoxPlus customization properties
 
@@ -801,6 +805,22 @@ namespace FullControls.Controls
 
         #endregion TextBoxPlus customization properties
 
+        /// <summary>
+        /// Gets or sets a value indicating if the date should use the american format (month before the day).
+        /// </summary>
+        public bool UseAmericanFormat
+        {
+            get => (bool)GetValue(UseAmericanFormatProperty);
+            set => SetValue(UseAmericanFormatProperty, BoolBox.Box(value));
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="UseAmericanFormat"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty UseAmericanFormatProperty =
+            DependencyProperty.Register(nameof(UseAmericanFormat), typeof(bool), typeof(TimeBox),
+                new PropertyMetadata(BoolBox.False));
+
 
         static TimeBox()
         {
@@ -844,39 +864,62 @@ namespace FullControls.Controls
             timeBox?.Focus();
         }
 
-
-        public void SetRawTimeDate(RawTime date)
+        /// <summary>
+        /// Sets the specified date in the text value.
+        /// </summary>
+        public void SetDate(RawTime date)
         {
-            timeBox.Text = date.ToString("dd/MM/yyyy");
+            if (timeBox != null) timeBox.Text = date.ToString(UseAmericanFormat ? "MM/dd/yyyy" : "dd/MM/yyyy");
         }
 
-        public RawTime GetRawTimeDate()
+        /// <summary>
+        /// Sets the specified time in the text value.
+        /// </summary>
+        public void SetTime(RawTime time, bool setSeconds = true)
         {
-            string text = timeBox.Text;
-            string daystr = text.Substring(0, 2);
-            string monthstr = text.Substring(3, 2);
-            string yearstr = text.Substring(6, 4);
-            int day = int.Parse(daystr);
-            int month = int.Parse(monthstr);
-            int year = int.Parse(yearstr);
-
-            return new(year, month, day);
+            if (timeBox != null) timeBox.Text = time.ToString(setSeconds ? "HH:mm:ss" : "HH:mm");
         }
 
-        public void SetRawTimeMinutes(RawTime date)
+        /// <summary>
+        /// Gets the current date in the text value.
+        /// </summary>
+        /// <exception cref="FormatException"/>
+        public RawTime GetDate()
         {
-            timeBox.Text = date.ToString("HH:mm");
+            if (timeBox != null && timeBox.Text is not null and not "")
+            {
+                string time = timeBox.Text + " 00:00:00";
+                try
+                {
+                    return RawTime.Parse(time, UseAmericanFormat ? EN_US_FORMAT : IT_IT_FORMAT);
+                }
+                catch
+                {
+                    throw new FormatException(timeBox.Text + " is not a valid date.");
+                }
+            }
+            return new RawTime();
         }
 
-        public RawTime GetRawTimeMinutes()
+        /// <summary>
+        /// Gets the current time in the text value.
+        /// </summary>
+        /// <exception cref="FormatException"/>
+        public RawTime GetTime()
         {
-            string text = timeBox.Text;
-            string hourstr = text.Substring(0, 2);
-            string minutestr = text.Substring(3, 2);
-            int hour = int.Parse(hourstr);
-            int minute = int.Parse(minutestr);
-
-            return new(hour, minute);
+            if (timeBox != null && timeBox.Text is not null and not "")
+            {
+                string time = "01/01/0001 " + timeBox.Text;
+                try
+                {
+                    return RawTime.Parse(time, IT_IT_FORMAT);
+                }
+                catch
+                {
+                    throw new FormatException(timeBox.Text + " is not a valid time.");
+                }
+            }
+            return new RawTime();
         }
     }
 }

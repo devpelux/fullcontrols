@@ -50,6 +50,12 @@ namespace FullControls.Common
 
         /// <summary>
         /// Initializes a new instance.
+        /// The time will be 01/Jan/0001 - 00:00:00.
+        /// </summary>
+        public RawTime() : this(1, 1, 1, 0, 0, 0, 0) { }
+
+        /// <summary>
+        /// Initializes a new instance.
         /// The date will be 01/Jan/0001.
         /// </summary>
         public RawTime(int hour, int minute) : this(1, 1, 1, hour, minute, 0, 0) { }
@@ -280,7 +286,7 @@ namespace FullControls.Common
 
         #endregion Utils
 
-        #region ToString
+        #region ToString and Parse
 
         /// <summary>
         /// Converts this instance to a string with the specified format.
@@ -291,6 +297,13 @@ namespace FullControls.Common
         /// Converts this instance to a string with the default format.
         /// </summary>
         public override string ToString() => ToString(null);
+
+        /// <summary>
+        /// Converts the specified string to a new <see cref="RawTime"/> instance, using the specified format.
+        /// </summary>
+        /// <exception cref="ArgumentNullException"/>
+        /// <exception cref="FormatException"/>
+        public static RawTime Parse(string time, IFormatProvider? format = null) => FromDateTime(DateTime.Parse(time, format));
 
         #endregion ToString
     }
