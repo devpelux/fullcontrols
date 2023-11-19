@@ -1509,8 +1509,8 @@ namespace FullControls.Controls
             //Setting properties
             passwordBox.Background = Brushes.Transparent;
             passwordBox.BorderThickness = new(0);
-            passwordBox.Focusable = true;
             //Setting bindings
+            passwordBox.SetBinding(PasswordBox.FocusableProperty, new Binding(nameof(Focusable)) { Source = this });
             passwordBox.SetBinding(PasswordBox.HorizontalContentAlignmentProperty, new Binding(nameof(HorizontalContentAlignment)) { Source = this });
             passwordBox.SetBinding(PasswordBox.VerticalContentAlignmentProperty, new Binding(nameof(VerticalContentAlignment)) { Source = this });
             passwordBox.SetBinding(PasswordBox.ForegroundProperty, new Binding(nameof(ActualForeground)) { Source = this });

@@ -4,7 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Media;
 
 namespace FullControls.Controls
@@ -12,17 +12,17 @@ namespace FullControls.Controls
     /// <summary>
     /// Represents a control that can be used to display or edit time values.
     /// </summary>
-    [TemplatePart(Name = PartContentHost, Type = typeof(ContentPresenter))]
+    [TemplatePart(Name = PartContentHost, Type = typeof(TextBoxPlus))]
     public class TimeBox : Control
     {
-        private readonly TextBoxPlus timeBox;
+        private TextBoxPlus? timeBox;
 
         /// <summary>
         /// ContentHost template part.
         /// </summary>
         private const string PartContentHost = "PART_ContentHost";
 
-        #region TextBoxPlus properties
+        #region TextBoxPlus customization properties
 
         /// <summary>
         /// Gets or sets the background brush when the control is selected.
@@ -85,49 +85,34 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(BorderBrushOnDisabled), typeof(Brush), typeof(TimeBox));
 
         /// <summary>
-        /// Gets or sets the foreground brush.
-        /// </summary>
-        public Brush ForegroundBrush
-        {
-            get => (Brush)GetValue(ForegroundBrushProperty);
-            set => SetValue(ForegroundBrushProperty, value);
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="ForegroundBrush"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty ForegroundBrushProperty =
-            DependencyProperty.Register(nameof(ForegroundBrush), typeof(Brush), typeof(TimeBox));
-
-        /// <summary>
         /// Gets or sets the foreground brush when the control is selected.
         /// </summary>
-        public Brush ForegroundBrushOnSelected
+        public Brush ForegroundOnSelected
         {
-            get => (Brush)GetValue(ForegroundBrushOnSelectedProperty);
-            set => SetValue(ForegroundBrushOnSelectedProperty, value);
+            get => (Brush)GetValue(ForegroundOnSelectedProperty);
+            set => SetValue(ForegroundOnSelectedProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ForegroundBrushOnSelected"/> dependency property.
+        /// Identifies the <see cref="ForegroundOnSelected"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ForegroundBrushOnSelectedProperty =
-            DependencyProperty.Register(nameof(ForegroundBrushOnSelected), typeof(Brush), typeof(TimeBox));
+        public static readonly DependencyProperty ForegroundOnSelectedProperty =
+            DependencyProperty.Register(nameof(ForegroundOnSelected), typeof(Brush), typeof(TimeBox));
 
         /// <summary>
         /// Gets or sets the foreground brush when the control is disabled.
         /// </summary>
-        public Brush ForegroundBrushOnDisabled
+        public Brush ForegroundOnDisabled
         {
-            get => (Brush)GetValue(ForegroundBrushOnDisabledProperty);
-            set => SetValue(ForegroundBrushOnDisabledProperty, value);
+            get => (Brush)GetValue(ForegroundOnDisabledProperty);
+            set => SetValue(ForegroundOnDisabledProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="ForegroundBrushOnDisabled"/> dependency property.
+        /// Identifies the <see cref="ForegroundOnDisabled"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty ForegroundBrushOnDisabledProperty =
-            DependencyProperty.Register(nameof(ForegroundBrushOnDisabled), typeof(Brush), typeof(TimeBox));
+        public static readonly DependencyProperty ForegroundOnDisabledProperty =
+            DependencyProperty.Register(nameof(ForegroundOnDisabled), typeof(Brush), typeof(TimeBox));
 
         /// <summary>
         /// Gets or sets the underline brush.
@@ -689,7 +674,132 @@ namespace FullControls.Controls
         public static readonly DependencyProperty AnimationTimeProperty =
             DependencyProperty.Register(nameof(AnimationTime), typeof(TimeSpan), typeof(TimeBox));
 
-        #endregion TextBoxPlus properties
+        /// <summary>
+        /// Gets or sets the horizontal alignment of the text.
+        /// </summary>
+        public TextAlignment TextAlignment
+        {
+            get => (TextAlignment)GetValue(TextAlignmentProperty);
+            set => SetValue(TextAlignmentProperty, value);
+        }
+
+        /// <summary>
+        /// DependencyProperty for <see cref="TextAlignment" /> property.
+        /// </summary>
+        public static readonly DependencyProperty TextAlignmentProperty = Block.TextAlignmentProperty.AddOwner(typeof(TimeBox));
+
+        /// <summary>
+        /// Gets or sets the decorations, such as underline, applied to the text.
+        /// </summary>
+        public TextDecorationCollection TextDecorations
+        {
+            get => (TextDecorationCollection)GetValue(TextDecorationsProperty);
+            set => SetValue(TextDecorationsProperty, value);
+        }
+
+        /// <summary>
+        /// DependencyProperty for the <see cref="TextDecorations"/> property.
+        /// </summary>
+        public static readonly DependencyProperty TextDecorationsProperty =
+                Inline.TextDecorationsProperty.AddOwner(typeof(TimeBox),
+                        new FrameworkPropertyMetadata(new TextDecorationCollection()));
+
+        /// <summary>
+        /// Gets or sets a value indicating if the text can be edited via keyboard or not.
+        /// </summary>
+        public bool IsReadOnly
+        {
+            get => (bool)GetValue(IsReadOnlyProperty);
+            set => SetValue(IsReadOnlyProperty, value);
+        }
+
+        /// <summary>
+        /// DependencyProperty for the <see cref="IsReadOnly"/> property.
+        /// </summary>
+        public static readonly DependencyProperty IsReadOnlyProperty =
+            DependencyProperty.Register(nameof(IsReadOnly), typeof(bool), typeof(TimeBox),
+                new FrameworkPropertyMetadata(BoolBox.False));
+
+        /// <summary>
+        /// Gets or sets the opacity of the highlighted part of the password.
+        /// </summary>
+        public double SelectionOpacity
+        {
+            get => (double)GetValue(SelectionOpacityProperty);
+            set => SetValue(SelectionOpacityProperty, value);
+        }
+
+        /// <summary>
+        /// DependencyProperty for the <see cref="SelectionOpacity"/> property.
+        /// </summary>
+        public static readonly DependencyProperty SelectionOpacityProperty =
+            DependencyProperty.Register(nameof(SelectionOpacity), typeof(double), typeof(TimeBox),
+                new FrameworkPropertyMetadata(0.4));
+
+        /// <summary>
+        /// Gets or sets the brush of the highlighted part of the password.
+        /// </summary>
+        public Brush SelectionBrush
+        {
+            get => (Brush)GetValue(SelectionBrushProperty);
+            set => SetValue(SelectionBrushProperty, value);
+        }
+
+        /// <summary>
+        /// DependencyProperty for the <see cref="SelectionBrush"/> property.
+        /// </summary>
+        public static readonly DependencyProperty SelectionBrushProperty =
+            DependencyProperty.Register(nameof(SelectionBrush), typeof(Brush), typeof(TimeBox),
+                new FrameworkPropertyMetadata(null));
+
+        /// <summary>
+        /// Gets or sets the brush of the selected password.
+        /// </summary>
+        public Brush SelectionTextBrush
+        {
+            get => (Brush)GetValue(SelectionTextBrushProperty);
+            set => SetValue(SelectionTextBrushProperty, value);
+        }
+
+        /// <summary>
+        /// DependencyProperty for the <see cref="SelectionTextBrush"/> property.
+        /// </summary>
+        public static readonly DependencyProperty SelectionTextBrushProperty =
+            DependencyProperty.Register(nameof(SelectionTextBrush), typeof(Brush), typeof(TimeBox),
+                new FrameworkPropertyMetadata(null));
+
+        /// <summary>
+        /// Gets or sets the brush of the caret.
+        /// </summary>
+        public Brush CaretBrush
+        {
+            get => (Brush)GetValue(CaretBrushProperty);
+            set => SetValue(CaretBrushProperty, value);
+        }
+
+        /// <summary>
+        /// DependencyProperty for the <see cref="CaretBrush"/> property.
+        /// </summary>
+        public static readonly DependencyProperty CaretBrushProperty =
+            DependencyProperty.Register(nameof(CaretBrush), typeof(Brush), typeof(TimeBox),
+                new FrameworkPropertyMetadata(null));
+
+        /// <summary>
+        /// Gets or sets a value indicating if the control displays selected text when does not have focus.
+        /// </summary>
+        public bool IsInactiveSelectionHighlightEnabled
+        {
+            get => (bool)GetValue(CaretBrushProperty);
+            set => SetValue(CaretBrushProperty, value);
+        }
+
+        /// <summary>
+        /// DependencyProperty for the <see cref="IsInactiveSelectionHighlightEnabled"/> property.
+        /// </summary>
+        public static readonly DependencyProperty IsInactiveSelectionHighlightEnabledProperty =
+            DependencyProperty.Register(nameof(IsInactiveSelectionHighlightEnabled), typeof(bool), typeof(TimeBox));
+
+        #endregion TextBoxPlus customization properties
 
 
         static TimeBox()
@@ -708,14 +818,13 @@ namespace FullControls.Controls
         public TimeBox() : base()
         {
             Loaded += (o, e) => OnLoaded();
-            timeBox = PrepareTimeBoxChild();
         }
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            if (Template.FindName(PartContentHost, this) is ContentPresenter contentHost) contentHost.Content = timeBox;
+            timeBox = Template.FindName(PartContentHost, this) as TextBoxPlus;
         }
 
         /// <summary>
@@ -732,8 +841,9 @@ namespace FullControls.Controls
         protected override void OnGotFocus(RoutedEventArgs e)
         {
             base.OnGotFocus(e);
-            timeBox.Focus();
+            timeBox?.Focus();
         }
+
 
         public void SetRawTimeDate(RawTime date)
         {
@@ -768,27 +878,5 @@ namespace FullControls.Controls
 
             return new(hour, minute);
         }
-
-        #region TimeBox loader
-
-        /// <summary>
-        /// Prepares the <see cref="TextBoxPlus"/> child control.
-        /// </summary>
-        private TextBoxPlus PrepareTimeBoxChild()
-        {
-            TextBoxPlus timeBox = new();
-
-            //Setting properties
-            timeBox.Focusable = true;
-            //Setting bindings
-            timeBox.SetBinding(TextBoxPlus.HintProperty, new Binding(nameof(Hint)) { Source = this });
-            timeBox.SetBinding(TextBoxPlus.LabelProperty, new Binding(nameof(Label)) { Source = this });
-            timeBox.SetBinding(TextBoxPlus.LabelHeightProperty, new Binding(nameof(LabelHeight)) { Source = this });
-            timeBox.SetBinding(TextBoxPlus.LabelMarginProperty, new Binding(nameof(LabelMargin)) { Source = this });
-
-            return timeBox;
-        }
-
-        #endregion TimeBox loader
     }
 }
