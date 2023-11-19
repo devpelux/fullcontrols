@@ -53,6 +53,7 @@
               Background="{StaticResource DarkWindowPrimaryColor}">
             <fc:Switcher Style="{StaticResource DarkSwitcher}"
                          GroupName="G2"
+                         ClickToggleType="Complete"
                          Content="Switcher 1"
                          HorizontalAlignment="Center"
                          Margin="0,50,0,0"

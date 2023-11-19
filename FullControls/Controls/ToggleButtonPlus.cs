@@ -2,7 +2,6 @@
 using FullControls.Core;
 using System;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -10,7 +9,7 @@ using System.Windows.Media;
 namespace FullControls.Controls
 {
     /// <summary>
-    /// Represents a control that can switch states, such as <see cref="CheckBox"/>.
+    /// Represents a button that a user can select and clear.
     /// </summary>
     public class ToggleButtonPlus : ToggleButton, IVState
     {
@@ -434,7 +433,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ToggleButtonPlus));
 
         /// <summary>
-        /// Gets or sets if the button is activable-only by click, or deactivable-only by click, or both.
+        /// Gets or sets if the control is activable-only by click, or deactivable-only by click, or both.
         /// </summary>
         public ToggleType ClickToggleType
         {
@@ -502,23 +501,7 @@ namespace FullControls.Controls
         protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(GetCurrentVState());
 
         /// <inheritdoc/>
-        protected override void OnToggle()
-        {
-            switch (ClickToggleType)
-            {
-                case ToggleType.Activate:
-                    if (IsChecked != true) base.OnToggle();
-                    break;
-                case ToggleType.Deactivate:
-                    if (IsChecked == true) base.OnToggle();
-                    break;
-                case ToggleType.Complete:
-                    base.OnToggle();
-                    break;
-                default:
-                    break;
-            }
-        }
+        protected override void OnToggle() => SetCurrentValue(IsCheckedProperty, Util.ToggleCycle(IsChecked, IsThreeState, ClickToggleType));
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.

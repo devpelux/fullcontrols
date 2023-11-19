@@ -68,7 +68,8 @@
                                 Height="20"
                                 Margin="30,50,0,0"
                                 Content="RadioButton 1"
-                                GroupName="G3" />
+                                GroupName="G3"
+                                ClickToggleType="Complete" />
             <fc:RadioButtonPlus Style="{StaticResource DarkRadioButtonPlus}"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Top"

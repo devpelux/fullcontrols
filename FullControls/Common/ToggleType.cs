@@ -1,9 +1,9 @@
-﻿using FullControls.Controls;
+﻿using System.Windows.Controls.Primitives;
 
 namespace FullControls.Common
 {
     /// <summary>
-    /// Specifies the allowed toggle behaviours in a <see cref="ToggleButtonPlus"/>.
+    /// Specifies the allowed toggle behaviours in some <see cref="ToggleButton"/> derived controls.
     /// </summary>
     public enum ToggleType
     {

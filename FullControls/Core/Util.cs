@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FullControls.Common;
+using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
@@ -20,6 +21,29 @@ namespace FullControls.Core
         /// <see cref="SolidColorBrush"/> with value of <c>#00000000</c>.
         /// </summary>
         internal static SolidColorBrush BlackTransparentBrush { get; } = new(Color.FromArgb(0, 0, 0, 0));
+
+        /// <summary>
+        /// Returns the next toggle state basing on the specified checked value, is-three-state value, and toggle type.
+        /// </summary>
+        /// <param name="isChecked">Current checked value.</param>
+        /// <param name="isThreeState">Specifies if the checked can handle three states.</param>
+        /// <param name="toggleType">Specifies the toggle type (activate, deactivate, complete).</param>
+        /// <returns></returns>
+        internal static bool? ToggleCycle(bool? isChecked, bool isThreeState, ToggleType toggleType)
+        {
+            switch (toggleType)
+            {
+                case ToggleType.Activate: //Returns always true.
+                    return true;
+                case ToggleType.Deactivate: //Returns always false.
+                    return false;
+                case ToggleType.Complete: //Cycles between true -> false -> true, or true -> null -> false -> true, if is-three-state is true.
+                    if (isChecked == true) return isThreeState ? null : false;
+                    else return isChecked.HasValue;
+                default: //Returns always null. (invalid toggle type)
+                    return null;
+            }
+        }
 
         /// <summary>
         /// Animate a <see cref="double"/> of an <see cref="UIElement"/> with a specified time.

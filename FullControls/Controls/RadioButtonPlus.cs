@@ -10,8 +10,8 @@ using System.Windows.Media;
 namespace FullControls.Controls
 {
     /// <summary>
-    /// <para>Represents a button that can be selected, but not cleared, by a user.</para>
-    /// <para>The <see cref="ToggleButton.IsChecked"/> property of a <see cref="RadioButtonPlus"/> can be set by clicking it, but it can only be cleared programmatically.</para>
+    /// <para>Represents a control that a user can select and clear.</para>
+    /// <para>Multiple radio buttons can be grouped, so only one of the group can stay selected on the same time.</para>
     /// </summary>
     public class RadioButtonPlus : RadioButton, IVState
     {
@@ -831,6 +831,22 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(InsideMargin), typeof(Thickness), typeof(RadioButtonPlus));
 
         /// <summary>
+        /// Gets or sets if the control is activable-only by click, or deactivable-only by click, or both.
+        /// </summary>
+        public ToggleType ClickToggleType
+        {
+            get => (ToggleType)GetValue(ClickToggleTypeProperty);
+            set => SetValue(ClickToggleTypeProperty, value);
+        }
+
+        /// <summary>
+        /// Identifies the <see cref="ClickToggleType"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ClickToggleTypeProperty =
+            DependencyProperty.Register(nameof(ClickToggleType), typeof(ToggleType), typeof(RadioButtonPlus),
+                new PropertyMetadata(ToggleType.Activate));
+
+        /// <summary>
         /// Gets or sets the duration of the control animation when it changes state.
         /// </summary>
         public TimeSpan AnimationTime
@@ -895,6 +911,9 @@ namespace FullControls.Controls
         /// </summary>
         /// <param name="e">Event data.</param>
         protected virtual void OnLoaded(RoutedEventArgs e) => OnVStateChanged(GetCurrentVState());
+
+        /// <inheritdoc/>
+        protected override void OnToggle() => SetCurrentValue(IsCheckedProperty, Util.ToggleCycle(IsChecked, IsThreeState, ClickToggleType));
 
         /// <summary>
         /// Called when the <see cref="UIElement.IsEnabled"/> is changed.
