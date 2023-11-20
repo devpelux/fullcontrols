@@ -10,10 +10,11 @@
                  ResizeMode="NoResize"
                  TitleMargin="16,0,0,0"
                  SizeToContent="Height"
+                 MinHeight="175"
                  Width="270">
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -37,11 +38,12 @@
                    FontFamily="Segoe MDL2 Assets"
                    Text="&#xE946;"
                    UseLayoutRounding="True"
-                   SnapsToDevicePixels="True"/>
+                   SnapsToDevicePixels="True" />
         <TextBlock x:Name="Message"
                    Grid.Row="0"
                    Grid.Column="1"
                    Margin="24"
+                   VerticalAlignment="Center"
                    TextAlignment="Center"
                    TextWrapping="Wrap"
                    Text="Do not go gentle into that good night... old age should burn and rave at close of day... rage, rage against the dying of the light." />
