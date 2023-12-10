@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace FullControls.Common
 {
@@ -288,10 +289,17 @@ namespace FullControls.Common
 
         #region ToString and Parse
 
+#if NET7_0_OR_GREATER
+        /// <summary>
+        /// Converts this instance to a string with the specified format.
+        /// </summary>
+        public string ToString([StringSyntax("DateTimeFormat")] string? format) => ToDateTime().ToString(format);
+#else
         /// <summary>
         /// Converts this instance to a string with the specified format.
         /// </summary>
         public string ToString(string? format) => ToDateTime().ToString(format);
+#endif
 
         /// <summary>
         /// Converts this instance to a string with the default format.
@@ -305,6 +313,6 @@ namespace FullControls.Common
         /// <exception cref="FormatException"/>
         public static RawTime Parse(string time, IFormatProvider? format = null) => FromDateTime(DateTime.Parse(time, format));
 
-        #endregion ToString
+        #endregion ToString and Parse
     }
 }

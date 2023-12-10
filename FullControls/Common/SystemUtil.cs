@@ -8,7 +8,7 @@ namespace FullControls.Common
     /// <summary>
     /// Provides a set of system utilities.
     /// </summary>
-    public static class SystemUtils
+    public static class SystemUtil
     {
         /// <summary>
         /// Returns the current active window.
