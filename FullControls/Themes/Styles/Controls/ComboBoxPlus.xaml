@@ -403,9 +403,9 @@
         <Setter Property="PopupAnimation"
                 Value="Fade" />
         <Setter Property="PopupPlacement"
-                Value="Relative" />
+                Value="Bottom" />
         <Setter Property="PopupVerticalOffset"
-                Value="-7" />
+                Value="1" />
         <Setter Property="PopupHorizontalOffset"
                 Value="0" />
         <Setter Property="HasDropShadow"
