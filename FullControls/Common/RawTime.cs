@@ -87,7 +87,7 @@ namespace FullControls.Common
             if (hour < 0 || hour > 23) throw new ArgumentOutOfRangeException(nameof(hour));
             if (minute < 0 || minute > 59) throw new ArgumentOutOfRangeException(nameof(minute));
             if (second < 0 || second > 59) throw new ArgumentOutOfRangeException(nameof(second));
-            if (millisecond < 0 || millisecond > 59) throw new ArgumentOutOfRangeException(nameof(millisecond));
+            if (millisecond < 0 || millisecond > 999) throw new ArgumentOutOfRangeException(nameof(millisecond));
 
             Year = year;
             Month = month;
@@ -253,6 +253,7 @@ namespace FullControls.Common
 
         /// <summary>
         /// Gets the difference between two instances as a <see cref="TimeSpan"/>.
+        /// It does the operation left - right, and returns the difference.
         /// </summary>
         public static TimeSpan Difference(RawTime left, RawTime right) => left.ToDateTime() - right.ToDateTime();
 
