@@ -21,7 +21,7 @@
         <Grid Grid.Column="0">
             <fc:ComboBoxPlus HorizontalAlignment="Center"
                              VerticalAlignment="Top"
-                             Margin="0,50,0,0"
+                             Margin="0,70,0,0"
                              SelectedIndex="0"
                              IsEditable="False"
                              MinWidth="120"
@@ -45,7 +45,11 @@
                              MinWidth="120"
                              MaxDropDownHeight="Infinity"
                              Width="120"
-                             Height="30">
+                             Height="50"
+                             Label="Items"
+                             LabelForeground="White"
+                             LabelHeight="20"
+                             LabelMargin="4,0,0,0">
                 <fc:ComboBoxItemPlus Style="{StaticResource DarkComboBoxItemPlus}"
                                      Content="Item1" />
                 <fc:ComboBoxItemPlus Style="{StaticResource DarkComboBoxItemPlus}"

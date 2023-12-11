@@ -12,67 +12,114 @@
     <ControlTemplate x:Key="ComboBoxPlusTemplate"
                      TargetType="{x:Type local:ComboBoxPlus}">
         <Grid>
-            <local:ToggleButtonPlus x:Name="PART_ToggleButton"
-                                    Width="Auto"
-                                    Height="Auto"
-                                    Content="{TemplateBinding Arrow}"
-                                    Background="{TemplateBinding Background}"
-                                    BackgroundOnMouseOver="{TemplateBinding BackgroundOnMouseOver}"
-                                    BackgroundOnMouseOverOnChecked="{TemplateBinding BackgroundOnMouseOverOnChecked}"
-                                    BackgroundOnPressed="{TemplateBinding BackgroundOnPressed}"
-                                    BackgroundOnPressedOnChecked="{TemplateBinding BackgroundOnPressedOnChecked}"
-                                    BackgroundOnChecked="{TemplateBinding BackgroundOnChecked}"
-                                    BackgroundOnDisabled="{TemplateBinding BackgroundOnDisabled}"
-                                    BackgroundOnDisabledOnChecked="{TemplateBinding BackgroundOnDisabledOnChecked}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderBrushOnMouseOver="{TemplateBinding BorderBrushOnMouseOver}"
-                                    BorderBrushOnMouseOverOnChecked="{TemplateBinding BorderBrushOnMouseOverOnChecked}"
-                                    BorderBrushOnPressed="{TemplateBinding BorderBrushOnPressed}"
-                                    BorderBrushOnPressedOnChecked="{TemplateBinding BorderBrushOnPressedOnChecked}"
-                                    BorderBrushOnChecked="{TemplateBinding BorderBrushOnChecked}"
-                                    BorderBrushOnDisabled="{TemplateBinding BorderBrushOnDisabled}"
-                                    BorderBrushOnDisabledOnChecked="{TemplateBinding BorderBrushOnDisabledOnChecked}"
-                                    Foreground="{TemplateBinding Foreground}"
-                                    ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
-                                    ForegroundOnMouseOverOnChecked="{TemplateBinding ForegroundOnMouseOverOnChecked}"
-                                    ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
-                                    ForegroundOnPressedOnChecked="{TemplateBinding ForegroundOnPressedOnChecked}"
-                                    ForegroundOnChecked="{TemplateBinding ForegroundOnChecked}"
-                                    ForegroundOnDisabled="{TemplateBinding ForegroundOnDisabled}"
-                                    ForegroundOnDisabledOnChecked="{TemplateBinding ForegroundOnDisabledOnChecked}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    FontFamily="{TemplateBinding ArrowFont}"
-                                    FontSize="{TemplateBinding ArrowSize}"
-                                    CornerRadius="{TemplateBinding CornerRadius}"
-                                    HorizontalContentAlignment="{TemplateBinding ToggleHorizontalContentAlignment}"
-                                    VerticalContentAlignment="{TemplateBinding ToggleVerticalContentAlignment}"
-                                    Padding="{TemplateBinding TogglePadding}"
-                                    AnimationTime="{TemplateBinding AnimationTime}"
-                                    IsEnabled="{TemplateBinding IsEnabled}"
-                                    IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                    IsTabStop="{TemplateBinding IsTabStop}"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                    ClickMode="Press"
-                                    Focusable="False" />
+            <Border x:Name="PART_ExternalOutline"
+                    Background="{TemplateBinding ExternalBackground}"
+                    BorderBrush="{TemplateBinding ExternalBorderBrush}"
+                    BorderThickness="{TemplateBinding ExternalBorderThickness}"
+                    CornerRadius="{TemplateBinding ExternalCornerRadius}">
+                <DockPanel Margin="{TemplateBinding ExternalPadding}">
 
-            <Grid Margin="{TemplateBinding BorderThickness}"
-                  IsHitTestVisible="False">
-                <Grid Margin="{TemplateBinding Padding}"
-                      Background="Transparent"
-                      IsHitTestVisible="False">
-                    <ContentPresenter x:Name="PART_ContentSite"
-                                      Margin="{TemplateBinding TextPadding}"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                      Content="{TemplateBinding SelectionBoxItem}"
-                                      ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                                      ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                      IsEnabled="{TemplateBinding IsEnabled}"
-                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                      IsHitTestVisible="False"
-                                      Focusable="False" />
-                </Grid>
-            </Grid>
+                    <Grid x:Name="PART_Label"
+                          DockPanel.Dock="{TemplateBinding LabelPlacement}"
+                          VerticalAlignment="{TemplateBinding LabelVerticalAlignment}"
+                          HorizontalAlignment="{TemplateBinding LabelHorizontalAlignment}"
+                          Background="Transparent">
+                        <ContentPresenter x:Name="PART_LabelContent"
+                                          Margin="{TemplateBinding LabelMargin}"
+                                          Width="{TemplateBinding LabelWidth}"
+                                          Height="{TemplateBinding LabelHeight}"
+                                          MaxWidth="{TemplateBinding LabelMaxWidth}"
+                                          MaxHeight="{TemplateBinding LabelMaxHeight}"
+                                          TextBlock.Foreground="{TemplateBinding LabelForeground}"
+                                          TextBlock.FontSize="{TemplateBinding LabelFontSize}"
+                                          TextBlock.FontFamily="{TemplateBinding LabelFontFamily}"
+                                          TextBlock.FontStretch="{TemplateBinding LabelFontStretch}"
+                                          TextBlock.FontStyle="{TemplateBinding LabelFontStyle}"
+                                          TextBlock.FontWeight="{TemplateBinding LabelFontWeight}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          ContentSource="Label"
+                                          Visibility="Collapsed"
+                                          Focusable="False" />
+                        <Image x:Name="PART_LabelIcon"
+                               Margin="{TemplateBinding LabelMargin}"
+                               Width="{TemplateBinding LabelWidth}"
+                               Height="{TemplateBinding LabelHeight}"
+                               MaxWidth="{TemplateBinding LabelMaxWidth}"
+                               MaxHeight="{TemplateBinding LabelMaxHeight}"
+                               Source="{TemplateBinding Icon}"
+                               Stretch="Uniform"
+                               RenderOptions.BitmapScalingMode="Fant"
+                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                               Visibility="Collapsed"
+                               Focusable="False" />
+                    </Grid>
+
+                    <Grid>
+                        <local:ToggleButtonPlus x:Name="PART_ToggleButton"
+                                                Width="Auto"
+                                                Height="Auto"
+                                                Content="{TemplateBinding Arrow}"
+                                                Background="{TemplateBinding Background}"
+                                                BackgroundOnMouseOver="{TemplateBinding BackgroundOnMouseOver}"
+                                                BackgroundOnMouseOverOnChecked="{TemplateBinding BackgroundOnMouseOverOnChecked}"
+                                                BackgroundOnPressed="{TemplateBinding BackgroundOnPressed}"
+                                                BackgroundOnPressedOnChecked="{TemplateBinding BackgroundOnPressedOnChecked}"
+                                                BackgroundOnChecked="{TemplateBinding BackgroundOnChecked}"
+                                                BackgroundOnDisabled="{TemplateBinding BackgroundOnDisabled}"
+                                                BackgroundOnDisabledOnChecked="{TemplateBinding BackgroundOnDisabledOnChecked}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderBrushOnMouseOver="{TemplateBinding BorderBrushOnMouseOver}"
+                                                BorderBrushOnMouseOverOnChecked="{TemplateBinding BorderBrushOnMouseOverOnChecked}"
+                                                BorderBrushOnPressed="{TemplateBinding BorderBrushOnPressed}"
+                                                BorderBrushOnPressedOnChecked="{TemplateBinding BorderBrushOnPressedOnChecked}"
+                                                BorderBrushOnChecked="{TemplateBinding BorderBrushOnChecked}"
+                                                BorderBrushOnDisabled="{TemplateBinding BorderBrushOnDisabled}"
+                                                BorderBrushOnDisabledOnChecked="{TemplateBinding BorderBrushOnDisabledOnChecked}"
+                                                Foreground="{TemplateBinding Foreground}"
+                                                ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
+                                                ForegroundOnMouseOverOnChecked="{TemplateBinding ForegroundOnMouseOverOnChecked}"
+                                                ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
+                                                ForegroundOnPressedOnChecked="{TemplateBinding ForegroundOnPressedOnChecked}"
+                                                ForegroundOnChecked="{TemplateBinding ForegroundOnChecked}"
+                                                ForegroundOnDisabled="{TemplateBinding ForegroundOnDisabled}"
+                                                ForegroundOnDisabledOnChecked="{TemplateBinding ForegroundOnDisabledOnChecked}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                FontFamily="{TemplateBinding ArrowFont}"
+                                                FontSize="{TemplateBinding ArrowSize}"
+                                                CornerRadius="{TemplateBinding CornerRadius}"
+                                                HorizontalContentAlignment="{TemplateBinding ToggleHorizontalContentAlignment}"
+                                                VerticalContentAlignment="{TemplateBinding ToggleVerticalContentAlignment}"
+                                                Padding="{TemplateBinding TogglePadding}"
+                                                AnimationTime="{TemplateBinding AnimationTime}"
+                                                IsEnabled="{TemplateBinding IsEnabled}"
+                                                IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                                IsTabStop="{TemplateBinding IsTabStop}"
+                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                ClickMode="Press"
+                                                Focusable="False" />
+
+                        <Grid Margin="{TemplateBinding BorderThickness}"
+                              IsHitTestVisible="False">
+                            <Grid Margin="{TemplateBinding Padding}"
+                                  Background="Transparent"
+                                  IsHitTestVisible="False">
+                                <ContentPresenter x:Name="PART_ContentSite"
+                                                  Margin="{TemplateBinding TextPadding}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  Content="{TemplateBinding SelectionBoxItem}"
+                                                  ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                                  ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                                  IsEnabled="{TemplateBinding IsEnabled}"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                  IsHitTestVisible="False"
+                                                  Focusable="False" />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                </DockPanel>
+            </Border>
 
             <Popup x:Name="PART_Popup"
                    PopupAnimation="{TemplateBinding PopupAnimation}"
@@ -123,6 +170,18 @@
         </Grid>
 
         <ControlTemplate.Triggers>
+            <Trigger Property="LabelType"
+                     Value="Icon">
+                <Setter TargetName="PART_LabelIcon"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <Trigger Property="LabelType"
+                     Value="Content">
+                <Setter TargetName="PART_LabelContent"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
             <Trigger Property="HasItems"
                      Value="False">
                 <Setter TargetName="PART_PopupBorder"
@@ -150,79 +209,127 @@
     <ControlTemplate x:Key="ComboBoxPlusEditableTemplate"
                      TargetType="{x:Type local:ComboBoxPlus}">
         <Grid>
-            <local:ToggleButtonPlus x:Name="PART_ToggleButton"
-                                    Width="Auto"
-                                    Height="Auto"
-                                    Content="{TemplateBinding Arrow}"
-                                    Background="{TemplateBinding Background}"
-                                    BackgroundOnMouseOver="{TemplateBinding BackgroundOnMouseOver}"
-                                    BackgroundOnMouseOverOnChecked="{TemplateBinding BackgroundOnMouseOverOnChecked}"
-                                    BackgroundOnPressed="{TemplateBinding BackgroundOnPressed}"
-                                    BackgroundOnPressedOnChecked="{TemplateBinding BackgroundOnPressedOnChecked}"
-                                    BackgroundOnChecked="{TemplateBinding BackgroundOnChecked}"
-                                    BackgroundOnDisabled="{TemplateBinding BackgroundOnDisabled}"
-                                    BackgroundOnDisabledOnChecked="{TemplateBinding BackgroundOnDisabledOnChecked}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderBrushOnMouseOver="{TemplateBinding BorderBrushOnMouseOver}"
-                                    BorderBrushOnMouseOverOnChecked="{TemplateBinding BorderBrushOnMouseOverOnChecked}"
-                                    BorderBrushOnPressed="{TemplateBinding BorderBrushOnPressed}"
-                                    BorderBrushOnPressedOnChecked="{TemplateBinding BorderBrushOnPressedOnChecked}"
-                                    BorderBrushOnChecked="{TemplateBinding BorderBrushOnChecked}"
-                                    BorderBrushOnDisabled="{TemplateBinding BorderBrushOnDisabled}"
-                                    BorderBrushOnDisabledOnChecked="{TemplateBinding BorderBrushOnDisabledOnChecked}"
-                                    Foreground="{TemplateBinding Foreground}"
-                                    ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
-                                    ForegroundOnMouseOverOnChecked="{TemplateBinding ForegroundOnMouseOverOnChecked}"
-                                    ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
-                                    ForegroundOnPressedOnChecked="{TemplateBinding ForegroundOnPressedOnChecked}"
-                                    ForegroundOnChecked="{TemplateBinding ForegroundOnChecked}"
-                                    ForegroundOnDisabled="{TemplateBinding ForegroundOnDisabled}"
-                                    ForegroundOnDisabledOnChecked="{TemplateBinding ForegroundOnDisabledOnChecked}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    FontFamily="{TemplateBinding ArrowFont}"
-                                    FontSize="{TemplateBinding ArrowSize}"
-                                    CornerRadius="{TemplateBinding CornerRadius}"
-                                    HorizontalContentAlignment="{TemplateBinding ToggleHorizontalContentAlignment}"
-                                    VerticalContentAlignment="{TemplateBinding ToggleVerticalContentAlignment}"
-                                    Padding="{TemplateBinding TogglePadding}"
-                                    AnimationTime="{TemplateBinding AnimationTime}"
-                                    IsEnabled="{TemplateBinding IsEnabled}"
-                                    IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                    IsTabStop="{TemplateBinding IsTabStop}"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                    ClickMode="Press"
-                                    Focusable="False" />
 
-            <Grid Margin="{TemplateBinding BorderThickness}">
-                <Grid Margin="{TemplateBinding Padding}"
-                      Background="Transparent">
-                    <TextBox x:Name="PART_EditableTextBox"
-                             Margin="{TemplateBinding TextPadding}"
-                             Foreground="{TemplateBinding ActualForeground}"
-                             VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                             HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                             TextAlignment="{TemplateBinding TextAlignment}"
-                             CaretBrush="{TemplateBinding CaretBrush}"
-                             SelectionBrush="{TemplateBinding SelectionBrush}"
-                             SelectionTextBrush="{TemplateBinding SelectionTextBrush}"
-                             SelectionOpacity="{TemplateBinding SelectionOpacity}"
-                             IsEnabled="{TemplateBinding IsEnabled}"
-                             IsReadOnly="{TemplateBinding IsReadOnly}"
-                             ContextMenu="{TemplateBinding TextContextMenu}"
-                             Focusable="True">
-                        <TextBox.Template>
-                            <ControlTemplate>
-                                <Border>
-                                    <ScrollViewer x:Name="PART_ContentHost"
-                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                  Focusable="False" />
-                                </Border>
-                            </ControlTemplate>
-                        </TextBox.Template>
-                    </TextBox>
-                </Grid>
-            </Grid>
+            <Border x:Name="PART_ExternalOutline"
+                    Background="{TemplateBinding ExternalBackground}"
+                    BorderBrush="{TemplateBinding ExternalBorderBrush}"
+                    BorderThickness="{TemplateBinding ExternalBorderThickness}"
+                    CornerRadius="{TemplateBinding ExternalCornerRadius}">
+                <DockPanel Margin="{TemplateBinding ExternalPadding}">
+
+                    <Grid x:Name="PART_Label"
+                          DockPanel.Dock="{TemplateBinding LabelPlacement}"
+                          VerticalAlignment="{TemplateBinding LabelVerticalAlignment}"
+                          HorizontalAlignment="{TemplateBinding LabelHorizontalAlignment}"
+                          Background="Transparent">
+                        <ContentPresenter x:Name="PART_LabelContent"
+                                          Margin="{TemplateBinding LabelMargin}"
+                                          Width="{TemplateBinding LabelWidth}"
+                                          Height="{TemplateBinding LabelHeight}"
+                                          MaxWidth="{TemplateBinding LabelMaxWidth}"
+                                          MaxHeight="{TemplateBinding LabelMaxHeight}"
+                                          TextBlock.Foreground="{TemplateBinding LabelForeground}"
+                                          TextBlock.FontSize="{TemplateBinding LabelFontSize}"
+                                          TextBlock.FontFamily="{TemplateBinding LabelFontFamily}"
+                                          TextBlock.FontStretch="{TemplateBinding LabelFontStretch}"
+                                          TextBlock.FontStyle="{TemplateBinding LabelFontStyle}"
+                                          TextBlock.FontWeight="{TemplateBinding LabelFontWeight}"
+                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          ContentSource="Label"
+                                          Visibility="Collapsed"
+                                          Focusable="False" />
+                        <Image x:Name="PART_LabelIcon"
+                               Margin="{TemplateBinding LabelMargin}"
+                               Width="{TemplateBinding LabelWidth}"
+                               Height="{TemplateBinding LabelHeight}"
+                               MaxWidth="{TemplateBinding LabelMaxWidth}"
+                               MaxHeight="{TemplateBinding LabelMaxHeight}"
+                               Source="{TemplateBinding Icon}"
+                               Stretch="Uniform"
+                               RenderOptions.BitmapScalingMode="Fant"
+                               SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                               Visibility="Collapsed"
+                               Focusable="False" />
+                    </Grid>
+
+                    <Grid>
+                        <local:ToggleButtonPlus x:Name="PART_ToggleButton"
+                                                Width="Auto"
+                                                Height="Auto"
+                                                Content="{TemplateBinding Arrow}"
+                                                Background="{TemplateBinding Background}"
+                                                BackgroundOnMouseOver="{TemplateBinding BackgroundOnMouseOver}"
+                                                BackgroundOnMouseOverOnChecked="{TemplateBinding BackgroundOnMouseOverOnChecked}"
+                                                BackgroundOnPressed="{TemplateBinding BackgroundOnPressed}"
+                                                BackgroundOnPressedOnChecked="{TemplateBinding BackgroundOnPressedOnChecked}"
+                                                BackgroundOnChecked="{TemplateBinding BackgroundOnChecked}"
+                                                BackgroundOnDisabled="{TemplateBinding BackgroundOnDisabled}"
+                                                BackgroundOnDisabledOnChecked="{TemplateBinding BackgroundOnDisabledOnChecked}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderBrushOnMouseOver="{TemplateBinding BorderBrushOnMouseOver}"
+                                                BorderBrushOnMouseOverOnChecked="{TemplateBinding BorderBrushOnMouseOverOnChecked}"
+                                                BorderBrushOnPressed="{TemplateBinding BorderBrushOnPressed}"
+                                                BorderBrushOnPressedOnChecked="{TemplateBinding BorderBrushOnPressedOnChecked}"
+                                                BorderBrushOnChecked="{TemplateBinding BorderBrushOnChecked}"
+                                                BorderBrushOnDisabled="{TemplateBinding BorderBrushOnDisabled}"
+                                                BorderBrushOnDisabledOnChecked="{TemplateBinding BorderBrushOnDisabledOnChecked}"
+                                                Foreground="{TemplateBinding Foreground}"
+                                                ForegroundOnMouseOver="{TemplateBinding ForegroundOnMouseOver}"
+                                                ForegroundOnMouseOverOnChecked="{TemplateBinding ForegroundOnMouseOverOnChecked}"
+                                                ForegroundOnPressed="{TemplateBinding ForegroundOnPressed}"
+                                                ForegroundOnPressedOnChecked="{TemplateBinding ForegroundOnPressedOnChecked}"
+                                                ForegroundOnChecked="{TemplateBinding ForegroundOnChecked}"
+                                                ForegroundOnDisabled="{TemplateBinding ForegroundOnDisabled}"
+                                                ForegroundOnDisabledOnChecked="{TemplateBinding ForegroundOnDisabledOnChecked}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                FontFamily="{TemplateBinding ArrowFont}"
+                                                FontSize="{TemplateBinding ArrowSize}"
+                                                CornerRadius="{TemplateBinding CornerRadius}"
+                                                HorizontalContentAlignment="{TemplateBinding ToggleHorizontalContentAlignment}"
+                                                VerticalContentAlignment="{TemplateBinding ToggleVerticalContentAlignment}"
+                                                Padding="{TemplateBinding TogglePadding}"
+                                                AnimationTime="{TemplateBinding AnimationTime}"
+                                                IsEnabled="{TemplateBinding IsEnabled}"
+                                                IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                                IsTabStop="{TemplateBinding IsTabStop}"
+                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                ClickMode="Press"
+                                                Focusable="False" />
+
+                        <Grid Margin="{TemplateBinding BorderThickness}">
+                            <Grid Margin="{TemplateBinding Padding}"
+                                  Background="Transparent">
+                                <TextBox x:Name="PART_EditableTextBox"
+                                         Margin="{TemplateBinding TextPadding}"
+                                         Foreground="{TemplateBinding ActualForeground}"
+                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                         TextAlignment="{TemplateBinding TextAlignment}"
+                                         CaretBrush="{TemplateBinding CaretBrush}"
+                                         SelectionBrush="{TemplateBinding SelectionBrush}"
+                                         SelectionTextBrush="{TemplateBinding SelectionTextBrush}"
+                                         SelectionOpacity="{TemplateBinding SelectionOpacity}"
+                                         IsEnabled="{TemplateBinding IsEnabled}"
+                                         IsReadOnly="{TemplateBinding IsReadOnly}"
+                                         ContextMenu="{TemplateBinding TextContextMenu}"
+                                         Focusable="True">
+                                    <TextBox.Template>
+                                        <ControlTemplate>
+                                            <Border>
+                                                <ScrollViewer x:Name="PART_ContentHost"
+                                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                              Focusable="False" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </TextBox.Template>
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                </DockPanel>
+            </Border>
 
             <Popup x:Name="PART_Popup"
                    PopupAnimation="{TemplateBinding PopupAnimation}"
@@ -273,6 +380,18 @@
         </Grid>
 
         <ControlTemplate.Triggers>
+            <Trigger Property="LabelType"
+                     Value="Icon">
+                <Setter TargetName="PART_LabelIcon"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
+            <Trigger Property="LabelType"
+                     Value="Content">
+                <Setter TargetName="PART_LabelContent"
+                        Property="Visibility"
+                        Value="Visible" />
+            </Trigger>
             <Trigger Property="HasItems"
                      Value="False">
                 <Setter TargetName="PART_PopupBorder"
@@ -334,6 +453,10 @@
                 Value="{StaticResource LightButtonBorderDisabled}" />
         <Setter Property="BorderBrushOnDisabledOnChecked"
                 Value="{StaticResource LightButtonBorderDisabled}" />
+        <Setter Property="ExternalBackground"
+                Value="{x:Null}" />
+        <Setter Property="ExternalBorderBrush"
+                Value="{x:Null}" />
         <Setter Property="Foreground"
                 Value="{StaticResource LightButtonText}" />
         <Setter Property="ForegroundOnMouseOver"
@@ -350,6 +473,8 @@
                 Value="{StaticResource LightButtonTextDisabled}" />
         <Setter Property="ForegroundOnDisabledOnChecked"
                 Value="{StaticResource LightButtonTextDisabled}" />
+        <Setter Property="LabelForeground"
+                Value="{StaticResource LightTextBoxText}" />
         <Setter Property="CaretBrush"
                 Value="{StaticResource LightButtonText}" />
         <Setter Property="SelectionBrush"
@@ -372,6 +497,26 @@
                 Value="4" />
         <Setter Property="SelectionOpacity"
                 Value="0.4" />
+        <Setter Property="Label"
+                Value="{x:Null}" />
+        <Setter Property="Icon"
+                Value="{x:Null}" />
+        <Setter Property="LabelPlacement"
+                Value="Top" />
+        <Setter Property="LabelVerticalAlignment"
+                Value="Center" />
+        <Setter Property="LabelHorizontalAlignment"
+                Value="Left" />
+        <Setter Property="LabelFontSize"
+                Value="12" />
+        <Setter Property="LabelFontFamily"
+                Value="Segoe UI" />
+        <Setter Property="LabelFontStretch"
+                Value="Normal" />
+        <Setter Property="LabelFontStyle"
+                Value="Normal" />
+        <Setter Property="LabelFontWeight"
+                Value="Normal" />
         <Setter Property="TextAlignment"
                 Value="Left" />
         <Setter Property="VerticalContentAlignment"
@@ -388,6 +533,12 @@
                 Value="10,2,10,2" />
         <Setter Property="TogglePadding"
                 Value="0,0,10,0" />
+        <Setter Property="ExternalBorderThickness"
+                Value="0" />
+        <Setter Property="ExternalPadding"
+                Value="0" />
+        <Setter Property="ExternalCornerRadius"
+                Value="0" />
         <Setter Property="Arrow"
                 Value="&#xE70D;" />
         <Setter Property="ArrowSize"
