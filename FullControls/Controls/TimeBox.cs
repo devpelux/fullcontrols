@@ -906,12 +906,13 @@ namespace FullControls.Controls
         /// <exception cref="FormatException"/>
         public RawTime GetDate()
         {
-            if (timeBox != null && timeBox.Text is not null and not "")
+            if (timeBox != null)
             {
-                string time = timeBox.Text + " 00:00:00";
+                if (timeBox.Text is null or "") throw new FormatException("Time is empty.");
+
                 try
                 {
-                    return RawTime.Parse(time, UseAmericanFormat ? EN_US_FORMAT : IT_IT_FORMAT);
+                    return RawTime.Parse(timeBox.Text + " 00:00:00", UseAmericanFormat ? EN_US_FORMAT : IT_IT_FORMAT);
                 }
                 catch
                 {
@@ -922,17 +923,33 @@ namespace FullControls.Controls
         }
 
         /// <summary>
+        /// Gets the current date in the text value, or the specified default value if it is not valid.
+        /// </summary>
+        public RawTime? GetDateOrDefault(RawTime? fallback)
+        {
+            try
+            {
+                return GetDate();
+            }
+            catch
+            {
+                return fallback;
+            }
+        }
+
+        /// <summary>
         /// Gets the current time in the text value.
         /// </summary>
         /// <exception cref="FormatException"/>
         public RawTime GetTime()
         {
-            if (timeBox != null && timeBox.Text is not null and not "")
+            if (timeBox != null)
             {
-                string time = "01/01/0001 " + timeBox.Text;
+                if (timeBox.Text is null or "") throw new FormatException("Time is empty.");
+
                 try
                 {
-                    return RawTime.Parse(time, IT_IT_FORMAT);
+                    return RawTime.Parse("01/01/0001 " + timeBox.Text, IT_IT_FORMAT);
                 }
                 catch
                 {
@@ -940,6 +957,21 @@ namespace FullControls.Controls
                 }
             }
             return new RawTime();
+        }
+
+        /// <summary>
+        /// Gets the current time in the text value, or the specified default value if it is not valid.
+        /// </summary>
+        public RawTime? GetTimeOrDefault(RawTime? fallback)
+        {
+            try
+            {
+                return GetTime();
+            }
+            catch
+            {
+                return fallback;
+            }
         }
 
         #region TextBox events
