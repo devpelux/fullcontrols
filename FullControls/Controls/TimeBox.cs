@@ -2,7 +2,7 @@
 using FullControls.Core;
 using System;
 using System.ComponentModel;
-using System.Globalization;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -22,9 +22,6 @@ namespace FullControls.Controls
         /// ContentHost template part.
         /// </summary>
         private const string PartContentHost = "PART_ContentHost";
-
-        private static readonly IFormatProvider EN_US_FORMAT = CultureInfo.CreateSpecificCulture("en-US");
-        private static readonly IFormatProvider IT_IT_FORMAT = CultureInfo.CreateSpecificCulture("it-IT");
 
         #region TextBoxPlus customization properties
 
@@ -805,22 +802,6 @@ namespace FullControls.Controls
 
         #endregion TextBoxPlus customization properties
 
-        /// <summary>
-        /// Gets or sets a value indicating if the date should use the american format (month before the day).
-        /// </summary>
-        public bool UseAmericanFormat
-        {
-            get => (bool)GetValue(UseAmericanFormatProperty);
-            set => SetValue(UseAmericanFormatProperty, BoolBox.Box(value));
-        }
-
-        /// <summary>
-        /// Identifies the <see cref="UseAmericanFormat"/> dependency property.
-        /// </summary>
-        public static readonly DependencyProperty UseAmericanFormatProperty =
-            DependencyProperty.Register(nameof(UseAmericanFormat), typeof(bool), typeof(TimeBox),
-                new PropertyMetadata(BoolBox.False));
-
         #region Public Events
 
         /// <summary>
@@ -884,27 +865,45 @@ namespace FullControls.Controls
             timeBox?.Focus();
         }
 
+#if NET7_0_OR_GREATER
         /// <summary>
         /// Sets the specified date in the text value.
         /// </summary>
-        public void SetDate(RawTime date)
+        public void SetDate(RawTime? date, [StringSyntax("DateTimeFormat")] string? format = "dd/MM/yyyy")
         {
-            if (timeBox != null) timeBox.Text = date.ToString(UseAmericanFormat ? "MM/dd/yyyy" : "dd/MM/yyyy");
+            if (timeBox != null) timeBox.Text = date?.ToString(format);
         }
 
         /// <summary>
         /// Sets the specified time in the text value.
         /// </summary>
-        public void SetTime(RawTime time, bool setSeconds = true)
+        public void SetTime(RawTime? time, [StringSyntax("DateTimeFormat")] string? format = "HH:mm:ss")
         {
-            if (timeBox != null) timeBox.Text = time.ToString(setSeconds ? "HH:mm:ss" : "HH:mm");
+            if (timeBox != null) timeBox.Text = time?.ToString(format);
         }
+#else
+        /// <summary>
+        /// Sets the specified date in the text value.
+        /// </summary>
+        public void SetDate(RawTime? date, string? format = "dd/MM/yyyy")
+        {
+            if (timeBox != null) timeBox.Text = date?.ToString(format);
+        }
+
+        /// <summary>
+        /// Sets the specified time in the text value.
+        /// </summary>
+        public void SetTime(RawTime? time, string? format = "HH:mm:ss")
+        {
+            if (timeBox != null) timeBox.Text = time?.ToString(format);
+        }
+#endif
 
         /// <summary>
         /// Gets the current date in the text value.
         /// </summary>
         /// <exception cref="FormatException"/>
-        public RawTime GetDate()
+        public RawTime GetDate(IFormatProvider? format = null)
         {
             if (timeBox != null)
             {
@@ -912,7 +911,7 @@ namespace FullControls.Controls
 
                 try
                 {
-                    return RawTime.Parse(timeBox.Text + " 00:00:00", UseAmericanFormat ? EN_US_FORMAT : IT_IT_FORMAT);
+                    return RawTime.Parse(timeBox.Text + " 00:00:00", format);
                 }
                 catch
                 {
@@ -925,11 +924,11 @@ namespace FullControls.Controls
         /// <summary>
         /// Gets the current date in the text value, or the specified default value if it is not valid.
         /// </summary>
-        public RawTime? GetDateOrDefault(RawTime? fallback)
+        public RawTime? GetDateOrDefault(RawTime? fallback, IFormatProvider? format = null)
         {
             try
             {
-                return GetDate();
+                return GetDate(format);
             }
             catch
             {
@@ -941,7 +940,7 @@ namespace FullControls.Controls
         /// Gets the current time in the text value.
         /// </summary>
         /// <exception cref="FormatException"/>
-        public RawTime GetTime()
+        public RawTime GetTime(IFormatProvider? format = null)
         {
             if (timeBox != null)
             {
@@ -949,7 +948,7 @@ namespace FullControls.Controls
 
                 try
                 {
-                    return RawTime.Parse("01/01/0001 " + timeBox.Text, IT_IT_FORMAT);
+                    return RawTime.Parse("01/01/0001 " + timeBox.Text, format);
                 }
                 catch
                 {
@@ -962,11 +961,11 @@ namespace FullControls.Controls
         /// <summary>
         /// Gets the current time in the text value, or the specified default value if it is not valid.
         /// </summary>
-        public RawTime? GetTimeOrDefault(RawTime? fallback)
+        public RawTime? GetTimeOrDefault(RawTime? fallback, IFormatProvider? format = null)
         {
             try
             {
-                return GetTime();
+                return GetTime(format);
             }
             catch
             {
