@@ -821,6 +821,25 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(UseAmericanFormat), typeof(bool), typeof(TimeBox),
                 new PropertyMetadata(BoolBox.False));
 
+        #region Public Events
+
+        /// <summary>
+        /// Event fired from this time box when its text has been changed.
+        /// </summary>
+        public event RoutedEventHandler TimeChanged
+        {
+            add => AddHandler(TimeChangedEvent, value);
+            remove => RemoveHandler(TimeChangedEvent, value);
+        }
+
+        /// <summary>
+        /// Event for TimeChanged.
+        /// </summary>
+        public static readonly RoutedEvent TimeChangedEvent =
+            EventManager.RegisterRoutedEvent(nameof(TimeChanged), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(TimeBox));
+
+        #endregion Public Events
+
 
         static TimeBox()
         {
@@ -845,6 +864,7 @@ namespace FullControls.Controls
         {
             base.OnApplyTemplate();
             timeBox = Template.FindName(PartContentHost, this) as TextBoxPlus;
+            if (timeBox != null) timeBox.TextChanged += TimeBox_TextChanged;
         }
 
         /// <summary>
@@ -921,5 +941,17 @@ namespace FullControls.Controls
             }
             return new RawTime();
         }
+
+        #region TextBox events
+
+        /// <summary>
+        /// Called when the text value is changed.
+        /// </summary>
+        private void TimeBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            RaiseEvent(new RoutedEventArgs(TimeChangedEvent));
+        }
+
+        #endregion
     }
 }
