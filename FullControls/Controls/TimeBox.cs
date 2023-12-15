@@ -871,7 +871,7 @@ namespace FullControls.Controls
         /// </summary>
         public void SetDate(RawTime? date, [StringSyntax("DateTimeFormat")] string? format = "dd/MM/yyyy")
         {
-            if (timeBox != null) timeBox.Text = date?.ToString(format);
+            if (timeBox != null) timeBox.Text = date?.ToString(format) ?? "";
         }
 
         /// <summary>
@@ -879,7 +879,7 @@ namespace FullControls.Controls
         /// </summary>
         public void SetTime(RawTime? time, [StringSyntax("DateTimeFormat")] string? format = "HH:mm:ss")
         {
-            if (timeBox != null) timeBox.Text = time?.ToString(format);
+            if (timeBox != null) timeBox.Text = time?.ToString(format) ?? "";
         }
 #else
         /// <summary>
@@ -887,7 +887,7 @@ namespace FullControls.Controls
         /// </summary>
         public void SetDate(RawTime? date, string? format = "dd/MM/yyyy")
         {
-            if (timeBox != null) timeBox.Text = date?.ToString(format);
+            if (timeBox != null) timeBox.Text = date?.ToString(format) ?? "";
         }
 
         /// <summary>
@@ -895,7 +895,7 @@ namespace FullControls.Controls
         /// </summary>
         public void SetTime(RawTime? time, string? format = "HH:mm:ss")
         {
-            if (timeBox != null) timeBox.Text = time?.ToString(format);
+            if (timeBox != null) timeBox.Text = time?.ToString(format) ?? "";
         }
 #endif
 
