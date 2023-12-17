@@ -181,7 +181,7 @@
                                        MaxLines="1"
                                        IsUndoEnabled="False"
                                        UndoLimit="0"
-                                       RegexFilter="^[\d\\/:]+$" />
+                                       RegexFilter="^[\d\\/: ]+$" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

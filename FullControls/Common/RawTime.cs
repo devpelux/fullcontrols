@@ -57,12 +57,6 @@ namespace FullControls.Common
 
         /// <summary>
         /// Initializes a new instance.
-        /// The date will be 01/Jan/0001.
-        /// </summary>
-        public RawTime(int hour, int minute) : this(1, 1, 1, hour, minute, 0, 0) { }
-
-        /// <summary>
-        /// Initializes a new instance.
         /// </summary>
         public RawTime(int year, int month, int day) : this(year, month, day, 0, 0, 0, 0) { }
 
@@ -200,17 +194,22 @@ namespace FullControls.Common
         /// <summary>
         /// Gets a new instance truncated to the day.
         /// </summary>
-        public RawTime Date() => new(Year, Month, Day);
+        public RawTime Date() => new(Year, Month, Day, 0, 0, 0, 0);
 
         /// <summary>
-        /// Gets a new instance with only hour, minute, and second.
+        /// Gets a new instance with only hour, minute, second, and millisecond. (Date will be 1/Jan/1)
         /// </summary>
-        public RawTime TimeOfDay() => new(Hour, Minute, Second);
+        public RawTime TimeOfDay() => new(1, 1, 1, Hour, Minute, Second, Millisecond);
 
         /// <summary>
-        /// Gets a new instance with only hour and minute.
+        /// Gets a new instance with only hour, minute, and second. (Date will be 1/Jan/1)
         /// </summary>
-        public RawTime TimeOfDayMinutes() => new(Hour, Minute);
+        public RawTime TimeOfDaySeconds() => new(1, 1, 1, Hour, Minute, Second, 0);
+
+        /// <summary>
+        /// Gets a new instance with only hour and minute. (Date will be 1/Jan/1)
+        /// </summary>
+        public RawTime TimeOfDayMinutes() => new(1, 1, 1, Hour, Minute, 0, 0);
 
         #endregion Truncations
 
@@ -294,7 +293,7 @@ namespace FullControls.Common
         /// <summary>
         /// Converts this instance to a string with the specified format.
         /// </summary>
-        public string ToString([StringSyntax("DateTimeFormat")] string? format) => ToDateTime().ToString(format);
+        public string ToString([StringSyntax(StringSyntaxAttribute.DateTimeFormat)] string? format) => ToDateTime().ToString(format);
 #else
         /// <summary>
         /// Converts this instance to a string with the specified format.
@@ -308,11 +307,11 @@ namespace FullControls.Common
         public override string ToString() => ToString(null);
 
         /// <summary>
-        /// Converts the specified string to a new <see cref="RawTime"/> instance, using the specified format.
+        /// Converts the specified string to a new <see cref="RawTime"/> instance, using the specified format provider.
         /// </summary>
         /// <exception cref="ArgumentNullException"/>
         /// <exception cref="FormatException"/>
-        public static RawTime Parse(string time, IFormatProvider? format = null) => FromDateTime(DateTime.Parse(time, format));
+        public static RawTime Parse(string time, IFormatProvider? provider = null) => FromDateTime(DateTime.Parse(time, provider));
 
         #endregion ToString and Parse
     }

@@ -21,20 +21,12 @@
                     Label="Time"
                     LabelMargin="4,0,0,0"
                     LabelHeight="24" />
-        <fc:ButtonPlus Content="Date"
+        <fc:ButtonPlus Content="Time"
                        HorizontalAlignment="Left"
                        Margin="144,0,0,0"
                        VerticalAlignment="Center"
                        Height="32"
                        Width="84"
                        Click="ButtonPlus_Click" />
-        <fc:ButtonPlus Content="Hour"
-                       HorizontalAlignment="Left"
-                       Margin="238,0,0,0"
-                       VerticalAlignment="Center"
-                       Height="32"
-                       Width="84"
-                       Click="ButtonPlus2_Click" />
-
     </Grid>
 </fc:AvalonWindow>

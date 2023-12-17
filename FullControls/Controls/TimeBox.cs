@@ -23,6 +23,11 @@ namespace FullControls.Controls
         /// </summary>
         private const string PartContentHost = "PART_ContentHost";
 
+        /// <summary>
+        /// Cached time.
+        /// </summary>
+        private string cachedTime = "";
+
         #region TextBoxPlus customization properties
 
         /// <summary>
@@ -845,7 +850,11 @@ namespace FullControls.Controls
         {
             base.OnApplyTemplate();
             timeBox = Template.FindName(PartContentHost, this) as TextBoxPlus;
-            if (timeBox != null) timeBox.TextChanged += TimeBox_TextChanged;
+            if (timeBox != null)
+            {
+                timeBox.TextChanged += TimeBox_TextChanged;
+                timeBox.Text = cachedTime;
+            }
         }
 
         /// <summary>
@@ -867,105 +876,55 @@ namespace FullControls.Controls
 
 #if NET7_0_OR_GREATER
         /// <summary>
-        /// Sets the specified date in the text value.
+        /// Sets the specified time.
         /// </summary>
-        public void SetDate(RawTime? date, [StringSyntax("DateTimeFormat")] string? format = "dd/MM/yyyy")
+        public void SetTime(RawTime? time, [StringSyntax(StringSyntaxAttribute.DateTimeFormat)] string? format = "G")
         {
-            if (timeBox != null) timeBox.Text = date?.ToString(format) ?? "";
-        }
-
-        /// <summary>
-        /// Sets the specified time in the text value.
-        /// </summary>
-        public void SetTime(RawTime? time, [StringSyntax("DateTimeFormat")] string? format = "HH:mm:ss")
-        {
-            if (timeBox != null) timeBox.Text = time?.ToString(format) ?? "";
+            cachedTime = time?.ToString(format) ?? "";
+            if (timeBox != null) timeBox.Text = cachedTime;
         }
 #else
         /// <summary>
-        /// Sets the specified date in the text value.
+        /// Sets the specified time.
         /// </summary>
-        public void SetDate(RawTime? date, string? format = "dd/MM/yyyy")
+        public void SetTime(RawTime? time, string? format = "G")
         {
-            if (timeBox != null) timeBox.Text = date?.ToString(format) ?? "";
-        }
-
-        /// <summary>
-        /// Sets the specified time in the text value.
-        /// </summary>
-        public void SetTime(RawTime? time, string? format = "HH:mm:ss")
-        {
-            if (timeBox != null) timeBox.Text = time?.ToString(format) ?? "";
+            cachedTime = time?.ToString(format) ?? "";
+            if (timeBox != null) timeBox.Text = cachedTime;
         }
 #endif
 
         /// <summary>
-        /// Gets the current date in the text value.
+        /// Gets the current time value.
         /// </summary>
         /// <exception cref="FormatException"/>
-        public RawTime GetDate(IFormatProvider? format = null)
+        public RawTime GetTime(IFormatProvider? provider = null)
         {
-            if (timeBox != null)
+            if (cachedTime != "")
             {
-                if (timeBox.Text is null or "") throw new FormatException("Time is empty.");
-
                 try
                 {
-                    return RawTime.Parse(timeBox.Text + " 00:00:00", format);
+                    return RawTime.Parse(cachedTime, provider);
                 }
                 catch
                 {
-                    throw new FormatException(timeBox.Text + " is not a valid date.");
+                    throw new FormatException(cachedTime + " is not a valid time.");
                 }
             }
-            return new RawTime();
+            else
+            {
+                throw new FormatException("Time is empty.");
+            }
         }
 
         /// <summary>
-        /// Gets the current date in the text value, or the specified default value if it is not valid.
+        /// Gets the current time value, or the specified default value if it is not valid.
         /// </summary>
-        public RawTime? GetDateOrDefault(RawTime? fallback, IFormatProvider? format = null)
+        public RawTime? GetTimeOrDefault(RawTime? fallback, IFormatProvider? provider = null)
         {
             try
             {
-                return GetDate(format);
-            }
-            catch
-            {
-                return fallback;
-            }
-        }
-
-        /// <summary>
-        /// Gets the current time in the text value.
-        /// </summary>
-        /// <exception cref="FormatException"/>
-        public RawTime GetTime(IFormatProvider? format = null)
-        {
-            if (timeBox != null)
-            {
-                if (timeBox.Text is null or "") throw new FormatException("Time is empty.");
-
-                try
-                {
-                    return RawTime.Parse("01/01/0001 " + timeBox.Text, format);
-                }
-                catch
-                {
-                    throw new FormatException(timeBox.Text + " is not a valid time.");
-                }
-            }
-            return new RawTime();
-        }
-
-        /// <summary>
-        /// Gets the current time in the text value, or the specified default value if it is not valid.
-        /// </summary>
-        public RawTime? GetTimeOrDefault(RawTime? fallback, IFormatProvider? format = null)
-        {
-            try
-            {
-                return GetTime(format);
+                return GetTime(provider);
             }
             catch
             {
@@ -980,6 +939,7 @@ namespace FullControls.Controls
         /// </summary>
         private void TimeBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            cachedTime = timeBox?.Text ?? "";
             RaiseEvent(new RoutedEventArgs(TimeChangedEvent));
         }
 

@@ -15,14 +15,8 @@ namespace FullControlsDemo
 
         private void ButtonPlus_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            RawTime time = timebox.GetDate();
-            timebox.SetDate(time);
-        }
-
-        private void ButtonPlus2_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            RawTime time = timebox.GetTime();
-            timebox.SetTime(time);
+            RawTime time = timebox.GetTime().TimeOfDayMinutes();
+            timebox.SetTime(time, "HH:mm");
         }
     }
 }
