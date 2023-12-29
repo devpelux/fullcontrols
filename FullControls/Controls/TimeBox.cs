@@ -1,5 +1,5 @@
-﻿using FullControls.Common;
-using FullControls.Core;
+﻿using FullControls.Core;
+using RawTimeCore;
 using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;

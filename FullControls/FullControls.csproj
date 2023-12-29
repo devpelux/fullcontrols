@@ -67,4 +67,8 @@ Documentation: https://github.com/devpelux/fullcontrols/wiki</Description>
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="RawTime" Version="1.0.0-rc.1" />
+  </ItemGroup>
+
 </Project>
