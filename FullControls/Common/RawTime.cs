@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
 namespace FullControls.Common
@@ -6,7 +7,7 @@ namespace FullControls.Common
     /// <summary>
     /// Manages raw time rappresentation independently from the time zone.
     /// </summary>
-    public class RawTime
+    public class RawTime : IEquatable<RawTime?>
     {
         #region Time properties
 
@@ -314,5 +315,51 @@ namespace FullControls.Common
         public static RawTime Parse(string time, IFormatProvider? provider = null) => FromDateTime(DateTime.Parse(time, provider));
 
         #endregion ToString and Parse
+
+        #region Comparison
+
+        /// <inheritdoc/>
+        public override bool Equals(object? obj) => Equals(obj as RawTime);
+
+        /// <inheritdoc/>
+        public bool Equals(RawTime? other)
+            => other is not null && EncodeToRawLong() == other.EncodeToRawLong();
+
+        /// <inheritdoc/>
+        public override int GetHashCode()
+            => HashCode.Combine(Year, Month, Day, Hour, Minute, Second, Millisecond);
+
+        /// <inheritdoc/>
+        public static bool operator <(RawTime left, RawTime right)
+        {
+            return left.EncodeToRawLong() < right.EncodeToRawLong();
+        }
+
+        /// <inheritdoc/>
+        public static bool operator >(RawTime left, RawTime right)
+        {
+            return left.EncodeToRawLong() > right.EncodeToRawLong();
+        }
+
+        /// <inheritdoc/>
+        public static bool operator <=(RawTime left, RawTime right)
+        {
+            return left.EncodeToRawLong() <= right.EncodeToRawLong();
+        }
+
+        /// <inheritdoc/>
+        public static bool operator >=(RawTime left, RawTime right)
+        {
+            return left.EncodeToRawLong() >= right.EncodeToRawLong();
+        }
+
+        /// <inheritdoc/>
+        public static bool operator ==(RawTime? left, RawTime? right)
+            => EqualityComparer<RawTime>.Default.Equals(left, right);
+
+        /// <inheritdoc/>
+        public static bool operator !=(RawTime? left, RawTime? right) => !(left == right);
+
+        #endregion
     }
 }
