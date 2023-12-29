@@ -21,26 +21,31 @@ namespace FullControls.Controls
         protected const string PartContentHost = "PART_ContentHost";
 
         /// <summary>
-        /// Gets or sets the current visible item.
+        /// Gets or sets the index of the current visible item.
         /// </summary>
-        public int VisibleItem
+        public int VisibleIndex
         {
-            get => (int)GetValue(VisibleItemProperty);
-            set => SetValue(VisibleItemProperty, value);
+            get => (int)GetValue(VisibleIndexProperty);
+            set => SetValue(VisibleIndexProperty, value);
         }
 
         /// <summary>
-        /// Identifies the <see cref="VisibleItem"/> dependency property.
+        /// Identifies the <see cref="VisibleIndex"/> dependency property.
         /// </summary>
-        public static readonly DependencyProperty VisibleItemProperty =
-            DependencyProperty.Register(nameof(VisibleItem), typeof(int), typeof(SelectiveView), new PropertyMetadata(0, VisibleItemChanged));
+        public static readonly DependencyProperty VisibleIndexProperty =
+            DependencyProperty.Register(nameof(VisibleIndex), typeof(int), typeof(SelectiveView), new PropertyMetadata(0, VisibleIndexChanged));
 
-        #region VisibleItemPropertyCallbacks
+        #region VisibleIndexPropertyCallbacks
 
-        //Executed when the visible item is changed.
-        private static void VisibleItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => ((SelectiveView)d).OnVisibleItemChanged((int)e.NewValue);
+        //Executed when the index of the current visible item is changed.
+        private static void VisibleIndexChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) => ((SelectiveView)d).OnVisibleIndexChanged((int)e.NewValue);
 
         #endregion
+
+        /// <summary>
+        /// Gets the current visible item, or null if no item is visible.
+        /// </summary>
+        public UIElement? VisibleItem => VisibleIndex < ItemsCount && VisibleIndex > -1 ? Items[VisibleIndex] : null;
 
         static SelectiveView()
         {
@@ -73,7 +78,7 @@ namespace FullControls.Controls
         /// <summary>
         /// Executed when the selected view is changed.
         /// </summary>
-        protected virtual void OnVisibleItemChanged(int index)
+        protected virtual void OnVisibleIndexChanged(int index)
         {
             ReloadVisibleItem();
         }
@@ -83,7 +88,7 @@ namespace FullControls.Controls
         {
             if (itemContainer != null)
             {
-                itemContainer.Child = VisibleItem < ItemsCount && VisibleItem > -1 ? Items[VisibleItem] : null;
+                itemContainer.Child = VisibleIndex < ItemsCount && VisibleIndex > -1 ? Items[VisibleIndex] : null;
             }
         }
     }
