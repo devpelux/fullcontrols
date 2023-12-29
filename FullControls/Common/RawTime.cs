@@ -257,6 +257,22 @@ namespace FullControls.Common
         /// </summary>
         public static TimeSpan Difference(RawTime left, RawTime right) => left.ToDateTime() - right.ToDateTime();
 
+        /// <summary>
+        /// Returns the mimimum between two instances.
+        /// </summary>
+        public static RawTime Min(RawTime left, RawTime right)
+        {
+            return left <= right ? left : right;
+        }
+
+        /// <summary>
+        /// Returns the maximum between two instances.
+        /// </summary>
+        public static RawTime Max(RawTime left, RawTime right)
+        {
+            return left >= right ? left : right;
+        }
+
         #endregion Operations
 
         #region Utils
