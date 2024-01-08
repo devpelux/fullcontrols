@@ -13,7 +13,7 @@ Documentation: https://github.com/devpelux/fullcontrols/wiki</Description>
     <PackageReleaseNotes></PackageReleaseNotes>
     <PackageProjectUrl>https://www.nuget.org/packages/FullControls</PackageProjectUrl>
     <RepositoryUrl>https://github.com/devpelux/fullcontrols</RepositoryUrl>
-    <Copyright>Copyright (C) 2020-2023 devpelux (Salvatore Peluso)</Copyright>
+    <Copyright>Copyright (C) 2020-2024 devpelux (Salvatore Peluso)</Copyright>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>Icon.png</PackageIcon>
     <Version>3.0.0-beta.13</Version>

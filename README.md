@@ -222,7 +222,7 @@ Standard window for messages with light and dark theme, similar to the message b
 <!-- license -->
 
 # License
-Copyright (C) 2020-2023 devpelux (Salvatore Peluso)  
+Copyright (C) 2020-2024 devpelux (Salvatore Peluso)  
 Licensed under MIT license.
 
 [![mit](https://raw.githubusercontent.com/devpelux/fullcontrols/2.2.0/Assets/Mit.png)](https://github.com/devpelux/fullcontrols/blob/2.2.0/LICENSE)
