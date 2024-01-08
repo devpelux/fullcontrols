@@ -107,6 +107,18 @@ namespace FullControls.Windows
         /// </summary>
         public static Builder GetBuilder() => new();
 
+        /// <summary>
+        /// Displays a message window that shows the specified error.
+        /// </summary>
+        public static void ShowError(string message, Window? owner = null) => ShowError(message, Theme.Light, owner);
+
+        /// <summary>
+        /// Displays a message window that shows the specified error, by specifying the window theme too.
+        /// </summary>
+        public static void ShowError(string message, Theme theme, Window? owner = null)
+        {
+            _ = new MessageWindow(message, "Errore", "OK", null, Type.Exclamation, theme, owner).ShowDialog();
+        }
 
         #region Builder
 

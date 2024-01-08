@@ -43,14 +43,7 @@ namespace FullControls.Utils
         {
             string message = InnerException != null ? $"{Message}\n\nInternal error: {InnerException.Message}" : Message;
 
-            _ = MessageWindow.GetBuilder()
-                .WithTitle("Errore")
-                .WithMessage(message)
-                .WithPositive("OK")
-                .WithType(MessageWindow.Type.Exclamation)
-                .WithOwner(owner)
-                .WithTheme(theme)
-                .BuildAndShow();
+            MessageWindow.ShowError(message, theme, owner);
         }
     }
 }
