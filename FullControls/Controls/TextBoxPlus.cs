@@ -1027,6 +1027,7 @@ namespace FullControls.Controls
         {
             base.OnTextChanged(e);
             UpdateHintState();
+            OnVStateChanged(GetCurrentVState());
         }
 
         /// <inheritdoc/>

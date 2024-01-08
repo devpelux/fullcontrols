@@ -1451,6 +1451,7 @@ namespace FullControls.Controls
         {
             e.Handled = true;
             UpdateHintState();
+            OnVStateChanged(GetCurrentVState());
             RaiseEvent(new RoutedEventArgs(PasswordChangedEvent));
         }
 
