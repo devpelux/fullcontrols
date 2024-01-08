@@ -1,5 +1,7 @@
 ﻿using FullControls.SystemControls;
+using FullControls.Utils;
 using RawTimeCore;
+using System;
 
 namespace FullControlsDemo
 {
@@ -17,6 +19,13 @@ namespace FullControlsDemo
         {
             RawTime time = timebox.GetTime().TimeOfDayMinutes();
             timebox.SetTime(time, "HH:mm");
+        }
+
+        private void ButtonPlus2_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Exception ex = new("Simulated Internal Error.");
+            VisualizableException exx = new("Visualizable error.", ex);
+            exx.ShowDialog(this);
         }
     }
 }

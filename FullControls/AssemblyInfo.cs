@@ -12,6 +12,7 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols", "FullControls.Common")]
 [assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols", "FullControls.Controls")]
 [assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols", "FullControls.SystemControls")]
+[assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols", "FullControls.Utils")]
 [assembly: XmlnsDefinition("http://devpelux.github.io/fullcontrols/advanced", "FullControls.SystemControls.Advanced")]
 
 //Theme

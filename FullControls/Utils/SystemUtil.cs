@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 
-namespace FullControls.Common
+namespace FullControls.Utils
 {
     /// <summary>
     /// Provides a set of system utilities.

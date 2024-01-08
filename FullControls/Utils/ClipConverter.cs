@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Data;
 using System.Windows.Media;
 
-namespace FullControls.Common
+namespace FullControls.Utils
 {
     /// <summary>
     /// <para>Converter that clips elements that are out of a control.</para>
@@ -54,7 +54,7 @@ namespace FullControls.Common
                 if (values[0] is double width && values[1] is double height && values[2] is CornerRadius radius && values[3] is Thickness thickness)
                 {
                     if (width < double.Epsilon || height < double.Epsilon) return Geometry.Empty;
-                    RectangleGeometry clip = new(new Rect(0, 0, width, height), radius.TopLeft - (thickness.Left / 2), radius.TopLeft - (thickness.Left / 2));
+                    RectangleGeometry clip = new(new Rect(0, 0, width, height), radius.TopLeft - thickness.Left / 2, radius.TopLeft - thickness.Left / 2);
                     clip.Freeze();
                     return clip;
                 }

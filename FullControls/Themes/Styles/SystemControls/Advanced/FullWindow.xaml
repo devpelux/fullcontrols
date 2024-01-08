@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FullControls.SystemControls.Advanced"
                     xmlns:systemcontrols="clr-namespace:FullControls.SystemControls"
-                    xmlns:common="clr-namespace:FullControls.Common">
+                    xmlns:utils="clr-namespace:FullControls.Utils">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/FullControls;component/Resources/LightColors.xaml" />
@@ -10,7 +10,7 @@
         <ResourceDictionary Source="/FullControls;component/Resources/LightStyles.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <common:ClipConverter x:Key="ClipConverter" />
+    <utils:ClipConverter x:Key="ClipConverter" />
 
     <Style TargetType="{x:Type local:FullWindow}"
            BasedOn="{StaticResource {x:Type Window}}">

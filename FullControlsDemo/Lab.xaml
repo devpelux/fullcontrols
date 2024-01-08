@@ -28,5 +28,12 @@
                        Height="32"
                        Width="84"
                        Click="ButtonPlus_Click" />
+        <fc:ButtonPlus Content="Time"
+                       HorizontalAlignment="Left"
+                       Margin="544,273,0,0"
+                       VerticalAlignment="Top"
+                       Height="32"
+                       Width="84"
+                       Click="ButtonPlus2_Click" />
     </Grid>
 </fc:AvalonWindow>
