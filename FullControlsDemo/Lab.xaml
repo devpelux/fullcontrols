@@ -12,28 +12,27 @@
                  Height="450"
                  Width="800">
     <Grid>
-        <fc:TimeBox x:Name="timebox"
-                    HorizontalAlignment="Left"
-                    Margin="137,129,0,0"
-                    VerticalAlignment="Top"
-                    Width="193"
-                    Hint="Insert time"
-                    Label="Time"
-                    LabelMargin="4,0,0,0"
-                    LabelHeight="24" />
-        <fc:ButtonPlus Content="Time"
-                       HorizontalAlignment="Left"
-                       Margin="144,0,0,0"
-                       VerticalAlignment="Center"
-                       Height="32"
-                       Width="84"
-                       Click="ButtonPlus_Click" />
-        <fc:ButtonPlus Content="Time"
-                       HorizontalAlignment="Left"
-                       Margin="544,273,0,0"
-                       VerticalAlignment="Top"
-                       Height="32"
-                       Width="84"
-                       Click="ButtonPlus2_Click" />
+        <fc:SelectiveView x:Name="Items"
+                          VisibleIndex="0">
+            <Grid>
+                <fc:Accordion>
+                    <fc:SimpleAccordionItem Header="Test1">
+                        <Grid Margin="16"
+                              Background="Green"
+                              Height="40" />
+                    </fc:SimpleAccordionItem>
+                </fc:Accordion>
+            </Grid>
+            <Grid Margin="16"
+                  Background="Green"
+                  Height="40" />
+        </fc:SelectiveView>
+        <Button Content="Button"
+                HorizontalAlignment="Left"
+                Margin="53,342,0,0"
+                VerticalAlignment="Top"
+                Height="28"
+                Width="85"
+                Click="Button_Click" />
     </Grid>
 </fc:AvalonWindow>

@@ -12,8 +12,8 @@ namespace FullControls.Controls
     [TemplatePart(Name = PartContentHost, Type = typeof(Decorator))]
     public class SelectiveView : SimpleItemsControl<ObservableCollection<UIElement>>
     {
-        //Container for the visible item.
-        private Decorator? itemContainer;
+        //Container for the items.
+        private Grid container = new();
 
         /// <summary>
         /// ContentHost template part.
@@ -63,8 +63,9 @@ namespace FullControls.Controls
         {
             base.OnApplyTemplate();
 
-            //Finds the visible item container.
-            itemContainer = Template.FindName(PartContentHost, this) as Decorator;
+            //Attach the items container.
+            if (Template.FindName(PartContentHost, this) is Decorator decorator) decorator.Child = container;
+
             ReloadVisibleItem();
         }
 
@@ -72,9 +73,34 @@ namespace FullControls.Controls
         protected override void OnItemsChanged(NotifyCollectionChangedEventArgs e)
         {
             base.OnItemsChanged(e);
+
+            UIElementCollection children = container.Children;
+
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    children.Insert(e.NewStartingIndex, (UIElement?)e.NewItems![0]);
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    children.RemoveAt(e.OldStartingIndex);
+                    break;
+                case NotifyCollectionChangedAction.Replace:
+                    children.RemoveAt(e.OldStartingIndex);
+                    children.Insert(e.OldStartingIndex, (UIElement?)e.NewItems![0]);
+                    break;
+                case NotifyCollectionChangedAction.Move:
+                    children.RemoveAt(e.OldStartingIndex);
+                    children.Insert(e.NewStartingIndex, (UIElement?)e.NewItems![0]);
+                    break;
+                default:
+                    children.Clear();
+                    foreach (UIElement item in e.NewItems!) children.Add(item);
+                    break;
+            }
+
             ReloadVisibleItem();
         }
-
+        
         /// <summary>
         /// Executed when the selected view is changed.
         /// </summary>
@@ -86,9 +112,9 @@ namespace FullControls.Controls
         //Sets the visible item as child of the container part.
         private void ReloadVisibleItem()
         {
-            if (itemContainer != null)
+            for (int i = 0; i < ItemsCount; i++)
             {
-                itemContainer.Child = VisibleIndex < ItemsCount && VisibleIndex > -1 ? Items[VisibleIndex] : null;
+                Items[i].Visibility = i == VisibleIndex ? Visibility.Visible : Visibility.Collapsed;
             }
         }
     }

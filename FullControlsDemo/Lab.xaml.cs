@@ -15,17 +15,13 @@ namespace FullControlsDemo
             InitializeComponent();
         }
 
-        private void ButtonPlus_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            RawTime time = timebox.GetTime().TimeOfDayMinutes();
-            timebox.SetTime(time, "HH:mm");
-        }
+        int vi = 0;
 
-        private void ButtonPlus2_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Exception ex = new("Simulated Internal Error.");
-            VisualizableException exx = new("Visualizable error.", ex);
-            exx.ShowDialog(this);
+            Items.VisibleIndex = vi;
+            vi++;
+            if (vi > 1) vi = 0;
         }
     }
 }
