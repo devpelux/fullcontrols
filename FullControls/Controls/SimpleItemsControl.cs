@@ -9,6 +9,7 @@ namespace FullControls.Controls
 {
     /// <summary>
     /// Represents a control similar to <see cref="ItemsControl"/>, but only with essential features, such as items changing events.
+    /// The collection of items is of the type specified (T), and must implement IList and INotifyCollectionChanged.
     /// </summary>
     [ContentProperty(nameof(Items))]
     [DefaultProperty(nameof(Items))]

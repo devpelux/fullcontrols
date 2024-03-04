@@ -13,7 +13,7 @@ namespace FullControls.Controls
     /// </summary>
     [TemplatePart(Name = PartContentHost, Type = typeof(Decorator))]
     [DefaultEvent(nameof(ItemIsExpandedChanged))]
-    public class Accordion : SimpleItemsControl<AccordionItemCollection>
+    public class Accordion : SimpleItemsControl<IndexedObservableCollection<AccordionItem>>
     {
         private readonly ItemsControl itemsControl;
 

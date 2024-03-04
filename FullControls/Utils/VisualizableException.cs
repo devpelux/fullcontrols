@@ -1,6 +1,5 @@
 ﻿using FullControls.Windows;
 using System;
-using System.Runtime.Serialization;
 using System.Windows;
 
 namespace FullControls.Utils
@@ -25,11 +24,6 @@ namespace FullControls.Utils
         /// and the exception that caused this exception.
         /// </summary>
         public VisualizableException(string? message, Exception? innerException) : base(message, innerException) { }
-
-        /// <summary>
-        /// Initializes a new instance of <see cref="VisualizableException"/> with serialized data.
-        /// </summary>
-        protected VisualizableException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 
         /// <summary>
         /// Displays a message window that shows the details of the exception.

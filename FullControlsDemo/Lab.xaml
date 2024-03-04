@@ -12,21 +12,19 @@
                  Height="450"
                  Width="800">
     <Grid>
-        <fc:SelectiveView x:Name="Items"
-                          VisibleIndex="0">
-            <Grid>
-                <fc:Accordion>
-                    <fc:SimpleAccordionItem Header="Test1">
-                        <Grid Margin="16"
-                              Background="Green"
-                              Height="40" />
-                    </fc:SimpleAccordionItem>
-                </fc:Accordion>
-            </Grid>
-            <Grid Margin="16"
-                  Background="Green"
-                  Height="40" />
-        </fc:SelectiveView>
+        <fc:Table x:Name="TT">
+            <fc:Table.Columns>
+                <fc:TableColumn Header="A items"
+                                Width="100"
+                                Id="a"/>
+                <fc:TableColumn Header="B items"
+                                Width="200"
+                                Id="b" />
+                <fc:TableColumn Header="C items"
+                                Width="100"
+                                Id="c" />
+            </fc:Table.Columns>
+        </fc:Table>
         <Button Content="Button"
                 HorizontalAlignment="Left"
                 Margin="53,342,0,0"
@@ -34,5 +32,6 @@
                 Height="28"
                 Width="85"
                 Click="Button_Click" />
+
     </Grid>
 </fc:AvalonWindow>

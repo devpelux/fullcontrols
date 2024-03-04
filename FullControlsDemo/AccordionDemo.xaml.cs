@@ -15,8 +15,8 @@ namespace FullControlsDemo
     {
         private readonly List<Shape> shapes = new();
         private readonly List<Shape> roundShapes = new();
-        private readonly AccordionItemCollection accordionItems = new();
-        private readonly AccordionItemCollection accordionDarkItems = new();
+        private readonly IndexedObservableCollection<AccordionItem> accordionItems = new();
+        private readonly IndexedObservableCollection<AccordionItem> accordionDarkItems = new();
 
         public AccordionDemo()
         {

@@ -15,7 +15,7 @@ namespace FullControls.Controls
     [TemplatePart(Name = PartHeader, Type = typeof(UIElement))]
     [TemplatePart(Name = PartCollapsible, Type = typeof(Collapsible))]
     [DefaultEvent(nameof(IsExpandedChanged))]
-    public abstract class AccordionItem : Control, IVState
+    public abstract class AccordionItem : Control, IVState, IIndexed
     {
         private bool loaded = false;
         private UIElement? header;
@@ -439,7 +439,7 @@ namespace FullControls.Controls
             DependencyProperty.Register(nameof(ExpandingAnimationTime), typeof(TimeSpan), typeof(AccordionItem));
 
         /// <summary>
-        /// Gets the index of the <see cref="AccordionItem"/> when is in an <see cref="AccordionItemCollection"/>.
+        /// Gets the index of the <see cref="AccordionItem"/>.
         /// </summary>
         public int Index { get; set; } = -1;
 
