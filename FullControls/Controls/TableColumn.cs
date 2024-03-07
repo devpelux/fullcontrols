@@ -1,12 +1,18 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace FullControls.Controls
 {
     /// <summary>
     /// Represents a column of a table.
     /// </summary>
-    public class TableColumn : Control
+    public class TableColumn
     {
+        /// <summary>
+        /// Gets or sets the header of the column.
+        /// </summary>
+        public GridLength Width { get; set; } = GridLength.Auto;
+
         /// <summary>
         /// Gets or sets the header of the column.
         /// </summary>

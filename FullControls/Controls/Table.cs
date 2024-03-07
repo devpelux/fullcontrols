@@ -1,5 +1,4 @@
 ﻿using FullControls.Attributes;
-using FullControls.Common;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,11 +15,11 @@ namespace FullControls.Controls
     /// <summary>
     /// Represents a table with rows and columns.
     /// </summary>
-    [ContentProperty(nameof(Rows))]
-    [DefaultProperty(nameof(Rows))]
+    [ContentProperty(nameof(Columns))]
+    [DefaultProperty(nameof(Columns))]
     public class Table : Control
     {
-        private readonly ItemsControl itemsControl = new();
+        private readonly Grid grid = new();
 
         /// <summary>
         /// ContentHost template part.
@@ -31,11 +30,6 @@ namespace FullControls.Controls
         /// Gets the columns of the table.
         /// </summary>
         public ObservableCollection<TableColumn> Columns { get; } = new();
-
-        /// <summary>
-        /// Gets the rows of the table.
-        /// </summary>
-        public IndexedObservableCollection<TableRow> Rows { get; } = new();
 
         /// <summary>
         /// Gets or sets a collection used to generate the content of the table rows.
@@ -62,8 +56,7 @@ namespace FullControls.Controls
 
         static Table()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(Table),
-                new FrameworkPropertyMetadata(typeof(Table)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(Table), new FrameworkPropertyMetadata(typeof(Table)));
         }
 
         /// <summary>
@@ -71,52 +64,14 @@ namespace FullControls.Controls
         /// </summary>
         public Table() : base()
         {
-            Loaded += (o, e) => OnLoaded(e);
             Columns.CollectionChanged += (s, e) => OnColumnsChanged(e);
-            Rows.CollectionChanged += (s, e) => OnRowsChanged(e);
         }
 
         /// <inheritdoc/>
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            if (Template.FindName(PartContentHost, this) is Decorator contentHost) contentHost.Child = itemsControl;
-        }
-
-        /// <summary>
-        /// Called when the element is laid out, rendered, and ready for interaction.
-        /// </summary>
-        protected virtual void OnLoaded(RoutedEventArgs e) { }
-
-        /// <summary>
-        /// Called when the rows collection is changed.
-        /// </summary>
-        protected virtual void OnRowsChanged(NotifyCollectionChangedEventArgs e)
-        {
-            switch (e.Action)
-            {
-                case NotifyCollectionChangedAction.Add:
-                    itemsControl.Items.Insert(e.NewStartingIndex, Rows[e.NewStartingIndex]);
-                    break;
-                case NotifyCollectionChangedAction.Remove:
-                    itemsControl.Items.RemoveAt(e.OldStartingIndex);
-                    break;
-                case NotifyCollectionChangedAction.Replace:
-                    itemsControl.Items[e.OldStartingIndex] = Rows[e.NewStartingIndex];
-                    break;
-                case NotifyCollectionChangedAction.Move:
-                    itemsControl.Items.RemoveAt(e.OldStartingIndex);
-                    itemsControl.Items.Insert(e.NewStartingIndex, Rows[e.NewStartingIndex]);
-                    break;
-                case NotifyCollectionChangedAction.Reset:
-                    itemsControl.Items.Clear();
-                    foreach (TableRow row in Rows) itemsControl.Items.Add(row);
-                    break;
-                default:
-                    itemsControl.Items.Clear();
-                    foreach (TableRow row in Rows) itemsControl.Items.Add(row);
-                    break;
-            }
+            if (Template.FindName(PartContentHost, this) is Decorator contentHost) contentHost.Child = grid;
         }
 
         /// <summary>
@@ -124,6 +79,9 @@ namespace FullControls.Controls
         /// </summary>
         protected virtual void OnColumnsChanged(NotifyCollectionChangedEventArgs e)
         {
+            grid.ColumnDefinitions.Clear();
+            Columns.ToList().ForEach(c => grid.ColumnDefinitions.Add(new() { Width = c.Width }));
+
             //When the columns are changed, populates the table rows with the data of the items source.
             ReloadRows(ItemsSource);
         }
@@ -139,6 +97,8 @@ namespace FullControls.Controls
 
         private void ReloadRows(IEnumerable itemsSource)
         {
+            grid.Children.Clear();
+
             if (ItemsSource != null)
             {
                 //Reloads the rows of the table.
@@ -146,48 +106,52 @@ namespace FullControls.Controls
 
                 //Gets the positions and the width of the columns.
                 List<TableColumn> columns = Columns.ToList();
-                double[] widths = columns.ConvertAll(col => col.Width).ToArray();
                 string[] headers = columns.ConvertAll(col => col.Header).ToArray();
                 string[] ids = columns.ConvertAll(col => col.Id).ToArray();
 
+                for (int h = 0; h < headers.Length; h++)
+                {
+                    TextBlock t = new();
+                    t.Text = headers[h];
+
+                    //Sets the column (row is 0).
+                    Grid.SetColumn(t, h);
+
+                    grid.Children.Add(t);
+                }
+
                 IEnumerator enumerator = itemsSource.GetEnumerator();
 
-                //Sets the headers.
-                if (Rows.Count < 1) Rows.Add(new TableRow());
-                Rows[0].SetCells(headers, widths);
-                Rows[0].Height = 32;
+                int r = 1, c = 0;
 
-                //Sets the table rows.
-                int i = 1;
+                grid.RowDefinitions.Clear();
+
                 while (enumerator.MoveNext())
                 {
-                    //Gets a pre-existing row, or creates it if is needed.
-                    TableRow row;
-                    if (i < Rows.Count) row = Rows[i];
-                    else
-                    {
-                        row = new TableRow();
-                        Rows.Add(row);
-                    }
+                    object row = enumerator.Current;
+                    grid.RowDefinitions.Add(new() { Height = new(32) });
 
                     //Gets the cells values.
-                    string[] values = GetCellsValues(enumerator.Current, ids);
+                    string[] values = GetCellsValues(row, ids);
 
-                    //Sets the row cells.
-                    row.SetCells(values, widths);
-                    row.Height = 32;
-                    i++;
-                }
+                    c = 0;
 
-                //Useless rows are removed.
-                for (; i < Rows.Count; i++)
-                {
-                    Rows.RemoveAt(i);
+                    foreach (string value in values)
+                    {
+                        TextBlock t = new();
+                        t.Text = value;
+
+                        //Sets the row and column.
+                        Grid.SetRow(t, r);
+                        Grid.SetColumn(t, c);
+
+                        grid.Children.Add(t);
+
+                        c++;
+                    }
+
+                    r++;
                 }
-            }
-            else
-            {
-                Rows.Clear();
             }
         }
 

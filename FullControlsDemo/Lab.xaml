@@ -17,12 +17,12 @@
                 <fc:TableColumn Header="A items"
                                 Width="100"
                                 Id="a"/>
-                <fc:TableColumn Header="B items"
-                                Width="200"
-                                Id="b" />
                 <fc:TableColumn Header="C items"
-                                Width="100"
+                                Width="200"
                                 Id="c" />
+                <fc:TableColumn Header="B items"
+                                Width="100"
+                                Id="b" />
             </fc:Table.Columns>
         </fc:Table>
         <Button Content="Button"
