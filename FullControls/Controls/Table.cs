@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
+using System.Windows.Media;
 
 namespace FullControls.Controls
 {
@@ -20,6 +21,13 @@ namespace FullControls.Controls
     public class Table : Control
     {
         private readonly Grid grid = new();
+
+        private readonly List<UIElement> rowBackgrounds = new();
+        private readonly List<TableCell> cells = new();
+
+        //public int RowCount => ItemsSource.; //todo non va bene.
+
+        public int ColumnCount => Columns.Count;
 
         /// <summary>
         /// ContentHost template part.
@@ -95,6 +103,35 @@ namespace FullControls.Controls
             ReloadRows(newValue);
         }
 
+        /// <summary>
+        /// Rebuilts the table.
+        /// </summary>
+        /// <param name="rows">Row count.</param>
+        /// <param name="columns">Column count.</param>
+        protected virtual void OnRebuiltTable(int rows, int columns)
+        {
+            int rowToAdd = rows - rowBackgrounds.Count;
+
+            for (int i = 0; i < rowToAdd; i++)
+            {
+                rowBackgrounds.Add(new Grid());
+            }
+
+            
+
+            rowBackgrounds.RemoveRange(rowBackgrounds.Count + rowToAdd, )
+
+            grid.Children.RemoveRange(prevColumns, )
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < columns; j++)
+                {
+                    
+                }
+            }
+        }
+
         private void ReloadRows(IEnumerable itemsSource)
         {
             grid.Children.Clear();
@@ -103,16 +140,22 @@ namespace FullControls.Controls
             {
                 //Reloads the rows of the table.
                 //Recycles pre-existing rows.
+                //todo: currently does not recycles nothing.
 
                 //Gets the positions and the width of the columns.
                 List<TableColumn> columns = Columns.ToList();
                 string[] headers = columns.ConvertAll(col => col.Header).ToArray();
                 string[] ids = columns.ConvertAll(col => col.Id).ToArray();
 
+                grid.RowDefinitions.Clear();
+
+                grid.RowDefinitions.Add(new() { Height = new(32) });
+
                 for (int h = 0; h < headers.Length; h++)
                 {
                     TextBlock t = new();
                     t.Text = headers[h];
+                    t.IsHitTestVisible = false;
 
                     //Sets the column (row is 0).
                     Grid.SetColumn(t, h);
@@ -124,8 +167,6 @@ namespace FullControls.Controls
 
                 int r = 1, c = 0;
 
-                grid.RowDefinitions.Clear();
-
                 while (enumerator.MoveNext())
                 {
                     object row = enumerator.Current;
@@ -134,12 +175,29 @@ namespace FullControls.Controls
                     //Gets the cells values.
                     string[] values = GetCellsValues(row, ids);
 
+                    Grid gridrow = new Grid();
+                    gridrow.Background = r % 2 == 0 ? Brushes.Red : Brushes.Blue;
+                    Grid.SetRow(gridrow, r);
+                    Grid.SetColumnSpan(gridrow, columns.Count);
+                    grid.Children.Add(gridrow);
+                    gridrow.MouseEnter += (a, b) =>
+                    {
+                        int rr = (int)gridrow.Tag;
+                        gridrow.Background = r % 2 == 0 ? Brushes.Orange : Brushes.OrangeRed;
+                    };
+
+                    gridrow.MouseLeave += (a, b) =>
+                    {
+                        gridrow.Background = r % 2 == 0 ? Brushes.Red : Brushes.Blue;
+                    };
+
                     c = 0;
 
                     foreach (string value in values)
                     {
                         TextBlock t = new();
                         t.Text = value;
+                        t.IsHitTestVisible = false;
 
                         //Sets the row and column.
                         Grid.SetRow(t, r);
