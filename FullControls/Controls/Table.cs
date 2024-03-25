@@ -1,4 +1,5 @@
 ﻿using FullControls.Attributes;
+using FullControls.Common;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,9 +21,14 @@ namespace FullControls.Controls
     [DefaultProperty(nameof(Columns))]
     public class Table : Control
     {
+        private class Row : Border, IIndexed
+        {
+            public int Index { get; set; }
+        }
+
         private readonly Grid grid = new();
 
-        private readonly List<UIElement> rowBackgrounds = new();
+        private readonly IndexedObservableCollection<Row> rows = new();
         private readonly List<TableCell> cells = new();
 
         //public int RowCount => ItemsSource.; //todo non va bene.
@@ -104,30 +110,55 @@ namespace FullControls.Controls
         }
 
         /// <summary>
-        /// Rebuilts the table.
+        /// Builds the table.
         /// </summary>
-        /// <param name="rows">Row count.</param>
-        /// <param name="columns">Column count.</param>
-        protected virtual void OnRebuiltTable(int rows, int columns)
+        /// <param name="rowCount">Row count.</param>
+        /// <param name="columnCount">Column count.</param>
+        protected virtual void BuildTable(int rowCount, int columnCount)
         {
-            int rowToAdd = rows - rowBackgrounds.Count;
+            int curRowCount = rows.Count;
+            int curCellCount = cells.Count;
+            int cellCount = rowCount * columnCount;
 
-            for (int i = 0; i < rowToAdd; i++)
+            //Generates rows.
+            if (rowCount > curRowCount)
             {
-                rowBackgrounds.Add(new Grid());
+                for (int i = rowCount - curRowCount; i > 0; i--)
+                    rows.Add(new Row());
+            }
+            else if (rowCount < curRowCount)
+            {
+                for (int i = curRowCount - rowCount; i > 0; i--)
+                    rows.RemoveAt(rows.Count - 1);
             }
 
-            
-
-            rowBackgrounds.RemoveRange(rowBackgrounds.Count + rowToAdd, )
-
-            grid.Children.RemoveRange(prevColumns, )
-
-            for (int i = 0; i < rows; i++)
+            //Generates cells.
+            if (cellCount > curCellCount)
             {
-                for (int j = 0; j < columns; j++)
+                for (int i = cellCount - curCellCount; i > 0; i--)
+                    cells.Add(new TableCell());
+            }
+            else if (cellCount < curCellCount)
+            {
+                for (int i = curCellCount - cellCount; i > 0; i--)
+                    cells.RemoveAt(cells.Count - 1);
+            }
+
+
+            //Resets the grid.
+            grid.Children.Clear();
+            grid.ColumnDefinitions.Clear();
+            foreach (TableColumn col in Columns) grid.ColumnDefinitions.Add(new ColumnDefinition());
+            foreach (Row r in rows) grid.Children.Add(r);
+            foreach (TableCell c in cells) grid.Children.Add(c);
+
+            int cellPos = rowCount;
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                for (int j = 0; j < columnCount; j++)
                 {
-                    
+                    cellPos++; 
                 }
             }
         }
